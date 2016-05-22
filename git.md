@@ -1,6 +1,17 @@
 GIT
 ===
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
+**Table of Contents**
+
+- [GIT](#git)
+    - [Basic Concepts](#basic-concepts)
+    - [Commands](#commands)
+    - [Set up a Git server](#set-up-a-git-server)
+- [References](#references)
+
+<!-- markdown-toc end -->
+
 ## Basic Concepts ##
 
 + Git saves data like a __stream of snapshots__. Every time you commit, or save the state of your project in Git, it basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored.
