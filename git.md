@@ -6,11 +6,13 @@ GIT
 
 - [GIT](#git)
     - [Basic Concepts](#basic-concepts)
+        - [Remotes](#remotes)
     - [Commands](#commands)
     - [Set up a Git server](#set-up-a-git-server)
 - [References](#references)
 
 <!-- markdown-toc end -->
+
 
 ## Basic Concepts ##
 
@@ -28,22 +30,44 @@ GIT
   + the _working directory_ is a single checkout of one version of the project. These files are pulled out of the compressed database in the Git directory and placed on disk for you to use or modify.
   + the _staging area_ is a file, generally contained in your Git directory, that stores information about what will go into your next commit. It’s sometimes referred to as the “index”.
 
-## Commands ##
+### Commands ###
 
-    $ git config --list
+  + Git Config `$ git config --list`
 	
+  + Git config username and email for all repos
+	  
+	  `$ git config --global user.name "John Doe"`
+	  
+	  `$ git config --global user.email "your_email@example.com"`
+	
+  + Initialize a repository. Creates a new subdirectory named .git that contains all of your necessary repository files. `$ git init .`
+	
+  + Get a copy of an existing Git repo. `$ git clone [url]`
+
+## Remotes ##
+
+<https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes>
+
+Remote repositories are versions of your project that are hosted on the Internet or network somewhere. The clone command implicitly adds the origin remote for you.
+
++ Show remotes `$ git remote -v`
++ Add a remote `$ git remote add pb https://github.com/paulboone/ticgit`
++ To get data from a remote project `$ git fetch [remote-name]`
++ If your current branch is set up to track a remote branch, you can use the _git pull_ command to automatically fetch and then merge that remote branch into your current branch `$ git pull `
+
 ## Set up a Git server ##
 
-( https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server )
+<https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server>
 
 In order to set up a Git server, you have to export an existing repository into a new _bare repository_ (a repository that doesn’t contain a _working directory_).
 
-`$ git clone --bare my_project my_project.git` 
+    $ git clone --bare my_project my_project.git
 
 Put the bare repository in the server.
 
-`$ scp -r my_project.git user@git.example.com:/srv/git` 
-`$ rm -r my_project.git`
+    $ scp -r my_project.git user@git.example.com:/srv/git
+	$ rm -r my_project.git
+
 
 References
 ==========
