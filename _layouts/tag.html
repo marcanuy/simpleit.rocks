@@ -1,0 +1,10 @@
+{% for tag in site.tags %}
+<h2>{{ site.my_tags[tag].title }}</h2>
+  {% for post in site.posts %}
+    {% if post.tags contains t %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+    {% endif %}
+  {% endfor %}
+{% endfor %}

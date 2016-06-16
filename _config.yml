@@ -1,0 +1,32 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: Techy Reference Notes
+email: me@marcanuy.com
+description: > # this means to ignore newlines until "baseurl:"
+  Notes about technology, written on the go.
+baseurl: "" # the subpath of your site, e.g. /blog
+#url: "http://yourdomain.com" # the base hostname & protocol for your site
+twitter_username: marcanuy
+github_username:  marcanuy
+
+permalink: /:title/
+
+# Build settings
+markdown: kramdown
+
+defaults:
+  - scope:
+      path: ""
+      type: my_tags
+    values:
+      layout: tag
+
+collections:
+  my_tags:
+    output: true
