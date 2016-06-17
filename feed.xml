@@ -4,10 +4,10 @@
     <title>Techy Reference Notes</title>
     <description>Notes about technology, written on the go.
 </description>
-    <link>/</link>
-    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 17 Jun 2016 15:15:08 -0300</pubDate>
-    <lastBuildDate>Fri, 17 Jun 2016 15:15:08 -0300</lastBuildDate>
+    <link>/it-notes/</link>
+    <atom:link href="/it-notes/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 17 Jun 2016 15:52:20 -0300</pubDate>
+    <lastBuildDate>Fri, 17 Jun 2016 15:52:20 -0300</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -82,8 +82,8 @@ Use relative sizes for elements to avoid breaking layout.&lt;/p&gt;
 
 </description>
         <pubDate>Sat, 11 Jun 2016 00:00:00 -0300</pubDate>
-        <link>/html/</link>
-        <guid isPermaLink="true">/html/</guid>
+        <link>/it-notes/html/</link>
+        <guid isPermaLink="true">/it-notes/html/</guid>
         
         
       </item>
@@ -140,8 +140,8 @@ Use relative sizes for elements to avoid breaking layout.&lt;/p&gt;
 
 </description>
         <pubDate>Fri, 10 Jun 2016 00:00:00 -0300</pubDate>
-        <link>/ruby/</link>
-        <guid isPermaLink="true">/ruby/</guid>
+        <link>/it-notes/ruby/</link>
+        <guid isPermaLink="true">/it-notes/ruby/</guid>
         
         
       </item>
@@ -200,8 +200,8 @@ Use relative sizes for elements to avoid breaking layout.&lt;/p&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 06 Jun 2016 00:00:00 -0300</pubDate>
-        <link>/linux/</link>
-        <guid isPermaLink="true">/linux/</guid>
+        <link>/it-notes/linux/</link>
+        <guid isPermaLink="true">/it-notes/linux/</guid>
         
         
       </item>
@@ -414,8 +414,8 @@ If you need to switch between multiple Django settings files, use django-admin w
 
 </description>
         <pubDate>Thu, 02 Jun 2016 00:00:00 -0300</pubDate>
-        <link>/django/</link>
-        <guid isPermaLink="true">/django/</guid>
+        <link>/it-notes/django/</link>
+        <guid isPermaLink="true">/it-notes/django/</guid>
         
         
       </item>
@@ -519,8 +519,8 @@ If you need to switch between multiple Django settings files, use django-admin w
 
 </description>
         <pubDate>Tue, 31 May 2016 00:00:00 -0300</pubDate>
-        <link>/kramdown/</link>
-        <guid isPermaLink="true">/kramdown/</guid>
+        <link>/it-notes/kramdown/</link>
+        <guid isPermaLink="true">/it-notes/kramdown/</guid>
         
         
       </item>
@@ -752,8 +752,8 @@ myenvname
 
 </description>
         <pubDate>Mon, 30 May 2016 00:00:00 -0300</pubDate>
-        <link>/python/</link>
-        <guid isPermaLink="true">/python/</guid>
+        <link>/it-notes/python/</link>
+        <guid isPermaLink="true">/it-notes/python/</guid>
         
         
       </item>
@@ -892,8 +892,8 @@ $ rm -r my_project.git
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 26 May 2016 00:00:00 -0300</pubDate>
-        <link>/git/</link>
-        <guid isPermaLink="true">/git/</guid>
+        <link>/it-notes/git/</link>
+        <guid isPermaLink="true">/it-notes/git/</guid>
         
         
       </item>
@@ -992,8 +992,8 @@ title: My cool blog
 
 </description>
         <pubDate>Sun, 08 May 2016 00:00:00 -0300</pubDate>
-        <link>/jekyll/</link>
-        <guid isPermaLink="true">/jekyll/</guid>
+        <link>/it-notes/jekyll/</link>
+        <guid isPermaLink="true">/it-notes/jekyll/</guid>
         
         
       </item>
