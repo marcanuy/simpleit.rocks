@@ -10,7 +10,7 @@ title: Techy Reference Notes
 email: me@marcanuy.com
 description: > # this means to ignore newlines until "baseurl:"
   Notes about technology, written on the go.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/it-notes" # the subpath of your site, e.g. /blog
 #url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: marcanuy
 github_username:  marcanuy
