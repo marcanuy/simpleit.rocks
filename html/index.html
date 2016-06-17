@@ -1,0 +1,68 @@
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
+<p><strong>Table of Contents</strong></p>
+
+<ul>
+  <li><a href="#concepts">Concepts</a>
+    <ul>
+      <li><a href="#front-matter">Front Matter</a></li>
+      <li><a href="#posts-formatting-syntax">Posts formatting syntax</a>
+        <ul>
+          <li><a href="#kramdown">kramdown</a>
+            <ul>
+              <li><a href="#blockquotes">Blockquotes</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#templating-system">Templating system</a></li>
+    </ul>
+  </li>
+  <li><a href="#commands">Commands</a></li>
+  <li><a href="#references">References</a></li>
+</ul>
+
+<!-- markdown-toc end -->
+
+<h1 id="concepts">Concepts</h1>
+
+<h1 id="optimization-for-mobile">Optimization for mobile</h1>
+
+<h2 id="using-the-viewport-meta-tag">Using the viewport meta tag</h2>
+
+<blockquote cite="https://developers.google.com/speed/docs/insights/ConfigureViewport#overview">
+  <p>A viewport controls how a webpage is displayed on a mobile device. Without a viewport, mobile devices will render the page at a typical desktop screen width, scaled to fit the screen. Setting a viewport gives control over the page’s width and scaling on different devices.
+ Pages optimized to display well on mobile devices should include a meta viewport in the head of the document specifying width=device-width, initial-scale=1.</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+</code></pre>
+</div>
+
+<p><em>CSS Media queries</em> can be applied based on viewport size. Based on the characteristics of the device rendering the content, such as <em>width</em> and <em>height</em>, media queries can change the styles used for each device characteristic.</p>
+
+<blockquote cite="https://developers.google.com/web/fundamentals/design-and-ui/responsive/fundamentals/use-media-queries?hl=en">
+  <p>Use min-width over min-device-width to ensure the broadest experience.
+Use relative sizes for elements to avoid breaking layout.</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>@media (query) {
+  /* CSS Rules used when query matches */
+}
+</code></pre>
+</div>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/en/docs/Mozilla/Mobile/Viewport_meta_tag">https://developer.mozilla.org/en/docs/Mozilla/Mobile/Viewport_meta_tag</a></li>
+  <li><a href="https://developers.google.com/speed/docs/insights/ConfigureViewport">https://developers.google.com/speed/docs/insights/ConfigureViewport</a></li>
+  <li><a href="https://www.w3.org/TR/mwabp/#bp-viewport">https://www.w3.org/TR/mwabp/#bp-viewport</a></li>
+  <li><a href="http://www.w3schools.com/css/css_rwd_viewport.asp">http://www.w3schools.com/css/css_rwd_viewport.asp</a></li>
+  <li><a href="https://developers.google.com/web/fundamentals/design-and-ui/responsive/fundamentals/use-media-queries?hl=en">https://developers.google.com/web/fundamentals/design-and-ui/responsive/fundamentals/use-media-queries?hl=en</a></li>
+</ul>
+
+<h1 id="references">References</h1>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/HTML/">HTML Wikipedia</a></li>
+  <li>[]</li>
+</ul>
+

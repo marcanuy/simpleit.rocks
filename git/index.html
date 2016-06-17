@@ -1,0 +1,130 @@
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
+<p><strong>Table of Contents</strong></p>
+
+<ul>
+  <li><a href="#concepts">Concepts</a></li>
+  <li><a href="#remotes">Remotes</a></li>
+  <li><a href="#use-cases">Use Cases</a>
+    <ul>
+      <li><a href="#set-up-a-git-server">Set up a Git server</a></li>
+    </ul>
+  </li>
+  <li><a href="#references">References</a></li>
+</ul>
+
+<!-- markdown-toc end -->
+
+<h1 id="concepts">Concepts</h1>
+
+<ul>
+  <li>
+    <p>Git saves data like a <strong>stream of snapshots</strong>. Every time you commit, or save the state of your project in Git, it basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored.</p>
+  </li>
+  <li>
+    <p>Git has <strong>integrity</strong>. Everything in Git is check-summed before it is stored and is then referred to by that checksum. It uses SHA-1.</p>
+  </li>
+  <li>
+    <p>There are three <em>file states</em>:</p>
+    <ul>
+      <li><strong>Committed</strong> means that the data is stored in your local database.</li>
+      <li><strong>Modified</strong> means that you have changed the file but have not committed it to your database yet.</li>
+      <li><strong>Staged</strong> means that you have marked a modified fi\e in its current version to go into your next commit snapshot.</li>
+      <li>Lifecycle of the status of files</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>       +---------+         +----------+       +--------+          +------+
+       |Untracked|         |Unmodified|       |Modified|          |Staged|
+       +----+----+         +----+-----+       +----+---+          +---+--+
+            |                   |                  |                  |
+            o---Add the file----+------------------+-----------------&gt;+
+            |                   |                  |                  |
+            |                   |                  |                  |
+            |                   o---Edit the file-&gt;+                  |
+            |                   |                  |                  |
+            |                   |                  o--Stage the file-&gt;+
+            |                   |                  +                  |
+            +&lt;-Remove the file--o                  |                  |
+            |                   |                  |                  |
+            |                   +&lt;--------------Commit----------------o
+            |                   |                  |                  |
+            V                   V                  V                  V
+</code></pre>
+</div>
+
+<ul>
+  <li>Sections of a Git project:
+    <ul>
+      <li>the <em>Git directory</em> is where Git stores the metadata and object database for your project. It is copied when cloning a repo.</li>
+      <li>the <em>working directory</em> is a single checkout of one version of the project. These files are pulled out of the compressed database in the Git directory and placed on disk for you to use or modify.</li>
+      <li>the <em>staging area</em> is a file, generally contained in your Git directory, that stores information about what will go into your next commit. It’s sometimes referred to as the “index”.</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="commands">Commands</h1>
+
+<ul>
+  <li>
+    <p>Git Config <code class="highlighter-rouge">$ git config --list</code></p>
+  </li>
+  <li>
+    <p>Git config username and email for all repos</p>
+
+    <p><code class="highlighter-rouge">$ git config --global user.name "John Doe"</code></p>
+
+    <p><code class="highlighter-rouge">$ git config --global user.email "your_email@example.com"</code></p>
+  </li>
+  <li>
+    <p>Initialize a repository. Creates a new subdirectory named .git that contains all of your necessary repository files. <code class="highlighter-rouge">$ git init .</code></p>
+  </li>
+  <li>
+    <p>Get a copy of an existing Git repo. <code class="highlighter-rouge">$ git clone [url]</code></p>
+  </li>
+</ul>
+
+<h1 id="remotes">Remotes</h1>
+
+<p><a href="https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes">https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes</a></p>
+
+<p>Remote repositories are versions of your project that are hosted on the Internet or network somewhere. The clone command implicitly adds the origin remote for you.</p>
+
+<ul>
+  <li>Show remotes <code class="highlighter-rouge">$ git remote -v</code></li>
+  <li>Add a remote <code class="highlighter-rouge">$ git remote add pb https://github.com/paulboone/ticgit</code></li>
+  <li>To get data from a remote project <code class="highlighter-rouge">$ git fetch [remote-name]</code></li>
+  <li>If your current branch is set up to track a remote branch, you can use the <em>git pull</em> command to automatically fetch and then merge that remote branch into your current branch <code class="highlighter-rouge">$ git pull </code></li>
+</ul>
+
+<h1 id="use-cases">Use Cases</h1>
+
+<h2 id="set-up-a-git-server">Set up a Git server</h2>
+
+<p><a href="https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server">https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server</a></p>
+
+<p>In order to set up a Git server, you have to export an existing repository into a new <em>bare repository</em> (a repository that doesn’t contain a <em>working directory</em>).</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ git clone --bare my_project my_project.git
+</code></pre>
+</div>
+
+<p>Put the bare repository in the server.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ scp -r my_project.git user@git.example.com:/srv/git
+$ rm -r my_project.git
+</code></pre>
+</div>
+
+<h1 id="pending">Pending</h1>
+
+<ul>
+  <li><a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging">https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging</a></li>
+  <li>Stashing to be able to switch branches when didn’t finished commits <a href="https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning">https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning</a></li>
+</ul>
+
+<h1 id="references">References</h1>
+
+<ul>
+  <li><a href="https://git-scm.com/book/en/v2">Git book</a></li>
+</ul>

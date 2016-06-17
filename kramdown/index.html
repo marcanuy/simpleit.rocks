@@ -1,0 +1,95 @@
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
+<p><strong>Table of Contents</strong></p>
+
+<ul>
+  <li><a href="#concepts">Concepts</a></li>
+  <li><a href="#syntax">Syntax</a>
+    <ul>
+      <li><a href="#blockquotes">Blockquotes</a></li>
+    </ul>
+  </li>
+  <li><a href="#references">References</a></li>
+</ul>
+
+<!-- markdown-toc end -->
+
+<h1 id="concepts">Concepts</h1>
+
+<p>Markdown superset converter</p>
+
+<h1 id="syntax">Syntax</h1>
+
+<h2 id="blockquotes">Blockquotes</h2>
+
+<p>Two alternatives for fully semantically correct <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">blockquotes</a>:</p>
+
+<ul>
+  <li>Adding the <em>cite</em> attribute in <em>blockquote</em> tag:</li>
+</ul>
+
+<pre><code class="language-kramdown">&gt; The rule of thumb is, don't introduce a new attribute outside of the __init__ method, otherwise you've given the caller an object that isn't fully initialized.
+{: cite="https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/"}
+</code></pre>
+
+<p>Generates the following HTML:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;blockquote</span> <span class="na">cite=</span><span class="s">"https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>The rule of thumb is, don’t introduce a new attribute outside of the <span class="nt">&lt;strong&gt;</span>init<span class="nt">&lt;/strong&gt;</span> method, otherwise you’ve given the caller an object that isn’t fully initialized.
+<span class="nt">&lt;/blockquote&gt;</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>Adding a <em>cite</em> element inside the <em>blockquote</em></li>
+</ul>
+
+<pre><code class="language-kramdown">&gt; The secret to creativity is knowing how to hide your sources. 
+&gt; -- &lt;cite&gt;[Albert Einstein][1]&lt;/cite&gt;
+
+[1]:http://www.quotedb.com/quotes/2112
+</code></pre>
+
+<p>Generates in HTML:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;blockquote&gt;</span>
+  <span class="nt">&lt;p&gt;</span>The secret to creativity is knowing how to hide your sources. 
+– <span class="nt">&lt;cite&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://www.quotedb.com/quotes/2112"</span><span class="nt">&gt;</span>Albert Einstein<span class="nt">&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/blockquote&gt;</span>
+</code></pre>
+</div>
+
+<h2 id="code-syntax-highlighting">Code syntax highlighting</h2>
+
+<p><em>kramdown</em> can use <a href="https://github.com/jneen/rouge">rouge</a> or <a href="http://coderay.rubychan.de/">Coderay</a> for <a href="http://kramdown.gettalong.org/syntax_highlighter/coderay.html">syntax highlighting</a>.</p>
+
+<p>The language of the source code can be specified appending the name of the language after the opening line. e.g. for HTML:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>~~~ html
+&lt;p&gt; a small example&lt;/p&gt;
+~~~
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'redcarpet'</span>
+<span class="n">markdown</span> <span class="o">=</span> <span class="no">Redcarpet</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Hello World!"</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">markdown</span><span class="p">.</span><span class="nf">to_html</span>
+</code></pre>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">foo</span>
+  <span class="nb">puts</span> <span class="s1">'foo'</span>
+<span class="k">end</span></code></pre></figure>
+
+<h3 id="links">Links</h3>
+
+<ul>
+  <li>Languages Supported <a href="https://highlightjs.org/static/demo/">https://highlightjs.org/static/demo/</a></li>
+</ul>
+
+<h1 id="references">References</h1>
+
+<ul>
+  <li>Documentation <a href="http://kramdown.gettalong.org/syntax.html">http://kramdown.gettalong.org/syntax.html</a></li>
+  <li>Quickref <a href="http://kramdown.gettalong.org/quickref.html">http://kramdown.gettalong.org/quickref.html</a></li>
+</ul>
+

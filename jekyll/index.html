@@ -1,0 +1,90 @@
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
+<p><strong>Table of Contents</strong></p>
+
+<ul>
+  <li><a href="#concepts">Concepts</a>
+    <ul>
+      <li><a href="#front-matter">Front Matter</a></li>
+      <li><a href="#posts-formatting-syntax">Posts formatting syntax</a>
+        <ul>
+          <li><a href="#kramdown">kramdown</a>
+            <ul>
+              <li><a href="#blockquotes">Blockquotes</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#templating-system">Templating system</a></li>
+    </ul>
+  </li>
+  <li><a href="#commands">Commands</a></li>
+  <li><a href="#references">References</a></li>
+</ul>
+
+<!-- markdown-toc end -->
+
+<h1 id="concepts">Concepts</h1>
+
+<blockquote cite="https://jekyllrb.com/docs/structure/">
+  <p>Jekyll is, at its core, a text transformation engine. 
+The concept behind the system is this: you give it text written in your
+favorite markup language, be that Markdown, Textile, or just plain HTML, 
+and it churns that through a layout or a series of layout files. 
+Throughout that process you can tweak how you want the site URLs to look, 
+what data gets displayed in the layout, and more.</p>
+</blockquote>
+
+<h2 id="front-matter">Front Matter</h2>
+
+<p>The <a href="https://jekyllrb.com/docs/frontmatter/">Front Matter</a> is the piece of code that tell Jekyll to process a page or post in a special way, where you can change the <em>layout</em>, <em>language</em> or more configurations that if not specified they just took the default settings of <em>config.yml</em>.
+.</p>
+
+<p>e.g.:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>---
+layout: post
+title: My cool blog
+---
+</code></pre>
+</div>
+
+<p>It has two requirements:</p>
+
+<ul>
+  <li>It must be at the beginning of the file</li>
+  <li>It must be in <a href="http://yaml.org/">YAML</a> format</li>
+</ul>
+
+<h2 id="posts-formatting-syntax">Posts formatting syntax</h2>
+
+<p>The most common formatting syntax used in posts and pages are:</p>
+
+<ul>
+  <li>Markdown <a href="https://daringfireball.net/projects/markdown/">https://daringfireball.net/projects/markdown/</a></li>
+  <li><a href="/kramdown/">kramdown</a> (a more powerful Markdown superset and currently used in <em>Github pages</em>)</li>
+</ul>
+
+<h3 id="syntax-highlighting">Syntax highlighting</h3>
+
+<p>By default Jekyll uses <a href="https://github.com/jneen/rouge">Rouge</a> as its syntax highlter and is compatible with <a href="http://pygments.org/">Pygments</a> highlighter.</p>
+
+<h2 id="templating-system">Templating system</h2>
+
+<p>Jekyll uses the <strong>Liquid</strong> template engine: <a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">https://github.com/Shopify/liquid/wiki/Liquid-for-Designers</a></p>
+
+<h1 id="commands">Commands</h1>
+
+<ul>
+  <li>Local instance with bundle</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>bundle <span class="nb">exec </span>jekyll serve --watch --drafts
+</code></pre>
+</div>
+
+<h1 id="references">References</h1>
+
+<ul>
+  <li><a href="https://jekyllrb.com/docs/home/">Jekyll Official Documentation</a></li>
+</ul>
+
