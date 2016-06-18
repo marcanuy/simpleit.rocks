@@ -3,7 +3,7 @@
 set -e
 
 # Check for uncommitted changes or untracked files
-[ -n "$(git status --porcelain)" ] && git status && exit 1
+####[ -n "$(git status --porcelain)" ] && git status && exit 1
 
 # Switch to master branch without changing any files
 git symbolic-ref HEAD refs/heads/gh-pages

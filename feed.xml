@@ -6,8 +6,8 @@
 </description>
     <link>/it-notes/</link>
     <atom:link href="/it-notes/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 17 Jun 2016 15:52:20 -0300</pubDate>
-    <lastBuildDate>Fri, 17 Jun 2016 15:52:20 -0300</lastBuildDate>
+    <pubDate>Fri, 17 Jun 2016 18:39:50 -0300</pubDate>
+    <lastBuildDate>Fri, 17 Jun 2016 18:39:50 -0300</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -900,7 +900,20 @@ $ rm -r my_project.git
     
       <item>
         <title>Jekyll</title>
-        <description>&lt;!-- markdown-toc start - Don&#39;t edit this section. Run M-x markdown-toc-generate-toc again --&gt;
+        <description>&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+    A[Hard edge]--&amp;gt;B(Round edge);
+    B--&amp;gt;C{Decision};
+    C--&amp;gt;D[Result one];
+    C--&amp;gt;E[Result two];
+    style A fill:#FF0000;
+    style B fill:#00FF00;
+    style C fill:#0000FF;
+    style D fill:#FFF000;
+    style E fill:#0FFFF0;
+&lt;/div&gt;
+
+&lt;!-- markdown-toc start - Don&#39;t edit this section. Run M-x markdown-toc-generate-toc again --&gt;
 &lt;p&gt;&lt;strong&gt;Table of Contents&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
