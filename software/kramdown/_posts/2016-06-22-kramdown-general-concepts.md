@@ -1,7 +1,6 @@
 ---
-title: kramdown concepts
+title: kramdown General Concepts
 subtitle: kramdown syntax
-slug: kramdown-general-concepts
 description: 
 layout: post
 ---
