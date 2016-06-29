@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Ruby</title>
-  <meta name="description" content="Table of Contents">
+  <title>Remotes</title>
+  <meta name="description" content="https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes">
 
   <link rel="stylesheet" href="/it-notes/css/main.css">
-  <link rel="canonical" href="http://simpleit.rocks/it-notes/ruby/">
+  <link rel="canonical" href="http://simpleit.rocks/it-notes/git-basic-commands/">
   <link rel="alternate" type="application/rss+xml" title="Simple IT 🤘 Rocks" href="http://simpleit.rocks/it-notes/feed.xml">
 
   <!-- jQuery CDN -->
@@ -50,10 +50,10 @@
       <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Ruby</h1>
+    <h1 class="post-title" itemprop="name headline">Remotes</h1>
     <p class="post-meta">
       
-      <time datetime="2016-06-10T00:00:00-03:00" itemprop="datePublished">Jun 10, 2016</time>
+      <time datetime="2016-06-24T00:00:00-03:00" itemprop="datePublished">Jun 24, 2016</time>
       
       
     </p>
@@ -70,54 +70,16 @@
 
   
   <div class="post-content" itemprop="articleBody">
-    <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
-<p><strong>Table of Contents</strong></p>
+    <p><a href="https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes">https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes</a></p>
+
+<p>Remote repositories are versions of your project that are hosted on the Internet or network somewhere. The clone command implicitly adds the origin remote for you.</p>
 
 <ul>
-  <li><a href="#concepts">Concepts</a>
-    <ul>
-      <li><a href="#ruby-sandbox">Ruby Sandbox</a>
-        <ul>
-          <li><a href="#bundler">Bundler</a>
-            <ul>
-              <li><a href="#bundler-common-workflow">Bundler common workflow</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#references">References</a></li>
+  <li>Show remotes <code class="highlighter-rouge">$ git remote -v</code></li>
+  <li>Add a remote <code class="highlighter-rouge">$ git remote add pb https://github.com/paulboone/ticgit</code></li>
+  <li>To get data from a remote project <code class="highlighter-rouge">$ git fetch [remote-name]</code></li>
+  <li>If your current branch is set up to track a remote branch, you can use the <em>git pull</em> command to automatically fetch and then merge that remote branch into your current branch <code class="highlighter-rouge">$ git pull </code></li>
 </ul>
-
-<!-- markdown-toc end -->
-
-<h1 id="concepts">Concepts</h1>
-
-<h2 id="ruby-sandbox">Ruby Sandbox</h2>
-
-<p>Manage dependencies independently of the current platform.</p>
-
-<h3 id="bundler">Bundler</h3>
-
-<blockquote cite="http://bundler.io/">
-  <p>Bundler provides a consistent environment for Ruby projects by tracking and installing the exact gems and versions that are needed.</p>
-</blockquote>
-
-<h4 id="bundler-common-workflow">Bundler common workflow</h4>
-
-<ul>
-  <li>Declare dependencies of an application in a <a href="http://bundler.io/gemfile.html">Gemfile</a></li>
-  <li><a href="http://bundler.io/bundle_install.html">Install</a> above versions of the dependencies into an isolated location <code class="highlighter-rouge">bundle install</code></li>
-  <li>run the app: <code class="highlighter-rouge">bundle exec</code></li>
-</ul>
-
-<h1 id="references">References</h1>
-
-<ul>
-  <li>Official Documentation <a href="https://www.ruby-lang.org/">https://www.ruby-lang.org/</a></li>
-</ul>
-
 
   </div>
 
