@@ -1,0 +1,31 @@
+---
+title: Letters for Spanish in Linux
+subtitle: Special codes
+description: Writing in Spanish in Linux
+layout: post
+---
+
+
+
+# Entering Unicode values
+
++ Enter any code: `Ctrl+Shift+U +<a Hex Value>`
++ Unicode Spanish codes:
+	+ _á_ `Ctrl + Shift + u + 00e1`
+    + _Á_ `Ctrl + Shift + u + 00c1`
+    + _é_ `Ctrl + Shift + u + 00e9`
+    + _É_ `Ctrl + Shift + u + 00c9`
+    + _í_ `Ctrl + Shift + u + 00ed`
+    + _Í_ `Ctrl + Shift + u + 00cd`
+    + _ó_ `Ctrl + Shift + u + 00f3`
+    + _Ó_ `Ctrl + Shift + u + 00d3`
+    + _ú_ `Ctrl + Shift + u + 00fa`
+    + _Ú_ `Ctrl + Shift + u + 00da`
+    + _ñ_ `Ctrl + Shift + u + 00f1`
+    + _Ñ_ `Ctrl + Shift + u + 00d1`
+    + _ü_ `Ctrl + Shift + u + 00fc`
+    + _Ü_ `Ctrl + Shift + u + 00dc`
+    + _¡_ `Ctrl + Shift + u + 00a1`
+    + _¿_ `Ctrl + Shift + u + 00bf`
+
+

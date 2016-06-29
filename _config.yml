@@ -6,27 +6,28 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Techy Reference Notes
+title: Simple IT 🤘 Rocks
 email: me@marcanuy.com
 description: > # this means to ignore newlines until "baseurl:"
-  Notes about technology, written on the go.
+  Clutter-free software concepts.
+  Written on the go.
 baseurl: "/it-notes" # the subpath of your site, e.g. /blog
-#url: "http://yourdomain.com" # the base hostname & protocol for your site
+url: "http://simpleit.rocks" # the base hostname & protocol for your site
 twitter_username: marcanuy
-github_username:  marcanuy
-
+#github_username:  marcanuy
+docs_dir: "software"
+  
 permalink: /:title/
+#permalink: /:categories/:title/
 
 # Build settings
 markdown: kramdown
 
 defaults:
-  - scope:
-      path: ""
-      type: my_tags
+  -
+    scope:
+      path: "practice"
+      type: "posts"
     values:
-      layout: tag
+      layout: "post"
 
-collections:
-  my_tags:
-    output: true

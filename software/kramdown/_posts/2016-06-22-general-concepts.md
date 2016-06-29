@@ -36,7 +36,7 @@ Generates the following HTML:
 
 + Adding a _cite_ element inside the _blockquote_
 
-~~~ kramdown
+~~~ markdown
 > The secret to creativity is knowing how to hide your sources. 
 > -- <cite>[Albert Einstein][1]</cite>
 
@@ -48,7 +48,8 @@ Generates in HTML:
 ~~~html
 <blockquote>
   <p>The secret to creativity is knowing how to hide your sources. 
-– <cite><a href="http://www.quotedb.com/quotes/2112">Albert Einstein</a></cite></p>
+  – <cite><a href="http://www.quotedb.com/quotes/2112">Albert Einstein</a></cite>
+  </p>
 </blockquote>
 ~~~
 

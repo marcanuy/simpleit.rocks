@@ -1,0 +1,69 @@
+---
+layout: post
+
+#example content of page /software/kramdown/index.md
+#“dir”=>”/software/kramdown/”, “name”=>”index.md”, “path”=>”software/kramdown/index.md”, “url”=>”/software/kramdown/”
+---
+
+<div class="row">
+  <div class="col-md-3 col-md-push-9">
+  </div> <!-- col 3 toc -->
+  <div class="col-md-9 col-md-pull-3">
+    {{ content }}
+
+    {% comment %}shift the first empty splitted element{% endcomment %}
+    {% assign ancestors_and_self = page.dir | split:"/" | shift %}
+    {% assign current_category = ancestors_and_self | last %}
+
+    <p>categories:{{ancestors_and_self}}</p>
+    <p>current category: {{current_category}}</p>
+    <p>Content de <strong>{{ page.title }}</strong> category</p>
+
+    <h2>Subcategories</h2>
+
+    {% for my_page in site.pages %}
+    {% if my_page.dir contains page.dir %}
+    {{ page.title }}
+    {% endif %}
+    {% endfor %}
+
+    <h1>Childs <small>subcategories order</small></h1>:
+    {% for child in page.childs %}
+    {{ child }}
+    {% endfor %}
+
+    <h1>This category posts links:</h1>
+    <ul>
+      {% for post in site.posts | sort: 'path' %}
+      {% assign dir_without_first_slash = page.dir | replace_first: '/', '' %}
+      {% if post.path contains dir_without_first_slash %}
+      <li>
+	<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+
+    <h1>This category posts full articles:</h1>
+    {% comment %}If this page directory is substring of each post path, means it is a post in a subcategory, show the post{% endcomment %}
+    {% comment %} FALTA,agrupar posts por subcategories childs{% endcomment %}
+    {% for post in site.posts | sort: 'path' %}
+    {% assign dir_without_first_slash = page.dir | replace_first: '/', '' %}
+    {% if post.path contains dir_without_first_slash %}
+    <h1><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h1>
+    <div>{{post.content}}</div>
+    {% endif %}
+    {% endfor %}
+
+    <hr />
+    Posts in this category:
+    {% for post in site.categories[current_category] %}
+    <p>postcats: {{post.categories}} </p>
+    <p>{{ancestors_and_self}}</p>
+    {% if post.categories == ancestors_and_self %}
+    <h2>{{ post.title }}</h2>
+    {% endif %}
+    {% endfor %}
+
+  </div> <!-- col 9 content -->
+</div> <!-- main row -->
