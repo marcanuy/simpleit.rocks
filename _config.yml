@@ -31,3 +31,4 @@ defaults:
     values:
       layout: "post"
 
+disqus_id: "simpleitrocks"
