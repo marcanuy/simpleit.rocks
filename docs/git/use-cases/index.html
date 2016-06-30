@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="alternate" type="application/rss+xml" title="Simple IT 🤘 Rocks" href="http://simpleit.rocks/feed.xml">
+
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <!-- jQuery local fallback -->
+  <script>window.jQuery || document.write('<script src="/bower_components/jquery/dist/jquery.min.js"><\/script>')</script>
+
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+
+  
+  <!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>Git Common Use Cases - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Git Common Use Cases" />
+<meta name="description" content="Clutter-free software concepts. Written on the go." />
+<meta property="og:description" content="Clutter-free software concepts. Written on the go." />
+<link rel="canonical" href="http://simpleit.rocks/docs/git/use-cases/" />
+<meta property="og:url" content="http://simpleit.rocks/docs/git/use-cases/" />
+<meta property="og:site_name" content="Simple IT 🤘 Rocks" />
+<meta property="fb:app_id" content="1822851531277021" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "headline": "Git Common Use Cases",
+    "description": "Clutter-free software concepts. Written on the go.",
+    "url": "http://simpleit.rocks/docs/git/use-cases/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+</head>
+
+
+  <body>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28572639-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    <header class="site-header">
+
+  <!-- mermaid -->
+  <script src="/bower_components/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+  <!-- endmermaid -->
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Simple IT 🤘 Rocks</a>
+
+  </div>
+
+</header>
+
+
+    <div class="container">
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Git Common Use Cases</h1>
+    <p class="post-meta">
+      
+      
+    </p>
+  </header>
+
+  
+Categories: 
+
+
+  
+  <div class="post-content" itemprop="articleBody">
+    <div class="row">
+  <div class="col-md-3 col-md-push-9">
+  </div> <!-- col 3 toc -->
+  <div class="col-md-9 col-md-pull-3">
+    
+
+
+    
+    
+    
+
+    <p>categories:docsgituse-cases</p>
+    <p>current category: use-cases</p>
+    <p>Content de <strong>Git Common Use Cases</strong> category</p>
+
+    <h2>Subcategories</h2>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    Git Common Use Cases
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <h1>Childs <small>subcategories order</small></h1>:
+    
+
+    <h1>This category posts links:</h1>
+    <ul>
+      
+      
+      
+      
+      
+      
+      <li>
+	<a href="/how-to-set-up-a-git-server/">Set up a Git server</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+    <h1>This category posts full articles:</h1>
+    
+    
+    
+    
+    
+    
+    
+    
+    <h1><a href="/how-to-set-up-a-git-server/">Set up a Git server</a></h1>
+    <div><p><a href="https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server">https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server</a></p>
+
+<p>In order to set up a Git server, you have to export an existing repository into a new <em>bare repository</em> (a repository that doesn’t contain a <em>working directory</em>).</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>git clone --bare my_project my_project.git
+</code></pre>
+</div>
+
+<p>Put the bare repository in the server.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>scp -r my_project.git user@git.example.com:/srv/git
+ <span class="nv">$ </span>rm -r my_project.git
+</code></pre>
+</div>
+</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <hr />
+    Posts in this category:
+    
+    <p>postcats: docsgituse-cases </p>
+    <p>docsgituse-cases</p>
+    
+    <h2>Set up a Git server</h2>
+    
+    
+
+  </div> <!-- col 9 content -->
+</div> <!-- main row -->
+
+  </div>
+
+</article>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="container">
+
+    <h2 class="footer-heading">Simple IT 🤘 Rocks</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+	    <i class="fa fa-keyboard-o" aria-hidden="true"></i>Marcelo Canina
+	  </li>
+	  
+          <li>
+            <i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/marcanuy"><span class="username">marcanuy</span></a>
+
+          </li>
+          
+	  <li>
+	    <i class="fa fa-user" aria-hidden="true"></i><a href="/about">About</a>
+	  </li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Clutter-free software concepts. Written on the go.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
