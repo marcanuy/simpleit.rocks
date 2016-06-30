@@ -13,9 +13,9 @@ description: > # this means to ignore newlines until "baseurl:"
   Written on the go.
 #baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://simpleit.rocks" # the base hostname & protocol for your site
-twitter_username: marcanuy
-#github_username:  marcanuy
-docs_dir: "software"
+
+author: marcanuy #Twitter handle
+docs_dir: "docs"
   
 permalink: /:title/
 #permalink: /:categories/:title/
@@ -32,3 +32,6 @@ defaults:
       layout: "post"
 
 disqus_id: "simpleitrocks"
+
+gems:
+  - jekyll-seo-tag
