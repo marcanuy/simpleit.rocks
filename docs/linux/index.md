@@ -1,5 +1,6 @@
 ---
 title: Linux
+description: Linux articles
 layout: category_posts
 ---
 
