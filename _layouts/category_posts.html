@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: base_post
 
 #example content of page /software/kramdown/index.md
 #“dir”=>”/software/kramdown/”, “name”=>”index.md”, “path”=>”software/kramdown/index.md”, “url”=>”/software/kramdown/”
@@ -27,7 +27,7 @@ layout: post
     {% endif %}
     {% endfor %}
 
-    <h1>Childs <small>subcategories order</small></h1>:
+    <h1>Childs <small>subcategories order</small></h1>
     {% for child in page.childs %}
     {{ child }}
     {% endfor %}

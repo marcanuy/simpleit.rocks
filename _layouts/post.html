@@ -1,40 +1,23 @@
 ---
-layout: default
+layout: base_post
 ---
 
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-
-  <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-    <p class="post-meta">
-      {% if page.date %}
-      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
-      {% endif %}
-      {% if page.author %}
-      •
-      <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-	<span itemprop="name">{{ page.author }}</span>
-      </span>
-      {% endif %}
-    </p>
-  </header>
-
-  <div class="post-content" itemprop="articleBody">
-    <div class="row">
-      <div class="col-md-3 col-md-push-9 sit-sidebar">
-	<h4>Table of Contents</h4>
-	{% if page.toc %}
-	{{ content | toc_only }}
-	{% endif %}
-      </div>
-      <div class="col-md-9 col-md-pull-3 sit-content">
-	{{ content }}
-      </div>
-    </div>
+<div class="row">
+  <div class="col-md-3 col-md-push-9 sit-sidebar">
+    <h4>Table of Contents</h4>
+    {% if page.toc %}
+    {{ content | toc_only }}
+    {% endif %}
   </div>
+  <div class="col-md-9 col-md-pull-3 sit-content">
+    
+    {{ content }}
+    
+  </div>
+</div>
 
-  {% include post-categories.html %}
+{% include post-categories.html %}
 
-  {% include disqus.html %}
+{% include disqus.html %}
   
-</article>
+
