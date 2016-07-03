@@ -86,13 +86,14 @@
     </p>
   </header>
 
-  
-Categories: 
-
-
-  
   <div class="post-content" itemprop="articleBody">
     <div class="row">
+      <div class="col-md-3 col-md-push-9 sit-sidebar">
+	<h4>Table of Contents</h4>
+	
+      </div>
+      <div class="col-md-9 col-md-pull-3 sit-content">
+	<div class="row">
   <div class="col-md-3 col-md-push-9">
   </div> <!-- col 3 toc -->
   <div class="col-md-9 col-md-pull-3">
@@ -178,12 +179,12 @@ Categories:
       
       
       
-      
-      
-      
       <li>
-	<a href="/how-to-set-up-a-git-server/">Set up a Git server</a>
+	<a href="/creating-a-git-server-from-a-git-repo/">Creating a git server from a git repo</a>
       </li>
+      
+      
+      
       
       
       
@@ -239,17 +240,48 @@ Categories:
     
     
     
-    
-    
-    
-    <h1><a href="/how-to-set-up-a-git-server/">Set up a Git server</a></h1>
-    <div><p><a href="https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server">https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server</a></p>
+    <h1><a href="/creating-a-git-server-from-a-git-repo/">Creating a git server from a git repo</a></h1>
+    <div><h2 id="overview">Overview</h2>
 
-<p>In order to set up a Git server, you have to export an existing repository into a new <em>bare repository</em> (a repository that doesn’t contain a <em>working directory</em>).</p>
+<p>A Git project commonly consists of three main sections in a Developer environment and 
+a single section in a Git Server:</p>
+
+<div class="mermaid">
+graph TB
+    subgraph GitServer
+      server["Git"]==&gt;bare["the Git directory"]
+    end
+    subgraph DeveloperRepo
+      git["Git"]
+      git==&gt;dir["the Git directory <br /> .git"]
+      git==&gt;stage["Staging Area"]
+      git==&gt;work["Working Directory"]
+    end
+</div>
+
+<p>In order to “move” a git repo to a git server, a special directory 
+has to be generated first. This is called a <em>bare repository</em>, a directory
+that only contains the git data but not the project source code files,
+just like the <strong>.git</strong> directory.</p>
+
+<p>Then this <em>bare repo</em> should be moved to the server, so the server acts as
+ a common <em>git server</em>.</p>
+
+<p>The repo from which the server was generated needs to add the <em>git server</em> as a 
+<em>remote</em> and every other developer that wants to work in that project can
+<em>clone</em> it from the server directly.</p>
+
+<h2 id="create-bare-repository">Create bare repository</h2>
+
+<p>In order to set up a Git server, you have to export an existing repository
+into a new <em>bare repository</em> (a repository that doesn’t contain 
+a <em>working directory</em>).</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>git clone --bare my_project my_project.git
 </code></pre>
 </div>
+
+<h2 id="copy-repo-to-remote-server">Copy repo to remote server</h2>
 
 <p>Put the bare repository in the server.</p>
 
@@ -257,7 +289,32 @@ Categories:
  <span class="nv">$ </span>rm -r my_project.git
 </code></pre>
 </div>
+
+<h2 id="add-server-repo-as-a-remote-in-local-repo">Add server repo as a remote in local repo</h2>
+
+<p>After having the repo in the remote server, the git server remote should be
+added to the local repo so it is possible to pull and push changes to it.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># Set a new remote</span>
+<span class="gp">$ </span>git remote add origin git@server:/srv/git/my_project.git
+
+<span class="c"># Verify new remote</span>
+<span class="gp">$ </span>git remote -v
+origin  git@server:/srv/git/my_project.git <span class="o">(</span>fetch<span class="o">)</span>
+origin  git@server:/srv/git/my_project.git <span class="o">(</span>push<span class="o">)</span>
+</code></pre>
 </div>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server">https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server</a></li>
+  <li><a href="https://git-scm.com/book/ch4-1.html">https://git-scm.com/book/ch4-1.html</a></li>
+</ul>
+</div>
+    
+    
+    
     
     
     
@@ -407,8 +464,41 @@ layout: post
   </div> <!-- col 9 content -->
 </div> <!-- main row -->
 
+      </div>
+    </div>
   </div>
 
+  
+Categories: 
+
+
+
+  <div class="post-comments">
+  <div id="disqus_thread"></div>
+  <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '/docs/git/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    
+    s.src = '//simpleitrocks.disqus.com/embed.js';
+    
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+  
 </article>
 
     </div>
@@ -423,7 +513,7 @@ layout: post
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
           <li>
-	    <i class="fa fa-keyboard-o" aria-hidden="true"></i>Marcelo Canina
+	    <i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by Marcelo Canina
 	  </li>
 	  
           <li>

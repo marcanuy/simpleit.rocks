@@ -86,13 +86,14 @@
     </p>
   </header>
 
-  
-Categories: 
-
-
-  
   <div class="post-content" itemprop="articleBody">
     <div class="row">
+      <div class="col-md-3 col-md-push-9 sit-sidebar">
+	<h4>Table of Contents</h4>
+	
+      </div>
+      <div class="col-md-9 col-md-pull-3 sit-content">
+	<div class="row">
   <div class="col-md-3 col-md-push-9">
   </div> <!-- col 3 toc -->
   <div class="col-md-9 col-md-pull-3">
@@ -239,13 +240,13 @@ Categories:
 <p><strong>Table of Contents</strong></p>
 
 <ul>
-  <li><a href="#concepts">Concepts</a>
+  <li><a href="#concepts">Concepts</a></li>
+  <li><a href="#django-project-structure">Django project structure</a></li>
+  <li><a href="#configuration-and-environment-isolation">Configuration and environment isolation</a>
     <ul>
-      <li><a href="#environment">Environment</a>
-        <ul>
-          <li><a href="#same-database-engine-in-all-the-environments">Same database engine in all the environments</a></li>
-        </ul>
-      </li>
+      <li><a href="#setting-environment-variables">Setting environment variables</a></li>
+      <li><a href="#splitting-the-default-djangos-settings-file-into-several-files-for-different-environments">Splitting the default Django’s settings file into several files for different environments</a></li>
+      <li><a href="#packages-for-each-environment">Packages for each environment</a></li>
       <li><a href="#models">Models</a></li>
       <li><a href="#view">View</a></li>
       <li><a href="#testing">Testing</a>
@@ -333,7 +334,7 @@ Categories:
   <li><em>virtualenvwrapper’s</em> <strong>bin/activate</strong> hook file</li>
 </ul>
 
-<p>To check that the secret environment key is being loaded, it is possibleto check it from a python shell:</p>
+<p>To check that the secret environment key is being loaded, it is possible to check it from a python shell:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">"A_SECRET_KEY"</span><span class="p">]</span>
@@ -353,7 +354,7 @@ Categories:
   <li>Create the settings directory <code class="highlighter-rouge">$ mkdir &lt;project_name&gt;/settings</code></li>
   <li>Add <code class="highlighter-rouge">__init__.py</code> file to make Python treat the settings directory as containing packages <code class="highlighter-rouge">$ touch &lt;project_name&gt;/settings/__init__.py</code></li>
   <li>Move the default settings file into the settings directory and change its name <code class="highlighter-rouge">$ mv &lt;project_name&gt;/settings.py &lt;project_name&gt;/settings/base.py</code></li>
-  <li>Create all the configuration files (<em>local.py</em>, <em>testing.py</em>, <em>staging</em>, <em>production</em> )and specify to inherit <em>base.py</em> configurations, for example, for the development file: <code class="highlighter-rouge">echo "from .base import *" &gt;&gt; &lt;project_name&gt;/settings/local.py</code></li>
+  <li>Create all the configuration files (<em>local.py</em>, <em>testing.py</em>, <em>staging</em>, <em>production</em> ) and specify to inherit <em>base.py</em> configurations, for example, for the development file: <code class="highlighter-rouge">echo "from .base import *" &gt;&gt; &lt;project_name&gt;/settings/local.py</code></li>
   <li>Configure the current environment to use the appropriate settings file, in development: <code class="highlighter-rouge">$ export DJANGO_SETTINGS_MODULE=mysite.settings.local</code></li>
 </ol>
 
@@ -462,8 +463,41 @@ If you need to switch between multiple Django settings files, use django-admin w
   </div> <!-- col 9 content -->
 </div> <!-- main row -->
 
+      </div>
+    </div>
   </div>
 
+  
+Categories: 
+
+
+
+  <div class="post-comments">
+  <div id="disqus_thread"></div>
+  <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '/docs/python/django/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    
+    s.src = '//simpleitrocks.disqus.com/embed.js';
+    
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+  
 </article>
 
     </div>
@@ -478,7 +512,7 @@ If you need to switch between multiple Django settings files, use django-admin w
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
           <li>
-	    <i class="fa fa-keyboard-o" aria-hidden="true"></i>Marcelo Canina
+	    <i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by Marcelo Canina
 	  </li>
 	  
           <li>

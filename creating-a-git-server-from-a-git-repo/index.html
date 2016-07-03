@@ -25,21 +25,24 @@
 
   
   <!-- Begin Jekyll SEO tag v2.0.0 -->
-<title>Git Common Use Cases - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Git Common Use Cases" />
-<meta name="description" content="Clutter-free software concepts. Written on the go." />
-<meta property="og:description" content="Clutter-free software concepts. Written on the go." />
-<link rel="canonical" href="http://simpleit.rocks/docs/git/use-cases/" />
-<meta property="og:url" content="http://simpleit.rocks/docs/git/use-cases/" />
+<title>Creating a git server from a git repo - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Creating a git server from a git repo" />
+<meta name="description" content="Having a git server and a repo in another computer not present in the server, create a centralized version of the repo in the server." />
+<meta property="og:description" content="Having a git server and a repo in another computer not present in the server, create a centralized version of the repo in the server." />
+<link rel="canonical" href="http://simpleit.rocks/creating-a-git-server-from-a-git-repo/" />
+<meta property="og:url" content="http://simpleit.rocks/creating-a-git-server-from-a-git-repo/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-07-01T00:00:00-03:00" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
-    "@type": "WebPage",
-    "headline": "Git Common Use Cases",
-    "description": "Clutter-free software concepts. Written on the go.",
-    "url": "http://simpleit.rocks/docs/git/use-cases/"
+    "@type": "BlogPosting",
+    "headline": "Creating a git server from a git repo",
+    "datePublished": "2016-07-01T00:00:00-03:00",
+    "description": "Having a git server and a repo in another computer not present in the server, create a centralized version of the repo in the server.",
+    "url": "http://simpleit.rocks/creating-a-git-server-from-a-git-repo/"
   }
 </script>
 <!-- End Jekyll SEO tag -->
@@ -79,8 +82,10 @@
       <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Git Common Use Cases</h1>
+    <h1 class="post-title" itemprop="name headline">Creating a git server from a git repo</h1>
     <p class="post-meta">
+      
+      <time datetime="2016-07-01T00:00:00-03:00" itemprop="datePublished">Jul 1, 2016</time>
       
       
     </p>
@@ -91,122 +96,71 @@
       <div class="col-md-3 col-md-push-9 sit-sidebar">
 	<h4>Table of Contents</h4>
 	
+	<ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#description">Description</a></li>
+<li class="toc-entry toc-h2"><a href="#process">Process</a></li>
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#create-bare-repository">Create bare repository</a></li>
+<li class="toc-entry toc-h2"><a href="#copy-repo-to-remote-server">Copy repo to remote server</a></li>
+<li class="toc-entry toc-h2"><a href="#add-server-repo-as-a-remote-in-local-repo">Add server repo as a remote in local repo</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
+<li class="toc-entry toc-h2"><a href="#graphical-summary-for-creating-a-git-server-from-a-git-repo">Graphical summary for creating a git server from a git repo</a></li>
+</ul>
+	
       </div>
       <div class="col-md-9 col-md-pull-3 sit-content">
-	<div class="row">
-  <div class="col-md-3 col-md-push-9">
-  </div> <!-- col 3 toc -->
-  <div class="col-md-9 col-md-pull-3">
-    
+	<h2>Description</h2>
+
+<div class="">
+Having a git server and a repo in another computer not present in the server, create a centralized version of the repo in the server.
+
+</div>
 
 
+<h2>Process</h2>
+<div class="row">
+  <div class="col-xl-6">
     
-    
-    
+    <div>Current</div>
+    <div class="mermaid">
+      graph TB
+  subgraph Server
+      srv["git server"]
+  end
+  subgraph New Client
+      repo2[" "]
+  end
+  subgraph Client
+      repo["git repo <br /> 'myproject'"]
+  end
 
-    <p>categories:docsgituse-cases</p>
-    <p>current category: use-cases</p>
-    <p>Content de <strong>Git Common Use Cases</strong> category</p>
+    </div>
+    
+  </div>
+  <div class="col-xl-6">
+    
+    <div>Goal</div>
+    <div class="mermaid">
+      graph TB
+  subgraph Server
+      srv["'myproject' bare repo"]
+  end
+  subgraph New Client
+      repo["cloned 'myproject' repo"]==>srv
+  end
+  subgraph Client
+      client["'myproject' repo"]==>srv
+  end
 
-    <h2>Subcategories</h2>
+    </div>
+    
+  </div>
+</div>
+<div class="si-tutorial-overview">
+  
+</div>
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    Git Common Use Cases
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    <h1>Childs <small>subcategories order</small></h1>:
-    
-
-    <h1>This category posts links:</h1>
-    <ul>
-      
-      
-      
-      <li>
-	<a href="/creating-a-git-server-from-a-git-repo/">Creating a git server from a git repo</a>
-      </li>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </ul>
-
-    <h1>This category posts full articles:</h1>
-    
-    
-    
-    
-    
-    <h1><a href="/creating-a-git-server-from-a-git-repo/">Creating a git server from a git repo</a></h1>
-    <div><h2 id="overview">Overview</h2>
+<h2 id="overview">Overview</h2>
 
 <p>A Git project commonly consists of three main sections in a Developer environment and 
 a single section in a Git Server:</p>
@@ -276,58 +230,26 @@ origin  git@server:/srv/git/my_project.git <span class="o">(</span>push<span cla
   <li><a href="https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server">https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server</a></li>
   <li><a href="https://git-scm.com/book/ch4-1.html">https://git-scm.com/book/ch4-1.html</a></li>
 </ul>
+
+
+
+<div class="">
+  <div class="">
+    <h2>Graphical summary for creating a git server from a git repo</h2>
+    <div class="mermaid text-sm-center">
+      sequenceDiagram
+  participant Alice
+  participant Server
+  participant Bob
+  Alice->>Alice: Create bare repository
+  Alice->>Server: Copy repo to remote server
+  Alice->>Alice: Add remote
+  Bob-->>Server: Clone repo from remote server
+
+    </div>  
+  </div>
 </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
-    <hr />
-    Posts in this category:
-    
-    <p>postcats: docsgituse-cases </p>
-    <p>docsgituse-cases</p>
-    
-    <h2>Creating a git server from a git repo</h2>
-    
-    
-
-  </div> <!-- col 9 content -->
-</div> <!-- main row -->
 
       </div>
     </div>
@@ -335,6 +257,25 @@ origin  git@server:/srv/git/my_project.git <span class="o">(</span>push<span cla
 
   
 Categories: 
+
+<span class="entry-categories">
+  docs
+</span>
+
+,
+
+
+<span class="entry-categories">
+  git
+</span>
+
+,
+
+
+<span class="entry-categories">
+  use-cases
+</span>
+
 
 
 
@@ -347,7 +288,7 @@ Categories:
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/docs/git/use-cases/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/creating-a-git-server-from-a-git-repo/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */

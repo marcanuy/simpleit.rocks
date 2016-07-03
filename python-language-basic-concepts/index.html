@@ -91,6 +91,43 @@
     </p>
   </header>
 
+  <div class="post-content" itemprop="articleBody">
+    <div class="row">
+      <div class="col-md-3 col-md-push-9 sit-sidebar">
+	<h4>Table of Contents</h4>
+	
+	<ul class="section-nav">
+</ul>
+	
+      </div>
+      <div class="col-md-9 col-md-pull-3 sit-content">
+	<ul>
+  <li><em>Style guide</em> for python code PEP-8 <a href="https://www.python.org/dev/peps/pep-0008/">https://www.python.org/dev/peps/pep-0008/</a>
+    <ul>
+      <li>Tools to help in formatting Python code:
+        <ul>
+          <li><a href="https://pypi.python.org/pypi/pep8">pep8</a> checks your Python code against some of the style conventions.</li>
+          <li><a href="https://pypi.python.org/pypi/autopep8">autopep8</a> automatically formats Python code to conform to the PEP 8 style guide.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Relative imports makes code more portable.</p>
+
+    <ul>
+      <li><em>absolut import</em> <code class="highlighter-rouge">from core.views import absolute</code> &lt;—  To import from outside the app</li>
+      <li><em>explicit relative</em> <code class="highlighter-rouge">from .models import CommandModel</code> &lt;— To import in current app</li>
+    </ul>
+  </li>
+  <li>Avoid Using <code class="highlighter-rouge">Import *</code> as it can lead to undesirable results. You can’t really know which packages you are using.</li>
+</ul>
+
+
+      </div>
+    </div>
+  </div>
+
   
 Categories: 
 
@@ -121,33 +158,33 @@ Categories:
 
 
 
+
+  <div class="post-comments">
+  <div id="disqus_thread"></div>
+  <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '/python-language-basic-concepts/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    
+    s.src = '//simpleitrocks.disqus.com/embed.js';
+    
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
   
-  <div class="post-content" itemprop="articleBody">
-    <ul>
-  <li><em>Style guide</em> for python code PEP-8 <a href="https://www.python.org/dev/peps/pep-0008/">https://www.python.org/dev/peps/pep-0008/</a>
-    <ul>
-      <li>Tools to help in formatting Python code:
-        <ul>
-          <li><a href="https://pypi.python.org/pypi/pep8">pep8</a> checks your Python code against some of the style conventions.</li>
-          <li><a href="https://pypi.python.org/pypi/autopep8">autopep8</a> automatically formats Python code to conform to the PEP 8 style guide.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>Relative imports makes code more portable.</p>
-
-    <ul>
-      <li><em>absolut import</em> <code class="highlighter-rouge">from core.views import absolute</code> &lt;—  To import from outside the app</li>
-      <li><em>explicit relative</em> <code class="highlighter-rouge">from .models import CommandModel</code> &lt;— To import in current app</li>
-    </ul>
-  </li>
-  <li>Avoid Using <code class="highlighter-rouge">Import *</code> as it can lead to undesirable results. You can’t really know which packages you are using.</li>
-</ul>
-
-
-  </div>
-
 </article>
 
     </div>
@@ -162,7 +199,7 @@ Categories:
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
           <li>
-	    <i class="fa fa-keyboard-o" aria-hidden="true"></i>Marcelo Canina
+	    <i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by Marcelo Canina
 	  </li>
 	  
           <li>
