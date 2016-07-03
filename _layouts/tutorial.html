@@ -1,0 +1,46 @@
+---
+layout: post
+---
+
+<h2>Description</h2>
+{% if page.description %}
+<div class="">
+{{ page.description }}
+</div>
+{% endif %}
+
+<h2>Process</h2>
+<div class="row">
+  <div class="col-xl-6">
+    {% if page.current %}
+    <div>Current</div>
+    <div class="mermaid">
+      {{page.current}}
+    </div>
+    {% endif %}
+  </div>
+  <div class="col-xl-6">
+    {% if page.goal %}
+    <div>Goal</div>
+    <div class="mermaid">
+      {{page.goal}}
+    </div>
+    {% endif %}
+  </div>
+</div>
+<div class="si-tutorial-overview">
+  {{ page.overview }}
+</div>
+
+{{ content }}
+
+{% if page.flow %}
+<div class="">
+  <div class="">
+    <h2>Graphical summary for {{page.title | downcase}}</h2>
+    <div class="mermaid text-sm-center">
+      {{page.flow}}
+    </div>  
+  </div>
+</div>
+{% endif %}
