@@ -26,16 +26,18 @@ markdown: kramdown
 defaults:
   -
     scope:
-      path: "practice"
+      path: ""
       type: "posts"
     values:
       layout: "post"
+      toc: true
 
 disqus_id: "simpleitrocks"
 
 gems:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-toc
   
 #jekyll-seo-plugin 
 #twitter:

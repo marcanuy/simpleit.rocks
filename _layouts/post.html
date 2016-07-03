@@ -19,10 +19,22 @@ layout: default
     </p>
   </header>
 
-  {% include post-categories.html %}
-  
   <div class="post-content" itemprop="articleBody">
-    {{ content }}
+    <div class="row">
+      <div class="col-md-3 col-md-push-9 sit-sidebar">
+	<h4>Table of Contents</h4>
+	{% if page.toc %}
+	{{ content | toc_only }}
+	{% endif %}
+      </div>
+      <div class="col-md-9 col-md-pull-3 sit-content">
+	{{ content }}
+      </div>
+    </div>
   </div>
 
+  {% include post-categories.html %}
+
+  {% include disqus.html %}
+  
 </article>
