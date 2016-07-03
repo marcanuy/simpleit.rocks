@@ -3,7 +3,7 @@ title: Git
 subtitle: Source Code Versioning System
 description: Git Source Code Versioning System
 layout: category_posts
-childs: ["concepts", "commands", "remotes", "use-cases"]
+childs: ["concepts", "commands", "remotes", "tutorials"]
 ---
 
 # Pending #
