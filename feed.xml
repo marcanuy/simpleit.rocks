@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 03 Jul 2016 13:31:18 -0300</pubDate>
-    <lastBuildDate>Sun, 03 Jul 2016 13:31:18 -0300</lastBuildDate>
+    <pubDate>Sun, 03 Jul 2016 17:54:21 -0300</pubDate>
+    <lastBuildDate>Sun, 03 Jul 2016 17:54:21 -0300</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -98,20 +98,7 @@ origin  git@server:/srv/git/my_project.git &lt;span class=&quot;o&quot;&gt;(&lt;
         
         <category>git</category>
         
-        <category>use-cases</category>
-        
-      </item>
-    
-      <item>
-        <title>Este es un ejemplo de post solo de software</title>
-        <description>&lt;p&gt;Solo tiene como categoria ‘software’&lt;/p&gt;
-</description>
-        <pubDate>Sat, 25 Jun 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/solo-de-soft/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/solo-de-soft/</guid>
-        
-        
-        <category>docs</category>
+        <category>tutorials</category>
         
       </item>
     
@@ -143,52 +130,56 @@ origin  git@server:/srv/git/my_project.git &lt;span class=&quot;o&quot;&gt;(&lt;
     
       <item>
         <title>Git Basic Concepts</title>
-        <description>&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Git saves data like a &lt;strong&gt;stream of snapshots&lt;/strong&gt;. Every time you commit, or save the state of your project in Git, it basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Git has &lt;strong&gt;integrity&lt;/strong&gt;. Everything in Git is check-summed before it is stored and is then referred to by that checksum. It uses SHA-1.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;There are three &lt;em&gt;file states&lt;/em&gt;:&lt;/p&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;strong&gt;Committed&lt;/strong&gt; means that the data is stored in your local database.&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;Modified&lt;/strong&gt; means that you have changed the file but have not committed it to your database yet.&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;Staged&lt;/strong&gt; means that you have marked a modified fi\e in its current version to go into your next commit snapshot.&lt;/li&gt;
-      &lt;li&gt;Lifecycle of the status of files&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+        <description>&lt;h2 id=&quot;strem-of-snapshots&quot;&gt;Strem of snapshots&lt;/h2&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;       +---------+         +----------+       +--------+          +------+
-       |Untracked|         |Unmodified|       |Modified|          |Staged|
-       +----+----+         +----+-----+       +----+---+          +---+--+
-            |                   |                  |                  |
-            o---Add the file----+------------------+-----------------&amp;gt;+
-            |                   |                  |                  |
-            |                   |                  |                  |
-            |                   o---Edit the file-&amp;gt;+                  |
-            |                   |                  |                  |
-            |                   |                  o--Stage the file-&amp;gt;+
-            |                   |                  +                  |
-            +&amp;lt;-Remove the file--o                  |                  |
-            |                   |                  |                  |
-            |                   +&amp;lt;--------------Commit----------------o
-            |                   |                  |                  |
-            V                   V                  V                  V
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;Git saves data like a &lt;strong&gt;stream of snapshots&lt;/strong&gt;. Every time you commit, or save the state of your project in Git, it basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored.&lt;/p&gt;
+
+&lt;h2 id=&quot;integrity&quot;&gt;Integrity&lt;/h2&gt;
+
+&lt;p&gt;Git has &lt;strong&gt;integrity&lt;/strong&gt;. Everything in Git is check-summed before it is stored and is then referred to by that checksum. It uses &lt;a href=&quot;https://en.wikipedia.org/wiki/SHA-1&quot;&gt;SHA-1&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;file-states&quot;&gt;File states&lt;/h2&gt;
+
+&lt;p&gt;There are three &lt;em&gt;file states&lt;/em&gt;:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Sections of a Git project:
-    &lt;ul&gt;
-      &lt;li&gt;the &lt;em&gt;Git directory&lt;/em&gt; is where Git stores the metadata and object database for your project. It is copied when cloning a repo.&lt;/li&gt;
-      &lt;li&gt;the &lt;em&gt;working directory&lt;/em&gt; is a single checkout of one version of the project. These files are pulled out of the compressed database in the Git directory and placed on disk for you to use or modify.&lt;/li&gt;
-      &lt;li&gt;the &lt;em&gt;staging area&lt;/em&gt; is a file, generally contained in your Git directory, that stores information about what will go into your next commit. It’s sometimes referred to as the “index”.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Committed&lt;/strong&gt; means that the data is stored in your local database.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Modified&lt;/strong&gt; means that you have changed the file but have not committed it to your database yet.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Staged&lt;/strong&gt; means that you have marked a modified fi\e in its current version to go into your next commit snapshot.&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3 id=&quot;lifecycle-of-the-status-of-files&quot;&gt;Lifecycle of the status of files&lt;/h3&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+sequenceDiagram
+    Untracked -&amp;gt;&amp;gt; Staged: Add the file
+    Unmodified -&amp;gt;&amp;gt; Modified: Edit the file
+   	Modified -&amp;gt;&amp;gt; Staged: Stage the file
+    Unmodified -&amp;gt;&amp;gt; Untracked: Remove the file
+    Staged -&amp;gt;&amp;gt; Unmodified: Commit
+&lt;/div&gt;
+
+&lt;h3 id=&quot;main-sections&quot;&gt;Main Sections&lt;/h3&gt;
+&lt;p&gt;Sections of a Git project:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the &lt;em&gt;Git directory&lt;/em&gt; is where Git stores the metadata and object database
+for your project. It is copied when cloning a repo.&lt;/li&gt;
+  &lt;li&gt;the &lt;em&gt;working directory&lt;/em&gt; is a single checkout of one version of the 
+project. These files are pulled out of the compressed database in the Git
+directory and placed on disk for you to use or modify.&lt;/li&gt;
+  &lt;li&gt;the &lt;em&gt;staging area&lt;/em&gt; is a file, generally contained in your Git directory,
+that stores information about what will go into your next commit. 
+It’s sometimes referred to as the &lt;strong&gt;index&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;mermaid text-sm-center&quot;&gt;
+graph TB
+      git[&quot;Git Project Sections&quot;]
+      git==&amp;gt;dir[&quot;the Git directory &lt;br /&gt; .git&quot;]
+      git==&amp;gt;stage[&quot;Staging Area&quot;]
+      git==&amp;gt;work[&quot;Working Directory&quot;]
+&lt;/div&gt;
 </description>
         <pubDate>Fri, 24 Jun 2016 00:00:00 -0300</pubDate>
         <link>http://simpleit.rocks/git-basic-concepts/</link>
@@ -583,6 +574,196 @@ Use relative sizes for elements to avoid breaking layout.&lt;/p&gt;
         <category>docs</category>
         
         <category>linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Django</title>
+        <description>&lt;h1 id=&quot;concepts&quot;&gt;Concepts&lt;/h1&gt;
+
+&lt;p&gt;Fat models, thin views.&lt;/p&gt;
+
+&lt;p&gt;Each Django &lt;em&gt;project&lt;/em&gt; can be composed of many &lt;em&gt;apps&lt;/em&gt;. An &lt;em&gt;app&lt;/em&gt; is a small project that should focus on performing one task (e.g. A website project can have: a blog, ratings, news apps).&lt;/p&gt;
+
+&lt;h1 id=&quot;django-project-structure&quot;&gt;Django project structure&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://amzn.to/25QCIkE&quot;&gt;Two Scoops Of Django&lt;/a&gt; recommends the following structure: ( implemented in &lt;a href=&quot;https://github.com/pydanny/cookiecutter-django&quot;&gt;Cookiecutter&lt;/a&gt;)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;̃ /.virtualenvs/&amp;lt;django_project_name&amp;gt;/    #keep venv outside project structure
+...
+&amp;lt;repository_root&amp;gt;/ #git repo
+    README.rst
+	docs/
+	.gitignore
+	requirements/
+		base.txt
+		local.txt
+		production.txt
+		test.txt
+	Makefile - Deployment tasks
+    &amp;lt;django_project_root&amp;gt;/
+	    manage.py
+		media/ #only in development, user generated static media assets (e.g. photos)
+		static/ #non user generated static media assets (e.g. css)
+		        #controlled by STATICFILES DIRS config variable
+		templates/ # site-wide templates
+		&amp;lt;an_app&amp;gt;/
+        &amp;lt;configuration_root&amp;gt;/
+			__init.py__
+			settings/
+				__init.py__
+				base.py
+				local.py
+				production.py
+			urls.py
+			wsgi.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Media&lt;/strong&gt; and &lt;strong&gt;static&lt;/strong&gt; directories in production should be located in a static media server.&lt;/p&gt;
+
+&lt;h1 id=&quot;configuration-and-environment-isolation&quot;&gt;Configuration and environment isolation&lt;/h1&gt;
+
+&lt;p&gt;Every config file should be version controlled, even the developers local configuration, all the developers of a project should use the same development configuration.&lt;/p&gt;
+
+&lt;p&gt;However there are special config keys that should be left out of versioning, like the SECRET_KEY setting (used for &lt;a href=&quot;https://docs.djangoproject.com/en/1.9/topics/signing/&quot;&gt;cryptographic signing functionalities&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;The default &lt;em&gt;Config file&lt;/em&gt; that comes shipped with Django should be pulled apart into several settings for each environment: &lt;em&gt;local&lt;/em&gt;, &lt;em&gt;staging&lt;/em&gt;, &lt;em&gt;test&lt;/em&gt;, &lt;em&gt;production&lt;/em&gt;. This can be done easily inheriting from a &lt;em&gt;base config file&lt;/em&gt;, changing what the specific environment needs and &lt;strong&gt;&lt;a href=&quot;http://12factor.net/config&quot;&gt;leaving secret keys outside config files versioning using environment variables&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;If &lt;em&gt;virtualenvwrapper&lt;/em&gt; is being used, the default development settings parameter to work with &lt;em&gt;manage.py&lt;/em&gt; can be specified in the &lt;em&gt;postactivate&lt;/em&gt; hook: &lt;code class=&quot;highlighter-rouge&quot;&gt;echo &quot;export DJANGO_SETTINGS_MODULE=settings.local&quot; &amp;gt;&amp;gt; $VIRTUAL_ENV/bin/postactivate&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;When using &lt;em&gt;manage.py&lt;/em&gt; many commands accepts the parameter to specify a specific settings file: &lt;code class=&quot;highlighter-rouge&quot;&gt;python manage.py runserver --settings=myproject.settings.local&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;To compare the current settings file with the one that installs Django by default: &lt;code class=&quot;highlighter-rouge&quot;&gt;$ manage.py diffsettings&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;setting-environment-variables&quot;&gt;Setting environment variables&lt;/h2&gt;
+
+&lt;p&gt;In a &lt;strong&gt;development&lt;/strong&gt; environment, variables can be set with &lt;code class=&quot;highlighter-rouge&quot;&gt;$ export A_SECRET_KEY=shhh1234&lt;/code&gt;, and placed in:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;.bashrc&lt;/em&gt; or &lt;em&gt;.profile&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;virtualenvwrapper’s&lt;/em&gt; &lt;strong&gt;bin/activate&lt;/strong&gt; hook file&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To check that the secret environment key is being loaded, it is possible to check it from a python shell:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;A_SECRET_KEY&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;&quot;shhh1234&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then to get the value for a specific environment, the &lt;em&gt;production config file&lt;/em&gt; in version control only needs to get this environment variable value: &lt;code class=&quot;highlighter-rouge&quot;&gt;A_SECRET_KEY = os.environ[&quot;A_SECRET_KEY&quot;]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;In a &lt;strong&gt;production&lt;/strong&gt; environment like &lt;a href=&quot;https://devcenter.heroku.com/articles/config-vars&quot;&gt;Heroku&lt;/a&gt;, this can be done with: &lt;code class=&quot;highlighter-rouge&quot;&gt;$ heroku config:set A_SECRET_KEY=shhh1234&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;splitting-the-default-djangos-settings-file-into-several-files-for-different-environments&quot;&gt;Splitting the default Django’s settings file into several files for different environments&lt;/h2&gt;
+
+&lt;p&gt;Django automatically creates a configuration file in &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;project_name&amp;gt;/settings.py&lt;/code&gt;, to break it up into &lt;em&gt;local&lt;/em&gt;, &lt;em&gt;testing&lt;/em&gt;, &lt;em&gt;staging&lt;/em&gt; and &lt;em&gt;production&lt;/em&gt; config files, the best way is to create a &lt;code class=&quot;highlighter-rouge&quot;&gt;base.py&lt;/code&gt; config with common configurations accross all of them and leave:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create the settings directory &lt;code class=&quot;highlighter-rouge&quot;&gt;$ mkdir &amp;lt;project_name&amp;gt;/settings&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Add &lt;code class=&quot;highlighter-rouge&quot;&gt;__init__.py&lt;/code&gt; file to make Python treat the settings directory as containing packages &lt;code class=&quot;highlighter-rouge&quot;&gt;$ touch &amp;lt;project_name&amp;gt;/settings/__init__.py&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Move the default settings file into the settings directory and change its name &lt;code class=&quot;highlighter-rouge&quot;&gt;$ mv &amp;lt;project_name&amp;gt;/settings.py &amp;lt;project_name&amp;gt;/settings/base.py&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Create all the configuration files (&lt;em&gt;local.py&lt;/em&gt;, &lt;em&gt;testing.py&lt;/em&gt;, &lt;em&gt;staging&lt;/em&gt;, &lt;em&gt;production&lt;/em&gt; ) and specify to inherit &lt;em&gt;base.py&lt;/em&gt; configurations, for example, for the development file: &lt;code class=&quot;highlighter-rouge&quot;&gt;echo &quot;from .base import *&quot; &amp;gt;&amp;gt; &amp;lt;project_name&amp;gt;/settings/local.py&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Configure the current environment to use the appropriate settings file, in development: &lt;code class=&quot;highlighter-rouge&quot;&gt;$ export DJANGO_SETTINGS_MODULE=mysite.settings.local&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Django has two administrative scripts: &lt;strong&gt;django_admin.py&lt;/strong&gt; and &lt;strong&gt;manage.py&lt;/strong&gt; (that automatically configures the django instance with the current project). 
+One of the &lt;a href=&quot;https://docs.djangoproject.com/en/1.9/ref/django-admin/&quot;&gt;differences&lt;/a&gt; between them is that &lt;em&gt;manage.py&lt;/em&gt; automatically configures the  &lt;strong&gt;DJANGO_SETTINGS_MODULE&lt;/strong&gt; environment variable using the project’s &lt;em&gt;settings.py&lt;/em&gt;.&lt;/p&gt;
+
+&lt;blockquote cite=&quot;https://docs.djangoproject.com/en/1.9/ref/django-admin/&quot;&gt;
+  &lt;p&gt;Generally, when working on a single Django project, it’s easier to use manage.py than django-admin. 
+If you need to switch between multiple Django settings files, use django-admin with DJANGO_SETTINGS_MODULE or the –settings command line option.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;packages-for-each-environment&quot;&gt;Packages for each environment&lt;/h2&gt;
+
+&lt;p&gt;Each environment needs a specific requirements file, having a &lt;em&gt;base.txt&lt;/em&gt; requirement file with common packages across environments and then adding the needed packages for each environment.&lt;/p&gt;
+
+&lt;p&gt;Common commands:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;To make it possible for each environment to inherit the packages from the &lt;em&gt;base.txt&lt;/em&gt; requirement file, each new file should begin with: &lt;code class=&quot;highlighter-rouge&quot;&gt;-r base.txt&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;To generate a requirements file: &lt;a href=&quot;https://pip.pypa.io/en/stable/reference/pip_freeze/&quot;&gt;$ pip freeze&lt;/a&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;$ pip freeze --local &amp;gt; requirements/base.txt&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;To install the requirements file in a local environment: &lt;code class=&quot;highlighter-rouge&quot;&gt;$ pip install -r requirements/base.txt&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;models&quot;&gt;Models&lt;/h2&gt;
+
+&lt;h2 id=&quot;view&quot;&gt;View&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Generic views &lt;a href=&quot;https://docs.djangoproject.com/en/1.9/topics/class-based-views/generic-display/&quot;&gt;https://docs.djangoproject.com/en/1.9/topics/class-based-views/generic-display/&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Model forms &lt;a href=&quot;https://docs.djangoproject.com/en/1.9/topics/forms/modelforms/&quot;&gt;https://docs.djangoproject.com/en/1.9/topics/forms/modelforms/&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.djangoproject.com/en/1.9/topics/testing/&quot;&gt;https://docs.djangoproject.com/en/1.9/topics/testing/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Assertions available are from &lt;em&gt;unittest&lt;/em&gt; and from Django’s &lt;em&gt;TestCase&lt;/em&gt; so the full list of &lt;em&gt;assertions&lt;/em&gt; available are:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://docs.djangoproject.com/en/dev/topics/testing/tools/#assertions&quot;&gt;https://docs.djangoproject.com/en/dev/topics/testing/tools/#assertions&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3/library/unittest.html#assert-methods&quot;&gt;https://docs.python.org/3/library/unittest.html#assert-methods&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote cite=&quot;https://docs.djangoproject.com/en/1.9/topics/testing/&quot;&gt;
+  &lt;p&gt;The preferred way to write tests in Django is using the &lt;a href=&quot;https://docs.python.org/3/library/unittest.html#module-unittest&quot;&gt;unittest&lt;/a&gt; module built in to the Python standard library&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote cite=&quot;https://docs.djangoproject.com/en/1.9/topics/testing/overview/&quot;&gt;
+  &lt;p&gt;In Django we subclasses from django.test.TestCase, which is a subclass of unittest.TestCase that runs each test inside a transaction to provide isolation.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Django provides a &lt;a href=&quot;https://docs.djangoproject.com/en/1.9/intro/tutorial05/#the-django-test-client&quot;&gt;test Client&lt;/a&gt; to simulate a user interacting with the code at the view level. We can use it in tests.py&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;related-links&quot;&gt;Related Links&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Testing tutorial &lt;a href=&quot;https://docs.djangoproject.com/en/1.9/topics/testing/&quot;&gt;https://docs.djangoproject.com/en/1.9/topics/testing/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;admin&quot;&gt;Admin&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Edit models on the same page as a parent model with Model Inlines &lt;a href=&quot;https://docs.djangoproject.com/en/dev/ref/contrib/admin/#inlinemodeladmin-objects&quot;&gt;https://docs.djangoproject.com/en/dev/ref/contrib/admin/#inlinemodeladmin-objects&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Official Documentation in categories &lt;a href=&quot;https://docs.djangoproject.com/en/&quot;&gt;https://docs.djangoproject.com/en/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Single page with links to each doc &lt;a href=&quot;https://docs.djangoproject.com/en/1.9/contents/&quot;&gt;https://docs.djangoproject.com/en/1.9/contents/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;books&quot;&gt;Books&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://amzn.to/25QCIkE&quot;&gt;Two Scoops Of Django&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Thu, 02 Jun 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/django/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/django/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>python</category>
+        
+        <category>django</category>
         
       </item>
     

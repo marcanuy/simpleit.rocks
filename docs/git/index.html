@@ -79,21 +79,25 @@
       <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Git</h1>
     <p class="post-meta">
       
       
+      <div class="jumbotron jumbotron-fluid">
+	<div class="container text-sm-center">
+	  <h1 class="post-title" itemprop="name headline">
+	    Git
+	    
+	    <small class="text-muted">Source Code Versioning System</small>
+	    
+	  </h1>
+	  <p class="lead">Git Source Code Versioning System</p>
+	</div>
+      </div>
     </p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
     <div class="row">
-      <div class="col-md-3 col-md-push-9 sit-sidebar">
-	<h4>Table of Contents</h4>
-	
-      </div>
-      <div class="col-md-9 col-md-pull-3 sit-content">
-	<div class="row">
   <div class="col-md-3 col-md-push-9">
   </div> <!-- col 3 toc -->
   <div class="col-md-9 col-md-pull-3">
@@ -163,7 +167,7 @@
     
     
 
-    <h1>Childs <small>subcategories order</small></h1>:
+    <h1>Childs <small>subcategories order</small></h1>
     
     concepts
     
@@ -171,7 +175,7 @@
     
     remotes
     
-    use-cases
+    tutorials
     
 
     <h1>This category posts links:</h1>
@@ -182,9 +186,6 @@
       <li>
 	<a href="/creating-a-git-server-from-a-git-repo/">Creating a git server from a git repo</a>
       </li>
-      
-      
-      
       
       
       
@@ -316,9 +317,6 @@ origin  git@server:/srv/git/my_project.git <span class="o">(</span>push<span cla
     
     
     
-    
-    
-    
     <h1><a href="/git-basic-commands/">Remotes</a></h1>
     <div><p><a href="https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes">https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes</a></p>
 
@@ -336,52 +334,56 @@ origin  git@server:/srv/git/my_project.git <span class="o">(</span>push<span cla
     
     
     <h1><a href="/git-basic-concepts/">Git Basic Concepts</a></h1>
-    <div><ul>
-  <li>
-    <p>Git saves data like a <strong>stream of snapshots</strong>. Every time you commit, or save the state of your project in Git, it basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored.</p>
-  </li>
-  <li>
-    <p>Git has <strong>integrity</strong>. Everything in Git is check-summed before it is stored and is then referred to by that checksum. It uses SHA-1.</p>
-  </li>
-  <li>
-    <p>There are three <em>file states</em>:</p>
-    <ul>
-      <li><strong>Committed</strong> means that the data is stored in your local database.</li>
-      <li><strong>Modified</strong> means that you have changed the file but have not committed it to your database yet.</li>
-      <li><strong>Staged</strong> means that you have marked a modified fi\e in its current version to go into your next commit snapshot.</li>
-      <li>Lifecycle of the status of files</li>
-    </ul>
-  </li>
-</ul>
+    <div><h2 id="strem-of-snapshots">Strem of snapshots</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>       +---------+         +----------+       +--------+          +------+
-       |Untracked|         |Unmodified|       |Modified|          |Staged|
-       +----+----+         +----+-----+       +----+---+          +---+--+
-            |                   |                  |                  |
-            o---Add the file----+------------------+-----------------&gt;+
-            |                   |                  |                  |
-            |                   |                  |                  |
-            |                   o---Edit the file-&gt;+                  |
-            |                   |                  |                  |
-            |                   |                  o--Stage the file-&gt;+
-            |                   |                  +                  |
-            +&lt;-Remove the file--o                  |                  |
-            |                   |                  |                  |
-            |                   +&lt;--------------Commit----------------o
-            |                   |                  |                  |
-            V                   V                  V                  V
-</code></pre>
-</div>
+<p>Git saves data like a <strong>stream of snapshots</strong>. Every time you commit, or save the state of your project in Git, it basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored.</p>
+
+<h2 id="integrity">Integrity</h2>
+
+<p>Git has <strong>integrity</strong>. Everything in Git is check-summed before it is stored and is then referred to by that checksum. It uses <a href="https://en.wikipedia.org/wiki/SHA-1">SHA-1</a>.</p>
+
+<h2 id="file-states">File states</h2>
+
+<p>There are three <em>file states</em>:</p>
 
 <ul>
-  <li>Sections of a Git project:
-    <ul>
-      <li>the <em>Git directory</em> is where Git stores the metadata and object database for your project. It is copied when cloning a repo.</li>
-      <li>the <em>working directory</em> is a single checkout of one version of the project. These files are pulled out of the compressed database in the Git directory and placed on disk for you to use or modify.</li>
-      <li>the <em>staging area</em> is a file, generally contained in your Git directory, that stores information about what will go into your next commit. It’s sometimes referred to as the “index”.</li>
-    </ul>
-  </li>
+  <li><strong>Committed</strong> means that the data is stored in your local database.</li>
+  <li><strong>Modified</strong> means that you have changed the file but have not committed it to your database yet.</li>
+  <li><strong>Staged</strong> means that you have marked a modified fi\e in its current version to go into your next commit snapshot.</li>
 </ul>
+
+<h3 id="lifecycle-of-the-status-of-files">Lifecycle of the status of files</h3>
+
+<div class="mermaid">
+sequenceDiagram
+    Untracked -&gt;&gt; Staged: Add the file
+    Unmodified -&gt;&gt; Modified: Edit the file
+   	Modified -&gt;&gt; Staged: Stage the file
+    Unmodified -&gt;&gt; Untracked: Remove the file
+    Staged -&gt;&gt; Unmodified: Commit
+</div>
+
+<h3 id="main-sections">Main Sections</h3>
+<p>Sections of a Git project:</p>
+
+<ul>
+  <li>the <em>Git directory</em> is where Git stores the metadata and object database
+for your project. It is copied when cloning a repo.</li>
+  <li>the <em>working directory</em> is a single checkout of one version of the 
+project. These files are pulled out of the compressed database in the Git
+directory and placed on disk for you to use or modify.</li>
+  <li>the <em>staging area</em> is a file, generally contained in your Git directory,
+that stores information about what will go into your next commit. 
+It’s sometimes referred to as the <strong>index</strong>.</li>
+</ul>
+
+<div class="mermaid text-sm-center">
+graph TB
+      git["Git Project Sections"]
+      git==&gt;dir["the Git directory <br /> .git"]
+      git==&gt;stage["Staging Area"]
+      git==&gt;work["Working Directory"]
+</div>
 </div>
     
     
@@ -444,7 +446,7 @@ layout: post
     <hr />
     Posts in this category:
     
-    <p>postcats: docsgituse-cases </p>
+    <p>postcats: docsgittutorials </p>
     <p>docsgit</p>
     
     
@@ -464,41 +466,8 @@ layout: post
   </div> <!-- col 9 content -->
 </div> <!-- main row -->
 
-      </div>
-    </div>
   </div>
 
-  
-Categories: 
-
-
-
-  <div class="post-comments">
-  <div id="disqus_thread"></div>
-  <script>
-    /**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-    */
-    /*
-    var disqus_config = function () {
-    this.page.url = '/docs/git/';  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
-    (function() {  // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    
-    s.src = '//simpleitrocks.disqus.com/embed.js';
-    
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-</div>
-
-  
 </article>
 
     </div>
