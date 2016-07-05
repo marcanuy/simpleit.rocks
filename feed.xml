@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 05 Jul 2016 00:35:33 -0300</pubDate>
-    <lastBuildDate>Tue, 05 Jul 2016 00:35:33 -0300</lastBuildDate>
+    <pubDate>Tue, 05 Jul 2016 09:54:50 -0300</pubDate>
+    <lastBuildDate>Tue, 05 Jul 2016 09:54:50 -0300</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -539,32 +539,115 @@ Use relative sizes for elements to avoid breaking layout.&lt;/p&gt;
     
       <item>
         <title>Letters for Spanish in Linux</title>
-        <description>&lt;h1 id=&quot;entering-unicode-values&quot;&gt;Entering Unicode values&lt;/h1&gt;
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Enter any code: &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+U +&amp;lt;a Hex Value&amp;gt;&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Unicode Spanish codes:
-    &lt;ul&gt;
-      &lt;li&gt;&lt;em&gt;á&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + Shift + u + 00e1&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;Á&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + Shift + u + 00c1&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;é&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + Shift + u + 00e9&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;É&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + Shift + u + 00c9&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;í&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + Shift + u + 00ed&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;Í&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + Shift + u + 00cd&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;ó&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + Shift + u + 00f3&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;Ó&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + Shift + u + 00d3&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;ú&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + Shift + u + 00fa&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;Ú&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + Shift + u + 00da&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;ñ&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + Shift + u + 00f1&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;Ñ&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + Shift + u + 00d1&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;ü&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + Shift + u + 00fc&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;Ü&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + Shift + u + 00dc&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;¡&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + Shift + u + 00a1&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;¿&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + Shift + u + 00bf&lt;/code&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Special characters in Linux can be always entered by typing Unicode characters.&lt;/p&gt;
 
+&lt;p&gt;&lt;strong&gt;This method is independent from the keyboard layout&lt;/strong&gt; and
+&lt;strong&gt;the language of the environment&lt;/strong&gt;, so it is always an option.&lt;/p&gt;
+
+&lt;blockquote cite=&quot;http://www.unicode.org/standard/standard.html&quot;&gt;
+  &lt;p&gt;The Unicode Standard is a character coding system designed to support the worldwide interchange, processing, and display of the written texts of the diverse languages and technical disciplines of the modern world.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;spanish-unicode-characters-table&quot;&gt;Spanish Unicode Characters Table&lt;/h2&gt;
+
+&lt;p&gt;To type this kind of characters, especially those used in Spanish language,
+the code point in hexadecimal form has to be entered pressing simulatenously
+&lt;kbd&gt;&lt;kbd&gt;Control&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;U&lt;/kbd&gt;&lt;/kbd&gt; and then 
+entering the &lt;kbd&gt;Character Hex Value&lt;/kbd&gt;&lt;/p&gt;
+
+&lt;table class=&quot;table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Spanish letter&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Hex value&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Key combination&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;á&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;00e1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00e1&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;Á&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;00c1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00c1&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;é&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;00e9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00e9&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;É&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;00c9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00c9&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;í&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;00ed&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00ed&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;Í&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;00cd&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00cd&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;ó&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;00f3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00f3&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;Ó&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;00d3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00d3&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;ú&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;00fa&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00fa&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;Ú&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;00da&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00da&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;ñ&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;00f1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00f1&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;Ñ&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;00d1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00d1&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;ü&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;00fc&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00fc&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;Ü&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;00dc&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00dc&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;¡&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;00a1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00a1&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;¿&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;00bf&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00bf&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 </description>
         <pubDate>Mon, 06 Jun 2016 00:00:00 -0300</pubDate>
         <link>http://simpleit.rocks/writing-spanish-in-linux/</link>

@@ -245,32 +245,115 @@
     
     
     <h1><a href="/writing-spanish-in-linux/">Letters for Spanish in Linux</a></h1>
-    <div><h1 id="entering-unicode-values">Entering Unicode values</h1>
+    <div><h2 id="overview">Overview</h2>
 
-<ul>
-  <li>Enter any code: <code class="highlighter-rouge">Ctrl+Shift+U +&lt;a Hex Value&gt;</code></li>
-  <li>Unicode Spanish codes:
-    <ul>
-      <li><em>á</em> <code class="highlighter-rouge">Ctrl + Shift + u + 00e1</code></li>
-      <li><em>Á</em> <code class="highlighter-rouge">Ctrl + Shift + u + 00c1</code></li>
-      <li><em>é</em> <code class="highlighter-rouge">Ctrl + Shift + u + 00e9</code></li>
-      <li><em>É</em> <code class="highlighter-rouge">Ctrl + Shift + u + 00c9</code></li>
-      <li><em>í</em> <code class="highlighter-rouge">Ctrl + Shift + u + 00ed</code></li>
-      <li><em>Í</em> <code class="highlighter-rouge">Ctrl + Shift + u + 00cd</code></li>
-      <li><em>ó</em> <code class="highlighter-rouge">Ctrl + Shift + u + 00f3</code></li>
-      <li><em>Ó</em> <code class="highlighter-rouge">Ctrl + Shift + u + 00d3</code></li>
-      <li><em>ú</em> <code class="highlighter-rouge">Ctrl + Shift + u + 00fa</code></li>
-      <li><em>Ú</em> <code class="highlighter-rouge">Ctrl + Shift + u + 00da</code></li>
-      <li><em>ñ</em> <code class="highlighter-rouge">Ctrl + Shift + u + 00f1</code></li>
-      <li><em>Ñ</em> <code class="highlighter-rouge">Ctrl + Shift + u + 00d1</code></li>
-      <li><em>ü</em> <code class="highlighter-rouge">Ctrl + Shift + u + 00fc</code></li>
-      <li><em>Ü</em> <code class="highlighter-rouge">Ctrl + Shift + u + 00dc</code></li>
-      <li><em>¡</em> <code class="highlighter-rouge">Ctrl + Shift + u + 00a1</code></li>
-      <li><em>¿</em> <code class="highlighter-rouge">Ctrl + Shift + u + 00bf</code></li>
-    </ul>
-  </li>
-</ul>
+<p>Special characters in Linux can be always entered by typing Unicode characters.</p>
 
+<p><strong>This method is independent from the keyboard layout</strong> and
+<strong>the language of the environment</strong>, so it is always an option.</p>
+
+<blockquote cite="http://www.unicode.org/standard/standard.html">
+  <p>The Unicode Standard is a character coding system designed to support the worldwide interchange, processing, and display of the written texts of the diverse languages and technical disciplines of the modern world.</p>
+</blockquote>
+
+<h2 id="spanish-unicode-characters-table">Spanish Unicode Characters Table</h2>
+
+<p>To type this kind of characters, especially those used in Spanish language,
+the code point in hexadecimal form has to be entered pressing simulatenously
+<kbd><kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>U</kbd></kbd> and then 
+entering the <kbd>Character Hex Value</kbd></p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th style="text-align: center">Spanish letter</th>
+      <th style="text-align: center">Hex value</th>
+      <th style="text-align: center">Key combination</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>á</strong></td>
+      <td style="text-align: center">00e1</td>
+      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00e1</kbd></kbd></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>Á</strong></td>
+      <td style="text-align: center">00c1</td>
+      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00c1</kbd></kbd></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>é</strong></td>
+      <td style="text-align: center">00e9</td>
+      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00e9</kbd></kbd></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>É</strong></td>
+      <td style="text-align: center">00c9</td>
+      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00c9</kbd></kbd></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>í</strong></td>
+      <td style="text-align: center">00ed</td>
+      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00ed</kbd></kbd></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>Í</strong></td>
+      <td style="text-align: center">00cd</td>
+      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00cd</kbd></kbd></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>ó</strong></td>
+      <td style="text-align: center">00f3</td>
+      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00f3</kbd></kbd></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>Ó</strong></td>
+      <td style="text-align: center">00d3</td>
+      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00d3</kbd></kbd></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>ú</strong></td>
+      <td style="text-align: center">00fa</td>
+      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00fa</kbd></kbd></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>Ú</strong></td>
+      <td style="text-align: center">00da</td>
+      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00da</kbd></kbd></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>ñ</strong></td>
+      <td style="text-align: center">00f1</td>
+      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00f1</kbd></kbd></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>Ñ</strong></td>
+      <td style="text-align: center">00d1</td>
+      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00d1</kbd></kbd></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>ü</strong></td>
+      <td style="text-align: center">00fc</td>
+      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00fc</kbd></kbd></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>Ü</strong></td>
+      <td style="text-align: center">00dc</td>
+      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00dc</kbd></kbd></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>¡</strong></td>
+      <td style="text-align: center">00a1</td>
+      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00a1</kbd></kbd></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>¿</strong></td>
+      <td style="text-align: center">00bf</td>
+      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00bf</kbd></kbd></td>
+    </tr>
+  </tbody>
+</table>
 </div>
     
     
