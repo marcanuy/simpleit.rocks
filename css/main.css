@@ -153,6 +153,10 @@ pre {
   min-height: 56px;
   text-align: center;
   position: relative; }
+  .site-header .wrapper {
+    padding-bottom: 1%; }
+  .site-header .subtitle {
+    padding-left: 1%; }
 
 .site-title {
   font-size: 46px;
@@ -162,6 +166,8 @@ pre {
   margin-bottom: 0; }
   .site-title, .site-title:visited {
     color: #424242; }
+  .site-title:hover {
+    text-decoration: none; }
 
 .site-nav {
   float: right;
