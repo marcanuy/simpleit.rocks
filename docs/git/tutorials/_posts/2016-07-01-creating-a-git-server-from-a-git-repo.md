@@ -6,7 +6,7 @@ tags:
 - server
 - bare-repository
 description: >
-  Having a git server and a repo in another computer not present in the
+  Having a git server and a repo in another computer not present in the <br>
   server, create a centralized version of the repo in the server.
 current: >
   graph TB
