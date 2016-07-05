@@ -11,4 +11,17 @@
 
   </div>
 
+  <div class="jumbotron jumbotron-fluid bg-inverse">
+    <div class="container">
+      {% if page.title %}
+      <h1 class="title">{{ page.title }}<small class="text-muted subtitle">{{ page.subtitle }}</small></h1>
+      {% endif %}
+      <p class="lead">
+	{% if page.description %}
+	{{ page.description }}
+	{% endif %}
+      </p>
+    </div>
+  </div>
+
 </header>
