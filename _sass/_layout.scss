@@ -9,6 +9,14 @@
     
     // Positioning context for the mobile navigation icon
     position: relative;
+
+    .wrapper {
+	padding-bottom: 1%;
+    }
+    
+    .subtitle {
+	padding-left: 1%;
+    }
 }
 
 .site-title {
@@ -21,6 +29,10 @@
     &,
     &:visited {
         color: $grey-color-dark;
+    }
+
+    &:hover {
+	text-decoration: none;
     }
 }
 
