@@ -8,8 +8,8 @@ tags:
 - html5
 - quickreference
 description: >
-  Full HTML 5 cheatsheet. Quick reference for sections and elements
-  summary, with a short explanation and usage example.
+  Full HTML 5 cheatsheet. Quick reference for sections and elements <br>
+  summary, with short explanations and usage examples.
 ---
 
 ## Overview
@@ -192,3 +192,4 @@ Quick reference based in [HTML 5 text level semantics](https://www.w3.org/TR/htm
 | __br__ | [Line break](https://www.w3.org/TR/html5/text-level-semantics.html#the-br-element) | `Simply Orange Juice Company<br>Apopka, FL 32703<br>U.S.A.` | Simply Orange Juice Company<br>Apopka, FL 32703<br>U.S.A. |
 | __wbr__ | [Line breaking opportunity](https://www.w3.org/TR/html5/text-level-semantics.html#the-wbr-element) | `www.simply<wbr>orange<wbr>juice.com` | www.simply<wbr>orange<wbr>juice.com |
 {: class="table"}
+
