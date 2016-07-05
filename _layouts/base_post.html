@@ -9,23 +9,12 @@ layout: default
       {% if page.date %}
       <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
       {% endif %}
-      {% if page.author %}
+      {% if site.author %}
       •
       <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-	<span itemprop="name">{{ page.author }}</span>
+	<span itemprop="name">{{ site.author }}</span>
       </span>
       {% endif %}
-      <div class="jumbotron jumbotron-fluid">
-	<div class="container text-sm-center">
-	  <h1 class="post-title" itemprop="name headline">
-	    {{ page.title }}
-	    {% if page.subtitle %}
-	    <small class="text-muted">{{page.subtitle}}</small>
-	    {% endif %}
-	  </h1>
-	  <p class="lead">{{ page.description }}</p>
-	</div>
-      </div>
     </p>
   </header>
 
