@@ -8,8 +8,8 @@ description: >
 
 <div class="home">
 
-  <div class="container">
-    <h2>Categories</h2>
+  <div class="">
+    <h1>Categories</h1>
 
     {% capture first_level_categories %}
     {% for page in site.pages %}
@@ -23,65 +23,64 @@ description: >
 
     {% assign categories = first_level_categories | split: ',' | uniq %}
 
-    <p>
-      <ul class="list-unstyled">
-	{% for category in categories %}
-	{% unless category == blank %}
-	<li>
-	  <a href="{{ site.baseurl }}/{{ site.docs_dir}}/{{ category | strip }}/">{{ category | strip | capitalize }}</a>
-	</li>
-	{% endunless %}
-	{% endfor %}
-      </ul>
-    </p>
+    <div class="list-group">
+      {% for category in categories %}
+      {% unless category == blank %}
+      <a class="list-group-item" href="{{ site.baseurl }}/{{ site.docs_dir}}/{{ category | strip }}/">
+	{{ category | strip | capitalize }}
+      </a>
+      {% endunless %}
+      {% endfor %}
+    </div>
   </div> <!--containter-->
   
   <hr />
 
   {% if post.categories contains site.docs_dir and post.categories.size == 1 %}
   <h1>Uncategorized Posts</h1>
-  {% for post in site.posts %}
-  {%comment%}if post.categories[0] == site.docs_dir and post.categories.size == 1 {%endcomment%}
-  <li>
-    <a class="post-link" href="{{ site.baseurl }}/{{ post.slug }}">
+  <div class="list-group">
+    {% for post in site.posts %}
+    {%comment%}if post.categories[0] == site.docs_dir and post.categories.size == 1 {%endcomment%}
+    <a class="list-group-item" href="{{ site.baseurl }}/{{ post.slug }}">
       {{ post.title }}
     </a>
-  </li>
-  {% endfor %}
+    {% endfor %}
+  </div>
   <hr />
   {% endif%}
 
-
-
   <div>
-    <div class="center-block">
-      <div class="row">
-	<h1>Articles</h1>
-	<ul>
-	  {% for post in site.posts %}
-	  <li>
-	    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-	    <button type="button" class="btn btn-default">{{ post.categories  | array_to_sentence_string }}</button>
-	    {% for tag in post.tags %}
-	    <button type="button" class="btn btn-link">{{ tag }}</button>
-	    {% endfor %}
-	  </li>
-	  {% endfor %}
-	</ul>
-      </div>
-      <div>
-	<h1>Full categories hierarchy</h1>
-	<ul>
-	  {% assign pages = site.pages | sort:'dir' %}
-	  {% for page in pages %}
-	  {% if page.title %}
-	  <li>
-	    <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-	  </li>
-	  {% endif%}
-	  {% endfor %}
-	</ul>
-      </div>
+    <h1>Articles</h1>
+    <div class="list-group">
+      {% for post in site.posts %}
+      <a href="{{ post.url | prepend: site.baseurl }}" class="list-group-item">
+	<span class="label label-default label-pill pull-xs-right">
+	  {{ post.categories | shift  | array_to_sentence_string }}
+	</span>
+	{% for tag in post.tags %}
+	<span class="label label-info label/-pill pull-xs-right m-r-1">
+	  {{ tag }}
+	</span>
+	{% endfor %}
+	
+	{{ post.title }}
+	
+      </a>
+      {% endfor %}
+    </div> <!-- list group -->
+  </div> <!-- articles/posts -->
+
+  <hr />
+
+  <div class="m-b-1">
+    <h1>Full categories hierarchy</h1>
+    <div class="list-group">
+      {% assign pages = site.pages | sort:'dir' %}
+      {% for page in pages %}
+      {% if page.title %}
+      <a class="list-group-item" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+      {% endif%}
+      {% endfor %}
     </div>
   </div>
 </div>
