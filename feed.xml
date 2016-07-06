@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 06 Jul 2016 00:49:04 -0300</pubDate>
-    <lastBuildDate>Wed, 06 Jul 2016 00:49:04 -0300</lastBuildDate>
+    <pubDate>Wed, 06 Jul 2016 17:34:47 -0300</pubDate>
+    <lastBuildDate>Wed, 06 Jul 2016 17:34:47 -0300</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -538,6 +538,81 @@ Use relative sizes for elements to avoid breaking layout.&lt;/p&gt;
       </item>
     
       <item>
+        <title>How To Prevent Content Displaying In A Jekyll Development Environment</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;While developing and continuously testing a jekyll site, avoiding any 
+javascript external request can greatly improve the loading speed of each 
+page.&lt;/p&gt;
+
+&lt;p&gt;In the case of advertisements, also prevents from accidentally clicking
+developer’s own ads which can cause an account suspension.&lt;/p&gt;
+
+&lt;p&gt;The basic concept to make it possible is to &lt;strong&gt;create different Jekyll builds
+for &lt;em&gt;development&lt;/em&gt; and &lt;em&gt;production&lt;/em&gt; environments&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;environment&quot;&gt;Environment&lt;/h2&gt;
+
+&lt;p&gt;The easiest way to avoid any external javascript request is to detect the
+environment on which Jekyll is running in liquid templates using the 
+environment variable &lt;a href=&quot;https://jekyllrb.com/docs/configuration/#specifying-a-jekyll-environment-at-build-time&quot;&gt;JEKYLL_ENV&lt;/a&gt; at build (or serve) time.&lt;/p&gt;
+
+&lt;p&gt;To build a production ready jekyll site it can be specified like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JEKYLL_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production jekyll build
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If none environment is explicitly set, then it uses by default
+&lt;code class=&quot;highlighter-rouge&quot;&gt;JEKYLL_ENV=development&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;When using a &lt;a href=&quot;http://bundler.io/man/bundle-exec.1.html&quot;&gt;Bundler command&lt;/a&gt;
+it should be used like:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JEKYLL_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;detecting-the-environment-in-templates&quot;&gt;Detecting the environment in templates&lt;/h2&gt;
+
+&lt;p&gt;To detect the environment in Jekyll liquid templates,
+&lt;a href=&quot;http://www.rubydoc.info/gems/jekyll/3.1.6/Jekyll%2FDrops%2FJekyllDrop%3Aenvironment&quot;&gt;jekyll.environment&lt;/a&gt; variable contains the current environment.&lt;/p&gt;
+
+&lt;p&gt;For example, to avoid showing post tags in development:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;jekyll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;production&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Mon, 06 Jun 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/how-to-prevent-content-displaying-in-a-jekyll-development-environment/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/how-to-prevent-content-displaying-in-a-jekyll-development-environment/</guid>
+        
+        <category>jekyll</category>
+        
+        <category>environments</category>
+        
+        <category>adsense</category>
+        
+        <category>analytics</category>
+        
+        <category>disqus</category>
+        
+        
+        <category>docs</category>
+        
+        <category>ruby</category>
+        
+        <category>jekyll</category>
+        
+        <category>tutorials</category>
+        
+      </item>
+    
+      <item>
         <title>How to Type Spanish Characters, Accents and Symbols in Linux</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
@@ -657,363 +732,6 @@ entering the &lt;kbd&gt;Character Hex Value&lt;/kbd&gt;&lt;/p&gt;
         <category>docs</category>
         
         <category>linux</category>
-        
-      </item>
-    
-      <item>
-        <title>Html5 Full Cheatsheet</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;This is a table of all the elements of HTML 5, based in the summaries provided in the official &lt;a href=&quot;https://www.w3.org/TR/html5/&quot;&gt;HTML 5 W3C Recommendation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;html5-sections&quot;&gt;HTML5 SECTIONS&lt;/h2&gt;
-
-&lt;p&gt;Quick reference based in &lt;a href=&quot;https://www.w3.org/TR/html5/sections.html&quot;&gt;HTML5 Sections&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;body&quot;&gt;body&lt;/h3&gt;
-
-&lt;blockquote cite=&quot;https://www.w3.org/TR/html5/sections.html#the-body-element&quot;&gt;
-  &lt;p&gt;The &lt;a href=&quot;https://www.w3.org/TR/html5/sections.html#the-body-element&quot;&gt;body&lt;/a&gt;
-element represents the content of the document.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE HTML&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Steve Hill&#39;s Home Page&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Hard Trance is My Life.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;article&quot;&gt;article&lt;/h3&gt;
-
-&lt;blockquote cite=&quot;https://www.w3.org/TR/html5/sections.html#the-article-element&quot;&gt;
-  &lt;p&gt;The &lt;a href=&quot;https://www.w3.org/TR/html5/sections.html#the-article-element&quot;&gt;article&lt;/a&gt;
-element represents a complete, or self-contained, composition in a
-document, page, application, or site and that is, in principle,
-independently distributable or reusable, e.g. in syndication.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;article&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tumblr_masqy2s5yn1rzfqbpo1_500.jpg&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Yellow smiley face with the caption &#39;masif&#39;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;My fave Masif tee so far!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;footer&amp;gt;&lt;/span&gt;Posted 2 days ago&lt;span class=&quot;nt&quot;&gt;&amp;lt;/footer&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/article&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;article&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tumblr_m9tf6wSr6W1rzfqbpo1_500.jpg&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Happy 2nd birthday Masif Saturdays!!!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;footer&amp;gt;&lt;/span&gt;Posted 3 weeks ago&lt;span class=&quot;nt&quot;&gt;&amp;lt;/footer&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/article&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section&quot;&gt;section&lt;/h3&gt;
-
-&lt;blockquote cite=&quot;https://www.w3.org/TR/html5/sections.html#the-section-element&quot;&gt;
-  &lt;p&gt;The &lt;a href=&quot;https://www.w3.org/TR/html5/sections.html#the-section-element&quot;&gt;section&lt;/a&gt;
-element represents a generic section of a document or application.
-A section, in this context, is a thematic grouping of content. The theme
-of each section should be identified, typically by including a heading
-(h1-h6 element) as a child of the section element.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Biography&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;section&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;The facts&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;1500+ shows, 14+ countries&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/section&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;section&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;2010/2011 figures per year&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;100+ shows, 8+ countries&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/section&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;nav&quot;&gt;nav&lt;/h3&gt;
-
-&lt;blockquote cite=&quot;https://www.w3.org/TR/html5/sections.html#the-nav-element&quot;&gt;
-  &lt;p&gt;The &lt;a href=&quot;https://www.w3.org/TR/html5/sections.html#the-nav-element&quot;&gt;nav&lt;/a&gt;
-element represents a section of a page that links to other pages or to
-parts within the page: a section with navigation links.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;nav&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Home&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/biog.html&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Bio&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/discog.html&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Discog&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/nav&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;aside&quot;&gt;aside&lt;/h3&gt;
-
-&lt;blockquote cite=&quot;https://www.w3.org/TR/html5/sections.html#the-aside-element&quot;&gt;
-  &lt;p&gt;The &lt;a href=&quot;https://www.w3.org/TR/html5/sections.html#the-aside-element&quot;&gt;aside&lt;/a&gt;
-element represents a section of a page that consists of content that is
-tangentially related to the content around the aside element, and which
-could be considered separate from that content.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Music&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;As any burner can tell you, the event has a lot of trance.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;aside&amp;gt;&lt;/span&gt;You can buy the music we played at our &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;buy.html&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;playlist page&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/aside&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This year we played a kind of trance that originated in Belgium, Germany, and the Netherlands in the mid 90s.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;h1h6--a-section-heading&quot;&gt;h1–h6  A section heading&lt;/h3&gt;
-
-&lt;blockquote cite=&quot;https://www.w3.org/TR/html5/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements&quot;&gt;
-  &lt;p&gt;These elements represent
-&lt;a href=&quot;https://www.w3.org/TR/html5/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements&quot;&gt;headings&lt;/a&gt;
-for their sections.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;The Guide To Music On The Playa&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;The Main Stage&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;If you want to play on a stage, you should bring one.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;Amplified Music&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Amplifiers up to 300W or 90dB are welcome.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;header&quot;&gt;header&lt;/h3&gt;
-
-&lt;blockquote cite=&quot;https://www.w3.org/TR/html5/sections.html#the-header-element&quot;&gt;
-  &lt;p&gt;The &lt;a href=&quot;https://www.w3.org/TR/html5/sections.html#the-header-element&quot;&gt;header&lt;/a&gt;
-element represents introductory content for its nearest ancestor
-sectioning content or sectioning root element. A header typically
-contains a group of introductory or navigational aids.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;article&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;header&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Hard Trance is My Life&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;By DJ Steve Hill and Technikal&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;/header&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;The album with the amusing punctuation has red artwork.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/article&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;footer&quot;&gt;footer&lt;/h3&gt;
-
-&lt;blockquote cite=&quot;https://www.w3.org/TR/html5/sections.html#the-footer-element&quot;&gt;
-  &lt;p&gt;The &lt;a href=&quot;https://www.w3.org/TR/html5/sections.html#the-footer-element&quot;&gt;footer&lt;/a&gt;
-element represents a footer for its nearest ancestor sectioning content
-or sectioning root element.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;article&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Hard Trance is My Life&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;The album with the amusing punctuation has red artwork.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;footer&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Artists: DJ Steve Hill and Technikal&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;nt&quot;&gt;&amp;lt;/footer&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/article&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;text-level-semantics&quot;&gt;TEXT LEVEL SEMANTICS&lt;/h2&gt;
-
-&lt;p&gt;Quick reference based in &lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html&quot;&gt;HTML 5 text level semantics&lt;/a&gt;.&lt;/p&gt;
-
-&lt;table class=&quot;table&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Element&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Purpose&lt;/th&gt;
-      &lt;th style=&quot;text-align: right&quot;&gt;Example&lt;/th&gt;
-      &lt;th style=&quot;text-align: right&quot;&gt;Output&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;a&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-a-element&quot;&gt;Hyperlinks&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Visit my &amp;lt;a href=&quot;drinks.html&quot;&amp;gt;drinks&amp;lt;/a&amp;gt; page.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;Visit my &lt;a href=&quot;drinks.html&quot;&gt;drinks&lt;/a&gt; page.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;em&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-em-element&quot;&gt;Stress emphasis&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;I must say I &amp;lt;em&amp;gt;adore&amp;lt;/em&amp;gt; lemonade.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;I must say I &lt;em&gt;adore&lt;/em&gt; lemonade.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;strong&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-strong-element&quot;&gt;Importance&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;This tea is &amp;lt;strong&amp;gt;very hot&amp;lt;/strong&amp;gt;.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;This tea is &lt;strong&gt;very hot&lt;/strong&gt;.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;small&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-small-element&quot;&gt;Side comments&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;These grapes are made into wine. &amp;lt;small&amp;gt;Alcohol is addictive.&amp;lt;/small&amp;gt;&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;These grapes are made into wine. &lt;small&gt;Alcohol is addictive.&lt;/small&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;s&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-s-element&quot;&gt;Inaccurate text&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Price: &amp;lt;s&amp;gt;£4.50&amp;lt;/s&amp;gt; £2.00!&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;Price: &lt;s&gt;£4.50&lt;/s&gt; £2.00!&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;cite&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-cite-element&quot;&gt;Titles of works&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;The case &amp;lt;cite&amp;gt;Hugo v. Danielle&amp;lt;/cite&amp;gt; is relevant here.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;The case &lt;cite&gt;Hugo v. Danielle&lt;/cite&gt; is relevant here.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;q&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-q-element&quot;&gt;Quotations&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;The judge said &amp;lt;q&amp;gt;You can drink water from the fish tank&amp;lt;/q&amp;gt; but advised against it.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;The judge said &lt;q&gt;You can drink water from the fish tank&lt;/q&gt; but advised against it.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;dfn&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-dfn-element&quot;&gt;Defining instance&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;The term &amp;lt;dfn&amp;gt;organic food&amp;lt;/dfn&amp;gt; refers to food produced without synthetic chemicals.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;The term &lt;dfn&gt;organic food&lt;/dfn&gt; refers to food produced without synthetic chemicals.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;abbr&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-abbr-element&quot;&gt;Abbreviations&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Organic food in Ireland is certified by the &amp;lt;abbr title=&quot;Irish Organic Farmers and Growers Association&quot;&amp;gt;IOFGA&amp;lt;/abbr&amp;gt;.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;Organic food in Ireland is certified by the &lt;abbr title=&quot;Irish Organic Farmers and Growers Association&quot;&gt;IOFGA&lt;/abbr&gt;.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;data&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-data-element&quot;&gt;Machine-readable equivalent&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Available starting today! &amp;lt;data value=&quot;UPC:022014640201&quot;&amp;gt;North Coast Organic Apple Cider&amp;lt;/data&amp;gt;&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;Available starting today! &lt;data value=&quot;UPC:022014640201&quot;&gt;North Coast Organic Apple Cider&lt;/data&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;time&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-time-element&quot;&gt;Machine-readable equivalent of date- or time-related data&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Available starting on &amp;lt;time datetime=&quot;2011-11-12&quot;&amp;gt;November 12th&amp;lt;/time&amp;gt;!&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;Available starting on &lt;time datetime=&quot;2011-11-12&quot;&gt;November 12th&lt;/time&gt;!&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;code&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-code-element&quot;&gt;Computer code&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;The &amp;lt;code&amp;gt;fruitdb&amp;lt;/code&amp;gt; program can be used for tracking fruit production.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;The &lt;code&gt;fruitdb&lt;/code&gt; program can be used for tracking fruit production.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;var&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-var-element&quot;&gt;Variables&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;If there are &amp;lt;var&amp;gt;n&amp;lt;/var&amp;gt; fruit in the bowl, at least &amp;lt;var&amp;gt;n&amp;lt;/var&amp;gt;÷2 will be ripe.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;If there are &lt;var&gt;n&lt;/var&gt; fruit in the bowl, at least &lt;var&gt;n&lt;/var&gt;÷2 will be ripe.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;samp&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-samp-element&quot;&gt;Computer output&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;The computer said &amp;lt;samp&amp;gt;Unknown error -3&amp;lt;/samp&amp;gt;.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;The computer said &lt;samp&gt;Unknown error -3&lt;/samp&gt;.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;kbd&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-kbd-element&quot;&gt;User input&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Hit &amp;lt;kbd&amp;gt;F1&amp;lt;/kbd&amp;gt; to continue.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;Hit &lt;kbd&gt;F1&lt;/kbd&gt; to continue.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;sub&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-sub-and-sup-elements&quot;&gt;Subscripts&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Water is H&amp;lt;sub&amp;gt;2&amp;lt;/sub&amp;gt;O.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;Water is H&lt;sub&gt;2&lt;/sub&gt;O.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;sup&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-sub-and-sup-elements&quot;&gt;Superscripts&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;The Hydrogen in heavy water is usually &amp;lt;sup&amp;gt;2&amp;lt;/sup&amp;gt;H.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;The Hydrogen in heavy water is usually &lt;sup&gt;2&lt;/sup&gt;H.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;i&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-i-element&quot;&gt;Alternative voice&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Lemonade consists primarily of &amp;lt;i&amp;gt;Citrus limon&amp;lt;/i&amp;gt;.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;Lemonade consists primarily of &lt;i&gt;Citrus limon&lt;/i&gt;.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;b&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-b-element&quot;&gt;Keywords&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Take a &amp;lt;b&amp;gt;lemon&amp;lt;/b&amp;gt; and squeeze it with a &amp;lt;b&amp;gt;juicer&amp;lt;/b&amp;gt;.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;Take a &lt;b&gt;lemon&lt;/b&gt; and squeeze it with a &lt;b&gt;juicer&lt;/b&gt;.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;u&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-u-element&quot;&gt;Annotations&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;The mixture of apple juice and &amp;lt;u class=&quot;spelling&quot;&amp;gt;eldeflower&amp;lt;/u&amp;gt; juice is very pleasant.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;The mixture of apple juice and &lt;u class=&quot;spelling&quot;&gt;eldeflower&lt;/u&gt; juice is very pleasant.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;mark&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-mark-element&quot;&gt;Highlight&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Elderflower cordial, with one &amp;lt;mark&amp;gt;part&amp;lt;/mark&amp;gt; cordial to ten &amp;lt;mark&amp;gt;part&amp;lt;/mark&amp;gt;s water, stands a&amp;lt;mark&amp;gt;part&amp;lt;/mark&amp;gt; from the rest.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;Elderflower cordial, with one &lt;mark&gt;part&lt;/mark&gt; cordial to ten &lt;mark&gt;part&lt;/mark&gt;s water, stands a&lt;mark&gt;part&lt;/mark&gt; from the rest.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;ruby , rb, rp, rt, rtc&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-ruby-element&quot;&gt;Ruby annotations&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;ruby&amp;gt; &amp;lt;rb&amp;gt;OJ &amp;lt;rp&amp;gt;(&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;Orange Juice&amp;lt;/rtc&amp;gt;&amp;lt;rp&amp;gt;)&amp;lt;/ruby&amp;gt;&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;ruby&gt; &lt;rb&gt;OJ &lt;rp&gt;(&lt;rtc&gt;&lt;rt&gt;Orange Juice&amp;lt;/rtc&amp;gt;&lt;rp&gt;)&amp;lt;/ruby&amp;gt;&lt;/rp&gt;&lt;/rt&gt;&lt;/rtc&gt;&lt;/rp&gt;&lt;/rb&gt;&lt;/ruby&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;bdi&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-bdi-element&quot;&gt;Text directionality isolation&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;The recommended restaurant is &amp;lt;bdi lang=&quot;&quot;&amp;gt;My Juice Café (At The Beach)&amp;lt;/bdi&amp;gt;.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;The recommended restaurant is &lt;bdi lang=&quot;&quot;&gt;My Juice Café (At The Beach)&lt;/bdi&gt;.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;bdo&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-bdo-element&quot;&gt;Text directionality formatting&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;The proposal is to write English, but in reverse order. &quot;Juice&quot; would become &quot;&amp;lt;bdo dir=rtl&amp;gt;Juice&amp;lt;/bdo&amp;gt;&quot;&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;The proposal is to write English, but in reverse order. “Juice” would become “&amp;lt;bdo dir=rtl&amp;gt;Juice&amp;lt;/bdo&amp;gt;”&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;span&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-span-element&quot;&gt;Other&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;In French we call it &amp;lt;span lang=&quot;fr&quot;&amp;gt;sirop de sureau&amp;lt;/span&amp;gt;.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;In French we call it &lt;span lang=&quot;fr&quot;&gt;sirop de sureau&lt;/span&gt;.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;br&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-br-element&quot;&gt;Line break&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Simply Orange Juice Company&amp;lt;br&amp;gt;Apopka, FL 32703&amp;lt;br&amp;gt;U.S.A.&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;Simply Orange Juice Company&lt;br /&gt;Apopka, FL 32703&lt;br /&gt;U.S.A.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;wbr&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-wbr-element&quot;&gt;Line breaking opportunity&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;www.simply&amp;lt;wbr&amp;gt;orange&amp;lt;wbr&amp;gt;juice.com&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;www.simply&lt;wbr /&gt;orange&lt;wbr /&gt;juice.com&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-</description>
-        <pubDate>Sat, 04 Jun 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/html5-full-cheatsheet/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/html5-full-cheatsheet/</guid>
-        
-        <category>html</category>
-        
-        <category>cheatsheet</category>
-        
-        <category>html5</category>
-        
-        <category>quickreference</category>
-        
-        
-        <category>docs</category>
-        
-        <category>html</category>
-        
-        <category>cheatsheets</category>
         
       </item>
     

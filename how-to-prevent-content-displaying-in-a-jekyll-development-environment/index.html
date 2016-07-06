@@ -23,24 +23,24 @@
 
   
   <!-- Begin Jekyll SEO tag v2.0.0 -->
-<title>Git Basic Concepts - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Git Basic Concepts" />
-<meta name="description" content="Fundamental concepts to understand how Git works." />
-<meta property="og:description" content="Fundamental concepts to understand how Git works." />
-<link rel="canonical" href="http://simpleit.rocks/git-basic-concepts/" />
-<meta property="og:url" content="http://simpleit.rocks/git-basic-concepts/" />
+<title>How To Prevent Content Displaying In A Jekyll Development Environment - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="How To Prevent Content Displaying In A Jekyll Development Environment" />
+<meta name="description" content="How to prevent code execution when developing in Jekyll but displaying it in production. Avoid ads, analytics and disqus loading while developing." />
+<meta property="og:description" content="How to prevent code execution when developing in Jekyll but displaying it in production. Avoid ads, analytics and disqus loading while developing." />
+<link rel="canonical" href="http://simpleit.rocks/how-to-prevent-content-displaying-in-a-jekyll-development-environment/" />
+<meta property="og:url" content="http://simpleit.rocks/how-to-prevent-content-displaying-in-a-jekyll-development-environment/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-06-24T00:00:00-03:00" />
+<meta property="article:published_time" content="2016-06-06T00:00:00-03:00" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "Git Basic Concepts",
-    "datePublished": "2016-06-24T00:00:00-03:00",
-    "description": "Fundamental concepts to understand how Git works.",
-    "url": "http://simpleit.rocks/git-basic-concepts/"
+    "headline": "How To Prevent Content Displaying In A Jekyll Development Environment",
+    "datePublished": "2016-06-06T00:00:00-03:00",
+    "description": "How to prevent code execution when developing in Jekyll but displaying it in production. Avoid ads, analytics and disqus loading while developing.",
+    "url": "http://simpleit.rocks/how-to-prevent-content-displaying-in-a-jekyll-development-environment/"
   }
 </script>
 <!-- End Jekyll SEO tag -->
@@ -93,10 +93,10 @@
   <div class="jumbotron jumbotron-fluid bg-inverse">
     <div class="container">
       
-      <h1 class="title">Git Basic Concepts</h1>
+      <h1 class="title">How To Prevent Content Displaying In A Jekyll Development Environment</h1>
       
       <p class="lead">
-	<small class="text-muted subtitle"></small>
+	<small class="text-muted subtitle">Show content in production but avoid it in a local Jekyll instance</small>
       </p>
     </div>
   </div>
@@ -110,7 +110,7 @@
   <header class="post-header">
     <p class="post-meta">
       
-      <time datetime="2016-06-24T00:00:00-03:00" itemprop="datePublished">Jun 24, 2016</time>
+      <time datetime="2016-06-06T00:00:00-03:00" itemprop="datePublished">Jun 6, 2016</time>
       
       
       •
@@ -127,11 +127,11 @@
     <h4>Table of Contents</h4>
     
     <ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#strem-of-snapshots">Strem of snapshots</a></li>
-<li class="toc-entry toc-h2"><a href="#integrity">Integrity</a></li>
-<li class="toc-entry toc-h2"><a href="#file-states">File states</a></li>
-<li class="toc-entry toc-h3"><a href="#lifecycle-of-the-status-of-files">Lifecycle of the status of files</a></li>
-<li class="toc-entry toc-h3"><a href="#main-sections">Main Sections</a></li>
+<li class="toc-entry toc-h2"><a href="#process">Process</a></li>
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#environment">Environment</a></li>
+<li class="toc-entry toc-h2"><a href="#detecting-the-environment-in-templates">Detecting the environment in templates</a></li>
+<li class="toc-entry toc-h2"><a href="#graphical-summary-for-how-to-prevent-content-displaying-in-a-jekyll-development-environment">Graphical summary for how to prevent content displaying in a jekyll development environment</a></li>
 </ul>
     
 
@@ -158,7 +158,8 @@
 
     
     <p class="lead">
-      Fundamental concepts to understand how Git works.
+      How to prevent code execution when developing in Jekyll but displaying it in production. Avoid ads, analytics and disqus loading while developing.
+
     </p>
     
 
@@ -180,56 +181,102 @@
 </div>
 
 
-    <h2 id="strem-of-snapshots">Strem of snapshots</h2>
+    <h2>Process</h2>
+<div class="row">
+  <div class="col-xl-6">
+    
+    <div>Current</div>
+    <div class="mermaid">
+      sequenceDiagram
+    local->>local: webpage loading starts
+    local->>DisqusServer: javascript request
+    DisqusServer-->>local: disqus code response
+    local->>AnalyticsServer: javascript request
+    local->>local: webpage ready
 
-<p>Git saves data like a <strong>stream of snapshots</strong>. Every time you commit, or save the state of your project in Git, it basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored.</p>
+    </div>
+    
+  </div>
+  <div class="col-xl-6">
+    
+    <div>Goal</div>
+    <div class="mermaid">
+      sequenceDiagram
+    local->>local: webpage loading starts
+    local->>local: webpage ready
 
-<h2 id="integrity">Integrity</h2>
-
-<p>Git has <strong>integrity</strong>. Everything in Git is check-summed before it is stored and is then referred to by that checksum. It uses <a href="https://en.wikipedia.org/wiki/SHA-1">SHA-1</a>.</p>
-
-<h2 id="file-states">File states</h2>
-
-<p>There are three <em>file states</em>:</p>
-
-<ul>
-  <li><strong>Committed</strong> means that the data is stored in your local database.</li>
-  <li><strong>Modified</strong> means that you have changed the file but have not committed it to your database yet.</li>
-  <li><strong>Staged</strong> means that you have marked a modified fi\e in its current version to go into your next commit snapshot.</li>
-</ul>
-
-<h3 id="lifecycle-of-the-status-of-files">Lifecycle of the status of files</h3>
-
-<div class="mermaid">
-sequenceDiagram
-    Untracked -&gt;&gt; Staged: Add the file
-    Unmodified -&gt;&gt; Modified: Edit the file
-   	Modified -&gt;&gt; Staged: Stage the file
-    Unmodified -&gt;&gt; Untracked: Remove the file
-    Staged -&gt;&gt; Unmodified: Commit
+    </div>
+    
+  </div>
+</div>
+<div class="si-tutorial-overview">
+  
 </div>
 
-<h3 id="main-sections">Main Sections</h3>
-<p>Sections of a Git project:</p>
+<h2 id="overview">Overview</h2>
 
-<ul>
-  <li>the <em>Git directory</em> is where Git stores the metadata and object database
-for your project. It is copied when cloning a repo.</li>
-  <li>the <em>working directory</em> is a single checkout of one version of the 
-project. These files are pulled out of the compressed database in the Git
-directory and placed on disk for you to use or modify.</li>
-  <li>the <em>staging area</em> is a file, generally contained in your Git directory,
-that stores information about what will go into your next commit. 
-It’s sometimes referred to as the <strong>index</strong>.</li>
-</ul>
+<p>While developing and continuously testing a jekyll site, avoiding any 
+javascript external request can greatly improve the loading speed of each 
+page.</p>
 
-<div class="mermaid text-sm-center">
-graph TB
-      git["Git Project Sections"]
-      git==&gt;dir["the Git directory <br /> .git"]
-      git==&gt;stage["Staging Area"]
-      git==&gt;work["Working Directory"]
+<p>In the case of advertisements, also prevents from accidentally clicking
+developer’s own ads which can cause an account suspension.</p>
+
+<p>The basic concept to make it possible is to <strong>create different Jekyll builds
+for <em>development</em> and <em>production</em> environments</strong>.</p>
+
+<h2 id="environment">Environment</h2>
+
+<p>The easiest way to avoid any external javascript request is to detect the
+environment on which Jekyll is running in liquid templates using the 
+environment variable <a href="https://jekyllrb.com/docs/configuration/#specifying-a-jekyll-environment-at-build-time">JEKYLL_ENV</a> at build (or serve) time.</p>
+
+<p>To build a production ready jekyll site it can be specified like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nv">JEKYLL_ENV</span><span class="o">=</span>production jekyll build
+</code></pre>
 </div>
+
+<p>If none environment is explicitly set, then it uses by default
+<code class="highlighter-rouge">JEKYLL_ENV=development</code></p>
+
+<p>When using a <a href="http://bundler.io/man/bundle-exec.1.html">Bundler command</a>
+it should be used like:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nv">JEKYLL_ENV</span><span class="o">=</span>production bundle <span class="nb">exec </span>jekyll build
+</code></pre>
+</div>
+
+<h2 id="detecting-the-environment-in-templates">Detecting the environment in templates</h2>
+
+<p>To detect the environment in Jekyll liquid templates,
+<a href="http://www.rubydoc.info/gems/jekyll/3.1.6/Jekyll%2FDrops%2FJekyllDrop%3Aenvironment">jekyll.environment</a> variable contains the current environment.</p>
+
+<p>For example, to avoid showing post tags in development:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">jekyll</span><span class="p">.</span><span class="nv">environment</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"production"</span><span class="w"> </span><span class="p">%}</span>
+ <span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">tags</span><span class="w"> </span><span class="p">}}</span>
+<span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
+</code></pre>
+</div>
+
+
+
+
+<div class="">
+  <div class="">
+    <h2>Graphical summary for how to prevent content displaying in a jekyll development environment</h2>
+    <div class="mermaid text-sm-center">
+      graph LR
+  template["Configure different workflows <br > for each environment"];
+  template ==> build{"build the site with <br> JEKYLL_ENV"};
+  build ==>|development| development["if JEKYLL_ENV=development won't load code"]
+  build ==>|production| production["JEKYLL_ENV=production will load code"]
+
+    </div>  
+  </div>
+</div>
+
 
     
   </div>
@@ -246,14 +293,21 @@ Categories:
 
 
 <span class="entry-categories">
-  git
+  ruby
 </span>
 
 ,
 
 
 <span class="entry-categories">
-  concepts
+  jekyll
+</span>
+
+,
+
+
+<span class="entry-categories">
+  tutorials
 </span>
 
 
@@ -272,7 +326,7 @@ Categories:
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/git-basic-concepts/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/how-to-prevent-content-displaying-in-a-jekyll-development-environment/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */

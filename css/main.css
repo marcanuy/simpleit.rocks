@@ -325,6 +325,15 @@ pre {
       .post-content h4 {
         font-size: 18px; } }
 
+.si-ad {
+  padding: 5px; }
+
+.si-ad-development {
+  background-color: #00ff00; }
+
+span .edgeLabel {
+  color: #424242; }
+
 /**
  * Syntax highlighting styles
  */
