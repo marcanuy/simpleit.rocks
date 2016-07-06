@@ -75,10 +75,10 @@
   <div class="jumbotron jumbotron-fluid bg-inverse">
     <div class="container">
       
-      <h1 class="title">Jekyll<small class="text-muted subtitle">Static website generator</small></h1>
+      <h1 class="title">Jekyll</h1>
       
       <p class="lead">
-	
+	<small class="text-muted subtitle">Static website generator</small>
       </p>
     </div>
   </div>
@@ -106,289 +106,85 @@
   <div class="col-md-3 col-md-push-9">
   </div> <!-- col 3 toc -->
   <div class="col-md-9 col-md-pull-3">
-    
-
 
     
     
     
 
-    <p>categories:docsrubyjekyll</p>
-    <p>current category: jekyll</p>
-    <p>Content de <strong>Jekyll</strong> category</p>
-
-    <h2>Subcategories</h2>
-
-    
-    
-    
-    
-    
-    
-    
-    
-    Jekyll
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
 
-    <h1>Childs <small>subcategories order</small></h1>
-    
+    <article>
+      <h2>Jekyll articles</h2>
+      <div class="list-group">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a class="list-group-item" href="/jekyll/">
+	  Jekyll
+	</a>
+	
+	
+      </div>
+    </article>
 
-    <h1>This category posts links:</h1>
-    <ul>
+    
+    
+    
+    <h2>Articles in jekyll category</h2>
+    <div class="list-group">
       
       
       
+      <a class="list-group-item" href="/jekyll/">Jekyll</a>
       
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      <li>
-	<a href="/jekyll/">Jekyll</a>
-      </li>
-      
-      
-    </ul>
-
-    <h1>This category posts full articles:</h1>
+    </div>
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <h1><a href="/jekyll/">Jekyll</a></h1>
-    <div><h1 id="concepts">Concepts</h1>
-
-<blockquote cite="https://jekyllrb.com/docs/structure/">
-  <p>Jekyll is, at its core, a text transformation engine. 
-The concept behind the system is this: you give it text written in your
-favorite markup language, be that Markdown, Textile, or just plain HTML, 
-and it churns that through a layout or a series of layout files. 
-Throughout that process you can tweak how you want the site URLs to look, 
-what data gets displayed in the layout, and more.</p>
-</blockquote>
-
-<p>Jekyll <em>Post</em> and <em>Pages</em> filenames works as urls slugs.</p>
-
-<h2 id="front-matter">Front Matter</h2>
-
-<p>The <a href="https://jekyllrb.com/docs/frontmatter/">Front Matter</a> is the piece of code that tell Jekyll to process a page or post in a special way, where you can change the <em>layout</em>, <em>language</em> or more configurations that if not specified they just took the default settings of <em>config.yml</em>.
-.</p>
-
-<p>e.g.:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>---
-layout: post
-title: My cool blog
----
-</code></pre>
-</div>
-
-<p>It has two requirements:</p>
-
-<ul>
-  <li>It must be at the beginning of the file</li>
-  <li>It must be in <a href="http://yaml.org/">YAML</a> format</li>
-</ul>
-
-<h2 id="posts-formatting-syntax">Posts formatting syntax</h2>
-
-<p>The most common formatting syntax used in posts and pages are:</p>
-
-<ul>
-  <li>Markdown <a href="https://daringfireball.net/projects/markdown/">https://daringfireball.net/projects/markdown/</a></li>
-  <li>kramdown (a more powerful Markdown superset and currently used in <em>Github pages</em>)</li>
-</ul>
-
-<h3 id="syntax-highlighting">Syntax highlighting</h3>
-
-<p>By default Jekyll uses <a href="https://github.com/jneen/rouge">Rouge</a> as its syntax highlter and is compatible with <a href="http://pygments.org/">Pygments</a> highlighter.</p>
-
-<h2 id="templating-system">Templating system</h2>
-
-<p>Jekyll uses the <strong>Liquid</strong> template engine: <a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">https://github.com/Shopify/liquid/wiki/Liquid-for-Designers</a>.</p>
-
-<p>The template files processed by <em>Liquid</em> uses three main concepts to generate the valid HTML files:</p>
-
-<ul>
-  <li>
-    <p><strong>Tags</strong></p>
-
-    <p>The programming logic in Luiqid themes</p>
-
-    <p><a href="https://help.shopify.com/themes/liquid/tags">https://help.shopify.com/themes/liquid/tags</a></p>
-
-    <p>e.g. <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">content</span><span class="w"> </span><span class="err">==</span><span class="w"> </span><span class="err">blank</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="p">}</span></code></p>
-  </li>
-  <li>
-    <p><strong>Objects</strong></p>
-
-    <p>Attributes containers to display content</p>
-
-    <p><a href="https://help.shopify.com/themes/liquid/objects">https://help.shopify.com/themes/liquid/objects</a></p>
-
-    <p>e.g. <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">page.slug</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="err">}</span></code></p>
-  </li>
-  <li>
-    <p><strong>Filters</strong></p>
-
-    <p>Modify the default output for each component</p>
-
-    <p><a href="https://help.shopify.com/themes/liquid/filters">https://help.shopify.com/themes/liquid/filters</a></p>
-
-    <p>e.g. <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">page.url</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">prepend:</span><span class="w"> </span><span class="err">site.baseurl</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="err">}</span></code></p>
-  </li>
-  <li>Liquid reference: <a href="https://help.shopify.com/themes/liquid">https://help.shopify.com/themes/liquid</a></li>
-  <li>Liquid cheatsheet: <a href="https://www.shopify.ca/partners/shopify-cheat-sheet">https://www.shopify.ca/partners/shopify-cheat-sheet</a></li>
-</ul>
-
-<h3 id="related-links">Related links</h3>
-
-<ul>
-  <li><a href="https://github.com/Shopify/liquid/wiki/liquid-for-designers">https://github.com/Shopify/liquid/wiki/liquid-for-designers</a></li>
-  <li><a href="https://www.shopify.ca/partners/shopify-cheat-sheet">https://www.shopify.ca/partners/shopify-cheat-sheet</a></li>
-  <li><a href="https://jekyllrb.com/docs/templates/">https://jekyllrb.com/docs/templates/</a></li>
-  <li><a href="https://help.shopify.com/themes/liquid/">https://help.shopify.com/themes/liquid/</a>
-    <ul>
-      <li><a href="https://www.shopify.ca/partners/shopify-cheat-sheet">https://www.shopify.ca/partners/shopify-cheat-sheet</a></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="jekyll-collections-workflow">Jekyll Collections Workflow</h2>
-
-<div class="mermaid">
-graph TB;
-    A["Add *my_collection* as a collection directory in /_config.yml"]--&gt;B("Add markdown files to *my_collection* directory");
-	B--&gt;C{"Is *output: true* in _config.yml"};
-	C--&gt;|yes|D["each file in the *my_collection* can be accesed through the url *my_collection/file* "];
-	C--&gt;|no|E["collections content is only available through the variable *site.my_collection* or *site.collections*"]
-</div>
-
-<h1 id="commands">Commands</h1>
-
-<ul>
-  <li>Local instance with bundle</li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>bundle <span class="nb">exec </span>jekyll serve --watch --drafts
-</code></pre>
-</div>
-
-<h1 id="references">References</h1>
-
-<ul>
-  <li><a href="https://jekyllrb.com/docs/home/">Jekyll Official Documentation</a></li>
-</ul>
-
-</div>
-    
-    
-
     <hr />
-    Posts in this category:
-    
-    <p>postcats: docsrubyjekyll </p>
-    <p>docsrubyjekyll</p>
-    
-    <h2>Jekyll</h2>
-    
-    
 
+    <div class="content">
+      
+
+    </div>
   </div> <!-- col 9 content -->
 </div> <!-- main row -->
 

@@ -75,10 +75,10 @@
   <div class="jumbotron jumbotron-fluid bg-inverse">
     <div class="container">
       
-      <h1 class="title">Kramdown category<small class="text-muted subtitle"></small></h1>
+      <h1 class="title">Kramdown category</h1>
       
       <p class="lead">
-	
+	<small class="text-muted subtitle"></small>
       </p>
     </div>
   </div>
@@ -106,304 +106,85 @@
   <div class="col-md-3 col-md-push-9">
   </div> <!-- col 3 toc -->
   <div class="col-md-9 col-md-pull-3">
-    
-
 
     
     
     
 
-    <p>categories:docskramdown</p>
-    <p>current category: kramdown</p>
-    <p>Content de <strong>Kramdown category</strong> category</p>
-
-    <h2>Subcategories</h2>
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    Kramdown category
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
 
-    <h1>Childs <small>subcategories order</small></h1>
-    
-    algoabajo
-    
+    <article>
+      <h2>Kramdown category articles</h2>
+      <div class="list-group">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a class="list-group-item" href="/kramdown-general-concepts/">
+	  kramdown General Concepts
+	</a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+      </div>
+    </article>
 
-    <h1>This category posts links:</h1>
-    <ul>
+    
+    
+    
+    <h2>Articles in kramdown category</h2>
+    <div class="list-group">
       
       
       
+      <a class="list-group-item" href="/kramdown-general-concepts/">kramdown General Concepts</a>
       
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      <li>
-	<a href="/kramdown-general-concepts/">kramdown General Concepts</a>
-      </li>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </ul>
-
-    <h1>This category posts full articles:</h1>
+    </div>
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <h1><a href="/kramdown-general-concepts/">kramdown General Concepts</a></h1>
-    <div><ul id="markdown-toc">
-  <li><a href="#concepts" id="markdown-toc-concepts">Concepts</a></li>
-  <li><a href="#syntax" id="markdown-toc-syntax">Syntax</a>    <ul>
-      <li><a href="#blockquotes" id="markdown-toc-blockquotes">Blockquotes</a></li>
-      <li><a href="#code-syntax-highlighting" id="markdown-toc-code-syntax-highlighting">Code syntax highlighting</a>        <ul>
-          <li><a href="#links" id="markdown-toc-links">Links</a></li>
-        </ul>
-      </li>
-      <li><a href="#table-of-content-generation" id="markdown-toc-table-of-content-generation">Table of content generation</a></li>
-    </ul>
-  </li>
-  <li><a href="#references" id="markdown-toc-references">References</a></li>
-</ul>
-
-<h1 id="concepts">Concepts</h1>
-
-<p>Markdown superset converter</p>
-
-<h1 id="syntax">Syntax</h1>
-
-<h2 id="blockquotes">Blockquotes</h2>
-
-<p>Two alternatives for fully semantically correct <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">blockquotes</a>:</p>
-
-<ul>
-  <li>Adding the <em>cite</em> attribute in <em>blockquote</em> tag:</li>
-</ul>
-
-<pre><code class="language-kramdown">&gt; The rule of thumb is, don't introduce a new attribute outside of the __init__ method, otherwise you've given the caller an object that isn't fully initialized.
-{: cite="https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/"}
-</code></pre>
-
-<p>Generates the following HTML:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;blockquote</span> <span class="na">cite=</span><span class="s">"https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;p&gt;</span>The rule of thumb is, don’t introduce a new attribute outside of the <span class="nt">&lt;strong&gt;</span>init<span class="nt">&lt;/strong&gt;</span> method, otherwise you’ve given the caller an object that isn’t fully initialized.
-<span class="nt">&lt;/blockquote&gt;</span>
-</code></pre>
-</div>
-
-<ul>
-  <li>Adding a <em>cite</em> element inside the <em>blockquote</em></li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gt">&gt; The secret to creativity is knowing how to hide your sources. </span>
-<span class="gt">&gt; -- &lt;cite&gt;[Albert Einstein][1]&lt;/cite&gt;</span>
-
-<span class="p">[</span><span class="ss">1</span><span class="p">]:</span><span class="sx">http://www.quotedb.com/quotes/2112</span>
-</code></pre>
-</div>
-
-<p>Generates in HTML:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;blockquote&gt;</span>
-  <span class="nt">&lt;p&gt;</span>The secret to creativity is knowing how to hide your sources. 
-  – <span class="nt">&lt;cite&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://www.quotedb.com/quotes/2112"</span><span class="nt">&gt;</span>Albert Einstein<span class="nt">&lt;/a&gt;&lt;/cite&gt;</span>
-  <span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;/blockquote&gt;</span>
-</code></pre>
-</div>
-
-<h2 id="code-syntax-highlighting">Code syntax highlighting</h2>
-
-<p><em>kramdown</em> can use <a href="https://github.com/jneen/rouge">rouge</a> or <a href="http://coderay.rubychan.de/">Coderay</a> for <a href="http://kramdown.gettalong.org/syntax_highlighter/coderay.html">syntax highlighting</a>.</p>
-
-<p>The language of the source code can be specified appending the name of the language after the opening line. e.g. for HTML:</p>
-
-<ul>
-  <li>With tildes</li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>~~~ html
-&lt;p&gt; this is my paragraph&lt;/p&gt;
-~~~
-</code></pre>
-</div>
-
-<ul>
-  <li>Using <abbr title="Inline Attribute List">IAL</abbr></li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>~~~
-def myfunction?
-  1618
-end
-~~~
-{: .language-ruby}
-</code></pre>
-</div>
-
-<p>In Jekyll also works:</p>
-
-<ul>
-  <li>Using backticks:</li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'redcarpet'</span>
-<span class="n">markdown</span> <span class="o">=</span> <span class="no">Redcarpet</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Hello World!"</span><span class="p">)</span>
-<span class="nb">puts</span> <span class="n">markdown</span><span class="p">.</span><span class="nf">to_html</span>
-</code></pre>
-</div>
-
-<ul>
-  <li>Or with curly braces:</li>
-</ul>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">foo</span>
-  <span class="nb">puts</span> <span class="s1">'foo'</span>
-<span class="k">end</span></code></pre></figure>
-
-<h3 id="links">Links</h3>
-
-<ul>
-  <li>Languages Supported <a href="https://highlightjs.org/static/demo/">https://highlightjs.org/static/demo/</a></li>
-  <li>Languages supported by Rouge: <a href="https://github.com/jneen/rouge/tree/master/lib/rouge/lexers">https://github.com/jneen/rouge/tree/master/lib/rouge/lexers</a></li>
-</ul>
-
-<h2 id="table-of-content-generation">Table of content generation</h2>
-
-<p>Kramdown can generate an automatic <a href="https://en.wikipedia.org/wiki/Table_of_contents">Table of Contents</a> for all the <em>headers</em> that have an <em>id</em>.</p>
-
-<p>As by default it generates automatic <em>ids</em> for all the header, there is only needed to add a list and name using <abbr title="Inline Attribute List">IAL</abbr> as the placeholder of the generated <abbr title="Table Of Contents">TOC</abbr>.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">*</span> TOC
-{:toc}
-</code></pre>
-</div>
-
-<p><a href="http://kramdown.gettalong.org/converter/html.html#toc">http://kramdown.gettalong.org/converter/html.html#toc</a></p>
-
-<h1 id="references">References</h1>
-
-<ul>
-  <li>Documentation <a href="http://kramdown.gettalong.org/syntax.html">http://kramdown.gettalong.org/syntax.html</a></li>
-  <li>Quickref <a href="http://kramdown.gettalong.org/quickref.html">http://kramdown.gettalong.org/quickref.html</a></li>
-</ul>
-
-</div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
     <hr />
-    Posts in this category:
-    
-    <p>postcats: docskramdown </p>
-    <p>docskramdown</p>
-    
-    <h2>kramdown General Concepts</h2>
-    
-    
 
+    <div class="content">
+      
+
+    </div>
   </div> <!-- col 9 content -->
 </div> <!-- main row -->
 

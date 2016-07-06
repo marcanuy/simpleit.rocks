@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 05 Jul 2016 09:54:50 -0300</pubDate>
-    <lastBuildDate>Tue, 05 Jul 2016 09:54:50 -0300</lastBuildDate>
+    <pubDate>Wed, 06 Jul 2016 00:49:04 -0300</pubDate>
+    <lastBuildDate>Wed, 06 Jul 2016 00:49:04 -0300</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -538,7 +538,7 @@ Use relative sizes for elements to avoid breaking layout.&lt;/p&gt;
       </item>
     
       <item>
-        <title>Letters for Spanish in Linux</title>
+        <title>How to Type Spanish Characters, Accents and Symbols in Linux</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
 &lt;p&gt;Special characters in Linux can be always entered by typing Unicode characters.&lt;/p&gt;
