@@ -8,6 +8,9 @@ layout: base_post
     {% if page.toc %}
     {{ content | toc_only }}
     {% endif %}
+
+    {% include adsense_side_content.html %}
+
   </div>
   <div class="col-md-9 col-md-pull-3 sit-content">
 
@@ -17,7 +20,8 @@ layout: base_post
     </p>
     {% endif %}
 
-    
+    {% include adsense_before_content.html %}
+
     {{ content }}
     
   </div>
@@ -25,6 +29,12 @@ layout: base_post
 
 {% include post-categories.html %}
 
-{% include disqus.html %}
-  
+<div class="row">
+  <div class="col-md-6">
+    {% include disqus.html %}
+  </div>
+  <div class="col-md-6">
+    {% include adsense_after_content.html %}
+  </div>
+</div>
 

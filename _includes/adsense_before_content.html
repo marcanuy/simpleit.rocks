@@ -1,0 +1,20 @@
+<div class="si-ad">
+  {% if jekyll.environment == site.production_env %}
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_before_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="2929264389"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  {% else %}
+
+  <div class="si-ad-development">Adsense before content</div>
+
+  {% endif %}
+</div>

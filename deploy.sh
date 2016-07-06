@@ -1,6 +1,11 @@
 #!/bin/sh
 
+# any command that fails will cause the script to abort.
 set -e
+
+read -rsp $'Will execute: JEKYLL_ENV=production bundle exec jekyll build ...\n' -n1 key
+
+JEKYLL_ENV=production bundle exec jekyll build
 
 # Check for uncommitted changes or untracked files
 ####[ -n "$(git status --porcelain)" ] && git status && exit 1

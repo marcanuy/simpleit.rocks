@@ -60,3 +60,4 @@ facebook:
 #     author - Page-, post-, or document-specific author information (see below)                       #
 ########################################################################################################
 
+production_env: "production" #name of the production environment
