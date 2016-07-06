@@ -62,3 +62,7 @@ Each category has all the sub-posts that belong to that category, this is
 what I found more helpful when dealing with a specific technology so I
 can look up fast any concept or special syntax belonging to a particular
 language.
+
+## Conventions
+
+- _tags_ should be in __plural__ form.
