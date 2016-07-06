@@ -1,6 +1,6 @@
 ---
-title: Letters for Spanish in Linux
-subtitle: Special codes
+title: How to Type Spanish Characters, Accents and Symbols in Linux
+subtitle: Environment independent
 description: Writing in Spanish in Linux. How to type Spanish special characters.
 layout: post
 ---
