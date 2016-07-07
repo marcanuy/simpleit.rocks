@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 06 Jul 2016 17:34:47 -0300</pubDate>
-    <lastBuildDate>Wed, 06 Jul 2016 17:34:47 -0300</lastBuildDate>
+    <pubDate>Thu, 07 Jul 2016 01:27:52 -0300</pubDate>
+    <lastBuildDate>Thu, 07 Jul 2016 01:27:52 -0300</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -613,125 +613,140 @@ it should be used like:&lt;/p&gt;
       </item>
     
       <item>
-        <title>How to Type Spanish Characters, Accents and Symbols in Linux</title>
+        <title>How To Handle Adsense In A Jekyll Development Environment</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
-&lt;p&gt;Special characters in Linux can be always entered by typing Unicode characters.&lt;/p&gt;
+&lt;p&gt;Developing a site that uses Google Adsense has to be treated carefully. 
+Developers often want to stop showing&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;This method is independent from the keyboard layout&lt;/strong&gt; and
-&lt;strong&gt;the language of the environment&lt;/strong&gt;, so it is always an option.&lt;/p&gt;
+&lt;p&gt;It presents the following problems:&lt;/p&gt;
 
-&lt;blockquote cite=&quot;http://www.unicode.org/standard/standard.html&quot;&gt;
-  &lt;p&gt;The Unicode Standard is a character coding system designed to support the worldwide interchange, processing, and display of the written texts of the diverse languages and technical disciplines of the modern world.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;accidental clicks&lt;/strong&gt;. Avoid &lt;em&gt;repeatedly accidentally clicking&lt;/em&gt; on served ads while 
+developing the site which can lead to an account ban.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote cite=&quot;https://support.google.com/adsense/answer/1348754?hl=en#q1&quot;&gt;
+  &lt;p&gt;Although publishers are not permitted to click on their own ads for any
+reason, we do understand that accidental clicks may occur. We therefore
+don’t require that you contact us every time you click on your ads. Rest
+assured that your account is being properly credited for all clicks and
+impressions we consider to be valid.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;spanish-unicode-characters-table&quot;&gt;Spanish Unicode Characters Table&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;speed&lt;/strong&gt;. Testing the site locally without waiting for each ad request 
+to resolve, avoiding any javascript external request.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;To type this kind of characters, especially those used in Spanish language,
-the code point in hexadecimal form has to be entered pressing simulatenously
-&lt;kbd&gt;&lt;kbd&gt;Control&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;U&lt;/kbd&gt;&lt;/kbd&gt; and then 
-entering the &lt;kbd&gt;Character Hex Value&lt;/kbd&gt;&lt;/p&gt;
+&lt;p&gt;There are two main options to avoid these problems:&lt;/p&gt;
 
-&lt;table class=&quot;table&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Spanish letter&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Hex value&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Key combination&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;á&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;00e1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00e1&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;Á&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;00c1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00c1&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;é&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;00e9&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00e9&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;É&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;00c9&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00c9&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;í&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;00ed&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00ed&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;Í&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;00cd&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00cd&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;ó&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;00f3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00f3&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;Ó&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;00d3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00d3&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;ú&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;00fa&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00fa&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;Ú&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;00da&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00da&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;ñ&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;00f1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00f1&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;Ñ&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;00d1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00d1&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;ü&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;00fc&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00fc&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;Ü&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;00dc&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00dc&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;¡&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;00a1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00a1&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;¿&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;00bf&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;u&lt;/kbd&gt; &lt;kbd&gt;00bf&lt;/kbd&gt;&lt;/kbd&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;ul&gt;
+  &lt;li&gt;telling Google that the &lt;em&gt;ad&lt;/em&gt; request is only for testing purposes&lt;/li&gt;
+  &lt;li&gt;avoid the javascript request at all&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;alternative-1-google-code-parameter-to-make-tests&quot;&gt;Alternative 1: Google code parameter to make tests&lt;/h2&gt;
+
+&lt;p&gt;There is a special parameter that can be enabled in Google Ad code to
+avoid accidental clicks and set them up as tests.&lt;/p&gt;
+
+&lt;p&gt;The downside of this approach is that it requires
+&lt;a href=&quot;https://developers.google.com/custom-search-ads/docs/reference&quot;&gt;more checks&lt;/a&gt;
+to modify an &lt;em&gt;ad&lt;/em&gt; code and if not enabled in production, &lt;strong&gt;ads clicks won’t
+generate any revenue&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;blockquote cite=&quot;https://developers.google.com/custom-search-ads/docs/reference&quot;&gt;
+  &lt;p&gt;To use this code you must have an AdSense account
+with active permission to use AdSense Custom Search Ads.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The parameter is &lt;code class=&quot;highlighter-rouge&quot;&gt;&#39;adtest&#39; : &#39;on&#39;&lt;/code&gt; and it is defined:&lt;/p&gt;
+
+&lt;blockquote cite=&quot;https://developers.google.com/custom-search-ads/docs/reference#page-level-parameter-descriptions&quot;&gt;
+  &lt;p&gt;The adtest parameter is used to indicate that a request for ads is a test. 
+When the adtest parameter has a value of on, Google treats the request as
+a test and does not count the ad impressions or track the clickthrough results.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;An &lt;em&gt;easier&lt;/em&gt; and &lt;em&gt;safer&lt;/em&gt; alternative is to avoid the ad request at all.&lt;/p&gt;
+
+&lt;h2 id=&quot;alternative-2-stop-showing-adsense-ads&quot;&gt;Alternative 2: Stop showing adsense ads&lt;/h2&gt;
+
+&lt;p&gt;Jekyll templates can access the value of an environment variable passed
+at build time to avoid any external javascript request. Based on this
+variable the ads can be chosen to be shown or hidden depending on its value.&lt;/p&gt;
+
+&lt;p&gt;When building the site with &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll build&lt;/code&gt; the variable
+&lt;a href=&quot;https://jekyllrb.com/docs/configuration/#specifying-a-jekyll-environment-at-build-time&quot;&gt;JEKYLL_ENV&lt;/a&gt; 
+defaults to &lt;em&gt;development&lt;/em&gt;, setting it up as &lt;em&gt;production&lt;/em&gt; makes it
+possible to hide the ads in liquid templates&lt;/p&gt;
+
+&lt;p&gt;To build a production ready jekyll site it can be specified like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JEKYLL_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production jekyll build
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;When using a [Bundler command]
+it should be used like:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JEKYLL_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;environment-in-jekyll-liquid-template&quot;&gt;Environment in Jekyll liquid template&lt;/h2&gt;
+
+&lt;p&gt;The environment can be accessed through the variable &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll.environment&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The Adsense ad code provided by Google can be surrounded with the
+environment detection so they only gets loaded in production like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;jekyll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;production&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+  &amp;lt;script async src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+  &amp;lt;!-- simpleit_after_content --&amp;gt;
+  &amp;lt;ins class=&quot;adsbygoogle&quot;
+       style=&quot;display:block&quot;
+       data-ad-client=&quot;ca-pub-****************&quot;
+       data-ad-slot=&quot;***********&quot;
+       data-ad-format=&quot;auto&quot;&amp;gt;&amp;lt;/ins&amp;gt;
+  &amp;lt;script&amp;gt;
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  &amp;lt;/script&amp;gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;A good practice is also to include something locally when not
+showing them, to quickly identify ads placement, it can be:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;text with some color different from the rest of the site design&lt;/li&gt;
+  &lt;li&gt;a &lt;a href=&quot;http://placehold.it/&quot;&gt;placeholder&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;an image like the ad from &lt;a href=&quot;https://support.google.com/adsense/answer/185666?hl=en&quot;&gt;example ads&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 </description>
         <pubDate>Mon, 06 Jun 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/writing-spanish-in-linux/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/writing-spanish-in-linux/</guid>
+        <link>http://simpleit.rocks/how-to-handle-adsense-in-a-jekyll-development-environment/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/how-to-handle-adsense-in-a-jekyll-development-environment/</guid>
+        
+        <category>jekyll</category>
+        
+        <category>environments</category>
+        
+        <category>adsense</category>
+        
+        <category>development</category>
         
         
         <category>docs</category>
         
-        <category>linux</category>
+        <category>ruby</category>
+        
+        <category>jekyll</category>
+        
+        <category>tutorials</category>
         
       </item>
     
