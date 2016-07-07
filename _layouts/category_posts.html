@@ -23,11 +23,19 @@ layout: base_post
     {% if has_subcategories %}
     <h2>{{ current_category | capitalize }} Subcategories</h2>
     <div class="list-group">
+      
+      {% comment %} Show subcategories in the order defined by page.childs {% endcomment %}
+      {% for child in page.childs %}
       {% for my_page in site.pages %}
       {% if my_page.dir contains page.dir and my_page.dir != page.dir %}
+      {% assign my_page_category = my_page.dir | split:"/" | last %}
+      {% if child == my_page_category %}
       <a class="list-group-item" href="{{ my_page.url }}">{{ my_page.title }}</a>
       {% endif %}
+      {% endif %}
       {% endfor %}
+      {% endfor %}
+      
     </div>
     {% endif %}
 
