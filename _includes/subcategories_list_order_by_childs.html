@@ -1,0 +1,12 @@
+{% for child in include.page.childs %}
+{% for my_page in site.pages %}
+{% if my_page.dir contains include.page.dir and my_page.dir != include.page.dir %}
+{% assign my_page_category = my_page.dir | split:"/" | last %}
+{% if child == my_page_category %}
+<a class="list-group-item" href="{{ my_page.url }}">
+  {{ my_page.title }}
+</a>
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endfor %}
