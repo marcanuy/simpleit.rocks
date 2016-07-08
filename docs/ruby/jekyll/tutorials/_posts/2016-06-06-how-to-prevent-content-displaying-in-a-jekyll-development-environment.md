@@ -22,7 +22,7 @@ goal: > # Goal graph
       local->>local: webpage loading starts
       local->>local: webpage ready
 flow: > # Process flow graph
-  graph LR
+  graph TB
     template["Configure different workflows <br > for each environment"];
     template ==> build{"build the site with <br> JEKYLL_ENV"};
     build ==>|development| development["if JEKYLL_ENV=development won't load code"]
