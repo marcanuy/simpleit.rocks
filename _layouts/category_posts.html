@@ -10,6 +10,7 @@ layout: base_post
   </div> <!-- col 3 toc -->
   <div class="col-md-9 col-md-pull-3">
 
+
     {% comment %}shift the first empty splitted element{% endcomment %}
     {% assign ancestors_and_self = page.dir | split:"/" | shift %}
     {% assign current_category = ancestors_and_self | last %}
@@ -24,18 +25,17 @@ layout: base_post
     <h2>{{ current_category | capitalize }} Subcategories</h2>
     <div class="list-group">
       
-      {% comment %} Show subcategories in the order defined by page.childs {% endcomment %}
-      {% for child in page.childs %}
-      {% for my_page in site.pages %}
-      {% if my_page.dir contains page.dir and my_page.dir != page.dir %}
-      {% assign my_page_category = my_page.dir | split:"/" | last %}
-      {% if child == my_page_category %}
-      <a class="list-group-item" href="{{ my_page.url }}">{{ my_page.title }}</a>
-      {% endif %}
-      {% endif %}
-      {% endfor %}
-      {% endfor %}
+      {% comment %}
+      if page has a childs attribute
+      Show subcategories in the order defined by page.childs
+      if not, show them in no particular order
+      {% endcomment %}
       
+      {% if page.childs %}
+      {% include subcategories_list_order_by_childs.html page=page %}
+      {% else %}
+      {% include subcategories_list_unsorted.html page=page %}
+      {% endif %}
     </div>
     {% endif %}
 
