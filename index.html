@@ -23,15 +23,16 @@ description: >
 
     {% assign categories = first_level_categories | split: ',' | uniq %}
 
-    <div class="list-group">
+    <nav class="nav nav-inline">
       {% for category in categories %}
       {% unless category == blank %}
-      <a class="list-group-item" href="{{ site.baseurl }}/{{ site.docs_dir}}/{{ category | strip }}/">
+
+      <a class="nav-link" href="{{ site.baseurl }}/{{ site.docs_dir}}/{{ category | strip }}/">
 	{{ category | strip | capitalize }}
       </a>
       {% endunless %}
       {% endfor %}
-    </div>
+    </nav>
   </div> <!--containter-->
   
   <hr />
