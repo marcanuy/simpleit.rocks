@@ -101,18 +101,65 @@
 </header>
 
 
-    <div class="container">
+    <div class="container-fluid">
       <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <p class="post-meta">
       
+      <span><div class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="list-inline">
+
+
+    
+    
+
+    
+    
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      <i class="fa fa-home" aria-hidden="true"></i>
+      <a itemscope itemtype="http://schema.org/Thing"
+	 itemprop="item" href="/"> Home</a>
+      <meta itemprop="position" content="1" />
+    </li>
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
       
-      •
-      <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-	<span itemprop="name">marcanuy</span>
-      </span>
       
+      
+      
+      <a itemscope itemtype="http://schema.org/Thing"
+	 itemprop="item" href="/docs">
+        <span itemprop="name">docs</span>
+        <!--img itemprop="image" src="http://example.com/images/icon-bookicon.png" alt="Books"/-->
+      </a>
+      
+      <meta itemprop="position" content="2" />
+    </li>
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      <div itemscope itemtype="http://schema.org/Thing"
+	   itemprop="item">
+	<span itemprop="name">git</span>
+      </div>
+      
+      <meta itemprop="position" content="3" />
+    </li>
+    
+  </ol>
+</div>
+</span>
     </p>
   </header>
 
@@ -121,6 +168,7 @@
   <div class="col-md-3 col-md-push-9">
   </div> <!-- col 3 toc -->
   <div class="col-md-9 col-md-pull-3">
+
 
     
     
@@ -136,6 +184,8 @@
       
       
       
+
+
 
 
 
@@ -296,9 +346,23 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="list-group-item" href="/docs/git/tutorials/">
   Git Common Use Cases
 </a>
+
+
 
 
 
@@ -458,11 +522,11 @@
   </div>
 </footer>
 
-<div class="si-license">
+<div class="si-license bg-inverse">
   <div class="text-muted text-sm-center">
     <small>
       Except as otherwise noted, the content of this page is licensed under
-      <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
+      <a rel="license" class="text-info" href="https://creativecommons.org/licenses/by-nc/4.0/">
 	<i class="fa fa-creative-commons" aria-hidden="true"></i> BY-NC 4.0
       </a>
     </small>

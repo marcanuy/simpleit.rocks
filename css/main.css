@@ -334,6 +334,14 @@ pre {
 span .edgeLabel {
   color: #424242; }
 
+.breadcrumbs .prompt {
+  margin-left: .5em;
+  font-family: Flux-Regular,SourceSansProRegular,Arial,sans-serif;
+  font-size: 80%;
+  letter-spacing: -0.1rem; }
+.breadcrumbs ol {
+  margin-left: 0px; }
+
 /**
  * Syntax highlighting styles
  */
