@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 08 Jul 2016 15:37:07 -0300</pubDate>
-    <lastBuildDate>Fri, 08 Jul 2016 15:37:07 -0300</lastBuildDate>
+    <pubDate>Fri, 08 Jul 2016 19:30:12 -0300</pubDate>
+    <lastBuildDate>Fri, 08 Jul 2016 19:30:12 -0300</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -538,6 +538,133 @@ Use relative sizes for elements to avoid breaking layout.&lt;/p&gt;
       </item>
     
       <item>
+        <title>How to implement breadcrumbs on a Jekyll site with nested categories</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;One of the ways to structure content in a Jekyll environment is to put
+&lt;em&gt;posts&lt;/em&gt; in subdirectories, where each subdirectory becomes a &lt;em&gt;category&lt;/em&gt;
+of the &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;For example, the post &lt;code class=&quot;highlighter-rouge&quot;&gt;2016-06-08-my_title.md&lt;/code&gt; in this directory structure
+&lt;code class=&quot;highlighter-rouge&quot;&gt;/docs/science/_posts/2016-06-08-my_title.md&lt;/code&gt; automatically gets the 
+categories &lt;code class=&quot;highlighter-rouge&quot;&gt;docs&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;science&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.
+└── docs
+    ├── index.md
+    └── science
+        ├── index.md
+        └── _posts
+            └── 2016-06-08-my_title.md
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then a &lt;em&gt;breadcrumb&lt;/em&gt; included in each post/category layout, can automatically
+generate a link to each path of the structure&lt;/p&gt;
+
+&lt;h2 id=&quot;breadcrumb-code&quot;&gt;Breadcrumb code&lt;/h2&gt;
+
+&lt;p&gt;The &lt;em&gt;breadcrumbs&lt;/em&gt; code should be placed at &lt;code class=&quot;highlighter-rouge&quot;&gt;/_includes/breadcrumbs.html&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;categories&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;ow&quot;&gt;contains&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;posts&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;comment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;&lt;span class=&quot;c&quot;&gt; posts are like /docs/python/_posts/2016-06-06-foobar.md &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endcomment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;categories&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;comment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;&lt;span class=&quot;c&quot;&gt; pages are like /docs/python/index.md &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endcomment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;categories&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+	
+    &amp;lt;a href=&quot;/&quot;&amp;gt;Home&amp;lt;/a&amp;gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;category&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;categories&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &amp;lt;span class=&quot;prompt&quot;&amp;gt;&amp;gt;&amp;gt;&amp;lt;/span&amp;gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;/&#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;category&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;forloop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;last&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;_posts&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;elsif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;forloop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;last&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &amp;lt;a href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/a&amp;gt; 
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;posts-layouts&quot;&gt;Posts layouts&lt;/h2&gt;
+
+&lt;p&gt;Each layout used in category pages and posts should &lt;em&gt;include&lt;/em&gt;
+the &lt;em&gt;breadcrumbs.html&lt;/em&gt; code, with the current &lt;code class=&quot;highlighter-rouge&quot;&gt;page path&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt;
+parameters.&lt;/p&gt;
+
+&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;/_layouts/post.html&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;..
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;breadcrumbs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+..
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;output&quot;&gt;Output&lt;/h2&gt;
+
+&lt;p&gt;The previous scheme would generate the following &lt;em&gt;breadcrumb&lt;/em&gt; for each case.&lt;/p&gt;
+
+&lt;table class=&quot;table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;URL&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Generated Breadcrumb&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Served Filename&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;/&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;home&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;index.html&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;/docs&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;home &amp;gt; docs&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;docs/index.md&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;/docs/science&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;home &amp;gt; docs &amp;gt; science&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;docs/science/index.md&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;/docs/science/my_title *&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;home &amp;gt; docs &amp;gt; science &amp;gt; my title&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;docs/science/_posts/2016-06-08-my_title.md&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p class=&quot;alert alert-warning&quot; role=&quot;alert&quot;&gt;(*) Using &lt;em&gt;titles&lt;/em&gt; without &lt;em&gt;dates&lt;/em&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;permalink: /:title/&lt;/code&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 07 Jun 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/</guid>
+        
+        <category>git</category>
+        
+        <category>server</category>
+        
+        <category>bare-repository</category>
+        
+        
+        <category>docs</category>
+        
+        <category>ruby</category>
+        
+        <category>jekyll</category>
+        
+        <category>tutorials</category>
+        
+      </item>
+    
+      <item>
         <title>How To Prevent Content Displaying In A Jekyll Development Environment</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
@@ -600,144 +727,6 @@ it should be used like:&lt;/p&gt;
         <category>analytics</category>
         
         <category>disqus</category>
-        
-        
-        <category>docs</category>
-        
-        <category>ruby</category>
-        
-        <category>jekyll</category>
-        
-        <category>tutorials</category>
-        
-      </item>
-    
-      <item>
-        <title>How To Handle Adsense In A Jekyll Development Environment</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Developing a site that uses Google Adsense has to be treated carefully. 
-Developers often want to stop showing&lt;/p&gt;
-
-&lt;p&gt;It presents the following problems:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;accidental clicks&lt;/strong&gt;. Avoid &lt;em&gt;repeatedly accidentally clicking&lt;/em&gt; on served ads while 
-developing the site which can lead to an account ban.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote cite=&quot;https://support.google.com/adsense/answer/1348754?hl=en#q1&quot;&gt;
-  &lt;p&gt;Although publishers are not permitted to click on their own ads for any
-reason, we do understand that accidental clicks may occur. We therefore
-don’t require that you contact us every time you click on your ads. Rest
-assured that your account is being properly credited for all clicks and
-impressions we consider to be valid.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;speed&lt;/strong&gt;. Testing the site locally without waiting for each ad request 
-to resolve, avoiding any javascript external request.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;There are two main options to avoid these problems:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;telling Google that the &lt;em&gt;ad&lt;/em&gt; request is only for testing purposes&lt;/li&gt;
-  &lt;li&gt;avoid the javascript request at all&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;alternative-1-google-code-parameter-to-make-tests&quot;&gt;Alternative 1: Google code parameter to make tests&lt;/h2&gt;
-
-&lt;p&gt;There is a special parameter that can be enabled in Google Ad code to
-avoid accidental clicks and set them up as tests.&lt;/p&gt;
-
-&lt;p&gt;The downside of this approach is that it requires
-&lt;a href=&quot;https://developers.google.com/custom-search-ads/docs/reference&quot;&gt;more checks&lt;/a&gt;
-to modify an &lt;em&gt;ad&lt;/em&gt; code and if not enabled in production, &lt;strong&gt;ads clicks won’t
-generate any revenue&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;blockquote cite=&quot;https://developers.google.com/custom-search-ads/docs/reference&quot;&gt;
-  &lt;p&gt;To use this code you must have an AdSense account
-with active permission to use AdSense Custom Search Ads.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The parameter is &lt;code class=&quot;highlighter-rouge&quot;&gt;&#39;adtest&#39; : &#39;on&#39;&lt;/code&gt; and it is defined:&lt;/p&gt;
-
-&lt;blockquote cite=&quot;https://developers.google.com/custom-search-ads/docs/reference#page-level-parameter-descriptions&quot;&gt;
-  &lt;p&gt;The adtest parameter is used to indicate that a request for ads is a test. 
-When the adtest parameter has a value of on, Google treats the request as
-a test and does not count the ad impressions or track the clickthrough results.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;An &lt;em&gt;easier&lt;/em&gt; and &lt;em&gt;safer&lt;/em&gt; alternative is to avoid the ad request at all.&lt;/p&gt;
-
-&lt;h2 id=&quot;alternative-2-stop-showing-adsense-ads&quot;&gt;Alternative 2: Stop showing adsense ads&lt;/h2&gt;
-
-&lt;p&gt;Jekyll templates can access the value of an environment variable passed
-at build time to avoid any external javascript request. Based on this
-variable the ads can be chosen to be shown or hidden depending on its value.&lt;/p&gt;
-
-&lt;p&gt;When building the site with &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll build&lt;/code&gt; the variable
-&lt;a href=&quot;https://jekyllrb.com/docs/configuration/#specifying-a-jekyll-environment-at-build-time&quot;&gt;JEKYLL_ENV&lt;/a&gt; 
-defaults to &lt;em&gt;development&lt;/em&gt;, setting it up as &lt;em&gt;production&lt;/em&gt; makes it
-possible to hide the ads in liquid templates&lt;/p&gt;
-
-&lt;p&gt;To build a production ready jekyll site it can be specified like this:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JEKYLL_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production jekyll build
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;When using a [Bundler command]
-it should be used like:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JEKYLL_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;environment-in-jekyll-liquid-template&quot;&gt;Environment in Jekyll liquid template&lt;/h2&gt;
-
-&lt;p&gt;The environment can be accessed through the variable &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll.environment&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;The Adsense ad code provided by Google can be surrounded with the
-environment detection so they only gets loaded in production like this:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;jekyll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;production&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-  &amp;lt;script async src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
-  &amp;lt;!-- simpleit_after_content --&amp;gt;
-  &amp;lt;ins class=&quot;adsbygoogle&quot;
-       style=&quot;display:block&quot;
-       data-ad-client=&quot;ca-pub-****************&quot;
-       data-ad-slot=&quot;***********&quot;
-       data-ad-format=&quot;auto&quot;&amp;gt;&amp;lt;/ins&amp;gt;
-  &amp;lt;script&amp;gt;
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  &amp;lt;/script&amp;gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;A good practice is also to include something locally when not
-showing them, to quickly identify ads placement, it can be:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;text with some color different from the rest of the site design&lt;/li&gt;
-  &lt;li&gt;a &lt;a href=&quot;http://placehold.it/&quot;&gt;placeholder&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;an image like the ad from &lt;a href=&quot;https://support.google.com/adsense/answer/185666?hl=en&quot;&gt;example ads&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Mon, 06 Jun 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/how-to-handle-adsense-in-a-jekyll-development-environment/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/how-to-handle-adsense-in-a-jekyll-development-environment/</guid>
-        
-        <category>jekyll</category>
-        
-        <category>environments</category>
-        
-        <category>adsense</category>
-        
-        <category>development</category>
         
         
         <category>docs</category>
