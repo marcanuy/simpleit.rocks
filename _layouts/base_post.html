@@ -5,13 +5,15 @@ layout: default
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <p class="post-meta">
+    <div class="post-meta">
       {% if page.date %}
       <i class="fa fa-calendar" aria-hidden="true"></i>
       <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
       {% endif %}
-      <span>{% include breadcrumbs.html path=page.path title=page.title %}</span>
-    </p>
+    </div>
+    <div>
+      {% include breadcrumbs.html path=page.path title=page.title %}
+    </div>
   </header>
 
   <div class="post-content" itemprop="articleBody">
