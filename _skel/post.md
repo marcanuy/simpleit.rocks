@@ -1,5 +1,6 @@
 ---
 title: #If title is omitted, Jekyll generates a title based in the slug/filename
+subtitle:
 layout: post
 tags:
 - git
