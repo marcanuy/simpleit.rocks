@@ -1,8 +1,9 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.4.0)
     colorator (1.1.0)
-    ffi (1.9.13)
+    ffi (1.9.14)
     forwardable-extended (2.6.0)
     jekyll (3.2.0.pre.beta1)
       colorator (~> 1.0)
@@ -18,7 +19,8 @@ GEM
       sass (~> 3.4)
     jekyll-seo-tag (2.0.0)
       jekyll (~> 3.1)
-    jekyll-sitemap (0.10.0)
+    jekyll-sitemap (0.11.0)
+      addressable (~> 2.4.0)
     jekyll-toc (0.1.1)
       nokogiri (~> 1.6)
     jekyll-watch (1.4.0)
