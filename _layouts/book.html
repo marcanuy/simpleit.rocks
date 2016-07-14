@@ -1,0 +1,48 @@
+---
+layout: post
+---
+<div>
+{{ content }}
+</div>
+  
+<div>
+  Detailed book description and reviews:
+  <ul>
+    {% for shop in page.shops %}
+    <li>
+      {{ shop | first | capitalize }}:
+      <a href="{{ shop | last }}">
+	<i class="fa fa-external-link" aria-hidden="true"></i>
+	{{ shop | last }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="row">
+  <div class="col-xs-8">
+    <h2>Articles</h2>
+    <p>This book is being referenced in the following articles:</p>
+    <div class="list-group">
+      {% for post in site.posts %}
+      {% if post.content contains page.title %}
+      <a href="{{ post.url }}" class="list-group-item">
+	{{ post.title }}
+      </a>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="text-xs-center">
+      <figure class="figure">
+	<a href="{{ page.shops.amazon }}">
+	  <img src="/assets/books/{{page.image}}" alt="{{ page.title }}" class="img-fluid img-rounded"/>
+	</a>
+	<figcaption class="figure-caption">{{ page.title }} cover</figcaption>
+      </figure>
+    </div> <!-- col -->
+  </div> <!-- row -->
+</div>
+

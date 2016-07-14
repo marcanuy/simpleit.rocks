@@ -1,0 +1,30 @@
+---
+layout: base_post
+---
+
+{% if page.description %}
+<p class="lead">
+  {{ page.description }}
+</p>
+{% endif %}
+
+{{ content }}
+
+<!--div class="row books-listing"-->
+
+<div class="card-columns">
+  {% for book in site.books %}
+  <div class="card">
+    <img class="card-img-top" width="100" alt="{{ book.title}}" src="/assets/books/{{ book.image }}">
+    <div class="card-block">
+      <h4 class="card-title">{{ book.title }}</h4>
+      <p class="card-text">
+	{{ book.description }}
+      </p>
+      <a href="{{ book.url | prepend: site.baseurl }}" class="btn btn-info">More..</a>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+
