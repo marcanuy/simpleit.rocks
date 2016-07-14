@@ -1,0 +1,24 @@
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class="list-inline-item">
+  {% if include.url %}
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="{{include.url}}">
+    {% if include.fa %}
+    <i class="fa {{include.fa}}" aria-hidden="true"></i>
+    {% endif %}
+
+    {{include.title}}
+  </a>
+  {% else %}
+  <div itemscope itemtype="http://schema.org/Thing"
+       itemprop="item">
+    {% if include.fa %}
+    <i class="fa {{include.fa}}" aria-hidden="true"></i>
+    {% endif %}
+
+    <span itemprop="name">{{include.title}}</span>
+  </div>
+  {% endif %}
+  <meta itemprop="position" content="{{include.position}}" />
+</li>

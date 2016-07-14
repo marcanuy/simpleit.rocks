@@ -266,7 +266,7 @@
     background-color: #00ff00;
 }
 
-span .edgeLabel {
+.mermaid .edgeLabel {
     color: $grey-color-dark;
 }
 
@@ -281,4 +281,19 @@ span .edgeLabel {
     ol {
 	margin-left: 0px;
     }
+}
+
+.card-columns {  
+    .card img {
+	width: 100%;
+    }
+}
+
+.sticky {
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+    top: 10px;
 }

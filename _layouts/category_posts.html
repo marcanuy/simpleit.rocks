@@ -53,13 +53,13 @@ layout: base_post
       </div>
     </article>
 
-    {% assign has_posts = false %}
+    {% assign posts_in_category = 0 %}
     {% for post in site.categories[current_category] %}
     {% comment %} Filter posts from other categories with the same name {% endcomment %}
     {% if post.categories == ancestors_and_self %}
-    {% assign has_posts = true %}
+    {% assign posts_in_category = posts_in_category + 1 %}
     {% endif %}{% endfor %}
-    {% if has_posts %}
+    {% if posts_in_category > 1 %}
     <h2>Articles in {{ current_category }} category</h2>
     <div class="list-group">
       {% for post in site.categories[current_category] %}
@@ -70,7 +70,7 @@ layout: base_post
       {% endfor %}
     </div>
     {% endif %}
-    
+    {% include posts_in_category.html post=page %}
     <hr />
 
     <div class="content">

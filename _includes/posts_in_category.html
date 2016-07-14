@@ -1,0 +1,34 @@
+{% assign number_of_posts = 0 %}
+{% assign posts_category_path = include.post.dir %}
+{% if include.post.path contains "_posts" %}
+{% assign posts_category_path = include.post.categories | join: '/' | prepend: '/' | append: '/' %}
+{% endif %}
+
+{% for post in site.posts %}
+{% assign post_dir = post.categories | join: '/' | prepend: '/' | append: '/' %}
+{% if post_dir == posts_category_path %}
+{% assign number_of_posts = number_of_posts | plus: 1 %}
+{% endif %}
+{% endfor %}
+
+{% if number_of_posts > 1 %}
+<div class="post-same-category">
+  <h2>Articles in this category</h2>
+  <ul class="nav nav-pills nav-stacked">
+    {% for post in site.posts %}
+    {% assign post_dir = post.categories | join: '/' | prepend: '/' | append: '/' %}
+    {% assign link_status = "" %}
+    {% if post_dir == posts_category_path and post.title == include.post.title%}
+    {% assign link_status="active" %}
+    {% endif %}
+    {% if post_dir == posts_category_path %}
+    <li class="nav-item">
+      <a class="nav-link {{link_status}}" href="{{post.url}}">
+	{{ post.title }}
+      </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}

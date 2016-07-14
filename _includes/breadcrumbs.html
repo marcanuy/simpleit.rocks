@@ -2,25 +2,24 @@
   <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="list-inline">
 
 
-    {% assign categories = ""%}
-    {% if include.path contains "posts" %}
-    {% comment %} posts are like /docs/python/_posts/2016-06-06-foobar.md {% endcomment %}
-    {% assign categories = include.path | split:"/" | pop %}
-    {% else %}
-    {% comment %} pages are like /docs/python/index.md {% endcomment %}
     {% assign categories = include.path | split:"/" | pop  %}
-    {% endif %}
 
     {% assign route="" %}
-    
-    <li itemprop="itemListElement" itemscope
-	itemtype="http://schema.org/ListItem"
-	class="list-inline-item">
-      <i class="fa fa-home" aria-hidden="true"></i>
-      <a itemscope itemtype="http://schema.org/Thing"
-	 itemprop="item" href="/"> Home</a>
-      <meta itemprop="position" content="1" />
-    </li>
+
+    {% include breadcrumbs_li.html fa="fa-home" url="/" title="Home" position="1" %}
+
+    {% comment %} handle special books collections {% endcomment %}
+    {% assign first_category = categories | first %}
+
+    {% if include.path == "books.md" %}
+    <span class="prompt">>></span>
+    {% include breadcrumbs_li.html fa="fa-book" title="Books" position="2" %}
+    {% elsif first_category == "_books" %}
+    <span class="prompt">>></span>
+    {% include breadcrumbs_li.html fa="fa-book" url="/books" title="Books" position="2" %}
+    <span class="prompt">>></span>
+    {% include breadcrumbs_li.html title=include.title position="2" %}
+    {% else %}
     {% for category in categories %}
     <span class="prompt">>></span>
     <li itemprop="itemListElement" itemscope
@@ -49,5 +48,6 @@
       <meta itemprop="position" content="{{ forloop.index | plus:'1' }}" />
     </li>
     {% endfor %}
+    {% endif %}
   </ol>
 </div>

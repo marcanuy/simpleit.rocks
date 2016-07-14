@@ -3,6 +3,9 @@
 # any command that fails will cause the script to abort.
 set -e
 
+echo "Checking for errors..."
+bundle exec jekyll hyde
+
 read -rsp $'Will execute: JEKYLL_ENV=production bundle exec jekyll build ...\n' -n1 key
 
 JEKYLL_ENV=production bundle exec jekyll build

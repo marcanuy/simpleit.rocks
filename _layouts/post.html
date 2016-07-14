@@ -4,13 +4,13 @@ layout: base_post
 
 <div class="row">
   <div class="col-md-4 col-md-push-8 sit-sidebar">
-    <h4>Table of Contents</h4>
-    {% if page.toc %}
-    {{ content | toc_only }}
-    {% endif %}
-
     {% include adsense_side_content.html %}
-
+    {% if page.toc %}
+    <div>
+      <h4>Table of Contents</h4>
+      {{ content | toc_only }}
+    </div>
+    {% endif %}
   </div>
   <div class="col-md-8 col-md-pull-4 sit-content">
 
@@ -30,11 +30,11 @@ layout: base_post
 {% include post-categories.html %}
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-5">
     {% include disqus.html %}
   </div>
-  <div class="col-md-6">
+  <div class="col-md-7">
     {% include adsense_after_content.html %}
+    {% include posts_in_category.html post=page %}
   </div>
 </div>
-
