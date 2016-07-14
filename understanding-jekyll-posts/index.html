@@ -18,29 +18,29 @@
   <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
   <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
   
   <!-- Begin Jekyll SEO tag v2.0.0 -->
-<title>Jekyll - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Jekyll" />
-<meta name="description" content="Static site generator" />
-<meta property="og:description" content="Static site generator" />
-<link rel="canonical" href="http://simpleit.rocks/jekyll/" />
-<meta property="og:url" content="http://simpleit.rocks/jekyll/" />
+<title>Understanding Jekyll Posts - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Understanding Jekyll Posts" />
+<meta name="description" content="Overview" />
+<meta property="og:description" content="Overview" />
+<link rel="canonical" href="http://simpleit.rocks/understanding-jekyll-posts/" />
+<meta property="og:url" content="http://simpleit.rocks/understanding-jekyll-posts/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-05-08T00:00:00-03:00" />
+<meta property="article:published_time" content="2016-06-12T00:00:00-03:00" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "Jekyll",
-    "datePublished": "2016-05-08T00:00:00-03:00",
-    "description": "Static site generator",
-    "url": "http://simpleit.rocks/jekyll/"
+    "headline": "Understanding Jekyll Posts",
+    "datePublished": "2016-06-12T00:00:00-03:00",
+    "description": "Overview",
+    "url": "http://simpleit.rocks/understanding-jekyll-posts/"
   }
 </script>
 <!-- End Jekyll SEO tag -->
@@ -93,11 +93,12 @@
   <div class="jumbotron jumbotron-fluid bg-inverse">
     <div class="container">
       
-      <h1 class="title">Jekyll</h1>
       
-      <p class="lead">
-	<small class="text-muted subtitle">Jekyll blog</small>
-      </p>
+      
+      
+      <h1 class="title">Understanding Jekyll Posts </h1>
+      
+      
     </div>
   </div>
 
@@ -108,28 +109,42 @@
       <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <p class="post-meta">
+    <div class="post-meta">
       
       <i class="fa fa-calendar" aria-hidden="true"></i>
-      <time datetime="2016-05-08T00:00:00-03:00" itemprop="datePublished">May 8, 2016</time>
+      <time datetime="2016-06-12T00:00:00-03:00" itemprop="datePublished">Jun 12, 2016</time>
       
-      <span><div class="breadcrumbs">
+    </div>
+    <div>
+      <div class="breadcrumbs">
   <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="list-inline">
 
 
     
+
     
+
+    <li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class="list-inline-item">
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/">
+    
+    <i class="fa fa-home" aria-hidden="true"></i>
+    
+
+    Home
+  </a>
+  
+  <meta itemprop="position" content="1" />
+</li>
+
 
     
     
-    <li itemprop="itemListElement" itemscope
-	itemtype="http://schema.org/ListItem"
-	class="list-inline-item">
-      <i class="fa fa-home" aria-hidden="true"></i>
-      <a itemscope itemtype="http://schema.org/Thing"
-	 itemprop="item" href="/"> Home</a>
-      <meta itemprop="position" content="1" />
-    </li>
+
+    
     
     <span class="prompt">>></span>
     <li itemprop="itemListElement" itemscope
@@ -191,36 +206,22 @@
       
       <div itemscope itemtype="http://schema.org/Thing"
 	   itemprop="item">
-	<span itemprop="name">Jekyll</span>
+	<span itemprop="name">Understanding Jekyll Posts</span>
       </div>
       
       <meta itemprop="position" content="5" />
     </li>
     
+    
   </ol>
 </div>
-</span>
-    </p>
+
+    </div>
   </header>
 
   <div class="post-content" itemprop="articleBody">
     <div class="row">
   <div class="col-md-4 col-md-push-8 sit-sidebar">
-    <h4>Table of Contents</h4>
-    
-    <ul class="section-nav">
-<li class="toc-entry toc-h1"><a href="#concepts">Concepts</a></li>
-<li class="toc-entry toc-h2"><a href="#front-matter">Front Matter</a></li>
-<li class="toc-entry toc-h2"><a href="#posts-formatting-syntax">Posts formatting syntax</a></li>
-<li class="toc-entry toc-h3"><a href="#syntax-highlighting">Syntax highlighting</a></li>
-<li class="toc-entry toc-h2"><a href="#templating-system">Templating system</a></li>
-<li class="toc-entry toc-h3"><a href="#related-links">Related links</a></li>
-<li class="toc-entry toc-h2"><a href="#jekyll-collections-workflow">Jekyll Collections Workflow</a></li>
-<li class="toc-entry toc-h1"><a href="#commands">Commands</a></li>
-<li class="toc-entry toc-h1"><a href="#references">References</a></li>
-</ul>
-    
-
     <div class="si-ad">
   
 
@@ -238,13 +239,24 @@
   
 </div>
 
-
+    
+    <div>
+      <h4>Table of Contents</h4>
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h3"><a href="#variables">Variables</a></li>
+<li class="toc-entry toc-h3"><a href="#variables-of-a-post-and-documents-posts">Variables of a Post and Documents Posts</a></li>
+<li class="toc-entry toc-h4"><a href="#front-matter">Front matter</a></li>
+<li class="toc-entry toc-h4"><a href="#in-templates">In templates</a></li>
+</ul>
+    </div>
+    
   </div>
   <div class="col-md-8 col-md-pull-4 sit-content">
 
     
     <p class="lead">
-      Static site generator
+      
     </p>
     
 
@@ -266,130 +278,73 @@
 </div>
 
 
-    <h1 id="concepts">Concepts</h1>
+    <h2 id="overview">Overview</h2>
 
-<blockquote cite="https://jekyllrb.com/docs/structure/">
-  <p>Jekyll is, at its core, a text transformation engine. 
-The concept behind the system is this: you give it text written in your
-favorite markup language, be that Markdown, Textile, or just plain HTML, 
-and it churns that through a layout or a series of layout files. 
-Throughout that process you can tweak how you want the site URLs to look, 
-what data gets displayed in the layout, and more.</p>
-</blockquote>
+<p>Posts can be nested in subdirectories but they always must be inside 
+a <code class="highlighter-rouge">_posts</code> folder.</p>
 
-<p>Jekyll <em>Post</em> and <em>Pages</em> filenames works as urls slugs.</p>
+<p>Their filename should follow the following format: <code class="highlighter-rouge">YYYY-MM-DD-article-name.MARKUP</code>.</p>
 
-<h2 id="front-matter">Front Matter</h2>
+<p>In this case <code class="highlighter-rouge">article-name</code> will be used as the post <em>slug</em> and if there is no <em>title</em> in the <em>front matter</em> of the post, it will be converted to a title version removing the <code class="highlighter-rouge">-</code> chars.</p>
 
-<p>The <a href="https://jekyllrb.com/docs/frontmatter/">Front Matter</a> is the piece of code that tell Jekyll to process a page or post in a special way, where you can change the <em>layout</em>, <em>language</em> or more configurations that if not specified they just took the default settings of <em>config.yml</em>.
-.</p>
+<h3 id="variables">Variables</h3>
 
-<p>e.g.:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>---
-layout: post
-title: My cool blog
----
+<div class="highlighter-rouge"><pre class="highlight"><code>.
+├── one_category
+│   └── second_category
+│      └── _posts
+│	     └── nested_post.md
+└── _posts
+   ├── a_post.md
+   └── another_post.md
 </code></pre>
 </div>
 
-<p>It has two requirements:</p>
-
-<ul>
-  <li>It must be at the beginning of the file</li>
-  <li>It must be in <a href="http://yaml.org/">YAML</a> format</li>
-</ul>
-
-<h2 id="posts-formatting-syntax">Posts formatting syntax</h2>
-
-<p>The most common formatting syntax used in posts and pages are:</p>
-
-<ul>
-  <li>Markdown <a href="https://daringfireball.net/projects/markdown/">https://daringfireball.net/projects/markdown/</a></li>
-  <li>kramdown (a more powerful Markdown superset and currently used in <em>Github pages</em>)</li>
-</ul>
-
-<h3 id="syntax-highlighting">Syntax highlighting</h3>
-
-<p>By default Jekyll uses <a href="https://github.com/jneen/rouge">Rouge</a> as its syntax highlter and is compatible with <a href="http://pygments.org/">Pygments</a> highlighter.</p>
-
-<h2 id="templating-system">Templating system</h2>
-
-<p>Jekyll uses the <strong>Liquid</strong> template engine: <a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">https://github.com/Shopify/liquid/wiki/Liquid-for-Designers</a>.</p>
-
-<p>The template files processed by <em>Liquid</em> uses three main concepts to generate the valid HTML files:</p>
-
-<ul>
-  <li>
-    <p><strong>Tags</strong></p>
-
-    <p>The programming logic in Luiqid themes</p>
-
-    <p><a href="https://help.shopify.com/themes/liquid/tags">https://help.shopify.com/themes/liquid/tags</a></p>
-
-    <p>e.g. <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">content</span><span class="w"> </span><span class="err">==</span><span class="w"> </span><span class="err">blank</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="p">}</span></code></p>
-  </li>
-  <li>
-    <p><strong>Objects</strong></p>
-
-    <p>Attributes containers to display content</p>
-
-    <p><a href="https://help.shopify.com/themes/liquid/objects">https://help.shopify.com/themes/liquid/objects</a></p>
-
-    <p>e.g. <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">page.slug</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="err">}</span></code></p>
-  </li>
-  <li>
-    <p><strong>Filters</strong></p>
-
-    <p>Modify the default output for each component</p>
-
-    <p><a href="https://help.shopify.com/themes/liquid/filters">https://help.shopify.com/themes/liquid/filters</a></p>
-
-    <p>e.g. <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">page.url</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">prepend:</span><span class="w"> </span><span class="err">site.baseurl</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="err">}</span></code></p>
-  </li>
-  <li>Liquid reference: <a href="https://help.shopify.com/themes/liquid">https://help.shopify.com/themes/liquid</a></li>
-  <li>Liquid cheatsheet: <a href="https://www.shopify.ca/partners/shopify-cheat-sheet">https://www.shopify.ca/partners/shopify-cheat-sheet</a></li>
-</ul>
-
-<h3 id="related-links">Related links</h3>
-
-<ul>
-  <li><a href="https://github.com/Shopify/liquid/wiki/liquid-for-designers">https://github.com/Shopify/liquid/wiki/liquid-for-designers</a></li>
-  <li><a href="https://www.shopify.ca/partners/shopify-cheat-sheet">https://www.shopify.ca/partners/shopify-cheat-sheet</a></li>
-  <li><a href="https://jekyllrb.com/docs/templates/">https://jekyllrb.com/docs/templates/</a></li>
-  <li><a href="https://help.shopify.com/themes/liquid/">https://help.shopify.com/themes/liquid/</a>
-    <ul>
-      <li><a href="https://www.shopify.ca/partners/shopify-cheat-sheet">https://www.shopify.ca/partners/shopify-cheat-sheet</a></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="jekyll-collections-workflow">Jekyll Collections Workflow</h2>
+<h3 id="variables-of-a-post-and-documents-posts">Variables of a Post and Documents Posts</h3>
 
 <div class="mermaid">
-graph TB;
-    A["Add *my_collection* as a collection directory in /_config.yml"]--&gt;B("Add markdown files to *my_collection* directory");
-	B--&gt;C{"Is *output: true* in _config.yml"};
-	C--&gt;|yes|D["each file in the *my_collection* can be accesed through the url *my_collection/file* "];
-	C--&gt;|no|E["collections content is only available through the variable *site.my_collection* or *site.collections*"]
+graph LR
+    Collections["Collections"] == 1 === ColRelationship{" "}
+    ColRelationship == N === Collection
+    Collection["Collection<hr />label<br />docs<br />files<br />relative_directory<br />directory<br />output"] == 1 === relationship{" "}
+    relationship == N === Document["Document<hr />path<br />relative_path<br />collection<br />date"]
 </div>
 
-<h1 id="commands">Commands</h1>
+<h4 id="front-matter">Front matter</h4>
 
-<ul>
-  <li>Local instance with bundle</li>
-</ul>
+<p>Predefined Variables that can be used in the front matter for a post.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>bundle <span class="nb">exec </span>jekyll serve --watch --drafts
-</code></pre>
-</div>
+<dl>
+<dt>page.title</dt>
+<dd>The title of the Page.</dd>
+<dt>page.date</dt>
+<dd>The Date assigned to the Post. This can be overridden in a Post’s front matter by specifying a new date/time in the format YYYY-MM-DD HH:MM:SS (assuming UTC), or YYYY-MM-DD HH:MM:SS +/-TTTT (to specify a time zone using an offset from UTC. e.g. 2008-12-14 10:30:00 +0900).</dd>
+<dt>page.categories</dt>
+<dd>The list of categories to which this post belongs. Categories are derived from the directory structure above the _posts directory. For example, a post at /work/code/_posts/2008-12-24-closures.md would have this field set to ['work', 'code']. These can also be specified in the YAML Front Matter.</dd>
+<dt>page.tags</dt>
+<dd>The list of tags to which this post belongs. These can be specified in the YAML Front Matter.</dd>
+</dl>
 
-<h1 id="references">References</h1>
+<h4 id="in-templates">In templates</h4>
 
-<ul>
-  <li><a href="https://jekyllrb.com/docs/home/">Jekyll Official Documentation</a></li>
-</ul>
+<p>Variables also available in templates</p>
 
+<dl>
+<dt>page.content</dt>
+<dd>The content of the Page, rendered or un-rendered depending upon what Liquid is being processed and what page is.</dd>
+<dt>page.excerpt</dt>
+<dd>The un-rendered excerpt of the Page.</dd>
+<dt>page.url</dt>
+<dd>The URL of the Post without the domain, but with a leading slash, e.g. /2008/12/14/my-post.html</dd>
+<dt>page.id</dt>
+<dd>An identifier unique to the Post (useful in RSS feeds). e.g. /2008/12/14/my-post</dd>
+<dt>page.path</dt>
+<dd>The path to the raw post or page. Example usage: Linking back to the page or post’s source on GitHub. This can be overridden in the YAML Front Matter.</dd>
+<dt>page.next</dt>
+<dd>The next post relative to the position of the current post in site.posts. Returns nil for the last entry.</dd>
+<dt>page.previous</dt>
+<dd>The previous post relative to the position of the current post in site.posts. Returns nil for the first entry. </dd>
+</dl>
 
     
   </div>
@@ -420,7 +375,7 @@ Categories:
 
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-5">
     <div class="post-comments">
   
 
@@ -432,7 +387,7 @@ Categories:
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/jekyll/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/understanding-jekyll-posts/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -452,7 +407,7 @@ Categories:
 </div>
 
   </div>
-  <div class="col-md-6">
+  <div class="col-md-7">
     <div class="si-ad">
   
 
@@ -470,9 +425,156 @@ Categories:
   
 </div>
 
-  </div>
+    
+
+
+
+
+
+
+<div class="post-same-category">
+  <h2>Articles in this category</h2>
+  <ul class="nav nav-pills nav-stacked">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <li class="nav-item">
+      <a class="nav-link active" href="/understanding-jekyll-posts/">
+	Understanding Jekyll Posts
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li class="nav-item">
+      <a class="nav-link " href="/jekyll-configuration-file-options/">
+	Jekyll Configuration File Options
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <li class="nav-item">
+      <a class="nav-link " href="/jekyll-basic-concepts/">
+	Jekyll basic concepts
+      </a>
+    </li>
+    
+    
+  </ul>
 </div>
 
+
+  </div>
+</div>
 
   </div>
 

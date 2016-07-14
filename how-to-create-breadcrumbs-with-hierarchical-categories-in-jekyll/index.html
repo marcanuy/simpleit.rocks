@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
   <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
   
@@ -93,11 +93,16 @@
   <div class="jumbotron jumbotron-fluid bg-inverse">
     <div class="container">
       
-      <h1 class="title">How to implement breadcrumbs on a Jekyll site with nested categories</h1>
+      
+      
+      
+      <h1 class="title">How To Implement Breadcrumbs On A Jekyll Site With Nested Categories </h1>
+      
       
       <p class="lead">
 	<small class="text-muted subtitle">Hierarchical categories and breadcrumbs</small>
       </p>
+      
     </div>
   </div>
 
@@ -108,28 +113,42 @@
       <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <p class="post-meta">
+    <div class="post-meta">
       
       <i class="fa fa-calendar" aria-hidden="true"></i>
       <time datetime="2016-06-07T00:00:00-03:00" itemprop="datePublished">Jun 7, 2016</time>
       
-      <span><div class="breadcrumbs">
+    </div>
+    <div>
+      <div class="breadcrumbs">
   <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="list-inline">
 
 
     
+
     
+
+    <li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class="list-inline-item">
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/">
+    
+    <i class="fa fa-home" aria-hidden="true"></i>
+    
+
+    Home
+  </a>
+  
+  <meta itemprop="position" content="1" />
+</li>
+
 
     
     
-    <li itemprop="itemListElement" itemscope
-	itemtype="http://schema.org/ListItem"
-	class="list-inline-item">
-      <i class="fa fa-home" aria-hidden="true"></i>
-      <a itemscope itemtype="http://schema.org/Thing"
-	 itemprop="item" href="/"> Home</a>
-      <meta itemprop="position" content="1" />
-    </li>
+
+    
     
     <span class="prompt">>></span>
     <li itemprop="itemListElement" itemscope
@@ -214,25 +233,16 @@
       <meta itemprop="position" content="6" />
     </li>
     
+    
   </ol>
 </div>
-</span>
-    </p>
+
+    </div>
   </header>
 
   <div class="post-content" itemprop="articleBody">
     <div class="row">
   <div class="col-md-4 col-md-push-8 sit-sidebar">
-    <h4>Table of Contents</h4>
-    
-    <ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#breadcrumb-code">Breadcrumb code</a></li>
-<li class="toc-entry toc-h2"><a href="#posts-layouts">Posts layouts</a></li>
-<li class="toc-entry toc-h2"><a href="#output">Output</a></li>
-</ul>
-    
-
     <div class="si-ad">
   
 
@@ -250,7 +260,17 @@
   
 </div>
 
-
+    
+    <div>
+      <h4>Table of Contents</h4>
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#breadcrumb-code">Breadcrumb code</a></li>
+<li class="toc-entry toc-h2"><a href="#posts-layouts">Posts layouts</a></li>
+<li class="toc-entry toc-h2"><a href="#output">Output</a></li>
+</ul>
+    </div>
+    
   </div>
   <div class="col-md-8 col-md-pull-4 sit-content">
 
@@ -306,7 +326,7 @@ generate a link to each path of the structure</p>
 
 <p>The <em>breadcrumbs</em> code should be placed at <code class="highlighter-rouge">/_includes/breadcrumbs.html</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>    <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">categories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">%}</span>
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>    <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">categories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">%}</span>
     <span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">path</span><span class="w"> </span><span class="ow">contains</span><span class="w"> </span><span class="s2">"posts"</span><span class="w"> </span><span class="p">%}</span>
     <span class="p">{%</span><span class="w"> </span><span class="nt">comment</span><span class="w"> </span><span class="p">%}</span><span class="c"> posts are like /docs/python/_posts/2016-06-06-foobar.md </span><span class="p">{%</span><span class="w"> </span><span class="nt">endcomment</span><span class="w"> </span><span class="p">%}</span>
     <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">categories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">path</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">split</span><span class="p">:</span><span class="s2">"/"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">pop</span><span class="w"> </span><span class="p">%}</span>
@@ -339,7 +359,7 @@ parameters.</p>
 
 <p>In <code class="highlighter-rouge">/_layouts/post.html</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>..
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>..
 <span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span><span class="na">breadcrumbs</span><span class="p">.</span><span class="na">html</span><span class="w"> </span><span class="na">path</span><span class="o">=</span><span class="nv">page</span><span class="p">.</span><span class="nv">path</span><span class="w"> </span><span class="na">title</span><span class="o">=</span><span class="nv">page</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="p">%}</span>
 ..
 </code></pre>
@@ -419,7 +439,7 @@ Categories:
 
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-5">
     <div class="post-comments">
   
 
@@ -451,7 +471,7 @@ Categories:
 </div>
 
   </div>
-  <div class="col-md-6">
+  <div class="col-md-7">
     <div class="si-ad">
   
 
@@ -469,9 +489,156 @@ Categories:
   
 </div>
 
-  </div>
+    
+
+
+
+
+
+
+<div class="post-same-category">
+  <h2>Articles in this category</h2>
+  <ul class="nav nav-pills nav-stacked">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <li class="nav-item">
+      <a class="nav-link active" href="/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/">
+	How to implement breadcrumbs on a Jekyll site with nested categories
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li class="nav-item">
+      <a class="nav-link " href="/how-to-prevent-content-displaying-in-a-jekyll-development-environment/">
+	How To Prevent Content Displaying In A Jekyll Development Environment
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li class="nav-item">
+      <a class="nav-link " href="/how-to-handle-adsense-in-a-jekyll-development-environment/">
+	How To Handle Adsense In A Jekyll Development Environment
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
 </div>
 
+
+  </div>
+</div>
 
   </div>
 

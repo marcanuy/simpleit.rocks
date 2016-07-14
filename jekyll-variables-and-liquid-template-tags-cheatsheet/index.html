@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="alternate" type="application/rss+xml" title="Simple IT 🤘 Rocks" href="http://simpleit.rocks/feed.xml">
+
+  <!-- jQuery -->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  
+  <!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>Jekyll Variables and Liquid template tags cheatsheet - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Jekyll Variables and Liquid template tags cheatsheet" />
+<meta name="description" content="Jekyll template tags summary." />
+<meta property="og:description" content="Jekyll template tags summary." />
+<link rel="canonical" href="http://simpleit.rocks/jekyll-variables-and-liquid-template-tags-cheatsheet/" />
+<meta property="og:url" content="http://simpleit.rocks/jekyll-variables-and-liquid-template-tags-cheatsheet/" />
+<meta property="og:site_name" content="Simple IT 🤘 Rocks" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-07-13T00:00:00-03:00" />
+<meta property="fb:app_id" content="1822851531277021" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Jekyll Variables and Liquid template tags cheatsheet",
+    "datePublished": "2016-07-13T00:00:00-03:00",
+    "description": "Jekyll template tags summary.",
+    "url": "http://simpleit.rocks/jekyll-variables-and-liquid-template-tags-cheatsheet/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+
+  
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1912030305535489",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+
+</head>
+
+
+  <body>
+
+    
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28572639-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <header class="site-header">
+
+  <!-- mermaid -->
+  <script src="/bower_components/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+  <!-- endmermaid -->
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Simple IT 🤘 Rocks</a>
+
+  </div>
+
+  <div class="jumbotron jumbotron-fluid bg-inverse">
+    <div class="container">
+      
+      
+      
+      
+      <h1 class="title">Jekyll Variables And Liquid Template Tags Cheatsheet </h1>
+      
+      
+    </div>
+  </div>
+
+</header>
+
+
+    <div class="container-fluid">
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <div class="post-meta">
+      
+      <i class="fa fa-calendar" aria-hidden="true"></i>
+      <time datetime="2016-07-13T00:00:00-03:00" itemprop="datePublished">Jul 13, 2016</time>
+      
+    </div>
+    <div>
+      <div class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="list-inline">
+
+
+    
+
+    
+
+    <li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class="list-inline-item">
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/">
+    
+    <i class="fa fa-home" aria-hidden="true"></i>
+    
+
+    Home
+  </a>
+  
+  <meta itemprop="position" content="1" />
+</li>
+
+
+    
+    
+
+    
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      
+      <a itemscope itemtype="http://schema.org/Thing"
+	 itemprop="item" href="/docs">
+        <span itemprop="name">docs</span>
+        <!--img itemprop="image" src="http://example.com/images/icon-bookicon.png" alt="Books"/-->
+      </a>
+      
+      <meta itemprop="position" content="2" />
+    </li>
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      
+      <a itemscope itemtype="http://schema.org/Thing"
+	 itemprop="item" href="/docs/ruby">
+        <span itemprop="name">ruby</span>
+        <!--img itemprop="image" src="http://example.com/images/icon-bookicon.png" alt="Books"/-->
+      </a>
+      
+      <meta itemprop="position" content="3" />
+    </li>
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      
+      <a itemscope itemtype="http://schema.org/Thing"
+	 itemprop="item" href="/docs/ruby/jekyll">
+        <span itemprop="name">jekyll</span>
+        <!--img itemprop="image" src="http://example.com/images/icon-bookicon.png" alt="Books"/-->
+      </a>
+      
+      <meta itemprop="position" content="4" />
+    </li>
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      
+      <a itemscope itemtype="http://schema.org/Thing"
+	 itemprop="item" href="/docs/ruby/jekyll/templates">
+        <span itemprop="name">templates</span>
+        <!--img itemprop="image" src="http://example.com/images/icon-bookicon.png" alt="Books"/-->
+      </a>
+      
+      <meta itemprop="position" content="5" />
+    </li>
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      <div itemscope itemtype="http://schema.org/Thing"
+	   itemprop="item">
+	<span itemprop="name">Jekyll Variables and Liquid template tags cheatsheet</span>
+      </div>
+      
+      <meta itemprop="position" content="6" />
+    </li>
+    
+    
+  </ol>
+</div>
+
+    </div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <div class="row">
+  <div class="col-md-4 col-md-push-8 sit-sidebar">
+    <div class="si-ad">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_side_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5882730780"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
+  
+</div>
+
+    
+    <div>
+      <h4>Table of Contents</h4>
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#general-liquid-template-tags">General Liquid template tags</a></li>
+<li class="toc-entry toc-h2"><a href="#global-variables">Global Variables</a></li>
+<li class="toc-entry toc-h2"><a href="#post">Post</a></li>
+<li class="toc-entry toc-h2"><a href="#paginator">Paginator</a></li>
+<li class="toc-entry toc-h2"><a href="#collections">Collections</a></li>
+<li class="toc-entry toc-h3"><a href="#collection-document">Collection Document</a></li>
+<li class="toc-entry toc-h2"><a href="#common-code-snippets">Common Code Snippets</a></li>
+<li class="toc-entry toc-h3"><a href="#list-of-posts">List of posts</a></li>
+<li class="toc-entry toc-h3"><a href="#list-of-collections">List of collections</a></li>
+<li class="toc-entry toc-h4"><a href="#example-output">Example Output</a></li>
+<li class="toc-entry toc-h3"><a href="#list-of-document-attributes-of-a-collection">List of document attributes of a Collection</a></li>
+<li class="toc-entry toc-h4"><a href="#example-output-1">Example Output</a></li>
+</ul>
+    </div>
+    
+  </div>
+  <div class="col-md-8 col-md-pull-4 sit-content">
+
+    
+    <p class="lead">
+      Jekyll template tags summary.
+
+    </p>
+    
+
+    <div class="si-ad">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_before_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="2929264389"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+
+    <p>Summary of all the Jekyll variables and liquid tags available.</p>
+
+<h2 id="general-liquid-template-tags">General Liquid template tags</h2>
+
+<dl>
+<dt>jekyll.version</dt>
+<dd>Jekyll version</dd>
+<dt>jekyll.environment</dt>
+<dd>Jekyll environment</dd>
+</dl>
+
+<p>Example Output:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Version: 3.2.0.pre.beta1 #3.2.0.pre.beta1
+
+Environment: production # development
+</code></pre>
+</div>
+
+<p><a href="https://github.com/jekyll/jekyll/blob/v3.2.0.pre.beta1/lib/jekyll/drops/jekyll_drop.rb">Source</a></p>
+
+<h2 id="global-variables">Global Variables</h2>
+
+<dl>
+<dt>site.time</dt>
+<dd>The current time (when you run the jekyll command).</dd>
+<dt>site.pages</dt>
+<dd>A list of all Pages.</dd>
+<dt>site.posts</dt>
+<dd>A reverse chronological list of all Posts.</dd>
+<dt>site.related_posts</dt>
+<dd>If the page being processed is a Post, this contains a list of up to ten related Posts. By default, these are the ten most recent posts. For high quality but slow to compute results, run the jekyll command with the --lsi (latent semantic indexing) option. Also note GitHub Pages does not support the lsi option when generating sites.</dd>
+<dt>site.static_files</dt>
+<dd>A list of all static files (i.e. files not processed by Jekyll's converters or the Liquid renderer). Each file has three properties: path, modified_time and extname.</dd>
+<dt>site.html_pages</dt>
+<dd>A subset of `site.pages` listing those which end in `.html`.</dd>
+<dt>site.html_files</dt>
+<dd>A subset of `site.static_files` listing those which end in `.html`.</dd>
+<dt>site.collections</dt>
+<dd>A list of all the collections.</dd>
+<dt>site.data</dt>
+<dd>A list containing the data loaded from the YAML files located in the _data directory.</dd>
+<dt>site.documents</dt>
+<dd>A list of all the documents in every collection.</dd>
+<dt>site.categories.CATEGORY</dt>
+<dd>The list of all Posts in category CATEGORY.</dd>
+<dt>site.tags.TAG</dt>
+<dd>The list of all Posts with tag TAG.</dd>
+<dt>site.[CONFIGURATION_DATA]</dt>
+<dd>All the variables set via the command line and your _config.yml are available through the site variable. For example, if you have url: http://mysite.com in your configuration file, then in your Posts and Pages it will be stored in site.url. Jekyll does not parse changes to _config.yml in watch mode, you must restart Jekyll to see changes to variables. </dd>
+</dl>
+
+<p><a href="https://jekyllrb.com/docs/variables/">Source</a></p>
+
+<h2 id="post">Post</h2>
+
+<dl>
+<dt>page.title</dt>
+<dd>The title of the Page.</dd>
+<dt>page.date</dt>
+<dd>The Date assigned to the Post. This can be overridden in a Post’s front matter by specifying a new date/time in the format YYYY-MM-DD HH:MM:SS (assuming UTC), or YYYY-MM-DD HH:MM:SS +/-TTTT (to specify a time zone using an offset from UTC. e.g. 2008-12-14 10:30:00 +0900).</dd>
+<dt>page.categories</dt>
+<dd>The list of categories to which this post belongs. Categories are derived from the directory structure above the _posts directory. For example, a post at /work/code/_posts/2008-12-24-closures.md would have this field set to ['work', 'code']. These can also be specified in the YAML Front Matter.</dd>
+<dt>page.tags</dt>
+<dd>The list of tags to which this post belongs. These can be specified in the YAML Front Matter.</dd>
+
+<dt>page.content</dt>
+<dd>The content of the Page, rendered or un-rendered depending upon what Liquid is being processed and what page is.</dd>
+<dt>page.excerpt</dt>
+<dd>The un-rendered excerpt of the Page.</dd>
+<dt>page.url</dt>
+<dd>The URL of the Post without the domain, but with a leading slash, e.g. /2008/12/14/my-post.html</dd>
+<dt>page.id</dt>
+<dd>An identifier unique to the Post (useful in RSS feeds). e.g. /2008/12/14/my-post</dd>
+<dt>page.path</dt>
+<dd>The path to the raw post or page. Example usage: Linking back to the page or post’s source on GitHub. This can be overridden in the YAML Front Matter.</dd>
+<dt>page.next</dt>
+<dd>The next post relative to the position of the current post in site.posts. Returns nil for the last entry.</dd>
+<dt>page.previous</dt>
+<dd>The previous post relative to the position of the current post in site.posts. Returns nil for the first entry. </dd>
+
+</dl>
+
+<p><a href="https://jekyllrb.com/docs/frontmatter/">Source 1</a>
+<a href="https://jekyllrb.com/docs/variables/">Source 2</a></p>
+
+<h2 id="paginator">Paginator</h2>
+
+<p class="alert alert-danger">Paginator variables are available in index files only <code class="highlighter-rouge">index.{md,htm,html}</code></p>
+
+<dl>
+<dt>paginator.per_page</dt>
+<dd>Number of Posts per page.</dd>
+<dt>paginator.posts</dt>
+<dd>Posts available for that page.</dd>
+<dt>paginator.total_posts</dt>
+<dd>Total number of Posts.</dd>
+<dt>paginator.total_pages</dt>
+<dd>Total number of pages.</dd>
+<dt>paginator.page</dt>
+<dd>The number of the current page.</dd>
+<dt>paginator.previous_page</dt>
+<dd>The number of the previous page.</dd>
+<dt>paginator.previous_page_path</dt>
+<dd>The path to the previous page.</dd>
+<dt>paginator.next_page</dt>
+<dd>The number of the next page.</dd>
+<dt>paginator.next_page_path</dt>
+<dd>The path to the next page.</dd>
+</dl>
+
+<h2 id="collections">Collections</h2>
+
+<p>Variables that belong to <em>collections</em> and also the ones defined in <code class="highlighter-rouge">_config.yml</code></p>
+
+<dl>
+<dt>label</dt>
+<dd>The name of your collection, e.g. my_collection.</dd>
+<dt>docs</dt>
+<dd>An array of documents.</dd>
+<dt>files</dt>
+<dd>An array of static files in the collection.</dd>
+<dt>relative_directory</dt>
+<dd>The path to the collection's source directory, relative to the site source.</dd>
+<dt>directory</dt>
+<dd>The full path to the collections's source directory.</dd>
+<dt>output</dt>
+<dd>Whether the collection's documents will be output as individual files. </dd>
+</dl>
+
+<h3 id="collection-document">Collection Document</h3>
+
+<p>Variables in a single collection Document</p>
+
+<dl>
+<dt>content</dt>
+<dd>The (unrendered) content of the document. If no YAML Front Matter is provided, Jekyll will not generate the file in your collection. If YAML Front Matter is used, then this is all the contents of the file after the terminating `---` of the front matter.</dd>
+<dt>output</dt>
+<dd>The rendered output of the document, based on the content.</dd>
+<dt>path</dt>
+<dd>The full path to the document's source file.</dd>
+<dt>relative_path</dt>
+<dd>The path to the document's source file relative to the site source.</dd>
+<dt>url</dt>
+<dd>The URL of the rendered collection. The file is only written to the destination when the collection to which it belongs has output: true in the site's configuration.</dd>
+<dt>collection</dt>
+<dd>The name of the document's collection.</dd>
+<dt>date</dt>
+<dd> The date of the document's collection.</dd>
+</dl>
+
+<p><a href="https://jekyllrb.com/docs/collections/#documents">Source</a></p>
+
+<h2 id="common-code-snippets">Common Code Snippets</h2>
+
+<h3 id="list-of-posts">List of posts</h3>
+
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>&lt;ul&gt;
+  <span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>post<span class="w"> </span>in<span class="w"> </span>site.posts<span class="w"> </span><span class="p">%}</span>
+    &lt;li&gt;
+      &lt;a href="<span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">url</span><span class="w"> </span><span class="p">}}</span>"&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="p">}}</span>&lt;/a&gt;
+    &lt;/li&gt;
+  <span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+&lt;/ul&gt;
+</code></pre>
+</div>
+
+<h3 id="list-of-collections">List of collections</h3>
+
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>collection<span class="w"> </span>in<span class="w"> </span>site.collections<span class="w"> </span><span class="p">%}</span>
+
+&lt;h4&gt;Collection <span class="p">{{</span><span class="nv">forloop</span><span class="p">.</span><span class="nv">index</span><span class="p">}}</span>&lt;/h4&gt;
+
+&lt;a href="<span class="p">{{</span><span class="nv">site</span><span class="p">.</span><span class="nv">baseurl</span><span class="p">}}</span>/<span class="p">{{</span><span class="nv">collection</span><span class="p">.</span><span class="nv">label</span><span class="p">}}</span>"&gt;<span class="p">{{</span><span class="nv">collection</span><span class="p">.</span><span class="nv">label</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">camelcase}}&lt;/a&gt;</span><span class="w">
+</span>&lt;dl&gt;<span class="err">
+</span>&lt;dt&gt;Docs&lt;/dt&gt;<span class="err">
+</span>&lt;dd&gt;{%<span class="w"> </span>comment<span class="w"> </span><span class="p">%}{{</span><span class="w"> </span><span class="nv">collection</span><span class="p">.</span><span class="nv">docs</span><span class="w"> </span><span class="p">}}{%</span><span class="w"> </span><span class="nt">endcomment</span><span class="w"> </span><span class="p">%}</span>&lt;/dd&gt;
+&lt;dt&gt;Files&lt;/dt&gt;
+&lt;dd&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">collection</span><span class="p">.</span><span class="nv">files</span><span class="w"> </span><span class="p">}}</span>&lt;/dd&gt;
+&lt;dt&gt;Relative directory&lt;/dt&gt;
+&lt;dd&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">collection</span><span class="p">.</span><span class="nv">relative_directory</span><span class="w"> </span><span class="p">}}</span>&lt;/dd&gt;
+&lt;dt&gt;Directory&lt;/dt&gt;
+&lt;dd&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">collection</span><span class="p">.</span><span class="nv">directory</span><span class="p">}}</span>&lt;/dd&gt;
+&lt;dt&gt;Output&lt;/dt&gt;
+&lt;dd&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">collection</span><span class="p">.</span><span class="nv">output</span><span class="w"> </span><span class="p">}}</span>&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;hr&gt;
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+</code></pre>
+</div>
+
+<h4 id="example-output">Example Output</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Collection 1
+
+books
+
+Docs
+Files
+Relative directory
+    _books
+Directory
+    /home/marcanuy/Development/simpleit.rocks/_books
+Output
+    true
+
+Collection 2
+
+posts
+
+Docs
+Files
+Relative directory
+    _posts
+Directory
+    /home/marcanuy/Development/simpleit.rocks/_posts
+Output
+    true 
+</code></pre>
+</div>
+
+<h3 id="list-of-document-attributes-of-a-collection">List of document attributes of a Collection</h3>
+
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>collection<span class="w"> </span>in<span class="w"> </span>site.collections<span class="w"> </span><span class="p">%}</span>
+
+&lt;h4&gt;Collection <span class="p">{{</span><span class="nv">forloop</span><span class="p">.</span><span class="nv">index</span><span class="p">}}</span>&lt;/h4&gt;
+
+&lt;dl&gt;
+<span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>doc<span class="w"> </span>in<span class="w"> </span>collection.docs<span class="w"> </span><span class="p">%}</span>
+&lt;dt&gt;Path&lt;/dt&gt;&lt;dd&gt;<span class="p">{{</span><span class="nv">doc</span><span class="p">.</span><span class="nv">path</span><span class="p">}}</span>&lt;/dd&gt;
+&lt;dt&gt;Relative_path&lt;/dt&gt;&lt;dd&gt; <span class="p">{{</span><span class="nv">doc</span><span class="p">.</span><span class="nv">relative_path</span><span class="p">}}</span>&lt;/dd&gt;
+&lt;dt&gt;Collection&lt;/dt&gt;&lt;dd&gt; <span class="p">{{</span><span class="nv">doc</span><span class="p">.</span><span class="nv">collection</span><span class="p">}}</span>&lt;/dd&gt;
+&lt;dt&gt;Date&lt;/dt&gt;&lt;dd&gt; <span class="p">{{</span><span class="nv">doc</span><span class="p">.</span><span class="nv">date</span><span class="p">}}</span>&lt;/dd&gt;
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+&lt;/dl&gt;
+&lt;hr&gt;
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+</code></pre>
+</div>
+
+<h4 id="example-output-1">Example Output</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Path
+    docs/ruby/jekyll/templates/_posts/2016-07-13-jekyll-variables-and-liquid-template-tags-cheatsheet.md
+Relative_path
+    docs/ruby/jekyll/templates/_posts/2016-07-13-jekyll-variables-and-liquid-template-tags-cheatsheet.md
+Collection
+    posts
+Date
+    2016-07-13 00:00:00 -0300
+</code></pre>
+</div>
+
+    
+  </div>
+</div>
+
+
+Categories: 
+
+<span class="entry-categories">
+  docs
+</span>
+
+,
+
+
+<span class="entry-categories">
+  ruby
+</span>
+
+,
+
+
+<span class="entry-categories">
+  jekyll
+</span>
+
+,
+
+
+<span class="entry-categories">
+  templates
+</span>
+
+
+
+
+<div class="row">
+  <div class="col-md-5">
+    <div class="post-comments">
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '/jekyll-variables-and-liquid-template-tags-cheatsheet/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    
+    s.src = '//simpleitrocks.disqus.com/embed.js';
+    
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  
+  
+  
+</div>
+
+  </div>
+  <div class="col-md-7">
+    <div class="si-ad">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_after_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5104001581"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+    
+
+
+
+
+
+
+
+  </div>
+</div>
+
+  </div>
+
+</article>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="container">
+
+    <h2 class="footer-heading text-muted">Simple IT 🤘 Rocks</h2>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <ul class="contact-list">
+          <li>
+	    <i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by Marcelo Canina
+	  </li>
+	  
+          <li>
+            <i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/marcanuy"><span class="username">marcanuy</span></a>
+
+          </li>
+          
+	  <li>
+	    <i class="fa fa-user" aria-hidden="true"></i><a href="/about">About</a>
+	  </li>
+        </ul>
+      </div>
+
+      <div class="col-xs-6">
+	<div class="text-xs-right text-muted">
+          <p>Clutter-free software concepts. Written on the go.
+</p>
+	</div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<div class="si-license bg-inverse">
+  <div class="text-muted text-sm-center">
+    <small>
+      Except as otherwise noted, the content of this page is licensed under
+      <a rel="license" class="text-info" href="https://creativecommons.org/licenses/by-nc/4.0/">
+	<i class="fa fa-creative-commons" aria-hidden="true"></i> BY-NC 4.0
+      </a>
+    </small>
+  </div>
+</div>
+
+
+
+  </body>
+
+</html>

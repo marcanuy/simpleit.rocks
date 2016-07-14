@@ -331,7 +331,7 @@ pre {
 .si-ad-development {
   background-color: #00ff00; }
 
-span .edgeLabel {
+.mermaid .edgeLabel {
   color: #424242; }
 
 .breadcrumbs .prompt {
@@ -341,6 +341,17 @@ span .edgeLabel {
   letter-spacing: -0.1rem; }
 .breadcrumbs ol {
   margin-left: 0px; }
+
+.card-columns .card img {
+  width: 100%; }
+
+.sticky {
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  position: sticky;
+  top: 10px; }
 
 /**
  * Syntax highlighting styles

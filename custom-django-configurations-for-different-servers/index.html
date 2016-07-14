@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="alternate" type="application/rss+xml" title="Simple IT 🤘 Rocks" href="http://simpleit.rocks/feed.xml">
+
+  <!-- jQuery -->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  
+  <!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>Django Configuration and environment isolation - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Django Configuration and environment isolation" />
+<meta name="description" content="Every config file should be version controlled, even the developers local configuration, all the developers of a project should use the same development configuration." />
+<meta property="og:description" content="Every config file should be version controlled, even the developers local configuration, all the developers of a project should use the same development configuration." />
+<link rel="canonical" href="http://simpleit.rocks/custom-django-configurations-for-different-servers/" />
+<meta property="og:url" content="http://simpleit.rocks/custom-django-configurations-for-different-servers/" />
+<meta property="og:site_name" content="Simple IT 🤘 Rocks" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-06-10T00:00:00-03:00" />
+<meta property="fb:app_id" content="1822851531277021" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Django Configuration and environment isolation",
+    "datePublished": "2016-06-10T00:00:00-03:00",
+    "description": "Every config file should be version controlled, even the developers local configuration, all the developers of a project should use the same development configuration.",
+    "url": "http://simpleit.rocks/custom-django-configurations-for-different-servers/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+
+  
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1912030305535489",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+
+</head>
+
+
+  <body>
+
+    
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28572639-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <header class="site-header">
+
+  <!-- mermaid -->
+  <script src="/bower_components/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+  <!-- endmermaid -->
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Simple IT 🤘 Rocks</a>
+
+  </div>
+
+  <div class="jumbotron jumbotron-fluid bg-inverse">
+    <div class="container">
+      
+      
+      
+      
+      <h1 class="title">Django Configuration And Environment Isolation </h1>
+      
+      
+      <p class="lead">
+	<small class="text-muted subtitle">Having a different configuration for development, staging and production servers</small>
+      </p>
+      
+    </div>
+  </div>
+
+</header>
+
+
+    <div class="container-fluid">
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <div class="post-meta">
+      
+      <i class="fa fa-calendar" aria-hidden="true"></i>
+      <time datetime="2016-06-10T00:00:00-03:00" itemprop="datePublished">Jun 10, 2016</time>
+      
+    </div>
+    <div>
+      <div class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="list-inline">
+
+
+    
+
+    
+
+    <li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class="list-inline-item">
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/">
+    
+    <i class="fa fa-home" aria-hidden="true"></i>
+    
+
+    Home
+  </a>
+  
+  <meta itemprop="position" content="1" />
+</li>
+
+
+    
+    
+
+    
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      
+      <a itemscope itemtype="http://schema.org/Thing"
+	 itemprop="item" href="/docs">
+        <span itemprop="name">docs</span>
+        <!--img itemprop="image" src="http://example.com/images/icon-bookicon.png" alt="Books"/-->
+      </a>
+      
+      <meta itemprop="position" content="2" />
+    </li>
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      
+      <a itemscope itemtype="http://schema.org/Thing"
+	 itemprop="item" href="/docs/python">
+        <span itemprop="name">python</span>
+        <!--img itemprop="image" src="http://example.com/images/icon-bookicon.png" alt="Books"/-->
+      </a>
+      
+      <meta itemprop="position" content="3" />
+    </li>
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      
+      <a itemscope itemtype="http://schema.org/Thing"
+	 itemprop="item" href="/docs/python/django">
+        <span itemprop="name">django</span>
+        <!--img itemprop="image" src="http://example.com/images/icon-bookicon.png" alt="Books"/-->
+      </a>
+      
+      <meta itemprop="position" content="4" />
+    </li>
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      <div itemscope itemtype="http://schema.org/Thing"
+	   itemprop="item">
+	<span itemprop="name">Django Configuration and environment isolation</span>
+      </div>
+      
+      <meta itemprop="position" content="5" />
+    </li>
+    
+    
+  </ol>
+</div>
+
+    </div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <div class="row">
+  <div class="col-md-4 col-md-push-8 sit-sidebar">
+    <div class="si-ad">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_side_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5882730780"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
+  
+</div>
+
+    
+    <div>
+      <h4>Table of Contents</h4>
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#setting-environment-variables">Setting environment variables</a></li>
+<li class="toc-entry toc-h2"><a href="#splitting-the-default-djangos-settings-file-into-several-files-for-different-environments">Splitting the default Django’s settings file into several files for different environments</a></li>
+<li class="toc-entry toc-h2"><a href="#packages-for-each-environment">Packages for each environment</a></li>
+</ul>
+    </div>
+    
+  </div>
+  <div class="col-md-8 col-md-pull-4 sit-content">
+
+    
+
+    <div class="si-ad">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_before_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="2929264389"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+
+    <p>Every config file should be version controlled, even the developers local configuration, all the developers of a project should use the same development configuration.</p>
+
+<p>However there are special config keys that should be left out of versioning, like the <a href="https://docs.djangoproject.com/en/1.9/ref/settings/#std:setting-SECRET_KEY">SECRET_KEY</a> setting (used for <a href="https://docs.djangoproject.com/en/1.9/topics/signing/">cryptographic signing functionalities</a>)</p>
+
+<p>The default <em>Config file</em> that comes shipped with Django should be pulled apart into several settings for each environment: <em>local</em>, <em>staging</em>, <em>test</em>, <em>production</em>. This can be done easily inheriting from a <em>base config file</em>, changing what the specific environment needs and <strong><a href="http://12factor.net/config">leaving secret keys outside config files versioning using environment variables</a></strong>.</p>
+
+<p>If <em>virtualenvwrapper</em> is being used, the default development settings parameter to work with <em>manage.py</em> can be specified in the <em>postactivate</em> hook: <code class="highlighter-rouge">echo "export DJANGO_SETTINGS_MODULE=settings.local" &gt;&gt; $VIRTUAL_ENV/bin/postactivate</code></p>
+
+<p>When using <em>manage.py</em> many commands accepts the parameter to specify a specific settings file: <code class="highlighter-rouge">python manage.py runserver --settings=myproject.settings.local</code></p>
+
+<ul>
+  <li>To compare the current settings file with the one that installs Django by default: <code class="highlighter-rouge">$ manage.py diffsettings</code></li>
+</ul>
+
+<h2 id="setting-environment-variables">Setting environment variables</h2>
+
+<p>In a <strong>development</strong> environment, variables can be set with <code class="highlighter-rouge">$ export A_SECRET_KEY=shhh1234</code>, and placed in:</p>
+
+<ul>
+  <li><em>.bashrc</em> or <em>.profile</em></li>
+  <li><em>virtualenvwrapper’s</em> <strong>bin/activate</strong> hook file</li>
+</ul>
+
+<p>To check that the secret environment key is being loaded, it is possible to check it from a python shell:</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">"A_SECRET_KEY"</span><span class="p">]</span>
+<span class="s">"shhh1234"</span>
+</code></pre>
+</div>
+
+<p>Then to get the value for a specific environment, the <em>production config file</em> in version control only needs to get this environment variable value: <code class="highlighter-rouge">A_SECRET_KEY = os.environ["A_SECRET_KEY"]</code></p>
+
+<p>In a <strong>production</strong> environment like <a href="https://devcenter.heroku.com/articles/config-vars">Heroku</a>, this can be done with: <code class="highlighter-rouge">$ heroku config:set A_SECRET_KEY=shhh1234</code></p>
+
+<h2 id="splitting-the-default-djangos-settings-file-into-several-files-for-different-environments">Splitting the default Django’s settings file into several files for different environments</h2>
+
+<p>Django automatically creates a configuration file in <code class="highlighter-rouge">&lt;project_name&gt;/settings.py</code>, to break it up into <em>local</em>, <em>testing</em>, <em>staging</em> and <em>production</em> config files, the best way is to create a <code class="highlighter-rouge">base.py</code> config with common configurations accross all of them and leave:</p>
+
+<ol>
+  <li>Create the settings directory <code class="highlighter-rouge">$ mkdir &lt;project_name&gt;/settings</code></li>
+  <li>Add <code class="highlighter-rouge">__init__.py</code> file to make Python treat the settings directory as containing packages <code class="highlighter-rouge">$ touch &lt;project_name&gt;/settings/__init__.py</code></li>
+  <li>Move the default settings file into the settings directory and change its name <code class="highlighter-rouge">$ mv &lt;project_name&gt;/settings.py &lt;project_name&gt;/settings/base.py</code></li>
+  <li>Create all the configuration files (<em>local.py</em>, <em>testing.py</em>, <em>staging</em>, <em>production</em> ) and specify to inherit <em>base.py</em> configurations, for example, for the development file: <code class="highlighter-rouge">echo "from .base import *" &gt;&gt; &lt;project_name&gt;/settings/local.py</code></li>
+  <li>Configure the current environment to use the appropriate settings file, in development: <code class="highlighter-rouge">$ export DJANGO_SETTINGS_MODULE=mysite.settings.local</code></li>
+</ol>
+
+<p>Django has two administrative scripts: <strong>django_admin.py</strong> and <strong>manage.py</strong> (that automatically configures the django instance with the current project). 
+One of the <a href="https://docs.djangoproject.com/en/1.9/ref/django-admin/">differences</a> between them is that <em>manage.py</em> automatically configures the  <strong>DJANGO_SETTINGS_MODULE</strong> environment variable using the project’s <em>settings.py</em>.</p>
+
+<blockquote cite="https://docs.djangoproject.com/en/1.9/ref/django-admin/">
+  <p>Generally, when working on a single Django project, it’s easier to use manage.py than django-admin. 
+If you need to switch between multiple Django settings files, use django-admin with DJANGO_SETTINGS_MODULE or the –settings command line option.</p>
+</blockquote>
+
+<h2 id="packages-for-each-environment">Packages for each environment</h2>
+
+<p>Each environment needs a specific requirements file, having a <em>base.txt</em> requirement file with common packages across environments and then adding the needed packages for each environment.</p>
+
+<p>Common commands:</p>
+
+<ul>
+  <li>To make it possible for each environment to inherit the packages from the <em>base.txt</em> requirement file, each new file should begin with: <code class="highlighter-rouge">-r base.txt</code></li>
+  <li>To generate a requirements file: <a href="https://pip.pypa.io/en/stable/reference/pip_freeze/">$ pip freeze</a> <code class="highlighter-rouge">$ pip freeze --local &gt; requirements/base.txt</code></li>
+  <li>To install the requirements file in a local environment: <code class="highlighter-rouge">$ pip install -r requirements/base.txt</code></li>
+</ul>
+
+
+    
+  </div>
+</div>
+
+
+Categories: 
+
+<span class="entry-categories">
+  docs
+</span>
+
+,
+
+
+<span class="entry-categories">
+  python
+</span>
+
+,
+
+
+<span class="entry-categories">
+  django
+</span>
+
+
+
+
+<div class="row">
+  <div class="col-md-5">
+    <div class="post-comments">
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '/custom-django-configurations-for-different-servers/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    
+    s.src = '//simpleitrocks.disqus.com/embed.js';
+    
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  
+  
+  
+</div>
+
+  </div>
+  <div class="col-md-7">
+    <div class="si-ad">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_after_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5104001581"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+    
+
+
+
+
+
+
+<div class="post-same-category">
+  <h2>Articles in this category</h2>
+  <ul class="nav nav-pills nav-stacked">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <li class="nav-item">
+      <a class="nav-link active" href="/custom-django-configurations-for-different-servers/">
+	Django Configuration and environment isolation
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <li class="nav-item">
+      <a class="nav-link " href="/django/">
+	Django
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+
+  </div>
+</div>
+
+  </div>
+
+</article>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="container">
+
+    <h2 class="footer-heading text-muted">Simple IT 🤘 Rocks</h2>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <ul class="contact-list">
+          <li>
+	    <i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by Marcelo Canina
+	  </li>
+	  
+          <li>
+            <i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/marcanuy"><span class="username">marcanuy</span></a>
+
+          </li>
+          
+	  <li>
+	    <i class="fa fa-user" aria-hidden="true"></i><a href="/about">About</a>
+	  </li>
+        </ul>
+      </div>
+
+      <div class="col-xs-6">
+	<div class="text-xs-right text-muted">
+          <p>Clutter-free software concepts. Written on the go.
+</p>
+	</div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<div class="si-license bg-inverse">
+  <div class="text-muted text-sm-center">
+    <small>
+      Except as otherwise noted, the content of this page is licensed under
+      <a rel="license" class="text-info" href="https://creativecommons.org/licenses/by-nc/4.0/">
+	<i class="fa fa-creative-commons" aria-hidden="true"></i> BY-NC 4.0
+      </a>
+    </small>
+  </div>
+</div>
+
+
+
+  </body>
+
+</html>

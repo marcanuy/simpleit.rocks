@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="alternate" type="application/rss+xml" title="Simple IT 🤘 Rocks" href="http://simpleit.rocks/feed.xml">
+
+  <!-- jQuery -->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  
+  <!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>Jekyll Configuration File Options - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Jekyll Configuration File Options" />
+<meta name="description" content="Overview" />
+<meta property="og:description" content="Overview" />
+<link rel="canonical" href="http://simpleit.rocks/jekyll-configuration-file-options/" />
+<meta property="og:url" content="http://simpleit.rocks/jekyll-configuration-file-options/" />
+<meta property="og:site_name" content="Simple IT 🤘 Rocks" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-06-12T00:00:00-03:00" />
+<meta property="fb:app_id" content="1822851531277021" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Jekyll Configuration File Options",
+    "datePublished": "2016-06-12T00:00:00-03:00",
+    "description": "Overview",
+    "url": "http://simpleit.rocks/jekyll-configuration-file-options/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+
+  
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1912030305535489",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+
+</head>
+
+
+  <body>
+
+    
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28572639-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <header class="site-header">
+
+  <!-- mermaid -->
+  <script src="/bower_components/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+  <!-- endmermaid -->
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Simple IT 🤘 Rocks</a>
+
+  </div>
+
+  <div class="jumbotron jumbotron-fluid bg-inverse">
+    <div class="container">
+      
+      
+      
+      
+      <h1 class="title">Jekyll Configuration File Options </h1>
+      
+      
+    </div>
+  </div>
+
+</header>
+
+
+    <div class="container-fluid">
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <div class="post-meta">
+      
+      <i class="fa fa-calendar" aria-hidden="true"></i>
+      <time datetime="2016-06-12T00:00:00-03:00" itemprop="datePublished">Jun 12, 2016</time>
+      
+    </div>
+    <div>
+      <div class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="list-inline">
+
+
+    
+
+    
+
+    <li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class="list-inline-item">
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/">
+    
+    <i class="fa fa-home" aria-hidden="true"></i>
+    
+
+    Home
+  </a>
+  
+  <meta itemprop="position" content="1" />
+</li>
+
+
+    
+    
+
+    
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      
+      <a itemscope itemtype="http://schema.org/Thing"
+	 itemprop="item" href="/docs">
+        <span itemprop="name">docs</span>
+        <!--img itemprop="image" src="http://example.com/images/icon-bookicon.png" alt="Books"/-->
+      </a>
+      
+      <meta itemprop="position" content="2" />
+    </li>
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      
+      <a itemscope itemtype="http://schema.org/Thing"
+	 itemprop="item" href="/docs/ruby">
+        <span itemprop="name">ruby</span>
+        <!--img itemprop="image" src="http://example.com/images/icon-bookicon.png" alt="Books"/-->
+      </a>
+      
+      <meta itemprop="position" content="3" />
+    </li>
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      
+      <a itemscope itemtype="http://schema.org/Thing"
+	 itemprop="item" href="/docs/ruby/jekyll">
+        <span itemprop="name">jekyll</span>
+        <!--img itemprop="image" src="http://example.com/images/icon-bookicon.png" alt="Books"/-->
+      </a>
+      
+      <meta itemprop="position" content="4" />
+    </li>
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      <div itemscope itemtype="http://schema.org/Thing"
+	   itemprop="item">
+	<span itemprop="name">Jekyll Configuration File Options</span>
+      </div>
+      
+      <meta itemprop="position" content="5" />
+    </li>
+    
+    
+  </ol>
+</div>
+
+    </div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <div class="row">
+  <div class="col-md-4 col-md-push-8 sit-sidebar">
+    <div class="si-ad">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_side_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5882730780"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
+  
+</div>
+
+    
+    <div>
+      <h4>Table of Contents</h4>
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#full-list-of-all-the-default-configuration-options">Full list of all the default configuration options</a></li>
+</ul>
+    </div>
+    
+  </div>
+  <div class="col-md-8 col-md-pull-4 sit-content">
+
+    
+    <p class="lead">
+      
+    </p>
+    
+
+    <div class="si-ad">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_before_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="2929264389"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+
+    <h2 id="overview">Overview</h2>
+
+<p>The default configuration file is located in <code class="highlighter-rouge">/_config.yml</code>. Jekyll by <em>default</em> comes with a lot of defaults that are not listed explicitly.</p>
+
+<p>This article list the defaults values assumed by Jekyll.</p>
+
+<p>The config file is in <a href="http://yaml.org">YAML</a> format.</p>
+
+<h2 id="full-list-of-all-the-default-configuration-options">Full list of all the default configuration options</h2>
+
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Where things are</span>
+<span class="s">source</span><span class="pi">:</span>                      <span class="c1"># Current-dir</span>
+<span class="s">destination</span><span class="pi">:</span>                 <span class="c1"># Current-dir/_site</span>
+<span class="s">plugins_dir</span><span class="pi">:</span>    <span class="s1">'</span><span class="s">_plugins'</span>
+<span class="s">layouts_dir</span><span class="pi">:</span>    <span class="s1">'</span><span class="s">_layouts'</span>
+<span class="s">data_dir</span><span class="pi">:</span>       <span class="s1">'</span><span class="s">_data'</span>
+<span class="s">includes_dir</span><span class="pi">:</span>   <span class="s1">'</span><span class="s">_includes'</span>
+<span class="s">collections</span><span class="pi">:</span>    <span class="s">null</span>
+<span class="c1">#  my_collection:</span>
+<span class="c1">#    output: true</span>
+<span class="c1">#    permalink: /awesome/:path/</span>
+
+<span class="c1"># Handling Reading</span>
+<span class="s">safe</span><span class="pi">:</span>           <span class="s">false</span>
+<span class="s">include</span><span class="pi">:</span>        <span class="pi">[</span><span class="s1">'</span><span class="s">.htaccess'</span><span class="pi">]</span>
+<span class="s">exclude</span><span class="pi">:</span>        <span class="pi">[]</span>
+<span class="s">keep_files</span><span class="pi">:</span>     <span class="pi">[</span><span class="s1">'</span><span class="s">.git'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">.svn'</span><span class="pi">]</span>
+<span class="s">encoding</span><span class="pi">:</span>       <span class="s1">'</span><span class="s">utf-8'</span>
+<span class="s">markdown_ext</span><span class="pi">:</span>   <span class="s1">'</span><span class="s">markdown,mkdown,mkdn,mkd,md'</span>
+
+<span class="c1"># Filtering Content</span>
+<span class="s">show_drafts</span><span class="pi">:</span>    <span class="s">null</span>
+<span class="s">limit_posts</span><span class="pi">:</span>    <span class="s">0</span>
+<span class="s">future</span><span class="pi">:</span>         <span class="s">false</span>
+<span class="s">unpublished</span><span class="pi">:</span>    <span class="s">false</span>
+
+<span class="c1"># Plugins</span>
+<span class="s">whitelist</span><span class="pi">:</span>      <span class="pi">[]</span>
+<span class="s">gems</span><span class="pi">:</span>           <span class="pi">[]</span>
+
+<span class="c1"># Conversion</span>
+<span class="s">markdown</span><span class="pi">:</span>       <span class="s1">'</span><span class="s">kramdown'</span>
+<span class="s">highlighter</span><span class="pi">:</span>    <span class="s1">'</span><span class="s">rouge'</span>
+<span class="s">lsi</span><span class="pi">:</span>            <span class="s">false</span>
+<span class="s">excerpt_separator</span><span class="pi">:</span>  <span class="s2">"</span><span class="se">\n\n</span><span class="s">"</span>
+<span class="s">incremental</span><span class="pi">:</span>    <span class="s">false</span>
+
+<span class="c1"># Serving</span>
+<span class="s">detach</span><span class="pi">:</span>         <span class="s">false</span>          <span class="c1"># default to not detaching the serve</span>
+<span class="s">port</span><span class="pi">:</span>           <span class="s1">'</span><span class="s">4000'</span>
+<span class="s">host</span><span class="pi">:</span>           <span class="s1">'</span><span class="s">127.0.0.1'</span>
+<span class="s">baseurl</span><span class="pi">:</span>        <span class="s1">'</span><span class="s">'</span>
+<span class="s">show_dir_listing</span><span class="pi">:</span>  <span class="s">false</span>
+
+<span class="c1"># Output Configuration</span>
+<span class="s">permalink</span><span class="pi">:</span>      <span class="s1">'</span><span class="s">date'</span>
+<span class="s">paginate_path</span><span class="pi">:</span>  <span class="s1">'</span><span class="s">/page:num'</span>
+<span class="s">timezone</span><span class="pi">:</span>       <span class="s">null</span>           <span class="c1"># use local timezone</span>
+
+<span class="s">quiet</span><span class="pi">:</span>          <span class="s">false</span>
+<span class="s">verbose</span><span class="pi">:</span>        <span class="s">false</span>
+<span class="s">defaults</span><span class="pi">:</span>       
+<span class="c1">#  - scope:</span>
+<span class="c1">#      path: ""</span>
+<span class="c1">#      type: my_collection</span>
+<span class="c1">#    values:</span>
+<span class="c1">#      layout: page</span>
+
+<span class="s">rdiscount</span><span class="pi">:</span>
+  <span class="s">extensions</span><span class="pi">:</span>   <span class="pi">[]</span>
+
+
+<span class="s">redcarpet</span><span class="pi">:</span>
+  <span class="s">extensions</span><span class="pi">:</span>   <span class="pi">[]</span>
+
+<span class="s">kramdown</span><span class="pi">:</span>
+  <span class="s">auto_ids</span><span class="pi">:</span>        <span class="s">true</span>
+  <span class="s">toc_levels</span><span class="pi">:</span>      <span class="s1">'</span><span class="s">1..6'</span>
+  <span class="s">entity_output</span><span class="pi">:</span>   <span class="s1">'</span><span class="s">as_char'</span>
+  <span class="s">smart_quotes</span><span class="pi">:</span>    <span class="s1">'</span><span class="s">lsquo,rsquo,ldquo,rdquo'</span>
+  <span class="s">input</span><span class="pi">:</span>           <span class="s2">"</span><span class="s">GFM"</span>
+  <span class="s">hard_wrap</span><span class="pi">:</span>       <span class="s">false</span>
+  <span class="s">footnote_nr</span><span class="pi">:</span>     <span class="s">1</span>
+
+</code></pre>
+</div>
+
+<p class="alert alert-warning">Tested with Jekyll version v3.2.0</p>
+
+<p><a href="https://github.com/jekyll/jekyll/blob/v3.2.0.pre.beta1/lib/jekyll/configuration.rb">Config Source</a></p>
+
+    
+  </div>
+</div>
+
+
+Categories: 
+
+<span class="entry-categories">
+  docs
+</span>
+
+,
+
+
+<span class="entry-categories">
+  ruby
+</span>
+
+,
+
+
+<span class="entry-categories">
+  jekyll
+</span>
+
+
+
+
+<div class="row">
+  <div class="col-md-5">
+    <div class="post-comments">
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '/jekyll-configuration-file-options/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    
+    s.src = '//simpleitrocks.disqus.com/embed.js';
+    
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  
+  
+  
+</div>
+
+  </div>
+  <div class="col-md-7">
+    <div class="si-ad">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_after_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5104001581"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+    
+
+
+
+
+
+
+<div class="post-same-category">
+  <h2>Articles in this category</h2>
+  <ul class="nav nav-pills nav-stacked">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <li class="nav-item">
+      <a class="nav-link " href="/understanding-jekyll-posts/">
+	Understanding Jekyll Posts
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li class="nav-item">
+      <a class="nav-link active" href="/jekyll-configuration-file-options/">
+	Jekyll Configuration File Options
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <li class="nav-item">
+      <a class="nav-link " href="/jekyll-basic-concepts/">
+	Jekyll basic concepts
+      </a>
+    </li>
+    
+    
+  </ul>
+</div>
+
+
+  </div>
+</div>
+
+  </div>
+
+</article>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="container">
+
+    <h2 class="footer-heading text-muted">Simple IT 🤘 Rocks</h2>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <ul class="contact-list">
+          <li>
+	    <i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by Marcelo Canina
+	  </li>
+	  
+          <li>
+            <i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/marcanuy"><span class="username">marcanuy</span></a>
+
+          </li>
+          
+	  <li>
+	    <i class="fa fa-user" aria-hidden="true"></i><a href="/about">About</a>
+	  </li>
+        </ul>
+      </div>
+
+      <div class="col-xs-6">
+	<div class="text-xs-right text-muted">
+          <p>Clutter-free software concepts. Written on the go.
+</p>
+	</div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<div class="si-license bg-inverse">
+  <div class="text-muted text-sm-center">
+    <small>
+      Except as otherwise noted, the content of this page is licensed under
+      <a rel="license" class="text-info" href="https://creativecommons.org/licenses/by-nc/4.0/">
+	<i class="fa fa-creative-commons" aria-hidden="true"></i> BY-NC 4.0
+      </a>
+    </small>
+  </div>
+</div>
+
+
+
+  </body>
+
+</html>

@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
   <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
   
@@ -93,11 +93,16 @@
   <div class="jumbotron jumbotron-fluid bg-inverse">
     <div class="container">
       
-      <h1 class="title">HTML viewport meta tag for responsive designs</h1>
+      
+      
+      
+      <h1 class="title">Html Viewport Meta Tag For Responsive Designs </h1>
+      
       
       <p class="lead">
 	<small class="text-muted subtitle">Mobile optimization</small>
       </p>
+      
     </div>
   </div>
 
@@ -108,28 +113,42 @@
       <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <p class="post-meta">
+    <div class="post-meta">
       
       <i class="fa fa-calendar" aria-hidden="true"></i>
       <time datetime="2016-06-21T00:00:00-03:00" itemprop="datePublished">Jun 21, 2016</time>
       
-      <span><div class="breadcrumbs">
+    </div>
+    <div>
+      <div class="breadcrumbs">
   <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="list-inline">
 
 
     
+
     
+
+    <li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class="list-inline-item">
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/">
+    
+    <i class="fa fa-home" aria-hidden="true"></i>
+    
+
+    Home
+  </a>
+  
+  <meta itemprop="position" content="1" />
+</li>
+
 
     
     
-    <li itemprop="itemListElement" itemscope
-	itemtype="http://schema.org/ListItem"
-	class="list-inline-item">
-      <i class="fa fa-home" aria-hidden="true"></i>
-      <a itemscope itemtype="http://schema.org/Thing"
-	 itemprop="item" href="/"> Home</a>
-      <meta itemprop="position" content="1" />
-    </li>
+
+    
     
     <span class="prompt">>></span>
     <li itemprop="itemListElement" itemscope
@@ -197,22 +216,16 @@
       <meta itemprop="position" content="5" />
     </li>
     
+    
   </ol>
 </div>
-</span>
-    </p>
+
+    </div>
   </header>
 
   <div class="post-content" itemprop="articleBody">
     <div class="row">
   <div class="col-md-4 col-md-push-8 sit-sidebar">
-    <h4>Table of Contents</h4>
-    
-    <ul class="section-nav">
-<li class="toc-entry toc-h1"><a href="#using-the-viewport-meta-tag">Using the viewport meta tag</a></li>
-</ul>
-    
-
     <div class="si-ad">
   
 
@@ -230,7 +243,14 @@
   
 </div>
 
-
+    
+    <div>
+      <h4>Table of Contents</h4>
+      <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#using-the-viewport-meta-tag">Using the viewport meta tag</a></li>
+</ul>
+    </div>
+    
   </div>
   <div class="col-md-8 col-md-pull-4 sit-content">
 
@@ -265,7 +285,7 @@
  Pages optimized to display well on mobile devices should include a meta viewport in the head of the document specifying width=device-width, initial-scale=1.</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
 </code></pre>
 </div>
 
@@ -276,7 +296,7 @@
 Use relative sizes for elements to avoid breaking layout.</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">@media</span> <span class="p">(</span><span class="n">query</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="k">@media</span> <span class="p">(</span><span class="n">query</span><span class="p">)</span> <span class="p">{</span>
   <span class="c">/* CSS Rules used when query matches */</span>
 <span class="p">}</span>
 </code></pre>
@@ -319,7 +339,7 @@ Categories:
 
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-5">
     <div class="post-comments">
   
 
@@ -351,7 +371,7 @@ Categories:
 </div>
 
   </div>
-  <div class="col-md-6">
+  <div class="col-md-7">
     <div class="si-ad">
   
 
@@ -369,9 +389,16 @@ Categories:
   
 </div>
 
+    
+
+
+
+
+
+
+
   </div>
 </div>
-
 
   </div>
 

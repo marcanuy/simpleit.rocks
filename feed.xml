@@ -6,9 +6,471 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 08 Jul 2016 19:30:12 -0300</pubDate>
-    <lastBuildDate>Fri, 08 Jul 2016 19:30:12 -0300</lastBuildDate>
-    <generator>Jekyll v3.1.6</generator>
+    <pubDate>Thu, 14 Jul 2016 00:06:10 -0300</pubDate>
+    <lastBuildDate>Thu, 14 Jul 2016 00:06:10 -0300</lastBuildDate>
+    <generator>Jekyll v3.2.0.pre.beta1</generator>
+    
+      <item>
+        <title>Jekyll Variables and Liquid template tags cheatsheet</title>
+        <description>&lt;p&gt;Summary of all the Jekyll variables and liquid tags available.&lt;/p&gt;
+
+&lt;h2 id=&quot;general-liquid-template-tags&quot;&gt;General Liquid template tags&lt;/h2&gt;
+
+&lt;dl&gt;
+&lt;dt&gt;jekyll.version&lt;/dt&gt;
+&lt;dd&gt;Jekyll version&lt;/dd&gt;
+&lt;dt&gt;jekyll.environment&lt;/dt&gt;
+&lt;dd&gt;Jekyll environment&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;Example Output:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Version: 3.2.0.pre.beta1 #3.2.0.pre.beta1
+
+Environment: production # development
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/jekyll/jekyll/blob/v3.2.0.pre.beta1/lib/jekyll/drops/jekyll_drop.rb&quot;&gt;Source&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;global-variables&quot;&gt;Global Variables&lt;/h2&gt;
+
+&lt;dl&gt;
+&lt;dt&gt;site.time&lt;/dt&gt;
+&lt;dd&gt;The current time (when you run the jekyll command).&lt;/dd&gt;
+&lt;dt&gt;site.pages&lt;/dt&gt;
+&lt;dd&gt;A list of all Pages.&lt;/dd&gt;
+&lt;dt&gt;site.posts&lt;/dt&gt;
+&lt;dd&gt;A reverse chronological list of all Posts.&lt;/dd&gt;
+&lt;dt&gt;site.related_posts&lt;/dt&gt;
+&lt;dd&gt;If the page being processed is a Post, this contains a list of up to ten related Posts. By default, these are the ten most recent posts. For high quality but slow to compute results, run the jekyll command with the --lsi (latent semantic indexing) option. Also note GitHub Pages does not support the lsi option when generating sites.&lt;/dd&gt;
+&lt;dt&gt;site.static_files&lt;/dt&gt;
+&lt;dd&gt;A list of all static files (i.e. files not processed by Jekyll's converters or the Liquid renderer). Each file has three properties: path, modified_time and extname.&lt;/dd&gt;
+&lt;dt&gt;site.html_pages&lt;/dt&gt;
+&lt;dd&gt;A subset of `site.pages` listing those which end in `.html`.&lt;/dd&gt;
+&lt;dt&gt;site.html_files&lt;/dt&gt;
+&lt;dd&gt;A subset of `site.static_files` listing those which end in `.html`.&lt;/dd&gt;
+&lt;dt&gt;site.collections&lt;/dt&gt;
+&lt;dd&gt;A list of all the collections.&lt;/dd&gt;
+&lt;dt&gt;site.data&lt;/dt&gt;
+&lt;dd&gt;A list containing the data loaded from the YAML files located in the _data directory.&lt;/dd&gt;
+&lt;dt&gt;site.documents&lt;/dt&gt;
+&lt;dd&gt;A list of all the documents in every collection.&lt;/dd&gt;
+&lt;dt&gt;site.categories.CATEGORY&lt;/dt&gt;
+&lt;dd&gt;The list of all Posts in category CATEGORY.&lt;/dd&gt;
+&lt;dt&gt;site.tags.TAG&lt;/dt&gt;
+&lt;dd&gt;The list of all Posts with tag TAG.&lt;/dd&gt;
+&lt;dt&gt;site.[CONFIGURATION_DATA]&lt;/dt&gt;
+&lt;dd&gt;All the variables set via the command line and your _config.yml are available through the site variable. For example, if you have url: http://mysite.com in your configuration file, then in your Posts and Pages it will be stored in site.url. Jekyll does not parse changes to _config.yml in watch mode, you must restart Jekyll to see changes to variables. &lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://jekyllrb.com/docs/variables/&quot;&gt;Source&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;post&quot;&gt;Post&lt;/h2&gt;
+
+&lt;dl&gt;
+&lt;dt&gt;page.title&lt;/dt&gt;
+&lt;dd&gt;The title of the Page.&lt;/dd&gt;
+&lt;dt&gt;page.date&lt;/dt&gt;
+&lt;dd&gt;The Date assigned to the Post. This can be overridden in a Post’s front matter by specifying a new date/time in the format YYYY-MM-DD HH:MM:SS (assuming UTC), or YYYY-MM-DD HH:MM:SS +/-TTTT (to specify a time zone using an offset from UTC. e.g. 2008-12-14 10:30:00 +0900).&lt;/dd&gt;
+&lt;dt&gt;page.categories&lt;/dt&gt;
+&lt;dd&gt;The list of categories to which this post belongs. Categories are derived from the directory structure above the _posts directory. For example, a post at /work/code/_posts/2008-12-24-closures.md would have this field set to ['work', 'code']. These can also be specified in the YAML Front Matter.&lt;/dd&gt;
+&lt;dt&gt;page.tags&lt;/dt&gt;
+&lt;dd&gt;The list of tags to which this post belongs. These can be specified in the YAML Front Matter.&lt;/dd&gt;
+
+&lt;dt&gt;page.content&lt;/dt&gt;
+&lt;dd&gt;The content of the Page, rendered or un-rendered depending upon what Liquid is being processed and what page is.&lt;/dd&gt;
+&lt;dt&gt;page.excerpt&lt;/dt&gt;
+&lt;dd&gt;The un-rendered excerpt of the Page.&lt;/dd&gt;
+&lt;dt&gt;page.url&lt;/dt&gt;
+&lt;dd&gt;The URL of the Post without the domain, but with a leading slash, e.g. /2008/12/14/my-post.html&lt;/dd&gt;
+&lt;dt&gt;page.id&lt;/dt&gt;
+&lt;dd&gt;An identifier unique to the Post (useful in RSS feeds). e.g. /2008/12/14/my-post&lt;/dd&gt;
+&lt;dt&gt;page.path&lt;/dt&gt;
+&lt;dd&gt;The path to the raw post or page. Example usage: Linking back to the page or post’s source on GitHub. This can be overridden in the YAML Front Matter.&lt;/dd&gt;
+&lt;dt&gt;page.next&lt;/dt&gt;
+&lt;dd&gt;The next post relative to the position of the current post in site.posts. Returns nil for the last entry.&lt;/dd&gt;
+&lt;dt&gt;page.previous&lt;/dt&gt;
+&lt;dd&gt;The previous post relative to the position of the current post in site.posts. Returns nil for the first entry. &lt;/dd&gt;
+
+&lt;/dl&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://jekyllrb.com/docs/frontmatter/&quot;&gt;Source 1&lt;/a&gt;
+&lt;a href=&quot;https://jekyllrb.com/docs/variables/&quot;&gt;Source 2&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;paginator&quot;&gt;Paginator&lt;/h2&gt;
+
+&lt;p class=&quot;alert alert-danger&quot;&gt;Paginator variables are available in index files only &lt;code class=&quot;highlighter-rouge&quot;&gt;index.{md,htm,html}&lt;/code&gt;&lt;/p&gt;
+
+&lt;dl&gt;
+&lt;dt&gt;paginator.per_page&lt;/dt&gt;
+&lt;dd&gt;Number of Posts per page.&lt;/dd&gt;
+&lt;dt&gt;paginator.posts&lt;/dt&gt;
+&lt;dd&gt;Posts available for that page.&lt;/dd&gt;
+&lt;dt&gt;paginator.total_posts&lt;/dt&gt;
+&lt;dd&gt;Total number of Posts.&lt;/dd&gt;
+&lt;dt&gt;paginator.total_pages&lt;/dt&gt;
+&lt;dd&gt;Total number of pages.&lt;/dd&gt;
+&lt;dt&gt;paginator.page&lt;/dt&gt;
+&lt;dd&gt;The number of the current page.&lt;/dd&gt;
+&lt;dt&gt;paginator.previous_page&lt;/dt&gt;
+&lt;dd&gt;The number of the previous page.&lt;/dd&gt;
+&lt;dt&gt;paginator.previous_page_path&lt;/dt&gt;
+&lt;dd&gt;The path to the previous page.&lt;/dd&gt;
+&lt;dt&gt;paginator.next_page&lt;/dt&gt;
+&lt;dd&gt;The number of the next page.&lt;/dd&gt;
+&lt;dt&gt;paginator.next_page_path&lt;/dt&gt;
+&lt;dd&gt;The path to the next page.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&quot;collections&quot;&gt;Collections&lt;/h2&gt;
+
+&lt;p&gt;Variables that belong to &lt;em&gt;collections&lt;/em&gt; and also the ones defined in &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;&lt;/p&gt;
+
+&lt;dl&gt;
+&lt;dt&gt;label&lt;/dt&gt;
+&lt;dd&gt;The name of your collection, e.g. my_collection.&lt;/dd&gt;
+&lt;dt&gt;docs&lt;/dt&gt;
+&lt;dd&gt;An array of documents.&lt;/dd&gt;
+&lt;dt&gt;files&lt;/dt&gt;
+&lt;dd&gt;An array of static files in the collection.&lt;/dd&gt;
+&lt;dt&gt;relative_directory&lt;/dt&gt;
+&lt;dd&gt;The path to the collection's source directory, relative to the site source.&lt;/dd&gt;
+&lt;dt&gt;directory&lt;/dt&gt;
+&lt;dd&gt;The full path to the collections's source directory.&lt;/dd&gt;
+&lt;dt&gt;output&lt;/dt&gt;
+&lt;dd&gt;Whether the collection's documents will be output as individual files. &lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h3 id=&quot;collection-document&quot;&gt;Collection Document&lt;/h3&gt;
+
+&lt;p&gt;Variables in a single collection Document&lt;/p&gt;
+
+&lt;dl&gt;
+&lt;dt&gt;content&lt;/dt&gt;
+&lt;dd&gt;The (unrendered) content of the document. If no YAML Front Matter is provided, Jekyll will not generate the file in your collection. If YAML Front Matter is used, then this is all the contents of the file after the terminating `---` of the front matter.&lt;/dd&gt;
+&lt;dt&gt;output&lt;/dt&gt;
+&lt;dd&gt;The rendered output of the document, based on the content.&lt;/dd&gt;
+&lt;dt&gt;path&lt;/dt&gt;
+&lt;dd&gt;The full path to the document's source file.&lt;/dd&gt;
+&lt;dt&gt;relative_path&lt;/dt&gt;
+&lt;dd&gt;The path to the document's source file relative to the site source.&lt;/dd&gt;
+&lt;dt&gt;url&lt;/dt&gt;
+&lt;dd&gt;The URL of the rendered collection. The file is only written to the destination when the collection to which it belongs has output: true in the site's configuration.&lt;/dd&gt;
+&lt;dt&gt;collection&lt;/dt&gt;
+&lt;dd&gt;The name of the document's collection.&lt;/dd&gt;
+&lt;dt&gt;date&lt;/dt&gt;
+&lt;dd&gt; The date of the document's collection.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://jekyllrb.com/docs/collections/#documents&quot;&gt;Source&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;common-code-snippets&quot;&gt;Common Code Snippets&lt;/h2&gt;
+
+&lt;h3 id=&quot;list-of-posts&quot;&gt;List of posts&lt;/h3&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;ul&amp;gt;
+  &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;post&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.posts&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &amp;lt;li&amp;gt;
+      &amp;lt;a href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/a&amp;gt;
+    &amp;lt;/li&amp;gt;
+  &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;list-of-collections&quot;&gt;List of collections&lt;/h3&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;collection&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.collections&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+
+&amp;lt;h4&amp;gt;Collection &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;forloop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/h4&amp;gt;
+
+&amp;lt;a href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;baseurl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;/&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;camelcase}}&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&amp;lt;dl&amp;gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&amp;lt;dt&amp;gt;Docs&amp;lt;/dt&amp;gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&amp;lt;dd&amp;gt;{%&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;comment&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;docs&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endcomment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;&amp;lt;/dd&amp;gt;
+&amp;lt;dt&amp;gt;Files&amp;lt;/dt&amp;gt;
+&amp;lt;dd&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/dd&amp;gt;
+&amp;lt;dt&amp;gt;Relative directory&amp;lt;/dt&amp;gt;
+&amp;lt;dd&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;relative_directory&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/dd&amp;gt;
+&amp;lt;dt&amp;gt;Directory&amp;lt;/dt&amp;gt;
+&amp;lt;dd&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/dd&amp;gt;
+&amp;lt;dt&amp;gt;Output&amp;lt;/dt&amp;gt;
+&amp;lt;dd&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/dd&amp;gt;
+&amp;lt;/dl&amp;gt;
+&amp;lt;hr&amp;gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;example-output&quot;&gt;Example Output&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Collection 1
+
+books
+
+Docs
+Files
+Relative directory
+    _books
+Directory
+    /home/marcanuy/Development/simpleit.rocks/_books
+Output
+    true
+
+Collection 2
+
+posts
+
+Docs
+Files
+Relative directory
+    _posts
+Directory
+    /home/marcanuy/Development/simpleit.rocks/_posts
+Output
+    true 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;list-of-document-attributes-of-a-collection&quot;&gt;List of document attributes of a Collection&lt;/h3&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;collection&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.collections&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+
+&amp;lt;h4&amp;gt;Collection &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;forloop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/h4&amp;gt;
+
+&amp;lt;dl&amp;gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;doc&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;collection.docs&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&amp;lt;dt&amp;gt;Path&amp;lt;/dt&amp;gt;&amp;lt;dd&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/dd&amp;gt;
+&amp;lt;dt&amp;gt;Relative_path&amp;lt;/dt&amp;gt;&amp;lt;dd&amp;gt; &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;relative_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/dd&amp;gt;
+&amp;lt;dt&amp;gt;Collection&amp;lt;/dt&amp;gt;&amp;lt;dd&amp;gt; &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/dd&amp;gt;
+&amp;lt;dt&amp;gt;Date&amp;lt;/dt&amp;gt;&amp;lt;dd&amp;gt; &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/dd&amp;gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&amp;lt;/dl&amp;gt;
+&amp;lt;hr&amp;gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;example-output-1&quot;&gt;Example Output&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Path
+    docs/ruby/jekyll/templates/_posts/2016-07-13-jekyll-variables-and-liquid-template-tags-cheatsheet.md
+Relative_path
+    docs/ruby/jekyll/templates/_posts/2016-07-13-jekyll-variables-and-liquid-template-tags-cheatsheet.md
+Collection
+    posts
+Date
+    2016-07-13 00:00:00 -0300
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Wed, 13 Jul 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/jekyll-variables-and-liquid-template-tags-cheatsheet/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/jekyll-variables-and-liquid-template-tags-cheatsheet/</guid>
+        
+        <category>jekyll</category>
+        
+        <category>templates</category>
+        
+        <category>liquid</category>
+        
+        
+        <category>docs</category>
+        
+        <category>ruby</category>
+        
+        <category>jekyll</category>
+        
+        <category>templates</category>
+        
+      </item>
+    
+      <item>
+        <title>Jekyll Collections Versus Posts</title>
+        <description>&lt;h2 id=&quot;differences&quot;&gt;Differences&lt;/h2&gt;
+
+&lt;p&gt;These are the main differences between &lt;em&gt;Collections&lt;/em&gt; and &lt;em&gt;posts&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;categories&quot;&gt;Categories&lt;/h3&gt;
+
+&lt;p&gt;A &lt;em&gt;post&lt;/em&gt; in a subdirectory structure automatically gets subdirectories
+names as its &lt;em&gt;categories&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;A collection does not have &lt;em&gt;categories&lt;/em&gt; by default.&lt;/p&gt;
+
+&lt;p class=&quot;aler alert-warning&quot;&gt;&lt;em&gt;Categories&lt;/em&gt; can be assigned to &lt;em&gt;collections&lt;/em&gt; with a parameter in each
+file &lt;em&gt;front matter&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;filenames&quot;&gt;Filenames&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;Post&lt;/em&gt; filenames must be in the format &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-title.&amp;lt;markup&amp;gt;&lt;/code&gt; which
+assigns the post date, used to sort posts by creation date.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Collection&lt;/em&gt; filenames doesn’t need any special format in &lt;em&gt;filenames&lt;/em&gt;,
+they get the &lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt; from the file creation date.&lt;/p&gt;
+
+&lt;p class=&quot;aler alert-warning&quot;&gt;In both cases, the document’s &lt;em&gt;date&lt;/em&gt; can be overwritten in the front 
+matter of each file setting the &lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt; variable. (i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;date: 2016-06-08&lt;/code&gt;)&lt;/p&gt;
+
+&lt;h3 id=&quot;directories&quot;&gt;Directories&lt;/h3&gt;
+
+&lt;p&gt;Posts have the restriction of being only recognized if they are located
+under a &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; folder. 
+This restriction won’t be removed as it is being kept to not break
+previous versions.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Collections&lt;/em&gt; can be located directly in any directory of the &lt;em&gt;collection&lt;/em&gt; folder.&lt;/p&gt;
+
+&lt;h3 id=&quot;dates&quot;&gt;Dates&lt;/h3&gt;
+
+&lt;p&gt;This is one of the most important difference between them.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Posts&lt;/em&gt; were originally aimed for blogs, so the &lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt; is a central concept
+that is also displayed in its filename, they are not likely to get updated
+after published.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;└── _posts
+   ├── 2016-11-19-why-every-developer-should-use-emacs.md
+   └── 2016-06-20-open-source-in-governments.md
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Beside &lt;em&gt;collections&lt;/em&gt; have a &lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt; property, this is not an important
+concept as it is in &lt;em&gt;posts&lt;/em&gt;, a clear structure is needed to locate each
+file quickly when needed to update or add data to them.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;└── _my_collection
+   ├── open-source-in-governments.md
+   └── why-every-developer-should-use-emacs.md
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;Considering publishing a list of &lt;em&gt;books&lt;/em&gt; with both approaches:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a list of standard &lt;em&gt;posts&lt;/em&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;books&lt;/code&gt; folder.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;a &lt;em&gt;collection&lt;/em&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;_books&lt;/code&gt; folder, with the following configuration:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;/_config.yml&lt;/code&gt;:&lt;/p&gt;
+
+        &lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  collections:
+    books:
+      output: true
+&lt;/code&gt;&lt;/pre&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p class=&quot;alert alert-warning&quot;&gt;Note the underscore as the first character of the &lt;em&gt;collection&lt;/em&gt; folder &lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/_books&lt;/code&gt;&lt;/strong&gt;,
+needed to let Jekyll handle the directory as a &lt;em&gt;collection&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is how they basically compare:&lt;/p&gt;
+
+&lt;table class=&quot;table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Collection&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Post&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Directories&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/_books/science/&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/books/science/_posts/&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;File&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;item.md&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;2016-06-10-item.md&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;{{ page.categories }}&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[&quot;books&quot;, &quot;science&quot;]&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;{{ page.date }}&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;from file creation date:&lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;2016-07-11 23:03:59&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;from filename: &lt;code class=&quot;highlighter-rouge&quot;&gt;2016-06-10&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Document access&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;site.books&lt;/code&gt; &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;site.collections&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;site.categories.science&lt;/code&gt;, &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;site.collections&lt;/code&gt;, &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;site.categories.books&lt;/code&gt; &lt;br /&gt; or &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;site.posts&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table class=&quot;table&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;File handling the URL &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;http://example.com/books/science&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/books.html&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;permalink: &quot;/books/science&quot;&lt;/code&gt; &lt;br /&gt; or &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;/books/science/index.md&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;choosing-between-collections-and-posts&quot;&gt;Choosing between Collections and Posts&lt;/h2&gt;
+
+&lt;h3 id=&quot;features-of-collections&quot;&gt;Features of &lt;strong&gt;Collections&lt;/strong&gt;:&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a &lt;strong&gt;cleaner directory/subdirectories structure&lt;/strong&gt; without &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; folder
+in each nested level&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;cleaner filenames&lt;/strong&gt; without mandatory dates.&lt;/li&gt;
+  &lt;li&gt;In a hierarchical subdirectoy structure, &lt;em&gt;categories&lt;/em&gt; can be simulated
+processing the &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; property of each file.&lt;/li&gt;
+  &lt;li&gt;Collection filenames put more emphasis in its &lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt;, not the &lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;features-of-posts&quot;&gt;Features of &lt;strong&gt;Posts&lt;/strong&gt;:&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;Posts&lt;/em&gt; were introduced in Jekyll before &lt;em&gt;collections&lt;/em&gt;, so they are
+&lt;strong&gt;widely adopted&lt;/strong&gt; and with &lt;strong&gt;more plugins available&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Posts filenames put more emphasis in &lt;code class=&quot;highlighter-rouge&quot;&gt;dates&lt;/code&gt;, not the &lt;code class=&quot;highlighter-rouge&quot;&gt;titles&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;when using nested directories, creating each subdirectory &lt;em&gt;index&lt;/em&gt; is
+straightforward.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Jekyll Collections docs &lt;a href=&quot;https://jekyllrb.com/docs/collections/&quot;&gt;https://jekyllrb.com/docs/collections/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Jekyll Posts docs &lt;a href=&quot;https://jekyllrb.com/docs/posts/&quot;&gt;https://jekyllrb.com/docs/posts/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Tue, 12 Jul 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/jekyll-collections-versus-posts/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/jekyll-collections-versus-posts/</guid>
+        
+        <category>jekyll</category>
+        
+        <category>collections</category>
+        
+        
+        <category>docs</category>
+        
+        <category>ruby</category>
+        
+        <category>jekyll</category>
+        
+        <category>collections</category>
+        
+      </item>
     
       <item>
         <title>Creating a git server from a git repo</title>
@@ -48,7 +510,7 @@ just like the &lt;strong&gt;.git&lt;/strong&gt; directory.&lt;/p&gt;
 into a new &lt;em&gt;bare repository&lt;/em&gt; (a repository that doesn’t contain 
 a &lt;em&gt;working directory&lt;/em&gt;).&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone --bare my_project my_project.git
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone --bare my_project my_project.git
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -56,7 +518,7 @@ a &lt;em&gt;working directory&lt;/em&gt;).&lt;/p&gt;
 
 &lt;p&gt;Put the bare repository in the server.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;scp -r my_project.git user@git.example.com:/srv/git
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;scp -r my_project.git user@git.example.com:/srv/git
  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rm -r my_project.git
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -66,7 +528,7 @@ a &lt;em&gt;working directory&lt;/em&gt;).&lt;/p&gt;
 &lt;p&gt;After having the repo in the remote server, the git server remote should be
 added to the local repo so it is possible to pull and push changes to it.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Set a new remote&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Set a new remote&lt;/span&gt;
 &lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git remote add origin git@server:/srv/git/my_project.git
 
 &lt;span class=&quot;c&quot;&gt;# Verify new remote&lt;/span&gt;
@@ -265,13 +727,13 @@ layout: post
   &lt;li&gt;Adding the &lt;em&gt;cite&lt;/em&gt; attribute in &lt;em&gt;blockquote&lt;/em&gt; tag:&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-kramdown&quot;&gt;&amp;gt; The rule of thumb is, don&#39;t introduce a new attribute outside of the __init__ method, otherwise you&#39;ve given the caller an object that isn&#39;t fully initialized.
+&lt;pre&gt;&lt;code class=&quot;language-kramdown&quot;&gt;&amp;gt; The rule of thumb is, don't introduce a new attribute outside of the __init__ method, otherwise you've given the caller an object that isn't fully initialized.
 {: cite=&quot;https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/&quot;}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Generates the following HTML:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;blockquote&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;cite=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;blockquote&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;cite=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;The rule of thumb is, don’t introduce a new attribute outside of the &lt;span class=&quot;nt&quot;&gt;&amp;lt;strong&amp;gt;&lt;/span&gt;init&lt;span class=&quot;nt&quot;&gt;&amp;lt;/strong&amp;gt;&lt;/span&gt; method, otherwise you’ve given the caller an object that isn’t fully initialized.
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/blockquote&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -281,7 +743,7 @@ layout: post
   &lt;li&gt;Adding a &lt;em&gt;cite&lt;/em&gt; element inside the &lt;em&gt;blockquote&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gt&quot;&gt;&amp;gt; The secret to creativity is knowing how to hide your sources. &lt;/span&gt;
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gt&quot;&gt;&amp;gt; The secret to creativity is knowing how to hide your sources. &lt;/span&gt;
 &lt;span class=&quot;gt&quot;&gt;&amp;gt; -- &amp;lt;cite&amp;gt;[Albert Einstein][1]&amp;lt;/cite&amp;gt;&lt;/span&gt;
 
 &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;http://www.quotedb.com/quotes/2112&lt;/span&gt;
@@ -290,7 +752,7 @@ layout: post
 
 &lt;p&gt;Generates in HTML:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;blockquote&amp;gt;&lt;/span&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;blockquote&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;The secret to creativity is knowing how to hide your sources. 
   – &lt;span class=&quot;nt&quot;&gt;&amp;lt;cite&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.quotedb.com/quotes/2112&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Albert Einstein&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/cite&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
@@ -333,7 +795,7 @@ end
   &lt;li&gt;Using backticks:&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;redcarpet&#39;&lt;/span&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'redcarpet'&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;markdown&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Redcarpet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;markdown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_html&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -344,7 +806,7 @@ end
 &lt;/ul&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;foo&#39;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'foo'&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h3 id=&quot;links&quot;&gt;Links&lt;/h3&gt;
@@ -360,7 +822,7 @@ end
 
 &lt;p&gt;As by default it generates automatic &lt;em&gt;ids&lt;/em&gt; for all the header, there is only needed to add a list and name using &lt;abbr title=&quot;Inline Attribute List&quot;&gt;IAL&lt;/abbr&gt; as the placeholder of the generated &lt;abbr title=&quot;Table Of Contents&quot;&gt;TOC&lt;/abbr&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; TOC
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; TOC
 {:toc}
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -395,7 +857,7 @@ end
  Pages optimized to display well on mobile devices should include a meta viewport in the head of the document specifying width=device-width, initial-scale=1.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;viewport&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;width=device-width, initial-scale=1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;viewport&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;width=device-width, initial-scale=1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -406,7 +868,7 @@ end
 Use relative sizes for elements to avoid breaking layout.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;c&quot;&gt;/* CSS Rules used when query matches */&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -474,184 +936,82 @@ Use relative sizes for elements to avoid breaking layout.&lt;/p&gt;
       </item>
     
       <item>
-        <title>Ruby</title>
-        <description>&lt;!-- markdown-toc start - Don&#39;t edit this section. Run M-x markdown-toc-generate-toc again --&gt;
-&lt;p&gt;&lt;strong&gt;Table of Contents&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;#concepts&quot;&gt;Concepts&lt;/a&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#ruby-sandbox&quot;&gt;Ruby Sandbox&lt;/a&gt;
-        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#bundler&quot;&gt;Bundler&lt;/a&gt;
-            &lt;ul&gt;
-              &lt;li&gt;&lt;a href=&quot;#bundler-common-workflow&quot;&gt;Bundler common workflow&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!-- markdown-toc end --&gt;
-
-&lt;h1 id=&quot;concepts&quot;&gt;Concepts&lt;/h1&gt;
-
-&lt;h2 id=&quot;ruby-sandbox&quot;&gt;Ruby Sandbox&lt;/h2&gt;
-
-&lt;p&gt;Manage dependencies independently of the current platform.&lt;/p&gt;
-
-&lt;h3 id=&quot;bundler&quot;&gt;Bundler&lt;/h3&gt;
-
-&lt;blockquote cite=&quot;http://bundler.io/&quot;&gt;
-  &lt;p&gt;Bundler provides a consistent environment for Ruby projects by tracking and installing the exact gems and versions that are needed.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;bundler-common-workflow&quot;&gt;Bundler common workflow&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Declare dependencies of an application in a &lt;a href=&quot;http://bundler.io/gemfile.html&quot;&gt;Gemfile&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://bundler.io/bundle_install.html&quot;&gt;Install&lt;/a&gt; above versions of the dependencies into an isolated location &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;run the app: &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Official Documentation &lt;a href=&quot;https://www.ruby-lang.org/&quot;&gt;https://www.ruby-lang.org/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Fri, 10 Jun 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/ruby/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/ruby/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>ruby</category>
-        
-        <category>language</category>
-        
-      </item>
-    
-      <item>
-        <title>How to implement breadcrumbs on a Jekyll site with nested categories</title>
+        <title>Understanding Jekyll Posts</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
-&lt;p&gt;One of the ways to structure content in a Jekyll environment is to put
-&lt;em&gt;posts&lt;/em&gt; in subdirectories, where each subdirectory becomes a &lt;em&gt;category&lt;/em&gt;
-of the &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Posts can be nested in subdirectories but they always must be inside 
+a &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; folder.&lt;/p&gt;
 
-&lt;p&gt;For example, the post &lt;code class=&quot;highlighter-rouge&quot;&gt;2016-06-08-my_title.md&lt;/code&gt; in this directory structure
-&lt;code class=&quot;highlighter-rouge&quot;&gt;/docs/science/_posts/2016-06-08-my_title.md&lt;/code&gt; automatically gets the 
-categories &lt;code class=&quot;highlighter-rouge&quot;&gt;docs&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;science&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Their filename should follow the following format: &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-article-name.MARKUP&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;In this case &lt;code class=&quot;highlighter-rouge&quot;&gt;article-name&lt;/code&gt; will be used as the post &lt;em&gt;slug&lt;/em&gt; and if there is no &lt;em&gt;title&lt;/em&gt; in the &lt;em&gt;front matter&lt;/em&gt; of the post, it will be converted to a title version removing the &lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt; chars.&lt;/p&gt;
+
+&lt;h3 id=&quot;variables&quot;&gt;Variables&lt;/h3&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.
-└── docs
-    ├── index.md
-    └── science
-        ├── index.md
-        └── _posts
-            └── 2016-06-08-my_title.md
+├── one_category
+│   └── second_category
+│      └── _posts
+│	     └── nested_post.md
+└── _posts
+   ├── a_post.md
+   └── another_post.md
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Then a &lt;em&gt;breadcrumb&lt;/em&gt; included in each post/category layout, can automatically
-generate a link to each path of the structure&lt;/p&gt;
+&lt;h3 id=&quot;variables-of-a-post-and-documents-posts&quot;&gt;Variables of a Post and Documents Posts&lt;/h3&gt;
 
-&lt;h2 id=&quot;breadcrumb-code&quot;&gt;Breadcrumb code&lt;/h2&gt;
-
-&lt;p&gt;The &lt;em&gt;breadcrumbs&lt;/em&gt; code should be placed at &lt;code class=&quot;highlighter-rouge&quot;&gt;/_includes/breadcrumbs.html&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;categories&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;ow&quot;&gt;contains&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;posts&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;comment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;&lt;span class=&quot;c&quot;&gt; posts are like /docs/python/_posts/2016-06-06-foobar.md &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endcomment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;categories&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;comment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;&lt;span class=&quot;c&quot;&gt; pages are like /docs/python/index.md &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endcomment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;categories&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-	
-    &amp;lt;a href=&quot;/&quot;&amp;gt;Home&amp;lt;/a&amp;gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;category&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;categories&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &amp;lt;span class=&quot;prompt&quot;&amp;gt;&amp;gt;&amp;gt;&amp;lt;/span&amp;gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;/&#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;category&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;forloop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;last&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;_posts&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;elsif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;forloop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;last&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &amp;lt;a href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/a&amp;gt; 
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR
+    Collections[&quot;Collections&quot;] == 1 === ColRelationship{&quot; &quot;}
+    ColRelationship == N === Collection
+    Collection[&quot;Collection&lt;hr /&gt;label&lt;br /&gt;docs&lt;br /&gt;files&lt;br /&gt;relative_directory&lt;br /&gt;directory&lt;br /&gt;output&quot;] == 1 === relationship{&quot; &quot;}
+    relationship == N === Document[&quot;Document&lt;hr /&gt;path&lt;br /&gt;relative_path&lt;br /&gt;collection&lt;br /&gt;date&quot;]
 &lt;/div&gt;
 
-&lt;h2 id=&quot;posts-layouts&quot;&gt;Posts layouts&lt;/h2&gt;
+&lt;h4 id=&quot;front-matter&quot;&gt;Front matter&lt;/h4&gt;
 
-&lt;p&gt;Each layout used in category pages and posts should &lt;em&gt;include&lt;/em&gt;
-the &lt;em&gt;breadcrumbs.html&lt;/em&gt; code, with the current &lt;code class=&quot;highlighter-rouge&quot;&gt;page path&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt;
-parameters.&lt;/p&gt;
+&lt;p&gt;Predefined Variables that can be used in the front matter for a post.&lt;/p&gt;
 
-&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;/_layouts/post.html&lt;/code&gt;:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;page.title&lt;/dt&gt;
+&lt;dd&gt;The title of the Page.&lt;/dd&gt;
+&lt;dt&gt;page.date&lt;/dt&gt;
+&lt;dd&gt;The Date assigned to the Post. This can be overridden in a Post’s front matter by specifying a new date/time in the format YYYY-MM-DD HH:MM:SS (assuming UTC), or YYYY-MM-DD HH:MM:SS +/-TTTT (to specify a time zone using an offset from UTC. e.g. 2008-12-14 10:30:00 +0900).&lt;/dd&gt;
+&lt;dt&gt;page.categories&lt;/dt&gt;
+&lt;dd&gt;The list of categories to which this post belongs. Categories are derived from the directory structure above the _posts directory. For example, a post at /work/code/_posts/2008-12-24-closures.md would have this field set to ['work', 'code']. These can also be specified in the YAML Front Matter.&lt;/dd&gt;
+&lt;dt&gt;page.tags&lt;/dt&gt;
+&lt;dd&gt;The list of tags to which this post belongs. These can be specified in the YAML Front Matter.&lt;/dd&gt;
+&lt;/dl&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;..
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;breadcrumbs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-..
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;h4 id=&quot;in-templates&quot;&gt;In templates&lt;/h4&gt;
 
-&lt;h2 id=&quot;output&quot;&gt;Output&lt;/h2&gt;
+&lt;p&gt;Variables also available in templates&lt;/p&gt;
 
-&lt;p&gt;The previous scheme would generate the following &lt;em&gt;breadcrumb&lt;/em&gt; for each case.&lt;/p&gt;
-
-&lt;table class=&quot;table&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;URL&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Generated Breadcrumb&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Served Filename&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;/&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;home&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;index.html&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;/docs&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;home &amp;gt; docs&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;docs/index.md&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;/docs/science&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;home &amp;gt; docs &amp;gt; science&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;docs/science/index.md&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;/docs/science/my_title *&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;home &amp;gt; docs &amp;gt; science &amp;gt; my title&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;docs/science/_posts/2016-06-08-my_title.md&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p class=&quot;alert alert-warning&quot; role=&quot;alert&quot;&gt;(*) Using &lt;em&gt;titles&lt;/em&gt; without &lt;em&gt;dates&lt;/em&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;permalink: /:title/&lt;/code&gt;&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;page.content&lt;/dt&gt;
+&lt;dd&gt;The content of the Page, rendered or un-rendered depending upon what Liquid is being processed and what page is.&lt;/dd&gt;
+&lt;dt&gt;page.excerpt&lt;/dt&gt;
+&lt;dd&gt;The un-rendered excerpt of the Page.&lt;/dd&gt;
+&lt;dt&gt;page.url&lt;/dt&gt;
+&lt;dd&gt;The URL of the Post without the domain, but with a leading slash, e.g. /2008/12/14/my-post.html&lt;/dd&gt;
+&lt;dt&gt;page.id&lt;/dt&gt;
+&lt;dd&gt;An identifier unique to the Post (useful in RSS feeds). e.g. /2008/12/14/my-post&lt;/dd&gt;
+&lt;dt&gt;page.path&lt;/dt&gt;
+&lt;dd&gt;The path to the raw post or page. Example usage: Linking back to the page or post’s source on GitHub. This can be overridden in the YAML Front Matter.&lt;/dd&gt;
+&lt;dt&gt;page.next&lt;/dt&gt;
+&lt;dd&gt;The next post relative to the position of the current post in site.posts. Returns nil for the last entry.&lt;/dd&gt;
+&lt;dt&gt;page.previous&lt;/dt&gt;
+&lt;dd&gt;The previous post relative to the position of the current post in site.posts. Returns nil for the first entry. &lt;/dd&gt;
+&lt;/dl&gt;
 </description>
-        <pubDate>Tue, 07 Jun 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/</guid>
+        <pubDate>Sun, 12 Jun 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/understanding-jekyll-posts/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/understanding-jekyll-posts/</guid>
         
-        <category>git</category>
+        <category>jekyll</category>
         
-        <category>server</category>
-        
-        <category>bare-repository</category>
+        <category>posts</category>
         
         
         <category>docs</category>
@@ -659,83 +1019,6 @@ parameters.&lt;/p&gt;
         <category>ruby</category>
         
         <category>jekyll</category>
-        
-        <category>tutorials</category>
-        
-      </item>
-    
-      <item>
-        <title>How To Prevent Content Displaying In A Jekyll Development Environment</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;While developing and continuously testing a jekyll site, avoiding any 
-javascript external request can greatly improve the loading speed of each 
-page.&lt;/p&gt;
-
-&lt;p&gt;In the case of advertisements, also prevents from accidentally clicking
-developer’s own ads which can cause an account suspension.&lt;/p&gt;
-
-&lt;p&gt;The basic concept to make it possible is to &lt;strong&gt;create different Jekyll builds
-for &lt;em&gt;development&lt;/em&gt; and &lt;em&gt;production&lt;/em&gt; environments&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;environment&quot;&gt;Environment&lt;/h2&gt;
-
-&lt;p&gt;The easiest way to avoid any external javascript request is to detect the
-environment on which Jekyll is running in liquid templates using the 
-environment variable &lt;a href=&quot;https://jekyllrb.com/docs/configuration/#specifying-a-jekyll-environment-at-build-time&quot;&gt;JEKYLL_ENV&lt;/a&gt; at build (or serve) time.&lt;/p&gt;
-
-&lt;p&gt;To build a production ready jekyll site it can be specified like this:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JEKYLL_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production jekyll build
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;If none environment is explicitly set, then it uses by default
-&lt;code class=&quot;highlighter-rouge&quot;&gt;JEKYLL_ENV=development&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;When using a &lt;a href=&quot;http://bundler.io/man/bundle-exec.1.html&quot;&gt;Bundler command&lt;/a&gt;
-it should be used like:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JEKYLL_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;detecting-the-environment-in-templates&quot;&gt;Detecting the environment in templates&lt;/h2&gt;
-
-&lt;p&gt;To detect the environment in Jekyll liquid templates,
-&lt;a href=&quot;http://www.rubydoc.info/gems/jekyll/3.1.6/Jekyll%2FDrops%2FJekyllDrop%3Aenvironment&quot;&gt;jekyll.environment&lt;/a&gt; variable contains the current environment.&lt;/p&gt;
-
-&lt;p&gt;For example, to avoid showing post tags in development:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;jekyll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;production&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-        <pubDate>Mon, 06 Jun 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/how-to-prevent-content-displaying-in-a-jekyll-development-environment/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/how-to-prevent-content-displaying-in-a-jekyll-development-environment/</guid>
-        
-        <category>jekyll</category>
-        
-        <category>environments</category>
-        
-        <category>adsense</category>
-        
-        <category>analytics</category>
-        
-        <category>disqus</category>
-        
-        
-        <category>docs</category>
-        
-        <category>ruby</category>
-        
-        <category>jekyll</category>
-        
-        <category>tutorials</category>
         
       </item>
     

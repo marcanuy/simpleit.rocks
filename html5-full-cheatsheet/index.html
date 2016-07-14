@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
   <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
   
@@ -93,11 +93,12 @@
   <div class="jumbotron jumbotron-fluid bg-inverse">
     <div class="container">
       
-      <h1 class="title">Html5 Full Cheatsheet</h1>
       
-      <p class="lead">
-	<small class="text-muted subtitle"></small>
-      </p>
+      
+      
+      <h1 class="title">Html5 Full Cheatsheet </h1>
+      
+      
     </div>
   </div>
 
@@ -108,28 +109,42 @@
       <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <p class="post-meta">
+    <div class="post-meta">
       
       <i class="fa fa-calendar" aria-hidden="true"></i>
       <time datetime="2016-06-04T00:00:00-03:00" itemprop="datePublished">Jun 4, 2016</time>
       
-      <span><div class="breadcrumbs">
+    </div>
+    <div>
+      <div class="breadcrumbs">
   <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="list-inline">
 
 
     
+
     
+
+    <li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class="list-inline-item">
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/">
+    
+    <i class="fa fa-home" aria-hidden="true"></i>
+    
+
+    Home
+  </a>
+  
+  <meta itemprop="position" content="1" />
+</li>
+
 
     
     
-    <li itemprop="itemListElement" itemscope
-	itemtype="http://schema.org/ListItem"
-	class="list-inline-item">
-      <i class="fa fa-home" aria-hidden="true"></i>
-      <a itemscope itemtype="http://schema.org/Thing"
-	 itemprop="item" href="/"> Home</a>
-      <meta itemprop="position" content="1" />
-    </li>
+
+    
     
     <span class="prompt">>></span>
     <li itemprop="itemListElement" itemscope
@@ -197,32 +212,16 @@
       <meta itemprop="position" content="5" />
     </li>
     
+    
   </ol>
 </div>
-</span>
-    </p>
+
+    </div>
   </header>
 
   <div class="post-content" itemprop="articleBody">
     <div class="row">
   <div class="col-md-4 col-md-push-8 sit-sidebar">
-    <h4>Table of Contents</h4>
-    
-    <ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#html5-sections">HTML5 SECTIONS</a></li>
-<li class="toc-entry toc-h3"><a href="#body">body</a></li>
-<li class="toc-entry toc-h3"><a href="#article">article</a></li>
-<li class="toc-entry toc-h3"><a href="#section">section</a></li>
-<li class="toc-entry toc-h3"><a href="#nav">nav</a></li>
-<li class="toc-entry toc-h3"><a href="#aside">aside</a></li>
-<li class="toc-entry toc-h3"><a href="#h1h6--a-section-heading">h1–h6  A section heading</a></li>
-<li class="toc-entry toc-h3"><a href="#header">header</a></li>
-<li class="toc-entry toc-h3"><a href="#footer">footer</a></li>
-<li class="toc-entry toc-h2"><a href="#text-level-semantics">TEXT LEVEL SEMANTICS</a></li>
-</ul>
-    
-
     <div class="si-ad">
   
 
@@ -240,7 +239,24 @@
   
 </div>
 
-
+    
+    <div>
+      <h4>Table of Contents</h4>
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#html5-sections">HTML5 SECTIONS</a></li>
+<li class="toc-entry toc-h3"><a href="#body">body</a></li>
+<li class="toc-entry toc-h3"><a href="#article">article</a></li>
+<li class="toc-entry toc-h3"><a href="#section">section</a></li>
+<li class="toc-entry toc-h3"><a href="#nav">nav</a></li>
+<li class="toc-entry toc-h3"><a href="#aside">aside</a></li>
+<li class="toc-entry toc-h3"><a href="#h1h6--a-section-heading">h1–h6  A section heading</a></li>
+<li class="toc-entry toc-h3"><a href="#header">header</a></li>
+<li class="toc-entry toc-h3"><a href="#footer">footer</a></li>
+<li class="toc-entry toc-h2"><a href="#text-level-semantics">TEXT LEVEL SEMANTICS</a></li>
+</ul>
+    </div>
+    
   </div>
   <div class="col-md-8 col-md-pull-4 sit-content">
 
@@ -284,7 +300,7 @@
 element represents the content of the document.</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
 <span class="nt">&lt;html&gt;</span>
  <span class="nt">&lt;head&gt;</span> <span class="nt">&lt;title&gt;</span>Steve Hill's Home Page<span class="nt">&lt;/title&gt;</span> <span class="nt">&lt;/head&gt;</span>
  <span class="nt">&lt;body&gt;</span> <span class="nt">&lt;p&gt;</span>Hard Trance is My Life.<span class="nt">&lt;/p&gt;</span> <span class="nt">&lt;/body&gt;</span>
@@ -301,7 +317,7 @@ document, page, application, or site and that is, in principle,
 independently distributable or reusable, e.g. in syndication.</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;article&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;article&gt;</span>
  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/tumblr_masqy2s5yn1rzfqbpo1_500.jpg"</span> <span class="na">alt=</span><span class="s">"Yellow smiley face with the caption 'masif'"</span><span class="nt">&gt;</span>
  <span class="nt">&lt;p&gt;</span>My fave Masif tee so far!<span class="nt">&lt;/p&gt;</span>
  <span class="nt">&lt;footer&gt;</span>Posted 2 days ago<span class="nt">&lt;/footer&gt;</span>
@@ -324,7 +340,7 @@ of each section should be identified, typically by including a heading
 (h1-h6 element) as a child of the section element.</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>Biography<span class="nt">&lt;/h1&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>Biography<span class="nt">&lt;/h1&gt;</span>
 <span class="nt">&lt;section&gt;</span>
  <span class="nt">&lt;h1&gt;</span>The facts<span class="nt">&lt;/h1&gt;</span>
  <span class="nt">&lt;p&gt;</span>1500+ shows, 14+ countries<span class="nt">&lt;/p&gt;</span>
@@ -344,7 +360,7 @@ element represents a section of a page that links to other pages or to
 parts within the page: a section with navigation links.</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;nav&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;nav&gt;</span>
  <span class="nt">&lt;ul&gt;</span>
   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/biog.html"</span><span class="nt">&gt;</span>Bio<span class="nt">&lt;/a&gt;</span>
@@ -363,7 +379,7 @@ tangentially related to the content around the aside element, and which
 could be considered separate from that content.</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>Music<span class="nt">&lt;/h1&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>Music<span class="nt">&lt;/h1&gt;</span>
 <span class="nt">&lt;p&gt;</span>As any burner can tell you, the event has a lot of trance.<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;aside&gt;</span>You can buy the music we played at our <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"buy.html"</span><span class="nt">&gt;</span>playlist page<span class="nt">&lt;/a&gt;</span>.<span class="nt">&lt;/aside&gt;</span>
 <span class="nt">&lt;p&gt;</span>This year we played a kind of trance that originated in Belgium, Germany, and the Netherlands in the mid 90s.<span class="nt">&lt;/p&gt;</span>
@@ -378,7 +394,7 @@ could be considered separate from that content.</p>
 for their sections.</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>The Guide To Music On The Playa<span class="nt">&lt;/h1&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>The Guide To Music On The Playa<span class="nt">&lt;/h1&gt;</span>
 <span class="nt">&lt;h2&gt;</span>The Main Stage<span class="nt">&lt;/h2&gt;</span>
 <span class="nt">&lt;p&gt;</span>If you want to play on a stage, you should bring one.<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;h2&gt;</span>Amplified Music<span class="nt">&lt;/h2&gt;</span>
@@ -395,7 +411,7 @@ sectioning content or sectioning root element. A header typically
 contains a group of introductory or navigational aids.</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;article&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;article&gt;</span>
  <span class="nt">&lt;header&gt;</span>
   <span class="nt">&lt;h1&gt;</span>Hard Trance is My Life<span class="nt">&lt;/h1&gt;</span>
   <span class="nt">&lt;p&gt;</span>By DJ Steve Hill and Technikal<span class="nt">&lt;/p&gt;</span>
@@ -413,7 +429,7 @@ element represents a footer for its nearest ancestor sectioning content
 or sectioning root element.</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;article&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;article&gt;</span>
  <span class="nt">&lt;h1&gt;</span>Hard Trance is My Life<span class="nt">&lt;/h1&gt;</span>
  <span class="nt">&lt;p&gt;</span>The album with the amusing punctuation has red artwork.<span class="nt">&lt;/p&gt;</span>
  <span class="nt">&lt;footer&gt;</span>
@@ -632,7 +648,7 @@ Categories:
 
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-5">
     <div class="post-comments">
   
 
@@ -664,7 +680,7 @@ Categories:
 </div>
 
   </div>
-  <div class="col-md-6">
+  <div class="col-md-7">
     <div class="si-ad">
   
 
@@ -682,9 +698,16 @@ Categories:
   
 </div>
 
+    
+
+
+
+
+
+
+
   </div>
 </div>
-
 
   </div>
 

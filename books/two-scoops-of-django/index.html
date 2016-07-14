@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="alternate" type="application/rss+xml" title="Simple IT 🤘 Rocks" href="http://simpleit.rocks/feed.xml">
+
+  <!-- jQuery -->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  
+  <!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>Two Scoops Of Django - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Two Scoops Of Django" />
+<meta name="description" content="Best Practices For Django." />
+<meta property="og:description" content="Best Practices For Django." />
+<link rel="canonical" href="http://simpleit.rocks/books/two-scoops-of-django/" />
+<meta property="og:url" content="http://simpleit.rocks/books/two-scoops-of-django/" />
+<meta property="og:site_name" content="Simple IT 🤘 Rocks" />
+<meta property="og:image" content="http://simpleit.rocksbook_two_scoops_of_django.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-07-14T00:06:10-03:00" />
+<meta property="fb:app_id" content="1822851531277021" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Two Scoops Of Django",
+    "image": "http://simpleit.rocksbook_two_scoops_of_django.jpg",
+    "datePublished": "2016-07-14T00:06:10-03:00",
+    "description": "Best Practices For Django.",
+    "url": "http://simpleit.rocks/books/two-scoops-of-django/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+
+  
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1912030305535489",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+
+</head>
+
+
+  <body>
+
+    
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28572639-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <header class="site-header">
+
+  <!-- mermaid -->
+  <script src="/bower_components/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+  <!-- endmermaid -->
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Simple IT 🤘 Rocks</a>
+
+  </div>
+
+  <div class="jumbotron jumbotron-fluid bg-inverse">
+    <div class="container">
+      
+      
+      
+      
+      <h1 class="title">Two Scoops Of Django </h1>
+      
+      
+    </div>
+  </div>
+
+</header>
+
+
+    <div class="container-fluid">
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <div class="post-meta">
+      
+      <i class="fa fa-calendar" aria-hidden="true"></i>
+      <time datetime="2016-07-14T00:06:10-03:00" itemprop="datePublished">Jul 14, 2016</time>
+      
+    </div>
+    <div>
+      <div class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="list-inline">
+
+
+    
+
+    
+
+    <li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class="list-inline-item">
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/">
+    
+    <i class="fa fa-home" aria-hidden="true"></i>
+    
+
+    Home
+  </a>
+  
+  <meta itemprop="position" content="1" />
+</li>
+
+
+    
+    
+
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class="list-inline-item">
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/books">
+    
+    <i class="fa fa-book" aria-hidden="true"></i>
+    
+
+    Books
+  </a>
+  
+  <meta itemprop="position" content="2" />
+</li>
+
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class="list-inline-item">
+  
+  <div itemscope itemtype="http://schema.org/Thing"
+       itemprop="item">
+    
+
+    <span itemprop="name">Two Scoops Of Django</span>
+  </div>
+  
+  <meta itemprop="position" content="2" />
+</li>
+
+    
+  </ol>
+</div>
+
+    </div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <div class="row">
+  <div class="col-md-4 col-md-push-8 sit-sidebar">
+    <div class="si-ad">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_side_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5882730780"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
+  
+</div>
+
+    
+  </div>
+  <div class="col-md-8 col-md-pull-4 sit-content">
+
+    
+    <p class="lead">
+      Best Practices For Django.
+    </p>
+    
+
+    <div class="si-ad">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_before_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="2929264389"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+
+    <div>
+<p>This book is an excellent approach for developers that already know a bit
+of Django but want to take their knowledge to a new level.</p>
+
+<p>It has plenty of examples, best practices and tips in a clear and relaxed
+style, that makes it very easy to follow.</p>
+
+<p>One of the best thing about this book is that <strong>it can be used as a 
+reference book, each chapter is independent from the previous others</strong>.
+You can tailor the reading to suit you.</p>
+
+
+</div>
+  
+<div>
+  Detailed book description and reviews:
+  <ul>
+    
+    <li>
+      Amazon:
+      <a href="http://amzn.to/25QCIkE">
+	<i class="fa fa-external-link" aria-hidden="true"></i>
+	http://amzn.to/25QCIkE
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+<div class="row">
+  <div class="col-xs-8">
+    <h2>Articles</h2>
+    <p>This book is being referenced in the following articles:</p>
+    <div class="list-group">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <a href="/django/" class="list-group-item">
+	Django
+      </a>
+      
+      
+      
+      
+      
+      
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="text-xs-center">
+      <figure class="figure">
+	<a href="http://amzn.to/25QCIkE">
+	  <img src="/assets/books/book_two_scoops_of_django.jpg" alt="Two Scoops Of Django" class="img-fluid img-rounded"/>
+	</a>
+	<figcaption class="figure-caption">Two Scoops Of Django cover</figcaption>
+      </figure>
+    </div> <!-- col -->
+  </div> <!-- row -->
+</div>
+
+
+    
+  </div>
+</div>
+
+
+Categories: 
+
+
+
+<div class="row">
+  <div class="col-md-5">
+    <div class="post-comments">
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '/books/two-scoops-of-django/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    
+    s.src = '//simpleitrocks.disqus.com/embed.js';
+    
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  
+  
+  
+</div>
+
+  </div>
+  <div class="col-md-7">
+    <div class="si-ad">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_after_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5104001581"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+    
+
+
+
+
+
+
+
+  </div>
+</div>
+
+  </div>
+
+</article>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="container">
+
+    <h2 class="footer-heading text-muted">Simple IT 🤘 Rocks</h2>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <ul class="contact-list">
+          <li>
+	    <i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by Marcelo Canina
+	  </li>
+	  
+          <li>
+            <i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/marcanuy"><span class="username">marcanuy</span></a>
+
+          </li>
+          
+	  <li>
+	    <i class="fa fa-user" aria-hidden="true"></i><a href="/about">About</a>
+	  </li>
+        </ul>
+      </div>
+
+      <div class="col-xs-6">
+	<div class="text-xs-right text-muted">
+          <p>Clutter-free software concepts. Written on the go.
+</p>
+	</div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<div class="si-license bg-inverse">
+  <div class="text-muted text-sm-center">
+    <small>
+      Except as otherwise noted, the content of this page is licensed under
+      <a rel="license" class="text-info" href="https://creativecommons.org/licenses/by-nc/4.0/">
+	<i class="fa fa-creative-commons" aria-hidden="true"></i> BY-NC 4.0
+      </a>
+    </small>
+  </div>
+</div>
+
+
+
+  </body>
+
+</html>

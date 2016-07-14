@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
   <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
   
@@ -93,11 +93,16 @@
   <div class="jumbotron jumbotron-fluid bg-inverse">
     <div class="container">
       
-      <h1 class="title">kramdown General Concepts</h1>
+      
+      
+      
+      <h1 class="title">Kramdown General Concepts </h1>
+      
       
       <p class="lead">
 	<small class="text-muted subtitle">kramdown syntax</small>
       </p>
+      
     </div>
   </div>
 
@@ -108,28 +113,42 @@
       <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <p class="post-meta">
+    <div class="post-meta">
       
       <i class="fa fa-calendar" aria-hidden="true"></i>
       <time datetime="2016-06-22T00:00:00-03:00" itemprop="datePublished">Jun 22, 2016</time>
       
-      <span><div class="breadcrumbs">
+    </div>
+    <div>
+      <div class="breadcrumbs">
   <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="list-inline">
 
 
     
+
     
+
+    <li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class="list-inline-item">
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/">
+    
+    <i class="fa fa-home" aria-hidden="true"></i>
+    
+
+    Home
+  </a>
+  
+  <meta itemprop="position" content="1" />
+</li>
+
 
     
     
-    <li itemprop="itemListElement" itemscope
-	itemtype="http://schema.org/ListItem"
-	class="list-inline-item">
-      <i class="fa fa-home" aria-hidden="true"></i>
-      <a itemscope itemtype="http://schema.org/Thing"
-	 itemprop="item" href="/"> Home</a>
-      <meta itemprop="position" content="1" />
-    </li>
+
+    
     
     <span class="prompt">>></span>
     <li itemprop="itemListElement" itemscope
@@ -180,28 +199,16 @@
       <meta itemprop="position" content="4" />
     </li>
     
+    
   </ol>
 </div>
-</span>
-    </p>
+
+    </div>
   </header>
 
   <div class="post-content" itemprop="articleBody">
     <div class="row">
   <div class="col-md-4 col-md-push-8 sit-sidebar">
-    <h4>Table of Contents</h4>
-    
-    <ul class="section-nav">
-<li class="toc-entry toc-h1"><a href="#concepts">Concepts</a></li>
-<li class="toc-entry toc-h1"><a href="#syntax">Syntax</a></li>
-<li class="toc-entry toc-h2"><a href="#blockquotes">Blockquotes</a></li>
-<li class="toc-entry toc-h2"><a href="#code-syntax-highlighting">Code syntax highlighting</a></li>
-<li class="toc-entry toc-h3"><a href="#links">Links</a></li>
-<li class="toc-entry toc-h2"><a href="#table-of-content-generation">Table of content generation</a></li>
-<li class="toc-entry toc-h1"><a href="#references">References</a></li>
-</ul>
-    
-
     <div class="si-ad">
   
 
@@ -219,7 +226,20 @@
   
 </div>
 
-
+    
+    <div>
+      <h4>Table of Contents</h4>
+      <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#concepts">Concepts</a></li>
+<li class="toc-entry toc-h1"><a href="#syntax">Syntax</a></li>
+<li class="toc-entry toc-h2"><a href="#blockquotes">Blockquotes</a></li>
+<li class="toc-entry toc-h2"><a href="#code-syntax-highlighting">Code syntax highlighting</a></li>
+<li class="toc-entry toc-h3"><a href="#links">Links</a></li>
+<li class="toc-entry toc-h2"><a href="#table-of-content-generation">Table of content generation</a></li>
+<li class="toc-entry toc-h1"><a href="#references">References</a></li>
+</ul>
+    </div>
+    
   </div>
   <div class="col-md-8 col-md-pull-4 sit-content">
 
@@ -277,7 +297,7 @@
 
 <p>Generates the following HTML:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;blockquote</span> <span class="na">cite=</span><span class="s">"https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;blockquote</span> <span class="na">cite=</span><span class="s">"https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;p&gt;</span>The rule of thumb is, don’t introduce a new attribute outside of the <span class="nt">&lt;strong&gt;</span>init<span class="nt">&lt;/strong&gt;</span> method, otherwise you’ve given the caller an object that isn’t fully initialized.
 <span class="nt">&lt;/blockquote&gt;</span>
 </code></pre>
@@ -287,7 +307,7 @@
   <li>Adding a <em>cite</em> element inside the <em>blockquote</em></li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gt">&gt; The secret to creativity is knowing how to hide your sources. </span>
+<div class="language-markdown highlighter-rouge"><pre class="highlight"><code><span class="gt">&gt; The secret to creativity is knowing how to hide your sources. </span>
 <span class="gt">&gt; -- &lt;cite&gt;[Albert Einstein][1]&lt;/cite&gt;</span>
 
 <span class="p">[</span><span class="ss">1</span><span class="p">]:</span><span class="sx">http://www.quotedb.com/quotes/2112</span>
@@ -296,7 +316,7 @@
 
 <p>Generates in HTML:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;blockquote&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;blockquote&gt;</span>
   <span class="nt">&lt;p&gt;</span>The secret to creativity is knowing how to hide your sources. 
   – <span class="nt">&lt;cite&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://www.quotedb.com/quotes/2112"</span><span class="nt">&gt;</span>Albert Einstein<span class="nt">&lt;/a&gt;&lt;/cite&gt;</span>
   <span class="nt">&lt;/p&gt;</span>
@@ -339,7 +359,7 @@ end
   <li>Using backticks:</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'redcarpet'</span>
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'redcarpet'</span>
 <span class="n">markdown</span> <span class="o">=</span> <span class="no">Redcarpet</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Hello World!"</span><span class="p">)</span>
 <span class="nb">puts</span> <span class="n">markdown</span><span class="p">.</span><span class="nf">to_html</span>
 </code></pre>
@@ -366,7 +386,7 @@ end
 
 <p>As by default it generates automatic <em>ids</em> for all the header, there is only needed to add a list and name using <abbr title="Inline Attribute List">IAL</abbr> as the placeholder of the generated <abbr title="Table Of Contents">TOC</abbr>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">*</span> TOC
+<div class="language-markdown highlighter-rouge"><pre class="highlight"><code><span class="p">*</span> TOC
 {:toc}
 </code></pre>
 </div>
@@ -403,7 +423,7 @@ Categories:
 
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-5">
     <div class="post-comments">
   
 
@@ -435,7 +455,7 @@ Categories:
 </div>
 
   </div>
-  <div class="col-md-6">
+  <div class="col-md-7">
     <div class="si-ad">
   
 
@@ -453,9 +473,16 @@ Categories:
   
 </div>
 
+    
+
+
+
+
+
+
+
   </div>
 </div>
-
 
   </div>
 

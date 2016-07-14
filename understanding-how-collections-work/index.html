@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="alternate" type="application/rss+xml" title="Simple IT 🤘 Rocks" href="http://simpleit.rocks/feed.xml">
+
+  <!-- jQuery -->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  
+  <!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>Understanding How Collections Work - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Understanding How Collections Work" />
+<meta name="description" content="Jekyll Collections usage and examples." />
+<meta property="og:description" content="Jekyll Collections usage and examples." />
+<link rel="canonical" href="http://simpleit.rocks/understanding-how-collections-work/" />
+<meta property="og:url" content="http://simpleit.rocks/understanding-how-collections-work/" />
+<meta property="og:site_name" content="Simple IT 🤘 Rocks" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-06-11T00:00:00-03:00" />
+<meta property="fb:app_id" content="1822851531277021" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Understanding How Collections Work",
+    "datePublished": "2016-06-11T00:00:00-03:00",
+    "description": "Jekyll Collections usage and examples.",
+    "url": "http://simpleit.rocks/understanding-how-collections-work/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+
+  
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1912030305535489",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+
+</head>
+
+
+  <body>
+
+    
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28572639-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <header class="site-header">
+
+  <!-- mermaid -->
+  <script src="/bower_components/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+  <!-- endmermaid -->
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Simple IT 🤘 Rocks</a>
+
+  </div>
+
+  <div class="jumbotron jumbotron-fluid bg-inverse">
+    <div class="container">
+      
+      
+      
+      
+      <h1 class="title">Understanding How Collections Work </h1>
+      
+      
+    </div>
+  </div>
+
+</header>
+
+
+    <div class="container-fluid">
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <div class="post-meta">
+      
+      <i class="fa fa-calendar" aria-hidden="true"></i>
+      <time datetime="2016-06-11T00:00:00-03:00" itemprop="datePublished">Jun 11, 2016</time>
+      
+    </div>
+    <div>
+      <div class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="list-inline">
+
+
+    
+
+    
+
+    <li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class="list-inline-item">
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/">
+    
+    <i class="fa fa-home" aria-hidden="true"></i>
+    
+
+    Home
+  </a>
+  
+  <meta itemprop="position" content="1" />
+</li>
+
+
+    
+    
+
+    
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      
+      <a itemscope itemtype="http://schema.org/Thing"
+	 itemprop="item" href="/docs">
+        <span itemprop="name">docs</span>
+        <!--img itemprop="image" src="http://example.com/images/icon-bookicon.png" alt="Books"/-->
+      </a>
+      
+      <meta itemprop="position" content="2" />
+    </li>
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      
+      <a itemscope itemtype="http://schema.org/Thing"
+	 itemprop="item" href="/docs/ruby">
+        <span itemprop="name">ruby</span>
+        <!--img itemprop="image" src="http://example.com/images/icon-bookicon.png" alt="Books"/-->
+      </a>
+      
+      <meta itemprop="position" content="3" />
+    </li>
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      
+      <a itemscope itemtype="http://schema.org/Thing"
+	 itemprop="item" href="/docs/ruby/jekyll">
+        <span itemprop="name">jekyll</span>
+        <!--img itemprop="image" src="http://example.com/images/icon-bookicon.png" alt="Books"/-->
+      </a>
+      
+      <meta itemprop="position" content="4" />
+    </li>
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      
+      <a itemscope itemtype="http://schema.org/Thing"
+	 itemprop="item" href="/docs/ruby/jekyll/collections">
+        <span itemprop="name">collections</span>
+        <!--img itemprop="image" src="http://example.com/images/icon-bookicon.png" alt="Books"/-->
+      </a>
+      
+      <meta itemprop="position" content="5" />
+    </li>
+    
+    <span class="prompt">>></span>
+    <li itemprop="itemListElement" itemscope
+	itemtype="http://schema.org/ListItem"
+	class="list-inline-item">
+      
+      
+      
+      <div itemscope itemtype="http://schema.org/Thing"
+	   itemprop="item">
+	<span itemprop="name">Understanding How Collections Work</span>
+      </div>
+      
+      <meta itemprop="position" content="6" />
+    </li>
+    
+    
+  </ol>
+</div>
+
+    </div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <div class="row">
+  <div class="col-md-4 col-md-push-8 sit-sidebar">
+    <div class="si-ad">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_side_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5882730780"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
+  
+</div>
+
+    
+    <div>
+      <h4>Table of Contents</h4>
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#variables-and-front-matter">Variables and front matter</a></li>
+<li class="toc-entry toc-h3"><a href="#variables-of-a-collection-and-documents-collections">Variables of a Collection and Documents Collections</a></li>
+<li class="toc-entry toc-h2"><a href="#creating-a-collection">Creating a Collection</a></li>
+<li class="toc-entry toc-h2"><a href="#collections-variables">Collections variables</a></li>
+<li class="toc-entry toc-h3"><a href="#a-single-collection-document-variables">A single Collection Document variables</a></li>
+<li class="toc-entry toc-h2"><a href="#access">Access</a></li>
+</ul>
+    </div>
+    
+  </div>
+  <div class="col-md-8 col-md-pull-4 sit-content">
+
+    
+    <p class="lead">
+      Jekyll Collections usage and examples.
+
+    </p>
+    
+
+    <div class="si-ad">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_before_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="2929264389"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+
+    <h2 id="overview">Overview</h2>
+
+<p>Jekyll <em>Collections</em> makes it possible to define new <a href="/understanding-jekyll-posts/">document</a> types.
+A collection is an <strong>array of documents</strong>.</p>
+
+<p>They are very similar to <em>posts</em> but also have some unique features
+that makes them more appropiate in certain circumstances.</p>
+
+<p>Default <strong><em>Jekyll posts</em> are <em>collections</em> of type <em>posts</em></strong>.</p>
+
+<h2 id="variables-and-front-matter">Variables and front matter</h2>
+
+<p>Each <strong>collection</strong> can have many <strong>document</strong> files.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>.
+└──_my_collection
+    ├── a_document.html
+    └── another_document.md
+</code></pre>
+</div>
+
+<h3 id="variables-of-a-collection-and-documents-collections">Variables of a Collection and Documents Collections</h3>
+
+<div class="mermaid">
+graph LR
+    Collections["Collections"] == 1 === ColRelationship{" "}
+    ColRelationship == N === Collection
+    Collection["Collection<hr />label<br />docs<br />files<br />relative_directory<br />directory<br />output"] == 1 === relationship{" "}
+    relationship == N === Document["Document<hr />path<br />relative_path<br />collection<br />date"]
+</div>
+
+<h2 id="creating-a-collection">Creating a Collection</h2>
+
+<div class="mermaid">
+graph TB;
+    A["Add *my_collection* as a collection directory in /_config.yml"]==&gt;B("Add markdown files to *my_collection* directory");
+	B==&gt;C{"Is *output: true* in _config.yml"};
+	C==&gt;|yes|D["each file in the *my_collection* can be accesed through the url *my_collection/file* "];
+	C==&gt;|no|E["collections content is only available through the variable *site.my_collection* or *site.collections*"]
+</div>
+
+<h2 id="collections-variables">Collections variables</h2>
+
+<p>Variables that belong to <em>collections</em> and also the ones defined in <code class="highlighter-rouge">_config.yml</code></p>
+
+<dl>
+<dt>label</dt>
+<dd>The name of your collection, e.g. my_collection.</dd>
+<dt>docs</dt>
+<dd>An array of documents.</dd>
+<dt>files</dt>
+<dd>An array of static files in the collection.</dd>
+<dt>relative_directory</dt>
+<dd>The path to the collection's source directory, relative to the site source.</dd>
+<dt>directory</dt>
+<dd>The full path to the collections's source directory.</dd>
+<dt>output</dt>
+<dd>Whether the collection's documents will be output as individual files. </dd>
+</dl>
+
+<h3 id="a-single-collection-document-variables">A single Collection Document variables</h3>
+
+<p>Variables in a single collection Document</p>
+
+<dl>
+<dt>content</dt>
+<dd>The (unrendered) content of the document. If no YAML Front Matter is provided, Jekyll will not generate the file in your collection. If YAML Front Matter is used, then this is all the contents of the file after the terminating `---` of the front matter.</dd>
+<dt>output</dt>
+<dd>The rendered output of the document, based on the content.</dd>
+<dt>path</dt>
+<dd>The full path to the document's source file.</dd>
+<dt>relative_path</dt>
+<dd>The path to the document's source file relative to the site source.</dd>
+<dt>url</dt>
+<dd>The URL of the rendered collection. The file is only written to the destination when the collection to which it belongs has output: true in the site's configuration.</dd>
+<dt>collection</dt>
+<dd>The name of the document's collection.</dd>
+<dt>date</dt>
+<dd> The date of the document's collection.</dd>
+</dl>
+
+<p><a href="https://jekyllrb.com/docs/collections/#documents">Source</a></p>
+
+<h2 id="access">Access</h2>
+
+<p>All Jekyll Collections can be accessed with the global variable <em>site</em> using <code class="highlighter-rouge">site.collections</code>:</p>
+
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>collection<span class="w"> </span>in<span class="w"> </span>site.collections<span class="p">%}</span>
+ Collection name: <span class="p">{{</span><span class="nv">collection</span><span class="p">.</span><span class="nv">label</span><span class="p">}}</span> 
+ Relative path to the collection's source directory: <span class="p">{{</span><span class="nv">collection</span><span class="p">.</span><span class="nv">relative_directory</span><span class="w"> </span><span class="p">}}</span>
+ Full path to the collection's directory: <span class="p">{{</span><span class="nv">collection</span><span class="p">.</span><span class="nv">directory</span><span class="p">}}</span>
+ Output collection files as individual files?: <span class="p">{{</span><span class="nv">collection</span><span class="p">.</span><span class="nv">output</span><span class="p">}}</span>
+ <span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>doc<span class="w"> </span>in<span class="w"> </span>collection.docs<span class="p">%}</span>
+  <span class="p">{{</span><span class="nv">doc</span><span class="p">.</span><span class="nv">title</span><span class="p">}}</span>
+  <span class="p">{{</span><span class="nv">doc</span><span class="p">.</span><span class="nv">slug</span><span class="p">}}</span>
+ <span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+</code></pre>
+</div>
+
+<p>And variables of each Document of a Collection can be accessed with:</p>
+
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>collection<span class="w"> </span>in<span class="w"> </span>site.collections<span class="w"> </span><span class="p">%}</span>
+
+&lt;h4&gt;Collection <span class="p">{{</span><span class="nv">forloop</span><span class="p">.</span><span class="nv">index</span><span class="p">}}</span>&lt;/h4&gt;
+
+&lt;dl&gt;
+<span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>doc<span class="w"> </span>in<span class="w"> </span>collection.docs<span class="w"> </span><span class="p">%}</span>
+&lt;dt&gt;Path&lt;/dt&gt;&lt;dd&gt;<span class="p">{{</span><span class="nv">doc</span><span class="p">.</span><span class="nv">path</span><span class="p">}}</span>&lt;/dd&gt;
+&lt;dt&gt;Relative_path&lt;/dt&gt;&lt;dd&gt; <span class="p">{{</span><span class="nv">doc</span><span class="p">.</span><span class="nv">relative_path</span><span class="p">}}</span>&lt;/dd&gt;
+&lt;dt&gt;Collection&lt;/dt&gt;&lt;dd&gt; <span class="p">{{</span><span class="nv">doc</span><span class="p">.</span><span class="nv">collection</span><span class="p">}}</span>&lt;/dd&gt;
+&lt;dt&gt;Date&lt;/dt&gt;&lt;dd&gt; <span class="p">{{</span><span class="nv">doc</span><span class="p">.</span><span class="nv">date</span><span class="p">}}</span>&lt;/dd&gt;
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+&lt;/dl&gt;
+&lt;hr&gt;
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+</code></pre>
+</div>
+
+
+    
+  </div>
+</div>
+
+
+Categories: 
+
+<span class="entry-categories">
+  docs
+</span>
+
+,
+
+
+<span class="entry-categories">
+  ruby
+</span>
+
+,
+
+
+<span class="entry-categories">
+  jekyll
+</span>
+
+,
+
+
+<span class="entry-categories">
+  collections
+</span>
+
+
+
+
+<div class="row">
+  <div class="col-md-5">
+    <div class="post-comments">
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '/understanding-how-collections-work/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    
+    s.src = '//simpleitrocks.disqus.com/embed.js';
+    
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  
+  
+  
+</div>
+
+  </div>
+  <div class="col-md-7">
+    <div class="si-ad">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_after_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5104001581"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+    
+
+
+
+
+
+
+<div class="post-same-category">
+  <h2>Articles in this category</h2>
+  <ul class="nav nav-pills nav-stacked">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <li class="nav-item">
+      <a class="nav-link " href="/jekyll-collections-versus-posts/">
+	Jekyll Collections Versus Posts
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <li class="nav-item">
+      <a class="nav-link active" href="/understanding-how-collections-work/">
+	Understanding How Collections Work
+      </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+
+  </div>
+</div>
+
+  </div>
+
+</article>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="container">
+
+    <h2 class="footer-heading text-muted">Simple IT 🤘 Rocks</h2>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <ul class="contact-list">
+          <li>
+	    <i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by Marcelo Canina
+	  </li>
+	  
+          <li>
+            <i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/marcanuy"><span class="username">marcanuy</span></a>
+
+          </li>
+          
+	  <li>
+	    <i class="fa fa-user" aria-hidden="true"></i><a href="/about">About</a>
+	  </li>
+        </ul>
+      </div>
+
+      <div class="col-xs-6">
+	<div class="text-xs-right text-muted">
+          <p>Clutter-free software concepts. Written on the go.
+</p>
+	</div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<div class="si-license bg-inverse">
+  <div class="text-muted text-sm-center">
+    <small>
+      Except as otherwise noted, the content of this page is licensed under
+      <a rel="license" class="text-info" href="https://creativecommons.org/licenses/by-nc/4.0/">
+	<i class="fa fa-creative-commons" aria-hidden="true"></i> BY-NC 4.0
+      </a>
+    </small>
+  </div>
+</div>
+
+
+
+  </body>
+
+</html>
