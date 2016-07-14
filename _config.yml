@@ -60,4 +60,85 @@ facebook:
 #     author - Page-, post-, or document-specific author information (see below)                       #
 ########################################################################################################
 
-production_env: "production" #name of the production environment
+production_env: "production" #name of the production environment (for jekyll build)
+
+collections:
+  books:
+    output: true
+
+
+# include:
+#   - _alert.scss
+#   - _animation.scss
+#   - _breadcrumb.scss
+#   - _button-group.scss
+#   - _buttons.scss
+#   - _card.scss
+#   - _carousel.scss
+#   - _close.scss
+#   - _code.scss
+#   - .csscomb.json
+#   - _custom-forms.scss
+#   - _dropdown.scss
+#   - _forms.scss
+#   - _grid.scss
+#   - _images.scss
+#   - _input-group.scss
+#   - _jumbotron.scss
+#   - _labels.scss
+#   - _list-group.scss
+#   - _media.scss
+#   - _mixins.scss
+#   - _modal.scss
+#   - _navbar.scss
+#   - _nav.scss
+#   - _normalize.scss
+#   - _pager.scss
+#   - _pagination.scss
+#   - _popover.scss
+#   - _print.scss
+#   - _progress.scss
+#   - _reboot.scss
+#   - _responsive-embed.scss
+#   - .scss-lint.yml
+#   - _tables.scss
+#   - _tooltip.scss
+#   - _type.scss
+#   - _utilities-background.scss
+#   - _utilities-responsive.scss
+#   - _utilities.scss
+#   - _utilities-spacing.scss
+#   - _variables.scss
+#   - _alert.scss
+#   - _background-variant.scss
+#   - _border-radius.scss
+#   - _breakpoints.scss
+#   - _buttons.scss
+#   - _cards.scss
+#   - _center-block.scss
+#   - _clearfix.scss
+#   - _forms.scss
+#   - _gradients.scss
+#   - _grid-framework.scss
+#   - _grid.scss
+#   - _hover.scss
+#   - _image.scss
+#   - _label.scss
+#   - _list-group.scss
+#   - _lists.scss
+#   - _navbar-align.scss
+#   - _nav-divider.scss
+#   - _pagination.scss
+#   - _progress.scss
+#   - _pulls.scss
+#   - _reset-filter.scss
+#   - _reset-text.scss
+#   - _resize.scss
+#   - _screen-reader.scss
+#   - _size.scss
+#   - _tab-focus.scss
+#   - _table-row.scss
+#   - _text-emphasis.scss
+#   - _text-hide.scss
+#   - _text-truncate.scss
+  
