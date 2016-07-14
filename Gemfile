@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'jekyll'
+gem 'jekyll', '~> 3.2.0.pre.beta1'
 gem 'jekyll-seo-tag'
 gem 'jekyll-sitemap'
 gem 'jekyll-toc'
