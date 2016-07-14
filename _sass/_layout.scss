@@ -266,6 +266,12 @@
     background-color: #00ff00;
 }
 
+.si-search-development {
+    background-color: #00ffff;
+}
+
+
+
 .mermaid .edgeLabel {
     color: $grey-color-dark;
 }
@@ -296,4 +302,37 @@
     position: -o-sticky;
     position: sticky;
     top: 10px;
+}
+
+#error-page {
+    #search-box {
+	width: 30%;
+    }
+    
+    .gsc-input-box {
+	height: auto;
+    }
+    
+    .gsc-search-button{
+	height: auto;
+	width: auto;
+    }
+}
+
+#search-page {
+    margin: 5% auto;
+
+     #search-box {
+	 width: 60%;
+	 min-width: 300px;
+    }
+    
+    .gsc-input-box {
+	height: auto;
+    }
+    
+    .gsc-search-button{
+	height: auto;
+	width: auto;
+    }   
 }

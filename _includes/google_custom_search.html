@@ -1,0 +1,21 @@
+<div id="search-box">
+  {% if jekyll.environment == site.production_env %}
+  <script>
+    (function() {
+    var cx = '012481603285159134190:bz5j_wmtehc';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+    })();
+  </script>
+  <gcse:search></gcse:search>
+
+  {% else %}
+
+  <div class="si-search-development">Google Custom Search</div>
+
+  {% endif %}
+</div>
