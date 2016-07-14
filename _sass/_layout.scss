@@ -307,13 +307,11 @@
 #error-page #search-box {
     margin-left: auto;
     margin-right: auto;
+    width: 60%;
+    min-width: 300px;
 }
 
 #error-page {
-    #search-box {
-	width: 30%;
-    }
-    
     .gsc-input-box {
 	height: auto;
     }
@@ -328,11 +326,6 @@
 #search-page {
     margin: 5% auto;
 
-     #search-box {
-	 width: 60%;
-	 min-width: 300px;
-    }
-    
     .gsc-input-box {
 	height: auto;
     }
