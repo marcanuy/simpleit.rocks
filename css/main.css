@@ -358,10 +358,10 @@ pre {
 
 #error-page #search-box {
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  width: 60%;
+  min-width: 300px; }
 
-#error-page #search-box {
-  width: 30%; }
 #error-page .gsc-input-box {
   height: auto; }
 #error-page .gsc-search-button {
@@ -370,9 +370,6 @@ pre {
 
 #search-page {
   margin: 5% auto; }
-  #search-page #search-box {
-    width: 60%;
-    min-width: 300px; }
   #search-page .gsc-input-box {
     height: auto; }
   #search-page .gsc-search-button {
