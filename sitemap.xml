@@ -93,6 +93,9 @@
 <lastmod>2016-05-08T00:00:00-03:00</lastmod>
 </url>
 <url>
+<loc>http://simpleit.rocks/404.html</loc>
+</url>
+<url>
 <loc>http://simpleit.rocks/about/</loc>
 </url>
 <url>
@@ -154,6 +157,9 @@
 </url>
 <url>
 <loc>http://simpleit.rocks/docs/</loc>
+</url>
+<url>
+<loc>http://simpleit.rocks/search/</loc>
 </url>
 <url>
 <loc>http://simpleit.rocks/books/two-scoops-of-django/</loc>
