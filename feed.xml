@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 15 Jul 2016 15:18:37 -0300</pubDate>
-    <lastBuildDate>Fri, 15 Jul 2016 15:18:37 -0300</lastBuildDate>
+    <pubDate>Fri, 15 Jul 2016 15:40:44 -0300</pubDate>
+    <lastBuildDate>Fri, 15 Jul 2016 15:40:44 -0300</lastBuildDate>
     <generator>Jekyll v3.2.0.pre.beta1</generator>
     
       <item>
@@ -658,12 +658,7 @@ graph TB
     
       <item>
         <title>Git Commands</title>
-        <description>&lt;hr /&gt;
-&lt;p&gt;title: Git Commands
-layout: post
-—-&lt;/p&gt;
-
-&lt;h1 id=&quot;commands&quot;&gt;Commands&lt;/h1&gt;
+        <description>&lt;h1 id=&quot;commands&quot;&gt;Commands&lt;/h1&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
