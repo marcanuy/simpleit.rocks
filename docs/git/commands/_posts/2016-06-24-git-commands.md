@@ -1,7 +1,7 @@
 ---
 title: Git Commands
 layout: post
-----
+---
 
 # Commands #
 
