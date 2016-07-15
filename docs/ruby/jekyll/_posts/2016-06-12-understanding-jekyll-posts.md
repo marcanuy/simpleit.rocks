@@ -18,6 +18,29 @@ Their filename should follow the following format: `YYYY-MM-DD-article-name.MARK
 
 In this case `article-name` will be used as the post _slug_ and if there is no _title_ in the _front matter_ of the post, it will be converted to a title version removing the `-` chars.
 
+## Post metadata
+
+This is a common term used in [Book design](https://en.wikipedia.org/wiki/Book_design#Front_matter),
+to refer to the first section of a book, usually its smallest section.
+
+In a Jekyll context, each _post_ can have page-specific variables to be included at the beginning of the file using [YAML format](http://yaml.org/). This metadata is called in Jekyll __Front Matter__, and is the common place to define things like the post __title__, __layout__, __description__, or override site-wide variable values.
+
+A common post looks like the following code, where the front matter goes inside `---` tag, and then the content of the _post_: 
+
+{% raw %}
+~~~ yaml
+---
+layout: post
+title: My cool blog
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+laboris nisi ut aliquip ex ea commodo consequat.
+~~~
+{% endraw %}
+
 ### Variables
 
 ~~~
@@ -41,10 +64,9 @@ graph LR
     relationship == N === Document["Document<hr>path<br>relative_path<br>collection<br>date"]
 </div>
 
-
 #### Front matter
 
-Predefined Variables that can be used in the front matter for a post.
+Predefined Variables that can be used in the _front matter_ for a _post_:
 
 <dl>
 <dt>page.title</dt>

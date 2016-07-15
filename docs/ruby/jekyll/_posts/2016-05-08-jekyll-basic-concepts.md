@@ -39,9 +39,9 @@ Content can be published in Jekyll in several ways:
 - Pages
 - Data
 
-## Front Matter
+### Article Metadata
 
-Each _Post_ is composed by __metadata__ and __content__. This metadata is called the _Front Matter_, it assign custom variables to the current post.
+Each [Post]({% link docs/ruby/jekyll/_posts/2016-06-12-understanding-jekyll-posts.md %}) is composed by __metadata__ and __content__. This metadata is called the _Front Matter_ and it needs to be located at the top of each post between the special characters `---` to assign custom variables to the current post.
 
 The [Front Matter](https://jekyllrb.com/docs/frontmatter/) is the piece of code that tell Jekyll to process a page or post in a special way, where you can change the _layout_, _language_ or more configurations that if not specified they just took the default settings of _config.yml_.
 . 
