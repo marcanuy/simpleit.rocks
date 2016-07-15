@@ -8,7 +8,6 @@
 
   
 
-  <link rel="stylesheet" href="/css/main.css">
   <link rel="alternate" type="application/rss+xml" title="Simple IT 🤘 Rocks" href="http://simpleit.rocks/feed.xml">
 
   <!-- jQuery -->
@@ -20,6 +19,9 @@
   <!-- Bootstrap -->
   <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
   <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <!-- Custom css -->
+  <link rel="stylesheet" href="/css/main.css">
 
   
   <!-- Begin Jekyll SEO tag v2.0.0 -->
@@ -221,29 +223,13 @@
 
   <div class="post-content" itemprop="articleBody">
     <div class="row">
-  <div class="col-md-4 col-md-push-8 sit-sidebar">
-    <div class="si-ad">
-  
-
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- simpleit_side_content -->
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-1912030305535489"
-       data-ad-slot="5882730780"
-       data-ad-format="auto"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-  
-  
-</div>
-
+  <div class="col-md-4 col-md-push-8 sit-sidebar sticky">
     
-    <div>
+    <div class="s/ticky">
       <h4>Table of Contents</h4>
       <ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#post-metadata">Post metadata</a></li>
 <li class="toc-entry toc-h3"><a href="#variables">Variables</a></li>
 <li class="toc-entry toc-h3"><a href="#variables-of-a-post-and-documents-posts">Variables of a Post and Documents Posts</a></li>
 <li class="toc-entry toc-h4"><a href="#front-matter">Front matter</a></li>
@@ -287,6 +273,27 @@ a <code class="highlighter-rouge">_posts</code> folder.</p>
 
 <p>In this case <code class="highlighter-rouge">article-name</code> will be used as the post <em>slug</em> and if there is no <em>title</em> in the <em>front matter</em> of the post, it will be converted to a title version removing the <code class="highlighter-rouge">-</code> chars.</p>
 
+<h2 id="post-metadata">Post metadata</h2>
+
+<p>This is a common term used in <a href="https://en.wikipedia.org/wiki/Book_design#Front_matter">Book design</a>,
+to refer to the first section of a book, usually its smallest section.</p>
+
+<p>In a Jekyll context, each <em>post</em> can have page-specific variables to be included at the beginning of the file using <a href="http://yaml.org/">YAML format</a>. This metadata is called in Jekyll <strong>Front Matter</strong>, and is the common place to define things like the post <strong>title</strong>, <strong>layout</strong>, <strong>description</strong>, or override site-wide variable values.</p>
+
+<p>A common post looks like the following code, where the front matter goes inside <code class="highlighter-rouge">---</code> tag, and then the content of the <em>post</em>:</p>
+
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="nn">---</span>
+<span class="s">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="s">title</span><span class="pi">:</span> <span class="s">My cool blog</span>
+<span class="nn">---</span>
+
+<span class="s">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed</span>
+<span class="s">do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+<span class="s">Ut enim ad minim veniam, quis nostrud exercitation ullamco</span> 
+<span class="s">laboris nisi ut aliquip ex ea commodo consequat.</span>
+</code></pre>
+</div>
+
 <h3 id="variables">Variables</h3>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>.
@@ -312,7 +319,7 @@ graph LR
 
 <h4 id="front-matter">Front matter</h4>
 
-<p>Predefined Variables that can be used in the front matter for a post.</p>
+<p>Predefined Variables that can be used in the <em>front matter</em> for a <em>post</em>:</p>
 
 <dl>
 <dt>page.title</dt>
@@ -350,32 +357,26 @@ graph LR
   </div>
 </div>
 
+<div class="si-ad">
+  
 
-Categories: 
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_after_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5104001581"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
-<span class="entry-categories">
-  docs
-</span>
-
-,
-
-
-<span class="entry-categories">
-  ruby
-</span>
-
-,
-
-
-<span class="entry-categories">
-  jekyll
-</span>
-
-
+  
+</div>
 
 
 <div class="row">
-  <div class="col-md-5">
+  <div class="col-md-8">
     <div class="post-comments">
   
 
@@ -407,23 +408,29 @@ Categories:
 </div>
 
   </div>
-  <div class="col-md-7">
-    <div class="si-ad">
-  
+  <div class="col-md-4">
+    
+Categories: 
 
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- simpleit_after_content -->
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-1912030305535489"
-       data-ad-slot="5104001581"
-       data-ad-format="auto"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+<span class="entry-categories">
+  docs
+</span>
 
-  
-</div>
+,
+
+
+<span class="entry-categories">
+  ruby
+</span>
+
+,
+
+
+<span class="entry-categories">
+  jekyll
+</span>
+
+
 
     
 
@@ -572,6 +579,23 @@ Categories:
   </ul>
 </div>
 
+
+    <div class="si-ad">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_side_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5882730780"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
+  
+</div>
 
   </div>
 </div>

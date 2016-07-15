@@ -8,7 +8,6 @@
 
   
 
-  <link rel="stylesheet" href="/css/main.css">
   <link rel="alternate" type="application/rss+xml" title="Simple IT 🤘 Rocks" href="http://simpleit.rocks/feed.xml">
 
   <!-- jQuery -->
@@ -20,6 +19,9 @@
   <!-- Bootstrap -->
   <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
   <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <!-- Custom css -->
+  <link rel="stylesheet" href="/css/main.css">
 
   
   <!-- Begin Jekyll SEO tag v2.0.0 -->
@@ -225,32 +227,15 @@
 
   <div class="post-content" itemprop="articleBody">
     <div class="row">
-  <div class="col-md-4 col-md-push-8 sit-sidebar">
-    <div class="si-ad">
-  
-
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- simpleit_side_content -->
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-1912030305535489"
-       data-ad-slot="5882730780"
-       data-ad-format="auto"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-  
-  
-</div>
-
+  <div class="col-md-4 col-md-push-8 sit-sidebar sticky">
     
-    <div>
+    <div class="s/ticky">
       <h4>Table of Contents</h4>
       <ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#definition">Definition</a></li>
 <li class="toc-entry toc-h3"><a href="#how-jekyll-generates-a-site">How Jekyll generates a site</a></li>
 <li class="toc-entry toc-h2"><a href="#articles">Articles</a></li>
-<li class="toc-entry toc-h2"><a href="#front-matter">Front Matter</a></li>
+<li class="toc-entry toc-h3"><a href="#article-metadata">Article Metadata</a></li>
 <li class="toc-entry toc-h3"><a href="#predefined-global-variables">Predefined global variables</a></li>
 <li class="toc-entry toc-h2"><a href="#formatting-syntax">Formatting syntax</a></li>
 <li class="toc-entry toc-h2"><a href="#syntax-highlighting">Syntax highlighting</a></li>
@@ -325,9 +310,9 @@ graph TB
   <li>Data</li>
 </ul>
 
-<h2 id="front-matter">Front Matter</h2>
+<h3 id="article-metadata">Article Metadata</h3>
 
-<p>Each <em>Post</em> is composed by <strong>metadata</strong> and <strong>content</strong>. This metadata is called the <em>Front Matter</em>, it assign custom variables to the current post.</p>
+<p>Each <a href="/understanding-jekyll-posts/">Post</a> is composed by <strong>metadata</strong> and <strong>content</strong>. This metadata is called the <em>Front Matter</em> and it needs to be located at the top of each post between the special characters <code class="highlighter-rouge">---</code> to assign custom variables to the current post.</p>
 
 <p>The <a href="https://jekyllrb.com/docs/frontmatter/">Front Matter</a> is the piece of code that tell Jekyll to process a page or post in a special way, where you can change the <em>layout</em>, <em>language</em> or more configurations that if not specified they just took the default settings of <em>config.yml</em>.
 .</p>
@@ -448,32 +433,26 @@ title: My cool blog
   </div>
 </div>
 
+<div class="si-ad">
+  
 
-Categories: 
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_after_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5104001581"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
-<span class="entry-categories">
-  docs
-</span>
-
-,
-
-
-<span class="entry-categories">
-  ruby
-</span>
-
-,
-
-
-<span class="entry-categories">
-  jekyll
-</span>
-
-
+  
+</div>
 
 
 <div class="row">
-  <div class="col-md-5">
+  <div class="col-md-8">
     <div class="post-comments">
   
 
@@ -505,23 +484,29 @@ Categories:
 </div>
 
   </div>
-  <div class="col-md-7">
-    <div class="si-ad">
-  
+  <div class="col-md-4">
+    
+Categories: 
 
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- simpleit_after_content -->
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-1912030305535489"
-       data-ad-slot="5104001581"
-       data-ad-format="auto"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+<span class="entry-categories">
+  docs
+</span>
 
-  
-</div>
+,
+
+
+<span class="entry-categories">
+  ruby
+</span>
+
+,
+
+
+<span class="entry-categories">
+  jekyll
+</span>
+
+
 
     
 
@@ -670,6 +655,23 @@ Categories:
   </ul>
 </div>
 
+
+    <div class="si-ad">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_side_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5882730780"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
+  
+</div>
 
   </div>
 </div>

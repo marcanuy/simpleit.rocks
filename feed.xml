@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 14 Jul 2016 20:28:40 -0300</pubDate>
-    <lastBuildDate>Thu, 14 Jul 2016 20:28:40 -0300</lastBuildDate>
+    <pubDate>Fri, 15 Jul 2016 15:18:37 -0300</pubDate>
+    <lastBuildDate>Fri, 15 Jul 2016 15:18:37 -0300</lastBuildDate>
     <generator>Jekyll v3.2.0.pre.beta1</generator>
     
       <item>
@@ -946,6 +946,27 @@ a &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; folder.&lt
 
 &lt;p&gt;In this case &lt;code class=&quot;highlighter-rouge&quot;&gt;article-name&lt;/code&gt; will be used as the post &lt;em&gt;slug&lt;/em&gt; and if there is no &lt;em&gt;title&lt;/em&gt; in the &lt;em&gt;front matter&lt;/em&gt; of the post, it will be converted to a title version removing the &lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt; chars.&lt;/p&gt;
 
+&lt;h2 id=&quot;post-metadata&quot;&gt;Post metadata&lt;/h2&gt;
+
+&lt;p&gt;This is a common term used in &lt;a href=&quot;https://en.wikipedia.org/wiki/Book_design#Front_matter&quot;&gt;Book design&lt;/a&gt;,
+to refer to the first section of a book, usually its smallest section.&lt;/p&gt;
+
+&lt;p&gt;In a Jekyll context, each &lt;em&gt;post&lt;/em&gt; can have page-specific variables to be included at the beginning of the file using &lt;a href=&quot;http://yaml.org/&quot;&gt;YAML format&lt;/a&gt;. This metadata is called in Jekyll &lt;strong&gt;Front Matter&lt;/strong&gt;, and is the common place to define things like the post &lt;strong&gt;title&lt;/strong&gt;, &lt;strong&gt;layout&lt;/strong&gt;, &lt;strong&gt;description&lt;/strong&gt;, or override site-wide variable values.&lt;/p&gt;
+
+&lt;p&gt;A common post looks like the following code, where the front matter goes inside &lt;code class=&quot;highlighter-rouge&quot;&gt;---&lt;/code&gt; tag, and then the content of the &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;post&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;My cool blog&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+
+&lt;span class=&quot;s&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;Ut enim ad minim veniam, quis nostrud exercitation ullamco&lt;/span&gt; 
+&lt;span class=&quot;s&quot;&gt;laboris nisi ut aliquip ex ea commodo consequat.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;h3 id=&quot;variables&quot;&gt;Variables&lt;/h3&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.
@@ -971,7 +992,7 @@ graph LR
 
 &lt;h4 id=&quot;front-matter&quot;&gt;Front matter&lt;/h4&gt;
 
-&lt;p&gt;Predefined Variables that can be used in the front matter for a post.&lt;/p&gt;
+&lt;p&gt;Predefined Variables that can be used in the &lt;em&gt;front matter&lt;/em&gt; for a &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
 
 &lt;dl&gt;
 &lt;dt&gt;page.title&lt;/dt&gt;

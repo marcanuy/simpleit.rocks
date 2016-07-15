@@ -354,7 +354,8 @@ pre {
   position: -ms-sticky;
   position: -o-sticky;
   position: sticky;
-  top: 10px; }
+  top: 10px;
+  bottom: 10px; }
 
 #error-page #search-box {
   margin-left: auto;
