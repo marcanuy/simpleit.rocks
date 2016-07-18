@@ -6,8 +6,8 @@ description: >
   Practical concepts, theory and tutorials.
 ---
 
-<div class="home">
-
+  <div class="home">
+  
   <div class="">
     <h1>Categories</h1>
 
@@ -76,8 +76,13 @@ description: >
     <div class="list-group">
       {% assign pages = site.pages | sort:'dir' %}
       {% for page in pages %}
-      {% if page.title %}
-      <a class="list-group-item" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+      {% if page.title and page.dir != '/' and page.dir !='/about/' %}
+      <a class="list-group-item" href="{{ page.url | prepend: site.baseurl }}">
+	<span class="label label-info label-pill pull-xs-right">
+	  {{page.dir | remove_first: "/docs/"}}
+	</span>
+	{{ page.title }}
+      </a>
       {% endif%}
       {% endfor %}
     </div>
