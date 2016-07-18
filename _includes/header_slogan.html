@@ -1,0 +1,16 @@
+<div class="jumbotron jumbotron-fluid bg-inverse">
+  <div class="container">
+    {% if include.title %}
+    {% assign words = include.title | split: ' ' %}
+    
+    {% capture titlecase %}{% for word in words %}{{ word | capitalize }} {% endfor %}{% endcapture %}
+    
+    <h1 class="title">{{ titlecase }}</h1>
+    {% endif %}
+    {% if include.subtitle %}
+    <p class="lead">
+      <small class="text-muted subtitle">{{ include.subtitle }}</small>
+    </p>
+    {% endif %}
+  </div>
+</div>

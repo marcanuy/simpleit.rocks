@@ -5,26 +5,14 @@
   <script>mermaid.initialize({startOnLoad:true});</script>
   <!-- endmermaid -->
 
-  <div class="wrapper">
+  <div class="text-xs-center m-b-2">
 
-    <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+    <a class="display-1" href="{{ site.baseurl }}/" style="text-decoration: none">{{ site.title }}</a>
 
   </div>
 
-  <div class="jumbotron jumbotron-fluid bg-inverse">
-    <div class="container">
-      {% if page.title %}
-      {% assign words = page.title | split: ' ' %}
-      {% capture titlecase %}{% for word in words %}{{ word | capitalize }} {% endfor %}{% endcapture %}
-      
-      <h1 class="title">{{ titlecase }}</h1>
-      {% endif %}
-      {% if page.subtitle %}
-      <p class="lead">
-	<small class="text-muted subtitle">{{ page.subtitle }}</small>
-      </p>
-      {% endif %}
-    </div>
-  </div>
+  {% if page.title %}
+  {% include header_slogan.html title=page.title subtitle=page.subtitle %}
+  {% endif %}
 
 </header>
