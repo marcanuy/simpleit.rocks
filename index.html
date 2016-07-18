@@ -58,9 +58,12 @@ description: >
 	<span class="label label-default label-pill pull-xs-right">
 	  {{ post.categories | shift  | array_to_sentence_string }}
 	</span>
-	
-	{{ post.title }}
-	
+	<h4>{{ post.title }}</h4>
+	{% if post.description %}
+	<p class="list-group-item-text">
+	  {{ post.description }}
+	</p>
+	{% endif %}
       </a>
       {% endfor %}
     </div> <!-- list group -->

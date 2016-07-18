@@ -82,4 +82,6 @@ To create a new environment having a requirements file and a specific python ver
 ## Pending
 
 - <https://docs.python.org/3/library/venv.html>
+- <https://docs.python.org/3/using/scripts.html#pyvenv-creating-virtual-environments>
+- <https://realpython.com/blog/python/python-virtual-environments-a-primer/>
 - PEP 405 -- Python Virtual Environments <https://www.python.org/dev/peps/pep-0405>

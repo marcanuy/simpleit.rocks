@@ -62,7 +62,8 @@ layout: base_post
     {% if posts_in_category > 1 %}
     <h2>Articles in {{ current_category }} category</h2>
     <div class="list-group">
-      {% for post in site.categories[current_category] %}
+      {% assign sorted_posts = site.categories[current_category] | sort_by: 'weight' %}
+      {% for post in sorted_posts %}
       {% comment %} Filter posts from other categories with the same name {% endcomment %}
       {% if post.categories == ancestors_and_self %}
       <a class="list-group-item" href="{{ post.url }}">{{ post.title }}</a>

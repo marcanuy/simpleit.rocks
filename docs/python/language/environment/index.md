@@ -1,6 +1,6 @@
 ---
-title: "Python Language Concepts"
+title: "Python Environment"
 subtitle: ""
 layout: category_posts
-weight: 1
+weight: 2
 ---

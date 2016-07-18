@@ -1,6 +1,7 @@
 ---
 title: Django Configuration and environment isolation
 subtitle: Having a different configuration for development, staging and production servers
+weight: 2
 ---
 
 Every config file should be version controlled, even the developers local configuration, all the developers of a project should use the same development configuration. 

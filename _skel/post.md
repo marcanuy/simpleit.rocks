@@ -19,7 +19,7 @@ date: #A date here overrides the date from the name of the post. This can be use
 category: #
 categories: # Instead of placing posts inside of folders, you can specify one or more categories that the post belongs to. When the site is generated the post will act as though it had been set with these categories normally. Categories (plural key) can be specified as a YAML list or a comma-separated string.
 tags: # Similar to categories, one or multiple tags can be added to a post. Also like categories, tags can be specified as a YAML list or a comma-separated string. 
-
+weight: # order of a post relative to the same articles in a category
 ---
 
 {% comment %} main content {% endcomment %}

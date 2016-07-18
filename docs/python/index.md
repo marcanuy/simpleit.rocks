@@ -9,8 +9,10 @@ childs:
 
 ## Useful links
 
-- The Python Language Reference <https://docs.python.org/3/reference/index.html>
-- The Python Standard Library <https://docs.python.org/3/library/index.html>
+- Python 3 documentation <https://docs.python.org/3/>
+  - Python Setup and Usage <https://docs.python.org/3/using/>
+  - The Python Language Reference <https://docs.python.org/3/reference/index.html>
+  - The Python Standard Library <https://docs.python.org/3/library/index.html>
 
 ### Python Enhancement Proposals (PEPs) <https://www.python.org/dev/peps/>
 
