@@ -3,7 +3,8 @@
  */
 .highlight {
     background: #fff;
-    @extend %vertical-rhythm;
+    /*@extend %vertical-rhythm;*/
+    padding: 1rem;
 
     .highlighter-rouge & {
       background: #eef;
