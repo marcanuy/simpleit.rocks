@@ -1,6 +1,11 @@
+{% assign active_class="" %}
+{% if include.url != blank %}
+{% assign active_class="active"%}
+{% endif %}
+
 <li itemprop="itemListElement" itemscope
     itemtype="http://schema.org/ListItem"
-    class="list-inline-item">
+    class={{active_class}}>
   {% if include.url %}
   <a itemscope itemtype="http://schema.org/Thing"
      itemprop="item" href="{{include.url}}">
@@ -11,14 +16,14 @@
     {{include.title}}
   </a>
   {% else %}
-  <div itemscope itemtype="http://schema.org/Thing"
+  <span itemscope itemtype="http://schema.org/Thing"
        itemprop="item">
     {% if include.fa %}
     <i class="fa {{include.fa}}" aria-hidden="true"></i>
     {% endif %}
 
     <span itemprop="name">{{include.title}}</span>
-  </div>
+  </span>
   {% endif %}
   <meta itemprop="position" content="{{include.position}}" />
 </li>
