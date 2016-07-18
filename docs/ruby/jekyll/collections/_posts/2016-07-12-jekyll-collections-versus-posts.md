@@ -6,7 +6,7 @@ tags:
 - jekyll
 - collections
 description: >
-  Jekyll Collections and Posts comparaison.
+  Jekyll Collections and Posts comparison.
 ---
 
 ## Differences
