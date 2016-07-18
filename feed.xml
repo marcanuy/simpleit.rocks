@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 18 Jul 2016 17:42:59 -0300</pubDate>
-    <lastBuildDate>Mon, 18 Jul 2016 17:42:59 -0300</lastBuildDate>
+    <pubDate>Mon, 18 Jul 2016 17:57:51 -0300</pubDate>
+    <lastBuildDate>Mon, 18 Jul 2016 17:57:51 -0300</lastBuildDate>
     <generator>Jekyll v3.2.0.pre.beta1</generator>
     
       <item>
@@ -324,7 +324,7 @@ names as its &lt;em&gt;categories&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;A collection does not have &lt;em&gt;categories&lt;/em&gt; by default.&lt;/p&gt;
 
-&lt;p class=&quot;aler alert-warning&quot;&gt;&lt;em&gt;Categories&lt;/em&gt; can be assigned to &lt;em&gt;collections&lt;/em&gt; with a parameter in each
+&lt;p class=&quot;alert alert-warning&quot;&gt;&lt;em&gt;Categories&lt;/em&gt; can be assigned to &lt;em&gt;collections&lt;/em&gt; with a parameter in each
 file &lt;em&gt;front matter&lt;/em&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;filenames&quot;&gt;Filenames&lt;/h3&gt;
