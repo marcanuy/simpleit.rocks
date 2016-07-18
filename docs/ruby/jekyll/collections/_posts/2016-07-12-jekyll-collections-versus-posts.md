@@ -23,7 +23,7 @@ A collection does not have _categories_ by default.
 
 _Categories_ can be assigned to _collections_ with a parameter in each
 file _front matter_.
-{: class="aler alert-warning"}
+{: class="alert alert-warning"}
 
 ### Filenames
 
