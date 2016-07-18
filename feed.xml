@@ -6,9 +6,34 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 15 Jul 2016 15:40:44 -0300</pubDate>
-    <lastBuildDate>Fri, 15 Jul 2016 15:40:44 -0300</lastBuildDate>
+    <pubDate>Mon, 18 Jul 2016 11:19:34 -0300</pubDate>
+    <lastBuildDate>Mon, 18 Jul 2016 11:19:34 -0300</lastBuildDate>
     <generator>Jekyll v3.2.0.pre.beta1</generator>
+    
+      <item>
+        <title>Django Project Directory Structure</title>
+        <description>
+</description>
+        <pubDate>Sat, 16 Jul 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/django-project-directory-structure/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/django-project-directory-structure/</guid>
+        
+        <category>django</category>
+        
+        <category>directory-structure</category>
+        
+        <category>project-structure</category>
+        
+        <category>web-development</category>
+        
+        
+        <category>docs</category>
+        
+        <category>python</category>
+        
+        <category>django</category>
+        
+      </item>
     
       <item>
         <title>Jekyll Variables and Liquid template tags cheatsheet</title>
@@ -891,143 +916,121 @@ Use relative sizes for elements to avoid breaking layout.&lt;/p&gt;
       </item>
     
       <item>
-        <title>Python Language Basic Concepts</title>
-        <description>&lt;ul&gt;
-  &lt;li&gt;&lt;em&gt;Style guide&lt;/em&gt; for python code PEP-8 &lt;a href=&quot;https://www.python.org/dev/peps/pep-0008/&quot;&gt;https://www.python.org/dev/peps/pep-0008/&lt;/a&gt;
-    &lt;ul&gt;
-      &lt;li&gt;Tools to help in formatting Python code:
-        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;https://pypi.python.org/pypi/pep8&quot;&gt;pep8&lt;/a&gt; checks your Python code against some of the style conventions.&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;https://pypi.python.org/pypi/autopep8&quot;&gt;autopep8&lt;/a&gt; automatically formats Python code to conform to the PEP 8 style guide.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Relative imports makes code more portable.&lt;/p&gt;
+        <title>How To Use Bower Scss With Jekyll</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
-    &lt;ul&gt;
-      &lt;li&gt;&lt;em&gt;absolut import&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;from core.views import absolute&lt;/code&gt; &amp;lt;—  To import from outside the app&lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;explicit relative&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;from .models import CommandModel&lt;/code&gt; &amp;lt;— To import in current app&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Avoid Using &lt;code class=&quot;highlighter-rouge&quot;&gt;Import *&lt;/code&gt; as it can lead to undesirable results. You can’t really know which packages you are using.&lt;/li&gt;
+&lt;p&gt;&lt;a href=&quot;https://bower.io/&quot;&gt;Bower&lt;/a&gt; makes it easier to keep up to date all the frameworks, libraries,
+assets, and utilities used in web development.&lt;/p&gt;
+
+&lt;p&gt;Jekyll automatically generates &lt;strong&gt;css&lt;/strong&gt; files from &lt;strong&gt;scss&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;This tutorial shows how to use both of them togheter, using Bootstrap-flex 4
+as the example package.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+
+&lt;p&gt;The default usage of &lt;a href=&quot;https://bower.io/&quot;&gt;Bower&lt;/a&gt; consists in having the packages downloaded to
+&lt;code class=&quot;highlighter-rouge&quot;&gt;/bower_components&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;p&gt;The problem is that Jekyll uses, by default, &lt;code class=&quot;highlighter-rouge&quot;&gt;/_sass&lt;/code&gt; directory to put custom
+&lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt; files, that are then processed into some file located at &lt;code class=&quot;highlighter-rouge&quot;&gt;/css&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;p&gt;The goal is to be able to include the &lt;code class=&quot;highlighter-rouge&quot;&gt;bower_components&lt;/code&gt; directories containing
+&lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt; files, into &lt;code class=&quot;highlighter-rouge&quot;&gt;/_sass&lt;/code&gt; directory to be consistent with default configurations.&lt;/p&gt;
+
+&lt;p class=&quot;alert alert-danger&quot;&gt;Bower_components directory shouldn’t be included into &lt;code class=&quot;highlighter-rouge&quot;&gt;/_sass&lt;/code&gt; directory directly,
+because they can contain a lot of different files, not only &lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt;, like &lt;code class=&quot;highlighter-rouge&quot;&gt;.js&lt;/code&gt; 
+or &lt;code class=&quot;highlighter-rouge&quot;&gt;css&lt;/code&gt; files.&lt;/p&gt;
+
+&lt;p&gt;In this tutorial the Bootstrap 4 bower package is structured as:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bower_components/bootstrap/
+├── dist
+│   ├── css
+│   │   ├── bootstrap.css
+│   │   ├── bootstrap.min.css
+│   └── js
+├── ...
+└── scss
+    ├── _alert.scss
+    ├── _animation.scss
+    ├── bootstrap-flex.scss
+    ├── bootstrap-grid.scss
+    ├── bootstrap-reboot.scss
+    ├── bootstrap.scss
+    ├── _breadcrumb.scss
+    ├── ...
+    └── _variables.scss
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We want to be able to include &lt;code class=&quot;highlighter-rouge&quot;&gt;/bower_components/bootstrap/scss/bootstrap-flex.scss&lt;/code&gt;
+in our Jekyll website, as it is not currently distributed by default as a &lt;code class=&quot;highlighter-rouge&quot;&gt;css&lt;/code&gt; file
+in &lt;code class=&quot;highlighter-rouge&quot;&gt;/bower_components/bootstrap/dist&lt;/code&gt; folder.&lt;/p&gt;
+
+&lt;h2 id=&quot;generating-css-files-from-bower-directories&quot;&gt;Generating CSS files from Bower directories&lt;/h2&gt;
+
+&lt;p&gt;A symbolic link should be created inside &lt;code class=&quot;highlighter-rouge&quot;&gt;/_sass&lt;/code&gt; pointing to the bower
+directory containing the &lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt; files.&lt;/p&gt;
+
+&lt;p&gt;In the base of the jekyll project:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ln -s bower_components/bootstrap/ _sass/bootstrap
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This creates a symbolic link named &lt;code class=&quot;highlighter-rouge&quot;&gt;bootstrap&lt;/code&gt; inside the &lt;code class=&quot;highlighter-rouge&quot;&gt;/_sass&lt;/code&gt;
+directory to &lt;code class=&quot;highlighter-rouge&quot;&gt;bower_components/bootstrap/&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;To generate the automatically, Jekyll needs to have the following SCSS file
+in &lt;code class=&quot;highlighter-rouge&quot;&gt;/css/bootstrap-flex.scss&lt;/code&gt;, so it can generate &lt;code class=&quot;highlighter-rouge&quot;&gt;/css/bootstrap-flex.css&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+---
+@charset &quot;utf-8&quot;;
+
+// Import partials from `sass_dir` (defaults to `_sass`)
+@import
+        &quot;bootstrap/scss/bootstrap-flex&quot;
+;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Each time Jekyll builds a site it will create &lt;code class=&quot;highlighter-rouge&quot;&gt;/css/bootstrap-flex.css&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;including-css-into-templates&quot;&gt;Including CSS into templates&lt;/h2&gt;
+
+&lt;p&gt;To make the website use the newly generated CSS file, it should be included
+in a template like:&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;rel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&quot;text/css&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&quot;/css/bootstrap-flex.css&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;This is a simple process respecting each package default directories, that makes it 
+easy to maintain Bower packages up to date, without having to regenerate
+them manually with the &lt;code class=&quot;highlighter-rouge&quot;&gt;scss&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Assets Jekyll docs &lt;a href=&quot;https://jekyllrb.com/docs/assets/&quot;&gt;https://jekyllrb.com/docs/assets/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Bower docs &lt;a href=&quot;https://bower.io/&quot;&gt;https://bower.io/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
-        <pubDate>Tue, 14 Jun 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/python-language-basic-concepts/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/python-language-basic-concepts/</guid>
+        <pubDate>Sat, 18 Jun 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/how-to-use-bower-scss-with-jekyll/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/how-to-use-bower-scss-with-jekyll/</guid>
         
+        <category>git</category>
         
-        <category>docs</category>
+        <category>server</category>
         
-        <category>python</category>
-        
-        <category>language</category>
-        
-        <category>concepts</category>
-        
-      </item>
-    
-      <item>
-        <title>Understanding Jekyll Posts</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Posts can be nested in subdirectories but they always must be inside 
-a &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; folder.&lt;/p&gt;
-
-&lt;p&gt;Their filename should follow the following format: &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-article-name.MARKUP&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;In this case &lt;code class=&quot;highlighter-rouge&quot;&gt;article-name&lt;/code&gt; will be used as the post &lt;em&gt;slug&lt;/em&gt; and if there is no &lt;em&gt;title&lt;/em&gt; in the &lt;em&gt;front matter&lt;/em&gt; of the post, it will be converted to a title version removing the &lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt; chars.&lt;/p&gt;
-
-&lt;h2 id=&quot;post-metadata&quot;&gt;Post metadata&lt;/h2&gt;
-
-&lt;p&gt;This is a common term used in &lt;a href=&quot;https://en.wikipedia.org/wiki/Book_design#Front_matter&quot;&gt;Book design&lt;/a&gt;,
-to refer to the first section of a book, usually its smallest section.&lt;/p&gt;
-
-&lt;p&gt;In a Jekyll context, each &lt;em&gt;post&lt;/em&gt; can have page-specific variables to be included at the beginning of the file using &lt;a href=&quot;http://yaml.org/&quot;&gt;YAML format&lt;/a&gt;. This metadata is called in Jekyll &lt;strong&gt;Front Matter&lt;/strong&gt;, and is the common place to define things like the post &lt;strong&gt;title&lt;/strong&gt;, &lt;strong&gt;layout&lt;/strong&gt;, &lt;strong&gt;description&lt;/strong&gt;, or override site-wide variable values.&lt;/p&gt;
-
-&lt;p&gt;A common post looks like the following code, where the front matter goes inside &lt;code class=&quot;highlighter-rouge&quot;&gt;---&lt;/code&gt; tag, and then the content of the &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;post&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;My cool blog&lt;/span&gt;
-&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
-
-&lt;span class=&quot;s&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;Ut enim ad minim veniam, quis nostrud exercitation ullamco&lt;/span&gt; 
-&lt;span class=&quot;s&quot;&gt;laboris nisi ut aliquip ex ea commodo consequat.&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;variables&quot;&gt;Variables&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.
-├── one_category
-│   └── second_category
-│      └── _posts
-│	     └── nested_post.md
-└── _posts
-   ├── a_post.md
-   └── another_post.md
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;variables-of-a-post-and-documents-posts&quot;&gt;Variables of a Post and Documents Posts&lt;/h3&gt;
-
-&lt;div class=&quot;mermaid&quot;&gt;
-graph LR
-    Collections[&quot;Collections&quot;] == 1 === ColRelationship{&quot; &quot;}
-    ColRelationship == N === Collection
-    Collection[&quot;Collection&lt;hr /&gt;label&lt;br /&gt;docs&lt;br /&gt;files&lt;br /&gt;relative_directory&lt;br /&gt;directory&lt;br /&gt;output&quot;] == 1 === relationship{&quot; &quot;}
-    relationship == N === Document[&quot;Document&lt;hr /&gt;path&lt;br /&gt;relative_path&lt;br /&gt;collection&lt;br /&gt;date&quot;]
-&lt;/div&gt;
-
-&lt;h4 id=&quot;front-matter&quot;&gt;Front matter&lt;/h4&gt;
-
-&lt;p&gt;Predefined Variables that can be used in the &lt;em&gt;front matter&lt;/em&gt; for a &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
-
-&lt;dl&gt;
-&lt;dt&gt;page.title&lt;/dt&gt;
-&lt;dd&gt;The title of the Page.&lt;/dd&gt;
-&lt;dt&gt;page.date&lt;/dt&gt;
-&lt;dd&gt;The Date assigned to the Post. This can be overridden in a Post’s front matter by specifying a new date/time in the format YYYY-MM-DD HH:MM:SS (assuming UTC), or YYYY-MM-DD HH:MM:SS +/-TTTT (to specify a time zone using an offset from UTC. e.g. 2008-12-14 10:30:00 +0900).&lt;/dd&gt;
-&lt;dt&gt;page.categories&lt;/dt&gt;
-&lt;dd&gt;The list of categories to which this post belongs. Categories are derived from the directory structure above the _posts directory. For example, a post at /work/code/_posts/2008-12-24-closures.md would have this field set to ['work', 'code']. These can also be specified in the YAML Front Matter.&lt;/dd&gt;
-&lt;dt&gt;page.tags&lt;/dt&gt;
-&lt;dd&gt;The list of tags to which this post belongs. These can be specified in the YAML Front Matter.&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;h4 id=&quot;in-templates&quot;&gt;In templates&lt;/h4&gt;
-
-&lt;p&gt;Variables also available in templates&lt;/p&gt;
-
-&lt;dl&gt;
-&lt;dt&gt;page.content&lt;/dt&gt;
-&lt;dd&gt;The content of the Page, rendered or un-rendered depending upon what Liquid is being processed and what page is.&lt;/dd&gt;
-&lt;dt&gt;page.excerpt&lt;/dt&gt;
-&lt;dd&gt;The un-rendered excerpt of the Page.&lt;/dd&gt;
-&lt;dt&gt;page.url&lt;/dt&gt;
-&lt;dd&gt;The URL of the Post without the domain, but with a leading slash, e.g. /2008/12/14/my-post.html&lt;/dd&gt;
-&lt;dt&gt;page.id&lt;/dt&gt;
-&lt;dd&gt;An identifier unique to the Post (useful in RSS feeds). e.g. /2008/12/14/my-post&lt;/dd&gt;
-&lt;dt&gt;page.path&lt;/dt&gt;
-&lt;dd&gt;The path to the raw post or page. Example usage: Linking back to the page or post’s source on GitHub. This can be overridden in the YAML Front Matter.&lt;/dd&gt;
-&lt;dt&gt;page.next&lt;/dt&gt;
-&lt;dd&gt;The next post relative to the position of the current post in site.posts. Returns nil for the last entry.&lt;/dd&gt;
-&lt;dt&gt;page.previous&lt;/dt&gt;
-&lt;dd&gt;The previous post relative to the position of the current post in site.posts. Returns nil for the first entry. &lt;/dd&gt;
-&lt;/dl&gt;
-</description>
-        <pubDate>Sun, 12 Jun 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/understanding-jekyll-posts/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/understanding-jekyll-posts/</guid>
-        
-        <category>jekyll</category>
-        
-        <category>posts</category>
+        <category>bare-repository</category>
         
         
         <category>docs</category>
@@ -1035,6 +1038,8 @@ graph LR
         <category>ruby</category>
         
         <category>jekyll</category>
+        
+        <category>tutorials</category>
         
       </item>
     

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://simpleit.rocks/django-project-directory-structure/</loc>
+<lastmod>2016-07-16T00:00:00-03:00</lastmod>
+</url>
+<url>
 <loc>http://simpleit.rocks/jekyll-variables-and-liquid-template-tags-cheatsheet/</loc>
 <lastmod>2016-07-13T00:00:00-03:00</lastmod>
 </url>
@@ -31,6 +35,10 @@
 <url>
 <loc>http://simpleit.rocks/viewport-metatag-html/</loc>
 <lastmod>2016-06-21T00:00:00-03:00</lastmod>
+</url>
+<url>
+<loc>http://simpleit.rocks/how-to-use-bower-scss-with-jekyll/</loc>
+<lastmod>2016-06-18T00:00:00-03:00</lastmod>
 </url>
 <url>
 <loc>http://simpleit.rocks/python-language-basic-concepts/</loc>
@@ -81,7 +89,7 @@
 <lastmod>2016-06-04T00:00:00-03:00</lastmod>
 </url>
 <url>
-<loc>http://simpleit.rocks/django/</loc>
+<loc>http://simpleit.rocks/django-overview/</loc>
 <lastmod>2016-06-02T00:00:00-03:00</lastmod>
 </url>
 <url>
@@ -145,6 +153,9 @@
 </url>
 <url>
 <loc>http://simpleit.rocks/docs/python/language/concepts/</loc>
+</url>
+<url>
+<loc>http://simpleit.rocks/docs/python/language/environment/</loc>
 </url>
 <url>
 <loc>http://simpleit.rocks/docs/python/language/</loc>

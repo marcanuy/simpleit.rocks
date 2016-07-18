@@ -17,11 +17,13 @@
   <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+  <!--link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css"-->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap-flex.css">
   <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
+
   <!-- Custom css -->
-  <link rel="stylesheet" href="/css/main.css">
+  <!--link rel="stylesheet" href="{   { '/css/main.css' | pr epend: site.baseurl }  }"-->
 
   
   <!-- Begin Jekyll SEO tag v2.0.0 -->
@@ -223,6 +225,16 @@
 	
 	
 	
+	<a class="list-group-item" href="/django-project-directory-structure/">
+	  Django Project Directory Structure
+	</a>
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -287,8 +299,8 @@
 	
 	
 	
-	<a class="list-group-item" href="/django/">
-	  Django
+	<a class="list-group-item" href="/django-overview/">
+	  Django Overview
 	</a>
 	
 	
@@ -313,7 +325,8 @@
 
 <div class="post-same-category">
   <h2>Articles in this category</h2>
-  <ul class="nav nav-pills nav-stacked">
+  <div class="list-group">
+
     
     
     
@@ -331,6 +344,14 @@
     
     
     
+    <a class="list-group-item " href="/django-overview/">
+      <h4>Django Overview</h4>
+      
+      <p class="list-group-item-text">
+	Python Web framework ovewview
+      </p>
+      
+    </a>
     
     
     
@@ -362,6 +383,10 @@
     
     
     
+    <a class="list-group-item " href="/custom-django-configurations-for-different-servers/">
+      <h4>Django Configuration and environment isolation</h4>
+      
+    </a>
     
     
     
@@ -389,11 +414,6 @@
     
     
     
-    <li class="nav-item">
-      <a class="nav-link " href="/custom-django-configurations-for-different-servers/">
-	Django Configuration and environment isolation
-      </a>
-    </li>
     
     
     
@@ -425,11 +445,6 @@
     
     
     
-    <li class="nav-item">
-      <a class="nav-link " href="/django/">
-	Django
-      </a>
-    </li>
     
     
     
@@ -442,7 +457,28 @@
     
     
     
-  </ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/django-project-directory-structure/">
+      <h4>Django Project Directory Structure</h4>
+      
+      <p class="list-group-item-text">
+	
+      </p>
+      
+    </a>
+    
+    
+  </div>
 </div>
 
 
@@ -454,6 +490,19 @@
 <ul>
   <li>Official Documentation in categories <a href="https://docs.djangoproject.com/en/">https://docs.djangoproject.com/en/</a></li>
   <li>Single page with links to each doc <a href="https://docs.djangoproject.com/en/1.9/contents/">https://docs.djangoproject.com/en/1.9/contents/</a></li>
+</ul>
+
+<h2 id="pending-to-process">Pending to process</h2>
+
+<ul>
+  <li>Best Practices
+    <ul>
+      <li><a href="https://github.com/lincolnloop/django-best-practices">https://github.com/lincolnloop/django-best-practices</a></li>
+      <li><a href="http://django-best-practices.readthedocs.io/en/latest/applications.html">http://django-best-practices.readthedocs.io/en/latest/applications.html</a></li>
+      <li><a href="https://docs.djangoproject.com/en/1.9/misc/design-philosophies/">https://docs.djangoproject.com/en/1.9/misc/design-philosophies/</a></li>
+      <li><a href="https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/#model-style">https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/#model-style</a></li>
+    </ul>
+  </li>
 </ul>
 
     </div>

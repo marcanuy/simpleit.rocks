@@ -17,20 +17,22 @@
   <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+  <!--link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css"-->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap-flex.css">
   <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
+
   <!-- Custom css -->
-  <link rel="stylesheet" href="/css/main.css">
+  <!--link rel="stylesheet" href="{   { '/css/main.css' | pr epend: site.baseurl }  }"-->
 
   
   <!-- Begin Jekyll SEO tag v2.0.0 -->
-<title>Django - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Django" />
-<meta name="description" content="Python Web framework" />
-<meta property="og:description" content="Python Web framework" />
-<link rel="canonical" href="http://simpleit.rocks/django/" />
-<meta property="og:url" content="http://simpleit.rocks/django/" />
+<title>Django Overview - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Django Overview" />
+<meta name="description" content="Python Web framework ovewview" />
+<meta property="og:description" content="Python Web framework ovewview" />
+<link rel="canonical" href="http://simpleit.rocks/django-overview/" />
+<meta property="og:url" content="http://simpleit.rocks/django-overview/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2016-06-02T00:00:00-03:00" />
@@ -39,10 +41,10 @@
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "Django",
+    "headline": "Django Overview",
     "datePublished": "2016-06-02T00:00:00-03:00",
-    "description": "Python Web framework",
-    "url": "http://simpleit.rocks/django/"
+    "description": "Python Web framework ovewview",
+    "url": "http://simpleit.rocks/django-overview/"
   }
 </script>
 <!-- End Jekyll SEO tag -->
@@ -98,11 +100,11 @@
       
       
       
-      <h1 class="title">Django </h1>
+      <h1 class="title">Django Overview </h1>
       
       
       <p class="lead">
-	<small class="text-muted subtitle">Python Web framework</small>
+	<small class="text-muted subtitle">Framework basic summary</small>
       </p>
       
     </div>
@@ -212,7 +214,7 @@
       
       <div itemscope itemtype="http://schema.org/Thing"
 	   itemprop="item">
-	<span itemprop="name">Django</span>
+	<span itemprop="name">Django Overview</span>
       </div>
       
       <meta itemprop="position" content="5" />
@@ -228,22 +230,6 @@
   <div class="post-content" itemprop="articleBody">
     <div class="row">
   <div class="col-md-4 col-md-push-8 sit-sidebar sti/cky">
-    
-    <div class="s/ticky">
-      <h4>Table of Contents</h4>
-      <ul class="section-nav">
-<li class="toc-entry toc-h1"><a href="#concepts">Concepts</a></li>
-<li class="toc-entry toc-h1"><a href="#django-project-structure">Django project structure</a></li>
-<li class="toc-entry toc-h2"><a href="#models">Models</a></li>
-<li class="toc-entry toc-h2"><a href="#view">View</a></li>
-<li class="toc-entry toc-h2"><a href="#testing">Testing</a></li>
-<li class="toc-entry toc-h3"><a href="#related-links">Related Links</a></li>
-<li class="toc-entry toc-h2"><a href="#admin">Admin</a></li>
-<li class="toc-entry toc-h1"><a href="#references">References</a></li>
-<li class="toc-entry toc-h2"><a href="#books">Books</a></li>
-</ul>
-    </div>
-    
     <div class="si-ad">
   
 
@@ -261,12 +247,29 @@
   
 </div>
 
+    
+    <div class="sticky" style="position:sticky; top:10px">
+      <h4>Table of Contents</h4>
+      <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#concepts">Concepts</a></li>
+<li class="toc-entry toc-h1"><a href="#django-project-structure">Django project structure</a></li>
+<li class="toc-entry toc-h2"><a href="#models">Models</a></li>
+<li class="toc-entry toc-h2"><a href="#views">Views</a></li>
+<li class="toc-entry toc-h2"><a href="#templates">Templates</a></li>
+<li class="toc-entry toc-h2"><a href="#testing">Testing</a></li>
+<li class="toc-entry toc-h3"><a href="#related-links">Related Links</a></li>
+<li class="toc-entry toc-h2"><a href="#admin">Admin</a></li>
+<li class="toc-entry toc-h1"><a href="#references">References</a></li>
+<li class="toc-entry toc-h2"><a href="#books">Books</a></li>
+</ul>
+    </div>
+    
   </div>
   <div class="col-md-8 col-md-pull-4 sit-content">
 
     
     <p class="lead">
-      Python Web framework
+      Python Web framework ovewview
     </p>
     
 
@@ -290,51 +293,94 @@
 
     <h1 id="concepts">Concepts</h1>
 
-<p>Fat models, thin views.</p>
-
-<p>Each Django <em>project</em> can be composed of many <em>apps</em>. An <em>app</em> is a small project that should focus on performing one task (e.g. A website project can have: a blog, ratings, news apps).</p>
+<p>Each Django <em>project</em> can be composed of many <em>apps</em>. An <em>app</em> is a small
+project that should focus on performing one task (e.g. A website project
+can have: a blog, ratings, news apps).</p>
 
 <h1 id="django-project-structure">Django project structure</h1>
 
+<p>Django by default creates a directory structure suitable for basic</p>
+
+<pre>
+.
+└── mysite/
+    ├── manage.py
+    ├── mysite/
+    |   ├── __init__.py
+    |   ├── settings.py
+    |   ├── urls.py
+    |   └── wsgi.py
+    └── myapp/
+        ├── __init__.py
+        ├── admin.py
+        ├── apps.py
+        ├── migrations/
+        ├── __init__.py
+        ├── models.py
+        ├── tests.py
+        ├── urls.py
+        └── views.py
+</pre>
+
+<p>The structure that sets up Django by default is very basic, when a project
+starts to grow, it starts to require a robust approach that deals better
+with core aspects of development and deployment such as:</p>
+
+<ul>
+  <li>deployment scripts</li>
+  <li>separated tests by units</li>
+  <li>having different environments for development, production (staging)</li>
+  <li>documentation for the project</li>
+</ul>
+
 <p><a href="/books/two-scoops-of-django/">Two Scoops Of Django</a> recommends the following structure: ( implemented in <a href="https://github.com/pydanny/cookiecutter-django">Cookiecutter</a>)</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#/.virtualenvs/&lt;django_project_name&gt;/    #keep venv outside project structure</span>
+<p>#keep venv outside project structure
+#/.virtualenvs/<django_project_name>/</django_project_name></p>
+
+<pre>
 ...
 .
-└── &lt;repository_root&gt;/ <span class="c">#git repo</span>
+└── REPO-ROOT #git repo
     ├── README.rst
-    ├── docs/
+    ├── docs
     ├── .gitignore
-    ├── requirements/
+    ├── requirements
     │   ├── base.txt
     │   ├── local.txt
     │   ├── production.txt
     │   └── test.txt
-    ├── Makefile - Deployment tasks
-    └── &lt;django_project_root&gt;/
+    ├── Makefile # Deployment tasks
+    └── PROJECT-ROOT
         ├── manage.py
-        ├── media/ <span class="c">#only in development, user generated static media assets (e.g. photos)</span>
-        ├── static/ <span class="c">#non user generated static media assets (e.g. css)</span>
-        │       └── <span class="c">#controlled by STATICFILES DIRS config variable</span>
-        ├── templates/ <span class="c"># site-wide templates</span>
-        ├── &lt;an_app&gt;/
-        └── &lt;configuration_root&gt;/
+        ├── media 
+        ├── static
+        ├── templates # site-wide
+        ├── APP-1
+        ├── APP-2
+        └── CONFIGURATION-ROOT
             ├── __init.py__
-            ├── settings/
+            ├── settings
             │   ├── __init.py__
             │   ├── base.py
             │   ├── local.py
             │   └── production.py
             ├── urls.py
             └── wsgi.py
-</code></pre>
-</div>
+</pre>
 
-<p><strong>Media</strong> and <strong>static</strong> directories in production should be located in a static media server.</p>
+<p class="alert alert-warning"><em>media</em> directory should exists only in development, for user generated 
+static media assets (e.g. photos). 
+_repo-root/<django-project-root>/static_ non user generated static media 
+assets (e.g. css) controlled by STATICFILES DIRS config variable.
+__Media__ and __static__ directories in production should be located in 
+a static media server.</django-project-root></p>
 
 <h2 id="models">Models</h2>
 
-<h2 id="view">View</h2>
+<p>Fat models, thin views.</p>
+
+<h2 id="views">Views</h2>
 
 <ul>
   <li>
@@ -345,11 +391,14 @@
   </li>
 </ul>
 
+<h2 id="templates">Templates</h2>
+
 <h2 id="testing">Testing</h2>
 
 <ul>
   <li><a href="https://docs.djangoproject.com/en/1.9/topics/testing/">https://docs.djangoproject.com/en/1.9/topics/testing/</a></li>
-  <li>Assertions available are from <em>unittest</em> and from Django’s <em>TestCase</em> so the full list of <em>assertions</em> available are:
+  <li>Assertions available are from <em>unittest</em> and from Django’s <em>TestCase</em>
+so the full list of <em>assertions</em> available are:
     <ul>
       <li><a href="https://docs.djangoproject.com/en/dev/topics/testing/tools/#assertions">https://docs.djangoproject.com/en/dev/topics/testing/tools/#assertions</a></li>
       <li><a href="https://docs.python.org/3/library/unittest.html#assert-methods">https://docs.python.org/3/library/unittest.html#assert-methods</a></li>
@@ -358,15 +407,21 @@
 </ul>
 
 <blockquote cite="https://docs.djangoproject.com/en/1.9/topics/testing/">
-  <p>The preferred way to write tests in Django is using the <a href="https://docs.python.org/3/library/unittest.html#module-unittest">unittest</a> module built in to the Python standard library</p>
+  <p>The preferred way to write tests in Django is using the
+<a href="https://docs.python.org/3/library/unittest.html#module-unittest">unittest</a> 
+module built in to the Python standard library</p>
 </blockquote>
 
 <blockquote cite="https://docs.djangoproject.com/en/1.9/topics/testing/overview/">
-  <p>In Django we subclasses from django.test.TestCase, which is a subclass of unittest.TestCase that runs each test inside a transaction to provide isolation.</p>
+  <p>In Django we subclasses from django.test.TestCase, which is a subclass of
+unittest.TestCase that runs each test inside a transaction to provide 
+isolation.</p>
 </blockquote>
 
 <blockquote>
-  <p>Django provides a <a href="https://docs.djangoproject.com/en/1.9/intro/tutorial05/#the-django-test-client">test Client</a> to simulate a user interacting with the code at the view level. We can use it in tests.py</p>
+  <p>Django provides a <a href="https://docs.djangoproject.com/en/1.9/intro/tutorial05/#the-django-test-client">test Client</a> 
+to simulate a user interacting with the code at the view level. We can use
+it in tests.py</p>
 </blockquote>
 
 <h3 id="related-links">Related Links</h3>
@@ -378,8 +433,9 @@
 <h2 id="admin">Admin</h2>
 
 <ul>
-  <li>Edit models on the same page as a parent model with Model Inlines <a href="https://docs.djangoproject.com/en/dev/ref/contrib/admin/#inlinemodeladmin-objects">https://docs.djangoproject.com/en/dev/ref/contrib/admin/#inlinemodeladmin-objects</a></li>
+  <li>Edit models on the same page as a parent model with Model Inlines</li>
 </ul>
+<p><a href="https://docs.djangoproject.com/en/dev/ref/contrib/admin/#inlinemodeladmin-objects">https://docs.djangoproject.com/en/dev/ref/contrib/admin/#inlinemodeladmin-objects</a></p>
 
 <h1 id="references">References</h1>
 
@@ -430,7 +486,7 @@
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/django/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/django-overview/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -483,7 +539,8 @@ Categories:
 
 <div class="post-same-category">
   <h2>Articles in this category</h2>
-  <ul class="nav nav-pills nav-stacked">
+  <div class="list-group">
+
     
     
     
@@ -501,6 +558,14 @@ Categories:
     
     
     
+    <a class="list-group-item active" href="/django-overview/">
+      <h4>Django Overview</h4>
+      
+      <p class="list-group-item-text">
+	Python Web framework ovewview
+      </p>
+      
+    </a>
     
     
     
@@ -532,6 +597,10 @@ Categories:
     
     
     
+    <a class="list-group-item " href="/custom-django-configurations-for-different-servers/">
+      <h4>Django Configuration and environment isolation</h4>
+      
+    </a>
     
     
     
@@ -559,11 +628,6 @@ Categories:
     
     
     
-    <li class="nav-item">
-      <a class="nav-link " href="/custom-django-configurations-for-different-servers/">
-	Django Configuration and environment isolation
-      </a>
-    </li>
     
     
     
@@ -595,11 +659,6 @@ Categories:
     
     
     
-    <li class="nav-item">
-      <a class="nav-link active" href="/django/">
-	Django
-      </a>
-    </li>
     
     
     
@@ -612,7 +671,28 @@ Categories:
     
     
     
-  </ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/django-project-directory-structure/">
+      <h4>Django Project Directory Structure</h4>
+      
+      <p class="list-group-item-text">
+	
+      </p>
+      
+    </a>
+    
+    
+  </div>
 </div>
 
 

@@ -17,11 +17,13 @@
   <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+  <!--link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css"-->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap-flex.css">
   <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
+
   <!-- Custom css -->
-  <link rel="stylesheet" href="/css/main.css">
+  <!--link rel="stylesheet" href="{   { '/css/main.css' | pr epend: site.baseurl }  }"-->
 
   
   <!-- Begin Jekyll SEO tag v2.0.0 -->
@@ -245,18 +247,6 @@
   <div class="post-content" itemprop="articleBody">
     <div class="row">
   <div class="col-md-4 col-md-push-8 sit-sidebar sti/cky">
-    
-    <div class="s/ticky">
-      <h4>Table of Contents</h4>
-      <ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#process">Process</a></li>
-<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#environment">Environment</a></li>
-<li class="toc-entry toc-h2"><a href="#detecting-the-environment-in-templates">Detecting the environment in templates</a></li>
-<li class="toc-entry toc-h2"><a href="#graphical-summary-for-how-to-prevent-content-displaying-in-a-jekyll-development-environment">Graphical summary for how to prevent content displaying in a jekyll development environment</a></li>
-</ul>
-    </div>
-    
     <div class="si-ad">
   
 
@@ -274,6 +264,18 @@
   
 </div>
 
+    
+    <div class="sticky" style="position:sticky; top:10px">
+      <h4>Table of Contents</h4>
+      <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#process">Process</a></li>
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#environment">Environment</a></li>
+<li class="toc-entry toc-h2"><a href="#detecting-the-environment-in-templates">Detecting the environment in templates</a></li>
+<li class="toc-entry toc-h2"><a href="#graphical-summary-for-how-to-prevent-content-displaying-in-a-jekyll-development-environment">Graphical summary for how to prevent content displaying in a jekyll development environment</a></li>
+</ul>
+    </div>
+    
   </div>
   <div class="col-md-8 col-md-pull-4 sit-content">
 
@@ -494,7 +496,8 @@ Categories:
 
 <div class="post-same-category">
   <h2>Articles in this category</h2>
-  <ul class="nav nav-pills nav-stacked">
+  <div class="list-group">
+
     
     
     
@@ -527,18 +530,45 @@ Categories:
     
     
     
+    <a class="list-group-item " href="/how-to-handle-adsense-in-a-jekyll-development-environment/">
+      <h4>How To Handle Adsense In A Jekyll Development Environment</h4>
+      
+      <p class="list-group-item-text">
+	Adsense ads should be treated in a special way when developing a website to avoid being penalized and improve performance.
+
+      </p>
+      
+    </a>
     
     
     
     
     
     
+    <a class="list-group-item active" href="/how-to-prevent-content-displaying-in-a-jekyll-development-environment/">
+      <h4>How To Prevent Content Displaying In A Jekyll Development Environment</h4>
+      
+      <p class="list-group-item-text">
+	How to prevent code execution when developing in Jekyll but displaying it in production. Avoid ads, analytics and disqus loading while developing.
+
+      </p>
+      
+    </a>
     
     
     
     
     
     
+    <a class="list-group-item " href="/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/">
+      <h4>How to implement breadcrumbs on a Jekyll site with nested categories</h4>
+      
+      <p class="list-group-item-text">
+	How to generate a list with links for each category when using hierarchical categories in Jekyll
+
+      </p>
+      
+    </a>
     
     
     
@@ -575,33 +605,27 @@ Categories:
     
     
     
-    <li class="nav-item">
-      <a class="nav-link " href="/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/">
-	How to implement breadcrumbs on a Jekyll site with nested categories
-      </a>
-    </li>
     
     
     
     
     
+    <a class="list-group-item " href="/how-to-use-bower-scss-with-jekyll/">
+      <h4>How To Use Bower Scss With Jekyll</h4>
+      
+      <p class="list-group-item-text">
+	Automatically converting SCSS files into CSS in each Jekyll build.
+
+      </p>
+      
+    </a>
     
-    <li class="nav-item">
-      <a class="nav-link active" href="/how-to-prevent-content-displaying-in-a-jekyll-development-environment/">
-	How To Prevent Content Displaying In A Jekyll Development Environment
-      </a>
-    </li>
     
     
     
     
     
     
-    <li class="nav-item">
-      <a class="nav-link " href="/how-to-handle-adsense-in-a-jekyll-development-environment/">
-	How To Handle Adsense In A Jekyll Development Environment
-      </a>
-    </li>
     
     
     
@@ -629,7 +653,20 @@ Categories:
     
     
     
-  </ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
 </div>
 
 
