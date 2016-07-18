@@ -4,6 +4,16 @@ layout: base_post
 
 <div class="row">
 
+  <div class="col-md-3 sit-sidebar">
+    {% include adsense_side_content.html %}
+    {% if page.toc %}
+    <div class="sticky" style="position:sticky; top:10px">
+      <h4>Table of Contents</h4>
+      {{ content | toc_only }}
+    </div>
+    {% endif %}
+  </div> <!-- end col -->
+
   <div class="col-md-8 sit-content">
 
     {% if page.description %}
@@ -18,25 +28,16 @@ layout: base_post
     
   </div> <!-- end col -->
 
-  <div class="col-md-3 sit-sidebar">
-    {% include adsense_side_content.html %}
-    {% if page.toc %}
-    <div class="sticky" style="position:sticky; top:10px">
-      <h4>Table of Contents</h4>
-      {{ content | toc_only }}
-    </div>
-    {% endif %}
-  </div> <!-- end col -->
 </div>
 
 {% include adsense_after_content.html %}
 
 <div class="row">
-  <div class="col-md-8">
-    {% include disqus.html %}
-  </div>
   <div class="col-md-4">
     {% include post-categories.html %}
     {% include posts_in_category.html post=page %}
+  </div>
+  <div class="col-md-8">
+    {% include disqus.html %}
   </div>
 </div>
