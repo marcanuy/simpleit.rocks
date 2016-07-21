@@ -6,13 +6,101 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 18 Jul 2016 17:57:51 -0300</pubDate>
-    <lastBuildDate>Mon, 18 Jul 2016 17:57:51 -0300</lastBuildDate>
+    <pubDate>Thu, 21 Jul 2016 14:51:49 -0300</pubDate>
+    <lastBuildDate>Thu, 21 Jul 2016 14:51:49 -0300</lastBuildDate>
     <generator>Jekyll v3.2.0.pre.beta1</generator>
     
       <item>
         <title>Django Project Directory Structure</title>
-        <description>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;The structure that sets up Django by default is very basic, when a project
+starts to grow, it starts to require a better approach, that deals with 
+other aspects of development and deployment such as:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;deployment scripts&lt;/li&gt;
+  &lt;li&gt;separated tests by units&lt;/li&gt;
+  &lt;li&gt;having different environments for development, production (staging)&lt;/li&gt;
+  &lt;li&gt;documentation for the project&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;recommended-django-directory-structure&quot;&gt;Recommended Django directory structure&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;REPO-ROOT &lt;code class=&quot;highlighter-rouge&quot;&gt;git repo&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;README.rst&lt;/li&gt;
+      &lt;li&gt;docs&lt;/li&gt;
+      &lt;li&gt;.gitignore&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/custom-django-configurations-for-different-servers/&quot;&gt;requirements&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;base.txt&lt;/li&gt;
+          &lt;li&gt;local.txt&lt;/li&gt;
+          &lt;li&gt;production.txt&lt;/li&gt;
+          &lt;li&gt;test.txt&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Makefile &lt;code class=&quot;highlighter-rouge&quot;&gt;Deployment tasks&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;PROJECT-ROOT
+        &lt;ul&gt;
+          &lt;li&gt;manage.py&lt;/li&gt;
+          &lt;li&gt;media&lt;/li&gt;
+          &lt;li&gt;static&lt;/li&gt;
+          &lt;li&gt;templates &lt;code class=&quot;highlighter-rouge&quot;&gt;site-wide&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;APP-1&lt;/li&gt;
+          &lt;li&gt;APP-2&lt;/li&gt;
+          &lt;li&gt;CONFIGURATION-ROOT
+            &lt;ul&gt;
+              &lt;li&gt;&lt;strong&gt;init.py&lt;/strong&gt;&lt;/li&gt;
+              &lt;li&gt;settings
+                &lt;ul&gt;
+                  &lt;li&gt;&lt;strong&gt;init.py&lt;/strong&gt;&lt;/li&gt;
+                  &lt;li&gt;base.py&lt;/li&gt;
+                  &lt;li&gt;local.py&lt;/li&gt;
+                  &lt;li&gt;production.py&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;urls.py&lt;/li&gt;
+          &lt;li&gt;wsgi.py&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p class=&quot;alert alert-danger&quot;&gt;Keep [virtual environment outside project]/custom-django-configurations-for-different-servers/
+&lt;code class=&quot;highlighter-rouge&quot;&gt;/.virtualenvs/&amp;lt;django_project_name&amp;gt;/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p class=&quot;alert alert-warning&quot;&gt;&lt;em&gt;media&lt;/em&gt; directory should exists only in development, for user generated 
+static media assets (e.g. photos). 
+_repo-root/&lt;django-project-root&gt;/static_ non user generated static media 
+assets (e.g. css) controlled by STATICFILES DIRS config variable.
+__Media__ and __static__ directories in production should be located in 
+a static media server.&lt;/django-project-root&gt;&lt;/p&gt;
+
+&lt;p class=&quot;alert alert-info&quot;&gt;&lt;a href=&quot;/books/two-scoops-of-django/&quot;&gt;Two Scoops Of Django&lt;/a&gt; has the project structure they recommend implemented in the project &lt;a href=&quot;https://github.com/pydanny/cookiecutter-django&quot;&gt;Cookiecutter&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.revsys.com/blog/2014/nov/21/recommended-django-project-layout/&quot;&gt;Recommended Django Project Layout by Revsys&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/books/two-scoops-of-django/&quot;&gt;Two Scoops Of Django&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/a/23469321/1165509&quot;&gt;StackOverflow - Best practice for django project working directory structure&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/a/11222631/1165509&quot;&gt;StackOverflow - Django directory structure?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://jeffknupp.com/blog/2013/12/18/starting-a-django-16-project-the-right-way/&quot;&gt;Starting a Django 1.6 Project the Right Way by Jeff Knupp&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;wildfish-django-starter &lt;a href=&quot;https://github.com/wildfish/wildfish-django-starter&quot;&gt;https://github.com/wildfish/wildfish-django-starter&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Django project starter &lt;a href=&quot;https://github.com/arocks/edge&quot;&gt;https://github.com/arocks/edge&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;django-project-skeleton
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;http://django-project-skeleton.readthedocs.io/en/latest/structure.html&quot;&gt;http://django-project-skeleton.readthedocs.io/en/latest/structure.html&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/Mischback/django-project-skeleton&quot;&gt;https://github.com/Mischback/django-project-skeleton&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
 </description>
         <pubDate>Sat, 16 Jul 2016 00:00:00 -0300</pubDate>
         <link>http://simpleit.rocks/django-project-directory-structure/</link>

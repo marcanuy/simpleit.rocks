@@ -113,17 +113,15 @@
 
 
     <div class="container-fluid">
-      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-
-  <header class="post-header">
-    <div class="post-meta">
-      
-      <i class="fa fa-calendar" aria-hidden="true"></i>
-      <time datetime="2016-06-12T00:00:00-03:00" itemprop="datePublished">Jun 12, 2016</time>
-      
-    </div>
-    <div>
-      <div class="breadcrumbs">
+      <header class="post-header">
+  <div class="post-meta">
+    
+    <i class="fa fa-calendar" aria-hidden="true"></i>
+    <time datetime="2016-06-12T00:00:00-03:00" itemprop="datePublished">Jun 12, 2016</time>
+    
+  </div>
+  <div>
+    <div class="breadcrumbs">
   <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="list-/inline breadcrumb">
 
     
@@ -254,13 +252,13 @@
   </ol>
 </div>
 
-    </div>
-  </header>
+  </div>
+</header>
 
-  <div class="post-content" itemprop="articleBody">
-    <div class="row">
+<div class="post-content" itemprop="articleBody">
+  <div class="row">
 
-  <div class="col-md-3 sit-sidebar">
+  <div class="col-md-3 site-sidebar">
     <div class="si-ad m-a-1">
   
 
@@ -280,8 +278,9 @@
 
     
     <div class="sticky" style="position:sticky; top:10px">
-      <h4>Table of Contents</h4>
-      <ul class="section-nav">
+      <div>
+	<h4>Table of Contents</h4>
+	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
 <li class="toc-entry toc-h2"><a href="#post-metadata">Post metadata</a></li>
 <li class="toc-entry toc-h3"><a href="#variables">Variables</a></li>
@@ -289,11 +288,59 @@
 <li class="toc-entry toc-h4"><a href="#front-matter">Front matter</a></li>
 <li class="toc-entry toc-h4"><a href="#in-templates">In templates</a></li>
 </ul>
+      </div>
+      <div>
+	<ul class="share-buttons list-inline m-b-1 text-xs-center">
+  <li class="list-inline-item">
+    <div>
+  <a class="twitter-share-button"
+     href="https://twitter.com/share"
+     data-url="http://simpleit.rocks/understanding-jekyll-posts/"
+     data-via=""
+     data-text=""
+     data-related="marcanuy"
+     data-count="vertical">
+    Tweet
+  </a>
+  <script>
+   window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  </li>
+  <li class="list-inline-item">
+    <div>
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!-- Place this tag where you want the +1 button to render. -->
+  <div class="g-plusone" data-size="tall"></div>
+</div>
+
+  </li>
+  <li class="list-inline-item">
+    <div>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) return;
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.0";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));</script>
+
+  <div class="fb-like" data-href="http://simpleit.rocks/understanding-jekyll-posts/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+</div>
+
+  </li>
+</ul>
+
+      </div>
     </div>
     
   </div> <!-- end col -->
 
-  <div class="col-md-8 sit-content">
+  <div class="col-md-9 site-content">
 
     
     <p class="lead">
@@ -408,55 +455,41 @@ graph LR
 <dd>The previous post relative to the position of the current post in site.posts. Returns nil for the first entry. </dd>
 </dl>
 
-    
-  </div> <!-- end col -->
 
-</div>
-
-<div class="si-ad m-a-1">
+    <div class="post-comments">
   
 
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- simpleit_after_content -->
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-1912030305535489"
-       data-ad-slot="5104001581"
-       data-ad-format="auto"></ins>
+  <div id="disqus_thread"></div>
   <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '/understanding-jekyll-posts/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    
+    s.src = '//simpleitrocks.disqus.com/embed.js';
+    
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
   </script>
-
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  
+  
   
 </div>
 
 
-<div class="row">
-  <div class="col-md-4">
-    
-Categories: 
-
-<span class="entry-categories">
-  docs
-</span>
-
-,
-
-
-<span class="entry-categories">
-  ruby
-</span>
-
-,
-
-
-<span class="entry-categories">
-  jekyll
-</span>
-
-
-
-    
+    <div class="row">
+      <div class="col-md-6">
+	
 
 
 
@@ -464,7 +497,7 @@ Categories:
 
 
 <div class="post-same-category">
-  <h2>Articles in this category</h2>
+  <h4>Articles in this category</h4>
   <div class="list-group">
 
     
@@ -475,12 +508,7 @@ Categories:
     
     
     <a class="list-group-item " href="/jekyll-basic-concepts/">
-      <h4>Jekyll basic concepts</h4>
-      
-      <p class="list-group-item-text">
-	Jekyll is the most popular static site generator, it has few basic concepts to understand how it works.
-      </p>
-      
+      Jekyll basic concepts
     </a>
     
     
@@ -544,12 +572,7 @@ Categories:
     
     
     <a class="list-group-item " href="/jekyll-configuration-file-options/">
-      <h4>Jekyll Configuration File Options</h4>
-      
-      <p class="list-group-item-text">
-	
-      </p>
-      
+      Jekyll Configuration File Options
     </a>
     
     
@@ -558,12 +581,7 @@ Categories:
     
     
     <a class="list-group-item active" href="/understanding-jekyll-posts/">
-      <h4>Understanding Jekyll Posts</h4>
-      
-      <p class="list-group-item-text">
-	
-      </p>
-      
+      Understanding Jekyll Posts
     </a>
     
     
@@ -626,44 +644,35 @@ Categories:
 </div>
 
 
-  </div>
-  <div class="col-md-8">
-    <div class="post-comments">
+      </div>
+      <div class="col-md-6">
+	
+	
+	<div class="si-ad m-a-1">
   
 
-  <div id="disqus_thread"></div>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_after_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5104001581"
+       data-ad-format="auto"></ins>
   <script>
-    /**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-    */
-    /*
-    var disqus_config = function () {
-    this.page.url = '/understanding-jekyll-posts/';  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
-    (function() {  // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    
-    s.src = '//simpleitrocks.disqus.com/embed.js';
-    
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
+    (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-  
-  
+
   
 </div>
 
-  </div>
+	
+      </div>
+    </div>
+  </div> <!-- end col -->
 </div>
 
-  </div>
 
-</article>
+</div>
 
     </div>
 
@@ -675,7 +684,7 @@ Categories:
 
     <div class="row">
       <div class="col-xs-6">
-        <ul class="contact-list">
+        <ul class="footer-nav">
           <li>
 	    <i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by Marcelo Canina
 	  </li>

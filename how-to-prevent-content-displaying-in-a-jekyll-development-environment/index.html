@@ -117,17 +117,15 @@
 
 
     <div class="container-fluid">
-      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-
-  <header class="post-header">
-    <div class="post-meta">
-      
-      <i class="fa fa-calendar" aria-hidden="true"></i>
-      <time datetime="2016-06-06T00:00:00-03:00" itemprop="datePublished">Jun 6, 2016</time>
-      
-    </div>
-    <div>
-      <div class="breadcrumbs">
+      <header class="post-header">
+  <div class="post-meta">
+    
+    <i class="fa fa-calendar" aria-hidden="true"></i>
+    <time datetime="2016-06-06T00:00:00-03:00" itemprop="datePublished">Jun 6, 2016</time>
+    
+  </div>
+  <div>
+    <div class="breadcrumbs">
   <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="list-/inline breadcrumb">
 
     
@@ -282,13 +280,13 @@
   </ol>
 </div>
 
-    </div>
-  </header>
+  </div>
+</header>
 
-  <div class="post-content" itemprop="articleBody">
-    <div class="row">
+<div class="post-content" itemprop="articleBody">
+  <div class="row">
 
-  <div class="col-md-3 sit-sidebar">
+  <div class="col-md-3 site-sidebar">
     <div class="si-ad m-a-1">
   
 
@@ -308,19 +306,69 @@
 
     
     <div class="sticky" style="position:sticky; top:10px">
-      <h4>Table of Contents</h4>
-      <ul class="section-nav">
+      <div>
+	<h4>Table of Contents</h4>
+	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#process">Process</a></li>
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
 <li class="toc-entry toc-h2"><a href="#environment">Environment</a></li>
 <li class="toc-entry toc-h2"><a href="#detecting-the-environment-in-templates">Detecting the environment in templates</a></li>
 <li class="toc-entry toc-h2"><a href="#graphical-summary-for-how-to-prevent-content-displaying-in-a-jekyll-development-environment">Graphical summary for how to prevent content displaying in a jekyll development environment</a></li>
 </ul>
+      </div>
+      <div>
+	<ul class="share-buttons list-inline m-b-1 text-xs-center">
+  <li class="list-inline-item">
+    <div>
+  <a class="twitter-share-button"
+     href="https://twitter.com/share"
+     data-url="http://simpleit.rocks/how-to-prevent-content-displaying-in-a-jekyll-development-environment/"
+     data-via=""
+     data-text="How to prevent code execution when developing in Jekyll but displaying it in production. Avoid ads, analytics and disqus loading while developing.
+"
+     data-related="marcanuy"
+     data-count="vertical">
+    Tweet
+  </a>
+  <script>
+   window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  </li>
+  <li class="list-inline-item">
+    <div>
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!-- Place this tag where you want the +1 button to render. -->
+  <div class="g-plusone" data-size="tall"></div>
+</div>
+
+  </li>
+  <li class="list-inline-item">
+    <div>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) return;
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.0";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));</script>
+
+  <div class="fb-like" data-href="http://simpleit.rocks/how-to-prevent-content-displaying-in-a-jekyll-development-environment/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+</div>
+
+  </li>
+</ul>
+
+      </div>
     </div>
     
   </div> <!-- end col -->
 
-  <div class="col-md-8 sit-content">
+  <div class="col-md-9 site-content">
 
     
     <p class="lead">
@@ -444,62 +492,41 @@ it should be used like:</p>
 </div>
 
 
-    
-  </div> <!-- end col -->
 
-</div>
-
-<div class="si-ad m-a-1">
+    <div class="post-comments">
   
 
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- simpleit_after_content -->
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-1912030305535489"
-       data-ad-slot="5104001581"
-       data-ad-format="auto"></ins>
+  <div id="disqus_thread"></div>
   <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '/how-to-prevent-content-displaying-in-a-jekyll-development-environment/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    
+    s.src = '//simpleitrocks.disqus.com/embed.js';
+    
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
   </script>
-
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  
+  
   
 </div>
 
 
-<div class="row">
-  <div class="col-md-4">
-    
-Categories: 
-
-<span class="entry-categories">
-  docs
-</span>
-
-,
-
-
-<span class="entry-categories">
-  ruby
-</span>
-
-,
-
-
-<span class="entry-categories">
-  jekyll
-</span>
-
-,
-
-
-<span class="entry-categories">
-  tutorials
-</span>
-
-
-
-    
+    <div class="row">
+      <div class="col-md-6">
+	
 
 
 
@@ -507,7 +534,7 @@ Categories:
 
 
 <div class="post-same-category">
-  <h2>Articles in this category</h2>
+  <h4>Articles in this category</h4>
   <div class="list-group">
 
     
@@ -543,13 +570,7 @@ Categories:
     
     
     <a class="list-group-item " href="/how-to-handle-adsense-in-a-jekyll-development-environment/">
-      <h4>How To Handle Adsense In A Jekyll Development Environment</h4>
-      
-      <p class="list-group-item-text">
-	Adsense ads should be treated in a special way when developing a website to avoid being penalized and improve performance.
-
-      </p>
-      
+      How To Handle Adsense In A Jekyll Development Environment
     </a>
     
     
@@ -558,13 +579,7 @@ Categories:
     
     
     <a class="list-group-item active" href="/how-to-prevent-content-displaying-in-a-jekyll-development-environment/">
-      <h4>How To Prevent Content Displaying In A Jekyll Development Environment</h4>
-      
-      <p class="list-group-item-text">
-	How to prevent code execution when developing in Jekyll but displaying it in production. Avoid ads, analytics and disqus loading while developing.
-
-      </p>
-      
+      How To Prevent Content Displaying In A Jekyll Development Environment
     </a>
     
     
@@ -573,13 +588,7 @@ Categories:
     
     
     <a class="list-group-item " href="/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/">
-      <h4>How to implement breadcrumbs on a Jekyll site with nested categories</h4>
-      
-      <p class="list-group-item-text">
-	How to generate a list with links for each category when using hierarchical categories in Jekyll
-
-      </p>
-      
+      How to implement breadcrumbs on a Jekyll site with nested categories
     </a>
     
     
@@ -623,13 +632,7 @@ Categories:
     
     
     <a class="list-group-item " href="/how-to-use-bower-scss-with-jekyll/">
-      <h4>How To Use Bower Scss With Jekyll</h4>
-      
-      <p class="list-group-item-text">
-	Automatically converting SCSS files into CSS in each Jekyll build.
-
-      </p>
-      
+      How To Use Bower Scss With Jekyll
     </a>
     
     
@@ -682,44 +685,35 @@ Categories:
 </div>
 
 
-  </div>
-  <div class="col-md-8">
-    <div class="post-comments">
+      </div>
+      <div class="col-md-6">
+	
+	
+	<div class="si-ad m-a-1">
   
 
-  <div id="disqus_thread"></div>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_after_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5104001581"
+       data-ad-format="auto"></ins>
   <script>
-    /**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-    */
-    /*
-    var disqus_config = function () {
-    this.page.url = '/how-to-prevent-content-displaying-in-a-jekyll-development-environment/';  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
-    (function() {  // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    
-    s.src = '//simpleitrocks.disqus.com/embed.js';
-    
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
+    (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-  
-  
+
   
 </div>
 
-  </div>
+	
+      </div>
+    </div>
+  </div> <!-- end col -->
 </div>
 
-  </div>
 
-</article>
+</div>
 
     </div>
 
@@ -731,7 +725,7 @@ Categories:
 
     <div class="row">
       <div class="col-xs-6">
-        <ul class="contact-list">
+        <ul class="footer-nav">
           <li>
 	    <i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by Marcelo Canina
 	  </li>
