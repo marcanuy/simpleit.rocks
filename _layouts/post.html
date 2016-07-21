@@ -19,7 +19,7 @@ layout: base_post
     {% endif %}
   </div> <!-- end col -->
 
-  <div class="col-md-9 site-content">
+  <div class="col-md-8 site-content">
 
     {% if page.description %}
     <p class="lead">
@@ -37,7 +37,7 @@ layout: base_post
       <div class="col-md-6">
 	{% include posts_in_category.html post=page %}
       </div>
-      <div class="col-md-6">
+      <div class="col-md-5">
 	{% comment %}{% include post-categories.html %}{% endcomment %}
 	{% if content %}
 	{% include adsense_after_content.html %}
