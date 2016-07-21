@@ -5055,8 +5055,7 @@ a.bg-danger:focus {
     display: none !important; } }
 
 .site-content {
-  padding-bottom: 3rem;
-  text-align: justify; }
+  padding-bottom: 3rem; }
 
 .site-footer {
   background-color: #fbfbf7;
