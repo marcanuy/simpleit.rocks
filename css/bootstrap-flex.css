@@ -5059,7 +5059,8 @@ a.bg-danger:focus {
   text-align: justify; }
 
 .site-footer {
-  background-color: #aed6b7; }
+  background-color: #fbfbf7;
+  border-top: 1px solid #E4E4E4; }
   .site-footer .footer-nav {
     list-style-type: none; }
     .site-footer .footer-nav li .fa {
