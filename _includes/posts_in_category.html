@@ -13,7 +13,7 @@
 
 {% if number_of_posts > 1 %}
 <div class="post-same-category">
-  <h2>Articles in this category</h2>
+  <h4>Articles in this category</h4>
   <div class="list-group">
 
     {% assign sorted_posts = site.posts | sort_by: 'weight' | reverse %}
@@ -26,12 +26,7 @@
     {% endif %}
     {% if post_dir == posts_category_path %}
     <a class="list-group-item {{link_status}}" href="{{post.url}}">
-      <h4>{{ post.title }}</h4>
-      {% if post.description %}
-      <p class="list-group-item-text">
-	{{ post.description }}
-      </p>
-      {% endif %}
+      {{ post.title }}
     </a>
     {% endif %}
     {% endfor %}

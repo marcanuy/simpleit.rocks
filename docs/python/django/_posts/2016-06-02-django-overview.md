@@ -14,7 +14,10 @@ can have: a blog, ratings, news apps).
 
 # Django project structure
 
-Django by default creates a directory structure suitable for basic 
+A typical Django project, at first, has a very basic layout. After following
+_Django docs_ suggestions, like creating the project
+`$ django-admin startproject my_project` and some _app_
+`$ python manage.py startapp my_app` will create the following structure:
 
 <pre>
 .
@@ -38,58 +41,15 @@ Django by default creates a directory structure suitable for basic
 </pre>
 
 The structure that sets up Django by default is very basic, when a project
-starts to grow, it starts to require a robust approach that deals better
-with core aspects of development and deployment such as:
+starts to grow, it starts to require a better approach, outlined in
+{% link docs/python/django/_posts/2016-07-16-django-project-directory-structure.md %}
+that deals with other aspects of development and deployment such as:
 
 - deployment scripts
 - separated tests by units
 - having different environments for development, production (staging)
 - documentation for the project
 
-[Two Scoops Of Django] recommends the following structure: ( implemented in [Cookiecutter](https://github.com/pydanny/cookiecutter-django))
-
-#keep venv outside project structure
-#/.virtualenvs/<django_project_name>/
-
-<pre>
-...
-.
-└── REPO-ROOT #git repo
-    ├── README.rst
-    ├── docs
-    ├── .gitignore
-    ├── requirements
-    │   ├── base.txt
-    │   ├── local.txt
-    │   ├── production.txt
-    │   └── test.txt
-    ├── Makefile # Deployment tasks
-    └── PROJECT-ROOT
-        ├── manage.py
-        ├── media 
-        ├── static
-        ├── templates # site-wide
-        ├── APP-1
-        ├── APP-2
-        └── CONFIGURATION-ROOT
-            ├── __init.py__
-            ├── settings
-            │   ├── __init.py__
-            │   ├── base.py
-            │   ├── local.py
-            │   └── production.py
-            ├── urls.py
-            └── wsgi.py
-</pre>
-
-
-_media_ directory should exists only in development, for user generated 
-static media assets (e.g. photos). 
-_repo-root/<django-project-root>/static_ non user generated static media 
-assets (e.g. css) controlled by STATICFILES DIRS config variable.
-__Media__ and __static__ directories in production should be located in 
-a static media server.
-{: class="alert alert-warning"}
 
 ## Models 
 
@@ -137,13 +97,8 @@ it in tests.py
 References
 ==========
 
++ [Two Scoops Of Django]({% link _books/two-scoops-of-django.md %})
 + Official Documentation in categories <https://docs.djangoproject.com/en/>
 + Single page with links to each doc <https://docs.djangoproject.com/en/1.9/contents/>
-
-## Books
-	
-+ [Two Scoops Of Django]({% link _books/two-scoops-of-django.md %})
-
-[Two Scoops Of Django]: {% link _books/two-scoops-of-django.md %}
 
 *[ORM]: Object Relational Mapping

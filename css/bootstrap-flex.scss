@@ -5,5 +5,7 @@
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
-        "bootstrap/scss/bootstrap-flex"
+        "bootstrap-custom-variables",
+        "bootstrap/scss/bootstrap-flex",
+        "custom-main"
 ;
