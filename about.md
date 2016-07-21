@@ -8,8 +8,7 @@ permalink: /about/
 {:toc}
 
 I am [Marcelo Canina](http://marcanuy.com), a web entrepreneur from 
-[Uruguay](https://en.wikipedia.org/wiki/Uruguay), South America's little
-gem.
+[Uruguay](https://en.wikipedia.org/wiki/Uruguay).
 
 ## Story
 
