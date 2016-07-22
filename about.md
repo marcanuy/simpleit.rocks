@@ -4,6 +4,10 @@ title: About
 permalink: /about/
 ---
 
+> If you want to learn, teach.
+> -- <cite>Marcus Tullius Cicero</cite>
+{: class="alert alert-info"}
+
 * TOC
 {:toc}
 
@@ -47,7 +51,7 @@ This website aims to:
   technologies instead of depending on each different documentation
   system and style.
   
-- Sharing experience and knowledge in a simple.
+- Sharing experience and knowledge in a clear, concise way.
 
 - Practicing English, my mother tongue is Spanish so any comments about any
   error in spelling is more than welcome.
