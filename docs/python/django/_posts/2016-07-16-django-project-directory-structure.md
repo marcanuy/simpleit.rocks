@@ -25,42 +25,49 @@ other aspects of development and deployment such as:
 
 ## Recommended Django directory structure
 
-- REPO-ROOT `git repo`
-  - README.rst
-  - docs
+- REPO-ROOT/ `git repo`
+  - README.rst `Summary of the project and how to install it`
+  - docs/
+    - deployment.rst `Step by step guide to deploy`
+	- installation.rst `Setup for the project for other devs`
+	- architecture.rst `How project evolves and what assumptions consider`
   - .gitignore
-  - [requirements]({% link docs/python/django/_posts/2016-06-10-custom-django-configurations-for-different-servers.md %})
+  - [requirements]({% link docs/python/django/_posts/2016-06-10-custom-django-configurations-for-different-servers.md %})/
       - base.txt
       - local.txt
       - production.txt
       - test.txt
   - Makefile `Deployment tasks`
-  - PROJECT-ROOT
+  - PROJECT-ROOT/
     - manage.py
-    - media 
-    - static
-    - templates `site-wide`
-    - APP-1
-    - APP-2
-    - CONFIGURATION-ROOT
-      - __init.py__
-      - [settings]({% link docs/python/django/_posts/2016-06-10-custom-django-configurations-for-different-servers.md %})
-        - __init.py__
+    - media/ `only in development`
+    - static/ `non user generated static media`
+    - templates/ `site-wide`
+    - APP-1/
+    - APP-2/
+    - config/ `CONFIGURATION-ROOT`
+      - init.py
+      - [settings/]({% link docs/python/django/_posts/2016-06-10-custom-django-configurations-for-different-servers.md %})
+        - init.py
         - base.py
         - local.py
         - production.py
-    - urls.py
-    - wsgi.py
+      - urls.py
+      - wsgi.py
 
-Keep [virtual environment outside project]{% link docs/python/django/_posts/2016-06-10-custom-django-configurations-for-different-servers.md %}
-`/.virtualenvs/<django_project_name>/`
+The preferred documentation format is [reStructuredText .rst](http://www.sphinx-doc.org/en/stable/rest.html).
+{: class="alert alert-info"}
+
+Keep [virtual environment outside project]({% link docs/python/django/_posts/2016-06-10-custom-django-configurations-for-different-servers.md %})
+`$HOME/.virtualenvs/<django_project_name>/`
 {: class="alert alert-danger"}
 
 _media_ directory should exists only in development, for user generated 
-static media assets (e.g. photos). 
-_repo-root/<django-project-root>/static_ non user generated static media 
+static media assets (e.g. photos).
+{: class="alert alert-warning"}
+
 assets (e.g. css) controlled by STATICFILES DIRS config variable.
-__Media__ and __static__ directories in production should be located in 
+_Media_ and _static_ directories in production should be located in 
 a static media server.
 {: class="alert alert-warning"}
 
