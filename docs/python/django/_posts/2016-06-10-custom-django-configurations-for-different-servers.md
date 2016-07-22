@@ -181,6 +181,13 @@ _base.txt_ requirement file using `pip`, each new file should begin with: `-r ba
   + in a local/development environment: `$ pip install -r requirements/local.txt`
   + in a testing environment: `$ pip install -r requirements/testing.txt`
 
+## After
+
+As with any major change to the default installation, after generating
+these directories, it is a good practice to describe them in
+`/docs/architectrure.rst` and what are the commands used to get them
+running in `/docs/installation.rst` for other developers or just for
+oneself when reviewing the project in the future.
 
 ## References
 
