@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 22 Jul 2016 01:06:10 -0300</pubDate>
-    <lastBuildDate>Fri, 22 Jul 2016 01:06:10 -0300</lastBuildDate>
+    <pubDate>Fri, 22 Jul 2016 11:23:34 -0300</pubDate>
+    <lastBuildDate>Fri, 22 Jul 2016 11:23:34 -0300</lastBuildDate>
     <generator>Jekyll v3.2.0.pre.beta1</generator>
     
       <item>
@@ -28,12 +28,18 @@ other aspects of development and deployment such as:&lt;/p&gt;
 &lt;h2 id=&quot;recommended-django-directory-structure&quot;&gt;Recommended Django directory structure&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;REPO-ROOT &lt;code class=&quot;highlighter-rouge&quot;&gt;git repo&lt;/code&gt;
+  &lt;li&gt;REPO-ROOT/ &lt;code class=&quot;highlighter-rouge&quot;&gt;git repo&lt;/code&gt;
     &lt;ul&gt;
-      &lt;li&gt;README.rst&lt;/li&gt;
-      &lt;li&gt;docs&lt;/li&gt;
+      &lt;li&gt;README.rst &lt;code class=&quot;highlighter-rouge&quot;&gt;Summary of the project and how to install it&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;docs/
+        &lt;ul&gt;
+          &lt;li&gt;deployment.rst &lt;code class=&quot;highlighter-rouge&quot;&gt;Step by step guide to deploy&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;installation.rst &lt;code class=&quot;highlighter-rouge&quot;&gt;Setup for the project for other devs&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;architecture.rst &lt;code class=&quot;highlighter-rouge&quot;&gt;How project evolves and what assumptions consider&lt;/code&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
       &lt;li&gt;.gitignore&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;/custom-django-configurations-for-different-servers/&quot;&gt;requirements&lt;/a&gt;
+      &lt;li&gt;&lt;a href=&quot;/custom-django-configurations-for-different-servers/&quot;&gt;requirements&lt;/a&gt;/
         &lt;ul&gt;
           &lt;li&gt;base.txt&lt;/li&gt;
           &lt;li&gt;local.txt&lt;/li&gt;
@@ -42,44 +48,46 @@ other aspects of development and deployment such as:&lt;/p&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
       &lt;li&gt;Makefile &lt;code class=&quot;highlighter-rouge&quot;&gt;Deployment tasks&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;PROJECT-ROOT
+      &lt;li&gt;PROJECT-ROOT/
         &lt;ul&gt;
           &lt;li&gt;manage.py&lt;/li&gt;
-          &lt;li&gt;media&lt;/li&gt;
-          &lt;li&gt;static&lt;/li&gt;
-          &lt;li&gt;templates &lt;code class=&quot;highlighter-rouge&quot;&gt;site-wide&lt;/code&gt;&lt;/li&gt;
-          &lt;li&gt;APP-1&lt;/li&gt;
-          &lt;li&gt;APP-2&lt;/li&gt;
-          &lt;li&gt;CONFIGURATION-ROOT
+          &lt;li&gt;media/ &lt;code class=&quot;highlighter-rouge&quot;&gt;only in development&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;static/ &lt;code class=&quot;highlighter-rouge&quot;&gt;non user generated static media&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;templates/ &lt;code class=&quot;highlighter-rouge&quot;&gt;site-wide&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;APP-1/&lt;/li&gt;
+          &lt;li&gt;APP-2/&lt;/li&gt;
+          &lt;li&gt;config/ &lt;code class=&quot;highlighter-rouge&quot;&gt;CONFIGURATION-ROOT&lt;/code&gt;
             &lt;ul&gt;
-              &lt;li&gt;&lt;strong&gt;init.py&lt;/strong&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;/custom-django-configurations-for-different-servers/&quot;&gt;settings&lt;/a&gt;
+              &lt;li&gt;init.py&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/custom-django-configurations-for-different-servers/&quot;&gt;settings/&lt;/a&gt;
                 &lt;ul&gt;
-                  &lt;li&gt;&lt;strong&gt;init.py&lt;/strong&gt;&lt;/li&gt;
+                  &lt;li&gt;init.py&lt;/li&gt;
                   &lt;li&gt;base.py&lt;/li&gt;
                   &lt;li&gt;local.py&lt;/li&gt;
                   &lt;li&gt;production.py&lt;/li&gt;
                 &lt;/ul&gt;
               &lt;/li&gt;
+              &lt;li&gt;urls.py&lt;/li&gt;
+              &lt;li&gt;wsgi.py&lt;/li&gt;
             &lt;/ul&gt;
           &lt;/li&gt;
-          &lt;li&gt;urls.py&lt;/li&gt;
-          &lt;li&gt;wsgi.py&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p class=&quot;alert alert-danger&quot;&gt;Keep [virtual environment outside project]/custom-django-configurations-for-different-servers/
-&lt;code class=&quot;highlighter-rouge&quot;&gt;/.virtualenvs/&amp;lt;django_project_name&amp;gt;/&lt;/code&gt;&lt;/p&gt;
+&lt;p class=&quot;alert alert-info&quot;&gt;The preferred documentation format is &lt;a href=&quot;http://www.sphinx-doc.org/en/stable/rest.html&quot;&gt;reStructuredText .rst&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p class=&quot;alert alert-danger&quot;&gt;Keep &lt;a href=&quot;/custom-django-configurations-for-different-servers/&quot;&gt;virtual environment outside project&lt;/a&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME/.virtualenvs/&amp;lt;django_project_name&amp;gt;/&lt;/code&gt;&lt;/p&gt;
 
 &lt;p class=&quot;alert alert-warning&quot;&gt;&lt;em&gt;media&lt;/em&gt; directory should exists only in development, for user generated 
-static media assets (e.g. photos). 
-_repo-root/&lt;django-project-root&gt;/static_ non user generated static media 
-assets (e.g. css) controlled by STATICFILES DIRS config variable.
-__Media__ and __static__ directories in production should be located in 
-a static media server.&lt;/django-project-root&gt;&lt;/p&gt;
+static media assets (e.g. photos).&lt;/p&gt;
+
+&lt;p class=&quot;alert alert-warning&quot;&gt;assets (e.g. css) controlled by STATICFILES DIRS config variable.
+&lt;em&gt;Media&lt;/em&gt; and &lt;em&gt;static&lt;/em&gt; directories in production should be located in 
+a static media server.&lt;/p&gt;
 
 &lt;p class=&quot;alert alert-info&quot;&gt;&lt;a href=&quot;/books/two-scoops-of-django/&quot;&gt;Two Scoops Of Django&lt;/a&gt; has the project structure they recommend implemented in the project &lt;a href=&quot;https://github.com/pydanny/cookiecutter-django&quot;&gt;Cookiecutter&lt;/a&gt;.&lt;/p&gt;
 
