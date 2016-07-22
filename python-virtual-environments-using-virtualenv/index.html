@@ -420,15 +420,19 @@
   <li>activate the project to work on</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ mkdir my_project;
-### Create the virtual environment (optionally select python version)
-$ virtualenv -p python3.5 ~/.virtualenvs/my_project
-### Activate it
-$ source ~/.virtualenvs/my_project/bin/activate #the following commands will use the packages installed in this virtual environment
-### Your Bash prompt will change to show you are in a virtual environment
-(virtualenv)$ ... #work 
-(virtualenv)$ deactivate #finish work
-$
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>mkdir my_project;
+<span class="c">## Create the virtual environment</span>
+<span class="c">## (optionally select python version)</span>
+<span class="gp">$ </span>virtualenv -p python3.5 ~/.virtualenvs/my_project
+<span class="c">## Activate it</span>
+<span class="c">## the following commands will use the packages </span>
+<span class="c">## installed in this virtual environment</span>
+<span class="gp">$ </span><span class="nb">source</span> ~/.virtualenvs/my_project/bin/activate 
+<span class="c">## Your Bash prompt will change to show you are</span>
+<span class="c">## in a virtual environment</span>
+<span class="gp">(virtualenv)$ </span>... <span class="c">#work </span>
+<span class="gp">(virtualenv)$ </span>deactivate <span class="c">#finish work</span>
+<span class="err">$</span>
 </code></pre>
 </div>
 
@@ -465,18 +469,23 @@ $
   <li>deactivate the environment when finished working</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>mkvirtualenv myenvname
-New python executable <span class="k">in</span> /home/marcanuy/.virtualenvs/myenvname/bin/python
+<pre>
+<samp>
+<span class="prompt">$</span> <kbd>mkvirtualenv myenvname</kbd>
+New python executable in /home/marcanuy/.virtualenvs/myenvname/bin/python
 Installing setuptools, pip, wheel...done.
-<span class="gp">(myenvname)$ </span>workon <span class="c">#the previous created env will appear listed, along the other envs</span>
+<span class="comment text-muted">#the previous created env will appear listed, along the other envs</span>
+<span class="prompt">(myenvname)$</span> <kbd>workon</kbd>
 myenvname
-<span class="gp">(myenvname)$ </span>cdvirtualenv myenvname <span class="c">#changes to the associated project directory</span>
-<span class="gp">(myenvname)/opt/development/myproject$ </span>cdsitepackages
-<span class="gp">(myenvname)~/.virtualenvs/myenvname/lib/python3.5/site-packages$ </span>cdvirtualenv
-<span class="gp">(myenvname)/opt/development/myproject$ </span>deactivate <span class="c">#finish work</span>
-/opt/development/myproject<span class="err">$</span>
-</code></pre>
-</div>
+<span class="comment text-muted">#changes to the associated project directory</span>
+<span class="prompt">(myenvname)$</span> <kbd>cdvirtualenv myenvname</kbd>
+<span class="prompt">(myenvname)/opt/development/myproject$</span> <kbd>cdsitepackages</kbd>
+<span class="prompt">(myenvname)~/.virtualenvs/myenvname/lib/python3.5/site-packages$</span> <kbd>cdvirtualenv</kbd>
+<span class="comment text-muted">#finish work</span>
+<span class="prompt">(myenvname)/opt/development/myproject$</span> <kbd>deactivate</kbd>
+<span class="prompt">/opt/development/myproject$</span> <span class="cursor">_</span>
+</samp>
+</pre>
 
 <p>To create a new environment having a requirements file and a specific python version: <code class="highlighter-rouge">mkvirtualenv -r requirements/local.txt -p /usr/bin/python3.5 myprojectname</code></p>
 
@@ -542,6 +551,8 @@ myenvname
 <h2>Articles</h2>
 <p>This article is being referenced in:</p>
 <div class="list-group">
+  
+  
   
   
   

@@ -6,9 +6,317 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 22 Jul 2016 11:23:34 -0300</pubDate>
-    <lastBuildDate>Fri, 22 Jul 2016 11:23:34 -0300</lastBuildDate>
+    <pubDate>Fri, 22 Jul 2016 20:40:13 -0300</pubDate>
+    <lastBuildDate>Fri, 22 Jul 2016 20:40:13 -0300</lastBuildDate>
     <generator>Jekyll v3.2.0.pre.beta1</generator>
+    
+      <item>
+        <title>Appropriate HTML5 tags to show source code, commands and software related tasks on blogs</title>
+        <description>
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;HTML5 provides a set of tags that can be used to represent code, 
+commands and anything related with software development.&lt;/p&gt;
+
+&lt;p&gt;The content that any tech related blog will contain would tipipcally be:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Text with whitespaces: &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;pre&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Software &lt;strong&gt;Code&lt;/strong&gt; examples: &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;code&amp;gt;&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Refering to &lt;strong&gt;variables&lt;/strong&gt; in any paragraph: &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;var&amp;gt;&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Displaying &lt;strong&gt;User Input&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;kbd&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Showing &lt;strong&gt;Computer Output&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;samp&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;whitespaces&quot;&gt;Whitespaces&lt;/h2&gt;
+
+&lt;p&gt;Many languages give whitespaces a special meaning, they can be used 
+to convey a program’s structure or be a core part of a programming
+language that adhere to the &lt;em&gt;off-side&lt;/em&gt; rule.&lt;/p&gt;
+
+&lt;p&gt;Leading indentation in these cases should be respected when showing
+content.&lt;/p&gt;
+
+&lt;blockquote cite=&quot;https://en.wikipedia.org/wiki/Off-side_rule&quot;&gt;
+  &lt;p&gt;A computer programming language is said to adhere to the
+&lt;strong&gt;off-side rule&lt;/strong&gt; if blocks in that language are expressed by 
+their indentation&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;pre&lt;/code&gt; element is defined as follows:&lt;/p&gt;
+
+&lt;blockquote cite=&quot;https://www.w3.org/TR/html5/grouping-content.html#the-pre-element&quot;&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;pre&amp;gt;&lt;/code&gt; element represents a block of preformatted text, 
+in which structure is represented by typographic conventions 
+rather than by elements.
+- W3&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It is useful to show &lt;em&gt;fragments of computer code&lt;/em&gt; or any text 
+that needs to preserve whitespaces like ASCII art or directory trees:&lt;/p&gt;
+
+&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
+
+&lt;p&gt;The following text using &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;pre&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;pre&amp;gt;
+.
+├── config.yml
+└── drafts
+    ├── begin-with-the-crazy-ideas.textile
+    └── on-simplicity-in-technology.markdown
+&amp;lt;/pre&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;produces:&lt;/p&gt;
+
+&lt;pre&gt;
+.
+├── config.yml
+└── drafts
+    ├── begin-with-the-crazy-ideas.textile
+    └── on-simplicity-in-technology.markdown
+&lt;/pre&gt;
+
+&lt;p&gt;Without &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;pre&amp;gt;&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;samp&gt;
+.
+├── config.yml
+└── drafts
+    ├── begin-with-the-crazy-ideas.textile
+    └── on-simplicity-in-technology.markdown
+&lt;samp&gt;&lt;/samp&gt;&lt;/samp&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+
+&lt;p&gt;Fragment of computer code can be represented with the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;code&amp;gt;&lt;/code&gt; element.&lt;/p&gt;
+
+&lt;p&gt;It can be used to represent:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;file names&lt;/li&gt;
+  &lt;li&gt;source code&lt;/li&gt;
+  &lt;li&gt;any string that a computer would recognize&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When used with &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;pre&amp;gt;&lt;/code&gt; it can show source code conserving whitespaces,
+useful to represent source code from languages like &lt;em&gt;python&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;example-1&quot;&gt;Example&lt;/h3&gt;
+
+&lt;p&gt;The following source using &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;pre&amp;gt;&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;code&amp;gt;&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;pre&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;code&amp;gt;&lt;/span&gt;
+ if foo:
+     if bar:
+         print(bar)
+ else:
+   print(foo)
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Will be displayed as:&lt;/p&gt;
+
+&lt;pre&gt;
+&lt;code&gt;
+ if foo:
+     if bar:
+         print(bar)
+ else:
+   print(foo)
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Without &lt;code class=&quot;highlighter-rouge&quot;&gt;pre&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;samp&gt;
+ if foo:
+     if bar:
+         print(bar)
+ else:
+   print(foo)
+&lt;/samp&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;variables&quot;&gt;Variables&lt;/h2&gt;
+
+&lt;blockquote cite=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-var-element&quot;&gt;
+  &lt;p&gt;The var element represents a variable. This could be an actual variable 
+in a mathematical expression or programming context, an identifier
+representing a constant, a symbol identifying a physical quantity, 
+a function parameter, or just be a term used as a placeholder in prose.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Example: The letter “n” is being used as a variable in prose:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;If there are &lt;span class=&quot;nt&quot;&gt;&amp;lt;var&amp;gt;&lt;/span&gt;n&lt;span class=&quot;nt&quot;&gt;&amp;lt;/var&amp;gt;&lt;/span&gt; pipes leading to the ice
+cream factory then I expect at &lt;span class=&quot;nt&quot;&gt;&amp;lt;em&amp;gt;&lt;/span&gt;least&lt;span class=&quot;nt&quot;&gt;&amp;lt;/em&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;var&amp;gt;&lt;/span&gt;n&lt;span class=&quot;nt&quot;&gt;&amp;lt;/var&amp;gt;&lt;/span&gt;
+flavors of ice cream to be available for purchase!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Outputs:&lt;/p&gt;
+
+&lt;p&gt;&lt;samp&gt;
+If there are &lt;var&gt;n&lt;/var&gt; pipes leading to the ice
+cream factory then I expect at &lt;em&gt;least&lt;/em&gt; &lt;var&gt;n&lt;/var&gt;
+flavors of ice cream to be available for purchase!
+&lt;/samp&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;computer-output&quot;&gt;Computer Output&lt;/h2&gt;
+
+&lt;p&gt;Computer output can be&lt;/p&gt;
+
+&lt;blockquote cite=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-samp-element&quot;&gt;
+  &lt;p&gt;The samp element represents (sample) output from a program or computing system.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;console-commands&quot;&gt;Console Commands&lt;/h3&gt;
+
+&lt;p&gt;A sequence of commands introduced in a termianl can be represented with &lt;code class=&quot;highlighter-rouge&quot;&gt;samp&lt;/code&gt;, 
+for example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;pre&amp;gt;
+&amp;lt;samp&amp;gt;
+&amp;lt;span class=&quot;prompt&quot;&amp;gt;john@server:~$&amp;lt;/span&amp;gt; &amp;lt;kbd&amp;gt;ssh nasa.com&amp;lt;/kbd&amp;gt;
+Last login: Tue Apr 5 07:11:05 2010 from mars.com on pts/1
+Linux nasa 2.6.11-grsec-v6.189 #1 SMP Tue Feb 1 12:21:05 PST 2010 i586 
+
+&amp;lt;span class=&quot;comment&quot;&amp;gt;# I'm in&amp;lt;/span&amp;gt;
+&amp;lt;span class=&quot;prompt&quot;&amp;gt;john@nasa:~$&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;cursor&quot;&amp;gt;_&amp;lt;/span&amp;gt;
+&amp;lt;/samp&amp;gt;
+&amp;lt;/pre&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Outputs:&lt;/p&gt;
+
+&lt;pre&gt;
+&lt;samp&gt;
+&lt;span class=&quot;prompt&quot;&gt;john@server:~$&lt;/span&gt; &lt;kbd&gt;ssh nasa.com&lt;/kbd&gt;
+Last login: Tue Apr 5 07:11:05 2010 from mars.com on pts/1
+Linux nasa 2.6.11-grsec-v6.189 #1 SMP Tue Feb 1 12:21:05 PST 2010 i586
+
+&lt;span class=&quot;comment&quot;&gt;# I'm in&lt;/span&gt;
+&lt;span class=&quot;prompt&quot;&gt;john@nasa:~$&lt;/span&gt; &lt;span class=&quot;cursor&quot;&gt;_&lt;/span&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;user-input&quot;&gt;User Input&lt;/h2&gt;
+
+&lt;p&gt;The element to represent &lt;em&gt;user input&lt;/em&gt; is &lt;code class=&quot;highlighter-rouge&quot;&gt;kbd&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This element is useful to represent:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;terminal commands&lt;/li&gt;
+  &lt;li&gt;keyboard input&lt;/li&gt;
+  &lt;li&gt;voice commands&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;examples-and-nesting&quot;&gt;Examples and nesting:&lt;/h2&gt;
+
+&lt;h3 id=&quot;input-echoed&quot;&gt;Input echoed&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;samp&amp;gt;&amp;lt;kbd&amp;gt;..&amp;lt;/kbd&amp;gt;&amp;lt;/samp&amp;gt;&lt;/code&gt; represents the input as it was echoed by the system.&lt;/p&gt;
+
+&lt;h3 id=&quot;input-based-on-something&quot;&gt;Input based on something&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;kbd&amp;gt;&amp;lt;samp&amp;gt;..&amp;lt;/samp&amp;gt;&amp;lt;/kbd&amp;gt;&lt;/code&gt; represents input based on system output, for example invoking a menu item.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;the samp elements inside them indicating that the steps are input based on something being displayed by the system&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Example: The following code&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
+	To save it, select
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;kbd&amp;gt;&lt;/span&gt;
+	  &lt;span class=&quot;nt&quot;&gt;&amp;lt;kbd&amp;gt;&lt;/span&gt;
+		  &lt;span class=&quot;nt&quot;&gt;&amp;lt;samp&amp;gt;&lt;/span&gt;File&lt;span class=&quot;nt&quot;&gt;&amp;lt;/samp&amp;gt;&lt;/span&gt;
+	  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/kbd&amp;gt;&lt;/span&gt;
+	  |
+	  &lt;span class=&quot;nt&quot;&gt;&amp;lt;kbd&amp;gt;&lt;/span&gt;
+		  &lt;span class=&quot;nt&quot;&gt;&amp;lt;samp&amp;gt;&lt;/span&gt;Save...&lt;span class=&quot;nt&quot;&gt;&amp;lt;/samp&amp;gt;&lt;/span&gt;
+	  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/kbd&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/kbd&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Outputs:&lt;/p&gt;
+
+&lt;p&gt;&lt;samp&gt;&lt;/samp&gt;&lt;/p&gt;
+&lt;p&gt;
+	To save it, select
+	&lt;kbd&gt;
+	  &lt;kbd&gt;
+		  &lt;samp&gt;File&lt;/samp&gt;
+	  &lt;/kbd&gt;
+	  |
+	  &lt;kbd&gt;
+		  &lt;samp&gt;Save...&lt;/samp&gt;
+	  &lt;/kbd&gt;
+	&lt;/kbd&gt;
+&lt;/p&gt;
+&lt;p&gt;&amp;lt;/samp&amp;gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;key-press&quot;&gt;Key press&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;kbd&amp;gt;&amp;lt;kbd&amp;gt;..&amp;lt;kbd&amp;gt;&amp;lt;/kbd&amp;gt;&lt;/code&gt; represents an actual key or other single unit of input.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Example: To indicate keys to press:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;p&amp;gt;To continue press &amp;lt;kbd&amp;gt;&amp;lt;kbd&amp;gt;Ctrl&amp;lt;/kbd&amp;gt;+&amp;lt;kbd&amp;gt;Space&amp;lt;/kbd&amp;gt;&amp;lt;/kbd&amp;gt;&amp;lt;/p&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Woulde produce the following output:&lt;/p&gt;
+
+&lt;p&gt;&lt;samp&gt;&lt;/samp&gt;&lt;/p&gt;
+&lt;p&gt;To continue press &lt;kbd&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Space&lt;/kbd&gt;&lt;/kbd&gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/samp&amp;gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-kbd-element&quot;&gt;https://www.w3.org/TR/html5/text-level-semantics.html#the-kbd-element&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/grouping-content.html#the-pre-element&quot;&gt;https://www.w3.org/TR/html5/grouping-content.html#the-pre-element&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-code-element&quot;&gt;https://www.w3.org/TR/html5/text-level-semantics.html#the-code-element&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-samp-element&quot;&gt;https://www.w3.org/TR/html5/text-level-semantics.html#the-samp-element&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-kbd-element&quot;&gt;https://www.w3.org/TR/html5/text-level-semantics.html#the-kbd-element&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.w3.org/TR/html5/text-level-semantics.html#the-var-element&quot;&gt;https://www.w3.org/TR/html5/text-level-semantics.html#the-var-element&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 22 Jul 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/html-tags-for-software-development-blogs/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/html-tags-for-software-development-blogs/</guid>
+        
+        <category>html5</category>
+        
+        <category>web-development</category>
+        
+        <category>code</category>
+        
+        
+        <category>docs</category>
+        
+        <category>html</category>
+        
+      </item>
     
       <item>
         <title>Django Project Directory Structure</title>
@@ -960,6 +1268,8 @@ end
         
         <category>docs</category>
         
+        <category>markup</category>
+        
         <category>kramdown</category>
         
       </item>
@@ -1008,134 +1318,6 @@ Use relative sizes for elements to avoid breaking layout.&lt;/p&gt;
         <category>html</category>
         
         <category>responsive</category>
-        
-      </item>
-    
-      <item>
-        <title>How To Use Bower Scss With Jekyll</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://bower.io/&quot;&gt;Bower&lt;/a&gt; makes it easier to keep up to date all the frameworks, libraries,
-assets, and utilities used in web development.&lt;/p&gt;
-
-&lt;p&gt;Jekyll automatically generates &lt;strong&gt;css&lt;/strong&gt; files from &lt;strong&gt;scss&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;This tutorial shows how to use both of them togheter, using Bootstrap-flex 4
-as the example package.&lt;/p&gt;
-
-&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
-
-&lt;p&gt;The default usage of &lt;a href=&quot;https://bower.io/&quot;&gt;Bower&lt;/a&gt; consists in having the packages downloaded to
-&lt;code class=&quot;highlighter-rouge&quot;&gt;/bower_components&lt;/code&gt; directory.&lt;/p&gt;
-
-&lt;p&gt;The problem is that Jekyll uses, by default, &lt;code class=&quot;highlighter-rouge&quot;&gt;/_sass&lt;/code&gt; directory to put custom
-&lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt; files, that are then processed into some file located at &lt;code class=&quot;highlighter-rouge&quot;&gt;/css&lt;/code&gt; directory.&lt;/p&gt;
-
-&lt;p&gt;The goal is to be able to include the &lt;code class=&quot;highlighter-rouge&quot;&gt;bower_components&lt;/code&gt; directories containing
-&lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt; files, into &lt;code class=&quot;highlighter-rouge&quot;&gt;/_sass&lt;/code&gt; directory to be consistent with default configurations.&lt;/p&gt;
-
-&lt;p class=&quot;alert alert-danger&quot;&gt;Bower_components directory shouldn’t be included into &lt;code class=&quot;highlighter-rouge&quot;&gt;/_sass&lt;/code&gt; directory directly,
-because they can contain a lot of different files, not only &lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt;, like &lt;code class=&quot;highlighter-rouge&quot;&gt;.js&lt;/code&gt; 
-or &lt;code class=&quot;highlighter-rouge&quot;&gt;css&lt;/code&gt; files.&lt;/p&gt;
-
-&lt;p&gt;In this tutorial the Bootstrap 4 bower package is structured as:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bower_components/bootstrap/
-├── dist
-│   ├── css
-│   │   ├── bootstrap.css
-│   │   ├── bootstrap.min.css
-│   └── js
-├── ...
-└── scss
-    ├── _alert.scss
-    ├── _animation.scss
-    ├── bootstrap-flex.scss
-    ├── bootstrap-grid.scss
-    ├── bootstrap-reboot.scss
-    ├── bootstrap.scss
-    ├── _breadcrumb.scss
-    ├── ...
-    └── _variables.scss
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;We want to be able to include &lt;code class=&quot;highlighter-rouge&quot;&gt;/bower_components/bootstrap/scss/bootstrap-flex.scss&lt;/code&gt;
-in our Jekyll website, as it is not currently distributed by default as a &lt;code class=&quot;highlighter-rouge&quot;&gt;css&lt;/code&gt; file
-in &lt;code class=&quot;highlighter-rouge&quot;&gt;/bower_components/bootstrap/dist&lt;/code&gt; folder.&lt;/p&gt;
-
-&lt;h2 id=&quot;generating-css-files-from-bower-directories&quot;&gt;Generating CSS files from Bower directories&lt;/h2&gt;
-
-&lt;p&gt;A symbolic link should be created inside &lt;code class=&quot;highlighter-rouge&quot;&gt;/_sass&lt;/code&gt; pointing to the bower
-directory containing the &lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt; files.&lt;/p&gt;
-
-&lt;p&gt;In the base of the jekyll project:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;ln -s bower_components/bootstrap/ _sass/bootstrap
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;This creates a symbolic link named &lt;code class=&quot;highlighter-rouge&quot;&gt;bootstrap&lt;/code&gt; inside the &lt;code class=&quot;highlighter-rouge&quot;&gt;/_sass&lt;/code&gt;
-directory to &lt;code class=&quot;highlighter-rouge&quot;&gt;bower_components/bootstrap/&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;To generate the automatically, Jekyll needs to have the following SCSS file
-in &lt;code class=&quot;highlighter-rouge&quot;&gt;/css/bootstrap-flex.scss&lt;/code&gt;, so it can generate &lt;code class=&quot;highlighter-rouge&quot;&gt;/css/bootstrap-flex.css&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
----
-@charset &quot;utf-8&quot;;
-
-// Import partials from `sass_dir` (defaults to `_sass`)
-@import
-        &quot;bootstrap/scss/bootstrap-flex&quot;
-;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Each time Jekyll builds a site it will create &lt;code class=&quot;highlighter-rouge&quot;&gt;/css/bootstrap-flex.css&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;including-css-into-templates&quot;&gt;Including CSS into templates&lt;/h2&gt;
-
-&lt;p&gt;To make the website use the newly generated CSS file, it should be included
-in a template like:&lt;/p&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;rel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&quot;text/css&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&quot;/css/bootstrap-flex.css&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
-
-&lt;p&gt;This is a simple process respecting each package default directories, that makes it 
-easy to maintain Bower packages up to date, without having to regenerate
-them manually with the &lt;code class=&quot;highlighter-rouge&quot;&gt;scss&lt;/code&gt; command.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Assets Jekyll docs &lt;a href=&quot;https://jekyllrb.com/docs/assets/&quot;&gt;https://jekyllrb.com/docs/assets/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Bower docs &lt;a href=&quot;https://bower.io/&quot;&gt;https://bower.io/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Sat, 18 Jun 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/how-to-use-bower-scss-with-jekyll/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/how-to-use-bower-scss-with-jekyll/</guid>
-        
-        <category>git</category>
-        
-        <category>server</category>
-        
-        <category>bare-repository</category>
-        
-        
-        <category>docs</category>
-        
-        <category>ruby</category>
-        
-        <category>jekyll</category>
-        
-        <category>tutorials</category>
         
       </item>
     
