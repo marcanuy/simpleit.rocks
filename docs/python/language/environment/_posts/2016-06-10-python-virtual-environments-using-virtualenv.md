@@ -26,13 +26,17 @@ Common workflow to create a new _virtualenv_:
 + Create the virtual environment (preferable in a directory outside your project)
 + activate the project to work on
 
-```
+``` bash
 $ mkdir my_project;
-### Create the virtual environment (optionally select python version)
+## Create the virtual environment
+## (optionally select python version)
 $ virtualenv -p python3.5 ~/.virtualenvs/my_project
-### Activate it
-$ source ~/.virtualenvs/my_project/bin/activate #the following commands will use the packages installed in this virtual environment
-### Your Bash prompt will change to show you are in a virtual environment
+## Activate it
+## the following commands will use the packages 
+## installed in this virtual environment
+$ source ~/.virtualenvs/my_project/bin/activate 
+## Your Bash prompt will change to show you are
+## in a virtual environment
 (virtualenv)$ ... #work 
 (virtualenv)$ deactivate #finish work
 $
@@ -62,18 +66,23 @@ Common workflow to create a new _virtualenv_ with _virtualenvwrapper_:
 + Go to the project directory `cdvirtualenv`
 + deactivate the environment when finished working
 
-``` bash
-$ mkvirtualenv myenvname
+<pre>
+<samp>
+<span class="prompt">$</span> <kbd>mkvirtualenv myenvname</kbd>
 New python executable in /home/marcanuy/.virtualenvs/myenvname/bin/python
 Installing setuptools, pip, wheel...done.
-(myenvname)$ workon #the previous created env will appear listed, along the other envs
+<span class="comment text-muted">#the previous created env will appear listed, along the other envs</span>
+<span class="prompt">(myenvname)$</span> <kbd>workon</kbd>
 myenvname
-(myenvname)$ cdvirtualenv myenvname #changes to the associated project directory
-(myenvname)/opt/development/myproject$ cdsitepackages
-(myenvname)~/.virtualenvs/myenvname/lib/python3.5/site-packages$ cdvirtualenv
-(myenvname)/opt/development/myproject$ deactivate #finish work
-/opt/development/myproject$
-```
+<span class="comment text-muted">#changes to the associated project directory</span>
+<span class="prompt">(myenvname)$</span> <kbd>cdvirtualenv myenvname</kbd>
+<span class="prompt">(myenvname)/opt/development/myproject$</span> <kbd>cdsitepackages</kbd>
+<span class="prompt">(myenvname)~/.virtualenvs/myenvname/lib/python3.5/site-packages$</span> <kbd>cdvirtualenv</kbd>
+<span class="comment text-muted">#finish work</span>
+<span class="prompt">(myenvname)/opt/development/myproject$</span> <kbd>deactivate</kbd>
+<span class="prompt">/opt/development/myproject$</span> <span class="cursor">_</span>
+</samp>
+</pre>
 
 To create a new environment having a requirements file and a specific python version: `mkvirtualenv -r requirements/local.txt -p /usr/bin/python3.5 myprojectname`
 
