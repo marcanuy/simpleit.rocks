@@ -1,20 +1,63 @@
 ---
 title: Django Configuration and environment isolation
 subtitle: Having a different configuration for development, staging and production servers
+description: Configure a Django project to handle multiple environments, creating different settings and handling packages for each one.
 weight: 2
+layout: tutorial
+current: > # Current status 
+  graph TB
+      subgraph Django Project
+          conf["settings.py"]
+          pack[packages]
+      end
+      conf==>dev[Development Environment]
+      pack==>dev
+      conf==>prod[Production Server]
+      pack==>prod
+goal: > # Goal graph
+  graph LR
+      subgraph Production Server
+          prod_conf["production_settings.py"]
+          prod_pack["Production Server Packages"]
+      end
+      subgraph Development Environment
+          dev_conf["development_settings.py"]
+          dev_pack["Developer Environment Packages"]
+      end
+flow: > # Process flow graph
+  graph TB
+      env["Set environment variables"]
+      env==>split["Split settings.py into separated files <br> with custom settings for each environment"]
+      split==>pack["Configure different Packages for each environment"]
 ---
 
-Every config file should be version controlled, even the developers local configuration, all the developers of a project should use the same development configuration. 
+## Overview 
+
+The development process of Django projects can have several environments, a common _deployment architecture_ consists of a [4-tier architecture], consisting of software being deployed to each _tier_ in the following order:
+
+1. development (__DEV__)
+2. testing (__TEST__)
+3. staging (__STAGE__)
+4. production (__PROD__) 
+
+A default _Django app_ just starts with a single _config file_ located in `DJANGO_PROJECT/settings.py`. This approach is fine for small projects but to fit in the above 4-tier architecture, the project needs to be changed to address two main problems:
+
+- each environment should have a __specific settings file__
+- each environment should have __its own packages__
+
+The configuration file should be version controlled, even the developers local configuration file, all the developers of a project should use the same development configuration.
 
 However there are special config keys that should be left out of versioning, like the [SECRET_KEY](https://docs.djangoproject.com/en/1.9/ref/settings/#std:setting-SECRET_KEY) setting (used for [cryptographic signing functionalities](https://docs.djangoproject.com/en/1.9/topics/signing/))
 
 The default _Config file_ that comes shipped with Django should be pulled apart into several settings for each environment: _local_, _staging_, _test_, _production_. This can be done easily inheriting from a _base config file_, changing what the specific environment needs and __[leaving secret keys outside config files versioning using environment variables](http://12factor.net/config)__.
 
 If _virtualenvwrapper_ is being used, the default development settings parameter to work with _manage.py_ can be specified in the _postactivate_ hook: `echo "export DJANGO_SETTINGS_MODULE=settings.local" >> $VIRTUAL_ENV/bin/postactivate`
+{: class="alert alert-warning"}
 
 When using _manage.py_ many commands accepts the parameter to specify a specific settings file: `python manage.py runserver --settings=myproject.settings.local`
 
-+ To compare the current settings file with the one that installs Django by default: `$ manage.py diffsettings`
+To compare the current settings file with the one that installs Django by default: `$ manage.py diffsettings`
+{: class="alert alert-info"}
 
 ## Setting environment variables
 
@@ -31,13 +74,35 @@ os.environ["A_SECRET_KEY"]
 "shhh1234"
 ```
 
-Then to get the value for a specific environment, the _production config file_ in version control only needs to get this environment variable value: `A_SECRET_KEY = os.environ["A_SECRET_KEY"]`
+Then to get the value for a specific environment, the _production config
+file_ in version control only needs to get this environment variable 
+value: `A_SECRET_KEY = os.environ["A_SECRET_KEY"]`
 
-In a __production__ environment like [Heroku](https://devcenter.heroku.com/articles/config-vars), this can be done with: `$ heroku config:set A_SECRET_KEY=shhh1234`
+In a __production__ environment like [Heroku](https://devcenter.heroku.com/articles/config-vars), 
+this can be done with: `$ heroku config:set A_SECRET_KEY=shhh1234`
+{: class="alert alert-info"}
 
 ## Splitting the default Django's settings file into several files for different environments
 
-Django automatically creates a configuration file in `<project_name>/settings.py`, to break it up into _local_, _testing_, _staging_ and _production_ config files, the best way is to create a `base.py` config with common configurations accross all of them and leave:
+Django automatically creates a configuration file in
+`<project_name>/settings.py`, to break it up into _local_, _testing_,
+_staging_ and _production_ config files, the best way is to create a
+`base.py` config with common configurations accross all of them and 
+create specific config files for each environment:
+
+~~~
+.
+└── REPO-ROOT `git repo`
+    ├── .gitignore
+    ├── ...
+    └── PROJECT-ROOT
+        ├── settings
+        |   ├── __init__.py
+        |   ├── base.py
+        |   └── local.py
+        ├── manage.py
+        └── ...
+~~~
 
 1. Create the settings directory `$ mkdir <project_name>/settings`
 2. Add `__init__.py` file to make Python treat the settings directory as containing packages `$ touch <project_name>/settings/__init__.py`
@@ -54,11 +119,74 @@ One of the [differences](https://docs.djangoproject.com/en/1.9/ref/django-admin/
 
 ## Packages for each environment
 
-Each environment needs a specific requirements file, having a _base.txt_ requirement file with common packages across environments and then adding the needed packages for each environment.
+Each environment has to have a set of packages that fits its
+purpose and operating system requirements. We have to 
+configure a [python virtual environment] so it is possible to install
+packages in _development_, that are not needed in production and viceversa,
+or that can be installed in different Operating Systems.
 
-Common commands:
+Each environment needs a specific file, having a _base.txt_ requirement
+file with common packages across environments and then adding
+the needed packages for each environment.
 
-+ To make it possible for each environment to inherit the packages from the _base.txt_ requirement file, each new file should begin with: `-r base.txt`
+~~~
+.
+└── REPO-ROOT `git repo`
+    ├── .gitignore
+    ├── requirements
+    |   ├── base.txt
+    |   ├── local.txt
+    |   ├── production.txt
+    |   └── test.txt
+    ├── ...
+    └── PROJECT-ROOT
+        ├── manage.py
+        └── ...
+~~~
+
+Using `pip` it is possible to specify which file has the list of
+packages you want:
+
+~~~
+pip install [options] -r <requirements file> [package-index-options] ...
+  -r, --requirement <file>    Install from the given requirements file. This option can be used multiple times.
+~~~
+  
+So to make it possible for each environment to inherit the packages from the
+_base.txt_ requirement file using `pip`, each new file should begin with: `-r base.txt`
+
+~~~ conf
+# /requirements/base.txt
+# list of packages present in all environments
+~~~
+
+~~~ conf
+# /requirements/local.txt
+-r base.txt
+~~~
+
+~~~ conf
+# /requirements/test.txt
+-r base.txt
+~~~
+
+~~~ conf
+# /requirements/production.txt
+-r base.txt
+~~~
+
+
 + To generate a requirements file: [$ pip freeze](https://pip.pypa.io/en/stable/reference/pip_freeze/) `$ pip freeze --local > requirements/base.txt` 
-+ To install the requirements file in a local environment: `$ pip install -r requirements/base.txt`
++ To install the requirements file
+  + in a local/development environment: `$ pip install -r requirements/local.txt`
+  + in a testing environment: `$ pip install -r requirements/testing.txt`
 
+
+## References
+
+- Wikipedia [4-tier architecture]
+- <https://docs.djangoproject.com/en/1.9/topics/settings/>
+- <https://docs.djangoproject.com/en/1.9/ref/settings/>
+
+[4-tier architecture]: <https://en.wikipedia.org/wiki/Deployment_environment>
+[python virtual environment]: <{% link docs/python/language/environment/_posts/2016-06-10-python-virtual-environments-using-virtualenv.md %}>

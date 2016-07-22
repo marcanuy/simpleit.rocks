@@ -1,11 +1,17 @@
-<ul class="share-buttons list-inline m-b-1 text-xs-center">
-  <li class="list-inline-item">
-    {% include share_twitter_big.html url=page.url text=page.description %}
-  </li>
-  <li class="list-inline-item">
-    {% include share_google_big.html %}
-  </li>
-  <li class="list-inline-item">
-    {% include share_facebook_big.html url=page.url %}
-  </li>
-</ul>
+<div class="site-share">
+  {% if jekyll.environment == site.production_env %}
+  <ul class="share-buttons list-inline m-b-1 text-xs-center">
+    <li class="list-inline-item">
+      {% include share_twitter_big.html url=page.url text=page.description %}
+    </li>
+    <li class="list-inline-item">
+      {% include share_google_big.html %}
+    </li>
+    <li class="list-inline-item">
+      {% include share_facebook_big.html url=page.url %}
+    </li>
+  </ul>
+  {% else %}
+  <div class="bg-danger">Disqus comments placeholder</div>
+  {% endif %}
+</div>

@@ -1,0 +1,20 @@
+{% assign reference_count=0 %}
+{% for post in site.posts %}
+{% if post.content contains page.id %}
+{% assign reference_count = reference_count | plus: 1 %}
+{% endif %}
+{% endfor %}
+
+{% if reference_count > 0 %}
+<h2>Articles</h2>
+<p>This article is being referenced in:</p>
+<div class="list-group">
+  {% for post in site.posts %}
+  {% if post.content contains include.current_id %}
+  <a href="{{ post.url }}" class="list-group-item">
+    {{ post.title }}
+  </a>
+  {% endif %}
+  {% endfor %}
+</div>
+{% endif %}

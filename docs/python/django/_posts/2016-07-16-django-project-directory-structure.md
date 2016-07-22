@@ -44,7 +44,7 @@ other aspects of development and deployment such as:
     - APP-2
     - CONFIGURATION-ROOT
       - __init.py__
-      - settings
+      - [settings]({% link docs/python/django/_posts/2016-06-10-custom-django-configurations-for-different-servers.md %})
         - __init.py__
         - base.py
         - local.py

@@ -22,9 +22,9 @@ layout: base_post
   <div class="col-md-8 site-content">
 
     {% if page.description %}
-    <p class="lead">
-      {{ page.description }}
-    </p>
+	<p class="lead">
+	  {{ page.description }}
+	</p>
     {% endif %}
 
     {% include adsense_before_content.html %}
@@ -36,6 +36,7 @@ layout: base_post
     <div class="row">
       <div class="col-md-6">
 	{% include posts_in_category.html post=page %}
+	{% include post_referenced_by.html current_id=page.id %}
       </div>
       <div class="col-md-5">
 	{% comment %}{% include post-categories.html %}{% endcomment %}
