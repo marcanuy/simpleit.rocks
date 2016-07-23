@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 23 Jul 2016 15:14:30 -0300</pubDate>
-    <lastBuildDate>Sat, 23 Jul 2016 15:14:30 -0300</lastBuildDate>
+    <pubDate>Sat, 23 Jul 2016 18:08:33 -0300</pubDate>
+    <lastBuildDate>Sat, 23 Jul 2016 18:08:33 -0300</lastBuildDate>
     <generator>Jekyll v3.2.0.pre.beta1</generator>
     
       <item>
@@ -334,6 +334,8 @@ other aspects of development and deployment such as:&lt;/p&gt;
 &lt;h2 id=&quot;recommended-django-directory-structure&quot;&gt;Recommended Django directory structure&lt;/h2&gt;
 
 &lt;ul&gt;
+  &lt;li&gt;$HOME/.virtualenvs/PROJECT_NAME&lt;/li&gt;
+  &lt;li&gt;…&lt;/li&gt;
   &lt;li&gt;REPO-ROOT/ &lt;code class=&quot;highlighter-rouge&quot;&gt;git repo&lt;/code&gt;
     &lt;ul&gt;
       &lt;li&gt;README.rst &lt;code class=&quot;highlighter-rouge&quot;&gt;Summary of the project and how to install it&lt;/code&gt;&lt;/li&gt;
@@ -935,39 +937,61 @@ just like the &lt;strong&gt;.git&lt;/strong&gt; directory.&lt;/p&gt;
 
 &lt;p&gt;In order to set up a Git server, you have to export an existing repository
 into a new &lt;em&gt;bare repository&lt;/em&gt; (a repository that doesn’t contain 
-a &lt;em&gt;working directory&lt;/em&gt;).&lt;/p&gt;
+a &lt;em&gt;working directory&lt;/em&gt;). This can be done with
+&lt;a href=&quot;https://git-scm.com/docs/git-clone&quot;&gt;git clone&lt;/a&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;--bare&lt;/code&gt; parameter.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone --bare my_project my_project.git
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;blockquote cite=&quot;https://git-scm.com/docs/git-clone&quot; class=&quot;alert alert-info&quot;&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--bare&lt;/code&gt; Make a bare Git repository. That is, instead of creating
+&lt;em&gt;directory&lt;/em&gt; and placing the administrative files in &lt;em&gt;directory&lt;/em&gt;/.git
+make the &lt;em&gt;directory&lt;/em&gt; itself the &lt;code class=&quot;highlighter-rouge&quot;&gt;$GIT_DIR&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;git clone --bare my_project my_project.git&lt;/kbd&gt;
+Cloning into bare repository my_project.git...
+done.
+&lt;/samp&gt;
+&lt;/pre&gt;
 
 &lt;h2 id=&quot;copy-repo-to-remote-server&quot;&gt;Copy repo to remote server&lt;/h2&gt;
 
 &lt;p&gt;Put the bare repository in the server.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;scp -r my_project.git user@git.example.com:/srv/git
- &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rm -r my_project.git
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;scp -r my_project.git user@gitserver.com:/srv/git&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;rm -r my_project.git&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
 
 &lt;h2 id=&quot;add-server-repo-as-a-remote-in-local-repo&quot;&gt;Add server repo as a remote in local repo&lt;/h2&gt;
 
 &lt;p&gt;After having the repo in the remote server, the git server remote should be
 added to the local repo so it is possible to pull and push changes to it.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Set a new remote&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git remote add origin git@server:/srv/git/my_project.git
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;cd my_project&lt;/kbd&gt;
+&lt;span class=&quot;shell-comment&quot;&gt;# Set a new remote&lt;/span&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;(my_project)$&lt;/span&gt; &lt;kbd&gt;git remote add origin user@gitserver.com:/srv/git/my_project.git&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
 
-&lt;span class=&quot;c&quot;&gt;# Verify new remote&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git remote -v
-origin  git@server:/srv/git/my_project.git &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;fetch&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-origin  git@server:/srv/git/my_project.git &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;push&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;h1 id=&quot;verify-new-remote&quot;&gt;Verify new remote&lt;/h1&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;(my_project)$&lt;/span&gt; &lt;kbd&gt;git remote -v&lt;/kbd&gt;
+origin  user@gitserver.com:/srv/git/my_project.git (fetch)
+origin  user@gitserver.com:/srv/git/my_project.git (push)
+&lt;/samp&gt;
+&lt;/pre&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
 &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://git-scm.com/docs/git-clone&quot;&gt;https://git-scm.com/docs/git-clone&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server&quot;&gt;https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://git-scm.com/book/ch4-1.html&quot;&gt;https://git-scm.com/book/ch4-1.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;

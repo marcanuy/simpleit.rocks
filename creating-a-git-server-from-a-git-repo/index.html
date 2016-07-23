@@ -289,6 +289,7 @@
 <li class="toc-entry toc-h2"><a href="#create-bare-repository">Create bare repository</a></li>
 <li class="toc-entry toc-h2"><a href="#copy-repo-to-remote-server">Copy repo to remote server</a></li>
 <li class="toc-entry toc-h2"><a href="#add-server-repo-as-a-remote-in-local-repo">Add server repo as a remote in local repo</a></li>
+<li class="toc-entry toc-h1"><a href="#verify-new-remote">Verify new remote</a></li>
 <li class="toc-entry toc-h2"><a href="#references">References</a></li>
 <li class="toc-entry toc-h2"><a href="#summary">Summary</a></li>
 </ul>
@@ -453,39 +454,61 @@ just like the <strong>.git</strong> directory.</p>
 
 <p>In order to set up a Git server, you have to export an existing repository
 into a new <em>bare repository</em> (a repository that doesn’t contain 
-a <em>working directory</em>).</p>
+a <em>working directory</em>). This can be done with
+<a href="https://git-scm.com/docs/git-clone">git clone</a> <code class="highlighter-rouge">--bare</code> parameter.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>git clone --bare my_project my_project.git
-</code></pre>
-</div>
+<blockquote cite="https://git-scm.com/docs/git-clone" class="alert alert-info">
+  <p><code class="highlighter-rouge">--bare</code> Make a bare Git repository. That is, instead of creating
+<em>directory</em> and placing the administrative files in <em>directory</em>/.git
+make the <em>directory</em> itself the <code class="highlighter-rouge">$GIT_DIR</code>.</p>
+</blockquote>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>git clone --bare my_project my_project.git</kbd>
+Cloning into bare repository my_project.git...
+done.
+</samp>
+</pre>
 
 <h2 id="copy-repo-to-remote-server">Copy repo to remote server</h2>
 
 <p>Put the bare repository in the server.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>scp -r my_project.git user@git.example.com:/srv/git
- <span class="nv">$ </span>rm -r my_project.git
-</code></pre>
-</div>
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>scp -r my_project.git user@gitserver.com:/srv/git</kbd>
+<span class="shell-prompt">$</span> <kbd>rm -r my_project.git</kbd>
+</samp>
+</pre>
 
 <h2 id="add-server-repo-as-a-remote-in-local-repo">Add server repo as a remote in local repo</h2>
 
 <p>After having the repo in the remote server, the git server remote should be
 added to the local repo so it is possible to pull and push changes to it.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># Set a new remote</span>
-<span class="gp">$ </span>git remote add origin git@server:/srv/git/my_project.git
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>cd my_project</kbd>
+<span class="shell-comment"># Set a new remote</span>
+<span class="shell-prompt">(my_project)$</span> <kbd>git remote add origin user@gitserver.com:/srv/git/my_project.git</kbd>
+</samp>
+</pre>
 
-<span class="c"># Verify new remote</span>
-<span class="gp">$ </span>git remote -v
-origin  git@server:/srv/git/my_project.git <span class="o">(</span>fetch<span class="o">)</span>
-origin  git@server:/srv/git/my_project.git <span class="o">(</span>push<span class="o">)</span>
-</code></pre>
-</div>
+<h1 id="verify-new-remote">Verify new remote</h1>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">(my_project)$</span> <kbd>git remote -v</kbd>
+origin  user@gitserver.com:/srv/git/my_project.git (fetch)
+origin  user@gitserver.com:/srv/git/my_project.git (push)
+</samp>
+</pre>
 
 <h2 id="references">References</h2>
 
 <ul>
+  <li><a href="https://git-scm.com/docs/git-clone">https://git-scm.com/docs/git-clone</a></li>
   <li><a href="https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server">https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server</a></li>
   <li><a href="https://git-scm.com/book/ch4-1.html">https://git-scm.com/book/ch4-1.html</a></li>
 </ul>

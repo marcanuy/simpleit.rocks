@@ -5090,3 +5090,18 @@ a.bg-danger:focus {
 
 .share-buttons li {
   vertical-align: top; }
+
+.shell {
+  background-color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  box-shadow: inset 0 -0.1rem 0 rgba(0, 0, 0, 0.25);
+  color: #fff; }
+  .shell .shell-prompt {
+    color: #0c0;
+    font-weight: bold; }
+  .shell .shell-comment {
+    color: grey; }
+  .shell kbd {
+    box-shadow: none;
+    font-weight: bold; }
