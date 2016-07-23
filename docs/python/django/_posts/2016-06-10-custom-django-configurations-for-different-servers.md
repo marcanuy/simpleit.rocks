@@ -82,7 +82,10 @@ In a __production__ environment like [Heroku](https://devcenter.heroku.com/artic
 this can be done with: `$ heroku config:set A_SECRET_KEY=shhh1234`
 {: class="alert alert-info"}
 
-## Splitting the default Django's settings file into several files for different environments
+## Splitting settings
+
+Splitting the default Django's settings file into several files for
+different environments.
 
 Django automatically creates a configuration file in
 `<project_name>/settings.py`, to break it up into _local_, _testing_,
@@ -107,15 +110,29 @@ create specific config files for each environment:
 1. Create the settings directory `$ mkdir <project_name>/settings`
 2. Add `__init__.py` file to make Python treat the settings directory as containing packages `$ touch <project_name>/settings/__init__.py`
 3. Move the default settings file into the settings directory and change its name `$ mv <project_name>/settings.py <project_name>/settings/base.py`
-4. Create all the configuration files (_local.py_, _testing.py_, _staging_, _production_ ) and specify to inherit _base.py_ configurations, for example, for the development file: `echo "from .base import *" >> <project_name>/settings/local.py`
-5. Configure the current environment to use the appropriate settings file, in development: `$ export DJANGO_SETTINGS_MODULE=mysite.settings.local`
+4. Create all the configuration files (`local.py`, `testing.py`, `staging.py`, `production.py` ) and specify to inherit `base.py` configurations, for example, for the development file: `echo "from .base import *" >> <project_name>/settings/local.py`
+5. Use the new settings file in one of two ways:
+  - Configure the current environment to use the appropriate settings file, in development: `$ export DJANGO_SETTINGS_MODULE=mysite.settings.local` and then `djang-admin runserver` will use the above settings.
+  - Use the `--settings` parameter: `django-admin runserver --settings=mysite.settings.local`
 
-Django has two administrative scripts: __django_admin.py__ and __manage.py__ (that automatically configures the django instance with the current project). 
-One of the [differences](https://docs.djangoproject.com/en/1.9/ref/django-admin/) between them is that _manage.py_ automatically configures the  __DJANGO_SETTINGS_MODULE__ environment variable using the project's _settings.py_.
+Django has two administrative scripts: `django_admin.py` and `manage.py` (that automatically configures the django instance with the current project).
+
+One of the [differences](https://docs.djangoproject.com/en/1.9/ref/django-admin/) between them is that `manage.py` automatically configures the  [DJANGO_SETTINGS_MODULE](https://docs.djangoproject.com/en/1.9/topics/settings/#envvar-DJANGO_SETTINGS_MODULE) environment variable using the project's `settings.py`.
+{: class="alert alert-warning"}
 
 > Generally, when working on a single Django project, it’s easier to use manage.py than django-admin. 
 > If you need to switch between multiple Django settings files, use django-admin with DJANGO_SETTINGS_MODULE or the --settings command line option.
 {: cite="https://docs.djangoproject.com/en/1.9/ref/django-admin/"}
+
+We start having a `settings.py` single file and break it up into a new
+directory with specific environment settings:
+
+<div class="mermaid">
+graph LR
+  A["settings.py"]
+  B["settings/<br><br>base.py<br>local.py<br>testing.py<br>staging.py<br>production.py"]
+  A-->B
+</div>
 
 ## Packages for each environment
 
