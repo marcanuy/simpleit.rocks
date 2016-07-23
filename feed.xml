@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 23 Jul 2016 18:08:33 -0300</pubDate>
-    <lastBuildDate>Sat, 23 Jul 2016 18:08:33 -0300</lastBuildDate>
+    <pubDate>Sat, 23 Jul 2016 18:53:30 -0300</pubDate>
+    <lastBuildDate>Sat, 23 Jul 2016 18:53:30 -0300</lastBuildDate>
     <generator>Jekyll v3.2.0.pre.beta1</generator>
     
       <item>
@@ -183,29 +183,29 @@ flavors of ice cream to be available for purchase!
 &lt;p&gt;A sequence of commands introduced in a termianl can be represented with &lt;code class=&quot;highlighter-rouge&quot;&gt;samp&lt;/code&gt;, 
 for example:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;pre&amp;gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;pre class=&quot;shell&quot;&amp;gt;
 &amp;lt;samp&amp;gt;
-&amp;lt;span class=&quot;prompt&quot;&amp;gt;john@server:~$&amp;lt;/span&amp;gt; &amp;lt;kbd&amp;gt;ssh nasa.com&amp;lt;/kbd&amp;gt;
+&amp;lt;span class=&quot;shell-prompt&quot;&amp;gt;john@server:~$&amp;lt;/span&amp;gt; &amp;lt;kbd&amp;gt;ssh nasa.com&amp;lt;/kbd&amp;gt;
 Last login: Tue Apr 5 07:11:05 2010 from mars.com on pts/1
 Linux nasa 2.6.11-grsec-v6.189 #1 SMP Tue Feb 1 12:21:05 PST 2010 i586 
 
-&amp;lt;span class=&quot;comment&quot;&amp;gt;# I'm in&amp;lt;/span&amp;gt;
-&amp;lt;span class=&quot;prompt&quot;&amp;gt;john@nasa:~$&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;cursor&quot;&amp;gt;_&amp;lt;/span&amp;gt;
+&amp;lt;span class=&quot;shell-comment&quot;&amp;gt;# I'm in&amp;lt;/span&amp;gt;
+&amp;lt;span class=&quot;shell-prompt&quot;&amp;gt;john@nasa:~$&amp;lt;/span&amp;gt; &amp;lt;span class=&quot;shell-cursor&quot;&amp;gt;_&amp;lt;/span&amp;gt;
 &amp;lt;/samp&amp;gt;
 &amp;lt;/pre&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Outputs:&lt;/p&gt;
+&lt;p&gt;Outputs (with proper &lt;em&gt;CSS&lt;/em&gt;):&lt;/p&gt;
 
-&lt;pre&gt;
+&lt;pre class=&quot;shell&quot;&gt;
 &lt;samp&gt;
-&lt;span class=&quot;prompt&quot;&gt;john@server:~$&lt;/span&gt; &lt;kbd&gt;ssh nasa.com&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;john@server:~$&lt;/span&gt; &lt;kbd&gt;ssh nasa.com&lt;/kbd&gt;
 Last login: Tue Apr 5 07:11:05 2010 from mars.com on pts/1
 Linux nasa 2.6.11-grsec-v6.189 #1 SMP Tue Feb 1 12:21:05 PST 2010 i586
 
-&lt;span class=&quot;comment&quot;&gt;# I'm in&lt;/span&gt;
-&lt;span class=&quot;prompt&quot;&gt;john@nasa:~$&lt;/span&gt; &lt;span class=&quot;cursor&quot;&gt;_&lt;/span&gt;
+&lt;span class=&quot;shell-comment&quot;&gt;# I'm in&lt;/span&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;john@nasa:~$&lt;/span&gt; &lt;span class=&quot;cursor&quot;&gt;_&lt;/span&gt;
 &lt;/samp&gt;
 &lt;/pre&gt;
 
