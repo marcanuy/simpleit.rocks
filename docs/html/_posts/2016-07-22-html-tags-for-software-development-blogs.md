@@ -173,28 +173,28 @@ A sequence of commands introduced in a termianl can be represented with `samp`,
 for example: 
 
 ~~~
-<pre>
+<pre class="shell">
 <samp>
-<span class="prompt">john@server:~$</span> <kbd>ssh nasa.com</kbd>
+<span class="shell-prompt">john@server:~$</span> <kbd>ssh nasa.com</kbd>
 Last login: Tue Apr 5 07:11:05 2010 from mars.com on pts/1
 Linux nasa 2.6.11-grsec-v6.189 #1 SMP Tue Feb 1 12:21:05 PST 2010 i586 
 
-<span class="comment"># I'm in</span>
-<span class="prompt">john@nasa:~$</span> <span class="cursor">_</span>
+<span class="shell-comment"># I'm in</span>
+<span class="shell-prompt">john@nasa:~$</span> <span class="shell-cursor">_</span>
 </samp>
 </pre>
 ~~~
 
-Outputs:
+Outputs (with proper *CSS*):
 
-<pre>
+<pre class="shell">
 <samp>
-<span class="prompt">john@server:~$</span> <kbd>ssh nasa.com</kbd>
+<span class="shell-prompt">john@server:~$</span> <kbd>ssh nasa.com</kbd>
 Last login: Tue Apr 5 07:11:05 2010 from mars.com on pts/1
 Linux nasa 2.6.11-grsec-v6.189 #1 SMP Tue Feb 1 12:21:05 PST 2010 i586
 
-<span class="comment"># I'm in</span>
-<span class="prompt">john@nasa:~$</span> <span class="cursor">_</span>
+<span class="shell-comment"># I'm in</span>
+<span class="shell-prompt">john@nasa:~$</span> <span class="cursor">_</span>
 </samp>
 </pre>
 

@@ -38,12 +38,12 @@ the project)
 The preferred python version to use in the new environment can also 
 be specified.
 
-<pre>
+<pre class="shell">
 <samp>
-<span class="comment text-muted">#Create the project</span>
-<span class="prompt">$</span> <kbd>mkdir my_project;</kbd>
-<span class="comment">#Create the virtual environment</span>
-<span class="prompt">$</span> <kbd>virtualenv -p python3.5 ~/.virtualenvs/my_project</kbd>
+<span class="shell-comment">#Create the project</span>
+<span class="shell-prompt">$</span> <kbd>mkdir my_project;</kbd>
+<span class="shell-comment">#Create the virtual environment</span>
+<span class="shell-prompt">$</span> <kbd>virtualenv -p python3.5 ~/.virtualenvs/my_project</kbd>
 </samp>
 </pre>
 
@@ -56,19 +56,19 @@ installed in this virtual environment.
 Console prompt will change (in most cases) to reflect this situation
 prepending the virtual environment name in terminal prompt.
 
-<pre>
+<pre class="shell">
 <samp>
-<span class="prompt">$</span> <kbd>source ~/.virtualenvs/my_project/bin/activate</kbd>
-<span class="prompt">(virtualenv)$</span>
+<span class="shell-prompt">$</span> <kbd>source ~/.virtualenvs/my_project/bin/activate</kbd>
+<span class="shell-prompt">(virtualenv)$</span>
 </samp>
 </pre>
 
 ## Stop using the virtual environment
 
-<pre>
+<pre class="shell">
 <samp>
-<span class="prompt">(virtualenv)$</span> <kbd>deactivate</kbd>
-<span class="prompt">$</span>
+<span class="shell-prompt">(virtualenv)$</span> <kbd>deactivate</kbd>
+<span class="shell-prompt">$</span>
 </samp>
 </pre>
 
@@ -107,21 +107,21 @@ with [workon](http://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html
 - Go to the project directory [`cdvirtualenv`](http://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html#cdvirtualenv)
 - [deactivate](http://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html#deactivate) the environment when finished working
 
-<pre>
+<pre class="shell">
 <samp>
-<span class="prompt">$</span> <kbd>mkvirtualenv myenvname</kbd>
+<span class="shell-prompt">$</span> <kbd>mkvirtualenv myenvname</kbd>
 New python executable in /home/marcanuy/.virtualenvs/myenvname/bin/python
 Installing setuptools, pip, wheel...done.
-<span class="comment text-muted">#the previous created env will appear listed, along the other envs</span>
-<span class="prompt">(myenvname)$</span> <kbd>workon</kbd>
+<span class="shell-comment text-muted">#the previous created env will appear listed, along the other envs</span>
+<span class="shell-prompt">(myenvname)$</span> <kbd>workon</kbd>
 myenvname
-<span class="comment text-muted">#changes to the associated project directory</span>
-<span class="prompt">(myenvname)$</span> <kbd>cdvirtualenv myenvname</kbd>
-<span class="prompt">(myenvname)/opt/development/myproject$</span> <kbd>cdsitepackages</kbd>
-<span class="prompt">(myenvname)~/.virtualenvs/myenvname/lib/python3.5/site-packages$</span> <kbd>cdvirtualenv</kbd>
-<span class="comment text-muted">#finish work</span>
-<span class="prompt">(myenvname)/opt/development/myproject$</span> <kbd>deactivate</kbd>
-<span class="prompt">/opt/development/myproject$</span> <span class="cursor">_</span>
+<span class="shell-comment">#changes to the associated project directory</span>
+<span class="shell-prompt">(myenvname)$</span> <kbd>cdvirtualenv myenvname</kbd>
+<span class="shell-prompt">(myenvname)/opt/development/myproject$</span> <kbd>cdsitepackages</kbd>
+<span class="shell-prompt">(myenvname)~/.virtualenvs/myenvname/lib/python3.5/site-packages$</span> <kbd>cdvirtualenv</kbd>
+<span class="shell-comment">#finish work</span>
+<span class="shell-prompt">(myenvname)/opt/development/myproject$</span> <kbd>deactivate</kbd>
+<span class="shell-prompt">/opt/development/myproject$</span> <span class="cursor">_</span>
 </samp>
 </pre>
 
