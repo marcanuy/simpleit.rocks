@@ -75,37 +75,59 @@ _clone_ it from the server directly.
 
 In order to set up a Git server, you have to export an existing repository
 into a new _bare repository_ (a repository that doesn’t contain 
-a _working directory_).
+a _working directory_). This can be done with
+[git clone](https://git-scm.com/docs/git-clone) `--bare` parameter.
 
-~~~ bash
- $ git clone --bare my_project my_project.git
-~~~
+> `--bare` Make a bare Git repository. That is, instead of creating
+> _directory_ and placing the administrative files in _directory_/.git
+> make the _directory_ itself the `$GIT_DIR`.
+{: cite="https://git-scm.com/docs/git-clone" class="alert alert-info"}
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>git clone --bare my_project my_project.git</kbd>
+Cloning into bare repository my_project.git...
+done.
+</samp>
+</pre>
 
 ## Copy repo to remote server 
 
 Put the bare repository in the server.
 
-~~~ bash
- $ scp -r my_project.git user@git.example.com:/srv/git
- $ rm -r my_project.git
-~~~
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>scp -r my_project.git user@gitserver.com:/srv/git</kbd>
+<span class="shell-prompt">$</span> <kbd>rm -r my_project.git</kbd>
+</samp>
+</pre>
 
 ## Add server repo as a remote in local repo 
 
 After having the repo in the remote server, the git server remote should be
 added to the local repo so it is possible to pull and push changes to it.
 
-~~~ bash
-# Set a new remote
-$ git remote add origin git@server:/srv/git/my_project.git
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>cd my_project</kbd>
+<span class="shell-comment"># Set a new remote</span>
+<span class="shell-prompt">(my_project)$</span> <kbd>git remote add origin user@gitserver.com:/srv/git/my_project.git</kbd>
+</samp>
+</pre>
 
 # Verify new remote
-$ git remote -v
-origin  git@server:/srv/git/my_project.git (fetch)
-origin  git@server:/srv/git/my_project.git (push)
-~~~
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">(my_project)$</span> <kbd>git remote -v</kbd>
+origin  user@gitserver.com:/srv/git/my_project.git (fetch)
+origin  user@gitserver.com:/srv/git/my_project.git (push)
+</samp>
+</pre>
 
 ## References 
 
+- <https://git-scm.com/docs/git-clone>
 - <https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server>
 - <https://git-scm.com/book/ch4-1.html>
