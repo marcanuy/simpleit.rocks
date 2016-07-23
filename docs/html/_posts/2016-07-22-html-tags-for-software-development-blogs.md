@@ -240,7 +240,6 @@ Example: The following code
 Outputs:
 
 <samp>
-<p>
 	To save it, select
 	<kbd>
 	  <kbd>
@@ -251,7 +250,6 @@ Outputs:
 		  <samp>Save...</samp>
 	  </kbd>
 	</kbd>
-</p>
 </samp>
 
 ### Key press
