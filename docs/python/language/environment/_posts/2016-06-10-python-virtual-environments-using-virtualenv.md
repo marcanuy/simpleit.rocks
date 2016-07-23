@@ -11,38 +11,66 @@ tags:
   - versioning
 ---
 
-General workflow for python projects isolation:
+## Overview
 
-+ Create a project dir
-+ Create a virtual environment for the project outside its directory structure
-  + _virtualenvwrapper_ uses the variable WORKON_HOME to specify the location of new virtual environments. The default value is __$HOME/.virtualenvs__
-+ Then each time you work on the project you have two alternatives:
+The tipical workflow to isolate a python project consist of the following steps:
 
-+ _Manually activate the virtual environment_ for the project, so it handles all the commands instead of executing the current Operating System ones. `source ~/.virtualenvs/my_project/bin/activate`
-  + _Configure a virtualenvwrapper_ and then just select your environment with a command like: `workon my_project`
+1. Create a project dir
+2. Create a virtual environment for the project outside its directory 
+structure
+  - _virtualenvwrapper_ uses the variable WORKON_HOME to specify the 
+	location of new virtual environments. The default value is
+    __$HOME/.virtualenvs__
 
-Common workflow to create a new _virtualenv_:
+Then each time you work on the project you have two alternatives:
 
-+ Create the virtual environment (preferable in a directory outside your project)
-+ activate the project to work on
++ __Manually activate the virtual environment__ for the project, so it
+handles all the commands instead of executing the current Operating 
+System ones. `source ~/.virtualenvs/my_project/bin/activate`
++ __Configure a virtualenvwrapper__ and then just select your environment
+with a command like: `workon my_project`
 
-``` bash
-$ mkdir my_project;
-## Create the virtual environment
-## (optionally select python version)
-$ virtualenv -p python3.5 ~/.virtualenvs/my_project
-## Activate it
-## the following commands will use the packages 
-## installed in this virtual environment
-$ source ~/.virtualenvs/my_project/bin/activate 
-## Your Bash prompt will change to show you are
-## in a virtual environment
-(virtualenv)$ ... #work 
-(virtualenv)$ deactivate #finish work
-$
-```
+## Create a virtual environment
 
-+ virtualenv <https://virtualenv.pypa.io>
+Create the virtual environment (preferable in a directory outside 
+the project)
+
+The preferred python version to use in the new environment can also 
+be specified.
+
+<pre>
+<samp>
+<span class="comment text-muted">#Create the project</span>
+<span class="prompt">$</span> <kbd>mkdir my_project;</kbd>
+<span class="comment">#Create the virtual environment</span>
+<span class="prompt">$</span> <kbd>virtualenv -p python3.5 ~/.virtualenvs/my_project</kbd>
+</samp>
+</pre>
+
+## Use the virtual environment
+
+To use the new environment, it should be _activated_.
+Any command executed after activating it, will use the packages
+installed in this virtual environment.
+
+Console prompt will change (in most cases) to reflect this situation
+prepending the virtual environment name in terminal prompt.
+
+<pre>
+<samp>
+<span class="prompt">$</span> <kbd>source ~/.virtualenvs/my_project/bin/activate</kbd>
+<span class="prompt">(virtualenv)$</span>
+</samp>
+</pre>
+
+## Stop using the virtual environment
+
+<pre>
+<samp>
+<span class="prompt">(virtualenv)$</span> <kbd>deactivate</kbd>
+<span class="prompt">$</span>
+</samp>
+</pre>
 
 ## virtualenvwrapper ##
 
@@ -57,14 +85,27 @@ Virtualenvwrapper makes it easier to perform _virtualenv_ tasks. It is build upo
 
 `mkvirtualenv` provides the same options as `virtualenv` plus a few options. It creates by default the _virtualenv_ environment in `~/.virtualenvs/<env_name>` and then activates it.
 
-`Usage: mkvirtualenv [-a project_path] [-i package] [-r requirements_file] [virtualenv options] env_name`
+<samp>
+Usage: mkvirtualenv [-a project_path] [-i package] [-r requirements_file] [virtualenv options] env_name
+</samp>
 
-Common workflow to create a new _virtualenv_ with _virtualenvwrapper_:
+### virtualenvwrapper workflow
 
-+ Create the virtual environment (by default in __$WORKON_HOME__)
-+ list the available _environments_ and activate the project to work on
-+ Go to the project directory `cdvirtualenv`
-+ deactivate the environment when finished working
+Common workflow to work on a new _virtual environment_ using
+_virtualenvwrapper_:
+
+- Create the virtual environment (by default in __$WORKON_HOME__)
+
+> The variable WORKON_HOME tells virtualenvwrapper where to place your
+> virtual environments. The default is $HOME/.virtualenvs. If the
+> directory does not exist when virtualenvwrapper is loaded, it will
+> be created automatically.
+{: cite="http://virtualenvwrapper.readthedocs.io/en/latest/install.html#variable-workon-home"}
+  
+- list the available _environments_ and activate the project to work on
+with [workon](http://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html#workon)
+- Go to the project directory [`cdvirtualenv`](http://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html#cdvirtualenv)
+- [deactivate](http://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html#deactivate) the environment when finished working
 
 <pre>
 <samp>
@@ -86,7 +127,10 @@ myenvname
 
 To create a new environment having a requirements file and a specific python version: `mkvirtualenv -r requirements/local.txt -p /usr/bin/python3.5 myprojectname`
 
-+ virtualenvwrapper <https://virtualenvwrapper.readthedocs.io>
+## Reference
+
+- virtualenv <https://virtualenv.pypa.io>
+- virtualenvwrapper <https://virtualenvwrapper.readthedocs.io>
 
 ## Pending
 
