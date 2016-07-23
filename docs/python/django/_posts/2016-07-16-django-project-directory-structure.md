@@ -25,6 +25,8 @@ other aspects of development and deployment such as:
 
 ## Recommended Django directory structure
 
+- $HOME/.virtualenvs/PROJECT_NAME
+- ...
 - REPO-ROOT/ `git repo`
   - README.rst `Summary of the project and how to install it`
   - docs/
