@@ -291,7 +291,7 @@
 <li class="toc-entry toc-h2"><a href="#process">Process</a></li>
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
 <li class="toc-entry toc-h2"><a href="#setting-environment-variables">Setting environment variables</a></li>
-<li class="toc-entry toc-h2"><a href="#splitting-the-default-djangos-settings-file-into-several-files-for-different-environments">Splitting the default Django’s settings file into several files for different environments</a></li>
+<li class="toc-entry toc-h2"><a href="#splitting-settings">Splitting settings</a></li>
 <li class="toc-entry toc-h2"><a href="#packages-for-each-environment">Packages for each environment</a></li>
 <li class="toc-entry toc-h2"><a href="#after">After</a></li>
 <li class="toc-entry toc-h2"><a href="#references">References</a></li>
@@ -474,7 +474,10 @@ value: <code class="highlighter-rouge">A_SECRET_KEY = os.environ["A_SECRET_KEY"]
 <p class="alert alert-info">In a <strong>production</strong> environment like <a href="https://devcenter.heroku.com/articles/config-vars">Heroku</a>, 
 this can be done with: <code class="highlighter-rouge">$ heroku config:set A_SECRET_KEY=shhh1234</code></p>
 
-<h2 id="splitting-the-default-djangos-settings-file-into-several-files-for-different-environments">Splitting the default Django’s settings file into several files for different environments</h2>
+<h2 id="splitting-settings">Splitting settings</h2>
+
+<p>Splitting the default Django’s settings file into several files for
+different environments.</p>
 
 <p>Django automatically creates a configuration file in
 <code class="highlighter-rouge">&lt;project_name&gt;/settings.py</code>, to break it up into <em>local</em>, <em>testing</em>,
@@ -500,17 +503,33 @@ create specific config files for each environment:</p>
   <li>Create the settings directory <code class="highlighter-rouge">$ mkdir &lt;project_name&gt;/settings</code></li>
   <li>Add <code class="highlighter-rouge">__init__.py</code> file to make Python treat the settings directory as containing packages <code class="highlighter-rouge">$ touch &lt;project_name&gt;/settings/__init__.py</code></li>
   <li>Move the default settings file into the settings directory and change its name <code class="highlighter-rouge">$ mv &lt;project_name&gt;/settings.py &lt;project_name&gt;/settings/base.py</code></li>
-  <li>Create all the configuration files (<em>local.py</em>, <em>testing.py</em>, <em>staging</em>, <em>production</em> ) and specify to inherit <em>base.py</em> configurations, for example, for the development file: <code class="highlighter-rouge">echo "from .base import *" &gt;&gt; &lt;project_name&gt;/settings/local.py</code></li>
-  <li>Configure the current environment to use the appropriate settings file, in development: <code class="highlighter-rouge">$ export DJANGO_SETTINGS_MODULE=mysite.settings.local</code></li>
+  <li>Create all the configuration files (<code class="highlighter-rouge">local.py</code>, <code class="highlighter-rouge">testing.py</code>, <code class="highlighter-rouge">staging.py</code>, <code class="highlighter-rouge">production.py</code> ) and specify to inherit <code class="highlighter-rouge">base.py</code> configurations, for example, for the development file: <code class="highlighter-rouge">echo "from .base import *" &gt;&gt; &lt;project_name&gt;/settings/local.py</code></li>
+  <li>Use the new settings file in one of two ways:
+    <ul>
+      <li>Configure the current environment to use the appropriate settings file, in development: <code class="highlighter-rouge">$ export DJANGO_SETTINGS_MODULE=mysite.settings.local</code> and then <code class="highlighter-rouge">djang-admin runserver</code> will use the above settings.</li>
+      <li>Use the <code class="highlighter-rouge">--settings</code> parameter: <code class="highlighter-rouge">django-admin runserver --settings=mysite.settings.local</code></li>
+    </ul>
+  </li>
 </ol>
 
-<p>Django has two administrative scripts: <strong>django_admin.py</strong> and <strong>manage.py</strong> (that automatically configures the django instance with the current project). 
-One of the <a href="https://docs.djangoproject.com/en/1.9/ref/django-admin/">differences</a> between them is that <em>manage.py</em> automatically configures the  <strong>DJANGO_SETTINGS_MODULE</strong> environment variable using the project’s <em>settings.py</em>.</p>
+<p>Django has two administrative scripts: <code class="highlighter-rouge">django_admin.py</code> and <code class="highlighter-rouge">manage.py</code> (that automatically configures the django instance with the current project).</p>
+
+<p class="alert alert-warning">One of the <a href="https://docs.djangoproject.com/en/1.9/ref/django-admin/">differences</a> between them is that <code class="highlighter-rouge">manage.py</code> automatically configures the  <a href="https://docs.djangoproject.com/en/1.9/topics/settings/#envvar-DJANGO_SETTINGS_MODULE">DJANGO_SETTINGS_MODULE</a> environment variable using the project’s <code class="highlighter-rouge">settings.py</code>.</p>
 
 <blockquote cite="https://docs.djangoproject.com/en/1.9/ref/django-admin/">
   <p>Generally, when working on a single Django project, it’s easier to use manage.py than django-admin. 
 If you need to switch between multiple Django settings files, use django-admin with DJANGO_SETTINGS_MODULE or the –settings command line option.</p>
 </blockquote>
+
+<p>We start having a <code class="highlighter-rouge">settings.py</code> single file and break it up into a new
+directory with specific environment settings:</p>
+
+<div class="mermaid">
+graph LR
+  A["settings.py"]
+  B["settings/<br /><br />base.py<br />local.py<br />testing.py<br />staging.py<br />production.py"]
+  A--&gt;B
+</div>
 
 <h2 id="packages-for-each-environment">Packages for each environment</h2>
 
