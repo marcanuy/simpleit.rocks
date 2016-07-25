@@ -65,7 +65,7 @@ POST is the preferred way for sending __form data__.
 | Remain in the __browser history__ | <i class="fa fa-check" aria-hidden="true"></i> | <i class="fa fa-times" aria-hidden="true"></i> |
 | Can be __bookmarked__ | <i class="fa fa-check" aria-hidden="true"></i> | <i class="fa fa-times" aria-hidden="true"></i> |
 | Used with __sensitive data__ | <i class="fa fa-times" aria-hidden="true"></i> | <i class="fa fa-check" aria-hidden="true"></i> |
-| __Data length__ restrictions | <i class="fa fa-times" aria-hidden="true"></i> | <i class="fa fa-check" aria-hidden="true"></i> |
+| __Data length__ restrictions | <i class="fa fa-check" aria-hidden="true"></i> | <i class="fa fa-times" aria-hidden="true"></i> |
 |-----------------+-------------------------------------------+--------------------------------------------|
 {: class="table"}
 
