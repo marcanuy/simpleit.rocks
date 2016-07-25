@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 25 Jul 2016 11:03:29 -0300</pubDate>
-    <lastBuildDate>Mon, 25 Jul 2016 11:03:29 -0300</lastBuildDate>
+    <pubDate>Mon, 25 Jul 2016 11:12:03 -0300</pubDate>
+    <lastBuildDate>Mon, 25 Jul 2016 11:12:03 -0300</lastBuildDate>
     <generator>Jekyll v3.2.0.pre.beta1</generator>
     
       <item>
@@ -86,8 +86,8 @@ sending &lt;strong&gt;non-sensitive&lt;/strong&gt; data.&lt;/p&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;&lt;strong&gt;Data length&lt;/strong&gt; restrictions&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-times&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-times&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
