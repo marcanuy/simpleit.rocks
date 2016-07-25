@@ -111,19 +111,56 @@ create specific config files for each environment:
 2. Add `__init__.py` file to make Python treat the settings directory as containing packages `$ touch <project_name>/settings/__init__.py`
 3. Move the default settings file into the settings directory and change its name `$ mv <project_name>/settings.py <project_name>/settings/base.py`
 4. Create all the configuration files (`local.py`, `testing.py`, `staging.py`, `production.py` ) and specify to inherit `base.py` configurations, for example, for the development file: `echo "from .base import *" >> <project_name>/settings/local.py`
-5. Use the new settings file in one of two ways:
-  - Configure the current environment to use the appropriate settings file, in development: `$ export DJANGO_SETTINGS_MODULE=mysite.settings.local` and then `djang-admin runserver` will use the above settings.
-  - Use the `--settings` parameter: `django-admin runserver --settings=mysite.settings.local`
+5. Use the new settings file in one of two ways: 
+  - set an environment variable and call scripts normally
+  - call scripts specifying a settings file
+    
+### Set environment variables
 
-Django has two administrative scripts: `django_admin.py` and `manage.py` (that automatically configures the django instance with the current project).
+Configure the current environment to use the appropriate settings file, using [PYTHONPATH](https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH) and [DJANGO_SETTINGS_MODULE](https://docs.djangoproject.com/en/1.9/topics/settings/#envvar-DJANGO_SETTINGS_MODULE):
+  
+  <pre class="shell"> 
+  <samp>
+  <span class="shell-prompt">$</span> <kbd>export DJANGO_SETTINGS_MODULE=mysite.settings.local</kbd>
+  <span class="shell-prompt">$</span> <kbd>export PYTHONPATH=~/path/to/my/project</kbd>
+  <span class="shell-comment">#django-admin will use the above settings by default</span>
+  <span class="shell-prompt">$</span> <kbd>django-admin runserver</kbd>
+  </samp>
+  </pre>
 
-One of the [differences](https://docs.djangoproject.com/en/1.9/ref/django-admin/) between them is that `manage.py` automatically configures the  [DJANGO_SETTINGS_MODULE](https://docs.djangoproject.com/en/1.9/topics/settings/#envvar-DJANGO_SETTINGS_MODULE) environment variable using the project's `settings.py`.
+### Specify settings in a script parameter
+  
+Use the `--settings` parameter with `manage.py` or `django-admin`:
+
+<pre class="shell"> 
+<samp>
+<span class="shell-prompt">$</span> <kbd>django-admin runserver --settings=mysite.settings.local --pythonpath=/path/to/my/project</kbd>
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+July 23, 2016 - 22:43:48
+Django version 1.9.6, using settings 'mysite.settings.local'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+</samp>
+</pre>
+
+### Differences between manage.py and django-admin
+
+Django has two administrative scripts: `django_admin.py` and `manage.py` (in the root of each Django project).
+
+__`manage.py` is a wrapper of `django-admin`__, the only [difference](https://docs.djangoproject.com/en/1.9/ref/django-admin/) between them is that `manage.py` sets the [DJANGO_SETTINGS_MODULE](https://docs.djangoproject.com/en/1.9/topics/settings/#envvar-DJANGO_SETTINGS_MODULE) environment variable to `settings.py` by default, if not changed.
 {: class="alert alert-warning"}
+
+So with the about settings scheme, it is better to use `django-admin` and choose the proper settings file.
 
 > Generally, when working on a single Django project, it’s easier to use manage.py than django-admin. 
 > If you need to switch between multiple Django settings files, use django-admin with DJANGO_SETTINGS_MODULE or the --settings command line option.
+> -- Django Docs
 {: cite="https://docs.djangoproject.com/en/1.9/ref/django-admin/"}
 
+### Summary
 We start having a `settings.py` single file and break it up into a new
 directory with specific environment settings:
 

@@ -116,7 +116,7 @@ added to the local repo so it is possible to pull and push changes to it.
 </samp>
 </pre>
 
-# Verify new remote
+### Verify new remote
 
 <pre class="shell">
 <samp>
