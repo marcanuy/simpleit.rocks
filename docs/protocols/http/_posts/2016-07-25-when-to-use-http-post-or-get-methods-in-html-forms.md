@@ -64,8 +64,13 @@ POST is the preferred way for sending __form data__.
 | Can be __cached__ | <i class="fa fa-check" aria-hidden="true"></i> | <i class="fa fa-times" aria-hidden="true"></i> |
 | Remain in the __browser history__ | <i class="fa fa-check" aria-hidden="true"></i> | <i class="fa fa-times" aria-hidden="true"></i> |
 | Can be __bookmarked__ | <i class="fa fa-check" aria-hidden="true"></i> | <i class="fa fa-times" aria-hidden="true"></i> |
+| Data visible in URL |  <i class="fa fa-times" aria-hidden="true"></i> | <i class="fa fa-check" aria-hidden="true"></i> |
 | Used with __sensitive data__ | <i class="fa fa-times" aria-hidden="true"></i> | <i class="fa fa-check" aria-hidden="true"></i> |
 | __Data length__ restrictions | <i class="fa fa-check" aria-hidden="true"></i> | <i class="fa fa-times" aria-hidden="true"></i> |
+| ASCII data type allowed |  <i class="fa fa-check" aria-hidden="true"></i> | <i class="fa fa-check" aria-hidden="true"></i> |
+| Binary data type allowed | <i class="fa fa-times" aria-hidden="true"></i> | <i class="fa fa-check" aria-hidden="true"></i> | 
+| Content-Type _[application/x-www-form-urlencoded](https://www.w3.org/TR/html401/interact/forms.html#h-17.13.4)_ | <i class="fa fa-check" aria-hidden="true"></i> | <i class="fa fa-check" aria-hidden="true"></i> |
+| Content-Type _[multipart/form-data](https://www.ietf.org/rfc/rfc2388.txt)_ | <i class="fa fa-times" aria-hidden="true"></i> | <i class="fa fa-check" aria-hidden="true"></i> |
 |-----------------+-------------------------------------------+--------------------------------------------|
 {: class="table"}
 
