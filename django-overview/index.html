@@ -293,6 +293,7 @@
 <li class="toc-entry toc-h2"><a href="#models">Models</a></li>
 <li class="toc-entry toc-h2"><a href="#views">Views</a></li>
 <li class="toc-entry toc-h2"><a href="#templates">Templates</a></li>
+<li class="toc-entry toc-h2"><a href="#forms">Forms</a></li>
 <li class="toc-entry toc-h2"><a href="#testing">Testing</a></li>
 <li class="toc-entry toc-h3"><a href="#related-links">Related Links</a></li>
 <li class="toc-entry toc-h2"><a href="#admin">Admin</a></li>
@@ -414,6 +415,9 @@ can have: a blog, ratings, news apps).</p>
         └── views.py
 </pre>
 
+<p class="alert alert-info">Default settings are located in <code class="highlighter-rouge">django/conf/global_settings.py</code>, they are
+overwritten in <code class="highlighter-rouge">mysite/settings.py</code></p>
+
 <p>The structure that sets up Django by default is very basic, when a project
 starts to grow, it starts to require a better approach, outlined in
 /django-project-directory-structure/
@@ -433,15 +437,23 @@ that deals with other aspects of development and deployment such as:</p>
 <h2 id="views">Views</h2>
 
 <ul>
-  <li>
-    <p>Generic views <a href="https://docs.djangoproject.com/en/1.9/topics/class-based-views/generic-display/">https://docs.djangoproject.com/en/1.9/topics/class-based-views/generic-display/</a></p>
-  </li>
-  <li>
-    <p>Model forms <a href="https://docs.djangoproject.com/en/1.9/topics/forms/modelforms/">https://docs.djangoproject.com/en/1.9/topics/forms/modelforms/</a></p>
-  </li>
+  <li>Generic views <a href="https://docs.djangoproject.com/en/1.9/topics/class-based-views/generic-display/">https://docs.djangoproject.com/en/1.9/topics/class-based-views/generic-display/</a></li>
 </ul>
 
 <h2 id="templates">Templates</h2>
+
+<h2 id="forms">Forms</h2>
+
+<p>In a Django web app, a form can refer to:</p>
+
+<ul>
+  <li>an <a href="https://www.w3.org/TR/html5/forms.html#forms">HTML form</a> a component of a Web page that has form controls</li>
+  <li>a <a href="https://docs.djangoproject.com/en/1.9/ref/forms/api/#django.forms.Form">Django Form</a> that produces an HTML form</li>
+  <li>the structured data returned when a form is submitted</li>
+  <li>all of the above interacting together</li>
+</ul>
+
+<p>Reference: <a href="https://docs.djangoproject.com/en/1.9/topics/forms/">https://docs.djangoproject.com/en/1.9/topics/forms/</a></p>
 
 <h2 id="testing">Testing</h2>
 
@@ -679,6 +691,11 @@ it in tests.py</p>
     <a class="list-group-item " href="/django-project-directory-structure/">
       Django Project Directory Structure
     </a>
+    
+    
+    
+    
+    
     
     
     

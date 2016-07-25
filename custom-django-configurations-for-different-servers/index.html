@@ -292,10 +292,14 @@
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
 <li class="toc-entry toc-h2"><a href="#setting-environment-variables">Setting environment variables</a></li>
 <li class="toc-entry toc-h2"><a href="#splitting-settings">Splitting settings</a></li>
+<li class="toc-entry toc-h3"><a href="#set-environment-variables">Set environment variables</a></li>
+<li class="toc-entry toc-h3"><a href="#specify-settings-in-a-script-parameter">Specify settings in a script parameter</a></li>
+<li class="toc-entry toc-h3"><a href="#differences-between-managepy-and-django-admin">Differences between manage.py and django-admin</a></li>
+<li class="toc-entry toc-h3"><a href="#summary">Summary</a></li>
 <li class="toc-entry toc-h2"><a href="#packages-for-each-environment">Packages for each environment</a></li>
 <li class="toc-entry toc-h2"><a href="#after">After</a></li>
 <li class="toc-entry toc-h2"><a href="#references">References</a></li>
-<li class="toc-entry toc-h2"><a href="#summary">Summary</a></li>
+<li class="toc-entry toc-h2"><a href="#summary-1">Summary</a></li>
 </ul>
       </div>
       <div>
@@ -506,21 +510,58 @@ create specific config files for each environment:</p>
   <li>Create all the configuration files (<code class="highlighter-rouge">local.py</code>, <code class="highlighter-rouge">testing.py</code>, <code class="highlighter-rouge">staging.py</code>, <code class="highlighter-rouge">production.py</code> ) and specify to inherit <code class="highlighter-rouge">base.py</code> configurations, for example, for the development file: <code class="highlighter-rouge">echo "from .base import *" &gt;&gt; &lt;project_name&gt;/settings/local.py</code></li>
   <li>Use the new settings file in one of two ways:
     <ul>
-      <li>Configure the current environment to use the appropriate settings file, in development: <code class="highlighter-rouge">$ export DJANGO_SETTINGS_MODULE=mysite.settings.local</code> and then <code class="highlighter-rouge">djang-admin runserver</code> will use the above settings.</li>
-      <li>Use the <code class="highlighter-rouge">--settings</code> parameter: <code class="highlighter-rouge">django-admin runserver --settings=mysite.settings.local</code></li>
+      <li>set an environment variable and call scripts normally</li>
+      <li>call scripts specifying a settings file</li>
     </ul>
   </li>
 </ol>
 
-<p>Django has two administrative scripts: <code class="highlighter-rouge">django_admin.py</code> and <code class="highlighter-rouge">manage.py</code> (that automatically configures the django instance with the current project).</p>
+<h3 id="set-environment-variables">Set environment variables</h3>
 
-<p class="alert alert-warning">One of the <a href="https://docs.djangoproject.com/en/1.9/ref/django-admin/">differences</a> between them is that <code class="highlighter-rouge">manage.py</code> automatically configures the  <a href="https://docs.djangoproject.com/en/1.9/topics/settings/#envvar-DJANGO_SETTINGS_MODULE">DJANGO_SETTINGS_MODULE</a> environment variable using the project’s <code class="highlighter-rouge">settings.py</code>.</p>
+<p>Configure the current environment to use the appropriate settings file, using <a href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH">PYTHONPATH</a> and <a href="https://docs.djangoproject.com/en/1.9/topics/settings/#envvar-DJANGO_SETTINGS_MODULE">DJANGO_SETTINGS_MODULE</a>:</p>
+
+<pre class="shell"> 
+  <samp>
+  <span class="shell-prompt">$</span> <kbd>export DJANGO_SETTINGS_MODULE=mysite.settings.local</kbd>
+  <span class="shell-prompt">$</span> <kbd>export PYTHONPATH=~/path/to/my/project</kbd>
+  <span class="shell-comment">#django-admin will use the above settings by default</span>
+  <span class="shell-prompt">$</span> <kbd>django-admin runserver</kbd>
+  </samp>
+  </pre>
+
+<h3 id="specify-settings-in-a-script-parameter">Specify settings in a script parameter</h3>
+
+<p>Use the <code class="highlighter-rouge">--settings</code> parameter with <code class="highlighter-rouge">manage.py</code> or <code class="highlighter-rouge">django-admin</code>:</p>
+
+<pre class="shell"> 
+<samp>
+<span class="shell-prompt">$</span> <kbd>django-admin runserver --settings=mysite.settings.local --pythonpath=/path/to/my/project</kbd>
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+July 23, 2016 - 22:43:48
+Django version 1.9.6, using settings 'mysite.settings.local'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+</samp>
+</pre>
+
+<h3 id="differences-between-managepy-and-django-admin">Differences between manage.py and django-admin</h3>
+
+<p>Django has two administrative scripts: <code class="highlighter-rouge">django_admin.py</code> and <code class="highlighter-rouge">manage.py</code> (in the root of each Django project).</p>
+
+<p class="alert alert-warning"><strong><code class="highlighter-rouge">manage.py</code> is a wrapper of <code class="highlighter-rouge">django-admin</code></strong>, the only <a href="https://docs.djangoproject.com/en/1.9/ref/django-admin/">difference</a> between them is that <code class="highlighter-rouge">manage.py</code> sets the <a href="https://docs.djangoproject.com/en/1.9/topics/settings/#envvar-DJANGO_SETTINGS_MODULE">DJANGO_SETTINGS_MODULE</a> environment variable to <code class="highlighter-rouge">settings.py</code> by default, if not changed.</p>
+
+<p>So with the about settings scheme, it is better to use <code class="highlighter-rouge">django-admin</code> and choose the proper settings file.</p>
 
 <blockquote cite="https://docs.djangoproject.com/en/1.9/ref/django-admin/">
   <p>Generally, when working on a single Django project, it’s easier to use manage.py than django-admin. 
-If you need to switch between multiple Django settings files, use django-admin with DJANGO_SETTINGS_MODULE or the –settings command line option.</p>
+If you need to switch between multiple Django settings files, use django-admin with DJANGO_SETTINGS_MODULE or the –settings command line option.
+– Django Docs</p>
 </blockquote>
 
+<h3 id="summary">Summary</h3>
 <p>We start having a <code class="highlighter-rouge">settings.py</code> single file and break it up into a new
 directory with specific environment settings:</p>
 
@@ -815,6 +856,11 @@ oneself when reviewing the project in the future.</p>
     <a class="list-group-item " href="/django-project-directory-structure/">
       Django Project Directory Structure
     </a>
+    
+    
+    
+    
+    
     
     
     

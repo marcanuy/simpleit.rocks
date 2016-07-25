@@ -5105,3 +5105,10 @@ a.bg-danger:focus {
   .shell kbd {
     box-shadow: none;
     font-weight: bold; }
+
+.section-nav .toc-h3 {
+  margin-left: 1em;
+  font-size: 0.9em; }
+.section-nav .toc-h4 {
+  margin-left: 2em;
+  font-size: 0.8em; }

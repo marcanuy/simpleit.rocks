@@ -6,9 +6,126 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 23 Jul 2016 18:53:30 -0300</pubDate>
-    <lastBuildDate>Sat, 23 Jul 2016 18:53:30 -0300</lastBuildDate>
+    <pubDate>Mon, 25 Jul 2016 11:03:29 -0300</pubDate>
+    <lastBuildDate>Mon, 25 Jul 2016 11:03:29 -0300</lastBuildDate>
     <generator>Jekyll v3.2.0.pre.beta1</generator>
+    
+      <item>
+        <title>When To Use Http Post Or Get Methods In Html Forms</title>
+        <description>
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;HTTP request methods are defined in &lt;a href=&quot;http://www.ietf.org/rfc/rfc2616.txt&quot;&gt;RFC2616 Section 9 Method Definitions&lt;/a&gt;. 
+These methods are also known as &lt;em&gt;verbs&lt;/em&gt; as &lt;mark&gt;they indicate the desired action to be performed on an identified resource&lt;/mark&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;understanding-the-basics-in-simple-terms&quot;&gt;Understanding the basics in simple terms&lt;/h2&gt;
+
+&lt;p&gt;From a practical point of view, these are the most simple (not so accurate) definitions and differences.&lt;/p&gt;
+
+&lt;h3 id=&quot;get-method&quot;&gt;GET method&lt;/h3&gt;
+
+&lt;blockquote cite=&quot;http://www.w3schools.com/php/php_forms.asp&quot;&gt;
+  &lt;p&gt;$_GET is an array of variables passed to the current script via the URL parameters.
+– W3schools&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/data/form?name1=value1&amp;amp;name2=value2 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;post-method&quot;&gt;POST method&lt;/h3&gt;
+
+&lt;blockquote cite=&quot;http://www.w3schools.com/php/php_forms.asp&quot;&gt;
+  &lt;p&gt;$_POST is an array of variables passed to the current script via the HTTP POST method.
+– W3schools&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-http highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;POST&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;/data/form&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;HTTP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1.1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;Host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;example.com&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;name1=value1&amp;amp;name2=value2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;when-to-use-get-vs-post-methods&quot;&gt;When to use GET vs POST methods&lt;/h2&gt;
+
+&lt;p&gt;In most cases:&lt;/p&gt;
+
+&lt;p class=&quot;alert alert-danger&quot;&gt;GET should be used to &lt;strong&gt;retrieve data&lt;/strong&gt; from a specified resource and
+sending &lt;strong&gt;non-sensitive&lt;/strong&gt; data.&lt;/p&gt;
+
+&lt;p class=&quot;alert alert-danger&quot;&gt;POST is the preferred way for sending &lt;strong&gt;form data&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;table class=&quot;table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;GET&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;POST&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Can be &lt;strong&gt;cached&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-times&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Remain in the &lt;strong&gt;browser history&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-times&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Can be &lt;strong&gt;bookmarked&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-times&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Used with &lt;strong&gt;sensitive data&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-times&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Data length&lt;/strong&gt; restrictions&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-times&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.w3schools.com/tags/ref_httpmethods.asp&quot;&gt;Source&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote cite=&quot;http://stackoverflow.com/a/504993/1165509&quot;&gt;
+  &lt;p&gt;Example: a search page should use GET, while a form that changes your password should use POST.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/q/504947/1165509&quot;&gt;When should I use GET or POST method? What’s the difference between them?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.w3schools.com/tags/ref_httpmethods.asp&quot;&gt;HTTP Methods: GET vs. POST&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.tut.fi/~jkorpela/forms/methods.html&quot;&gt;Methods GET and POST in HTML forms - what’s the difference?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 25 Jul 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/when-to-use-http-post-or-get-methods-in-html-forms/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/when-to-use-http-post-or-get-methods-in-html-forms/</guid>
+        
+        <category>http</category>
+        
+        <category>http-get</category>
+        
+        <category>http-post</category>
+        
+        <category>http-methods</category>
+        
+        
+        <category>docs</category>
+        
+        <category>protocols</category>
+        
+        <category>http</category>
+        
+      </item>
     
       <item>
         <title>Appropriate HTML5 tags to show source code, commands and software related tasks on blogs</title>
@@ -978,7 +1095,7 @@ added to the local repo so it is possible to pull and push changes to it.&lt;/p&
 &lt;/samp&gt;
 &lt;/pre&gt;
 
-&lt;h1 id=&quot;verify-new-remote&quot;&gt;Verify new remote&lt;/h1&gt;
+&lt;h3 id=&quot;verify-new-remote&quot;&gt;Verify new remote&lt;/h3&gt;
 
 &lt;pre class=&quot;shell&quot;&gt;
 &lt;samp&gt;
@@ -1293,53 +1410,6 @@ end
         <category>markup</category>
         
         <category>kramdown</category>
-        
-      </item>
-    
-      <item>
-        <title>HTML viewport meta tag for responsive designs</title>
-        <description>&lt;h1 id=&quot;using-the-viewport-meta-tag&quot;&gt;Using the viewport meta tag&lt;/h1&gt;
-
-&lt;blockquote cite=&quot;https://developers.google.com/speed/docs/insights/ConfigureViewport#overview&quot;&gt;
-  &lt;p&gt;A viewport controls how a webpage is displayed on a mobile device. Without a viewport, mobile devices will render the page at a typical desktop screen width, scaled to fit the screen. Setting a viewport gives control over the page’s width and scaling on different devices.
- Pages optimized to display well on mobile devices should include a meta viewport in the head of the document specifying width=device-width, initial-scale=1.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;viewport&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;width=device-width, initial-scale=1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;em&gt;CSS Media queries&lt;/em&gt; can be applied based on viewport size. Based on the characteristics of the device rendering the content, such as &lt;em&gt;width&lt;/em&gt; and &lt;em&gt;height&lt;/em&gt;, media queries can change the styles used for each device characteristic.&lt;/p&gt;
-
-&lt;blockquote cite=&quot;https://developers.google.com/web/fundamentals/design-and-ui/responsive/fundamentals/use-media-queries?hl=en&quot;&gt;
-  &lt;p&gt;Use min-width over min-device-width to ensure the broadest experience.
-Use relative sizes for elements to avoid breaking layout.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;c&quot;&gt;/* CSS Rules used when query matches */&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en/docs/Mozilla/Mobile/Viewport_meta_tag&quot;&gt;https://developer.mozilla.org/en/docs/Mozilla/Mobile/Viewport_meta_tag&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developers.google.com/speed/docs/insights/ConfigureViewport&quot;&gt;https://developers.google.com/speed/docs/insights/ConfigureViewport&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.w3.org/TR/mwabp/#bp-viewport&quot;&gt;https://www.w3.org/TR/mwabp/#bp-viewport&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.w3schools.com/css/css_rwd_viewport.asp&quot;&gt;http://www.w3schools.com/css/css_rwd_viewport.asp&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developers.google.com/web/fundamentals/design-and-ui/responsive/fundamentals/use-media-queries?hl=en&quot;&gt;https://developers.google.com/web/fundamentals/design-and-ui/responsive/fundamentals/use-media-queries?hl=en&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Tue, 21 Jun 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/viewport-metatag-html/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/viewport-metatag-html/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>html</category>
-        
-        <category>responsive</category>
         
       </item>
     
