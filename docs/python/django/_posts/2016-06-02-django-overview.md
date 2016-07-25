@@ -40,6 +40,11 @@ _Django docs_ suggestions, like creating the project
         └── views.py
 </pre>
 
+
+Default settings are located in `django/conf/global_settings.py`, they are
+overwritten in `mysite/settings.py`
+{: class="alert alert-info"}
+
 The structure that sets up Django by default is very basic, when a project
 starts to grow, it starts to require a better approach, outlined in
 {% link docs/python/django/_posts/2016-07-16-django-project-directory-structure.md %}
@@ -50,7 +55,6 @@ that deals with other aspects of development and deployment such as:
 - having different environments for development, production (staging)
 - documentation for the project
 
-
 ## Models 
 
 Fat models, thin views.
@@ -59,9 +63,18 @@ Fat models, thin views.
 
 * Generic views <https://docs.djangoproject.com/en/1.9/topics/class-based-views/generic-display/>
 
-* Model forms <https://docs.djangoproject.com/en/1.9/topics/forms/modelforms/>
-
 ## Templates
+
+## Forms
+
+In a Django web app, a form can refer to:
+
+- an [HTML form](https://www.w3.org/TR/html5/forms.html#forms) a component of a Web page that has form controls
+- a [Django Form](https://docs.djangoproject.com/en/1.9/ref/forms/api/#django.forms.Form) that produces an HTML form
+- the structured data returned when a form is submitted
+- all of the above interacting together
+
+Reference: <https://docs.djangoproject.com/en/1.9/topics/forms/>
 
 ## Testing
 
