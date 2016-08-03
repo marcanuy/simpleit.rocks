@@ -45,6 +45,9 @@ other aspects of development and deployment such as:
     - media/ `only in development`
     - static/ `non user generated static media`
     - templates/ `site-wide`
+      - base.html
+        - app-1/
+        - app-2/
     - APP-1/
     - APP-2/
     - config/ `CONFIGURATION-ROOT`
