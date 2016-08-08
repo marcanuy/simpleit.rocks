@@ -2,8 +2,6 @@
 title: Django webframework
 subtitle: Python Webframework
 layout: category_posts
-childs:
-  - "concepts"
 ---
 
 Main links

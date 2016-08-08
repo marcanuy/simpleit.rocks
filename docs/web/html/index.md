@@ -10,7 +10,10 @@ childs: [""]
 Useful Links
 ============
 
-+ Latest HTML specification version: <https://www.w3.org/TR/html/>
-+ HTML5 specification: <https://www.w3.org/TR/html5/>
++ Editor's draft: <http://w3c.github.io/html/>
++ HTML specification
+  + Latest <https://www.w3.org/TR/html/>
+  + HTML 5 <https://www.w3.org/TR/html5/>
+  + HTML 5.1 <https://www.w3.org/TR/html51/>
 + All the HTML tags: <https://developer.mozilla.org/en-US/docs/Web/HTML/Element>
 + [HTML Wikipedia](https://en.wikipedia.org/wiki/HTML/)

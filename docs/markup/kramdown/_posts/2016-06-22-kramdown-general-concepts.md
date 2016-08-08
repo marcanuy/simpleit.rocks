@@ -20,7 +20,7 @@ Two alternatives for fully semantically correct [blockquotes](https://developer.
 
 + Adding the _cite_ attribute in _blockquote_ tag:
 
-~~~ kramdown
+~~~ markdown
 > The rule of thumb is, don't introduce a new attribute outside of the __init__ method, otherwise you've given the caller an object that isn't fully initialized.
 {: cite="https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/"}
 ~~~
@@ -51,6 +51,22 @@ Generates in HTML:
   </p>
 </blockquote>
 ~~~
+
+### Generate Bootstrap 4 Blockquotes
+
+In BS4 blockquotes need to have the `class="blockquote"` in the `blockquote` element and optionally a `class=blockquote-footer` in the `<footer>` element at bottom:
+
+~~~ markdown
+> Django handles three distinct parts of the work involved in forms.
+> <footer class="blockquote-footer">Djangoproject.com tutorial</footer>
+{: class="blockquote" cite="https://docs.djangoproject.com/en/1.9/topics/forms/"}
+~~~
+
+Generates:
+
+> Django handles three distinct parts of the work involved in forms.
+> <footer class="blockquote-footer">Djangoproject.com tutorial</footer>
+{: class="blockquote" cite="https://docs.djangoproject.com/en/1.9/topics/forms/"}
 
 ## Code syntax highlighting
 

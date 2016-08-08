@@ -1,7 +1,7 @@
 ---
 title: Django Overview
 subtitle: Framework basic summary
-description: Python Web framework ovewview
+description: Python Web framework overview
 layout: post
 weight: 1
 ---
@@ -73,6 +73,32 @@ In a Django web app, a form can refer to:
 - a [Django Form](https://docs.djangoproject.com/en/1.9/ref/forms/api/#django.forms.Form) that produces an HTML form
 - the structured data returned when a form is submitted
 - all of the above interacting together
+
+> Django handles three distinct parts of the work involved in forms
+>
+>  1. preparing and restructuring data to make it ready for rendering
+>  2. creating HTML forms for the data
+>  3. receiving and processing submitted forms and data from the client
+>
+> <footer class="blockquote-footer">Djangoproject.com tutorial</footer>
+{: class="blockquote" cite="https://docs.djangoproject.com/en/1.9/topics/forms/"}
+
+Most of the forms in Django should be created from models, using [ModelForms](https://docs.djangoproject.com/en/1.9/topics/forms/modelforms/#modelform), [Model Fields](https://docs.djangoproject.com/en/1.9/ref/models/fields/) and [CSRF protection](https://docs.djangoproject.com/en/1.9/ref/csrf/).
+
+ModelForms are useful to:
+
+- generate HTML
+- use [built-in validators](https://docs.djangoproject.com/en/1.9/ref/forms/validation/#using-validation-in-practice) approriate to each field. `forms.ModelForm.is_valid()`
+
+A ModelForm maps fields from model classes to HTML form `<input>` elements via a the Form class. 
+
+One of the core features of Django Forms is that they make it easy to validate all the data.
+{: class="alert alert-warning"}
+
+### Form methods
+
+If the form is used to retrieve data, it should use the __GET method__, 
+if it modifies data, it needs to use the __POST method__. 
 
 Reference: <https://docs.djangoproject.com/en/1.9/topics/forms/>
 
