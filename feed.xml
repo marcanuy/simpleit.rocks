@@ -6,9 +6,109 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 08 Aug 2016 15:26:27 -0300</pubDate>
-    <lastBuildDate>Mon, 08 Aug 2016 15:26:27 -0300</lastBuildDate>
+    <pubDate>Mon, 08 Aug 2016 18:28:52 -0300</pubDate>
+    <lastBuildDate>Mon, 08 Aug 2016 18:28:52 -0300</lastBuildDate>
     <generator>Jekyll v3.2.0.pre.beta1</generator>
+    
+      <item>
+        <title>When To Test Or Write Code First In Web Development</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;The optimal solution when testing a web application while developing is a
+mix between &lt;em&gt;Test-driven development&lt;/em&gt; and &lt;em&gt;write code first&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Test Driven Development code concept is to write tests before
+implementations:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Write a test that fails&lt;/li&gt;
+  &lt;li&gt;Make the test pass changing the code, without breaking other tests&lt;/li&gt;
+  &lt;li&gt;Refactor the code, verify that tests pass&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;TDD methodology makes you write a lot of code for simple tasks and can 
+often make you lost focus on what you are trying to develop.&lt;/p&gt;
+
+&lt;p&gt;A balanced approach is to use the &lt;strong&gt;TDD methodology&lt;/strong&gt; in certain cases and
+&lt;strong&gt;write first code&lt;/strong&gt; in others, or sometimes to skip tests at all,
+these are some hints on how to choose between them:&lt;/p&gt;
+
+&lt;table class=&quot;table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Scenario&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;TDD&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Code first&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Is the test very short or simple?&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Don’t knowing the desired behaviour yet?&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Does it has something to do with the security model?&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Fixing a bug?&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Are you refactoring?&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://www.railstutorial.org/book/static_pages&quot;&gt;
+  &lt;p&gt;Whenever a bug is found, write a test to reproduce it and protect against regressions, then write the application code to fix it.&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt;Rails Tutorial Book&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p class=&quot;alert alert-danger&quot;&gt;Do not write test code for code that it is likely to change, like detailed HTML.&lt;/p&gt;
+
+&lt;h2 id=&quot;in-a-mvc-approach&quot;&gt;In a MVC approach&lt;/h2&gt;
+
+&lt;p&gt;For &lt;strong&gt;controllers&lt;/strong&gt; and &lt;strong&gt;models&lt;/strong&gt; write tests first (TDD), then integration tests.&lt;/p&gt;
+
+&lt;p&gt;For &lt;strong&gt;views&lt;/strong&gt; that we know are constantly changing and are not so prone to errors, skip testing.&lt;/p&gt;
+
+&lt;p&gt;As always, it ultimately depends on each case, there aren’t solutions
+that can be always applied, it ends up being a mix between trial and error
+to see what gives you the best balance between being productive and
+generating that sense of confidence in your code that writing tests gives,
+a lot of practice is required to achieve a smooth integration of writing
+tests and code.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/books/ruby-on-rails-tutorial/&quot;&gt;Ruby on Rails Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Mon, 08 Aug 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/when-to-test-or-write-code-first-in-web-development/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/when-to-test-or-write-code-first-in-web-development/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>theory</category>
+        
+        <category>testing</category>
+        
+      </item>
     
       <item>
         <title>Common Steps To Start A Rails Project</title>
@@ -1274,282 +1374,6 @@ a static media server.&lt;/p&gt;
         <category>python</category>
         
         <category>django</category>
-        
-      </item>
-    
-      <item>
-        <title>Jekyll Variables and Liquid template tags cheatsheet</title>
-        <description>&lt;p&gt;Summary of all the Jekyll variables and liquid tags available.&lt;/p&gt;
-
-&lt;h2 id=&quot;general-liquid-template-tags&quot;&gt;General Liquid template tags&lt;/h2&gt;
-
-&lt;dl&gt;
-&lt;dt&gt;jekyll.version&lt;/dt&gt;
-&lt;dd&gt;Jekyll version&lt;/dd&gt;
-&lt;dt&gt;jekyll.environment&lt;/dt&gt;
-&lt;dd&gt;Jekyll environment&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;p&gt;Example Output:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Version: 3.2.0.pre.beta1 #3.2.0.pre.beta1
-
-Environment: production # development
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/jekyll/jekyll/blob/v3.2.0.pre.beta1/lib/jekyll/drops/jekyll_drop.rb&quot;&gt;Source&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;global-variables&quot;&gt;Global Variables&lt;/h2&gt;
-
-&lt;dl&gt;
-&lt;dt&gt;site.time&lt;/dt&gt;
-&lt;dd&gt;The current time (when you run the jekyll command).&lt;/dd&gt;
-&lt;dt&gt;site.pages&lt;/dt&gt;
-&lt;dd&gt;A list of all Pages.&lt;/dd&gt;
-&lt;dt&gt;site.posts&lt;/dt&gt;
-&lt;dd&gt;A reverse chronological list of all Posts.&lt;/dd&gt;
-&lt;dt&gt;site.related_posts&lt;/dt&gt;
-&lt;dd&gt;If the page being processed is a Post, this contains a list of up to ten related Posts. By default, these are the ten most recent posts. For high quality but slow to compute results, run the jekyll command with the --lsi (latent semantic indexing) option. Also note GitHub Pages does not support the lsi option when generating sites.&lt;/dd&gt;
-&lt;dt&gt;site.static_files&lt;/dt&gt;
-&lt;dd&gt;A list of all static files (i.e. files not processed by Jekyll's converters or the Liquid renderer). Each file has three properties: path, modified_time and extname.&lt;/dd&gt;
-&lt;dt&gt;site.html_pages&lt;/dt&gt;
-&lt;dd&gt;A subset of `site.pages` listing those which end in `.html`.&lt;/dd&gt;
-&lt;dt&gt;site.html_files&lt;/dt&gt;
-&lt;dd&gt;A subset of `site.static_files` listing those which end in `.html`.&lt;/dd&gt;
-&lt;dt&gt;site.collections&lt;/dt&gt;
-&lt;dd&gt;A list of all the collections.&lt;/dd&gt;
-&lt;dt&gt;site.data&lt;/dt&gt;
-&lt;dd&gt;A list containing the data loaded from the YAML files located in the _data directory.&lt;/dd&gt;
-&lt;dt&gt;site.documents&lt;/dt&gt;
-&lt;dd&gt;A list of all the documents in every collection.&lt;/dd&gt;
-&lt;dt&gt;site.categories.CATEGORY&lt;/dt&gt;
-&lt;dd&gt;The list of all Posts in category CATEGORY.&lt;/dd&gt;
-&lt;dt&gt;site.tags.TAG&lt;/dt&gt;
-&lt;dd&gt;The list of all Posts with tag TAG.&lt;/dd&gt;
-&lt;dt&gt;site.[CONFIGURATION_DATA]&lt;/dt&gt;
-&lt;dd&gt;All the variables set via the command line and your _config.yml are available through the site variable. For example, if you have url: http://mysite.com in your configuration file, then in your Posts and Pages it will be stored in site.url. Jekyll does not parse changes to _config.yml in watch mode, you must restart Jekyll to see changes to variables. &lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://jekyllrb.com/docs/variables/&quot;&gt;Source&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;post&quot;&gt;Post&lt;/h2&gt;
-
-&lt;dl&gt;
-&lt;dt&gt;page.title&lt;/dt&gt;
-&lt;dd&gt;The title of the Page.&lt;/dd&gt;
-&lt;dt&gt;page.date&lt;/dt&gt;
-&lt;dd&gt;The Date assigned to the Post. This can be overridden in a Post’s front matter by specifying a new date/time in the format YYYY-MM-DD HH:MM:SS (assuming UTC), or YYYY-MM-DD HH:MM:SS +/-TTTT (to specify a time zone using an offset from UTC. e.g. 2008-12-14 10:30:00 +0900).&lt;/dd&gt;
-&lt;dt&gt;page.categories&lt;/dt&gt;
-&lt;dd&gt;The list of categories to which this post belongs. Categories are derived from the directory structure above the _posts directory. For example, a post at /work/code/_posts/2008-12-24-closures.md would have this field set to ['work', 'code']. These can also be specified in the YAML Front Matter.&lt;/dd&gt;
-&lt;dt&gt;page.tags&lt;/dt&gt;
-&lt;dd&gt;The list of tags to which this post belongs. These can be specified in the YAML Front Matter.&lt;/dd&gt;
-
-&lt;dt&gt;page.content&lt;/dt&gt;
-&lt;dd&gt;The content of the Page, rendered or un-rendered depending upon what Liquid is being processed and what page is.&lt;/dd&gt;
-&lt;dt&gt;page.excerpt&lt;/dt&gt;
-&lt;dd&gt;The un-rendered excerpt of the Page.&lt;/dd&gt;
-&lt;dt&gt;page.url&lt;/dt&gt;
-&lt;dd&gt;The URL of the Post without the domain, but with a leading slash, e.g. /2008/12/14/my-post.html&lt;/dd&gt;
-&lt;dt&gt;page.id&lt;/dt&gt;
-&lt;dd&gt;An identifier unique to the Post (useful in RSS feeds). e.g. /2008/12/14/my-post&lt;/dd&gt;
-&lt;dt&gt;page.path&lt;/dt&gt;
-&lt;dd&gt;The path to the raw post or page. Example usage: Linking back to the page or post’s source on GitHub. This can be overridden in the YAML Front Matter.&lt;/dd&gt;
-&lt;dt&gt;page.next&lt;/dt&gt;
-&lt;dd&gt;The next post relative to the position of the current post in site.posts. Returns nil for the last entry.&lt;/dd&gt;
-&lt;dt&gt;page.previous&lt;/dt&gt;
-&lt;dd&gt;The previous post relative to the position of the current post in site.posts. Returns nil for the first entry. &lt;/dd&gt;
-
-&lt;/dl&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://jekyllrb.com/docs/frontmatter/&quot;&gt;Source 1&lt;/a&gt;
-&lt;a href=&quot;https://jekyllrb.com/docs/variables/&quot;&gt;Source 2&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;paginator&quot;&gt;Paginator&lt;/h2&gt;
-
-&lt;p class=&quot;alert alert-danger&quot;&gt;Paginator variables are available in index files only &lt;code class=&quot;highlighter-rouge&quot;&gt;index.{md,htm,html}&lt;/code&gt;&lt;/p&gt;
-
-&lt;dl&gt;
-&lt;dt&gt;paginator.per_page&lt;/dt&gt;
-&lt;dd&gt;Number of Posts per page.&lt;/dd&gt;
-&lt;dt&gt;paginator.posts&lt;/dt&gt;
-&lt;dd&gt;Posts available for that page.&lt;/dd&gt;
-&lt;dt&gt;paginator.total_posts&lt;/dt&gt;
-&lt;dd&gt;Total number of Posts.&lt;/dd&gt;
-&lt;dt&gt;paginator.total_pages&lt;/dt&gt;
-&lt;dd&gt;Total number of pages.&lt;/dd&gt;
-&lt;dt&gt;paginator.page&lt;/dt&gt;
-&lt;dd&gt;The number of the current page.&lt;/dd&gt;
-&lt;dt&gt;paginator.previous_page&lt;/dt&gt;
-&lt;dd&gt;The number of the previous page.&lt;/dd&gt;
-&lt;dt&gt;paginator.previous_page_path&lt;/dt&gt;
-&lt;dd&gt;The path to the previous page.&lt;/dd&gt;
-&lt;dt&gt;paginator.next_page&lt;/dt&gt;
-&lt;dd&gt;The number of the next page.&lt;/dd&gt;
-&lt;dt&gt;paginator.next_page_path&lt;/dt&gt;
-&lt;dd&gt;The path to the next page.&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;h2 id=&quot;collections&quot;&gt;Collections&lt;/h2&gt;
-
-&lt;p&gt;Variables that belong to &lt;em&gt;collections&lt;/em&gt; and also the ones defined in &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;&lt;/p&gt;
-
-&lt;dl&gt;
-&lt;dt&gt;label&lt;/dt&gt;
-&lt;dd&gt;The name of your collection, e.g. my_collection.&lt;/dd&gt;
-&lt;dt&gt;docs&lt;/dt&gt;
-&lt;dd&gt;An array of documents.&lt;/dd&gt;
-&lt;dt&gt;files&lt;/dt&gt;
-&lt;dd&gt;An array of static files in the collection.&lt;/dd&gt;
-&lt;dt&gt;relative_directory&lt;/dt&gt;
-&lt;dd&gt;The path to the collection's source directory, relative to the site source.&lt;/dd&gt;
-&lt;dt&gt;directory&lt;/dt&gt;
-&lt;dd&gt;The full path to the collections's source directory.&lt;/dd&gt;
-&lt;dt&gt;output&lt;/dt&gt;
-&lt;dd&gt;Whether the collection's documents will be output as individual files. &lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;h3 id=&quot;collection-document&quot;&gt;Collection Document&lt;/h3&gt;
-
-&lt;p&gt;Variables in a single collection Document&lt;/p&gt;
-
-&lt;dl&gt;
-&lt;dt&gt;content&lt;/dt&gt;
-&lt;dd&gt;The (unrendered) content of the document. If no YAML Front Matter is provided, Jekyll will not generate the file in your collection. If YAML Front Matter is used, then this is all the contents of the file after the terminating `---` of the front matter.&lt;/dd&gt;
-&lt;dt&gt;output&lt;/dt&gt;
-&lt;dd&gt;The rendered output of the document, based on the content.&lt;/dd&gt;
-&lt;dt&gt;path&lt;/dt&gt;
-&lt;dd&gt;The full path to the document's source file.&lt;/dd&gt;
-&lt;dt&gt;relative_path&lt;/dt&gt;
-&lt;dd&gt;The path to the document's source file relative to the site source.&lt;/dd&gt;
-&lt;dt&gt;url&lt;/dt&gt;
-&lt;dd&gt;The URL of the rendered collection. The file is only written to the destination when the collection to which it belongs has output: true in the site's configuration.&lt;/dd&gt;
-&lt;dt&gt;collection&lt;/dt&gt;
-&lt;dd&gt;The name of the document's collection.&lt;/dd&gt;
-&lt;dt&gt;date&lt;/dt&gt;
-&lt;dd&gt; The date of the document's collection.&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://jekyllrb.com/docs/collections/#documents&quot;&gt;Source&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;common-code-snippets&quot;&gt;Common Code Snippets&lt;/h2&gt;
-
-&lt;h3 id=&quot;list-of-posts&quot;&gt;List of posts&lt;/h3&gt;
-
-&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;ul&amp;gt;
-  &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;post&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.posts&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &amp;lt;li&amp;gt;
-      &amp;lt;a href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/a&amp;gt;
-    &amp;lt;/li&amp;gt;
-  &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&amp;lt;/ul&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;list-of-collections&quot;&gt;List of collections&lt;/h3&gt;
-
-&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;collection&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.collections&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-
-&amp;lt;h4&amp;gt;Collection &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;forloop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/h4&amp;gt;
-
-&amp;lt;a href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;baseurl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;/&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;camelcase}}&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&amp;lt;dl&amp;gt;&lt;span class=&quot;err&quot;&gt;
-&lt;/span&gt;&amp;lt;dt&amp;gt;Docs&amp;lt;/dt&amp;gt;&lt;span class=&quot;err&quot;&gt;
-&lt;/span&gt;&amp;lt;dd&amp;gt;{%&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;comment&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;docs&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endcomment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;&amp;lt;/dd&amp;gt;
-&amp;lt;dt&amp;gt;Files&amp;lt;/dt&amp;gt;
-&amp;lt;dd&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/dd&amp;gt;
-&amp;lt;dt&amp;gt;Relative directory&amp;lt;/dt&amp;gt;
-&amp;lt;dd&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;relative_directory&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/dd&amp;gt;
-&amp;lt;dt&amp;gt;Directory&amp;lt;/dt&amp;gt;
-&amp;lt;dd&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/dd&amp;gt;
-&amp;lt;dt&amp;gt;Output&amp;lt;/dt&amp;gt;
-&amp;lt;dd&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/dd&amp;gt;
-&amp;lt;/dl&amp;gt;
-&amp;lt;hr&amp;gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;example-output&quot;&gt;Example Output&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Collection 1
-
-books
-
-Docs
-Files
-Relative directory
-    _books
-Directory
-    /home/marcanuy/Development/simpleit.rocks/_books
-Output
-    true
-
-Collection 2
-
-posts
-
-Docs
-Files
-Relative directory
-    _posts
-Directory
-    /home/marcanuy/Development/simpleit.rocks/_posts
-Output
-    true 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;list-of-document-attributes-of-a-collection&quot;&gt;List of document attributes of a Collection&lt;/h3&gt;
-
-&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;collection&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.collections&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-
-&amp;lt;h4&amp;gt;Collection &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;forloop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/h4&amp;gt;
-
-&amp;lt;dl&amp;gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;doc&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;collection.docs&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&amp;lt;dt&amp;gt;Path&amp;lt;/dt&amp;gt;&amp;lt;dd&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/dd&amp;gt;
-&amp;lt;dt&amp;gt;Relative_path&amp;lt;/dt&amp;gt;&amp;lt;dd&amp;gt; &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;relative_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/dd&amp;gt;
-&amp;lt;dt&amp;gt;Collection&amp;lt;/dt&amp;gt;&amp;lt;dd&amp;gt; &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/dd&amp;gt;
-&amp;lt;dt&amp;gt;Date&amp;lt;/dt&amp;gt;&amp;lt;dd&amp;gt; &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/dd&amp;gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&amp;lt;/dl&amp;gt;
-&amp;lt;hr&amp;gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;example-output-1&quot;&gt;Example Output&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Path
-    docs/ruby/jekyll/templates/_posts/2016-07-13-jekyll-variables-and-liquid-template-tags-cheatsheet.md
-Relative_path
-    docs/ruby/jekyll/templates/_posts/2016-07-13-jekyll-variables-and-liquid-template-tags-cheatsheet.md
-Collection
-    posts
-Date
-    2016-07-13 00:00:00 -0300
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Wed, 13 Jul 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/jekyll-variables-and-liquid-template-tags-cheatsheet/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/jekyll-variables-and-liquid-template-tags-cheatsheet/</guid>
-        
-        <category>jekyll</category>
-        
-        <category>templates</category>
-        
-        <category>liquid</category>
-        
-        
-        <category>docs</category>
-        
-        <category>ruby</category>
-        
-        <category>jekyll</category>
-        
-        <category>templates</category>
         
       </item>
     
