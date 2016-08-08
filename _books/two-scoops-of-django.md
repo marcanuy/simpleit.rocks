@@ -1,5 +1,4 @@
 ---
-#title:
 description: Best Practices For Django.
 authors:
   - Daniel Roy Greenfeld

@@ -23,10 +23,10 @@ layout: post
 <div class="row">
   <div class="col-xs-8">
     <h2>Articles</h2>
-    <p>This book is being referenced in the following articles:</p>
+    <p>This book is being referenced in:</p>
     <div class="list-group">
       {% for post in site.posts %}
-      {% if post.content contains page.title %}
+      {% if post.content contains page.slug %}
       <a href="{{ post.url }}" class="list-group-item">
 	{{ post.title }}
       </a>
