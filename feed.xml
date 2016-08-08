@@ -6,9 +6,694 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 25 Jul 2016 11:12:03 -0300</pubDate>
-    <lastBuildDate>Mon, 25 Jul 2016 11:12:03 -0300</lastBuildDate>
+    <pubDate>Mon, 08 Aug 2016 15:19:20 -0300</pubDate>
+    <lastBuildDate>Mon, 08 Aug 2016 15:19:20 -0300</lastBuildDate>
     <generator>Jekyll v3.2.0.pre.beta1</generator>
+    
+      <item>
+        <title>Common Steps To Start A Rails Project</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Basic steps to start a rails app that will be hosted in a remote server and
+heroku, using sqlite3 in development and PostgreSQL in production (heroku).&lt;/p&gt;
+
+&lt;h2 id=&quot;generate-a-new-app&quot;&gt;Generate a new app&lt;/h2&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;rails _5.0.0_ new sample_app&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;adjust-gemfile&quot;&gt;Adjust Gemfile&lt;/h2&gt;
+
+&lt;p&gt;Inspect &lt;code class=&quot;highlighter-rouge&quot;&gt;/sample_app/Gemfile&lt;/code&gt; and put &lt;code class=&quot;highlighter-rouge&quot;&gt;sqlite3&lt;/code&gt; in the &lt;code class=&quot;highlighter-rouge&quot;&gt;development&lt;/code&gt; group
+and &lt;code class=&quot;highlighter-rouge&quot;&gt;postgresql&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;production&lt;/code&gt; group.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#...&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:development&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:test&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'sqlite3'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'1.3.11'&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;#...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:production&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'pg'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'0.18.4'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;install-gems&quot;&gt;Install gems&lt;/h2&gt;
+
+&lt;p&gt;Install the gems specified in &lt;code class=&quot;highlighter-rouge&quot;&gt;development&lt;/code&gt;, skipping &lt;code class=&quot;highlighter-rouge&quot;&gt;production&lt;/code&gt; gems with &lt;kbd&gt;bundle install --without production&lt;/kbd&gt;.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;cd sample_app&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;bundle install --without production&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;bundle update&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;initialize-git-repository&quot;&gt;Initialize Git repository&lt;/h2&gt;
+
+&lt;p&gt;Start control versioning the project&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;git init&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt; git commit -m &quot;Init repo&quot;&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;add-github-repo&quot;&gt;Add Github repo&lt;/h2&gt;
+
+&lt;p&gt;Set a new remote to &lt;a href=&quot;https://help.github.com/articles/adding-a-remote/&quot;&gt;github&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;git remote add origin https://github.com/user/sample_app.git&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;git push -u origin --all&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;deploy-to-heroku&quot;&gt;Deploy to Heroku&lt;/h2&gt;
+
+&lt;p&gt;Pushing and deploying the application to Heroku.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;heroku create&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;git push heroku master&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;useful-commands&quot;&gt;Useful commands&lt;/h2&gt;
+
+&lt;p&gt;Migrating the database.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;rails db:migrate&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Running the test suite to verify that everything is working.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;rails test&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Run the app in a local server:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;rails server&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+</description>
+        <pubDate>Mon, 08 Aug 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/common-steps-to-start-a-rails-project/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/common-steps-to-start-a-rails-project/</guid>
+        
+        <category>ruby-on-rails</category>
+        
+        <category>web-development</category>
+        
+        
+        <category>docs</category>
+        
+        <category>ruby</category>
+        
+        <category>rails</category>
+        
+      </item>
+    
+      <item>
+        <title>Ruby On Rails Overview</title>
+        <description>&lt;p&gt;After starting the server with &lt;code class=&quot;highlighter-rouge&quot;&gt;rails serve&lt;/code&gt; the routes can be listed with: &lt;a href=&quot;http://localhost:3000/rails/info/routes&quot;&gt;http://localhost:3000/rails/info/routes&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 07 Aug 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/ruby-on-rails-overview/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/ruby-on-rails-overview/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>ruby</category>
+        
+        <category>rails</category>
+        
+      </item>
+    
+      <item>
+        <title>Building A Hello World App In Ruby On Rails App</title>
+        <description>&lt;h2 id=&quot;installing-rails&quot;&gt;Installing Rails&lt;/h2&gt;
+
+&lt;p&gt;Using the &lt;em&gt;RubyGems&lt;/em&gt; package manager, we can install all &lt;strong&gt;rails&lt;/strong&gt; 
+dependencies with one command.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;sudo gem install rails -v 5.0.0&lt;/kbd&gt;
+...
+29 gems installed
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p class=&quot;alert alert-warning&quot;&gt;&lt;em&gt;-v&lt;/em&gt; specify Rails version to install, in this case: 5.0.0&lt;/p&gt;
+
+&lt;h2 id=&quot;create-the-rails-app-structure&quot;&gt;Create the rails app structure&lt;/h2&gt;
+
+&lt;p&gt;Using &lt;code class=&quot;highlighter-rouge&quot;&gt;rails new&lt;/code&gt; command creates the skeleton for each rails app.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;mkdir rails_helloworld&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;cd rails_helloworld&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;rails_helloworld$&lt;/span&gt; &lt;kbd&gt;rails _5.0.0_ new hello_app&lt;/kbd&gt;
+      create  
+      create  README.md
+      create  Rakefile
+      create  config.ru
+      create  .gitignore
+      create  Gemfile
+      create  app
+      create  app/assets/config/manifest.js
+      create  app/assets/javascripts/application.js
+      create  app/assets/javascripts/cable.js
+      create  app/assets/stylesheets/application.css
+      create  app/channels/application_cable/channel.rb
+      create  app/channels/application_cable/connection.rb
+      create  app/controllers/application_controller.rb
+      create  app/helpers/application_helper.rb
+      create  app/jobs/application_job.rb
+      create  app/mailers/application_mailer.rb
+      create  app/models/application_record.rb
+      create  app/views/layouts/application.html.erb
+      create  app/views/layouts/mailer.html.erb
+      create  app/views/layouts/mailer.text.erb
+      create  app/assets/images/.keep
+      create  app/assets/javascripts/channels
+      create  app/assets/javascripts/channels/.keep
+      create  app/controllers/concerns/.keep
+      create  bin
+      create  bin/bundle
+      create  bin/rails
+      create  bin/rake
+      create  bin/setup
+      create  bin/update
+      create  config
+      create  config/routes.rb
+      create  config/application.rb
+      create  config/environment.rb
+      create  config/secrets.yml
+      create  config/cable.yml
+      create  config/puma.rb
+      create  config/spring.rb
+      create  config/environments
+      create  config/environments/development.rb
+      create  config/environments/production.rb
+      create  config/environments/test.rb
+      create  config/initializers
+      create  config/initializers/application_controller_renderer.rb
+      create  config/initializers/assets.rb
+      create  config/initializers/backtrace_silencers.rb
+      create  config/initializers/cookies_serializer.rb
+      create  config/initializers/cors.rb
+      create  config/initializers/filter_parameter_logging.rb
+      create  config/initializers/inflections.rb
+      create  config/initializers/mime_types.rb
+      create  config/initializers/new_framework_defaults.rb
+      create  config/initializers/session_store.rb
+      create  config/initializers/wrap_parameters.rb
+      create  config/locales
+      create  config/locales/en.yml
+      create  config/boot.rb
+      create  config/database.yml
+      create  db
+      create  db/seeds.rb
+      create  lib
+      create  lib/tasks
+      create  lib/tasks/.keep
+      create  lib/assets
+      create  lib/assets/.keep
+      create  log
+      create  log/.keep
+      create  public
+      create  public/404.html
+      create  public/422.html
+      create  public/500.html
+      create  public/apple-touch-icon-precomposed.png
+      create  public/apple-touch-icon.png
+      create  public/favicon.ico
+      create  public/robots.txt
+      create  test/fixtures
+      create  test/fixtures/.keep
+      create  test/fixtures/files
+      create  test/fixtures/files/.keep
+      create  test/controllers
+      create  test/controllers/.keep
+      create  test/mailers
+      create  test/mailers/.keep
+      create  test/models
+      create  test/models/.keep
+      create  test/helpers
+      create  test/helpers/.keep
+      create  test/integration
+      create  test/integration/.keep
+      create  test/test_helper.rb
+      create  tmp
+      create  tmp/.keep
+      create  tmp/cache
+      create  tmp/cache/assets
+      create  vendor/assets/javascripts
+      create  vendor/assets/javascripts/.keep
+      create  vendor/assets/stylesheets
+      create  vendor/assets/stylesheets/.keep
+      remove  config/initializers/cors.rb
+         run  bundle install
+Fetching gem metadata from https://rubygems.org/...........
+Fetching version metadata from https://rubygems.org/...
+Fetching dependency metadata from https://rubygems.org/..
+Resolving dependencies.................................................
+Using rake 11.2.2
+Using concurrent-ruby 1.0.2
+Using i18n 0.7.0
+Using minitest 5.9.0
+Using thread_safe 0.3.5
+Using builder 3.2.2
+Using erubis 2.7.0
+Using mini_portile2 2.1.0
+Using pkg-config 1.1.7
+Using rack 2.0.1
+Using nio4r 1.2.1
+Using websocket-extensions 0.1.2
+Using mime-types-data 3.2016.0521
+Using arel 7.1.1
+Using bundler 1.11.2
+Using byebug 9.0.5
+Using coffee-script-source 1.10.0
+Using execjs 2.7.0
+Using method_source 0.8.2
+Using thor 0.19.1
+Using debug_inspector 0.0.2
+Using ffi 1.9.14
+Using multi_json 1.12.1
+Using rb-fsevent 0.9.7
+Using puma 3.6.0
+Using sass 3.4.22
+Using tilt 2.0.5
+Using spring 1.7.2
+Using sqlite3 1.3.11
+Using turbolinks-source 5.0.0
+Using tzinfo 1.2.2
+Using nokogiri 1.6.8
+Using rack-test 0.6.3
+Using sprockets 3.7.0
+Using websocket-driver 0.6.4
+Using mime-types 3.1
+Using coffee-script 2.4.1
+Using uglifier 3.0.1
+Using rb-inotify 0.9.7
+Installing turbolinks 5.0.1
+Using activesupport 5.0.0
+Using loofah 2.0.3
+Using mail 2.6.4
+Using listen 3.0.8
+Using rails-dom-testing 2.0.1
+Using globalid 0.3.7
+Using activemodel 5.0.0
+Installing jbuilder 2.6.0
+Using rails-html-sanitizer 1.0.3
+Installing spring-watcher-listen 2.0.0
+Using activejob 5.0.0
+Using activerecord 5.0.0
+Using actionview 5.0.0
+Using actionpack 5.0.0
+Using actioncable 5.0.0
+Using actionmailer 5.0.0
+Using railties 5.0.0
+Using sprockets-rails 3.1.1
+Installing coffee-rails 4.2.1
+Installing jquery-rails 4.1.1
+Installing web-console 3.3.1
+Using rails 5.0.0
+Installing sass-rails 5.0.6
+Bundle complete! 15 Gemfile dependencies, 63 gems now installed.
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+         run  bundle exec spring binstub --all
+* bin/rake: spring inserted
+* bin/rails: spring inserted
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;The command &lt;code class=&quot;highlighter-rouge&quot;&gt;rails new&lt;/code&gt; automatically runs &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; after creating the following directories and files:&lt;/p&gt;
+
+&lt;pre&gt;
+.
+└── hello_app
+    ├── app
+    │   ├── assets
+    │   │   ├── config
+    │   │   │   └── manifest.js
+    │   │   ├── images
+    │   │   ├── javascripts
+    │   │   │   ├── application.js
+    │   │   │   ├── cable.js
+    │   │   │   └── channels
+    │   │   └── stylesheets
+    │   │       └── application.css
+    │   ├── channels
+    │   │   └── application_cable
+    │   │       ├── channel.rb
+    │   │       └── connection.rb
+    │   ├── controllers
+    │   │   ├── application_controller.rb
+    │   │   └── concerns
+    │   ├── helpers
+    │   │   └── application_helper.rb
+    │   ├── jobs
+    │   │   └── application_job.rb
+    │   ├── mailers
+    │   │   └── application_mailer.rb
+    │   ├── models
+    │   │   ├── application_record.rb
+    │   │   └── concerns
+    │   └── views
+    │       └── layouts
+    │           ├── application.html.erb
+    │           ├── mailer.html.erb
+    │           └── mailer.text.erb
+    ├── bin
+    │   ├── bundle
+    │   ├── rails
+    │   ├── rake
+    │   ├── setup
+    │   ├── spring
+    │   └── update
+    ├── config
+    │   ├── application.rb
+    │   ├── boot.rb
+    │   ├── cable.yml
+    │   ├── database.yml
+    │   ├── environment.rb
+    │   ├── environments
+    │   │   ├── development.rb
+    │   │   ├── production.rb
+    │   │   └── test.rb
+    │   ├── initializers
+    │   │   ├── application_controller_renderer.rb
+    │   │   ├── assets.rb
+    │   │   ├── backtrace_silencers.rb
+    │   │   ├── cookies_serializer.rb
+    │   │   ├── filter_parameter_logging.rb
+    │   │   ├── inflections.rb
+    │   │   ├── mime_types.rb
+    │   │   ├── new_framework_defaults.rb
+    │   │   ├── session_store.rb
+    │   │   └── wrap_parameters.rb
+    │   ├── locales
+    │   │   └── en.yml
+    │   ├── puma.rb
+    │   ├── routes.rb
+    │   ├── secrets.yml
+    │   └── spring.rb
+    ├── config.ru
+    ├── db
+    │   └── seeds.rb
+    ├── Gemfile
+    ├── Gemfile.lock
+    ├── lib
+    │   ├── assets
+    │   └── tasks
+    ├── log
+    ├── public
+    │   ├── 404.html
+    │   ├── 422.html
+    │   ├── 500.html
+    │   ├── apple-touch-icon.png
+    │   ├── apple-touch-icon-precomposed.png
+    │   ├── favicon.ico
+    │   └── robots.txt
+    ├── Rakefile
+    ├── README.md
+    ├── test
+    │   ├── controllers
+    │   ├── fixtures
+    │   │   └── files
+    │   ├── helpers
+    │   ├── integration
+    │   ├── mailers
+    │   ├── models
+    │   └── test_helper.rb
+    ├── tmp
+    │   └── cache
+    │       └── assets
+    └── vendor
+        └── assets
+            ├── javascripts
+            └── stylesheets
+
+45 directories, 57 files
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; reads the content of &lt;code class=&quot;highlighter-rouge&quot;&gt;ruby_helloworld/Gemfile&lt;/code&gt; and install each dependency.&lt;/p&gt;
+
+&lt;h2 id=&quot;serve-pages-in-development&quot;&gt;Serve pages in development&lt;/h2&gt;
+
+&lt;p&gt;Running &lt;code class=&quot;highlighter-rouge&quot;&gt;rails server&lt;/code&gt; launches a server &lt;strong&gt;for development purposes&lt;/strong&gt; on &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;rails_helloworld$&lt;/span&gt; &lt;kbd&gt;rails server&lt;/kbd&gt;
+=&amp;gt; Booting Puma
+=&amp;gt; Rails 5.0.0 application starting in development on http://localhost:3000
+=&amp;gt; Run `rails server -h` for more startup options
+Puma starting in single mode...
+* Version 3.6.0 (ruby 2.3.1-p112), codename: Sleepy Sunday Serenity
+* Min threads: 5, max threads: 5
+* Environment: development
+* Listening on tcp://localhost:3000
+Use Ctrl-C to stop
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Opening the address &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt; will show up &lt;code class=&quot;highlighter-rouge&quot;&gt;rails&lt;/code&gt; homescreen:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/rails_first_homescreen.png&quot; alt=&quot;Homepage screenshot&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;
+&lt;samp&gt;
+Started GET &quot;/&quot; for 127.0.0.1 at 2016-08-07 18:58:25 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {&quot;internal&quot;=&amp;gt;true}
+  Rendering /var/lib/gems/2.3.0/gems/railties-5.0.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/railties-5.0.0/lib/rails/templates/rails/welcome/index.html.erb (8.7ms)
+Completed 200 OK in 41ms (Views: 18.7ms | ActiveRecord: 0.0ms)
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;creating-the-hello-world-page&quot;&gt;Creating the Hello World page&lt;/h2&gt;
+
+&lt;h3 id=&quot;routing&quot;&gt;Routing&lt;/h3&gt;
+
+&lt;p&gt;Edit the controller &lt;code class=&quot;highlighter-rouge&quot;&gt;app/controllers/routes.rb&lt;/code&gt; that handles the homepage with the action &lt;code class=&quot;highlighter-rouge&quot;&gt;hello&lt;/code&gt; to retrieve &lt;code class=&quot;highlighter-rouge&quot;&gt;Hello World&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ApplicationController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActionController&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;protect_from_forgery&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;with: :exception&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;hello&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;html: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;hello, world!&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;adding-controller-action&quot;&gt;Adding controller action&lt;/h3&gt;
+
+&lt;p&gt;Add the route that will handle the access to the &lt;code class=&quot;highlighter-rouge&quot;&gt;/&lt;/code&gt; url with &lt;code class=&quot;highlighter-rouge&quot;&gt;root:controller#action&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;routes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;draw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'application#hello'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sun, 07 Aug 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/building-a-hello-world-app-in-ruby-on-rails-app/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/building-a-hello-world-app-in-ruby-on-rails-app/</guid>
+        
+        <category>ror</category>
+        
+        <category>rails</category>
+        
+        <category>web-development</category>
+        
+        
+        <category>docs</category>
+        
+        <category>ruby</category>
+        
+        <category>rails</category>
+        
+      </item>
+    
+      <item>
+        <title>Inserting Bootstrap 4 Responsive Images In Kramdown</title>
+        <description>&lt;p&gt;The common markup for inserting images in kramdown is:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Homepage screenshot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;/assets/homescreen.png&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The most used way to add a class to any markup is to use &lt;em&gt;inline annotations&lt;/em&gt; &lt;strong&gt;in the line below&lt;/strong&gt; of the markup with &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:class=&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;a-class&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt; but in this case it should be used in the same line, so this:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Homepage screenshot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;/assets/homescreen.png&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;{:class=&quot;img-fluid&quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;generates:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/assets/rails_first_homescreen.png&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Homepage screenshot&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;img-fluid&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sun, 07 Aug 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/inserting-bootstrap-4-responsive-images-in-kramdown/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/inserting-bootstrap-4-responsive-images-in-kramdown/</guid>
+        
+        <category>kramdown</category>
+        
+        <category>bootstrap-4</category>
+        
+        
+        <category>docs</category>
+        
+        <category>markup</category>
+        
+        <category>kramdown</category>
+        
+      </item>
+    
+      <item>
+        <title>Understanding Django Forms</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Django provides several classes to facilitate the work of creating forms.&lt;/p&gt;
+
+&lt;p&gt;A typical form declaration extends from &lt;code class=&quot;highlighter-rouge&quot;&gt;forms.Form&lt;/code&gt; class.&lt;/p&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph TB
+  form[&quot;form\=AForm\(\)&quot;]--&amp;gt;status{status11}
+  status--&quot;form.is_bound&quot;---&amp;gt;valid[can validate]
+  status--&quot;form.unbound&quot;---&amp;gt;a
+&lt;/div&gt;
+
+</description>
+        <pubDate>Sat, 30 Jul 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/understanding-django-forms/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/understanding-django-forms/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>python</category>
+        
+        <category>django</category>
+        
+        <category>forms</category>
+        
+      </item>
+    
+      <item>
+        <title>How To Create A Form In Django</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;A tipical workflow when creating a form in Django consists of these three steps:&lt;/p&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph TB
+  a[Create a Form class that defines its fields]--&amp;gt;b
+  b[Create the view to display the form and process received data]--&amp;gt;c
+  c[create the template to show the form]
+&lt;/div&gt;
+
+&lt;h2 id=&quot;creating-the-form&quot;&gt;Creating the form&lt;/h2&gt;
+
+&lt;p&gt;A &lt;em&gt;form&lt;/em&gt; can be defined &lt;a href=&quot;https://docs.djangoproject.com/en/1.9/topics/forms/&quot;&gt;from scratch&lt;/a&gt; 
+or take the field defitions from &lt;a href=&quot;https://docs.djangoproject.com/en/1.9/topics/forms/modelforms/&quot;&gt;Model&lt;/a&gt; classes.&lt;/p&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph TB
+  form--&amp;gt;has_model{&quot;from a model&quot;}
+  has_model-- no --&amp;gt;scratch[&quot;Inherits from django.forms.Form&quot;]
+  has_model-- yes --&amp;gt;model[&quot;Inherits from django.forms.ModelForm&quot;]
+  scratch--&amp;gt;fields[&quot;Define fields using django.forms.*Field&quot;]
+&lt;/div&gt;
+
+&lt;h3 id=&quot;new-form&quot;&gt;New Form&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# forms.py&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;django&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forms&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ContactForm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Full name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;70&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;from-model&quot;&gt;From Model&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;django.forms&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ModelForm&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;myapp.models&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;News&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ArticleForm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ModelForm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Meta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;News&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;fields&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'title'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'content'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Creating an empty form to add an article.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;form&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ArticleForm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Creating a form to change an existing article.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;article&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Article&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pk&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;form&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ArticleForm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;article&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Forms API &lt;a href=&quot;https://docs.djangoproject.com/en/1.9/ref/forms/api/#module-django.forms&quot;&gt;https://docs.djangoproject.com/en/1.9/ref/forms/api/#module-django.forms&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Forms tutorial &lt;a href=&quot;https://docs.djangoproject.com/en/1.9/topics/forms/&quot;&gt;https://docs.djangoproject.com/en/1.9/topics/forms/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;New Forms &lt;a href=&quot;https://docs.djangoproject.com/en/1.9/topics/forms/&quot;&gt;https://docs.djangoproject.com/en/1.9/topics/forms/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Forms from models &lt;a href=&quot;https://docs.djangoproject.com/en/1.9/topics/forms/modelforms/&quot;&gt;https://docs.djangoproject.com/en/1.9/topics/forms/modelforms/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 29 Jul 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/how-to-create-a-form-in-django/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/how-to-create-a-form-in-django/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>python</category>
+        
+        <category>django</category>
+        
+        <category>forms</category>
+        
+      </item>
     
       <item>
         <title>When To Use Http Post Or Get Methods In Html Forms</title>
@@ -80,6 +765,11 @@ sending &lt;strong&gt;non-sensitive&lt;/strong&gt; data.&lt;/p&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-times&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
+      &lt;td&gt;Data visible in URL&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-times&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
       &lt;td&gt;Used with &lt;strong&gt;sensitive data&lt;/strong&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-times&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
@@ -88,6 +778,26 @@ sending &lt;strong&gt;non-sensitive&lt;/strong&gt; data.&lt;/p&gt;
       &lt;td&gt;&lt;strong&gt;Data length&lt;/strong&gt; restrictions&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-times&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ASCII data type allowed&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Binary data type allowed&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-times&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Content-Type &lt;em&gt;&lt;a href=&quot;https://www.w3.org/TR/html401/interact/forms.html#h-17.13.4&quot;&gt;application/x-www-form-urlencoded&lt;/a&gt;&lt;/em&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Content-Type &lt;em&gt;&lt;a href=&quot;https://www.ietf.org/rfc/rfc2388.txt&quot;&gt;multipart/form-data&lt;/a&gt;&lt;/em&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-times&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -429,6 +1139,8 @@ Linux nasa 2.6.11-grsec-v6.189 #1 SMP Tue Feb 1 12:21:05 PST 2010 i586
         
         <category>docs</category>
         
+        <category>web</category>
+        
         <category>html</category>
         
       </item>
@@ -478,7 +1190,16 @@ other aspects of development and deployment such as:&lt;/p&gt;
           &lt;li&gt;manage.py&lt;/li&gt;
           &lt;li&gt;media/ &lt;code class=&quot;highlighter-rouge&quot;&gt;only in development&lt;/code&gt;&lt;/li&gt;
           &lt;li&gt;static/ &lt;code class=&quot;highlighter-rouge&quot;&gt;non user generated static media&lt;/code&gt;&lt;/li&gt;
-          &lt;li&gt;templates/ &lt;code class=&quot;highlighter-rouge&quot;&gt;site-wide&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;templates/ &lt;code class=&quot;highlighter-rouge&quot;&gt;site-wide&lt;/code&gt;
+            &lt;ul&gt;
+              &lt;li&gt;base.html
+                &lt;ul&gt;
+                  &lt;li&gt;app-1/&lt;/li&gt;
+                  &lt;li&gt;app-2/&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
           &lt;li&gt;APP-1/&lt;/li&gt;
           &lt;li&gt;APP-2/&lt;/li&gt;
           &lt;li&gt;config/ &lt;code class=&quot;highlighter-rouge&quot;&gt;CONFIGURATION-ROOT&lt;/code&gt;
@@ -829,587 +1550,6 @@ Date
         <category>jekyll</category>
         
         <category>templates</category>
-        
-      </item>
-    
-      <item>
-        <title>Jekyll Collections Versus Posts</title>
-        <description>&lt;h2 id=&quot;differences&quot;&gt;Differences&lt;/h2&gt;
-
-&lt;p&gt;These are the main differences between &lt;em&gt;Collections&lt;/em&gt; and &lt;em&gt;posts&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;categories&quot;&gt;Categories&lt;/h3&gt;
-
-&lt;p&gt;A &lt;em&gt;post&lt;/em&gt; in a subdirectory structure automatically gets subdirectories
-names as its &lt;em&gt;categories&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;A collection does not have &lt;em&gt;categories&lt;/em&gt; by default.&lt;/p&gt;
-
-&lt;p class=&quot;alert alert-warning&quot;&gt;&lt;em&gt;Categories&lt;/em&gt; can be assigned to &lt;em&gt;collections&lt;/em&gt; with a parameter in each
-file &lt;em&gt;front matter&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;filenames&quot;&gt;Filenames&lt;/h3&gt;
-
-&lt;p&gt;&lt;em&gt;Post&lt;/em&gt; filenames must be in the format &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-title.&amp;lt;markup&amp;gt;&lt;/code&gt; which
-assigns the post date, used to sort posts by creation date.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Collection&lt;/em&gt; filenames doesn’t need any special format in &lt;em&gt;filenames&lt;/em&gt;,
-they get the &lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt; from the file creation date.&lt;/p&gt;
-
-&lt;p class=&quot;aler alert-warning&quot;&gt;In both cases, the document’s &lt;em&gt;date&lt;/em&gt; can be overwritten in the front 
-matter of each file setting the &lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt; variable. (i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;date: 2016-06-08&lt;/code&gt;)&lt;/p&gt;
-
-&lt;h3 id=&quot;directories&quot;&gt;Directories&lt;/h3&gt;
-
-&lt;p&gt;Posts have the restriction of being only recognized if they are located
-under a &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; folder. 
-This restriction won’t be removed as it is being kept to not break
-previous versions.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Collections&lt;/em&gt; can be located directly in any directory of the &lt;em&gt;collection&lt;/em&gt; folder.&lt;/p&gt;
-
-&lt;h3 id=&quot;dates&quot;&gt;Dates&lt;/h3&gt;
-
-&lt;p&gt;This is one of the most important difference between them.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Posts&lt;/em&gt; were originally aimed for blogs, so the &lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt; is a central concept
-that is also displayed in its filename, they are not likely to get updated
-after published.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;└── _posts
-   ├── 2016-11-19-why-every-developer-should-use-emacs.md
-   └── 2016-06-20-open-source-in-governments.md
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Beside &lt;em&gt;collections&lt;/em&gt; have a &lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt; property, this is not an important
-concept as it is in &lt;em&gt;posts&lt;/em&gt;, a clear structure is needed to locate each
-file quickly when needed to update or add data to them.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;└── _my_collection
-   ├── open-source-in-governments.md
-   └── why-every-developer-should-use-emacs.md
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-
-&lt;p&gt;Considering publishing a list of &lt;em&gt;books&lt;/em&gt; with both approaches:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;a list of standard &lt;em&gt;posts&lt;/em&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;books&lt;/code&gt; folder.&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;a &lt;em&gt;collection&lt;/em&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;_books&lt;/code&gt; folder, with the following configuration:&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;/_config.yml&lt;/code&gt;:&lt;/p&gt;
-
-        &lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  collections:
-    books:
-      output: true
-&lt;/code&gt;&lt;/pre&gt;
-        &lt;/div&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p class=&quot;alert alert-warning&quot;&gt;Note the underscore as the first character of the &lt;em&gt;collection&lt;/em&gt; folder &lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/_books&lt;/code&gt;&lt;/strong&gt;,
-needed to let Jekyll handle the directory as a &lt;em&gt;collection&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;This is how they basically compare:&lt;/p&gt;
-
-&lt;table class=&quot;table&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt; &lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Collection&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Post&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Directories&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/_books/science/&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/books/science/_posts/&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;File&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;item.md&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;2016-06-10-item.md&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;{{ page.categories }}&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[&quot;books&quot;, &quot;science&quot;]&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;{{ page.date }}&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;from file creation date:&lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;2016-07-11 23:03:59&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;from filename: &lt;code class=&quot;highlighter-rouge&quot;&gt;2016-06-10&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Document access&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;site.books&lt;/code&gt; &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;site.collections&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;site.categories.science&lt;/code&gt;, &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;site.collections&lt;/code&gt;, &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;site.categories.books&lt;/code&gt; &lt;br /&gt; or &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;site.posts&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;table class=&quot;table&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;File handling the URL &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;http://example.com/books/science&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/books.html&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;permalink: &quot;/books/science&quot;&lt;/code&gt; &lt;br /&gt; or &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;/books/science/index.md&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;choosing-between-collections-and-posts&quot;&gt;Choosing between Collections and Posts&lt;/h2&gt;
-
-&lt;h3 id=&quot;features-of-collections&quot;&gt;Features of &lt;strong&gt;Collections&lt;/strong&gt;:&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;a &lt;strong&gt;cleaner directory/subdirectories structure&lt;/strong&gt; without &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; folder
-in each nested level&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;cleaner filenames&lt;/strong&gt; without mandatory dates.&lt;/li&gt;
-  &lt;li&gt;In a hierarchical subdirectoy structure, &lt;em&gt;categories&lt;/em&gt; can be simulated
-processing the &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; property of each file.&lt;/li&gt;
-  &lt;li&gt;Collection filenames put more emphasis in its &lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt;, not the &lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;features-of-posts&quot;&gt;Features of &lt;strong&gt;Posts&lt;/strong&gt;:&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;em&gt;Posts&lt;/em&gt; were introduced in Jekyll before &lt;em&gt;collections&lt;/em&gt;, so they are
-&lt;strong&gt;widely adopted&lt;/strong&gt; and with &lt;strong&gt;more plugins available&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Posts filenames put more emphasis in &lt;code class=&quot;highlighter-rouge&quot;&gt;dates&lt;/code&gt;, not the &lt;code class=&quot;highlighter-rouge&quot;&gt;titles&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;when using nested directories, creating each subdirectory &lt;em&gt;index&lt;/em&gt; is
-straightforward.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Jekyll Collections docs &lt;a href=&quot;https://jekyllrb.com/docs/collections/&quot;&gt;https://jekyllrb.com/docs/collections/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Jekyll Posts docs &lt;a href=&quot;https://jekyllrb.com/docs/posts/&quot;&gt;https://jekyllrb.com/docs/posts/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Tue, 12 Jul 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/jekyll-collections-versus-posts/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/jekyll-collections-versus-posts/</guid>
-        
-        <category>jekyll</category>
-        
-        <category>collections</category>
-        
-        
-        <category>docs</category>
-        
-        <category>ruby</category>
-        
-        <category>jekyll</category>
-        
-        <category>collections</category>
-        
-      </item>
-    
-      <item>
-        <title>Creating a git server from a git repo</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;A Git project commonly consists of three main sections in a Developer environment and 
-a single section in a Git Server:&lt;/p&gt;
-
-&lt;div class=&quot;mermaid&quot;&gt;
-graph TB
-    subgraph GitServer
-      server[&quot;Git&quot;]==&amp;gt;bare[&quot;the Git directory&quot;]
-    end
-    subgraph DeveloperRepo
-      git[&quot;Git&quot;]
-      git==&amp;gt;dir[&quot;the Git directory &lt;br /&gt; .git&quot;]
-      git==&amp;gt;stage[&quot;Staging Area&quot;]
-      git==&amp;gt;work[&quot;Working Directory&quot;]
-    end
-&lt;/div&gt;
-
-&lt;p&gt;In order to “move” a git repo to a git server, a special directory 
-has to be generated first. This is called a &lt;em&gt;bare repository&lt;/em&gt;, a directory
-that only contains the git data but not the project source code files,
-just like the &lt;strong&gt;.git&lt;/strong&gt; directory.&lt;/p&gt;
-
-&lt;p&gt;Then this &lt;em&gt;bare repo&lt;/em&gt; should be moved to the server, so the server acts as
- a common &lt;em&gt;git server&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;The repo from which the server was generated needs to add the &lt;em&gt;git server&lt;/em&gt; as a 
-&lt;em&gt;remote&lt;/em&gt; and every other developer that wants to work in that project can
-&lt;em&gt;clone&lt;/em&gt; it from the server directly.&lt;/p&gt;
-
-&lt;h2 id=&quot;create-bare-repository&quot;&gt;Create bare repository&lt;/h2&gt;
-
-&lt;p&gt;In order to set up a Git server, you have to export an existing repository
-into a new &lt;em&gt;bare repository&lt;/em&gt; (a repository that doesn’t contain 
-a &lt;em&gt;working directory&lt;/em&gt;). This can be done with
-&lt;a href=&quot;https://git-scm.com/docs/git-clone&quot;&gt;git clone&lt;/a&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;--bare&lt;/code&gt; parameter.&lt;/p&gt;
-
-&lt;blockquote cite=&quot;https://git-scm.com/docs/git-clone&quot; class=&quot;alert alert-info&quot;&gt;
-  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--bare&lt;/code&gt; Make a bare Git repository. That is, instead of creating
-&lt;em&gt;directory&lt;/em&gt; and placing the administrative files in &lt;em&gt;directory&lt;/em&gt;/.git
-make the &lt;em&gt;directory&lt;/em&gt; itself the &lt;code class=&quot;highlighter-rouge&quot;&gt;$GIT_DIR&lt;/code&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;git clone --bare my_project my_project.git&lt;/kbd&gt;
-Cloning into bare repository my_project.git...
-done.
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;copy-repo-to-remote-server&quot;&gt;Copy repo to remote server&lt;/h2&gt;
-
-&lt;p&gt;Put the bare repository in the server.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;scp -r my_project.git user@gitserver.com:/srv/git&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;rm -r my_project.git&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;add-server-repo-as-a-remote-in-local-repo&quot;&gt;Add server repo as a remote in local repo&lt;/h2&gt;
-
-&lt;p&gt;After having the repo in the remote server, the git server remote should be
-added to the local repo so it is possible to pull and push changes to it.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;cd my_project&lt;/kbd&gt;
-&lt;span class=&quot;shell-comment&quot;&gt;# Set a new remote&lt;/span&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;(my_project)$&lt;/span&gt; &lt;kbd&gt;git remote add origin user@gitserver.com:/srv/git/my_project.git&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h3 id=&quot;verify-new-remote&quot;&gt;Verify new remote&lt;/h3&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;(my_project)$&lt;/span&gt; &lt;kbd&gt;git remote -v&lt;/kbd&gt;
-origin  user@gitserver.com:/srv/git/my_project.git (fetch)
-origin  user@gitserver.com:/srv/git/my_project.git (push)
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://git-scm.com/docs/git-clone&quot;&gt;https://git-scm.com/docs/git-clone&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server&quot;&gt;https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://git-scm.com/book/ch4-1.html&quot;&gt;https://git-scm.com/book/ch4-1.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Fri, 01 Jul 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/creating-a-git-server-from-a-git-repo/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/creating-a-git-server-from-a-git-repo/</guid>
-        
-        <category>git</category>
-        
-        <category>server</category>
-        
-        <category>bare-repository</category>
-        
-        
-        <category>docs</category>
-        
-        <category>git</category>
-        
-        <category>tutorials</category>
-        
-      </item>
-    
-      <item>
-        <title>Remotes</title>
-        <description>&lt;p&gt;&lt;a href=&quot;https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes&quot;&gt;https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Remote repositories are versions of your project that are hosted on the Internet or network somewhere. The clone command implicitly adds the origin remote for you.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Show remotes &lt;code class=&quot;highlighter-rouge&quot;&gt;$ git remote -v&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Add a remote &lt;code class=&quot;highlighter-rouge&quot;&gt;$ git remote add pb https://github.com/paulboone/ticgit&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;To get data from a remote project &lt;code class=&quot;highlighter-rouge&quot;&gt;$ git fetch [remote-name]&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;If your current branch is set up to track a remote branch, you can use the &lt;em&gt;git pull&lt;/em&gt; command to automatically fetch and then merge that remote branch into your current branch &lt;code class=&quot;highlighter-rouge&quot;&gt;$ git pull &lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Fri, 24 Jun 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/git-basic-commands/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/git-basic-commands/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>git</category>
-        
-        <category>remotes</category>
-        
-      </item>
-    
-      <item>
-        <title>Git Basic Concepts</title>
-        <description>&lt;h2 id=&quot;strem-of-snapshots&quot;&gt;Strem of snapshots&lt;/h2&gt;
-
-&lt;p&gt;Git saves data like a &lt;strong&gt;stream of snapshots&lt;/strong&gt;. Every time you commit, or save the state of your project in Git, it basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored.&lt;/p&gt;
-
-&lt;h2 id=&quot;integrity&quot;&gt;Integrity&lt;/h2&gt;
-
-&lt;p&gt;Git has &lt;strong&gt;integrity&lt;/strong&gt;. Everything in Git is check-summed before it is stored and is then referred to by that checksum. It uses &lt;a href=&quot;https://en.wikipedia.org/wiki/SHA-1&quot;&gt;SHA-1&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;file-states&quot;&gt;File states&lt;/h2&gt;
-
-&lt;p&gt;There are three &lt;em&gt;file states&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Committed&lt;/strong&gt; means that the data is stored in your local database.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Modified&lt;/strong&gt; means that you have changed the file but have not committed it to your database yet.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Staged&lt;/strong&gt; means that you have marked a modified fi\e in its current version to go into your next commit snapshot.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;lifecycle-of-the-status-of-files&quot;&gt;Lifecycle of the status of files&lt;/h3&gt;
-
-&lt;div class=&quot;mermaid&quot;&gt;
-sequenceDiagram
-    Untracked -&amp;gt;&amp;gt; Staged: Add the file
-    Unmodified -&amp;gt;&amp;gt; Modified: Edit the file
-   	Modified -&amp;gt;&amp;gt; Staged: Stage the file
-    Unmodified -&amp;gt;&amp;gt; Untracked: Remove the file
-    Staged -&amp;gt;&amp;gt; Unmodified: Commit
-&lt;/div&gt;
-
-&lt;h3 id=&quot;main-sections&quot;&gt;Main Sections&lt;/h3&gt;
-&lt;p&gt;Sections of a Git project:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;the &lt;em&gt;Git directory&lt;/em&gt; is where Git stores the metadata and object database
-for your project. It is copied when cloning a repo.&lt;/li&gt;
-  &lt;li&gt;the &lt;em&gt;working directory&lt;/em&gt; is a single checkout of one version of the 
-project. These files are pulled out of the compressed database in the Git
-directory and placed on disk for you to use or modify.&lt;/li&gt;
-  &lt;li&gt;the &lt;em&gt;staging area&lt;/em&gt; is a file, generally contained in your Git directory,
-that stores information about what will go into your next commit. 
-It’s sometimes referred to as the &lt;strong&gt;index&lt;/strong&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;mermaid text-sm-center&quot;&gt;
-graph TB
-      git[&quot;Git Project Sections&quot;]
-      git==&amp;gt;dir[&quot;the Git directory &lt;br /&gt; .git&quot;]
-      git==&amp;gt;stage[&quot;Staging Area&quot;]
-      git==&amp;gt;work[&quot;Working Directory&quot;]
-&lt;/div&gt;
-</description>
-        <pubDate>Fri, 24 Jun 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/git-basic-concepts/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/git-basic-concepts/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>git</category>
-        
-        <category>concepts</category>
-        
-      </item>
-    
-      <item>
-        <title>Git Commands</title>
-        <description>&lt;h1 id=&quot;commands&quot;&gt;Commands&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Git Config &lt;code class=&quot;highlighter-rouge&quot;&gt;$ git config --list&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Git config username and email for all repos&lt;/p&gt;
-
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ git config --global user.name &quot;John Doe&quot;&lt;/code&gt;&lt;/p&gt;
-
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ git config --global user.email &quot;your_email@example.com&quot;&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Initialize a repository. Creates a new subdirectory named .git that contains all of your necessary repository files. &lt;code class=&quot;highlighter-rouge&quot;&gt;$ git init .&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Get a copy of an existing Git repo. &lt;code class=&quot;highlighter-rouge&quot;&gt;$ git clone [url]&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Fri, 24 Jun 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/git-commands/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/git-commands/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>git</category>
-        
-        <category>commands</category>
-        
-      </item>
-    
-      <item>
-        <title>kramdown General Concepts</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#concepts&quot; id=&quot;markdown-toc-concepts&quot;&gt;Concepts&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#syntax&quot; id=&quot;markdown-toc-syntax&quot;&gt;Syntax&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#blockquotes&quot; id=&quot;markdown-toc-blockquotes&quot;&gt;Blockquotes&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#code-syntax-highlighting&quot; id=&quot;markdown-toc-code-syntax-highlighting&quot;&gt;Code syntax highlighting&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#links&quot; id=&quot;markdown-toc-links&quot;&gt;Links&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#table-of-content-generation&quot; id=&quot;markdown-toc-table-of-content-generation&quot;&gt;Table of content generation&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#references&quot; id=&quot;markdown-toc-references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;concepts&quot;&gt;Concepts&lt;/h1&gt;
-
-&lt;p&gt;Markdown superset converter&lt;/p&gt;
-
-&lt;h1 id=&quot;syntax&quot;&gt;Syntax&lt;/h1&gt;
-
-&lt;h2 id=&quot;blockquotes&quot;&gt;Blockquotes&lt;/h2&gt;
-
-&lt;p&gt;Two alternatives for fully semantically correct &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote&quot;&gt;blockquotes&lt;/a&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Adding the &lt;em&gt;cite&lt;/em&gt; attribute in &lt;em&gt;blockquote&lt;/em&gt; tag:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-kramdown&quot;&gt;&amp;gt; The rule of thumb is, don't introduce a new attribute outside of the __init__ method, otherwise you've given the caller an object that isn't fully initialized.
-{: cite=&quot;https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/&quot;}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Generates the following HTML:&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;blockquote&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;cite=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;The rule of thumb is, don’t introduce a new attribute outside of the &lt;span class=&quot;nt&quot;&gt;&amp;lt;strong&amp;gt;&lt;/span&gt;init&lt;span class=&quot;nt&quot;&gt;&amp;lt;/strong&amp;gt;&lt;/span&gt; method, otherwise you’ve given the caller an object that isn’t fully initialized.
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/blockquote&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Adding a &lt;em&gt;cite&lt;/em&gt; element inside the &lt;em&gt;blockquote&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gt&quot;&gt;&amp;gt; The secret to creativity is knowing how to hide your sources. &lt;/span&gt;
-&lt;span class=&quot;gt&quot;&gt;&amp;gt; -- &amp;lt;cite&amp;gt;[Albert Einstein][1]&amp;lt;/cite&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;http://www.quotedb.com/quotes/2112&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Generates in HTML:&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;blockquote&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;The secret to creativity is knowing how to hide your sources. 
-  – &lt;span class=&quot;nt&quot;&gt;&amp;lt;cite&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.quotedb.com/quotes/2112&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Albert Einstein&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/cite&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/blockquote&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;code-syntax-highlighting&quot;&gt;Code syntax highlighting&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;kramdown&lt;/em&gt; can use &lt;a href=&quot;https://github.com/jneen/rouge&quot;&gt;rouge&lt;/a&gt; or &lt;a href=&quot;http://coderay.rubychan.de/&quot;&gt;Coderay&lt;/a&gt; for &lt;a href=&quot;http://kramdown.gettalong.org/syntax_highlighter/coderay.html&quot;&gt;syntax highlighting&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The language of the source code can be specified appending the name of the language after the opening line. e.g. for HTML:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;With tildes&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~~~ html
-&amp;lt;p&amp;gt; this is my paragraph&amp;lt;/p&amp;gt;
-~~~
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Using &lt;abbr title=&quot;Inline Attribute List&quot;&gt;IAL&lt;/abbr&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~~~
-def myfunction?
-  1618
-end
-~~~
-{: .language-ruby}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;In Jekyll also works:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Using backticks:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'redcarpet'&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;markdown&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Redcarpet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;markdown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_html&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Or with curly braces:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'foo'&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3 id=&quot;links&quot;&gt;Links&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Languages Supported &lt;a href=&quot;https://highlightjs.org/static/demo/&quot;&gt;https://highlightjs.org/static/demo/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Languages supported by Rouge: &lt;a href=&quot;https://github.com/jneen/rouge/tree/master/lib/rouge/lexers&quot;&gt;https://github.com/jneen/rouge/tree/master/lib/rouge/lexers&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;table-of-content-generation&quot;&gt;Table of content generation&lt;/h2&gt;
-
-&lt;p&gt;Kramdown can generate an automatic &lt;a href=&quot;https://en.wikipedia.org/wiki/Table_of_contents&quot;&gt;Table of Contents&lt;/a&gt; for all the &lt;em&gt;headers&lt;/em&gt; that have an &lt;em&gt;id&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;As by default it generates automatic &lt;em&gt;ids&lt;/em&gt; for all the header, there is only needed to add a list and name using &lt;abbr title=&quot;Inline Attribute List&quot;&gt;IAL&lt;/abbr&gt; as the placeholder of the generated &lt;abbr title=&quot;Table Of Contents&quot;&gt;TOC&lt;/abbr&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; TOC
-{:toc}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://kramdown.gettalong.org/converter/html.html#toc&quot;&gt;http://kramdown.gettalong.org/converter/html.html#toc&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Documentation &lt;a href=&quot;http://kramdown.gettalong.org/syntax.html&quot;&gt;http://kramdown.gettalong.org/syntax.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Quickref &lt;a href=&quot;http://kramdown.gettalong.org/quickref.html&quot;&gt;http://kramdown.gettalong.org/quickref.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Wed, 22 Jun 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/kramdown-general-concepts/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/kramdown-general-concepts/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>markup</category>
-        
-        <category>kramdown</category>
         
       </item>
     

@@ -291,6 +291,7 @@
 <li class="toc-entry toc-h1"><a href="#concepts">Concepts</a></li>
 <li class="toc-entry toc-h1"><a href="#syntax">Syntax</a></li>
 <li class="toc-entry toc-h2"><a href="#blockquotes">Blockquotes</a></li>
+<li class="toc-entry toc-h3"><a href="#generate-bootstrap-4-blockquotes">Generate Bootstrap 4 Blockquotes</a></li>
 <li class="toc-entry toc-h2"><a href="#code-syntax-highlighting">Code syntax highlighting</a></li>
 <li class="toc-entry toc-h3"><a href="#links">Links</a></li>
 <li class="toc-entry toc-h2"><a href="#table-of-content-generation">Table of content generation</a></li>
@@ -377,7 +378,10 @@
     <ul id="markdown-toc">
   <li><a href="#concepts" id="markdown-toc-concepts">Concepts</a></li>
   <li><a href="#syntax" id="markdown-toc-syntax">Syntax</a>    <ul>
-      <li><a href="#blockquotes" id="markdown-toc-blockquotes">Blockquotes</a></li>
+      <li><a href="#blockquotes" id="markdown-toc-blockquotes">Blockquotes</a>        <ul>
+          <li><a href="#generate-bootstrap-4-blockquotes" id="markdown-toc-generate-bootstrap-4-blockquotes">Generate Bootstrap 4 Blockquotes</a></li>
+        </ul>
+      </li>
       <li><a href="#code-syntax-highlighting" id="markdown-toc-code-syntax-highlighting">Code syntax highlighting</a>        <ul>
           <li><a href="#links" id="markdown-toc-links">Links</a></li>
         </ul>
@@ -402,9 +406,10 @@
   <li>Adding the <em>cite</em> attribute in <em>blockquote</em> tag:</li>
 </ul>
 
-<pre><code class="language-kramdown">&gt; The rule of thumb is, don't introduce a new attribute outside of the __init__ method, otherwise you've given the caller an object that isn't fully initialized.
+<div class="language-markdown highlighter-rouge"><pre class="highlight"><code><span class="gt">&gt; The rule of thumb is, don't introduce a new attribute outside of the __init__ method, otherwise you've given the caller an object that isn't fully initialized.</span>
 {: cite="https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/"}
 </code></pre>
+</div>
 
 <p>Generates the following HTML:</p>
 
@@ -434,6 +439,23 @@
 <span class="nt">&lt;/blockquote&gt;</span>
 </code></pre>
 </div>
+
+<h3 id="generate-bootstrap-4-blockquotes">Generate Bootstrap 4 Blockquotes</h3>
+
+<p>In BS4 blockquotes need to have the <code class="highlighter-rouge">class="blockquote"</code> in the <code class="highlighter-rouge">blockquote</code> element and optionally a <code class="highlighter-rouge">class=blockquote-footer</code> in the <code class="highlighter-rouge">&lt;footer&gt;</code> element at bottom:</p>
+
+<div class="language-markdown highlighter-rouge"><pre class="highlight"><code><span class="gt">&gt; Django handles three distinct parts of the work involved in forms.</span>
+<span class="gt">&gt; &lt;footer class="blockquote-footer"&gt;Djangoproject.com tutorial&lt;/footer&gt;</span>
+{: class="blockquote" cite="https://docs.djangoproject.com/en/1.9/topics/forms/"}
+</code></pre>
+</div>
+
+<p>Generates:</p>
+
+<blockquote class="blockquote" cite="https://docs.djangoproject.com/en/1.9/topics/forms/">
+  <p>Django handles three distinct parts of the work involved in forms.</p>
+  <footer class="blockquote-footer">Djangoproject.com tutorial</footer>
+</blockquote>
 
 <h2 id="code-syntax-highlighting">Code syntax highlighting</h2>
 
@@ -552,6 +574,189 @@ end
 
 
 
+
+<div class="post-same-category">
+  <h4>Articles in this category</h4>
+  <div class="list-group">
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item active" href="/kramdown-general-concepts/">
+      kramdown General Concepts
+    </a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/inserting-bootstrap-4-responsive-images-in-kramdown/">
+      Inserting Bootstrap 4 Responsive Images In Kramdown
+    </a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+</div>
 
 
 	

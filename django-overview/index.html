@@ -31,8 +31,8 @@
   <!-- Begin Jekyll SEO tag v2.0.0 -->
 <title>Django Overview - Simple IT 🤘 Rocks</title>
 <meta property="og:title" content="Django Overview" />
-<meta name="description" content="Python Web framework ovewview" />
-<meta property="og:description" content="Python Web framework ovewview" />
+<meta name="description" content="Python Web framework overview" />
+<meta property="og:description" content="Python Web framework overview" />
 <link rel="canonical" href="http://simpleit.rocks/django-overview/" />
 <meta property="og:url" content="http://simpleit.rocks/django-overview/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
@@ -45,7 +45,7 @@
     "@type": "BlogPosting",
     "headline": "Django Overview",
     "datePublished": "2016-06-02T00:00:00-03:00",
-    "description": "Python Web framework ovewview",
+    "description": "Python Web framework overview",
     "url": "http://simpleit.rocks/django-overview/"
   }
 </script>
@@ -294,6 +294,7 @@
 <li class="toc-entry toc-h2"><a href="#views">Views</a></li>
 <li class="toc-entry toc-h2"><a href="#templates">Templates</a></li>
 <li class="toc-entry toc-h2"><a href="#forms">Forms</a></li>
+<li class="toc-entry toc-h3"><a href="#form-methods">Form methods</a></li>
 <li class="toc-entry toc-h2"><a href="#testing">Testing</a></li>
 <li class="toc-entry toc-h3"><a href="#related-links">Related Links</a></li>
 <li class="toc-entry toc-h2"><a href="#admin">Admin</a></li>
@@ -310,7 +311,7 @@
      href="https://twitter.com/share"
      data-url="http://simpleit.rocks/django-overview/"
      data-via=""
-     data-text="Python Web framework ovewview"
+     data-text="Python Web framework overview"
      data-related="marcanuy"
      data-count="vertical">
     Tweet
@@ -359,7 +360,7 @@
 
     
 	<p class="lead">
-	  Python Web framework ovewview
+	  Python Web framework overview
 	</p>
     
 
@@ -452,6 +453,36 @@ that deals with other aspects of development and deployment such as:</p>
   <li>the structured data returned when a form is submitted</li>
   <li>all of the above interacting together</li>
 </ul>
+
+<blockquote class="blockquote" cite="https://docs.djangoproject.com/en/1.9/topics/forms/">
+  <p>Django handles three distinct parts of the work involved in forms</p>
+
+  <ol>
+    <li>preparing and restructuring data to make it ready for rendering</li>
+    <li>creating HTML forms for the data</li>
+    <li>receiving and processing submitted forms and data from the client</li>
+  </ol>
+
+  <footer class="blockquote-footer">Djangoproject.com tutorial</footer>
+</blockquote>
+
+<p>Most of the forms in Django should be created from models, using <a href="https://docs.djangoproject.com/en/1.9/topics/forms/modelforms/#modelform">ModelForms</a>, <a href="https://docs.djangoproject.com/en/1.9/ref/models/fields/">Model Fields</a> and <a href="https://docs.djangoproject.com/en/1.9/ref/csrf/">CSRF protection</a>.</p>
+
+<p>ModelForms are useful to:</p>
+
+<ul>
+  <li>generate HTML</li>
+  <li>use <a href="https://docs.djangoproject.com/en/1.9/ref/forms/validation/#using-validation-in-practice">built-in validators</a> approriate to each field. <code class="highlighter-rouge">forms.ModelForm.is_valid()</code></li>
+</ul>
+
+<p>A ModelForm maps fields from model classes to HTML form <code class="highlighter-rouge">&lt;input&gt;</code> elements via a the Form class.</p>
+
+<p class="alert alert-warning">One of the core features of Django Forms is that they make it easy to validate all the data.</p>
+
+<h3 id="form-methods">Form methods</h3>
+
+<p>If the form is used to retrieve data, it should use the <strong>GET method</strong>, 
+if it modifies data, it needs to use the <strong>POST method</strong>.</p>
 
 <p>Reference: <a href="https://docs.djangoproject.com/en/1.9/topics/forms/">https://docs.djangoproject.com/en/1.9/topics/forms/</a></p>
 
@@ -691,6 +722,36 @@ it in tests.py</p>
     <a class="list-group-item " href="/django-project-directory-structure/">
       Django Project Directory Structure
     </a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

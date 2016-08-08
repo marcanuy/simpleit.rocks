@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Simple IT 🤘 Rocks" href="http://simpleit.rocks/feed.xml">
+
+  <!-- jQuery -->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
+
+  <!-- Mermaid -->
+  <link rel="stylesheet" href="/bower_components/mermaid/dist/mermaid.forest.css" type="text/css" media="screen" />
+
+  <!-- Bootstrap -->
+  <!--link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css"-->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap-flex.css">
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <!-- Custom css -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  
+  <!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>Building A Hello World App In Ruby On Rails App - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Building A Hello World App In Ruby On Rails App" />
+<meta name="description" content="Basic steps to start with Ruby on Rails." />
+<meta property="og:description" content="Basic steps to start with Ruby on Rails." />
+<link rel="canonical" href="http://simpleit.rocks/building-a-hello-world-app-in-ruby-on-rails-app/" />
+<meta property="og:url" content="http://simpleit.rocks/building-a-hello-world-app-in-ruby-on-rails-app/" />
+<meta property="og:site_name" content="Simple IT 🤘 Rocks" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-08-07T00:00:00-03:00" />
+<meta property="fb:app_id" content="1822851531277021" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Building A Hello World App In Ruby On Rails App",
+    "datePublished": "2016-08-07T00:00:00-03:00",
+    "description": "Basic steps to start with Ruby on Rails.",
+    "url": "http://simpleit.rocks/building-a-hello-world-app-in-ruby-on-rails-app/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+
+  
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1912030305535489",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+
+</head>
+
+
+  <body>
+
+    
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28572639-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <header class="site-header">
+
+  <!-- mermaid -->
+  <script src="/bower_components/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+  <!-- endmermaid -->
+
+  <div class="text-xs-center m-b-2">
+
+    <a class="display-1" href="/" style="text-decoration: none">Simple IT 🤘 Rocks</a>
+
+  </div>
+
+  
+  <div class="jumbotron jumbotron-fluid bg-inverse">
+  <div class="container">
+    
+    
+    
+    
+    
+    <h1 class="title">Building A Hello World App In Ruby On Rails App </h1>
+    
+    
+  </div>
+</div>
+
+  
+
+</header>
+
+
+    <div class="container-fluid">
+      <header class="post-header">
+  <div class="post-meta">
+    
+    <i class="fa fa-calendar" aria-hidden="true"></i>
+    <time datetime="2016-08-07T00:00:00-03:00" itemprop="datePublished">Aug 7, 2016</time>
+    
+  </div>
+  <div>
+    <div class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="list-/inline breadcrumb">
+
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/">
+    
+    <i class="fa fa-home" aria-hidden="true"></i>
+    
+
+    Home
+  </a>
+  
+  <meta itemprop="position" content="1" />
+</li>
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/docs">
+    
+
+    docs
+  </a>
+  
+  <meta itemprop="position" content="2" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/docs/ruby">
+    
+
+    ruby
+  </a>
+  
+  <meta itemprop="position" content="3" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/docs/ruby/rails">
+    
+
+    rails
+  </a>
+  
+  <meta itemprop="position" content="4" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <span itemscope itemtype="http://schema.org/Thing"
+       itemprop="item">
+    
+
+    <span itemprop="name">Building A Hello World App In Ruby On Rails App</span>
+  </span>
+  
+  <meta itemprop="position" content="5" />
+</li>
+
+    
+
+    
+    
+  </ol>
+</div>
+
+  </div>
+</header>
+
+<div class="post-content" itemprop="articleBody">
+  <div class="row">
+
+  <div class="col-md-3 site-sidebar">
+    <div class="si-ad m-a-1">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_side_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5882730780"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
+  
+</div>
+
+    
+    <div class="sticky" style="position:sticky; top:10px">
+      <div>
+	<h4>Table of Contents</h4>
+	<ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#installing-rails">Installing Rails</a></li>
+<li class="toc-entry toc-h2"><a href="#create-the-rails-app-structure">Create the rails app structure</a></li>
+<li class="toc-entry toc-h2"><a href="#serve-pages-in-development">Serve pages in development</a></li>
+<li class="toc-entry toc-h2"><a href="#creating-the-hello-world-page">Creating the Hello World page</a></li>
+<li class="toc-entry toc-h3"><a href="#routing">Routing</a></li>
+<li class="toc-entry toc-h3"><a href="#adding-controller-action">Adding controller action</a></li>
+</ul>
+      </div>
+      <div>
+	<div class="site-share">
+  
+  <ul class="share-buttons list-inline m-b-1 text-xs-center">
+    <li class="list-inline-item">
+      <div>
+  <a class="twitter-share-button"
+     href="https://twitter.com/share"
+     data-url="http://simpleit.rocks/building-a-hello-world-app-in-ruby-on-rails-app/"
+     data-via=""
+     data-text="Basic steps to start with Ruby on Rails.  
+"
+     data-related="marcanuy"
+     data-count="vertical">
+    Tweet
+  </a>
+  <script>
+   window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+    </li>
+    <li class="list-inline-item">
+      <div>
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!-- Place this tag where you want the +1 button to render. -->
+  <div class="g-plusone" data-size="tall"></div>
+</div>
+
+    </li>
+    <li class="list-inline-item">
+      <div>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) return;
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.0";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));</script>
+
+  <div class="fb-like" data-href="http://simpleit.rocks/building-a-hello-world-app-in-ruby-on-rails-app/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+</div>
+
+    </li>
+  </ul>
+  
+</div>
+
+      </div>
+    </div>
+    
+  </div> <!-- end col -->
+
+  <div class="col-md-8 site-content">
+
+    
+	<p class="lead">
+	  Basic steps to start with Ruby on Rails.  
+
+	</p>
+    
+
+    <div class="si-ad m-a-1">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_before_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="2929264389"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+
+    <h2 id="installing-rails">Installing Rails</h2>
+
+<p>Using the <em>RubyGems</em> package manager, we can install all <strong>rails</strong> 
+dependencies with one command.</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>sudo gem install rails -v 5.0.0</kbd>
+...
+29 gems installed
+</samp>
+</pre>
+
+<p class="alert alert-warning"><em>-v</em> specify Rails version to install, in this case: 5.0.0</p>
+
+<h2 id="create-the-rails-app-structure">Create the rails app structure</h2>
+
+<p>Using <code class="highlighter-rouge">rails new</code> command creates the skeleton for each rails app.</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>mkdir rails_helloworld</kbd>
+<span class="shell-prompt">$</span> <kbd>cd rails_helloworld</kbd>
+<span class="shell-prompt">rails_helloworld$</span> <kbd>rails _5.0.0_ new hello_app</kbd>
+      create  
+      create  README.md
+      create  Rakefile
+      create  config.ru
+      create  .gitignore
+      create  Gemfile
+      create  app
+      create  app/assets/config/manifest.js
+      create  app/assets/javascripts/application.js
+      create  app/assets/javascripts/cable.js
+      create  app/assets/stylesheets/application.css
+      create  app/channels/application_cable/channel.rb
+      create  app/channels/application_cable/connection.rb
+      create  app/controllers/application_controller.rb
+      create  app/helpers/application_helper.rb
+      create  app/jobs/application_job.rb
+      create  app/mailers/application_mailer.rb
+      create  app/models/application_record.rb
+      create  app/views/layouts/application.html.erb
+      create  app/views/layouts/mailer.html.erb
+      create  app/views/layouts/mailer.text.erb
+      create  app/assets/images/.keep
+      create  app/assets/javascripts/channels
+      create  app/assets/javascripts/channels/.keep
+      create  app/controllers/concerns/.keep
+      create  bin
+      create  bin/bundle
+      create  bin/rails
+      create  bin/rake
+      create  bin/setup
+      create  bin/update
+      create  config
+      create  config/routes.rb
+      create  config/application.rb
+      create  config/environment.rb
+      create  config/secrets.yml
+      create  config/cable.yml
+      create  config/puma.rb
+      create  config/spring.rb
+      create  config/environments
+      create  config/environments/development.rb
+      create  config/environments/production.rb
+      create  config/environments/test.rb
+      create  config/initializers
+      create  config/initializers/application_controller_renderer.rb
+      create  config/initializers/assets.rb
+      create  config/initializers/backtrace_silencers.rb
+      create  config/initializers/cookies_serializer.rb
+      create  config/initializers/cors.rb
+      create  config/initializers/filter_parameter_logging.rb
+      create  config/initializers/inflections.rb
+      create  config/initializers/mime_types.rb
+      create  config/initializers/new_framework_defaults.rb
+      create  config/initializers/session_store.rb
+      create  config/initializers/wrap_parameters.rb
+      create  config/locales
+      create  config/locales/en.yml
+      create  config/boot.rb
+      create  config/database.yml
+      create  db
+      create  db/seeds.rb
+      create  lib
+      create  lib/tasks
+      create  lib/tasks/.keep
+      create  lib/assets
+      create  lib/assets/.keep
+      create  log
+      create  log/.keep
+      create  public
+      create  public/404.html
+      create  public/422.html
+      create  public/500.html
+      create  public/apple-touch-icon-precomposed.png
+      create  public/apple-touch-icon.png
+      create  public/favicon.ico
+      create  public/robots.txt
+      create  test/fixtures
+      create  test/fixtures/.keep
+      create  test/fixtures/files
+      create  test/fixtures/files/.keep
+      create  test/controllers
+      create  test/controllers/.keep
+      create  test/mailers
+      create  test/mailers/.keep
+      create  test/models
+      create  test/models/.keep
+      create  test/helpers
+      create  test/helpers/.keep
+      create  test/integration
+      create  test/integration/.keep
+      create  test/test_helper.rb
+      create  tmp
+      create  tmp/.keep
+      create  tmp/cache
+      create  tmp/cache/assets
+      create  vendor/assets/javascripts
+      create  vendor/assets/javascripts/.keep
+      create  vendor/assets/stylesheets
+      create  vendor/assets/stylesheets/.keep
+      remove  config/initializers/cors.rb
+         run  bundle install
+Fetching gem metadata from https://rubygems.org/...........
+Fetching version metadata from https://rubygems.org/...
+Fetching dependency metadata from https://rubygems.org/..
+Resolving dependencies.................................................
+Using rake 11.2.2
+Using concurrent-ruby 1.0.2
+Using i18n 0.7.0
+Using minitest 5.9.0
+Using thread_safe 0.3.5
+Using builder 3.2.2
+Using erubis 2.7.0
+Using mini_portile2 2.1.0
+Using pkg-config 1.1.7
+Using rack 2.0.1
+Using nio4r 1.2.1
+Using websocket-extensions 0.1.2
+Using mime-types-data 3.2016.0521
+Using arel 7.1.1
+Using bundler 1.11.2
+Using byebug 9.0.5
+Using coffee-script-source 1.10.0
+Using execjs 2.7.0
+Using method_source 0.8.2
+Using thor 0.19.1
+Using debug_inspector 0.0.2
+Using ffi 1.9.14
+Using multi_json 1.12.1
+Using rb-fsevent 0.9.7
+Using puma 3.6.0
+Using sass 3.4.22
+Using tilt 2.0.5
+Using spring 1.7.2
+Using sqlite3 1.3.11
+Using turbolinks-source 5.0.0
+Using tzinfo 1.2.2
+Using nokogiri 1.6.8
+Using rack-test 0.6.3
+Using sprockets 3.7.0
+Using websocket-driver 0.6.4
+Using mime-types 3.1
+Using coffee-script 2.4.1
+Using uglifier 3.0.1
+Using rb-inotify 0.9.7
+Installing turbolinks 5.0.1
+Using activesupport 5.0.0
+Using loofah 2.0.3
+Using mail 2.6.4
+Using listen 3.0.8
+Using rails-dom-testing 2.0.1
+Using globalid 0.3.7
+Using activemodel 5.0.0
+Installing jbuilder 2.6.0
+Using rails-html-sanitizer 1.0.3
+Installing spring-watcher-listen 2.0.0
+Using activejob 5.0.0
+Using activerecord 5.0.0
+Using actionview 5.0.0
+Using actionpack 5.0.0
+Using actioncable 5.0.0
+Using actionmailer 5.0.0
+Using railties 5.0.0
+Using sprockets-rails 3.1.1
+Installing coffee-rails 4.2.1
+Installing jquery-rails 4.1.1
+Installing web-console 3.3.1
+Using rails 5.0.0
+Installing sass-rails 5.0.6
+Bundle complete! 15 Gemfile dependencies, 63 gems now installed.
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+         run  bundle exec spring binstub --all
+* bin/rake: spring inserted
+* bin/rails: spring inserted
+</samp>
+</pre>
+
+<p>The command <code class="highlighter-rouge">rails new</code> automatically runs <code class="highlighter-rouge">bundle install</code> after creating the following directories and files:</p>
+
+<pre>
+.
+└── hello_app
+    ├── app
+    │   ├── assets
+    │   │   ├── config
+    │   │   │   └── manifest.js
+    │   │   ├── images
+    │   │   ├── javascripts
+    │   │   │   ├── application.js
+    │   │   │   ├── cable.js
+    │   │   │   └── channels
+    │   │   └── stylesheets
+    │   │       └── application.css
+    │   ├── channels
+    │   │   └── application_cable
+    │   │       ├── channel.rb
+    │   │       └── connection.rb
+    │   ├── controllers
+    │   │   ├── application_controller.rb
+    │   │   └── concerns
+    │   ├── helpers
+    │   │   └── application_helper.rb
+    │   ├── jobs
+    │   │   └── application_job.rb
+    │   ├── mailers
+    │   │   └── application_mailer.rb
+    │   ├── models
+    │   │   ├── application_record.rb
+    │   │   └── concerns
+    │   └── views
+    │       └── layouts
+    │           ├── application.html.erb
+    │           ├── mailer.html.erb
+    │           └── mailer.text.erb
+    ├── bin
+    │   ├── bundle
+    │   ├── rails
+    │   ├── rake
+    │   ├── setup
+    │   ├── spring
+    │   └── update
+    ├── config
+    │   ├── application.rb
+    │   ├── boot.rb
+    │   ├── cable.yml
+    │   ├── database.yml
+    │   ├── environment.rb
+    │   ├── environments
+    │   │   ├── development.rb
+    │   │   ├── production.rb
+    │   │   └── test.rb
+    │   ├── initializers
+    │   │   ├── application_controller_renderer.rb
+    │   │   ├── assets.rb
+    │   │   ├── backtrace_silencers.rb
+    │   │   ├── cookies_serializer.rb
+    │   │   ├── filter_parameter_logging.rb
+    │   │   ├── inflections.rb
+    │   │   ├── mime_types.rb
+    │   │   ├── new_framework_defaults.rb
+    │   │   ├── session_store.rb
+    │   │   └── wrap_parameters.rb
+    │   ├── locales
+    │   │   └── en.yml
+    │   ├── puma.rb
+    │   ├── routes.rb
+    │   ├── secrets.yml
+    │   └── spring.rb
+    ├── config.ru
+    ├── db
+    │   └── seeds.rb
+    ├── Gemfile
+    ├── Gemfile.lock
+    ├── lib
+    │   ├── assets
+    │   └── tasks
+    ├── log
+    ├── public
+    │   ├── 404.html
+    │   ├── 422.html
+    │   ├── 500.html
+    │   ├── apple-touch-icon.png
+    │   ├── apple-touch-icon-precomposed.png
+    │   ├── favicon.ico
+    │   └── robots.txt
+    ├── Rakefile
+    ├── README.md
+    ├── test
+    │   ├── controllers
+    │   ├── fixtures
+    │   │   └── files
+    │   ├── helpers
+    │   ├── integration
+    │   ├── mailers
+    │   ├── models
+    │   └── test_helper.rb
+    ├── tmp
+    │   └── cache
+    │       └── assets
+    └── vendor
+        └── assets
+            ├── javascripts
+            └── stylesheets
+
+45 directories, 57 files
+</pre>
+
+<p><code class="highlighter-rouge">bundle install</code> reads the content of <code class="highlighter-rouge">ruby_helloworld/Gemfile</code> and install each dependency.</p>
+
+<h2 id="serve-pages-in-development">Serve pages in development</h2>
+
+<p>Running <code class="highlighter-rouge">rails server</code> launches a server <strong>for development purposes</strong> on <code class="highlighter-rouge">http://localhost:3000</code></p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">rails_helloworld$</span> <kbd>rails server</kbd>
+=&gt; Booting Puma
+=&gt; Rails 5.0.0 application starting in development on http://localhost:3000
+=&gt; Run `rails server -h` for more startup options
+Puma starting in single mode...
+* Version 3.6.0 (ruby 2.3.1-p112), codename: Sleepy Sunday Serenity
+* Min threads: 5, max threads: 5
+* Environment: development
+* Listening on tcp://localhost:3000
+Use Ctrl-C to stop
+</samp>
+</pre>
+
+<p>Opening the address <code class="highlighter-rouge">http://localhost:3000</code> will show up <code class="highlighter-rouge">rails</code> homescreen:</p>
+
+<p><img src="/assets/rails_first_homescreen.png" alt="Homepage screenshot" class="img-fluid" /></p>
+
+<pre>
+<samp>
+Started GET "/" for 127.0.0.1 at 2016-08-07 18:58:25 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=&gt;true}
+  Rendering /var/lib/gems/2.3.0/gems/railties-5.0.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/railties-5.0.0/lib/rails/templates/rails/welcome/index.html.erb (8.7ms)
+Completed 200 OK in 41ms (Views: 18.7ms | ActiveRecord: 0.0ms)
+</samp>
+</pre>
+
+<h2 id="creating-the-hello-world-page">Creating the Hello World page</h2>
+
+<h3 id="routing">Routing</h3>
+
+<p>Edit the controller <code class="highlighter-rouge">app/controllers/routes.rb</code> that handles the homepage with the action <code class="highlighter-rouge">hello</code> to retrieve <code class="highlighter-rouge">Hello World</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">protect_from_forgery</span> <span class="ss">with: :exception</span>
+
+  <span class="k">def</span> <span class="nf">hello</span>
+    <span class="n">render</span> <span class="ss">html: </span><span class="s2">"hello, world!"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<h3 id="adding-controller-action">Adding controller action</h3>
+
+<p>Add the route that will handle the access to the <code class="highlighter-rouge">/</code> url with <code class="highlighter-rouge">root:controller#action</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
+  <span class="n">root</span> <span class="s1">'application#hello'</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+
+    <div class="post-comments">
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '/building-a-hello-world-app-in-ruby-on-rails-app/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    
+    s.src = '//simpleitrocks.disqus.com/embed.js';
+    
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  
+  
+  
+</div>
+
+
+    <div class="row">
+      <div class="col-md-6">
+	
+
+
+
+
+
+
+<div class="post-same-category">
+  <h4>Articles in this category</h4>
+  <div class="list-group">
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item active" href="/building-a-hello-world-app-in-ruby-on-rails-app/">
+      Building A Hello World App In Ruby On Rails App
+    </a>
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/ruby-on-rails-overview/">
+      Ruby On Rails Overview
+    </a>
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/common-steps-to-start-a-rails-project/">
+      Common Steps To Start A Rails Project
+    </a>
+    
+    
+  </div>
+</div>
+
+
+	
+
+
+
+
+      </div>
+      <div class="col-md-5">
+	
+	
+	<div class="si-ad m-a-1">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_after_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5104001581"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+	
+      </div>
+    </div>
+  </div> <!-- end col -->
+</div>
+
+
+</div>
+
+    </div>
+
+    <footer class="site-footer p-y-3">
+
+  <div class="container">
+
+    <h2 class="footer-heading text-muted">Simple IT 🤘 Rocks</h2>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <ul class="footer-nav">
+          <li>
+	    <i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by Marcelo Canina
+	  </li>
+	  
+          <li>
+            <i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/marcanuy"><span class="username">marcanuy</span></a>
+
+          </li>
+          
+	  <li>
+	    <i class="fa fa-user" aria-hidden="true"></i><a href="/about">About</a>
+	  </li>
+	  <li>
+	    <i class="fa fa-search" aria-hidden="true"></i><a href="/search">Search</a>
+	  </li>
+        </ul>
+      </div>
+
+      <div class="col-xs-6">
+	<div class="text-xs-right text-muted">
+          <p>Clutter-free software concepts. Written on the go.
+</p>
+	</div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<div class="si-license bg-inverse">
+  <div class="text-muted text-sm-center">
+    <small>
+      Except as otherwise noted, the content of this page is licensed under
+      <a rel="license" class="text-info" href="https://creativecommons.org/licenses/by-nc/4.0/">
+	<i class="fa fa-creative-commons" aria-hidden="true"></i> BY-NC 4.0
+      </a>
+    </small>
+  </div>
+</div>
+
+
+
+  </body>
+
+</html>

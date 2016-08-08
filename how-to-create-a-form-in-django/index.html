@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Simple IT 🤘 Rocks" href="http://simpleit.rocks/feed.xml">
+
+  <!-- jQuery -->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
+
+  <!-- Mermaid -->
+  <link rel="stylesheet" href="/bower_components/mermaid/dist/mermaid.forest.css" type="text/css" media="screen" />
+
+  <!-- Bootstrap -->
+  <!--link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css"-->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap-flex.css">
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <!-- Custom css -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  
+  <!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>How To Create A Form In Django - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="How To Create A Form In Django" />
+<meta name="description" content="Django simplify and automates the process to create a form in simple steps." />
+<meta property="og:description" content="Django simplify and automates the process to create a form in simple steps." />
+<link rel="canonical" href="http://simpleit.rocks/how-to-create-a-form-in-django/" />
+<meta property="og:url" content="http://simpleit.rocks/how-to-create-a-form-in-django/" />
+<meta property="og:site_name" content="Simple IT 🤘 Rocks" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-07-29T00:00:00-03:00" />
+<meta property="fb:app_id" content="1822851531277021" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How To Create A Form In Django",
+    "datePublished": "2016-07-29T00:00:00-03:00",
+    "description": "Django simplify and automates the process to create a form in simple steps.",
+    "url": "http://simpleit.rocks/how-to-create-a-form-in-django/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+
+  
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1912030305535489",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+
+</head>
+
+
+  <body>
+
+    
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28572639-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <header class="site-header">
+
+  <!-- mermaid -->
+  <script src="/bower_components/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+  <!-- endmermaid -->
+
+  <div class="text-xs-center m-b-2">
+
+    <a class="display-1" href="/" style="text-decoration: none">Simple IT 🤘 Rocks</a>
+
+  </div>
+
+  
+  <div class="jumbotron jumbotron-fluid bg-inverse">
+  <div class="container">
+    
+    
+    
+    
+    
+    <h1 class="title">How To Create A Form In Django </h1>
+    
+    
+    <p class="lead">
+      <small class="text-muted subtitle">Typical workflow for creating a Django web form</small>
+    </p>
+    
+  </div>
+</div>
+
+  
+
+</header>
+
+
+    <div class="container-fluid">
+      <header class="post-header">
+  <div class="post-meta">
+    
+    <i class="fa fa-calendar" aria-hidden="true"></i>
+    <time datetime="2016-07-29T00:00:00-03:00" itemprop="datePublished">Jul 29, 2016</time>
+    
+  </div>
+  <div>
+    <div class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="list-/inline breadcrumb">
+
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/">
+    
+    <i class="fa fa-home" aria-hidden="true"></i>
+    
+
+    Home
+  </a>
+  
+  <meta itemprop="position" content="1" />
+</li>
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/docs">
+    
+
+    docs
+  </a>
+  
+  <meta itemprop="position" content="2" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/docs/python">
+    
+
+    python
+  </a>
+  
+  <meta itemprop="position" content="3" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/docs/python/django">
+    
+
+    django
+  </a>
+  
+  <meta itemprop="position" content="4" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/docs/python/django/forms">
+    
+
+    forms
+  </a>
+  
+  <meta itemprop="position" content="5" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <span itemscope itemtype="http://schema.org/Thing"
+       itemprop="item">
+    
+
+    <span itemprop="name">How To Create A Form In Django</span>
+  </span>
+  
+  <meta itemprop="position" content="6" />
+</li>
+
+    
+
+    
+    
+  </ol>
+</div>
+
+  </div>
+</header>
+
+<div class="post-content" itemprop="articleBody">
+  <div class="row">
+
+  <div class="col-md-3 site-sidebar">
+    <div class="si-ad m-a-1">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_side_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5882730780"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
+  
+</div>
+
+    
+    <div class="sticky" style="position:sticky; top:10px">
+      <div>
+	<h4>Table of Contents</h4>
+	<ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#creating-the-form">Creating the form</a></li>
+<li class="toc-entry toc-h3"><a href="#new-form">New Form</a></li>
+<li class="toc-entry toc-h3"><a href="#from-model">From Model</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
+</ul>
+      </div>
+      <div>
+	<div class="site-share">
+  
+  <ul class="share-buttons list-inline m-b-1 text-xs-center">
+    <li class="list-inline-item">
+      <div>
+  <a class="twitter-share-button"
+     href="https://twitter.com/share"
+     data-url="http://simpleit.rocks/how-to-create-a-form-in-django/"
+     data-via=""
+     data-text="Django simplify and automates the process to create a form in simple steps."
+     data-related="marcanuy"
+     data-count="vertical">
+    Tweet
+  </a>
+  <script>
+   window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+    </li>
+    <li class="list-inline-item">
+      <div>
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!-- Place this tag where you want the +1 button to render. -->
+  <div class="g-plusone" data-size="tall"></div>
+</div>
+
+    </li>
+    <li class="list-inline-item">
+      <div>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) return;
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.0";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));</script>
+
+  <div class="fb-like" data-href="http://simpleit.rocks/how-to-create-a-form-in-django/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+</div>
+
+    </li>
+  </ul>
+  
+</div>
+
+      </div>
+    </div>
+    
+  </div> <!-- end col -->
+
+  <div class="col-md-8 site-content">
+
+    
+	<p class="lead">
+	  Django simplify and automates the process to create a form in simple steps.
+	</p>
+    
+
+    <div class="si-ad m-a-1">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_before_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="2929264389"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+
+    <h2 id="overview">Overview</h2>
+
+<p>A tipical workflow when creating a form in Django consists of these three steps:</p>
+
+<div class="mermaid">
+graph TB
+  a[Create a Form class that defines its fields]--&gt;b
+  b[Create the view to display the form and process received data]--&gt;c
+  c[create the template to show the form]
+</div>
+
+<h2 id="creating-the-form">Creating the form</h2>
+
+<p>A <em>form</em> can be defined <a href="https://docs.djangoproject.com/en/1.9/topics/forms/">from scratch</a> 
+or take the field defitions from <a href="https://docs.djangoproject.com/en/1.9/topics/forms/modelforms/">Model</a> classes.</p>
+
+<div class="mermaid">
+graph TB
+  form--&gt;has_model{"from a model"}
+  has_model-- no --&gt;scratch["Inherits from django.forms.Form"]
+  has_model-- yes --&gt;model["Inherits from django.forms.ModelForm"]
+  scratch--&gt;fields["Define fields using django.forms.*Field"]
+</div>
+
+<h3 id="new-form">New Form</h3>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># forms.py</span>
+<span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+
+<span class="k">class</span> <span class="nc">ContactForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">'Full name'</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">70</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h3 id="from-model">From Model</h3>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.forms</span> <span class="kn">import</span> <span class="n">ModelForm</span>
+<span class="kn">from</span> <span class="nn">myapp.models</span> <span class="kn">import</span> <span class="n">News</span>
+
+<span class="k">class</span> <span class="nc">ArticleForm</span><span class="p">(</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">News</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s">'title'</span><span class="p">,</span> <span class="s">'content'</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<p>Creating an empty form to add an article.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">form</span> <span class="o">=</span> <span class="n">ArticleForm</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p>Creating a form to change an existing article.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">article</span> <span class="o">=</span> <span class="n">Article</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">form</span> <span class="o">=</span> <span class="n">ArticleForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">article</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>Forms API <a href="https://docs.djangoproject.com/en/1.9/ref/forms/api/#module-django.forms">https://docs.djangoproject.com/en/1.9/ref/forms/api/#module-django.forms</a></li>
+  <li>Forms tutorial <a href="https://docs.djangoproject.com/en/1.9/topics/forms/">https://docs.djangoproject.com/en/1.9/topics/forms/</a></li>
+  <li>New Forms <a href="https://docs.djangoproject.com/en/1.9/topics/forms/">https://docs.djangoproject.com/en/1.9/topics/forms/</a></li>
+  <li>Forms from models <a href="https://docs.djangoproject.com/en/1.9/topics/forms/modelforms/">https://docs.djangoproject.com/en/1.9/topics/forms/modelforms/</a></li>
+</ul>
+
+
+    <div class="post-comments">
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '/how-to-create-a-form-in-django/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    
+    s.src = '//simpleitrocks.disqus.com/embed.js';
+    
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  
+  
+  
+</div>
+
+
+    <div class="row">
+      <div class="col-md-6">
+	
+
+
+
+
+
+
+<div class="post-same-category">
+  <h4>Articles in this category</h4>
+  <div class="list-group">
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item active" href="/how-to-create-a-form-in-django/">
+      How To Create A Form In Django
+    </a>
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/understanding-django-forms/">
+      Understanding Django Forms
+    </a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+</div>
+
+
+	
+
+
+
+
+      </div>
+      <div class="col-md-5">
+	
+	
+	<div class="si-ad m-a-1">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_after_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5104001581"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+	
+      </div>
+    </div>
+  </div> <!-- end col -->
+</div>
+
+
+</div>
+
+    </div>
+
+    <footer class="site-footer p-y-3">
+
+  <div class="container">
+
+    <h2 class="footer-heading text-muted">Simple IT 🤘 Rocks</h2>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <ul class="footer-nav">
+          <li>
+	    <i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by Marcelo Canina
+	  </li>
+	  
+          <li>
+            <i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/marcanuy"><span class="username">marcanuy</span></a>
+
+          </li>
+          
+	  <li>
+	    <i class="fa fa-user" aria-hidden="true"></i><a href="/about">About</a>
+	  </li>
+	  <li>
+	    <i class="fa fa-search" aria-hidden="true"></i><a href="/search">Search</a>
+	  </li>
+        </ul>
+      </div>
+
+      <div class="col-xs-6">
+	<div class="text-xs-right text-muted">
+          <p>Clutter-free software concepts. Written on the go.
+</p>
+	</div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<div class="si-license bg-inverse">
+  <div class="text-muted text-sm-center">
+    <small>
+      Except as otherwise noted, the content of this page is licensed under
+      <a rel="license" class="text-info" href="https://creativecommons.org/licenses/by-nc/4.0/">
+	<i class="fa fa-creative-commons" aria-hidden="true"></i> BY-NC 4.0
+      </a>
+    </small>
+  </div>
+</div>
+
+
+
+  </body>
+
+</html>
