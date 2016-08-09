@@ -29,24 +29,24 @@
 
   
   <!-- Begin Jekyll SEO tag v2.0.0 -->
-<title>Ruby - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Ruby" />
-<meta name="description" content="Ruby programming language" />
-<meta property="og:description" content="Ruby programming language" />
-<link rel="canonical" href="http://simpleit.rocks/ruby/" />
-<meta property="og:url" content="http://simpleit.rocks/ruby/" />
+<title>Double Versus Single Quotes In Ruby - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Double Versus Single Quotes In Ruby" />
+<meta name="description" content="Difference between using double quotes and single quotes in ruby" />
+<meta property="og:description" content="Difference between using double quotes and single quotes in ruby" />
+<link rel="canonical" href="http://simpleit.rocks/double-versus-single-quotes-in-ruby/" />
+<meta property="og:url" content="http://simpleit.rocks/double-versus-single-quotes-in-ruby/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-06-10T00:00:00-03:00" />
+<meta property="article:published_time" content="2016-08-09T00:00:00-03:00" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "Ruby",
-    "datePublished": "2016-06-10T00:00:00-03:00",
-    "description": "Ruby programming language",
-    "url": "http://simpleit.rocks/ruby/"
+    "headline": "Double Versus Single Quotes In Ruby",
+    "datePublished": "2016-08-09T00:00:00-03:00",
+    "description": "Difference between using double quotes and single quotes in ruby",
+    "url": "http://simpleit.rocks/double-versus-single-quotes-in-ruby/"
   }
 </script>
 <!-- End Jekyll SEO tag -->
@@ -104,11 +104,11 @@
     
     
     
-    <h1 class="title">Ruby </h1>
+    <h1 class="title">Double Versus Single Quotes In Ruby </h1>
     
     
     <p class="lead">
-      <small class="text-muted subtitle">Ruby programming language</small>
+      <small class="text-muted subtitle">Difference between</small>
     </p>
     
   </div>
@@ -124,7 +124,7 @@
   <div class="post-meta">
     
     <i class="fa fa-calendar" aria-hidden="true"></i>
-    <time datetime="2016-06-10T00:00:00-03:00" itemprop="datePublished">Jun 10, 2016</time>
+    <time datetime="2016-08-09T00:00:00-03:00" itemprop="datePublished">Aug 9, 2016</time>
     
   </div>
   <div>
@@ -246,7 +246,7 @@
        itemprop="item">
     
 
-    <span itemprop="name">Ruby</span>
+    <span itemprop="name">Double Versus Single Quotes In Ruby</span>
   </span>
   
   <meta itemprop="position" content="5" />
@@ -288,11 +288,6 @@
       <div>
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
-<li class="toc-entry toc-h1"><a href="#concepts">Concepts</a></li>
-<li class="toc-entry toc-h2"><a href="#ruby-sandbox">Ruby Sandbox</a></li>
-<li class="toc-entry toc-h3"><a href="#bundler">Bundler</a></li>
-<li class="toc-entry toc-h4"><a href="#bundler-common-workflow">Bundler common workflow</a></li>
-<li class="toc-entry toc-h1"><a href="#references">References</a></li>
 </ul>
       </div>
       <div>
@@ -303,9 +298,9 @@
       <div>
   <a class="twitter-share-button"
      href="https://twitter.com/share"
-     data-url="http://simpleit.rocks/ruby/"
+     data-url="http://simpleit.rocks/double-versus-single-quotes-in-ruby/"
      data-via=""
-     data-text="Ruby programming language"
+     data-text="Difference between using double quotes and single quotes in ruby"
      data-related="marcanuy"
      data-count="vertical">
     Tweet
@@ -337,7 +332,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="http://simpleit.rocks/ruby/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="http://simpleit.rocks/double-versus-single-quotes-in-ruby/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -354,7 +349,7 @@
 
     
 	<p class="lead">
-	  Ruby programming language
+	  Difference between using double quotes and single quotes in ruby
 	</p>
     
 
@@ -376,53 +371,33 @@
 </div>
 
 
-    <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
-<p><strong>Table of Contents</strong></p>
+    <p>Strings in Ruby are specified with <em>double quotes</em> <code class="highlighter-rouge">"a string"</code> or <em>single quotes</em><code class="highlighter-rouge">'another string'</code>.
+The main <a href="http://stackoverflow.com/q/6395288/1165509">difference</a> is that <strong>double quotes</strong> allows:</p>
 
 <ul>
-  <li><a href="#concepts">Concepts</a>
-    <ul>
-      <li><a href="#ruby-sandbox">Ruby Sandbox</a>
-        <ul>
-          <li><a href="#bundler">Bundler</a>
-            <ul>
-              <li><a href="#bundler-common-workflow">Bundler common workflow</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#references">References</a></li>
+  <li><strong>string interpolation</strong>:</li>
 </ul>
 
-<!-- markdown-toc end -->
-
-<h1 id="concepts">Concepts</h1>
-
-<h2 id="ruby-sandbox">Ruby Sandbox</h2>
-
-<p>Manage dependencies independently of the current platform.</p>
-
-<h3 id="bundler">Bundler</h3>
-
-<blockquote cite="http://bundler.io/">
-  <p>Bundler provides a consistent environment for Ruby projects by tracking and installing the exact gems and versions that are needed.</p>
-</blockquote>
-
-<h4 id="bundler-common-workflow">Bundler common workflow</h4>
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="nb">name</span> <span class="o">=</span> <span class="s1">'John'</span>
+<span class="s2">"Hello </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+</code></pre>
+</div>
 
 <ul>
-  <li>Declare dependencies of an application in a <a href="http://bundler.io/gemfile.html">Gemfile</a></li>
-  <li><a href="http://bundler.io/bundle_install.html">Install</a> above versions of the dependencies into an isolated location <code class="highlighter-rouge">bundle install</code></li>
-  <li>run the app: <code class="highlighter-rouge">bundle exec</code></li>
+  <li><strong>escape sequence</strong> :</li>
 </ul>
 
-<h1 id="references">References</h1>
-
-<ul>
-  <li>Official Documentation <a href="https://www.ruby-lang.org/">https://www.ruby-lang.org/</a></li>
-</ul>
+<pre class="shell">
+<samp>
+<span class="shell-prompt">irb(main):&gt;</span> <kbd>puts "a\nb"</kbd>
+a
+b
+=&gt; nil
+<span class="shell-prompt">irb(main):&gt;</span> <kbd>puts 'a\nb'</kbd>
+a\nb
+=&gt; nil
+</samp>
+</pre>
 
 
 
@@ -437,7 +412,7 @@
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/ruby/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/double-versus-single-quotes-in-ruby/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -466,104 +441,221 @@
 
 
 
+<div class="post-same-category">
+  <h4>Articles in this category</h4>
+  <div class="list-group">
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/managing-ruby-gems-version-for-each-project/">
+      Managing Ruby Gems Version For Each Project
+    </a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item active" href="/double-versus-single-quotes-in-ruby/">
+      Double Versus Single Quotes In Ruby
+    </a>
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/ruby-language-overview/">
+      Ruby Language Overview
+    </a>
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/what-is-the-difference-between-modules-and-classes-in-ruby/">
+      What Is The Difference Between Modules And Classes In Ruby
+    </a>
+    
+    
+  </div>
+</div>
+
 
 	
 
 
-
-<h2>Articles</h2>
-<p>This article is being referenced in:</p>
-<div class="list-group">
-  
-  
-  <a href="/when-to-test-or-write-code-first-in-web-development/" class="list-group-item">
-    When To Test Or Write Code First In Web Development
-  </a>
-  
-  
-  
-  
-  
-  
-  
-  <a href="/building-a-hello-world-app-in-ruby-on-rails-app/" class="list-group-item">
-    Building A Hello World App In Ruby On Rails App
-  </a>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <a href="/jekyll-variables-and-liquid-template-tags-cheatsheet/" class="list-group-item">
-    Jekyll Variables and Liquid template tags cheatsheet
-  </a>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <a href="/understanding-how-collections-work/" class="list-group-item">
-    Understanding How Collections Work
-  </a>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <a href="/html5-full-cheatsheet/" class="list-group-item">
-    Html5 Full Cheatsheet
-  </a>
-  
-  
-  
-  
-  
-  
-  
-  
-</div>
 
 
       </div>

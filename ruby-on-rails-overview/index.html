@@ -31,8 +31,8 @@
   <!-- Begin Jekyll SEO tag v2.0.0 -->
 <title>Ruby On Rails Overview - Simple IT 🤘 Rocks</title>
 <meta property="og:title" content="Ruby On Rails Overview" />
-<meta name="description" content="A basic overview of Ruby on Rails to get started with the webframework." />
-<meta property="og:description" content="A basic overview of Ruby on Rails to get started with the webframework." />
+<meta name="description" content="A basic overview of Ruby on Rails main components and how they work together." />
+<meta property="og:description" content="A basic overview of Ruby on Rails main components and how they work together." />
 <link rel="canonical" href="http://simpleit.rocks/ruby-on-rails-overview/" />
 <meta property="og:url" content="http://simpleit.rocks/ruby-on-rails-overview/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
@@ -45,7 +45,7 @@
     "@type": "BlogPosting",
     "headline": "Ruby On Rails Overview",
     "datePublished": "2016-08-07T00:00:00-03:00",
-    "description": "A basic overview of Ruby on Rails to get started with the webframework.",
+    "description": "A basic overview of Ruby on Rails main components and how they work together.",
     "url": "http://simpleit.rocks/ruby-on-rails-overview/"
   }
 </script>
@@ -284,6 +284,16 @@
       <div>
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#rails-console">Rails console</a></li>
+<li class="toc-entry toc-h2"><a href="#models">Models</a></li>
+<li class="toc-entry toc-h2"><a href="#controllers">Controllers</a></li>
+<li class="toc-entry toc-h2"><a href="#views">Views</a></li>
+<li class="toc-entry toc-h3"><a href="#templates">Templates</a></li>
+<li class="toc-entry toc-h4"><a href="#erb">ERB</a></li>
+<li class="toc-entry toc-h4"><a href="#partials">Partials</a></li>
+<li class="toc-entry toc-h2"><a href="#main-resources">Main resources</a></li>
+<li class="toc-entry toc-h3"><a href="#code">Code</a></li>
+<li class="toc-entry toc-h3"><a href="#docs">Docs</a></li>
 </ul>
       </div>
       <div>
@@ -296,7 +306,7 @@
      href="https://twitter.com/share"
      data-url="http://simpleit.rocks/ruby-on-rails-overview/"
      data-via=""
-     data-text="A basic overview of Ruby on Rails to get started with the webframework.
+     data-text="A basic overview of Ruby on Rails main components and how they work together.
 "
      data-related="marcanuy"
      data-count="vertical">
@@ -346,7 +356,7 @@
 
     
 	<p class="lead">
-	  A basic overview of Ruby on Rails to get started with the webframework.
+	  A basic overview of Ruby on Rails main components and how they work together.
 
 	</p>
     
@@ -370,6 +380,107 @@
 
 
     <p>After starting the server with <code class="highlighter-rouge">rails serve</code> the routes can be listed with: <a href="http://localhost:3000/rails/info/routes">http://localhost:3000/rails/info/routes</a></p>
+
+<h2 id="rails-console">Rails console</h2>
+
+<p>The console is based in <code class="highlighter-rouge">irb</code> (Interactive Ruby) and by default it starts with the <em>development environment</em>. The other environments defined by Rails are <em>test</em> and <em>production</em>.</p>
+
+<h2 id="models">Models</h2>
+
+<p>Web requests are handled by</p>
+
+<ul>
+  <li><strong>Action Controller</strong> (<a href="http://api.rubyonrails.org/classes/ActionController/Base.html">http://api.rubyonrails.org/classes/ActionController/Base.html</a>)
+    <ul>
+      <li>communicates with database</li>
+      <li>performs CRUD actions</li>
+    </ul>
+  </li>
+  <li><strong>Action View</strong> (<a href="http://api.rubyonrails.org/classes/ActionView/Base.html">http://api.rubyonrails.org/classes/ActionView/Base.html</a>)
+    <ul>
+      <li>compiling the response to the request
+        <ul>
+          <li>the final HTML output is composed by
+            <ul>
+              <li>Templates</li>
+              <li>Partials</li>
+              <li>layouts</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="controllers">Controllers</h2>
+
+<h2 id="views">Views</h2>
+
+<h3 id="templates">Templates</h3>
+
+<p>Templates can be <code class="highlighter-rouge">.erb</code>, <code class="highlighter-rouge">builder</code> or <code class="highlighter-rouge">JBuilder</code> templates</p>
+
+<h4 id="erb">ERB</h4>
+
+<p><em>ERB</em> stands for <code class="highlighter-rouge">Embedded Ruby</code> files (ruby tags mixed with HTML).</p>
+
+<p><em>ERB</em> templates are written in <code class="highlighter-rouge">.erb</code> files.</p>
+
+<p>They are located in <code class="highlighter-rouge">app/views</code> directory.</p>
+
+<p>Ruby code can be included using the tags:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">&lt;% %&gt;</code>
+    <ul>
+      <li>used for conditions, loops or blocks</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">&lt;%= %&gt;</code>
+    <ul>
+      <li>output content</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="partials">Partials</h4>
+
+<p>Partials templates are parts of a template that can be reused
+and located in different files for better structuring the app.</p>
+
+<p>To render a partial with <code class="highlighter-rouge">render method</code></p>
+
+<ul>
+  <li>file: <code class="highlighter-rouge">_comment.html</code>
+    <ul>
+      <li>code: <code class="highlighter-rouge">&lt;%= render "menu" %&gt;</code></li>
+    </ul>
+  </li>
+  <li>file: <code class="highlighter-rouge">app/views/shared/_comment.html.erb</code>
+    <ul>
+      <li>code: <code class="highlighter-rouge">&lt;%= render "shared/comment" %&gt;</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p><code class="highlighter-rouge">&lt;%= render partial: "product", locals: { product: @product } %&gt;</code> can be called 
+as: <code class="highlighter-rouge">&lt;%= render "product", product: @product %&gt;</code></p>
+
+<h2 id="main-resources">Main resources</h2>
+
+<h3 id="code">Code</h3>
+
+<ul>
+  <li><a href="https://github.com/rails/rails/blob/5-0-stable">https://github.com/rails/rails/blob/5-0-stable</a></li>
+  <li><a href="http://api.rubyonrails.org/">http://api.rubyonrails.org/</a></li>
+</ul>
+
+<h3 id="docs">Docs</h3>
+
+<ul>
+  <li><a href="http://guides.rubyonrails.org">http://guides.rubyonrails.org</a></li>
+</ul>
 
 
     <div class="post-comments">
@@ -594,6 +705,21 @@
     <a class="list-group-item " href="/common-steps-to-start-a-rails-project/">
       Common Steps To Start A Rails Project
     </a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
