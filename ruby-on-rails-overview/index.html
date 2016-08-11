@@ -285,12 +285,18 @@
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#rails-console">Rails console</a></li>
+<li class="toc-entry toc-h2"><a href="#routes">Routes</a></li>
+<li class="toc-entry toc-h3"><a href="#named-routes">Named routes</a></li>
+<li class="toc-entry toc-h2"><a href="#web-request-handling">Web Request Handling</a></li>
 <li class="toc-entry toc-h2"><a href="#models">Models</a></li>
 <li class="toc-entry toc-h2"><a href="#controllers">Controllers</a></li>
 <li class="toc-entry toc-h2"><a href="#views">Views</a></li>
 <li class="toc-entry toc-h3"><a href="#templates">Templates</a></li>
 <li class="toc-entry toc-h4"><a href="#erb">ERB</a></li>
 <li class="toc-entry toc-h4"><a href="#partials">Partials</a></li>
+<li class="toc-entry toc-h2"><a href="#asset-pipeline">Asset pipeline</a></li>
+<li class="toc-entry toc-h2"><a href="#testing">Testing</a></li>
+<li class="toc-entry toc-h3"><a href="#integration-tests">Integration tests</a></li>
 <li class="toc-entry toc-h2"><a href="#main-resources">Main resources</a></li>
 <li class="toc-entry toc-h3"><a href="#code">Code</a></li>
 <li class="toc-entry toc-h3"><a href="#docs">Docs</a></li>
@@ -379,13 +385,72 @@
 </div>
 
 
-    <p>After starting the server with <code class="highlighter-rouge">rails serve</code> the routes can be listed with: <a href="http://localhost:3000/rails/info/routes">http://localhost:3000/rails/info/routes</a></p>
-
-<h2 id="rails-console">Rails console</h2>
+    <h2 id="rails-console">Rails console</h2>
 
 <p>The console is based in <code class="highlighter-rouge">irb</code> (Interactive Ruby) and by default it starts with the <em>development environment</em>. The other environments defined by Rails are <em>test</em> and <em>production</em>.</p>
 
-<h2 id="models">Models</h2>
+<p>It is possible to test the app in the console without changing the database
+running a <a href="https://en.wikipedia.org/wiki/Sandbox_(software_development)">sandboxed</a> 
+instance with <code class="highlighter-rouge">rails console--sandbox</code>:</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>rails console --sandbox</kbd>
+Running via Spring preloader in process 3485
+Loading development environment in sandbox (Rails 5.0.0)
+Any modifications you make will be rolled back on exit
+irb(main):001:0&gt; 
+</samp>
+</pre>
+
+<h2 id="routes">Routes</h2>
+
+<p>Routes are defined in <code class="highlighter-rouge">/config/routes.rb</code>. 
+After starting the server <code class="highlighter-rouge">rails serve</code> the current routes that rails 
+recognizes can be listed at: <a href="http://localhost:3000/rails/info/routes">http://localhost:3000/rails/info/routes</a></p>
+
+<h3 id="named-routes">Named routes</h3>
+
+<p>Defining a route in <code class="highlighter-rouge">/config/routes.rb</code> like:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
+  <span class="n">get</span> <span class="s1">'contact'</span><span class="p">,</span> <span class="ss">to: </span><span class="s1">'pages#contact'</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>makes several <code class="highlighter-rouge">named routes</code> variables available, like <code class="highlighter-rouge">contact_path</code>
+and <code class="highlighter-rouge">contact_url</code> so they can be used in other files, e.g:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code>  <span class="c1">#/test/controllers/pages_test.rb</span>
+  <span class="nb">test</span> <span class="s2">"should get contact"</span> <span class="k">do</span>
+    <span class="n">get</span> <span class="n">contact_path</span>
+    <span class="n">assert_response</span> <span class="ss">:success</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>In this case, these routes are <code class="highlighter-rouge">contact_path</code> and <code class="highlighter-rouge">contact_url</code>, 
+the difference between them is that <code class="highlighter-rouge">_url</code> includes the full URL:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>contact_path -&gt; '/contact'
+contact_url  -&gt; 'http://www.example.com/contact'
+</code></pre>
+</div>
+
+<p class="alert alert-warning">The common convention is to use the <code class="highlighter-rouge">_path</code> form
+<strong>except when doing redirects</strong>, where <code class="highlighter-rouge">_url</code> form is preferred because the
+HTTP standard requires a <em>full</em> URL after redirects.</p>
+
+<p>A custom name for a route, instead of the default one,
+can also be specified with the <code class="highlighter-rouge">as</code> keyword:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code>  <span class="n">get</span> <span class="s1">'contact'</span><span class="p">,</span> <span class="ss">to: </span><span class="s1">'pages#contact'</span><span class="sb">`, as: 'other-contact'
+</span></code></pre>
+</div>
+
+<h2 id="web-request-handling">Web Request Handling</h2>
 
 <p>Web requests are handled by</p>
 
@@ -413,6 +478,21 @@
   </li>
 </ul>
 
+<h2 id="models">Models</h2>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>rails generate model User username:string email:string</kbd>
+Running via Spring preloader in process 28981
+      invoke  active_record
+      create    db/migrate/20160810191131_create_users.rb
+      create    app/models/user.rb
+      invoke    test_unit
+      create      test/models/user_test.rb
+      create      test/fixtures/users.yml
+</samp>
+</pre>
+
 <h2 id="controllers">Controllers</h2>
 
 <h2 id="views">Views</h2>
@@ -432,16 +512,8 @@
 <p>Ruby code can be included using the tags:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">&lt;% %&gt;</code>
-    <ul>
-      <li>used for conditions, loops or blocks</li>
-    </ul>
-  </li>
-  <li><code class="highlighter-rouge">&lt;%= %&gt;</code>
-    <ul>
-      <li>output content</li>
-    </ul>
-  </li>
+  <li><code class="highlighter-rouge">&lt;% %&gt;</code> used for conditions, loops or blocks</li>
+  <li><code class="highlighter-rouge">&lt;%= %&gt;</code> outputs content</li>
 </ul>
 
 <h4 id="partials">Partials</h4>
@@ -449,23 +521,90 @@
 <p>Partials templates are parts of a template that can be reused
 and located in different files for better structuring the app.</p>
 
-<p>To render a partial with <code class="highlighter-rouge">render method</code></p>
+<p>To render a partial with <code class="highlighter-rouge">render</code> method:</p>
 
 <ul>
-  <li>file: <code class="highlighter-rouge">_comment.html</code>
+  <li>file: <code class="highlighter-rouge">_comment.html</code> gets rendered with:</li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= render "comment" %&gt;
+</span></code></pre>
+</div>
+
+<ul>
+  <li>file: <code class="highlighter-rouge">app/views/shared/_comment.html.erb</code> with:</li>
+</ul>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= render "shared/comment" %&gt;
+</span></code></pre>
+</div>
+
+<p><code class="highlighter-rouge">&lt;%= render partial: "product", locals: { product: @product } %&gt;</code> can be 
+called as: <code class="highlighter-rouge">&lt;%= render "product", product: @product %&gt;</code></p>
+
+<h2 id="asset-pipeline">Asset pipeline</h2>
+
+<p>The <a href="http://guides.rubyonrails.org/asset_pipeline.html">assets pipeline</a> 
+makes it easier to produce and manage static assets such as</p>
+
+<ul>
+  <li>CSS</li>
+  <li>JavaScript</li>
+  <li>images</li>
+</ul>
+
+<blockquote class="blockquote" cite="http://guides.rubyonrails.org/asset_pipeline.html">
+  <p>The asset pipeline provides a framework to concatenate and minify or 
+compress JavaScript and CSS assets. It also adds the ability to write
+these assets in other languages and pre-processors such as CoffeeScript,
+Sass and ERB. It allows assets in your application to be automatically
+combined with assets from other gems.</p>
+  <footer class="blockquote-footer">Ruby on rails Guides</footer>
+</blockquote>
+
+<p>Pipeline assets can be located in:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">app/assets</code> application assets, such as
     <ul>
-      <li>code: <code class="highlighter-rouge">&lt;%= render "menu" %&gt;</code></li>
+      <li>custom images</li>
+      <li>JavaScript files</li>
+      <li>CSS</li>
     </ul>
   </li>
-  <li>file: <code class="highlighter-rouge">app/views/shared/_comment.html.erb</code>
+  <li><code class="highlighter-rouge">lib/assets</code> own libraries
     <ul>
-      <li>code: <code class="highlighter-rouge">&lt;%= render "shared/comment" %&gt;</code></li>
+      <li>code that doesn’t fit into the scope of the application or</li>
+      <li>libraries which are shared across applications</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">vendor/assets</code> assets owned by outside entities, such as
+    <ul>
+      <li>JavaScript plugins</li>
+      <li>CSS frameworks</li>
     </ul>
   </li>
 </ul>
 
-<p><code class="highlighter-rouge">&lt;%= render partial: "product", locals: { product: @product } %&gt;</code> can be called 
-as: <code class="highlighter-rouge">&lt;%= render "product", product: @product %&gt;</code></p>
+<p>All of them have manifest files <code class="highlighter-rouge">app/assets/stylesheets/application.css</code> to
+select how to process them and in what order.</p>
+
+<p>Asset pipeline is handled in rails with Sprockets, the Rack-based asset packaging system <a href="https://github.com/sstephenson/sprockets">https://github.com/sstephenson/sprockets</a>.</p>
+
+<h2 id="testing">Testing</h2>
+
+<h3 id="integration-tests">Integration tests</h3>
+
+<p>Testing how several components of the app interacts with <em>integration tests</em>:</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>rails generate integration_test SiteLayout</kbd>
+Running via Spring preloader in process 9703
+      invoke  test_unit
+      create    test/integration/site_layout_test.rb
+</samp>
+</pre>
 
 <h2 id="main-resources">Main resources</h2>
 

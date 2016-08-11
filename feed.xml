@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 09 Aug 2016 17:30:50 -0300</pubDate>
-    <lastBuildDate>Tue, 09 Aug 2016 17:30:50 -0300</lastBuildDate>
+    <pubDate>Thu, 11 Aug 2016 19:00:38 -0300</pubDate>
+    <lastBuildDate>Thu, 11 Aug 2016 19:00:38 -0300</lastBuildDate>
     <generator>Jekyll v3.2.0.pre.beta1</generator>
     
       <item>
@@ -530,13 +530,72 @@ and &lt;code class=&quot;highlighter-rouge&quot;&gt;postgresql&lt;/code&gt; in &
     
       <item>
         <title>Ruby On Rails Overview</title>
-        <description>&lt;p&gt;After starting the server with &lt;code class=&quot;highlighter-rouge&quot;&gt;rails serve&lt;/code&gt; the routes can be listed with: &lt;a href=&quot;http://localhost:3000/rails/info/routes&quot;&gt;http://localhost:3000/rails/info/routes&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;rails-console&quot;&gt;Rails console&lt;/h2&gt;
+        <description>&lt;h2 id=&quot;rails-console&quot;&gt;Rails console&lt;/h2&gt;
 
 &lt;p&gt;The console is based in &lt;code class=&quot;highlighter-rouge&quot;&gt;irb&lt;/code&gt; (Interactive Ruby) and by default it starts with the &lt;em&gt;development environment&lt;/em&gt;. The other environments defined by Rails are &lt;em&gt;test&lt;/em&gt; and &lt;em&gt;production&lt;/em&gt;.&lt;/p&gt;
 
-&lt;h2 id=&quot;models&quot;&gt;Models&lt;/h2&gt;
+&lt;p&gt;It is possible to test the app in the console without changing the database
+running a &lt;a href=&quot;https://en.wikipedia.org/wiki/Sandbox_(software_development)&quot;&gt;sandboxed&lt;/a&gt; 
+instance with &lt;code class=&quot;highlighter-rouge&quot;&gt;rails console--sandbox&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;rails console --sandbox&lt;/kbd&gt;
+Running via Spring preloader in process 3485
+Loading development environment in sandbox (Rails 5.0.0)
+Any modifications you make will be rolled back on exit
+irb(main):001:0&amp;gt; 
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;routes&quot;&gt;Routes&lt;/h2&gt;
+
+&lt;p&gt;Routes are defined in &lt;code class=&quot;highlighter-rouge&quot;&gt;/config/routes.rb&lt;/code&gt;. 
+After starting the server &lt;code class=&quot;highlighter-rouge&quot;&gt;rails serve&lt;/code&gt; the current routes that rails 
+recognizes can be listed at: &lt;a href=&quot;http://localhost:3000/rails/info/routes&quot;&gt;http://localhost:3000/rails/info/routes&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;named-routes&quot;&gt;Named routes&lt;/h3&gt;
+
+&lt;p&gt;Defining a route in &lt;code class=&quot;highlighter-rouge&quot;&gt;/config/routes.rb&lt;/code&gt; like:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;routes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;draw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'contact'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;to: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'pages#contact'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;makes several &lt;code class=&quot;highlighter-rouge&quot;&gt;named routes&lt;/code&gt; variables available, like &lt;code class=&quot;highlighter-rouge&quot;&gt;contact_path&lt;/code&gt;
+and &lt;code class=&quot;highlighter-rouge&quot;&gt;contact_url&lt;/code&gt; so they can be used in other files, e.g:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;c1&quot;&gt;#/test/controllers/pages_test.rb&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;should get contact&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;contact_path&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;assert_response&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:success&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In this case, these routes are &lt;code class=&quot;highlighter-rouge&quot;&gt;contact_path&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;contact_url&lt;/code&gt;, 
+the difference between them is that &lt;code class=&quot;highlighter-rouge&quot;&gt;_url&lt;/code&gt; includes the full URL:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;contact_path -&amp;gt; '/contact'
+contact_url  -&amp;gt; 'http://www.example.com/contact'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p class=&quot;alert alert-warning&quot;&gt;The common convention is to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;_path&lt;/code&gt; form
+&lt;strong&gt;except when doing redirects&lt;/strong&gt;, where &lt;code class=&quot;highlighter-rouge&quot;&gt;_url&lt;/code&gt; form is preferred because the
+HTTP standard requires a &lt;em&gt;full&lt;/em&gt; URL after redirects.&lt;/p&gt;
+
+&lt;p&gt;A custom name for a route, instead of the default one,
+can also be specified with the &lt;code class=&quot;highlighter-rouge&quot;&gt;as&lt;/code&gt; keyword:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'contact'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;to: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'pages#contact'&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`, as: 'other-contact'
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;web-request-handling&quot;&gt;Web Request Handling&lt;/h2&gt;
 
 &lt;p&gt;Web requests are handled by&lt;/p&gt;
 
@@ -564,6 +623,21 @@ and &lt;code class=&quot;highlighter-rouge&quot;&gt;postgresql&lt;/code&gt; in &
   &lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h2 id=&quot;models&quot;&gt;Models&lt;/h2&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;rails generate model User username:string email:string&lt;/kbd&gt;
+Running via Spring preloader in process 28981
+      invoke  active_record
+      create    db/migrate/20160810191131_create_users.rb
+      create    app/models/user.rb
+      invoke    test_unit
+      create      test/models/user_test.rb
+      create      test/fixtures/users.yml
+&lt;/samp&gt;
+&lt;/pre&gt;
+
 &lt;h2 id=&quot;controllers&quot;&gt;Controllers&lt;/h2&gt;
 
 &lt;h2 id=&quot;views&quot;&gt;Views&lt;/h2&gt;
@@ -583,16 +657,8 @@ and &lt;code class=&quot;highlighter-rouge&quot;&gt;postgresql&lt;/code&gt; in &
 &lt;p&gt;Ruby code can be included using the tags:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;% %&amp;gt;&lt;/code&gt;
-    &lt;ul&gt;
-      &lt;li&gt;used for conditions, loops or blocks&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;%= %&amp;gt;&lt;/code&gt;
-    &lt;ul&gt;
-      &lt;li&gt;output content&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;% %&amp;gt;&lt;/code&gt; used for conditions, loops or blocks&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;%= %&amp;gt;&lt;/code&gt; outputs content&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;partials&quot;&gt;Partials&lt;/h4&gt;
@@ -600,23 +666,90 @@ and &lt;code class=&quot;highlighter-rouge&quot;&gt;postgresql&lt;/code&gt; in &
 &lt;p&gt;Partials templates are parts of a template that can be reused
 and located in different files for better structuring the app.&lt;/p&gt;
 
-&lt;p&gt;To render a partial with &lt;code class=&quot;highlighter-rouge&quot;&gt;render method&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To render a partial with &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; method:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;file: &lt;code class=&quot;highlighter-rouge&quot;&gt;_comment.html&lt;/code&gt;
+  &lt;li&gt;file: &lt;code class=&quot;highlighter-rouge&quot;&gt;_comment.html&lt;/code&gt; gets rendered with:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= render &quot;comment&quot; %&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;file: &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/shared/_comment.html.erb&lt;/code&gt; with:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= render &quot;shared/comment&quot; %&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;%= render partial: &quot;product&quot;, locals: { product: @product } %&amp;gt;&lt;/code&gt; can be 
+called as: &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;%= render &quot;product&quot;, product: @product %&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;asset-pipeline&quot;&gt;Asset pipeline&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&quot;http://guides.rubyonrails.org/asset_pipeline.html&quot;&gt;assets pipeline&lt;/a&gt; 
+makes it easier to produce and manage static assets such as&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+  &lt;li&gt;images&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://guides.rubyonrails.org/asset_pipeline.html&quot;&gt;
+  &lt;p&gt;The asset pipeline provides a framework to concatenate and minify or 
+compress JavaScript and CSS assets. It also adds the ability to write
+these assets in other languages and pre-processors such as CoffeeScript,
+Sass and ERB. It allows assets in your application to be automatically
+combined with assets from other gems.&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt;Ruby on rails Guides&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Pipeline assets can be located in:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets&lt;/code&gt; application assets, such as
     &lt;ul&gt;
-      &lt;li&gt;code: &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;%= render &quot;menu&quot; %&amp;gt;&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;custom images&lt;/li&gt;
+      &lt;li&gt;JavaScript files&lt;/li&gt;
+      &lt;li&gt;CSS&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;file: &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/shared/_comment.html.erb&lt;/code&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;lib/assets&lt;/code&gt; own libraries
     &lt;ul&gt;
-      &lt;li&gt;code: &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;%= render &quot;shared/comment&quot; %&amp;gt;&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;code that doesn’t fit into the scope of the application or&lt;/li&gt;
+      &lt;li&gt;libraries which are shared across applications&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vendor/assets&lt;/code&gt; assets owned by outside entities, such as
+    &lt;ul&gt;
+      &lt;li&gt;JavaScript plugins&lt;/li&gt;
+      &lt;li&gt;CSS frameworks&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;%= render partial: &quot;product&quot;, locals: { product: @product } %&amp;gt;&lt;/code&gt; can be called 
-as: &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;%= render &quot;product&quot;, product: @product %&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;All of them have manifest files &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/stylesheets/application.css&lt;/code&gt; to
+select how to process them and in what order.&lt;/p&gt;
+
+&lt;p&gt;Asset pipeline is handled in rails with Sprockets, the Rack-based asset packaging system &lt;a href=&quot;https://github.com/sstephenson/sprockets&quot;&gt;https://github.com/sstephenson/sprockets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;
+
+&lt;h3 id=&quot;integration-tests&quot;&gt;Integration tests&lt;/h3&gt;
+
+&lt;p&gt;Testing how several components of the app interacts with &lt;em&gt;integration tests&lt;/em&gt;:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;rails generate integration_test SiteLayout&lt;/kbd&gt;
+Running via Spring preloader in process 9703
+      invoke  test_unit
+      create    test/integration/site_layout_test.rb
+&lt;/samp&gt;
+&lt;/pre&gt;
 
 &lt;h2 id=&quot;main-resources&quot;&gt;Main resources&lt;/h2&gt;
 
