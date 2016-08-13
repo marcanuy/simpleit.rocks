@@ -284,10 +284,12 @@
       <div>
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#rails-console">Rails console</a></li>
+<li class="toc-entry toc-h2"><a href="#environment-and-console">Environment and Console</a></li>
+<li class="toc-entry toc-h3"><a href="#sandbox-console">Sandbox console</a></li>
 <li class="toc-entry toc-h2"><a href="#routes">Routes</a></li>
 <li class="toc-entry toc-h3"><a href="#named-routes">Named routes</a></li>
 <li class="toc-entry toc-h2"><a href="#web-request-handling">Web Request Handling</a></li>
+<li class="toc-entry toc-h3"><a href="#resource-routes">Resource routes</a></li>
 <li class="toc-entry toc-h2"><a href="#models">Models</a></li>
 <li class="toc-entry toc-h2"><a href="#controllers">Controllers</a></li>
 <li class="toc-entry toc-h2"><a href="#views">Views</a></li>
@@ -385,9 +387,33 @@
 </div>
 
 
-    <h2 id="rails-console">Rails console</h2>
+    <h2 id="environment-and-console">Environment and Console</h2>
 
-<p>The console is based in <code class="highlighter-rouge">irb</code> (Interactive Ruby) and by default it starts with the <em>development environment</em>. The other environments defined by Rails are <em>test</em> and <em>production</em>.</p>
+<p>The console is based in <code class="highlighter-rouge">irb</code> (Interactive Ruby) and it can be accessed with <code class="highlighter-rouge">rails console</code>:</p>
+
+<div class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>rails console --help</kbd><br />
+Running via Spring preloader in process 18521<br />
+Usage: rails console [environment] [options]<br />
+    -s, --sandbox                    Rollback database modifications on exit.<br />
+    -e, --environment=name           Specifies the environment to run this console under (test/development/production).<br />
+                                     Default: development<br />
+</samp>
+</div>
+
+<p>Rails comes with three <em>environments</em>:</p>
+
+<ul>
+  <li><strong>development</strong> (started by default in the <em>console</em>)</li>
+  <li><strong>test</strong></li>
+  <li><strong>production</strong></li>
+</ul>
+
+<p>These environments can be specified in the <em>console</em>, or by setting the <code class="highlighter-rouge">RAILS_ENV</code> variable like: <code class="highlighter-rouge">RAILS_ENV=production</code>.
+Then the environment can be accessed in the code with the <em>env</em> attribute of the <em>Rails</em> object: <code class="highlighter-rouge">Rails.env</code></p>
+
+<h3 id="sandbox-console">Sandbox console</h3>
 
 <p>It is possible to test the app in the console without changing the database
 running a <a href="https://en.wikipedia.org/wiki/Sandbox_(software_development)">sandboxed</a> 
@@ -477,6 +503,90 @@ can also be specified with the <code class="highlighter-rouge">as</code> keyword
     </ul>
   </li>
 </ul>
+
+<p>Rails applications favors the conventions of the REST architecture, it 
+makes it easy to <strong>represent data as resources</strong> that respond to the four
+actions corresponding to the four fundamental operations POST, GET, PATCH,
+and DELETE of the HTTP standard:</p>
+
+<ul>
+  <li>create</li>
+  <li>show</li>
+  <li>update</li>
+  <li>destroy</li>
+</ul>
+
+<p>For example, to create a RESTful User resource in <code class="highlighter-rouge">config/routes.rb</code> with <code class="highlighter-rouge">resources :users</code>
+generates all this routes:</p>
+
+<h3 id="resource-routes">Resource routes</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th style="text-align: left">Helper</th>
+      <th>HTTP Verb</th>
+      <th>Path</th>
+      <th>Controller#Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">root_path</td>
+      <td>GET</td>
+      <td>/</td>
+      <td>pages#home</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">users_path</td>
+      <td>GET</td>
+      <td>/users(.:format)</td>
+      <td>users#index</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td>POST</td>
+      <td>/users(.:format)</td>
+      <td>users#create</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">new_user_path</td>
+      <td>GET</td>
+      <td>/users/new(.:format)</td>
+      <td>users#new</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">edit_user_path</td>
+      <td>GET</td>
+      <td>/users/:id/edit(.:format)</td>
+      <td>users#edit</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">user_path</td>
+      <td>GET</td>
+      <td>/users/:id(.:format)</td>
+      <td>users#show</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td>PATCH</td>
+      <td>/users/:id(.:format)</td>
+      <td>users#update</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td>PUT</td>
+      <td>/users/:id(.:format)</td>
+      <td>users#update</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td>DELETE</td>
+      <td>/users/:id(.:format)</td>
+      <td>users#destroy</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2 id="models">Models</h2>
 
@@ -864,6 +974,15 @@ Running via Spring preloader in process 9703
     
     
     
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/simple-debugging-in-rails/">
+      Simple Debugging In Rails
+    </a>
     
     
   </div>

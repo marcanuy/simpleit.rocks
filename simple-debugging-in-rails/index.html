@@ -29,24 +29,24 @@
 
   
   <!-- Begin Jekyll SEO tag v2.0.0 -->
-<title>Python - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Python" />
-<meta name="description" content="Phyton programming language" />
-<meta property="og:description" content="Phyton programming language" />
-<link rel="canonical" href="http://simpleit.rocks/python/" />
-<meta property="og:url" content="http://simpleit.rocks/python/" />
+<title>Simple Debugging In Rails - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Simple Debugging In Rails" />
+<meta name="description" content="Simple methods to debug when developing in rails." />
+<meta property="og:description" content="Simple methods to debug when developing in rails." />
+<link rel="canonical" href="http://simpleit.rocks/simple-debugging-in-rails/" />
+<meta property="og:url" content="http://simpleit.rocks/simple-debugging-in-rails/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-05-30T00:00:00-03:00" />
+<meta property="article:published_time" content="2016-08-12T00:00:00-03:00" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "Python",
-    "datePublished": "2016-05-30T00:00:00-03:00",
-    "description": "Phyton programming language",
-    "url": "http://simpleit.rocks/python/"
+    "headline": "Simple Debugging In Rails",
+    "datePublished": "2016-08-12T00:00:00-03:00",
+    "description": "Simple methods to debug when developing in rails.",
+    "url": "http://simpleit.rocks/simple-debugging-in-rails/"
   }
 </script>
 <!-- End Jekyll SEO tag -->
@@ -104,12 +104,8 @@
     
     
     
-    <h1 class="title">Python </h1>
+    <h1 class="title">Simple Debugging In Rails </h1>
     
-    
-    <p class="lead">
-      <small class="text-muted subtitle">Programming language</small>
-    </p>
     
   </div>
 </div>
@@ -124,7 +120,7 @@
   <div class="post-meta">
     
     <i class="fa fa-calendar" aria-hidden="true"></i>
-    <time datetime="2016-05-30T00:00:00-03:00" itemprop="datePublished">May 30, 2016</time>
+    <time datetime="2016-08-12T00:00:00-03:00" itemprop="datePublished">Aug 12, 2016</time>
     
   </div>
   <div>
@@ -195,10 +191,10 @@
     class=active>
   
   <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/python">
+     itemprop="item" href="/docs/ruby">
     
 
-    python
+    ruby
   </a>
   
   <meta itemprop="position" content="3" />
@@ -219,10 +215,10 @@
     class=active>
   
   <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/python/language">
+     itemprop="item" href="/docs/ruby/rails">
     
 
-    language
+    rails
   </a>
   
   <meta itemprop="position" content="4" />
@@ -246,7 +242,7 @@
        itemprop="item">
     
 
-    <span itemprop="name">Python</span>
+    <span itemprop="name">Simple Debugging In Rails</span>
   </span>
   
   <meta itemprop="position" content="5" />
@@ -288,15 +284,9 @@
       <div>
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#object-oriented-concepts-in-python">Object Oriented concepts in Python</a></li>
-<li class="toc-entry toc-h2"><a href="#environment-isolation">Environment isolation</a></li>
-<li class="toc-entry toc-h3"><a href="#same-database-engine-in-all-the-environments">Same database engine in all the environments</a></li>
-<li class="toc-entry toc-h3"><a href="#project-packages">Project packages</a></li>
-<li class="toc-entry toc-h3"><a href="#os-isolation">OS isolation</a></li>
-<li class="toc-entry toc-h2"><a href="#project-structure">Project structure</a></li>
-<li class="toc-entry toc-h1"><a href="#database">Database</a></li>
-<li class="toc-entry toc-h2"><a href="#peewee">Peewee</a></li>
-<li class="toc-entry toc-h1"><a href="#references">References</a></li>
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#debug-info-in-views">Debug info in views</a></li>
+<li class="toc-entry toc-h2"><a href="#byebug-gem">Byebug gem</a></li>
 </ul>
       </div>
       <div>
@@ -307,9 +297,10 @@
       <div>
   <a class="twitter-share-button"
      href="https://twitter.com/share"
-     data-url="http://simpleit.rocks/python/"
+     data-url="http://simpleit.rocks/simple-debugging-in-rails/"
      data-via=""
-     data-text="Phyton programming language"
+     data-text="Simple methods to debug when developing in rails.
+"
      data-related="marcanuy"
      data-count="vertical">
     Tweet
@@ -341,7 +332,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="http://simpleit.rocks/python/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="http://simpleit.rocks/simple-debugging-in-rails/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -358,7 +349,8 @@
 
     
 	<p class="lead">
-	  Phyton programming language
+	  Simple methods to debug when developing in rails.
+
 	</p>
     
 
@@ -380,95 +372,58 @@
 </div>
 
 
-    <ul id="markdown-toc">
-  <li><a href="#object-oriented-concepts-in-python" id="markdown-toc-object-oriented-concepts-in-python">Object Oriented concepts in Python</a></li>
-  <li><a href="#environment-isolation" id="markdown-toc-environment-isolation">Environment isolation</a>    <ul>
-      <li><a href="#same-database-engine-in-all-the-environments" id="markdown-toc-same-database-engine-in-all-the-environments">Same database engine in all the environments</a></li>
-      <li><a href="#project-packages" id="markdown-toc-project-packages">Project packages</a></li>
-      <li><a href="#os-isolation" id="markdown-toc-os-isolation">OS isolation</a></li>
-    </ul>
-  </li>
-  <li><a href="#project-structure" id="markdown-toc-project-structure">Project structure</a></li>
-  <li><a href="#database" id="markdown-toc-database">Database</a>    <ul>
-      <li><a href="#peewee" id="markdown-toc-peewee">Peewee</a></li>
-    </ul>
-  </li>
-  <li><a href="#references" id="markdown-toc-references">References</a></li>
-</ul>
+    <h2 id="overview">Overview</h2>
 
-<h2 id="object-oriented-concepts-in-python">Object Oriented concepts in Python</h2>
-
-<blockquote cite="https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/">
-  <p>The rule of thumb is, don’t introduce a new attribute outside of the <strong>init</strong> method, otherwise you’ve given the caller an object that isn’t fully initialized.
-– <cite>https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/</cite></p>
-</blockquote>
+<p>There are two very simple ways to debug a rails app:</p>
 
 <ul>
-  <li>Why you need <em>self</em> as the first positional argument of a method</li>
+  <li>printing debug information directly in a view</li>
+  <li>Using <code class="highlighter-rouge">byebug</code> gem</li>
 </ul>
 
-<blockquote cite="http://stackoverflow.com/questions/23944657/typeerror-method-takes-1-positional-argument-but-2-were-given">
-  <p>In Python, this: <code class="highlighter-rouge">my_object.method("foo")</code> is syntactic sugar, which the interpreter translates behind the scenes into: <code class="highlighter-rouge">MyClass.method(my_object, "foo")</code> which, as you can see, does indeed have two arguments - it’s just that the first one is implicit, from the point of view of the caller. 
-This is because most methods do some work with the object they’re called on, so there needs to be some way for that object to be referred to inside the method. By convention, this first argument is called self inside the method definition.</p>
-</blockquote>
+<h2 id="debug-info-in-views">Debug info in views</h2>
 
-<h2 id="environment-isolation">Environment isolation</h2>
+<p>Adding the following line to <code class="highlighter-rouge">/app/views/layouts/application.html.erb</code> to 
+show debugging information in each view <strong>only in the <em>development</em> environment</strong>:</p>
 
-<h3 id="same-database-engine-in-all-the-environments">Same database engine in all the environments</h3>
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+<span class="nf">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+<span class="nf">&lt;</span><span class="o">%=</span> <span class="n">debug</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="k">if</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">env</span><span class="p">.</span><span class="nf">development?</span> <span class="sx">%&gt;
+&lt;/body&gt;</span>
+</code></pre>
+</div>
 
-<p>The same database engine (e.g. PostgreSQL, sqlite, MySQL), should be used in all the different environments of a project.</p>
+<h2 id="byebug-gem">Byebug gem</h2>
 
-<p>It is a common bad practice to have a lightweight database in the <em>development</em> environment and something more powerful in <em>production</em>, all of them should use the same engine to avoid the different ways each one handle the data.</p>
+<p>Rails 5 has the <code class="highlighter-rouge">byebug</code> gem included, adding <code class="highlighter-rouge">debugger</code> to any controller 
+action, makes it possible to interact with the application in the console 
+server each time a view is accessed in the browser. Adding <code class="highlighter-rouge">debugger</code> in
+a controller action:</p>
 
-<p>This way it is possible to:</p>
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">UsersController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">new</span>
+  <span class="k">end</span>
 
-<ul>
-  <li>examine the <em>production environment</em> data locally.</li>
-  <li>avoid the different <em>types</em> and <em>constraints</em> each database engine has. (e.g. sqlite does not support foreign key constraint, while PostgreSQL does )</li>
-</ul>
+  <span class="k">def</span> <span class="nf">show</span>
+    <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
+    <span class="n">debugger</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div>
 
-<h3 id="project-packages">Project packages</h3>
+<p>Then accessing a url of the application, the rails server shows 
+the <code class="highlighter-rouge">(byebug) </code> prompt so the developer can inspect current view
+variables values, for example when accessing
+<code class="highlighter-rouge">http://localhost:3000/users/1</code>:</p>
 
-<p>Project environment isolation with <strong>pip</strong> and <strong>virtualenv</strong> is recommended, so each project can handle their own dependencies and language versions.</p>
-
-<h3 id="os-isolation">OS isolation</h3>
-
-<p>If there is more than one computer in the development process, there would be probably different Operating Systems and software versions involved that can lead to inconsistencies in source code. There are two applications that play nice together:</p>
-
-<ul>
-  <li>
-    <p><a href="https://www.vagrantup.com">Vagrant</a> creates reproducible development environments. In addition to being useful in setting up <em>developers environments</em>, it makes easier to configure <strong>development</strong>, <strong>staging</strong> and <strong>production</strong> environment.</p>
-  </li>
-  <li>
-    <p><a href="https://www.virtualbox.org">VirtualBox</a> is a virtualization product, makes it easy to have the same OS that the Vagrant file is built for.</p>
-  </li>
-</ul>
-
-<h2 id="project-structure">Project structure</h2>
-
-<ul>
-  <li><a href="http://docs.python-guide.org/en/latest/writing/structure/">http://docs.python-guide.org/en/latest/writing/structure/</a></li>
-  <li><a href="https://jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/">https://jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/</a></li>
-</ul>
-
-<h1 id="database">Database</h1>
-
-<h2 id="peewee">Peewee</h2>
-
-<p>A small <abbr title="Object Relational Mapping">ORM</abbr> that supports postgresql, mysql and sqlite. Can be used with models like Django.</p>
-
-<ul>
-  <li><a href="http://docs.peewee-orm.com/">http://docs.peewee-orm.com/</a></li>
-  <li><a href="https://github.com/coleifer/peewee">https://github.com/coleifer/peewee</a></li>
-</ul>
-
-<h1 id="references">References</h1>
-
-<ul>
-  <li><a href="https://docs.python.org/3/">Phyton 3 Official Documentation</a></li>
-  <li><a href="https://docs.python.org/3/tutorial/">https://docs.python.org/3/tutorial/</a></li>
-</ul>
-
+<div class="shell">
+<samp>
+<span class="shell-prompt">(byebug)</span> <kbd>@user.password_digest</kbd><br />
+"$2a$10$S3H9mBLQmfkBdaV3j/4M8ud7te9DwDwrreklqwjg4jt63oh528adv"
+</samp>
+</div>
 
 
     <div class="post-comments">
@@ -482,7 +437,7 @@ This is because most methods do some work with the object they’re called on, s
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/python/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/simple-debugging-in-rails/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -511,112 +466,226 @@ This is because most methods do some work with the object they’re called on, s
 
 
 
+<div class="post-same-category">
+  <h4>Articles in this category</h4>
+  <div class="list-group">
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/building-a-hello-world-app-in-ruby-on-rails-app/">
+      Building A Hello World App In Ruby On Rails App
+    </a>
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/ruby-on-rails-overview/">
+      Ruby On Rails Overview
+    </a>
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/common-steps-to-start-a-rails-project/">
+      Common Steps To Start A Rails Project
+    </a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item active" href="/simple-debugging-in-rails/">
+      Simple Debugging In Rails
+    </a>
+    
+    
+  </div>
+</div>
+
 
 	
 
 
-
-<h2>Articles</h2>
-<p>This article is being referenced in:</p>
-<div class="list-group">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <a href="/django-project-directory-structure/" class="list-group-item">
-    Django Project Directory Structure
-  </a>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <a href="/python-virtual-environments-using-virtualenv/" class="list-group-item">
-    Python Virtual Environments
-  </a>
-  
-  
-  
-  <a href="/custom-django-configurations-for-different-servers/" class="list-group-item">
-    Django Configuration and environment isolation
-  </a>
-  
-  
-  
-  <a href="/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/" class="list-group-item">
-    How to implement breadcrumbs on a Jekyll site with nested categories
-  </a>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <a href="/django-overview/" class="list-group-item">
-    Django Overview
-  </a>
-  
-  
-  
-  
-  
-  
-</div>
 
 
       </div>
