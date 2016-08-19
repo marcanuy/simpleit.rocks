@@ -7,12 +7,24 @@ layout: post
 
 Ruby Console (Interactive Ruby): <kbd>irb</kbd>
 
-Everything in Ruby, including _nil_ and _strings_, is an __object__
+Everything in Ruby, including [nil](http://ruby-doc.org/core-2.3.1/NilClass.html)
+and [strings](http://ruby-doc.org/core-2.3.1/String.html), is an
+[object](http://ruby-doc.org/core-2.3.1/Object.html)
 {: class="alert alert-info"}
 
-## Modules
+## Syntax
 
-Related methods in Ruby can be packaged in _modules_.
+- <http://ruby-doc.org/core-2.3.1/doc/syntax_rdoc.html>
+
+## Assignment
+
+- <http://ruby-doc.org/core-2.3.1/doc/syntax/assignment_rdoc.html>
+
+## Modules and Classes
+
+- <http://ruby-doc.org/core-2.3.1/doc/syntax/modules_and_classes_rdoc.html>
+
+Related methods in Ruby can be packaged in [modules](http://ruby-doc.org/core-2.3.1/doc/syntax/modules_and_classes_rdoc.html#label-Module+Definition).
 
 Modules are often explicitly imported or they can be imported
 _automagically_ in frameworks that favours conventions like 
@@ -27,6 +39,8 @@ end
 
 
 ## Method definition
+
+- <http://ruby-doc.org/core-2.3.1/doc/syntax/methods_rdoc.html>
 
 By convention, every method that ends with a question mark `?` returns a _boolean_ value.
 
@@ -65,7 +79,11 @@ Comments start with the hash mark `#` (also called the _pound sign_ and the _oct
 
 ## Control flow
 
+- Control Expressions <http://ruby-doc.org/core-2.3.1/doc/syntax/control_expressions_rdoc.html>
+
 ### Conditional clause (if)
+
+- <http://ruby-doc.org/core-2.3.1/doc/syntax/control_expressions_rdoc.html#label-if+Expression>
 
 `if-elsif-end`
 
@@ -130,6 +148,8 @@ foobar
 
 ### Arrays
 
+- <http://ruby-doc.org/core-2.3.1/Array.html>
+
 ~~~ ruby
 a = ["foo", "bar", "baz"]
 ~~~
@@ -138,6 +158,9 @@ a = ["foo", "bar", "baz"]
   - `a[0]`
   - `a.first`
 
+## Operator precedence
+
+- <http://ruby-doc.org/core-2.3.1/doc/syntax/precedence_rdoc.html>
 
 References
 ==========
