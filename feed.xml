@@ -6,9 +6,306 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 13 Aug 2016 13:10:01 -0300</pubDate>
-    <lastBuildDate>Sat, 13 Aug 2016 13:10:01 -0300</lastBuildDate>
+    <pubDate>Mon, 17 Oct 2016 19:20:53 -0300</pubDate>
+    <lastBuildDate>Mon, 17 Oct 2016 19:20:53 -0300</lastBuildDate>
     <generator>Jekyll v3.2.0.pre.beta1</generator>
+    
+      <item>
+        <title>How To Dump And Import Utf 8 Mysql Databases In A Safe Way</title>
+        <description>&lt;h1 id=&quot;overview&quot;&gt;Overview&lt;/h1&gt;
+
+&lt;p&gt;If you have a MySQL database with its character set encoded in
+&lt;a href=&quot;https://en.wikipedia.org/wiki/UTF-8&quot;&gt;UTF-8&lt;/a&gt;, then you need to treat it
+in a special way when dumping and restoring the database to be able to
+read its special characters.&lt;/p&gt;
+
+&lt;h1 id=&quot;dumping-a-database&quot;&gt;Dumping a database&lt;/h1&gt;
+
+&lt;p&gt;The common and quickest way of dumping a database with &lt;code class=&quot;highlighter-rouge&quot;&gt;mysqldump&lt;/code&gt; does not
+treat &lt;em&gt;utf-8&lt;/em&gt; encoding right.&lt;/p&gt;
+
+&lt;p&gt;Avoid doing it like:&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
+	mysqldump -uroot -p database &amp;gt; utf8.dump
+&lt;/div&gt;
+
+&lt;p&gt;This is the correct way to dump a MySQL database safely:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;mysqldump -uroot -p database &amp;gt; utf8.dump&lt;/kbd&gt;
+...
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h1 id=&quot;restoring-a-database&quot;&gt;Restoring a database&lt;/h1&gt;
+
+&lt;p&gt;Usually you will restore a database simply inserting the data with an input
+file descriptor &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&lt;/code&gt;, but this won’t handle &lt;code class=&quot;highlighter-rouge&quot;&gt;utf-8&lt;/code&gt; encoding properly, so
+this should be avoided:&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
+mysql -u username -p database &amp;lt; dump_file
+&lt;/div&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;mysql -uroot -p --default-character-set=utf8 database&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;mysql&amp;gt; &lt;/span&gt; &lt;kbd&gt;SET names 'utf8'&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;mysql&amp;gt; &lt;/span&gt; &lt;kbd&gt;SOURCE utf8.dump&lt;/kbd&gt;
+...
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h1 id=&quot;related-definitions&quot;&gt;Related Definitions&lt;/h1&gt;
+
+&lt;h2 id=&quot;character-set&quot;&gt;Character set&lt;/h2&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://dev.mysql.com/doc/refman/5.7/en/charset-general.html&quot;&gt;
+  &lt;p&gt;A character set is a set of symbols and encodings. A collation is a set 
+of rules for comparing characters in a character set. Let’s make the
+distinction clear with an example of an imaginary character set.
+Suppose that we have an alphabet with four letters: A, B, a, b. We give
+each letter a number: A = 0, B = 1, a = 2, b = 3. The letter A is a 
+symbol, the number 0 is the encoding for A, and the combination of all
+four letters and their encodings is a character set.&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt;Character Sets and Collations in General &lt;cite title=&quot;MySQL Docs&quot;&gt;MySQL Docs&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;utf-8&quot;&gt;UTF-8&lt;/h2&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://dev.mysql.com/doc/refman/5.7/en/charset-unicode-utf8.html&quot;&gt;
+  &lt;p&gt;UTF-8 (Unicode Transformation Format with 8-bit units) is an alternative 
+way to store Unicode data. It is implemented according to RFC 3629, which
+describes encoding sequences that take from one to four bytes.&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt;The utf8 Character Set (3-Byte UTF-8 Unicode Encoding) &lt;cite title=&quot;MySQL Docs&quot;&gt;MySQL Docs&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://makandracards.com/makandra/595-dumping-and-importing-from-to-mysql-in-an-utf-8-safe-way&quot;&gt;https://makandracards.com/makandra/595-dumping-and-importing-from-to-mysql-in-an-utf-8-safe-way&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Configuring the default database charset &lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html&quot;&gt;https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 17 Oct 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/how-to-dump-and-import-utf-8-mysql-databases-in-a-safe-way/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/how-to-dump-and-import-utf-8-mysql-databases-in-a-safe-way/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>sql</category>
+        
+        <category>mysql</category>
+        
+      </item>
+    
+      <item>
+        <title>Ionic 2 Framework Overview</title>
+        <description>&lt;h1 id=&quot;overview&quot;&gt;Overview&lt;/h1&gt;
+
+&lt;p&gt;Ionic 2 framework has been &lt;strong&gt;designed to build cross-platform mobile apps&lt;/strong&gt; and
+web apps in a way similar to building websites, i.e.: using HTML, CSS, and
+JavaScript (&lt;a href=&quot;https://angular.io/&quot;&gt;Angular&lt;/a&gt;) languages.&lt;/p&gt;
+
+&lt;p&gt;It is built on top of &lt;a href=&quot;https://cordova.apache.org/&quot;&gt;Cordova&lt;/a&gt;, a framework 
+to build mobile apps with HTML, CSS &amp;amp; JS.&lt;/p&gt;
+
+&lt;h1 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h1&gt;
+
+&lt;h2 id=&quot;installing&quot;&gt;Installing&lt;/h2&gt;
+
+&lt;p&gt;To use Ionic 2 installing Cordova is required: &lt;code class=&quot;highlighter-rouge&quot;&gt;$ sudo npm install -g cordova&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then install Ionic: &lt;code class=&quot;highlighter-rouge&quot;&gt;$ npm install -g ionic@beta&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Start an &lt;a href=&quot;https://github.com/driftyco/ionic2-app-base&quot;&gt;Ionic project&lt;/a&gt;
+with the ionic_&lt;a href=&quot;https://github.com/driftyco/ionic2-starter-tutorial&quot;&gt;tutorial template&lt;/a&gt;_:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$ ionic start myProject tutorial --v2&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then, to run it, enter project directory and &lt;em&gt;run&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd myProject
+$ ionic platform add android
+$ ionic run android
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;or serve it with:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ionic serve
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;directory-structure&quot;&gt;Directory structure&lt;/h2&gt;
+
+&lt;p&gt;The basic structure of the app contains the following directories and files:&lt;/p&gt;
+
+&lt;pre&gt;
+config.xml
+ionic.config.json
+package.json       __the npm packages that will be in node_modules dir__
+resources/         __platform specific resources__
+tsconfig.json
+tslint.json
+hooks/
+node_modules/
+platforms/         __platform specific files e.g. for android or ios __
+plugins/           __where cordova plugins are stored when installed__
+src/               __our app source code__
+tsconfig.tmp.json
+www/
+&lt;/pre&gt;
+
+&lt;p&gt;The generated website will be in the &lt;code class=&quot;highlighter-rouge&quot;&gt;www&lt;/code&gt; directory with a 
+structure similar to:&lt;/p&gt;
+
+&lt;pre&gt;
+www/
+├── assets
+│   ├── fonts
+│   │   ├── ionicons.eot
+│   │   ├── ionicons.svg
+│   │   ├── ionicons.ttf
+│   │   ├── ionicons.woff
+│   │   └── ionicons.woff2
+│   ├── icon
+│   │   └── favicon.ico
+│   └── manifest.json
+├── build
+│   ├── main.css
+│   ├── main.js
+│   ├── main.js.map
+│   └── polyfills.js
+└── index.html       &amp;lt;-- root component of the app
+&lt;/pre&gt;
+
+&lt;h1 id=&quot;app-organization&quot;&gt;App organization&lt;/h1&gt;
+
+&lt;h2 id=&quot;pages&quot;&gt;Pages&lt;/h2&gt;
+
+&lt;p&gt;Each page of the application can be generated with &lt;code class=&quot;highlighter-rouge&quot;&gt;ionic generate page mylist&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;And will contain &lt;a href=&quot;https://ionicframework.com/docs/v2/api/components/&quot;&gt;components&lt;/a&gt;
+like &lt;code class=&quot;highlighter-rouge&quot;&gt;ionic-navbar&lt;/code&gt; that will help to quickly create app interfaces.&lt;/p&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://ionicframework.com/docs/v2/&quot;&gt;http://ionicframework.com/docs/v2/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 30 Sep 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/ionic-2-framework-overview/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/ionic-2-framework-overview/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>mobile</category>
+        
+        <category>ionic</category>
+        
+      </item>
+    
+      <item>
+        <title>The Idiomatically Correct Way To Make An Instance Of A Many To One Relationship Model</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Having a many-to-one model relationship in Rails, an instance of such model
+can be manually made inserting the other model foreign id, but that is not
+the most natural way to express it in &lt;em&gt;Rails&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;The most common way to write such relationship in &lt;em&gt;Rails&lt;/em&gt; is to &lt;strong&gt;create the
+related model through its association&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;Having the following models&lt;/p&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+    User--has_many--&amp;gt;Article;
+&lt;/div&gt;
+
+&lt;p&gt;then each &lt;code class=&quot;highlighter-rouge&quot;&gt;Article&lt;/code&gt; would have an &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt; &lt;em&gt;foreign key&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;manually-assign-fk&quot;&gt;Manually assign FK&lt;/h2&gt;
+
+&lt;p&gt;The &lt;em&gt;manually&lt;/em&gt; form for creating an &lt;code class=&quot;highlighter-rouge&quot;&gt;Article&lt;/code&gt; instance with an associated
+&lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; would be to create an User and assign its &lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt; to the 
+Article’s &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;name: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;John&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;vi&quot;&gt;@article&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Article&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;content: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Foobar&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;user_id: &lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;create-through-association&quot;&gt;Create through association&lt;/h2&gt;
+
+&lt;p&gt;Creating an article through the &lt;code class=&quot;highlighter-rouge&quot;&gt;user&lt;/code&gt; instance would automagically set
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Article.user_id&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;name: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;John&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;vi&quot;&gt;@article&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;articles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;content: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Foobar&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/books/ruby-on-rails-tutorial/&quot;&gt;Ruby on rails tutorial Book&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://guides.rubyonrails.org/association_basics.html&quot;&gt;Active Record Associations&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 18 Aug 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/the-idiomatically-correct-way-to-make-an-instance-of-a-many-to-one-relationship-model/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/the-idiomatically-correct-way-to-make-an-instance-of-a-many-to-one-relationship-model/</guid>
+        
+        <category>rails</category>
+        
+        <category>models</category>
+        
+        <category>web-development</category>
+        
+        
+        <category>docs</category>
+        
+        <category>ruby</category>
+        
+        <category>rails</category>
+        
+      </item>
+    
+      <item>
+        <title>Authorization Versus Authentication In Web Apps</title>
+        <description>&lt;h2 id=&quot;authorization&quot;&gt;Authorization&lt;/h2&gt;
+
+&lt;p&gt;Authorization lets us control what the users of our site can do.&lt;/p&gt;
+
+&lt;p class=&quot;alert alert-danger&quot;&gt;What can they do?&lt;/p&gt;
+
+&lt;h2 id=&quot;authentication&quot;&gt;Authentication&lt;/h2&gt;
+
+&lt;p&gt;Authentication allows us to identify the users of the site.&lt;/p&gt;
+
+&lt;p class=&quot;alert alert-danger&quot;&gt;Who are them?&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 17 Aug 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/authorization-versus-authentication-in-web-apps/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/authorization-versus-authentication-in-web-apps/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>theory</category>
+        
+        <category>web-development</category>
+        
+      </item>
     
       <item>
         <title>Simple Debugging In Rails</title>
@@ -179,11 +476,29 @@ variables values, for example when accessing
         <title>Ruby Language Overview</title>
         <description>&lt;p&gt;Ruby Console (Interactive Ruby): &lt;kbd&gt;irb&lt;/kbd&gt;&lt;/p&gt;
 
-&lt;p class=&quot;alert alert-info&quot;&gt;Everything in Ruby, including &lt;em&gt;nil&lt;/em&gt; and &lt;em&gt;strings&lt;/em&gt;, is an &lt;strong&gt;object&lt;/strong&gt;&lt;/p&gt;
+&lt;p class=&quot;alert alert-info&quot;&gt;Everything in Ruby, including &lt;a href=&quot;http://ruby-doc.org/core-2.3.1/NilClass.html&quot;&gt;nil&lt;/a&gt;
+and &lt;a href=&quot;http://ruby-doc.org/core-2.3.1/String.html&quot;&gt;strings&lt;/a&gt;, is an
+&lt;a href=&quot;http://ruby-doc.org/core-2.3.1/Object.html&quot;&gt;object&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;modules&quot;&gt;Modules&lt;/h2&gt;
+&lt;h2 id=&quot;syntax&quot;&gt;Syntax&lt;/h2&gt;
 
-&lt;p&gt;Related methods in Ruby can be packaged in &lt;em&gt;modules&lt;/em&gt;.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://ruby-doc.org/core-2.3.1/doc/syntax_rdoc.html&quot;&gt;http://ruby-doc.org/core-2.3.1/doc/syntax_rdoc.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;assignment&quot;&gt;Assignment&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://ruby-doc.org/core-2.3.1/doc/syntax/assignment_rdoc.html&quot;&gt;http://ruby-doc.org/core-2.3.1/doc/syntax/assignment_rdoc.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;modules-and-classes&quot;&gt;Modules and Classes&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://ruby-doc.org/core-2.3.1/doc/syntax/modules_and_classes_rdoc.html&quot;&gt;http://ruby-doc.org/core-2.3.1/doc/syntax/modules_and_classes_rdoc.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Related methods in Ruby can be packaged in &lt;a href=&quot;http://ruby-doc.org/core-2.3.1/doc/syntax/modules_and_classes_rdoc.html#label-Module+Definition&quot;&gt;modules&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Modules are often explicitly imported or they can be imported
 &lt;em&gt;automagically&lt;/em&gt; in frameworks that favours conventions like 
@@ -197,6 +512,10 @@ variables values, for example when accessing
 &lt;/div&gt;
 
 &lt;h2 id=&quot;method-definition&quot;&gt;Method definition&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://ruby-doc.org/core-2.3.1/doc/syntax/methods_rdoc.html&quot;&gt;http://ruby-doc.org/core-2.3.1/doc/syntax/methods_rdoc.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;By convention, every method that ends with a question mark &lt;code class=&quot;highlighter-rouge&quot;&gt;?&lt;/code&gt; returns a &lt;em&gt;boolean&lt;/em&gt; value.&lt;/p&gt;
 
@@ -237,7 +556,15 @@ variables values, for example when accessing
 
 &lt;h2 id=&quot;control-flow&quot;&gt;Control flow&lt;/h2&gt;
 
+&lt;ul&gt;
+  &lt;li&gt;Control Expressions &lt;a href=&quot;http://ruby-doc.org/core-2.3.1/doc/syntax/control_expressions_rdoc.html&quot;&gt;http://ruby-doc.org/core-2.3.1/doc/syntax/control_expressions_rdoc.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h3 id=&quot;conditional-clause-if&quot;&gt;Conditional clause (if)&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://ruby-doc.org/core-2.3.1/doc/syntax/control_expressions_rdoc.html#label-if+Expression&quot;&gt;http://ruby-doc.org/core-2.3.1/doc/syntax/control_expressions_rdoc.html#label-if+Expression&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;if-elsif-end&lt;/code&gt;&lt;/p&gt;
 
@@ -300,6 +627,10 @@ foobar
 
 &lt;h3 id=&quot;arrays&quot;&gt;Arrays&lt;/h3&gt;
 
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://ruby-doc.org/core-2.3.1/Array.html&quot;&gt;http://ruby-doc.org/core-2.3.1/Array.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;foo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;bar&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;baz&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -311,6 +642,12 @@ foobar
       &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;a.first&lt;/code&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;operator-precedence&quot;&gt;Operator precedence&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://ruby-doc.org/core-2.3.1/doc/syntax/precedence_rdoc.html&quot;&gt;http://ruby-doc.org/core-2.3.1/doc/syntax/precedence_rdoc.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
@@ -597,826 +934,6 @@ and &lt;code class=&quot;highlighter-rouge&quot;&gt;postgresql&lt;/code&gt; in &
         <category>ruby</category>
         
         <category>rails</category>
-        
-      </item>
-    
-      <item>
-        <title>Ruby On Rails Overview</title>
-        <description>&lt;h2 id=&quot;environment-and-console&quot;&gt;Environment and Console&lt;/h2&gt;
-
-&lt;p&gt;The console is based in &lt;code class=&quot;highlighter-rouge&quot;&gt;irb&lt;/code&gt; (Interactive Ruby) and it can be accessed with &lt;code class=&quot;highlighter-rouge&quot;&gt;rails console&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;rails console --help&lt;/kbd&gt;&lt;br /&gt;
-Running via Spring preloader in process 18521&lt;br /&gt;
-Usage: rails console [environment] [options]&lt;br /&gt;
-    -s, --sandbox                    Rollback database modifications on exit.&lt;br /&gt;
-    -e, --environment=name           Specifies the environment to run this console under (test/development/production).&lt;br /&gt;
-                                     Default: development&lt;br /&gt;
-&lt;/samp&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Rails comes with three &lt;em&gt;environments&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;development&lt;/strong&gt; (started by default in the &lt;em&gt;console&lt;/em&gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;test&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;production&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;These environments can be specified in the &lt;em&gt;console&lt;/em&gt;, or by setting the &lt;code class=&quot;highlighter-rouge&quot;&gt;RAILS_ENV&lt;/code&gt; variable like: &lt;code class=&quot;highlighter-rouge&quot;&gt;RAILS_ENV=production&lt;/code&gt;.
-Then the environment can be accessed in the code with the &lt;em&gt;env&lt;/em&gt; attribute of the &lt;em&gt;Rails&lt;/em&gt; object: &lt;code class=&quot;highlighter-rouge&quot;&gt;Rails.env&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;sandbox-console&quot;&gt;Sandbox console&lt;/h3&gt;
-
-&lt;p&gt;It is possible to test the app in the console without changing the database
-running a &lt;a href=&quot;https://en.wikipedia.org/wiki/Sandbox_(software_development)&quot;&gt;sandboxed&lt;/a&gt; 
-instance with &lt;code class=&quot;highlighter-rouge&quot;&gt;rails console--sandbox&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;rails console --sandbox&lt;/kbd&gt;
-Running via Spring preloader in process 3485
-Loading development environment in sandbox (Rails 5.0.0)
-Any modifications you make will be rolled back on exit
-irb(main):001:0&amp;gt; 
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;routes&quot;&gt;Routes&lt;/h2&gt;
-
-&lt;p&gt;Routes are defined in &lt;code class=&quot;highlighter-rouge&quot;&gt;/config/routes.rb&lt;/code&gt;. 
-After starting the server &lt;code class=&quot;highlighter-rouge&quot;&gt;rails serve&lt;/code&gt; the current routes that rails 
-recognizes can be listed at: &lt;a href=&quot;http://localhost:3000/rails/info/routes&quot;&gt;http://localhost:3000/rails/info/routes&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;named-routes&quot;&gt;Named routes&lt;/h3&gt;
-
-&lt;p&gt;Defining a route in &lt;code class=&quot;highlighter-rouge&quot;&gt;/config/routes.rb&lt;/code&gt; like:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;routes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;draw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'contact'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;to: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'pages#contact'&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;makes several &lt;code class=&quot;highlighter-rouge&quot;&gt;named routes&lt;/code&gt; variables available, like &lt;code class=&quot;highlighter-rouge&quot;&gt;contact_path&lt;/code&gt;
-and &lt;code class=&quot;highlighter-rouge&quot;&gt;contact_url&lt;/code&gt; so they can be used in other files, e.g:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;c1&quot;&gt;#/test/controllers/pages_test.rb&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;should get contact&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;contact_path&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;assert_response&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:success&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;In this case, these routes are &lt;code class=&quot;highlighter-rouge&quot;&gt;contact_path&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;contact_url&lt;/code&gt;, 
-the difference between them is that &lt;code class=&quot;highlighter-rouge&quot;&gt;_url&lt;/code&gt; includes the full URL:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;contact_path -&amp;gt; '/contact'
-contact_url  -&amp;gt; 'http://www.example.com/contact'
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p class=&quot;alert alert-warning&quot;&gt;The common convention is to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;_path&lt;/code&gt; form
-&lt;strong&gt;except when doing redirects&lt;/strong&gt;, where &lt;code class=&quot;highlighter-rouge&quot;&gt;_url&lt;/code&gt; form is preferred because the
-HTTP standard requires a &lt;em&gt;full&lt;/em&gt; URL after redirects.&lt;/p&gt;
-
-&lt;p&gt;A custom name for a route, instead of the default one,
-can also be specified with the &lt;code class=&quot;highlighter-rouge&quot;&gt;as&lt;/code&gt; keyword:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'contact'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;to: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'pages#contact'&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`, as: 'other-contact'
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;web-request-handling&quot;&gt;Web Request Handling&lt;/h2&gt;
-
-&lt;p&gt;Web requests are handled by&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Action Controller&lt;/strong&gt; (&lt;a href=&quot;http://api.rubyonrails.org/classes/ActionController/Base.html&quot;&gt;http://api.rubyonrails.org/classes/ActionController/Base.html&lt;/a&gt;)
-    &lt;ul&gt;
-      &lt;li&gt;communicates with database&lt;/li&gt;
-      &lt;li&gt;performs CRUD actions&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Action View&lt;/strong&gt; (&lt;a href=&quot;http://api.rubyonrails.org/classes/ActionView/Base.html&quot;&gt;http://api.rubyonrails.org/classes/ActionView/Base.html&lt;/a&gt;)
-    &lt;ul&gt;
-      &lt;li&gt;compiling the response to the request
-        &lt;ul&gt;
-          &lt;li&gt;the final HTML output is composed by
-            &lt;ul&gt;
-              &lt;li&gt;Templates&lt;/li&gt;
-              &lt;li&gt;Partials&lt;/li&gt;
-              &lt;li&gt;layouts&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Rails applications favors the conventions of the REST architecture, it 
-makes it easy to &lt;strong&gt;represent data as resources&lt;/strong&gt; that respond to the four
-actions corresponding to the four fundamental operations POST, GET, PATCH,
-and DELETE of the HTTP standard:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;create&lt;/li&gt;
-  &lt;li&gt;show&lt;/li&gt;
-  &lt;li&gt;update&lt;/li&gt;
-  &lt;li&gt;destroy&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For example, to create a RESTful User resource in &lt;code class=&quot;highlighter-rouge&quot;&gt;config/routes.rb&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;resources :users&lt;/code&gt;
-generates all this routes:&lt;/p&gt;
-
-&lt;h3 id=&quot;resource-routes&quot;&gt;Resource routes&lt;/h3&gt;
-
-&lt;table class=&quot;table&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Helper&lt;/th&gt;
-      &lt;th&gt;HTTP Verb&lt;/th&gt;
-      &lt;th&gt;Path&lt;/th&gt;
-      &lt;th&gt;Controller#Action&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;root_path&lt;/td&gt;
-      &lt;td&gt;GET&lt;/td&gt;
-      &lt;td&gt;/&lt;/td&gt;
-      &lt;td&gt;pages#home&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;users_path&lt;/td&gt;
-      &lt;td&gt;GET&lt;/td&gt;
-      &lt;td&gt;/users(.:format)&lt;/td&gt;
-      &lt;td&gt;users#index&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;POST&lt;/td&gt;
-      &lt;td&gt;/users(.:format)&lt;/td&gt;
-      &lt;td&gt;users#create&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;new_user_path&lt;/td&gt;
-      &lt;td&gt;GET&lt;/td&gt;
-      &lt;td&gt;/users/new(.:format)&lt;/td&gt;
-      &lt;td&gt;users#new&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;edit_user_path&lt;/td&gt;
-      &lt;td&gt;GET&lt;/td&gt;
-      &lt;td&gt;/users/:id/edit(.:format)&lt;/td&gt;
-      &lt;td&gt;users#edit&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;user_path&lt;/td&gt;
-      &lt;td&gt;GET&lt;/td&gt;
-      &lt;td&gt;/users/:id(.:format)&lt;/td&gt;
-      &lt;td&gt;users#show&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;PATCH&lt;/td&gt;
-      &lt;td&gt;/users/:id(.:format)&lt;/td&gt;
-      &lt;td&gt;users#update&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;PUT&lt;/td&gt;
-      &lt;td&gt;/users/:id(.:format)&lt;/td&gt;
-      &lt;td&gt;users#update&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;DELETE&lt;/td&gt;
-      &lt;td&gt;/users/:id(.:format)&lt;/td&gt;
-      &lt;td&gt;users#destroy&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;models&quot;&gt;Models&lt;/h2&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;rails generate model User username:string email:string&lt;/kbd&gt;
-Running via Spring preloader in process 28981
-      invoke  active_record
-      create    db/migrate/20160810191131_create_users.rb
-      create    app/models/user.rb
-      invoke    test_unit
-      create      test/models/user_test.rb
-      create      test/fixtures/users.yml
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;controllers&quot;&gt;Controllers&lt;/h2&gt;
-
-&lt;h2 id=&quot;views&quot;&gt;Views&lt;/h2&gt;
-
-&lt;h3 id=&quot;templates&quot;&gt;Templates&lt;/h3&gt;
-
-&lt;p&gt;Templates can be &lt;code class=&quot;highlighter-rouge&quot;&gt;.erb&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;builder&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;JBuilder&lt;/code&gt; templates&lt;/p&gt;
-
-&lt;h4 id=&quot;erb&quot;&gt;ERB&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;ERB&lt;/em&gt; stands for &lt;code class=&quot;highlighter-rouge&quot;&gt;Embedded Ruby&lt;/code&gt; files (ruby tags mixed with HTML).&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;ERB&lt;/em&gt; templates are written in &lt;code class=&quot;highlighter-rouge&quot;&gt;.erb&lt;/code&gt; files.&lt;/p&gt;
-
-&lt;p&gt;They are located in &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views&lt;/code&gt; directory.&lt;/p&gt;
-
-&lt;p&gt;Ruby code can be included using the tags:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;% %&amp;gt;&lt;/code&gt; used for conditions, loops or blocks&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;%= %&amp;gt;&lt;/code&gt; outputs content&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;partials&quot;&gt;Partials&lt;/h4&gt;
-
-&lt;p&gt;Partials templates are parts of a template that can be reused
-and located in different files for better structuring the app.&lt;/p&gt;
-
-&lt;p&gt;To render a partial with &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; method:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;file: &lt;code class=&quot;highlighter-rouge&quot;&gt;_comment.html&lt;/code&gt; gets rendered with:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= render &quot;comment&quot; %&amp;gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;file: &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/shared/_comment.html.erb&lt;/code&gt; with:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= render &quot;shared/comment&quot; %&amp;gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;%= render partial: &quot;product&quot;, locals: { product: @product } %&amp;gt;&lt;/code&gt; can be 
-called as: &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;%= render &quot;product&quot;, product: @product %&amp;gt;&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;asset-pipeline&quot;&gt;Asset pipeline&lt;/h2&gt;
-
-&lt;p&gt;The &lt;a href=&quot;http://guides.rubyonrails.org/asset_pipeline.html&quot;&gt;assets pipeline&lt;/a&gt; 
-makes it easier to produce and manage static assets such as&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;CSS&lt;/li&gt;
-  &lt;li&gt;JavaScript&lt;/li&gt;
-  &lt;li&gt;images&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://guides.rubyonrails.org/asset_pipeline.html&quot;&gt;
-  &lt;p&gt;The asset pipeline provides a framework to concatenate and minify or 
-compress JavaScript and CSS assets. It also adds the ability to write
-these assets in other languages and pre-processors such as CoffeeScript,
-Sass and ERB. It allows assets in your application to be automatically
-combined with assets from other gems.&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt;Ruby on rails Guides&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Pipeline assets can be located in:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets&lt;/code&gt; application assets, such as
-    &lt;ul&gt;
-      &lt;li&gt;custom images&lt;/li&gt;
-      &lt;li&gt;JavaScript files&lt;/li&gt;
-      &lt;li&gt;CSS&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;lib/assets&lt;/code&gt; own libraries
-    &lt;ul&gt;
-      &lt;li&gt;code that doesn’t fit into the scope of the application or&lt;/li&gt;
-      &lt;li&gt;libraries which are shared across applications&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vendor/assets&lt;/code&gt; assets owned by outside entities, such as
-    &lt;ul&gt;
-      &lt;li&gt;JavaScript plugins&lt;/li&gt;
-      &lt;li&gt;CSS frameworks&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;All of them have manifest files &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/stylesheets/application.css&lt;/code&gt; to
-select how to process them and in what order.&lt;/p&gt;
-
-&lt;p&gt;Asset pipeline is handled in rails with Sprockets, the Rack-based asset packaging system &lt;a href=&quot;https://github.com/sstephenson/sprockets&quot;&gt;https://github.com/sstephenson/sprockets&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;
-
-&lt;h3 id=&quot;integration-tests&quot;&gt;Integration tests&lt;/h3&gt;
-
-&lt;p&gt;Testing how several components of the app interacts with &lt;em&gt;integration tests&lt;/em&gt;:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;rails generate integration_test SiteLayout&lt;/kbd&gt;
-Running via Spring preloader in process 9703
-      invoke  test_unit
-      create    test/integration/site_layout_test.rb
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;main-resources&quot;&gt;Main resources&lt;/h2&gt;
-
-&lt;h3 id=&quot;code&quot;&gt;Code&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/rails/rails/blob/5-0-stable&quot;&gt;https://github.com/rails/rails/blob/5-0-stable&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://api.rubyonrails.org/&quot;&gt;http://api.rubyonrails.org/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;docs&quot;&gt;Docs&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://guides.rubyonrails.org&quot;&gt;http://guides.rubyonrails.org&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sun, 07 Aug 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/ruby-on-rails-overview/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/ruby-on-rails-overview/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>ruby</category>
-        
-        <category>rails</category>
-        
-      </item>
-    
-      <item>
-        <title>Building A Hello World App In Ruby On Rails App</title>
-        <description>&lt;h2 id=&quot;installing-rails&quot;&gt;Installing Rails&lt;/h2&gt;
-
-&lt;p&gt;Using the &lt;em&gt;RubyGems&lt;/em&gt; package manager, we can install all &lt;strong&gt;rails&lt;/strong&gt; 
-dependencies with one command.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;sudo gem install rails -v 5.0.0&lt;/kbd&gt;
-...
-29 gems installed
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p class=&quot;alert alert-warning&quot;&gt;&lt;em&gt;-v&lt;/em&gt; specify Rails version to install, in this case: 5.0.0&lt;/p&gt;
-
-&lt;h2 id=&quot;create-the-rails-app-structure&quot;&gt;Create the rails app structure&lt;/h2&gt;
-
-&lt;p&gt;Using &lt;code class=&quot;highlighter-rouge&quot;&gt;rails new&lt;/code&gt; command creates the skeleton for each rails app.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;mkdir rails_helloworld&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;cd rails_helloworld&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;rails_helloworld$&lt;/span&gt; &lt;kbd&gt;rails _5.0.0_ new hello_app&lt;/kbd&gt;
-      create  
-      create  README.md
-      create  Rakefile
-      create  config.ru
-      create  .gitignore
-      create  Gemfile
-      create  app
-      create  app/assets/config/manifest.js
-      create  app/assets/javascripts/application.js
-      create  app/assets/javascripts/cable.js
-      create  app/assets/stylesheets/application.css
-      create  app/channels/application_cable/channel.rb
-      create  app/channels/application_cable/connection.rb
-      create  app/controllers/application_controller.rb
-      create  app/helpers/application_helper.rb
-      create  app/jobs/application_job.rb
-      create  app/mailers/application_mailer.rb
-      create  app/models/application_record.rb
-      create  app/views/layouts/application.html.erb
-      create  app/views/layouts/mailer.html.erb
-      create  app/views/layouts/mailer.text.erb
-      create  app/assets/images/.keep
-      create  app/assets/javascripts/channels
-      create  app/assets/javascripts/channels/.keep
-      create  app/controllers/concerns/.keep
-      create  bin
-      create  bin/bundle
-      create  bin/rails
-      create  bin/rake
-      create  bin/setup
-      create  bin/update
-      create  config
-      create  config/routes.rb
-      create  config/application.rb
-      create  config/environment.rb
-      create  config/secrets.yml
-      create  config/cable.yml
-      create  config/puma.rb
-      create  config/spring.rb
-      create  config/environments
-      create  config/environments/development.rb
-      create  config/environments/production.rb
-      create  config/environments/test.rb
-      create  config/initializers
-      create  config/initializers/application_controller_renderer.rb
-      create  config/initializers/assets.rb
-      create  config/initializers/backtrace_silencers.rb
-      create  config/initializers/cookies_serializer.rb
-      create  config/initializers/cors.rb
-      create  config/initializers/filter_parameter_logging.rb
-      create  config/initializers/inflections.rb
-      create  config/initializers/mime_types.rb
-      create  config/initializers/new_framework_defaults.rb
-      create  config/initializers/session_store.rb
-      create  config/initializers/wrap_parameters.rb
-      create  config/locales
-      create  config/locales/en.yml
-      create  config/boot.rb
-      create  config/database.yml
-      create  db
-      create  db/seeds.rb
-      create  lib
-      create  lib/tasks
-      create  lib/tasks/.keep
-      create  lib/assets
-      create  lib/assets/.keep
-      create  log
-      create  log/.keep
-      create  public
-      create  public/404.html
-      create  public/422.html
-      create  public/500.html
-      create  public/apple-touch-icon-precomposed.png
-      create  public/apple-touch-icon.png
-      create  public/favicon.ico
-      create  public/robots.txt
-      create  test/fixtures
-      create  test/fixtures/.keep
-      create  test/fixtures/files
-      create  test/fixtures/files/.keep
-      create  test/controllers
-      create  test/controllers/.keep
-      create  test/mailers
-      create  test/mailers/.keep
-      create  test/models
-      create  test/models/.keep
-      create  test/helpers
-      create  test/helpers/.keep
-      create  test/integration
-      create  test/integration/.keep
-      create  test/test_helper.rb
-      create  tmp
-      create  tmp/.keep
-      create  tmp/cache
-      create  tmp/cache/assets
-      create  vendor/assets/javascripts
-      create  vendor/assets/javascripts/.keep
-      create  vendor/assets/stylesheets
-      create  vendor/assets/stylesheets/.keep
-      remove  config/initializers/cors.rb
-         run  bundle install
-Fetching gem metadata from https://rubygems.org/...........
-Fetching version metadata from https://rubygems.org/...
-Fetching dependency metadata from https://rubygems.org/..
-Resolving dependencies.................................................
-Using rake 11.2.2
-Using concurrent-ruby 1.0.2
-Using i18n 0.7.0
-Using minitest 5.9.0
-Using thread_safe 0.3.5
-Using builder 3.2.2
-Using erubis 2.7.0
-Using mini_portile2 2.1.0
-Using pkg-config 1.1.7
-Using rack 2.0.1
-Using nio4r 1.2.1
-Using websocket-extensions 0.1.2
-Using mime-types-data 3.2016.0521
-Using arel 7.1.1
-Using bundler 1.11.2
-Using byebug 9.0.5
-Using coffee-script-source 1.10.0
-Using execjs 2.7.0
-Using method_source 0.8.2
-Using thor 0.19.1
-Using debug_inspector 0.0.2
-Using ffi 1.9.14
-Using multi_json 1.12.1
-Using rb-fsevent 0.9.7
-Using puma 3.6.0
-Using sass 3.4.22
-Using tilt 2.0.5
-Using spring 1.7.2
-Using sqlite3 1.3.11
-Using turbolinks-source 5.0.0
-Using tzinfo 1.2.2
-Using nokogiri 1.6.8
-Using rack-test 0.6.3
-Using sprockets 3.7.0
-Using websocket-driver 0.6.4
-Using mime-types 3.1
-Using coffee-script 2.4.1
-Using uglifier 3.0.1
-Using rb-inotify 0.9.7
-Installing turbolinks 5.0.1
-Using activesupport 5.0.0
-Using loofah 2.0.3
-Using mail 2.6.4
-Using listen 3.0.8
-Using rails-dom-testing 2.0.1
-Using globalid 0.3.7
-Using activemodel 5.0.0
-Installing jbuilder 2.6.0
-Using rails-html-sanitizer 1.0.3
-Installing spring-watcher-listen 2.0.0
-Using activejob 5.0.0
-Using activerecord 5.0.0
-Using actionview 5.0.0
-Using actionpack 5.0.0
-Using actioncable 5.0.0
-Using actionmailer 5.0.0
-Using railties 5.0.0
-Using sprockets-rails 3.1.1
-Installing coffee-rails 4.2.1
-Installing jquery-rails 4.1.1
-Installing web-console 3.3.1
-Using rails 5.0.0
-Installing sass-rails 5.0.6
-Bundle complete! 15 Gemfile dependencies, 63 gems now installed.
-Use `bundle show [gemname]` to see where a bundled gem is installed.
-         run  bundle exec spring binstub --all
-* bin/rake: spring inserted
-* bin/rails: spring inserted
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;The command &lt;code class=&quot;highlighter-rouge&quot;&gt;rails new&lt;/code&gt; automatically runs &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; after creating the following directories and files:&lt;/p&gt;
-
-&lt;pre&gt;
-.
-└── hello_app
-    ├── app
-    │   ├── assets
-    │   │   ├── config
-    │   │   │   └── manifest.js
-    │   │   ├── images
-    │   │   ├── javascripts
-    │   │   │   ├── application.js
-    │   │   │   ├── cable.js
-    │   │   │   └── channels
-    │   │   └── stylesheets
-    │   │       └── application.css
-    │   ├── channels
-    │   │   └── application_cable
-    │   │       ├── channel.rb
-    │   │       └── connection.rb
-    │   ├── controllers
-    │   │   ├── application_controller.rb
-    │   │   └── concerns
-    │   ├── helpers
-    │   │   └── application_helper.rb
-    │   ├── jobs
-    │   │   └── application_job.rb
-    │   ├── mailers
-    │   │   └── application_mailer.rb
-    │   ├── models
-    │   │   ├── application_record.rb
-    │   │   └── concerns
-    │   └── views
-    │       └── layouts
-    │           ├── application.html.erb
-    │           ├── mailer.html.erb
-    │           └── mailer.text.erb
-    ├── bin
-    │   ├── bundle
-    │   ├── rails
-    │   ├── rake
-    │   ├── setup
-    │   ├── spring
-    │   └── update
-    ├── config
-    │   ├── application.rb
-    │   ├── boot.rb
-    │   ├── cable.yml
-    │   ├── database.yml
-    │   ├── environment.rb
-    │   ├── environments
-    │   │   ├── development.rb
-    │   │   ├── production.rb
-    │   │   └── test.rb
-    │   ├── initializers
-    │   │   ├── application_controller_renderer.rb
-    │   │   ├── assets.rb
-    │   │   ├── backtrace_silencers.rb
-    │   │   ├── cookies_serializer.rb
-    │   │   ├── filter_parameter_logging.rb
-    │   │   ├── inflections.rb
-    │   │   ├── mime_types.rb
-    │   │   ├── new_framework_defaults.rb
-    │   │   ├── session_store.rb
-    │   │   └── wrap_parameters.rb
-    │   ├── locales
-    │   │   └── en.yml
-    │   ├── puma.rb
-    │   ├── routes.rb
-    │   ├── secrets.yml
-    │   └── spring.rb
-    ├── config.ru
-    ├── db
-    │   └── seeds.rb
-    ├── Gemfile
-    ├── Gemfile.lock
-    ├── lib
-    │   ├── assets
-    │   └── tasks
-    ├── log
-    ├── public
-    │   ├── 404.html
-    │   ├── 422.html
-    │   ├── 500.html
-    │   ├── apple-touch-icon.png
-    │   ├── apple-touch-icon-precomposed.png
-    │   ├── favicon.ico
-    │   └── robots.txt
-    ├── Rakefile
-    ├── README.md
-    ├── test
-    │   ├── controllers
-    │   ├── fixtures
-    │   │   └── files
-    │   ├── helpers
-    │   ├── integration
-    │   ├── mailers
-    │   ├── models
-    │   └── test_helper.rb
-    ├── tmp
-    │   └── cache
-    │       └── assets
-    └── vendor
-        └── assets
-            ├── javascripts
-            └── stylesheets
-
-45 directories, 57 files
-&lt;/pre&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; reads the content of &lt;code class=&quot;highlighter-rouge&quot;&gt;ruby_helloworld/Gemfile&lt;/code&gt; and install each dependency.&lt;/p&gt;
-
-&lt;h2 id=&quot;serve-pages-in-development&quot;&gt;Serve pages in development&lt;/h2&gt;
-
-&lt;p&gt;Running &lt;code class=&quot;highlighter-rouge&quot;&gt;rails server&lt;/code&gt; launches a server &lt;strong&gt;for development purposes&lt;/strong&gt; on &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;rails_helloworld$&lt;/span&gt; &lt;kbd&gt;rails server&lt;/kbd&gt;
-=&amp;gt; Booting Puma
-=&amp;gt; Rails 5.0.0 application starting in development on http://localhost:3000
-=&amp;gt; Run `rails server -h` for more startup options
-Puma starting in single mode...
-* Version 3.6.0 (ruby 2.3.1-p112), codename: Sleepy Sunday Serenity
-* Min threads: 5, max threads: 5
-* Environment: development
-* Listening on tcp://localhost:3000
-Use Ctrl-C to stop
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;Opening the address &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt; will show up &lt;code class=&quot;highlighter-rouge&quot;&gt;rails&lt;/code&gt; homescreen:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/rails_first_homescreen.png&quot; alt=&quot;Homepage screenshot&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
-
-&lt;pre&gt;
-&lt;samp&gt;
-Started GET &quot;/&quot; for 127.0.0.1 at 2016-08-07 18:58:25 -0300
-Processing by Rails::WelcomeController#index as HTML
-  Parameters: {&quot;internal&quot;=&amp;gt;true}
-  Rendering /var/lib/gems/2.3.0/gems/railties-5.0.0/lib/rails/templates/rails/welcome/index.html.erb
-  Rendered /var/lib/gems/2.3.0/gems/railties-5.0.0/lib/rails/templates/rails/welcome/index.html.erb (8.7ms)
-Completed 200 OK in 41ms (Views: 18.7ms | ActiveRecord: 0.0ms)
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;creating-the-hello-world-page&quot;&gt;Creating the Hello World page&lt;/h2&gt;
-
-&lt;h3 id=&quot;routing&quot;&gt;Routing&lt;/h3&gt;
-
-&lt;p&gt;Edit the controller &lt;code class=&quot;highlighter-rouge&quot;&gt;app/controllers/routes.rb&lt;/code&gt; that handles the homepage with the action &lt;code class=&quot;highlighter-rouge&quot;&gt;hello&lt;/code&gt; to retrieve &lt;code class=&quot;highlighter-rouge&quot;&gt;Hello World&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ApplicationController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActionController&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;protect_from_forgery&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;with: :exception&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;hello&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;html: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;hello, world!&quot;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;adding-controller-action&quot;&gt;Adding controller action&lt;/h3&gt;
-
-&lt;p&gt;Add the route that will handle the access to the &lt;code class=&quot;highlighter-rouge&quot;&gt;/&lt;/code&gt; url with &lt;code class=&quot;highlighter-rouge&quot;&gt;root:controller#action&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;routes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;draw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'application#hello'&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Sun, 07 Aug 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/building-a-hello-world-app-in-ruby-on-rails-app/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/building-a-hello-world-app-in-ruby-on-rails-app/</guid>
-        
-        <category>ror</category>
-        
-        <category>rails</category>
-        
-        <category>web-development</category>
-        
-        
-        <category>docs</category>
-        
-        <category>ruby</category>
-        
-        <category>rails</category>
-        
-      </item>
-    
-      <item>
-        <title>Inserting Bootstrap 4 Responsive Images In Kramdown</title>
-        <description>&lt;p&gt;The common markup for inserting images in kramdown is:&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Homepage screenshot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;/assets/homescreen.png&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The most used way to add a class to any markup is to use &lt;em&gt;inline annotations&lt;/em&gt; &lt;strong&gt;in the line below&lt;/strong&gt; of the markup with &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:class=&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;a-class&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt; but in this case it should be used in the same line, so this:&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Homepage screenshot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;/assets/homescreen.png&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;{:class=&quot;img-fluid&quot;}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;generates:&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/assets/rails_first_homescreen.png&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Homepage screenshot&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;img-fluid&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Sun, 07 Aug 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/inserting-bootstrap-4-responsive-images-in-kramdown/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/inserting-bootstrap-4-responsive-images-in-kramdown/</guid>
-        
-        <category>kramdown</category>
-        
-        <category>bootstrap-4</category>
-        
-        
-        <category>docs</category>
-        
-        <category>markup</category>
-        
-        <category>kramdown</category>
-        
-      </item>
-    
-      <item>
-        <title>Understanding Django Forms</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Django provides several classes to facilitate the work of creating forms.&lt;/p&gt;
-
-&lt;p&gt;A typical form declaration extends from &lt;code class=&quot;highlighter-rouge&quot;&gt;forms.Form&lt;/code&gt; class.&lt;/p&gt;
-
-&lt;div class=&quot;mermaid&quot;&gt;
-graph TB
-  form[&quot;form\=AForm\(\)&quot;]--&amp;gt;status{status11}
-  status--&quot;form.is_bound&quot;---&amp;gt;valid[can validate]
-  status--&quot;form.unbound&quot;---&amp;gt;a
-&lt;/div&gt;
-
-</description>
-        <pubDate>Sat, 30 Jul 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/understanding-django-forms/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/understanding-django-forms/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>python</category>
-        
-        <category>django</category>
-        
-        <category>forms</category>
         
       </item>
     

@@ -288,7 +288,9 @@
       <div>
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#modules">Modules</a></li>
+<li class="toc-entry toc-h2"><a href="#syntax">Syntax</a></li>
+<li class="toc-entry toc-h2"><a href="#assignment">Assignment</a></li>
+<li class="toc-entry toc-h2"><a href="#modules-and-classes">Modules and Classes</a></li>
 <li class="toc-entry toc-h2"><a href="#method-definition">Method definition</a></li>
 <li class="toc-entry toc-h2"><a href="#comments">Comments</a></li>
 <li class="toc-entry toc-h2"><a href="#local-variable-assignment">Local variable assignment</a></li>
@@ -301,6 +303,7 @@
 <li class="toc-entry toc-h2"><a href="#return-values">Return values</a></li>
 <li class="toc-entry toc-h2"><a href="#data-structures">Data structures</a></li>
 <li class="toc-entry toc-h3"><a href="#arrays">Arrays</a></li>
+<li class="toc-entry toc-h2"><a href="#operator-precedence">Operator precedence</a></li>
 <li class="toc-entry toc-h1"><a href="#references">References</a></li>
 </ul>
       </div>
@@ -387,11 +390,29 @@
 
     <p>Ruby Console (Interactive Ruby): <kbd>irb</kbd></p>
 
-<p class="alert alert-info">Everything in Ruby, including <em>nil</em> and <em>strings</em>, is an <strong>object</strong></p>
+<p class="alert alert-info">Everything in Ruby, including <a href="http://ruby-doc.org/core-2.3.1/NilClass.html">nil</a>
+and <a href="http://ruby-doc.org/core-2.3.1/String.html">strings</a>, is an
+<a href="http://ruby-doc.org/core-2.3.1/Object.html">object</a></p>
 
-<h2 id="modules">Modules</h2>
+<h2 id="syntax">Syntax</h2>
 
-<p>Related methods in Ruby can be packaged in <em>modules</em>.</p>
+<ul>
+  <li><a href="http://ruby-doc.org/core-2.3.1/doc/syntax_rdoc.html">http://ruby-doc.org/core-2.3.1/doc/syntax_rdoc.html</a></li>
+</ul>
+
+<h2 id="assignment">Assignment</h2>
+
+<ul>
+  <li><a href="http://ruby-doc.org/core-2.3.1/doc/syntax/assignment_rdoc.html">http://ruby-doc.org/core-2.3.1/doc/syntax/assignment_rdoc.html</a></li>
+</ul>
+
+<h2 id="modules-and-classes">Modules and Classes</h2>
+
+<ul>
+  <li><a href="http://ruby-doc.org/core-2.3.1/doc/syntax/modules_and_classes_rdoc.html">http://ruby-doc.org/core-2.3.1/doc/syntax/modules_and_classes_rdoc.html</a></li>
+</ul>
+
+<p>Related methods in Ruby can be packaged in <a href="http://ruby-doc.org/core-2.3.1/doc/syntax/modules_and_classes_rdoc.html#label-Module+Definition">modules</a>.</p>
 
 <p>Modules are often explicitly imported or they can be imported
 <em>automagically</em> in frameworks that favours conventions like 
@@ -405,6 +426,10 @@
 </div>
 
 <h2 id="method-definition">Method definition</h2>
+
+<ul>
+  <li><a href="http://ruby-doc.org/core-2.3.1/doc/syntax/methods_rdoc.html">http://ruby-doc.org/core-2.3.1/doc/syntax/methods_rdoc.html</a></li>
+</ul>
 
 <p>By convention, every method that ends with a question mark <code class="highlighter-rouge">?</code> returns a <em>boolean</em> value.</p>
 
@@ -445,7 +470,15 @@
 
 <h2 id="control-flow">Control flow</h2>
 
+<ul>
+  <li>Control Expressions <a href="http://ruby-doc.org/core-2.3.1/doc/syntax/control_expressions_rdoc.html">http://ruby-doc.org/core-2.3.1/doc/syntax/control_expressions_rdoc.html</a></li>
+</ul>
+
 <h3 id="conditional-clause-if">Conditional clause (if)</h3>
+
+<ul>
+  <li><a href="http://ruby-doc.org/core-2.3.1/doc/syntax/control_expressions_rdoc.html#label-if+Expression">http://ruby-doc.org/core-2.3.1/doc/syntax/control_expressions_rdoc.html#label-if+Expression</a></li>
+</ul>
 
 <p><code class="highlighter-rouge">if-elsif-end</code></p>
 
@@ -508,6 +541,10 @@ foobar
 
 <h3 id="arrays">Arrays</h3>
 
+<ul>
+  <li><a href="http://ruby-doc.org/core-2.3.1/Array.html">http://ruby-doc.org/core-2.3.1/Array.html</a></li>
+</ul>
+
 <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"foo"</span><span class="p">,</span> <span class="s2">"bar"</span><span class="p">,</span> <span class="s2">"baz"</span><span class="p">]</span>
 </code></pre>
 </div>
@@ -519,6 +556,12 @@ foobar
       <li><code class="highlighter-rouge">a.first</code></li>
     </ul>
   </li>
+</ul>
+
+<h2 id="operator-precedence">Operator precedence</h2>
+
+<ul>
+  <li><a href="http://ruby-doc.org/core-2.3.1/doc/syntax/precedence_rdoc.html">http://ruby-doc.org/core-2.3.1/doc/syntax/precedence_rdoc.html</a></li>
 </ul>
 
 <h1 id="references">References</h1>
@@ -776,6 +819,26 @@ foobar
     <a class="list-group-item " href="/what-is-the-difference-between-modules-and-classes-in-ruby/">
       What Is The Difference Between Modules And Classes In Ruby
     </a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Simple IT 🤘 Rocks" href="http://simpleit.rocks/feed.xml">
+
+  <!-- jQuery -->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
+
+  <!-- Mermaid -->
+  <link rel="stylesheet" href="/bower_components/mermaid/dist/mermaid.forest.css" type="text/css" media="screen" />
+
+  <!-- Bootstrap -->
+  <!--link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css"-->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap-flex.css">
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <!-- Custom css -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  
+  <!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>Ionic 2 Framework Overview - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Ionic 2 Framework Overview" />
+<meta name="description" content="Overview" />
+<meta property="og:description" content="Overview" />
+<link rel="canonical" href="http://simpleit.rocks/ionic-2-framework-overview/" />
+<meta property="og:url" content="http://simpleit.rocks/ionic-2-framework-overview/" />
+<meta property="og:site_name" content="Simple IT 🤘 Rocks" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-09-30T00:00:00-03:00" />
+<meta property="fb:app_id" content="1822851531277021" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Ionic 2 Framework Overview",
+    "datePublished": "2016-09-30T00:00:00-03:00",
+    "description": "Overview",
+    "url": "http://simpleit.rocks/ionic-2-framework-overview/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+
+  
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1912030305535489",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+
+</head>
+
+
+  <body>
+
+    
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28572639-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <header class="site-header">
+
+  <!-- mermaid -->
+  <script src="/bower_components/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+  <!-- endmermaid -->
+
+  <div class="text-xs-center m-b-2">
+
+    <a class="display-1" href="/" style="text-decoration: none">Simple IT 🤘 Rocks</a>
+
+  </div>
+
+  
+  <div class="jumbotron jumbotron-fluid bg-inverse">
+  <div class="container">
+    
+    
+    
+    
+    
+    <h1 class="title">Ionic 2 Framework Overview </h1>
+    
+    
+  </div>
+</div>
+
+  
+
+</header>
+
+
+    <div class="container-fluid">
+      <header class="post-header">
+  <div class="post-meta">
+    
+    <i class="fa fa-calendar" aria-hidden="true"></i>
+    <time datetime="2016-09-30T00:00:00-03:00" itemprop="datePublished">Sep 30, 2016</time>
+    
+  </div>
+  <div>
+    <div class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="list-/inline breadcrumb">
+
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/">
+    
+    <i class="fa fa-home" aria-hidden="true"></i>
+    
+
+    Home
+  </a>
+  
+  <meta itemprop="position" content="1" />
+</li>
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/docs">
+    
+
+    docs
+  </a>
+  
+  <meta itemprop="position" content="2" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/docs/mobile">
+    
+
+    mobile
+  </a>
+  
+  <meta itemprop="position" content="3" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/docs/mobile/ionic">
+    
+
+    ionic
+  </a>
+  
+  <meta itemprop="position" content="4" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <span itemscope itemtype="http://schema.org/Thing"
+       itemprop="item">
+    
+
+    <span itemprop="name">Ionic 2 Framework Overview</span>
+  </span>
+  
+  <meta itemprop="position" content="5" />
+</li>
+
+    
+
+    
+    
+  </ol>
+</div>
+
+  </div>
+</header>
+
+<div class="post-content" itemprop="articleBody">
+  <div class="row">
+
+  <div class="col-md-3 site-sidebar">
+    <div class="si-ad m-a-1">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_side_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5882730780"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
+  
+</div>
+
+    
+    <div class="sticky" style="position:sticky; top:10px">
+      <div>
+	<h4>Table of Contents</h4>
+	<ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h1"><a href="#getting-started">Getting Started</a></li>
+<li class="toc-entry toc-h2"><a href="#installing">Installing</a></li>
+<li class="toc-entry toc-h2"><a href="#directory-structure">Directory structure</a></li>
+<li class="toc-entry toc-h1"><a href="#app-organization">App organization</a></li>
+<li class="toc-entry toc-h2"><a href="#pages">Pages</a></li>
+<li class="toc-entry toc-h1"><a href="#references">References</a></li>
+</ul>
+      </div>
+      <div>
+	<div class="site-share">
+  
+  <ul class="share-buttons list-inline m-b-1 text-xs-center">
+    <li class="list-inline-item">
+      <div>
+  <a class="twitter-share-button"
+     href="https://twitter.com/share"
+     data-url="http://simpleit.rocks/ionic-2-framework-overview/"
+     data-via=""
+     data-text=""
+     data-related="marcanuy"
+     data-count="vertical">
+    Tweet
+  </a>
+  <script>
+   window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+    </li>
+    <li class="list-inline-item">
+      <div>
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!-- Place this tag where you want the +1 button to render. -->
+  <div class="g-plusone" data-size="tall"></div>
+</div>
+
+    </li>
+    <li class="list-inline-item">
+      <div>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) return;
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.0";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));</script>
+
+  <div class="fb-like" data-href="http://simpleit.rocks/ionic-2-framework-overview/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+</div>
+
+    </li>
+  </ul>
+  
+</div>
+
+      </div>
+    </div>
+    
+  </div> <!-- end col -->
+
+  <div class="col-md-8 site-content">
+
+    
+
+    <div class="si-ad m-a-1">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_before_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="2929264389"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+
+    <h1 id="overview">Overview</h1>
+
+<p>Ionic 2 framework has been <strong>designed to build cross-platform mobile apps</strong> and
+web apps in a way similar to building websites, i.e.: using HTML, CSS, and
+JavaScript (<a href="https://angular.io/">Angular</a>) languages.</p>
+
+<p>It is built on top of <a href="https://cordova.apache.org/">Cordova</a>, a framework 
+to build mobile apps with HTML, CSS &amp; JS.</p>
+
+<h1 id="getting-started">Getting Started</h1>
+
+<h2 id="installing">Installing</h2>
+
+<p>To use Ionic 2 installing Cordova is required: <code class="highlighter-rouge">$ sudo npm install -g cordova</code></p>
+
+<p>Then install Ionic: <code class="highlighter-rouge">$ npm install -g ionic@beta</code></p>
+
+<p>Start an <a href="https://github.com/driftyco/ionic2-app-base">Ionic project</a>
+with the ionic_<a href="https://github.com/driftyco/ionic2-starter-tutorial">tutorial template</a>_:
+<code class="highlighter-rouge">$ ionic start myProject tutorial --v2</code></p>
+
+<p>Then, to run it, enter project directory and <em>run</em>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cd myProject
+$ ionic platform add android
+$ ionic run android
+</code></pre>
+</div>
+
+<p>or serve it with:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ ionic serve
+</code></pre>
+</div>
+
+<h2 id="directory-structure">Directory structure</h2>
+
+<p>The basic structure of the app contains the following directories and files:</p>
+
+<pre>
+config.xml
+ionic.config.json
+package.json       __the npm packages that will be in node_modules dir__
+resources/         __platform specific resources__
+tsconfig.json
+tslint.json
+hooks/
+node_modules/
+platforms/         __platform specific files e.g. for android or ios __
+plugins/           __where cordova plugins are stored when installed__
+src/               __our app source code__
+tsconfig.tmp.json
+www/
+</pre>
+
+<p>The generated website will be in the <code class="highlighter-rouge">www</code> directory with a 
+structure similar to:</p>
+
+<pre>
+www/
+├── assets
+│   ├── fonts
+│   │   ├── ionicons.eot
+│   │   ├── ionicons.svg
+│   │   ├── ionicons.ttf
+│   │   ├── ionicons.woff
+│   │   └── ionicons.woff2
+│   ├── icon
+│   │   └── favicon.ico
+│   └── manifest.json
+├── build
+│   ├── main.css
+│   ├── main.js
+│   ├── main.js.map
+│   └── polyfills.js
+└── index.html       &lt;-- root component of the app
+</pre>
+
+<h1 id="app-organization">App organization</h1>
+
+<h2 id="pages">Pages</h2>
+
+<p>Each page of the application can be generated with <code class="highlighter-rouge">ionic generate page mylist</code></p>
+
+<p>And will contain <a href="https://ionicframework.com/docs/v2/api/components/">components</a>
+like <code class="highlighter-rouge">ionic-navbar</code> that will help to quickly create app interfaces.</p>
+
+<h1 id="references">References</h1>
+
+<ul>
+  <li><a href="http://ionicframework.com/docs/v2/">http://ionicframework.com/docs/v2/</a></li>
+</ul>
+
+
+    <div class="post-comments">
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '/ionic-2-framework-overview/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    
+    s.src = '//simpleitrocks.disqus.com/embed.js';
+    
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  
+  
+  
+</div>
+
+
+    <div class="row">
+      <div class="col-md-6">
+	
+
+
+
+
+
+
+
+	
+
+
+
+
+      </div>
+      <div class="col-md-5">
+	
+	
+	<div class="si-ad m-a-1">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_after_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5104001581"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+	
+      </div>
+    </div>
+  </div> <!-- end col -->
+</div>
+
+
+</div>
+
+    </div>
+
+    <footer class="site-footer p-y-3">
+
+  <div class="container">
+
+    <h2 class="footer-heading text-muted">Simple IT 🤘 Rocks</h2>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <ul class="footer-nav">
+          <li>
+	    <i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by Marcelo Canina
+	  </li>
+	  
+          <li>
+            <i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/marcanuy"><span class="username">marcanuy</span></a>
+
+          </li>
+          
+	  <li>
+	    <i class="fa fa-user" aria-hidden="true"></i><a href="/about">About</a>
+	  </li>
+	  <li>
+	    <i class="fa fa-search" aria-hidden="true"></i><a href="/search">Search</a>
+	  </li>
+        </ul>
+      </div>
+
+      <div class="col-xs-6">
+	<div class="text-xs-right text-muted">
+          <p>Clutter-free software concepts. Written on the go.
+</p>
+	</div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<div class="si-license bg-inverse">
+  <div class="text-muted text-sm-center">
+    <small>
+      Except as otherwise noted, the content of this page is licensed under
+      <a rel="license" class="text-info" href="https://creativecommons.org/licenses/by-nc/4.0/">
+	<i class="fa fa-creative-commons" aria-hidden="true"></i> BY-NC 4.0
+      </a>
+    </small>
+  </div>
+</div>
+
+
+
+  </body>
+
+</html>

@@ -296,7 +296,9 @@
 <li class="toc-entry toc-h3"><a href="#templates">Templates</a></li>
 <li class="toc-entry toc-h4"><a href="#erb">ERB</a></li>
 <li class="toc-entry toc-h4"><a href="#partials">Partials</a></li>
+<li class="toc-entry toc-h3"><a href="#forms-from-models">Forms from Models</a></li>
 <li class="toc-entry toc-h2"><a href="#asset-pipeline">Asset pipeline</a></li>
+<li class="toc-entry toc-h2"><a href="#sessions">Sessions</a></li>
 <li class="toc-entry toc-h2"><a href="#testing">Testing</a></li>
 <li class="toc-entry toc-h3"><a href="#integration-tests">Integration tests</a></li>
 <li class="toc-entry toc-h2"><a href="#main-resources">Main resources</a></li>
@@ -433,7 +435,8 @@ irb(main):001:0&gt;
 
 <p>Routes are defined in <code class="highlighter-rouge">/config/routes.rb</code>. 
 After starting the server <code class="highlighter-rouge">rails serve</code> the current routes that rails 
-recognizes can be listed at: <a href="http://localhost:3000/rails/info/routes">http://localhost:3000/rails/info/routes</a></p>
+recognizes can be listed at: <a href="http://localhost:3000/rails/info/routes">http://localhost:3000/rails/info/routes</a>
+in the browser or in the console: <code class="highlighter-rouge">rails routes</code></p>
 
 <h3 id="named-routes">Named routes</h3>
 
@@ -588,6 +591,8 @@ generates all this routes:</p>
   </tbody>
 </table>
 
+<p class="alert alert-info">To simulate a PATCH request, Rails sets an input hidden field in <em>forms</em> like <code class="highlighter-rouge">&lt;input ... value="patch" /&gt;</code> so web browsers can send it; the original HTML <em>forms</em>  specification didn’t include them.</p>
+
 <h2 id="models">Models</h2>
 
 <pre class="shell">
@@ -652,6 +657,16 @@ and located in different files for better structuring the app.</p>
 <p><code class="highlighter-rouge">&lt;%= render partial: "product", locals: { product: @product } %&gt;</code> can be 
 called as: <code class="highlighter-rouge">&lt;%= render "product", product: @product %&gt;</code></p>
 
+<h3 id="forms-from-models">Forms from Models</h3>
+
+<p>When building a form using <code class="highlighter-rouge">form_for</code> and a model name (<code class="highlighter-rouge">form_for(@foo)</code>),
+Rails decides which type of request to use based in:</p>
+
+<ul>
+  <li>if <code class="highlighter-rouge">@foo.new_record? == true</code> uses <code class="highlighter-rouge">POST</code>.</li>
+  <li>if <code class="highlighter-rouge">@foo.new_record? == false</code> uses <code class="highlighter-rouge">PATCH</code>.</li>
+</ul>
+
 <h2 id="asset-pipeline">Asset pipeline</h2>
 
 <p>The <a href="http://guides.rubyonrails.org/asset_pipeline.html">assets pipeline</a> 
@@ -699,7 +714,27 @@ combined with assets from other gems.</p>
 <p>All of them have manifest files <code class="highlighter-rouge">app/assets/stylesheets/application.css</code> to
 select how to process them and in what order.</p>
 
-<p>Asset pipeline is handled in rails with Sprockets, the Rack-based asset packaging system <a href="https://github.com/sstephenson/sprockets">https://github.com/sstephenson/sprockets</a>.</p>
+<p>Asset pipeline is handled in rails with Sprockets, the Rack-based asset 
+packaging system <a href="https://github.com/sstephenson/sprockets">https://github.com/sstephenson/sprockets</a>.</p>
+
+<h2 id="sessions">Sessions</h2>
+
+<p><a href="http://guides.rubyonrails.org/action_controller_overview.html#session">Sessions</a>
+in Rails are commonly implemented with <em>cookies</em>, there are two special method:</p>
+
+<ul>
+  <li><strong>session</strong> to make temporary sessions (expire automatically on browser close)</li>
+  <li><strong>cookies</strong> to make longer-lived sessions.</li>
+</ul>
+
+<p>Having a <em>cookie based authentication system</em>, we can model sessions as
+RESTful resources:</p>
+
+<ul>
+  <li>login form -&gt; handled by <strong>new</strong> action</li>
+  <li>logging in -&gt; POST request to the__create__ action</li>
+  <li>logging out -&gt; DELETE request to the <strong>destroy</strong> action</li>
+</ul>
 
 <h2 id="testing">Testing</h2>
 
@@ -983,6 +1018,30 @@ Running via Spring preloader in process 9703
     <a class="list-group-item " href="/simple-debugging-in-rails/">
       Simple Debugging In Rails
     </a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/the-idiomatically-correct-way-to-make-an-instance-of-a-many-to-one-relationship-model/">
+      The Idiomatically Correct Way To Make An Instance Of A Many To One Relationship Model
+    </a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
   </div>

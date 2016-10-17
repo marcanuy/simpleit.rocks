@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://simpleit.rocks/how-to-dump-and-import-utf-8-mysql-databases-in-a-safe-way/</loc>
+<lastmod>2016-10-17T00:00:00-03:00</lastmod>
+</url>
+<url>
+<loc>http://simpleit.rocks/ionic-2-framework-overview/</loc>
+<lastmod>2016-09-30T00:00:00-03:00</lastmod>
+</url>
+<url>
+<loc>http://simpleit.rocks/the-idiomatically-correct-way-to-make-an-instance-of-a-many-to-one-relationship-model/</loc>
+<lastmod>2016-08-18T00:00:00-03:00</lastmod>
+</url>
+<url>
+<loc>http://simpleit.rocks/authorization-versus-authentication-in-web-apps/</loc>
+<lastmod>2016-08-17T00:00:00-03:00</lastmod>
+</url>
+<url>
 <loc>http://simpleit.rocks/simple-debugging-in-rails/</loc>
 <lastmod>2016-08-12T00:00:00-03:00</lastmod>
 </url>
@@ -165,6 +181,9 @@
 <loc>http://simpleit.rocks/</loc>
 </url>
 <url>
+<loc>http://simpleit.rocks/docs/sql/</loc>
+</url>
+<url>
 <loc>http://simpleit.rocks/docs/protocols/http/</loc>
 </url>
 <url>
@@ -181,6 +200,12 @@
 </url>
 <url>
 <loc>http://simpleit.rocks/docs/web/</loc>
+</url>
+<url>
+<loc>http://simpleit.rocks/docs/mobile/ionic/</loc>
+</url>
+<url>
+<loc>http://simpleit.rocks/docs/mobile/</loc>
 </url>
 <url>
 <loc>http://simpleit.rocks/docs/ruby/jekyll/tutorials/</loc>
@@ -226,6 +251,9 @@
 </url>
 <url>
 <loc>http://simpleit.rocks/docs/theory/testing/</loc>
+</url>
+<url>
+<loc>http://simpleit.rocks/docs/theory/web-development/</loc>
 </url>
 <url>
 <loc>http://simpleit.rocks/docs/theory/</loc>
