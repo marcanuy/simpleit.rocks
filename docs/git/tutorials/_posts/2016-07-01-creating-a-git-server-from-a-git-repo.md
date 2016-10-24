@@ -116,6 +116,9 @@ added to the local repo so it is possible to pull and push changes to it.
 </samp>
 </pre>
 
+> To also specify a different port from ssh default (22): `git remote add origin ssh://user@gitserver.com:2222/srv/git/my_project.git`
+{: class="alert alert-info" role="alert"}
+
 ### Verify new remote
 
 <pre class="shell">
