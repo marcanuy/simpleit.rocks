@@ -13,8 +13,12 @@ Software concepts, notes and tutorials.
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
 **Table of Contents**
 
-- [Adding an article](#adding-an-article)
-- [Adding a category](#adding-a-category)
+- [Writing](#writing)
+    - [Adding Posts](#adding-posts)
+    - [Adding a category](#adding-a-category)
+    - [Adding a book](#adding-a-book)
+- [Notes](#notes)
+- [Deployment](#deployment)
 
 <!-- markdown-toc end -->
 
