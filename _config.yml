@@ -65,3 +65,5 @@ production_env: "production" #name of the production environment (for jekyll bui
 collections:
   books:
     output: true
+  doc:
+    output: true
