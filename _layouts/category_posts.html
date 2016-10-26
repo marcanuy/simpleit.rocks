@@ -42,7 +42,8 @@ layout: base_post
     <article>
       <h2>{{ page.title }} articles</h2>
       <div class="list-group">
-	{% for post in site.posts | sort: 'path' %}
+	{% assign posts_by_path = (site.posts | sort: 'path') %}
+	{% for post in posts_by_path %}
 	{% assign dir_without_first_slash = page.dir | replace_first: '/', '' %}
 	{% if post.path contains dir_without_first_slash %}
 	<a class="list-group-item" href="{{ post.url | prepend: site.baseurl }}">
