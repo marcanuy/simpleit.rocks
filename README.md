@@ -18,7 +18,34 @@ Software concepts, notes and tutorials.
 
 <!-- markdown-toc end -->
 
+This is the repository source code of <http://SimpleIt.rocks>.
 
-# Adding an article
+# Writing
 
-# Adding a category
+## Adding Posts
+
+Post templates and snippets are located in `/_skel`.
+
+Add the new post in the proper category inside `/docs`.
+
+## Adding a category
+
+Create the category inside the `/docs` directory with the proper `index.md` file.
+
+## Adding a book
+
+Books are located in `_books`.
+
+# Notes
+
+This website is hosted with [Github Pages](https://pages.github.com/), the relevant
+code is located in the `gh-pages` branch.
+
+# Deployment
+
+Deployment is done via de `deploy.sh` shell script.
+
+<hr />
+
+Coded by [marcanuy](http://marcanuy.com/).
+
