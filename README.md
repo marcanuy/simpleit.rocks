@@ -51,6 +51,11 @@ Deployment is done via
 [deploy.sh](https://github.com/marcanuy/simpleit.rocks/blob/master/deploy.sh)
 *shell* script.
 
+The repo consist of two main branches
+
+- *master*: the jekyll source code
+- *gh-pages*: the html generated website
+
 <hr />
 
 Coded by [marcanuy](http://marcanuy.com/).
