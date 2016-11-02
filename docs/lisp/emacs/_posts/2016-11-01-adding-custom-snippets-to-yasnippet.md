@@ -65,6 +65,15 @@ the current *major-mode* subdirectory. For example, if we attempt to
 save the previous *python* snippet it will be located in
 `.emacs.d/snippets/python-mode`.
 
+### Testing the snippet
+
+Once saved, the snippet can be tested with the command *M-x
+yas-tryout-snippet* which will test the current snippet buffer
+template in other buffer with the proper *major mode*.
+
+To load the new snippet just use `M-x yas-load-snippet-buffer` and it
+will be available in other buffers.
+
 ## Notes
 
 If you are extending the snippets definitions with something that
