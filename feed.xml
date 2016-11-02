@@ -6,9 +6,183 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 26 Oct 2016 19:41:10 -0300</pubDate>
-    <lastBuildDate>Wed, 26 Oct 2016 19:41:10 -0300</lastBuildDate>
+    <pubDate>Wed, 02 Nov 2016 00:55:42 -0300</pubDate>
+    <lastBuildDate>Wed, 02 Nov 2016 00:55:42 -0300</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>How To Check Local Websites For Broken Links</title>
+        <description>
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;After generating a website statically, it is a good practice to check
+that there are no broken links or images, there are some popular
+command line tools for this, in this case I will be
+using &lt;a href=&quot;https://github.com/gjtorikian/html-proofer&quot;&gt;htmlproofer&lt;/a&gt;.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://github.com/gjtorikian/html-proofer&quot;&gt;
+  &lt;p&gt;HTMLProofer is a set of tests to validate your HTML output. These
+tests check if your image references are legitimate, if they have
+alt tags, if your internal links are working, and so on. It’s
+intended to be an all-in-one checker for your output.&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://github.com/gjtorikian/html-proofer&quot;&gt;HTMLProofer&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;install&quot;&gt;Install&lt;/h2&gt;
+
+&lt;p&gt;It can be installed directly with &lt;em&gt;&lt;a href=&quot;https://rubygems.org&quot;&gt;gem&lt;/a&gt;&lt;/em&gt;:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;gem install html-proofer&lt;/kbd&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Or using &lt;em&gt;&lt;a href=&quot;bundler.io&quot;&gt;bundle&lt;/a&gt;&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Adding &lt;code class=&quot;highlighter-rouge&quot;&gt;gem 'html-proofer'&lt;/code&gt; to the file &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; and then:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;gem install html-proofer&lt;/kbd&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;executing&quot;&gt;Executing&lt;/h2&gt;
+
+&lt;p&gt;To test for broken links, just specify the directory, for example
+using the common Jekyll output directory &lt;code class=&quot;highlighter-rouge&quot;&gt;_site&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;htmlproofer ./_site&lt;/kbd&gt;
+0
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/gjtorikian/html-proofer&quot;&gt;https://github.com/gjtorikian/html-proofer&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://validator.w3.org/checklink&quot;&gt;https://validator.w3.org/checklink&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jekyllrb.com/docs/continuous-integration/&quot;&gt;https://jekyllrb.com/docs/continuous-integration/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Tue, 01 Nov 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/how-to-check-local-websites-for-broken-links/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/how-to-check-local-websites-for-broken-links/</guid>
+        
+        <category>html</category>
+        
+        <category>html5</category>
+        
+        <category>validator</category>
+        
+        <category>web-development</category>
+        
+        
+        <category>docs</category>
+        
+        <category>web</category>
+        
+        <category>html</category>
+        
+      </item>
+    
+      <item>
+        <title>Adding Custom Snippets To Yasnippet</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;When using &lt;a href=&quot;https://github.com/joaotavora/yasnippet&quot;&gt;Yasnippets&lt;/a&gt; (a
+popular template system for Emacs), you will usually need to add your
+custom snippets to easy the task of writing repetitive content.&lt;/p&gt;
+
+&lt;p&gt;To extend the snippets, there is a special snippet template that acts
+as a template in a similar way that &lt;em&gt;yasnippets&lt;/em&gt; handle other templates.&lt;/p&gt;
+
+&lt;h2 id=&quot;writing-a-snippet&quot;&gt;Writing a snippet&lt;/h2&gt;
+
+&lt;h3 id=&quot;snippet-directory&quot;&gt;Snippet directory&lt;/h3&gt;
+
+&lt;p&gt;The directory for storing snippets is defined by the variable
+&lt;code class=&quot;highlighter-rouge&quot;&gt;yas-snippet-dirs&lt;/code&gt; and by default is &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.emacs.d/snippets&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p class=&quot;alert alert-info&quot;&gt;You can check its value in your system with &lt;code class=&quot;highlighter-rouge&quot;&gt;C-v yas-snippet-dirs&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;creating-the-snippet&quot;&gt;Creating the snippet&lt;/h3&gt;
+
+&lt;p&gt;To create the snippet file execute the command &lt;code class=&quot;highlighter-rouge&quot;&gt;yas-new-snippet&lt;/code&gt; &lt;em&gt;(C-c
+&amp;amp; C-n)&lt;/em&gt;,
+yasnippets internally expands the &lt;code class=&quot;highlighter-rouge&quot;&gt;snippet-writing&lt;/code&gt; snippet.&lt;/p&gt;
+
+&lt;p&gt;A new buffer will open with the base model to define the new snippet
+in the &lt;strong&gt;snippet-mode&lt;/strong&gt; major mode.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# -*- mode: snippet -*-
+# name: 
+# key: 
+# --
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;example&quot;&gt;Example&lt;/h4&gt;
+
+&lt;p&gt;The following is an example of the current &lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt; statement in
+&lt;em&gt;Python&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# name: for ... in ... : ...
+# key: for
+# group : control structure
+# --
+for ${var} in ${collection}:
+    $0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p class=&quot;alert alert-info&quot;&gt;More details of the customizations can be found in
+the
+&lt;a href=&quot;https://joaotavora.github.io/yasnippet/snippet-development.html&quot;&gt;official documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;saving-the-snippet&quot;&gt;Saving the snippet&lt;/h3&gt;
+
+&lt;p&gt;The snippet will be saved in the default snippets directory and inside
+the current &lt;em&gt;major-mode&lt;/em&gt; subdirectory. For example, if we attempt to
+save the previous &lt;em&gt;python&lt;/em&gt; snippet it will be located in
+&lt;code class=&quot;highlighter-rouge&quot;&gt;.emacs.d/snippets/python-mode&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;testing-the-snippet&quot;&gt;Testing the snippet&lt;/h3&gt;
+
+&lt;p&gt;Once saved, the snippet can be tested with the command &lt;em&gt;M-x
+yas-tryout-snippet&lt;/em&gt; which will test the current snippet buffer
+template in other buffer with the proper &lt;em&gt;major mode&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;To load the new snippet just use &lt;code class=&quot;highlighter-rouge&quot;&gt;M-x yas-load-snippet-buffer&lt;/code&gt; and it
+will be available in other buffers.&lt;/p&gt;
+
+&lt;h2 id=&quot;notes&quot;&gt;Notes&lt;/h2&gt;
+
+&lt;p&gt;If you are extending the snippets definitions with something that
+would be useful for others, consider making
+a &lt;a href=&quot;https://help.github.com/articles/about-pull-requests&quot;&gt;pull request&lt;/a&gt;
+to the official snippets
+&lt;a href=&quot;https://github.com/AndreaCrotti/yasnippet-snippets&quot;&gt;repo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://joaotavora.github.io/yasnippet/snippet-development.html&quot;&gt;https://joaotavora.github.io/yasnippet/snippet-development.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 01 Nov 2016 00:00:00 -0300</pubDate>
+        <link>http://simpleit.rocks/adding-custom-snippets-to-yasnippet/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/adding-custom-snippets-to-yasnippet/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>lisp</category>
+        
+        <category>emacs</category>
+        
+      </item>
     
       <item>
         <title>How To Dump And Import Utf 8 Mysql Databases In A Safe Way</title>
@@ -712,228 +886,6 @@ a\nb
         <category>ruby</category>
         
         <category>language</category>
-        
-      </item>
-    
-      <item>
-        <title>When To Test Or Write Code First In Web Development</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;The optimal solution when testing a web application while developing is a
-mix between &lt;em&gt;Test-driven development&lt;/em&gt; and &lt;em&gt;write code first&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Test Driven Development code concept is to write tests before
-implementations:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Write a test that fails&lt;/li&gt;
-  &lt;li&gt;Make the test pass changing the code, without breaking other tests&lt;/li&gt;
-  &lt;li&gt;Refactor the code, verify that tests pass&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;TDD methodology makes you write a lot of code for simple tasks and can 
-often make you lost focus on what you are trying to develop.&lt;/p&gt;
-
-&lt;p&gt;A balanced approach is to use the &lt;strong&gt;TDD methodology&lt;/strong&gt; in certain cases and
-&lt;strong&gt;write first code&lt;/strong&gt; in others, or sometimes to skip tests at all,
-these are some hints on how to choose between them:&lt;/p&gt;
-
-&lt;table class=&quot;table&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Scenario&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;TDD&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Code first&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Is the test very short or simple?&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Don’t knowing the desired behaviour yet?&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Does it has something to do with the security model?&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Fixing a bug?&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Are you refactoring?&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://www.railstutorial.org/book/static_pages&quot;&gt;
-  &lt;p&gt;Whenever a bug is found, write a test to reproduce it and protect against regressions, then write the application code to fix it.&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt;Rails Tutorial Book&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p class=&quot;alert alert-danger&quot;&gt;Do not write test code for code that it is likely to change, like detailed HTML.&lt;/p&gt;
-
-&lt;h2 id=&quot;in-a-mvc-approach&quot;&gt;In a MVC approach&lt;/h2&gt;
-
-&lt;p&gt;For &lt;strong&gt;controllers&lt;/strong&gt; and &lt;strong&gt;models&lt;/strong&gt; write tests first (TDD), then integration tests.&lt;/p&gt;
-
-&lt;p&gt;For &lt;strong&gt;views&lt;/strong&gt; that we know are constantly changing and are not so prone to errors, skip testing.&lt;/p&gt;
-
-&lt;p&gt;As always, it ultimately depends on each case, there aren’t solutions
-that can be always applied, it ends up being a mix between trial and error
-to see what gives you the best balance between being productive and
-generating that sense of confidence in your code that writing tests gives,
-a lot of practice is required to achieve a smooth integration of writing
-tests and code.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/books/ruby-on-rails-tutorial/&quot;&gt;Ruby on Rails Tutorial&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Mon, 08 Aug 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/when-to-test-or-write-code-first-in-web-development/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/when-to-test-or-write-code-first-in-web-development/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>theory</category>
-        
-        <category>testing</category>
-        
-      </item>
-    
-      <item>
-        <title>Common Steps To Start A Rails Project</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Basic steps to start a rails app that will be hosted in a remote server and
-heroku, using sqlite3 in development and PostgreSQL in production (heroku).&lt;/p&gt;
-
-&lt;h2 id=&quot;generate-a-new-app&quot;&gt;Generate a new app&lt;/h2&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;rails _5.0.0_ new sample_app&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;adjust-gemfile&quot;&gt;Adjust Gemfile&lt;/h2&gt;
-
-&lt;p&gt;Inspect &lt;code class=&quot;highlighter-rouge&quot;&gt;/sample_app/Gemfile&lt;/code&gt; and put &lt;code class=&quot;highlighter-rouge&quot;&gt;sqlite3&lt;/code&gt; in the &lt;code class=&quot;highlighter-rouge&quot;&gt;development&lt;/code&gt; group
-and &lt;code class=&quot;highlighter-rouge&quot;&gt;postgresql&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;production&lt;/code&gt; group.&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#...&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:development&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:test&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'sqlite3'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'1.3.11'&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;#...&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:production&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'pg'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'0.18.4'&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;install-gems&quot;&gt;Install gems&lt;/h2&gt;
-
-&lt;p&gt;Install the gems specified in &lt;code class=&quot;highlighter-rouge&quot;&gt;development&lt;/code&gt;, skipping &lt;code class=&quot;highlighter-rouge&quot;&gt;production&lt;/code&gt; gems with &lt;kbd&gt;bundle install --without production&lt;/kbd&gt;.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;cd sample_app&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;bundle install --without production&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;bundle update&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;initialize-git-repository&quot;&gt;Initialize Git repository&lt;/h2&gt;
-
-&lt;p&gt;Start control versioning the project&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;git init&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt; git commit -m &quot;Init repo&quot;&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;add-github-repo&quot;&gt;Add Github repo&lt;/h2&gt;
-
-&lt;p&gt;Set a new remote to &lt;a href=&quot;https://help.github.com/articles/adding-a-remote/&quot;&gt;github&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;git remote add origin https://github.com/user/sample_app.git&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;git push -u origin --all&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;deploy-to-heroku&quot;&gt;Deploy to Heroku&lt;/h2&gt;
-
-&lt;p&gt;Pushing and deploying the application to Heroku.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;heroku create&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;git push heroku master&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;useful-commands&quot;&gt;Useful commands&lt;/h2&gt;
-
-&lt;p&gt;Migrating the database.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;rails db:migrate&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;Running the test suite to verify that everything is working.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;rails test&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;Run the app in a local server:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;sample_app$&lt;/span&gt; &lt;kbd&gt;rails server&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-</description>
-        <pubDate>Mon, 08 Aug 2016 00:00:00 -0300</pubDate>
-        <link>http://simpleit.rocks/common-steps-to-start-a-rails-project/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/common-steps-to-start-a-rails-project/</guid>
-        
-        <category>ruby-on-rails</category>
-        
-        <category>web-development</category>
-        
-        
-        <category>docs</category>
-        
-        <category>ruby</category>
-        
-        <category>rails</category>
         
       </item>
     

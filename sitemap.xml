@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://simpleit.rocks/how-to-check-local-websites-for-broken-links/</loc>
+<lastmod>2016-11-01T00:00:00-03:00</lastmod>
+</url>
+<url>
+<loc>http://simpleit.rocks/adding-custom-snippets-to-yasnippet/</loc>
+<lastmod>2016-11-01T00:00:00-03:00</lastmod>
+</url>
+<url>
 <loc>http://simpleit.rocks/how-to-dump-and-import-utf-8-mysql-databases-in-a-safe-way/</loc>
 <lastmod>2016-10-17T00:00:00-03:00</lastmod>
 </url>
@@ -275,6 +283,12 @@
 </url>
 <url>
 <loc>http://simpleit.rocks/docs/python/</loc>
+</url>
+<url>
+<loc>http://simpleit.rocks/docs/lisp/emacs/</loc>
+</url>
+<url>
+<loc>http://simpleit.rocks/docs/lisp/</loc>
 </url>
 <url>
 <loc>http://simpleit.rocks/docs/</loc>
