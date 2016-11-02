@@ -1,15 +1,26 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#
+# This is a modified version of David Moody's script
+# https://davidxmoody.com/host-any-static-site-with-github-pages/
 
-# any command that fails will cause the script to abort.
-set -e
+set -e # halt script on error
 
-echo 'Checking for errors...'
+echo 'Search site and print specific deprecation warnings...'
+echo 'bundle exec jekyll hyde'
 bundle exec jekyll hyde
 
-read -rsp $'Will execute: JEKYLL_ENV=production bundle exec jekyll build
+read -rsp $'Build site: $ JEKYLL_ENV=production bundle exec jekyll build
 \nPress any key to continue...\n' -n1 key
 
 JEKYLL_ENV=production bundle exec jekyll build
+
+read -rsp $'Check for broken links: $ bundle exec htmlproofer _site
+\nPress any key to continue...\n' -n1 key
+
+bundle exec htmlproofer ./_site
+
+read -rsp $'Push repo to github: master and gh-pages branches
+\nPress any key to continue...\n' -n1 key
 
 # Check for uncommitted changes or untracked files
 ####[ -n "$(git status --porcelain)" ] && git status && exit 1
