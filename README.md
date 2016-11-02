@@ -47,7 +47,9 @@ directory and are referenced in _posts_.
 
 # Deployment
 
-Deployment is done via de `deploy.sh` shell script.
+Deployment is done via
+[deploy.sh](https://github.com/marcanuy/simpleit.rocks/blob/master/deploy.sh)
+*shell* script.
 
 <hr />
 
