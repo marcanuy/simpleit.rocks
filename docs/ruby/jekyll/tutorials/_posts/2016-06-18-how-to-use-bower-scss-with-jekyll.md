@@ -119,7 +119,7 @@ in a template like:
 <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/bootstrap-flex.css">
 ~~~
 
-## Summary
+## Review
 
 This is a simple process respecting each package default directories, that makes it 
 easy to maintain Bower packages up to date, without having to regenerate

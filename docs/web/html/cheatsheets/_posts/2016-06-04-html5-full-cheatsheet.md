@@ -164,7 +164,7 @@ Quick reference based in [HTML 5 text level semantics](https://www.w3.org/TR/htm
 
 | Element | Purpose | Example | Output |
 |:--------|:-------:|--------:|-------:|
-| __a__ | [Hyperlinks](https://www.w3.org/TR/html5/text-level-semantics.html#the-a-element) | `Visit my <a href="drinks.html">drinks</a> page.` | Visit my <a href="drinks.html">drinks</a> page. |
+| __a__ | [Hyperlinks](https://www.w3.org/TR/html5/text-level-semantics.html#the-a-element) | `Visit my <a href="http://example.com">example</a> page.` | Visit my <a href="http://example.com">example</a> page. |
 | __em__ | [Stress emphasis](https://www.w3.org/TR/html5/text-level-semantics.html#the-em-element) | `I must say I <em>adore</em> lemonade.` | I must say I <em>adore</em> lemonade. |
 | __strong__ | [Importance](https://www.w3.org/TR/html5/text-level-semantics.html#the-strong-element) | `This tea is <strong>very hot</strong>.` | This tea is <strong>very hot</strong>. |
 | __small__ | [Side comments](https://www.w3.org/TR/html5/text-level-semantics.html#the-small-element) | `These grapes are made into wine. <small>Alcohol is addictive.</small>` | These grapes are made into wine. <small>Alcohol is addictive.</small> |

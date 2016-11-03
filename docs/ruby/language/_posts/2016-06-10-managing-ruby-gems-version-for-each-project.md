@@ -18,12 +18,12 @@ Manage gem versions consistently accross platforms.
 #### Bundler common workflow
 
 + Declare dependencies of an application in a [Gemfile](http://bundler.io/gemfile.html)
-+ [Install](http://bundler.io/bundle_install.html) above versions of the dependencies into an isolated location `bundle install`
++ [Install](http://bundler.io/v1.13/man/bundle-install.1.html) above versions of the dependencies into an isolated location `bundle install`
 + run the app: `bundle exec`
 
 References
 ==========
 
-+ <https://www.bundler.io/>
++ <http://www.bundler.io/>
 
 *[ORM]: Object Relational Mapping

@@ -160,7 +160,8 @@ So with the about settings scheme, it is better to use `django-admin` and choose
 > -- Django Docs
 {: cite="https://docs.djangoproject.com/en/1.9/ref/django-admin/"}
 
-### Summary
+### Review
+
 We start having a `settings.py` single file and break it up into a new
 directory with specific environment settings:
 

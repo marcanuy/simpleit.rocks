@@ -16,4 +16,4 @@ Useful Links
   + HTML 5 <https://www.w3.org/TR/html5/>
   + HTML 5.1 <https://www.w3.org/TR/html51/>
 + All the HTML tags: <https://developer.mozilla.org/en-US/docs/Web/HTML/Element>
-+ [HTML Wikipedia](https://en.wikipedia.org/wiki/HTML/)
++ [HTML Wikipedia](https://en.wikipedia.org/wiki/HTML)

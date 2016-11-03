@@ -52,7 +52,7 @@ irb(main):001:0>
 
 Routes are defined in `/config/routes.rb`. 
 After starting the server `rails serve` the current routes that rails 
-recognizes can be listed at: <http://localhost:3000/rails/info/routes>
+recognizes can be listed at: `http://localhost:3000/rails/info/routes`
 in the browser or in the console: `rails routes`
 
 ### Named routes
@@ -278,7 +278,7 @@ Running via Spring preloader in process 9703
 
 ### Code
 
-- <https://github.com/rails/rails/blob/5-0-stable>
+- <https://github.com/rails/rails/tree/5-0-stable>
 - <http://api.rubyonrails.org/>
 
 ### Docs

@@ -35,7 +35,7 @@ It can be installed directly with *[gem](https://rubygems.org)*:
 <span class="shell-prompt">$</span> <kbd>gem install html-proofer</kbd>
 </pre>
 
-Or using *[bundle](bundler.io)*:
+Or using *[bundle](http://bundler.io)*:
 
 Adding `gem 'html-proofer'` to the file `Gemfile` and then:
 
