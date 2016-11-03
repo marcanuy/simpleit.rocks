@@ -11,6 +11,8 @@ rvm:
 # The build script file needs to have the executable attribute set or
 # Travis will fail with a permission denied error
 before_script:
+ - npm install -g bower
+ - bower install
  - chmod +x ./script/cibuild.sh # or do this locally and commit
 
 # Assume bundler is being used, therefore
