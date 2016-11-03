@@ -189,6 +189,9 @@
 <loc>http://simpleit.rocks/</loc>
 </url>
 <url>
+<loc>http://simpleit.rocks/docs/sql/mysql/</loc>
+</url>
+<url>
 <loc>http://simpleit.rocks/docs/sql/</loc>
 </url>
 <url>
@@ -196,6 +199,9 @@
 </url>
 <url>
 <loc>http://simpleit.rocks/docs/protocols/</loc>
+</url>
+<url>
+<loc>http://simpleit.rocks/docs/web/html/cheatsheets/</loc>
 </url>
 <url>
 <loc>http://simpleit.rocks/docs/web/html/responsive/</loc>
@@ -240,7 +246,13 @@
 <loc>http://simpleit.rocks/docs/linux/</loc>
 </url>
 <url>
+<loc>http://simpleit.rocks/docs/git/commands/</loc>
+</url>
+<url>
 <loc>http://simpleit.rocks/docs/git/tutorials/</loc>
+</url>
+<url>
+<loc>http://simpleit.rocks/docs/git/remotes/</loc>
 </url>
 <url>
 <loc>http://simpleit.rocks/docs/git/concepts/</loc>

@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 02 Nov 2016 00:55:42 -0300</pubDate>
-    <lastBuildDate>Wed, 02 Nov 2016 00:55:42 -0300</lastBuildDate>
+    <pubDate>Wed, 02 Nov 2016 21:50:24 -0300</pubDate>
+    <lastBuildDate>Wed, 02 Nov 2016 21:50:24 -0300</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -36,7 +36,7 @@ intended to be an all-in-one checker for your output.&lt;/p&gt;
 &lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;gem install html-proofer&lt;/kbd&gt;
 &lt;/pre&gt;
 
-&lt;p&gt;Or using &lt;em&gt;&lt;a href=&quot;bundler.io&quot;&gt;bundle&lt;/a&gt;&lt;/em&gt;:&lt;/p&gt;
+&lt;p&gt;Or using &lt;em&gt;&lt;a href=&quot;http://bundler.io&quot;&gt;bundle&lt;/a&gt;&lt;/em&gt;:&lt;/p&gt;
 
 &lt;p&gt;Adding &lt;code class=&quot;highlighter-rouge&quot;&gt;gem 'html-proofer'&lt;/code&gt; to the file &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; and then:&lt;/p&gt;
 
@@ -362,7 +362,7 @@ www/
 
 &lt;p&gt;Each page of the application can be generated with &lt;code class=&quot;highlighter-rouge&quot;&gt;ionic generate page mylist&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;And will contain &lt;a href=&quot;https://ionicframework.com/docs/v2/api/components/&quot;&gt;components&lt;/a&gt;
+&lt;p&gt;And will contain &lt;a href=&quot;https://ionicframework.com/docs/v2/components/&quot;&gt;components&lt;/a&gt;
 like &lt;code class=&quot;highlighter-rouge&quot;&gt;ionic-navbar&lt;/code&gt; that will help to quickly create app interfaces.&lt;/p&gt;
 
 &lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
