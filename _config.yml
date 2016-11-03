@@ -65,3 +65,7 @@ production_env: "production" #name of the production environment (for jekyll bui
 collections:
   books:
     output: true
+
+# Travis bundles all gems in the vendor directory on its build
+# servers, which Jekyll will mistakenly read and explode on.
+exclude: [vendor]
