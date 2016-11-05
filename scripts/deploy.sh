@@ -7,6 +7,9 @@ set -ev # halt script on error
 
 JEKYLL_ENV=production bundle exec jekyll build
 
+git config user.name "Travis CI"
+git config user.email "$COMMIT_AUTHOR_EMAIL"
+
 # Check for uncommitted changes or untracked files
 ####[ -n "$(git status --porcelain)" ] && git status && exit 1
 
