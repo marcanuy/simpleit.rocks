@@ -2,4 +2,4 @@ _site
 .sass-cache
 .jekyll-metadata
 bower_components
-scripts/deploy_key
+deploy_key
