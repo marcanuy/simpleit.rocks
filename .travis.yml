@@ -1,42 +1,20 @@
-# Use a Ruby build container
-# i.e. give script access to Bundler, RubyGems, and a Ruby runtime.
 language: ruby
-
-# Ruby Version Manager
-# This directive tells Travis the Ruby version to use when running
-# the test script.
 rvm:
 - 2.3.1
-
-# The build script file needs to have the executable attribute set or
-# Travis will fail with a permission denied error
 before_script:
- - npm install -g bower
- - bower install
- - chmod +x ./scripts/cibuild.sh # or do this locally and commit
-
-# Assume bundler is being used, therefore
-# the `install` step will run `bundle install` by default.
-## install: gem install jekyll html-proofer
-script: ./scripts/cibuild.sh
-
+- npm install -g bower
+- bower install
+- chmod +x ./scripts/cibuild.sh
+script: "./scripts/cibuild.sh"
 after_success:
-  - chmod +x ./scripts/deploy.sh
-  - ./scripts/deploy.sh
-
-# branch whitelist, only for GitHub Pages
-# Travis will build from every push to any branch of your repo if
-# branches directive isn't present.
-# branches:
-#   only:
-#   - gh-pages     # test the gh-pages branch
-#   - /pages-(.*)/ # test every branch which starts with "pages-"
-
+- chmod +x ./scripts/deploy.sh
+- "./scripts/deploy.sh"
 env:
   global:
-  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
-  - COMMIT_AUTHOR_EMAIL: "me@marcanuy.com"
-
-# This command explicitly tells Travis to run your build on Travis’s
-# container-based infrastructure.
-sudo: false # route your build to the container-based infrastructure for a faster build
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+  - COMMIT_AUTHOR_EMAIL: me@marcanuy.com
+  - ENCRYPTION_LABEL: "8377852856fe"
+sudo: false
+before_install:
+- openssl aes-256-cbc -K $encrypted_8377852856fe_key -iv $encrypted_8377852856fe_iv
+  -in deploy_key.enc -out deploy_key -d
