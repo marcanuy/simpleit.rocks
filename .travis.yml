@@ -16,4 +16,6 @@ env:
   - ENCRYPTION_LABEL: "8377852856fe"
 sudo: false
 before_install:
-- openssl aes-256-cbc -K $encrypted_8377852856fe_key -iv $encrypted_8377852856fe_iv -in deploy_key.enc -out deploy_key -d
+  - pwd
+  - openssl version
+  - openssl aes-256-cbc -K $encrypted_8377852856fe_key -iv $encrypted_8377852856fe_iv -in deploy_key.enc -out deploy_key -d
