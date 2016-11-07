@@ -14,10 +14,10 @@ read -rsp $'Build site: $ JEKYLL_ENV=production bundle exec jekyll build
 
 JEKYLL_ENV=production bundle exec jekyll build
 
-read -rsp $'Check for broken links: $ bundle exec htmlproofer _site
+read -rsp $'Check for broken links: $ bundle exec htmlproofer --disable-external _site
 \nPress any key to continue...\n' -n1 key
 
-bundle exec htmlproofer ./_site
+bundle exec htmlproofer --disable-external ./_site
 
 read -rsp $'Push repo to github: master and gh-pages branches
 \nPress any key to continue...\n' -n1 key
