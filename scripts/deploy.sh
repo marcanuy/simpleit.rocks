@@ -34,9 +34,9 @@ ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
 openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in deploy_key.enc -out deploy_key -d
 chmod 600 deploy_key
 eval `ssh-agent -s`
-ssh-add -l
-ssh-add deploy_key
-ssh-add -l
+eval `ssh-add -l`
+eval `ssh-add deploy_key`
+eval `ssh-add -l`
 
 # Push both branches to GitHub
 #git push --all origin
