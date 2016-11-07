@@ -13,11 +13,11 @@ env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
   - COMMIT_AUTHOR_EMAIL: me@marcanuy.com
-  - ENCRYPTION_LABEL: "8377852856fe"
+  - ENCRYPTION_LABEL: 9f3844c952a5
 sudo: false
 before_install:
-  - pwd
-  - openssl version
-  - git remote -v
-  - git branch -v
-  - openssl aes-256-cbc -K $encrypted_8377852856fe_key -iv $encrypted_8377852856fe_iv -in deploy_key.enc -out deploy_key -d
+- openssl aes-256-cbc -K $encrypted_9f3844c952a5_key -iv $encrypted_9f3844c952a5_iv -in deploy_key.enc -out deploy_key -d
+- pwd
+- openssl version
+- git remote -v
+- git branch -v
