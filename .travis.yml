@@ -21,3 +21,7 @@ before_install:
 - openssl version
 - git remote -v
 - git branch -v
+branches:
+  only:
+    - master
+    - gh-pages
