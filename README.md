@@ -27,8 +27,13 @@ Software concepts, notes and tutorials.
 This is the repository source code of <http://SimpleIt.rocks>.
 
 Developed in [Jekyll](http://jekyllrb.com/) and hosted on
-[Github Pages](https://pages.github.com/), the relevant code is located in
-the [gh-pages](https://github.com/marcanuy/simpleit.rocks/tree/gh-pages) branch.
+[Github Pages](https://pages.github.com/), the website static files
+are located in
+the
+[gh-pages](https://github.com/marcanuy/simpleit.rocks/tree/gh-pages)
+branch and the Jekyll files are
+in [master](https://github.com/marcanuy/simpleit.rocks/tree/master)
+branch.
 
 # Writing
 
