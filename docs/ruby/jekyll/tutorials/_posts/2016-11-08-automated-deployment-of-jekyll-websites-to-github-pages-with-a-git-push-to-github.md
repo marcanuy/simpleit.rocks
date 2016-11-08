@@ -293,7 +293,7 @@ You can find your project button url following [this guide](https://docs.travis-
 
 ## References
 
-This guide is heavily basedin [Auto-deploying built products to gh-pages with
+This guide is heavily based in [Auto-deploying built products to gh-pages with
   Travis](https://gist.github.com/domenic/ec8b0fc8ab45f39403dd)
   
 Related articles:
