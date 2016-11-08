@@ -42,4 +42,4 @@ ssh-add deploy_key
 
 # Push both branches to GitHub
 #git push --all origin
-git push origin gh-pages
+git push origin gh-pages -v
