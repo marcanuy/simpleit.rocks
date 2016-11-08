@@ -1,41 +1,63 @@
-#!/usr/bin/env bash
-#
-# This is a modified version of David Moody's script
-# https://davidxmoody.com/host-any-static-site-with-github-pages/
+#!/bin/bash
+set -e # Exit with nonzero exit code if anything fails
 
-set -e # halt script on error
+SOURCE_BRANCH="master"
+TARGET_BRANCH="gh-pages"
 
-echo 'Search site and print specific deprecation warnings...'
-echo 'bundle exec jekyll hyde'
-bundle exec jekyll hyde
+function doCompile {
+    JEKYLL_ENV=production bundle exec jekyll build -d out/
+}
 
-read -rsp $'Build site: $ JEKYLL_ENV=production bundle exec jekyll build
-\nPress any key to continue...\n' -n1 key
+# Pull requests and commits to other branches shouldn't try to deploy, just build to verify
+if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
+    echo "Skipping deploy; just doing a build."
+    doCompile
+    exit 0
+fi
 
-JEKYLL_ENV=production bundle exec jekyll build
+# Save some useful information
+REPO=`git config remote.origin.url`
+SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
+SHA=`git rev-parse --verify HEAD`
 
-read -rsp $'Check for broken links: $ bundle exec htmlproofer --disable-external _site
-\nPress any key to continue...\n' -n1 key
+# Clone the existing gh-pages for this repo into out/
+# Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
+git clone $REPO out
+cd out
+git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
+cd ..
 
-bundle exec htmlproofer --disable-external ./_site
+# Clean out existing contents
+rm -rf out/**/* || exit 0
 
-read -rsp $'Push repo to github: master and gh-pages branches
-\nPress any key to continue...\n' -n1 key
+# Run our compile script
+doCompile
 
-# Check for uncommitted changes or untracked files
-####[ -n "$(git status --porcelain)" ] && git status && exit 1
+# Now let's go have some fun with the cloned repo
+cd out
+git config user.name "Travis CI"
+git config user.email "$COMMIT_AUTHOR_EMAIL"
 
-# Switch to master branch without changing any files
-git symbolic-ref HEAD refs/heads/gh-pages
-git reset
+# If there are no changes to the compiled out (e.g. this is a README update) then just bail.
+if [ -z `git diff --exit-code` ]; then
+    echo "No changes to the output on this push; exiting."
+    exit 0
+fi
 
-# Add all changes in the build dir
-git --work-tree=_site add -A
-git --work-tree=_site commit -m "Published changes"
+# Commit the "changes", i.e. the new version.
+# The delta will show diffs between new and old versions.
+git add .
+git commit -m "Deploy to GitHub Pages: ${SHA}"
 
-# Switch back to source
-git symbolic-ref HEAD refs/heads/master
-git reset
+# Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
+ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
+ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
+ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
+ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
+openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in deploy_key.enc -out deploy_key -d
+chmod 600 deploy_key
+eval `ssh-agent -s`
+ssh-add deploy_key
 
-# Push both branches to GitHub
-git push --all origin
+# Now that we're all set up, we can push.
+git push $SSH_REPO $TARGET_BRANCH

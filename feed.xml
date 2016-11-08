@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 02 Nov 2016 23:55:22 -0300</pubDate>
-    <lastBuildDate>Wed, 02 Nov 2016 23:55:22 -0300</lastBuildDate>
+    <pubDate>Tue, 08 Nov 2016 09:21:20 +0000</pubDate>
+    <lastBuildDate>Tue, 08 Nov 2016 09:21:20 +0000</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -65,7 +65,7 @@ using the common Jekyll output directory &lt;code class=&quot;highlighter-rouge&
 &lt;/ul&gt;
 
 </description>
-        <pubDate>Tue, 01 Nov 2016 00:00:00 -0300</pubDate>
+        <pubDate>Tue, 01 Nov 2016 00:00:00 +0000</pubDate>
         <link>http://simpleit.rocks/how-to-check-local-websites-for-broken-links/</link>
         <guid isPermaLink="true">http://simpleit.rocks/how-to-check-local-websites-for-broken-links/</guid>
         
@@ -171,7 +171,7 @@ to the official snippets
   &lt;li&gt;&lt;a href=&quot;https://joaotavora.github.io/yasnippet/snippet-development.html&quot;&gt;https://joaotavora.github.io/yasnippet/snippet-development.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        <pubDate>Tue, 01 Nov 2016 00:00:00 -0300</pubDate>
+        <pubDate>Tue, 01 Nov 2016 00:00:00 +0000</pubDate>
         <link>http://simpleit.rocks/adding-custom-snippets-to-yasnippet/</link>
         <guid isPermaLink="true">http://simpleit.rocks/adding-custom-snippets-to-yasnippet/</guid>
         
@@ -263,7 +263,7 @@ describes encoding sequences that take from one to four bytes.&lt;/p&gt;
   &lt;li&gt;Configuring the default database charset &lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html&quot;&gt;https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        <pubDate>Mon, 17 Oct 2016 00:00:00 -0300</pubDate>
+        <pubDate>Mon, 17 Oct 2016 00:00:00 +0000</pubDate>
         <link>http://simpleit.rocks/how-to-dump-and-import-utf-8-mysql-databases-in-a-safe-way/</link>
         <guid isPermaLink="true">http://simpleit.rocks/how-to-dump-and-import-utf-8-mysql-databases-in-a-safe-way/</guid>
         
@@ -371,7 +371,7 @@ like &lt;code class=&quot;highlighter-rouge&quot;&gt;ionic-navbar&lt;/code&gt; t
   &lt;li&gt;&lt;a href=&quot;http://ionicframework.com/docs/v2/&quot;&gt;http://ionicframework.com/docs/v2/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        <pubDate>Fri, 30 Sep 2016 00:00:00 -0300</pubDate>
+        <pubDate>Fri, 30 Sep 2016 00:00:00 +0000</pubDate>
         <link>http://simpleit.rocks/ionic-2-framework-overview/</link>
         <guid isPermaLink="true">http://simpleit.rocks/ionic-2-framework-overview/</guid>
         
@@ -434,7 +434,7 @@ Article’s &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt;
   &lt;li&gt;&lt;a href=&quot;http://guides.rubyonrails.org/association_basics.html&quot;&gt;Active Record Associations&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        <pubDate>Thu, 18 Aug 2016 00:00:00 -0300</pubDate>
+        <pubDate>Thu, 18 Aug 2016 00:00:00 +0000</pubDate>
         <link>http://simpleit.rocks/the-idiomatically-correct-way-to-make-an-instance-of-a-many-to-one-relationship-model/</link>
         <guid isPermaLink="true">http://simpleit.rocks/the-idiomatically-correct-way-to-make-an-instance-of-a-many-to-one-relationship-model/</guid>
         
@@ -468,7 +468,7 @@ Article’s &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt;
 &lt;p class=&quot;alert alert-danger&quot;&gt;Who are them?&lt;/p&gt;
 
 </description>
-        <pubDate>Wed, 17 Aug 2016 00:00:00 -0300</pubDate>
+        <pubDate>Wed, 17 Aug 2016 00:00:00 +0000</pubDate>
         <link>http://simpleit.rocks/authorization-versus-authentication-in-web-apps/</link>
         <guid isPermaLink="true">http://simpleit.rocks/authorization-versus-authentication-in-web-apps/</guid>
         
@@ -536,7 +536,7 @@ variables values, for example when accessing
 &lt;/samp&gt;
 &lt;/div&gt;
 </description>
-        <pubDate>Fri, 12 Aug 2016 00:00:00 -0300</pubDate>
+        <pubDate>Fri, 12 Aug 2016 00:00:00 +0000</pubDate>
         <link>http://simpleit.rocks/simple-debugging-in-rails/</link>
         <guid isPermaLink="true">http://simpleit.rocks/simple-debugging-in-rails/</guid>
         
@@ -633,7 +633,7 @@ variables values, for example when accessing
 &lt;/ul&gt;
 
 </description>
-        <pubDate>Tue, 09 Aug 2016 00:00:00 -0300</pubDate>
+        <pubDate>Tue, 09 Aug 2016 00:00:00 +0000</pubDate>
         <link>http://simpleit.rocks/what-is-the-difference-between-modules-and-classes-in-ruby/</link>
         <guid isPermaLink="true">http://simpleit.rocks/what-is-the-difference-between-modules-and-classes-in-ruby/</guid>
         
@@ -832,7 +832,7 @@ foobar
 &lt;/ul&gt;
 
 </description>
-        <pubDate>Tue, 09 Aug 2016 00:00:00 -0300</pubDate>
+        <pubDate>Tue, 09 Aug 2016 00:00:00 +0000</pubDate>
         <link>http://simpleit.rocks/ruby-language-overview/</link>
         <guid isPermaLink="true">http://simpleit.rocks/ruby-language-overview/</guid>
         
@@ -876,7 +876,7 @@ a\nb
 &lt;/pre&gt;
 
 </description>
-        <pubDate>Tue, 09 Aug 2016 00:00:00 -0300</pubDate>
+        <pubDate>Tue, 09 Aug 2016 00:00:00 +0000</pubDate>
         <link>http://simpleit.rocks/double-versus-single-quotes-in-ruby/</link>
         <guid isPermaLink="true">http://simpleit.rocks/double-versus-single-quotes-in-ruby/</guid>
         
