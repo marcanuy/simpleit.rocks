@@ -49,14 +49,20 @@ directory and are referenced in _posts_.
 
 # Deployment
 
-Deployment is done via
-[deploy.sh](https://github.com/marcanuy/simpleit.rocks/blob/master/deploy.sh)
-*shell* script.
+Deployment is done automatically
+with [Travis CI](http://travis-ci.org/).
 
-The repo consist of two main branches
+The
+[deploy.sh](https://github.com/marcanuy/simpleit.rocks/blob/master/deploy.sh) script
+is based
+in
+[Auto-deploying built products to gh-pages with Travis](https://gist.github.com/domenic/ec8b0fc8ab45f39403dd).
 
-- *master*: the jekyll source code
-- *gh-pages*: the html generated website
+Each time the website is pushed to Github master branch, Travis
+automatically checks for broken links executing `htlm-proofer` in the
+generated static files with `scripts/cibuild.sh`, then if everything
+is fine, the deployment is done to the `gh-pages` branch with
+`deploy.sh`, so Github Pages publish the website.
 
 <hr />
 
