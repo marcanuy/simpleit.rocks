@@ -5,10 +5,7 @@ before_script:
 - npm install -g bower
 - bower install
 - chmod +x ./scripts/cibuild.sh
-script: "./scripts/cibuild.sh"
-after_success:
-- chmod +x ./scripts/deploy.sh
-- "./scripts/deploy.sh"
+script: bash ./deploy.sh
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
@@ -17,11 +14,3 @@ env:
 sudo: false
 before_install:
 - openssl aes-256-cbc -K $encrypted_9f3844c952a5_key -iv $encrypted_9f3844c952a5_iv -in deploy_key.enc -out deploy_key -d
-- pwd
-- openssl version
-- git remote -v
-- git branch -v
-branches:
-  only:
-    - master
-    - gh-pages
