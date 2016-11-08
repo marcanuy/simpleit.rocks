@@ -5,7 +5,9 @@ before_script:
 - npm install -g bower
 - bower install
 - chmod +x ./scripts/cibuild.sh
-script: bash ./deploy.sh
+- 
+script: bash ./scripts/cibuild.sh
+after_success: bash ./deploy.sh
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
