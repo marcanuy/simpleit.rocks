@@ -38,8 +38,8 @@ ssh-add deploy_key
 
 
 # verify connection
-ssh -T git@github.com
-ssh-add -l
+#ssh -T git@github.com
+
 # Push both branches to GitHub
 #git push --all origin
 git push origin gh-pages
