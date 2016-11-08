@@ -191,7 +191,7 @@ The key's randomart image is:
 </samp>
 </pre>
 
-### Add deploy_key to GitHub keys
+### Add deploy key to GitHub keys
 
 Add the generated **public key**: `deploy_key.pub` to your repository at
 https://github.com/<your name>/<your repo>/settings/keys.
@@ -267,7 +267,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_0c6d27255ccf_key -iv $encrypted_0c6d27255ccf_iv -in deploy_key.enc -out deploy_key -d
 ~~~
 
-### Add *deploy_key* to .gitignore:
+### Add deploy key to gitignore:
 
 In `.gitignore` add *deploy_key*:
 
