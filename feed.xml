@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 08 Nov 2016 13:48:23 +0000</pubDate>
-    <lastBuildDate>Tue, 08 Nov 2016 13:48:23 +0000</lastBuildDate>
+    <pubDate>Tue, 08 Nov 2016 13:56:48 +0000</pubDate>
+    <lastBuildDate>Tue, 08 Nov 2016 13:56:48 +0000</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -300,7 +300,7 @@ the current status of the building, adding a similar code:&lt;/p&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
-&lt;p&gt;This guide is heavily basedin &lt;a href=&quot;https://gist.github.com/domenic/ec8b0fc8ab45f39403dd&quot;&gt;Auto-deploying built products to gh-pages with
+&lt;p&gt;This guide is heavily based in &lt;a href=&quot;https://gist.github.com/domenic/ec8b0fc8ab45f39403dd&quot;&gt;Auto-deploying built products to gh-pages with
   Travis&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Related articles:&lt;/p&gt;
