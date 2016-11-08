@@ -16,8 +16,8 @@ I am [Marcelo Canina](http://marcanuy.com), a web entrepreneur from
 
 ## Story
 
-I enjoy all aspects of designing a web application: from web server 
-administration, to design, code and front end design of apps.
+I enjoy all aspects of designing a web application, from web server 
+administration, to design, code and front end designing of apps.
 
 When in the process of creating a new project, I found myself referring
 often to the same documentation I've read relatively long time ago and
