@@ -6,9 +6,31 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 10 Nov 2016 00:32:51 +0000</pubDate>
-    <lastBuildDate>Thu, 10 Nov 2016 00:32:51 +0000</lastBuildDate>
+    <pubDate>Thu, 10 Nov 2016 22:53:05 +0000</pubDate>
+    <lastBuildDate>Thu, 10 Nov 2016 22:53:05 +0000</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>Auto Tweet New Blog Posts Based In A Website Feed</title>
+        <description>
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+</description>
+        <pubDate>Thu, 10 Nov 2016 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/auto-tweet-new-blog-posts-based-in-a-website-feed/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/auto-tweet-new-blog-posts-based-in-a-website-feed/</guid>
+        
+        <category>git</category>
+        
+        <category>gh-pages</category>
+        
+        <category>travis</category>
+        
+        
+        <category>docs</category>
+        
+        <category>web</category>
+        
+      </item>
     
       <item>
         <title>Bash Script to Find Out If MySQL Is Running Or Not</title>
@@ -975,99 +997,6 @@ variables values, for example when accessing
         <category>ruby</category>
         
         <category>rails</category>
-        
-      </item>
-    
-      <item>
-        <title>What Is The Difference Between Modules And Classes In Ruby</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;blockquote cite=&quot;http://ruby-doc.org/core-2.2.0/Module.html&quot; class=&quot;blockquote&quot;&gt;
-  &lt;p&gt;A &lt;strong&gt;Module&lt;/strong&gt; in Ruby is a collection of methods and constants.&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt;Ruby-doc.org&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote cite=&quot;https://ruby-doc.org/core-2.2.0/Class.html&quot; class=&quot;blockquote&quot;&gt;
-  &lt;p&gt;&lt;strong&gt;Classes&lt;/strong&gt; in Ruby are first-class objects, each is an instance of class Class.&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt;Ruby-doc.org&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;classes-versus-modules&quot;&gt;Classes versus Modules&lt;/h2&gt;
-
-&lt;table class=&quot;table&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt; &lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Class&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Module&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;instantiation&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;can be instantiated&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Can &lt;em&gt;not&lt;/em&gt; be instantiated&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;usage&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;object creation&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Mixin facility. Provides a namespace.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;superclass&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;module&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;object&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;methods&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;class methods and instance methods&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;module methods and instance methods&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;inheritance&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;inherits behaviour and can be base for &lt;em&gt;inheritance&lt;/em&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;No &lt;em&gt;inheritance&lt;/em&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;inclusion&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;cannot be included&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;can be included in classes and  modules by using the include command (includes all instance methods as instance methods in a class/module)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;extension&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;can not extend with extend command (only with inheritance)&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;module can extend instance by using extend command (extends given instance with singleton methods from module)&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;Table source: &lt;a href=&quot;http://stackoverflow.com/a/9778021/1165509&quot;&gt;Difference between a class and a module&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote cite=&quot;http://stackoverflow.com/a/151774/1165509&quot; class=&quot;blockquote&quot;&gt;
-  &lt;p&gt;&lt;strong&gt;Modules&lt;/strong&gt; are about providing methods that you can use across multiple classes - think about them as “libraries” (as you would see in a Rails app).&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;Classes are about objects; modules are about functions.&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://ruby-doc.org/core-2.2.0/Class.html&quot;&gt;Ruby Class doc&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://ruby-doc.org/core-2.2.0/Module.html&quot;&gt;Ruby Module doc&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/a/9778021/1165509&quot;&gt;Difference between a class and a module&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Tue, 09 Aug 2016 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/what-is-the-difference-between-modules-and-classes-in-ruby/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/what-is-the-difference-between-modules-and-classes-in-ruby/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>ruby</category>
-        
-        <category>language</category>
         
       </item>
     

@@ -29,24 +29,24 @@
 
   
   <!-- Begin Jekyll SEO tag v2.0.0 -->
-<title>Django Project Directory Structure - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Django Project Directory Structure" />
-<meta name="description" content="An approach on the most convenient way to organize directories for robust Django projects." />
-<meta property="og:description" content="An approach on the most convenient way to organize directories for robust Django projects." />
-<link rel="canonical" href="http://simpleit.rocks/django-project-directory-structure/" />
-<meta property="og:url" content="http://simpleit.rocks/django-project-directory-structure/" />
+<title>Auto Tweet New Blog Posts Based In A Website Feed - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Auto Tweet New Blog Posts Based In A Website Feed" />
+<meta name="description" content="Overview" />
+<meta property="og:description" content="Overview" />
+<link rel="canonical" href="http://simpleit.rocks/auto-tweet-new-blog-posts-based-in-a-website-feed/" />
+<meta property="og:url" content="http://simpleit.rocks/auto-tweet-new-blog-posts-based-in-a-website-feed/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-07-16T00:00:00+00:00" />
+<meta property="article:published_time" content="2016-11-10T00:00:00+00:00" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "Django Project Directory Structure",
-    "datePublished": "2016-07-16T00:00:00+00:00",
-    "description": "An approach on the most convenient way to organize directories for robust Django projects.",
-    "url": "http://simpleit.rocks/django-project-directory-structure/"
+    "headline": "Auto Tweet New Blog Posts Based In A Website Feed",
+    "datePublished": "2016-11-10T00:00:00+00:00",
+    "description": "Overview",
+    "url": "http://simpleit.rocks/auto-tweet-new-blog-posts-based-in-a-website-feed/"
   }
 </script>
 <!-- End Jekyll SEO tag -->
@@ -104,7 +104,7 @@
     
     
     
-    <h1 class="title">Django Project Directory Structure </h1>
+    <h1 class="title">Auto Tweet New Blog Posts Based In A Website Feed </h1>
     
     
   </div>
@@ -120,7 +120,7 @@
   <div class="post-meta">
     
     <i class="fa fa-calendar" aria-hidden="true"></i>
-    <time datetime="2016-07-16T00:00:00+00:00" itemprop="datePublished">Jul 16, 2016</time>
+    <time datetime="2016-11-10T00:00:00+00:00" itemprop="datePublished">Nov 10, 2016</time>
     
   </div>
   <div>
@@ -191,37 +191,13 @@
     class=active>
   
   <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/python">
+     itemprop="item" href="/docs/web">
     
 
-    python
+    web
   </a>
   
   <meta itemprop="position" content="3" />
-</li>
-
-    
-
-    
-    
-    
-    
-    
-    
-
-
-<li itemprop="itemListElement" itemscope
-    itemtype="http://schema.org/ListItem"
-    class=active>
-  
-  <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/python/django">
-    
-
-    django
-  </a>
-  
-  <meta itemprop="position" content="4" />
 </li>
 
     
@@ -242,10 +218,10 @@
        itemprop="item">
     
 
-    <span itemprop="name">Django Project Directory Structure</span>
+    <span itemprop="name">Auto Tweet New Blog Posts Based In A Website Feed</span>
   </span>
   
-  <meta itemprop="position" content="5" />
+  <meta itemprop="position" content="4" />
 </li>
 
     
@@ -285,8 +261,6 @@
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#recommended-django-directory-structure">Recommended Django directory structure</a></li>
-<li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
       </div>
       <div>
@@ -297,10 +271,9 @@
       <div>
   <a class="twitter-share-button"
      href="https://twitter.com/share"
-     data-url="http://simpleit.rocks/django-project-directory-structure/"
+     data-url="http://simpleit.rocks/auto-tweet-new-blog-posts-based-in-a-website-feed/"
      data-via=""
-     data-text="An approach on the most convenient way to organize directories for robust Django projects.
-"
+     data-text=""
      data-related="marcanuy"
      data-count="vertical">
     Tweet
@@ -332,7 +305,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="http://simpleit.rocks/django-project-directory-structure/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="http://simpleit.rocks/auto-tweet-new-blog-posts-based-in-a-website-feed/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -349,8 +322,7 @@
 
     
 	<p class="lead">
-	  An approach on the most convenient way to organize directories for robust Django projects.
-
+	  
 	</p>
     
 
@@ -372,114 +344,8 @@
 </div>
 
 
-    <h2 id="overview">Overview</h2>
-
-<p>The structure that sets up Django by default is very basic, when a project
-starts to grow, it starts to require a better approach, that deals with 
-other aspects of development and deployment such as:</p>
-
-<ul>
-  <li>deployment scripts</li>
-  <li>separated tests by units</li>
-  <li>having different environments for development, production (staging)</li>
-  <li>documentation for the project</li>
-</ul>
-
-<h2 id="recommended-django-directory-structure">Recommended Django directory structure</h2>
-
-<ul>
-  <li>$HOME/.virtualenvs/PROJECT_NAME</li>
-  <li>…</li>
-  <li>REPO-ROOT/ <code class="highlighter-rouge">git repo</code>
-    <ul>
-      <li>README.rst <code class="highlighter-rouge">Summary of the project and how to install it</code></li>
-      <li>docs/
-        <ul>
-          <li>deployment.rst <code class="highlighter-rouge">Step by step guide to deploy</code></li>
-          <li>installation.rst <code class="highlighter-rouge">Setup for the project for other devs</code></li>
-          <li>architecture.rst <code class="highlighter-rouge">How project evolves and what assumptions consider</code></li>
-        </ul>
-      </li>
-      <li>.gitignore</li>
-      <li><a href="/custom-django-configurations-for-different-servers/">requirements</a>/
-        <ul>
-          <li>base.txt</li>
-          <li>local.txt</li>
-          <li>production.txt</li>
-          <li>test.txt</li>
-        </ul>
-      </li>
-      <li>Makefile <code class="highlighter-rouge">Deployment tasks</code></li>
-      <li>PROJECT-ROOT/
-        <ul>
-          <li>manage.py</li>
-          <li>media/ <code class="highlighter-rouge">only in development</code></li>
-          <li>static/ <code class="highlighter-rouge">non user generated static media</code></li>
-          <li>templates/ <code class="highlighter-rouge">site-wide</code>
-            <ul>
-              <li>base.html
-                <ul>
-                  <li>app-1/</li>
-                  <li>app-2/</li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li>APP-1/</li>
-          <li>APP-2/</li>
-          <li>config/ <code class="highlighter-rouge">CONFIGURATION-ROOT</code>
-            <ul>
-              <li>init.py</li>
-              <li><a href="/custom-django-configurations-for-different-servers/">settings/</a>
-                <ul>
-                  <li>init.py</li>
-                  <li>base.py</li>
-                  <li>local.py</li>
-                  <li>production.py</li>
-                </ul>
-              </li>
-              <li>urls.py</li>
-              <li>wsgi.py</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<p class="alert alert-info">The preferred documentation format is <a href="http://www.sphinx-doc.org/en/stable/rest.html">reStructuredText .rst</a>.</p>
-
-<p class="alert alert-danger">Keep <a href="/custom-django-configurations-for-different-servers/">virtual environment outside project</a>
-<code class="highlighter-rouge">$HOME/.virtualenvs/&lt;django_project_name&gt;/</code></p>
-
-<p class="alert alert-warning"><em>media</em> directory should exists only in development, for user generated 
-static media assets (e.g. photos).</p>
-
-<p class="alert alert-warning">assets (e.g. css) controlled by STATICFILES DIRS config variable.
-<em>Media</em> and <em>static</em> directories in production should be located in 
-a static media server.</p>
-
-<p class="alert alert-info"><a href="/books/two-scoops-of-django/">Two Scoops Of Django</a> has the project structure they recommend implemented in the project <a href="https://github.com/pydanny/cookiecutter-django">Cookiecutter</a>.</p>
-
-<h2 id="references">References</h2>
-
-<ul>
-  <li><a href="http://www.revsys.com/blog/2014/nov/21/recommended-django-project-layout/">Recommended Django Project Layout by Revsys</a></li>
-  <li><a href="/books/two-scoops-of-django/">Two Scoops Of Django</a></li>
-  <li><a href="http://stackoverflow.com/a/23469321/1165509">StackOverflow - Best practice for django project working directory structure</a></li>
-  <li><a href="http://stackoverflow.com/a/11222631/1165509">StackOverflow - Django directory structure?</a></li>
-  <li><a href="http://jeffknupp.com/blog/2013/12/18/starting-a-django-16-project-the-right-way/">Starting a Django 1.6 Project the Right Way by Jeff Knupp</a></li>
-  <li>wildfish-django-starter <a href="https://github.com/wildfish/wildfish-django-starter">https://github.com/wildfish/wildfish-django-starter</a></li>
-  <li>Django project starter <a href="https://github.com/arocks/edge">https://github.com/arocks/edge</a></li>
-  <li>django-project-skeleton
-    <ul>
-      <li><a href="http://django-project-skeleton.readthedocs.io/en/latest/structure.html">http://django-project-skeleton.readthedocs.io/en/latest/structure.html</a></li>
-      <li><a href="https://github.com/Mischback/django-project-skeleton">https://github.com/Mischback/django-project-skeleton</a></li>
-    </ul>
-  </li>
-</ul>
-
+    
+<h2 id="overview">Overview</h2>
 
 
     <div class="post-comments">
@@ -493,7 +359,7 @@ a static media server.</p>
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/django-project-directory-structure/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/auto-tweet-new-blog-posts-based-in-a-website-feed/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -522,364 +388,10 @@ a static media server.</p>
 
 
 
-<div class="post-same-category">
-  <h4>Articles in this category</h4>
-  <div class="list-group">
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <a class="list-group-item " href="/django-overview/">
-      Django Overview
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <a class="list-group-item " href="/custom-django-configurations-for-different-servers/">
-      Django Configuration and environment isolation
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <a class="list-group-item active" href="/django-project-directory-structure/">
-      Django Project Directory Structure
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  </div>
-</div>
-
 
 	
 
 
-
-<h2>Articles</h2>
-<p>This article is being referenced in:</p>
-<div class="list-group">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <a href="/django-overview/" class="list-group-item">
-    Django Overview
-  </a>
-  
-  
-  
-  
-  
-  
-</div>
 
 
       </div>
