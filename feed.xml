@@ -6,9 +6,103 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 08 Nov 2016 13:56:48 +0000</pubDate>
-    <lastBuildDate>Tue, 08 Nov 2016 13:56:48 +0000</lastBuildDate>
+    <pubDate>Thu, 10 Nov 2016 00:32:51 +0000</pubDate>
+    <lastBuildDate>Thu, 10 Nov 2016 00:32:51 +0000</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>Bash Script to Find Out If MySQL Is Running Or Not</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;This is a simple solution to monitor the MySQL daemon, if it detects
+that the daemon is not running, it starts it and send a notification
+email.&lt;/p&gt;
+
+&lt;p&gt;It is a simpler solution than using other more complete software like
+&lt;em&gt;supervisord&lt;/em&gt; or &lt;em&gt;MonIT&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-the-script&quot;&gt;Creating the script&lt;/h2&gt;
+
+&lt;p&gt;Create the script &lt;code class=&quot;highlighter-rouge&quot;&gt;/root/scripts/monitor_mysql.sh&lt;/code&gt; with the following
+content:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;##########&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Config #&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;##########&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;mysql_daemon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'mysqld'&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;pgrep&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/usr/bin/pgrep'&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;mysql_start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'sudo service mysql start'&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;fail_msg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;MySQL is down in &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;hostname&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;##########&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Script #&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;##########&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#look up process&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$pgrep&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$mysql_daemon&lt;/span&gt; &amp;gt; /dev/null
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$?&lt;/span&gt; -ne 0 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
+    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$fail_msg&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$mysql_start&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And make it executable:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;#&lt;/span&gt; &lt;kbd&gt;chmod +x /root/scripts/monitor_mysql.sh&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;cronjob&quot;&gt;Cronjob&lt;/h2&gt;
+
+&lt;p&gt;Specify through &lt;code class=&quot;highlighter-rouge&quot;&gt;crontab&lt;/code&gt; to run it every 10 minutes. Running&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;#&lt;/span&gt; &lt;kbd&gt;crontab -e&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Add the following lines:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MAILTO=mail@example.com
+*/10 * * * * /root/scripts/monitor_mysql.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Every time the script starts the daemon, an email will be sent with
+its output.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://man7.org/linux/man-pages/man5/crontab.5.html&quot;&gt;
+  &lt;p&gt;cron(8) looks at the MAILTO variable if a mail needs to be send as a
+result of running any commands in that particular crontab.  If
+MAILTO is defined (and non-empty), mail is sent to the specified
+address.  If MAILTO is defined but empty (MAILTO=””), no mail is
+sent.  Otherwise, mail is sent to the owner of the crontab.&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Crontab &lt;a href=&quot;http://man7.org/linux/man-pages/man5/crontab.5.html&quot;&gt;man description&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Crontab &lt;a href=&quot;http://man7.org/linux/man-pages/man5/crontab.5.html&quot;&gt;http://man7.org/linux/man-pages/man5/crontab.5.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://gist.github.com/mheadd/5571023&quot;&gt;Simple bash script to check whether MySQL is running&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 09 Nov 2016 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/lightweight-solution-to-start-mysql-daemon-if-not-running/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/lightweight-solution-to-start-mysql-daemon-if-not-running/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>bash</category>
+        
+      </item>
     
       <item>
         <title>Automated Deployment Of Jekyll Websites To Github Pages With A Git Push To Github</title>
@@ -967,205 +1061,6 @@ variables values, for example when accessing
         <pubDate>Tue, 09 Aug 2016 00:00:00 +0000</pubDate>
         <link>http://simpleit.rocks/what-is-the-difference-between-modules-and-classes-in-ruby/</link>
         <guid isPermaLink="true">http://simpleit.rocks/what-is-the-difference-between-modules-and-classes-in-ruby/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>ruby</category>
-        
-        <category>language</category>
-        
-      </item>
-    
-      <item>
-        <title>Ruby Language Overview</title>
-        <description>&lt;p&gt;Ruby Console (Interactive Ruby): &lt;kbd&gt;irb&lt;/kbd&gt;&lt;/p&gt;
-
-&lt;p class=&quot;alert alert-info&quot;&gt;Everything in Ruby, including &lt;a href=&quot;http://ruby-doc.org/core-2.3.1/NilClass.html&quot;&gt;nil&lt;/a&gt;
-and &lt;a href=&quot;http://ruby-doc.org/core-2.3.1/String.html&quot;&gt;strings&lt;/a&gt;, is an
-&lt;a href=&quot;http://ruby-doc.org/core-2.3.1/Object.html&quot;&gt;object&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;syntax&quot;&gt;Syntax&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://ruby-doc.org/core-2.3.1/doc/syntax_rdoc.html&quot;&gt;http://ruby-doc.org/core-2.3.1/doc/syntax_rdoc.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;assignment&quot;&gt;Assignment&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://ruby-doc.org/core-2.3.1/doc/syntax/assignment_rdoc.html&quot;&gt;http://ruby-doc.org/core-2.3.1/doc/syntax/assignment_rdoc.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;modules-and-classes&quot;&gt;Modules and Classes&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://ruby-doc.org/core-2.3.1/doc/syntax/modules_and_classes_rdoc.html&quot;&gt;http://ruby-doc.org/core-2.3.1/doc/syntax/modules_and_classes_rdoc.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Related methods in Ruby can be packaged in &lt;a href=&quot;http://ruby-doc.org/core-2.3.1/doc/syntax/modules_and_classes_rdoc.html#label-Module+Definition&quot;&gt;modules&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Modules are often explicitly imported or they can be imported
-&lt;em&gt;automagically&lt;/em&gt; in frameworks that favours conventions like 
-&lt;em&gt;ruby on rails&lt;/em&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ApplicationHelper&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;# ....&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;method-definition&quot;&gt;Method definition&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://ruby-doc.org/core-2.3.1/doc/syntax/methods_rdoc.html&quot;&gt;http://ruby-doc.org/core-2.3.1/doc/syntax/methods_rdoc.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;By convention, every method that ends with a question mark &lt;code class=&quot;highlighter-rouge&quot;&gt;?&lt;/code&gt; returns a &lt;em&gt;boolean&lt;/em&gt; value.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;irb(main):&amp;gt;&lt;/span&gt; &lt;kbd&gt;&quot;&quot;.empty?&lt;/kbd&gt;
-=&amp;gt; true
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;Defining a method with &lt;code class=&quot;highlighter-rouge&quot;&gt;def&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;empty string!&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;empty?&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;nonempty.&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;comments&quot;&gt;Comments&lt;/h2&gt;
-
-&lt;p&gt;Comments start with the hash mark &lt;code class=&quot;highlighter-rouge&quot;&gt;#&lt;/code&gt; (also called the &lt;em&gt;pound sign&lt;/em&gt; and the &lt;em&gt;octothorpe&lt;/em&gt;)&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# This is a comment in ruby&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;local-variable-assignment&quot;&gt;Local variable assignment&lt;/h2&gt;
-
-&lt;h2 id=&quot;booleans&quot;&gt;Booleans&lt;/h2&gt;
-
-&lt;h2 id=&quot;comparisons&quot;&gt;Comparisons&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Equality comparison operator &lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Not equal comparison operator &lt;code class=&quot;highlighter-rouge&quot;&gt;!=&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;control-flow&quot;&gt;Control flow&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Control Expressions &lt;a href=&quot;http://ruby-doc.org/core-2.3.1/doc/syntax/control_expressions_rdoc.html&quot;&gt;http://ruby-doc.org/core-2.3.1/doc/syntax/control_expressions_rdoc.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;conditional-clause-if&quot;&gt;Conditional clause (if)&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://ruby-doc.org/core-2.3.1/doc/syntax/control_expressions_rdoc.html#label-if+Expression&quot;&gt;http://ruby-doc.org/core-2.3.1/doc/syntax/control_expressions_rdoc.html#label-if+Expression&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;if-elsif-end&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;irb(main):&amp;gt;&lt;/span&gt; &lt;kbd&gt;if &quot;&quot;.empty? &amp;amp;&amp;amp; !&quot;a&quot;.empty? || &quot;&quot;.length==0 &lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;irb(main):&amp;gt;&lt;/span&gt; &lt;kbd&gt;  puts &quot;YOLO&quot;&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;irb(main):&amp;gt;&lt;/span&gt; &lt;kbd&gt;elsif !&quot;&quot;.empty?&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;irb(main):&amp;gt;&lt;/span&gt; &lt;kbd&gt;  puts &quot;That is not YOLO&quot;&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;irb(main):&amp;gt;&lt;/span&gt; &lt;kbd&gt;end&lt;/kbd&gt;
-YOLO
-=&amp;gt; nil
-&lt;span class=&quot;shell-prompt&quot;&gt;irb(main):&amp;gt;&lt;/span&gt; &lt;kbd&gt;puts &quot;Hello&quot; if &quot;&quot;.empty?&lt;/kbd&gt;
-Hello
-=&amp;gt; nil
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;strings&quot;&gt;Strings&lt;/h2&gt;
-
-&lt;p&gt;Strings in Ruby are specified with &lt;em&gt;double quotes&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;a string&quot;&lt;/code&gt; or &lt;em&gt;single quotes&lt;/em&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;'another string'&lt;/code&gt;.
-The main &lt;a href=&quot;/double-versus-single-quotes-in-ruby/&quot;&gt;difference&lt;/a&gt; between them is that &lt;strong&gt;double quotes&lt;/strong&gt; allows &lt;strong&gt;string interpolation&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;Hello #{name}&quot;&lt;/code&gt; and &lt;strong&gt;escape sequences&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;\n&quot;&lt;/code&gt; so it is encouraged to use them.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;String concatenation&lt;/strong&gt; is done with &lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt; sign: &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;foo&quot; + &quot;bar&quot;&lt;/code&gt; or with &lt;strong&gt;interpolation&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;irb(main):&amp;gt;&lt;/span&gt; &lt;kbd&gt;sport=&quot;running&quot;&lt;/kbd&gt;
-=&amp;gt; &quot;running&quot;
-&lt;span class=&quot;shell-prompt&quot;&gt;irb(main):&amp;gt;&lt;/span&gt; &lt;kbd&gt;&quot;keep #{sport}&quot;&lt;/kbd&gt;
-=&amp;gt; &quot;keep running&quot;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h3 id=&quot;printing&quot;&gt;Printing&lt;/h3&gt;
-
-&lt;p&gt;To print a string there is the command &lt;code class=&quot;highlighter-rouge&quot;&gt;puts&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;print&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;The command &lt;code class=&quot;highlighter-rouge&quot;&gt;puts&lt;/code&gt; stands for &lt;strong&gt;put string&lt;/strong&gt; and is used to print strings.&lt;/p&gt;
-
-&lt;p class=&quot;alert alert-warning&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;puts&lt;/code&gt; includes a &lt;em&gt;new line&lt;/em&gt; after showing the content and does not 
-return anything (&lt;strong&gt;nil&lt;/strong&gt;).&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;irb(main):&amp;gt;&lt;/span&gt; &lt;kbd&gt;print &quot;foobar&quot;&lt;/kbd&gt;
-foobar=&amp;gt; nil
-&lt;span class=&quot;shell-prompt&quot;&gt;irb(main):&amp;gt;&lt;/span&gt; &lt;kbd&gt;puts &quot;foobar&quot;&lt;/kbd&gt;
-foobar
-=&amp;gt; nil
-&lt;span class=&quot;shell-prompt&quot;&gt;irb(main):&amp;gt;&lt;/span&gt; &lt;kbd&gt;print &quot;foobar\n&quot;&lt;/kbd&gt;
-foobar
-=&amp;gt; nil
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;return-values&quot;&gt;Return values&lt;/h2&gt;
-
-&lt;h2 id=&quot;data-structures&quot;&gt;Data structures&lt;/h2&gt;
-
-&lt;h3 id=&quot;arrays&quot;&gt;Arrays&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://ruby-doc.org/core-2.3.1/Array.html&quot;&gt;http://ruby-doc.org/core-2.3.1/Array.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;foo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;bar&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;baz&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Access specific array position
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;a[0]&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;a.first&lt;/code&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;operator-precedence&quot;&gt;Operator precedence&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://ruby-doc.org/core-2.3.1/doc/syntax/precedence_rdoc.html&quot;&gt;http://ruby-doc.org/core-2.3.1/doc/syntax/precedence_rdoc.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Official Documentation &lt;a href=&quot;https://www.ruby-lang.org/&quot;&gt;https://www.ruby-lang.org/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Docs and API &lt;a href=&quot;http://ruby-doc.org/&quot;&gt;http://ruby-doc.org/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Tue, 09 Aug 2016 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/ruby-language-overview/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/ruby-language-overview/</guid>
         
         
         <category>docs</category>
