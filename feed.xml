@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 10 Nov 2016 22:53:05 +0000</pubDate>
-    <lastBuildDate>Thu, 10 Nov 2016 22:53:05 +0000</lastBuildDate>
+    <pubDate>Fri, 11 Nov 2016 03:19:50 +0000</pubDate>
+    <lastBuildDate>Fri, 11 Nov 2016 03:19:50 +0000</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -29,6 +29,144 @@
         <category>docs</category>
         
         <category>web</category>
+        
+      </item>
+    
+      <item>
+        <title>Contributing To A Github Repository Step By Step</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Simply guide to contribute to any project in Github. The basic
+workflow consist of&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fork the repository&lt;/li&gt;
+  &lt;li&gt;Make a fix or contribution&lt;/li&gt;
+  &lt;li&gt;Submit a pull request to the original project&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;forking&quot;&gt;Forking&lt;/h2&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://help.github.com/articles/fork-a-repo/&quot;&gt;
+  &lt;p&gt;A fork is a copy of a repository. Forking a repository allows you to
+freely experiment with changes without affecting the original
+project.&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Fork A Repo in &lt;a href=&quot;https://help.github.com/articles/fork-a-repo/&quot;&gt;Github help&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Go to the project you want to contribute and press the &lt;strong&gt;Fork&lt;/strong&gt;
+button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github-images.s3.amazonaws.com/help/bootcamp/Bootcamp-Fork.png&quot; alt=&quot;fork&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That will generate a copy of the repository in your Github profile
+where you can work with the code.&lt;/p&gt;
+
+&lt;p&gt;In this example I will fork the following
+repo: &lt;a href=&quot;https://github.com/housed/feedr&quot;&gt;https://github.com/housed/feedr&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;clone-the-forked-repo&quot;&gt;Clone the forked repo&lt;/h2&gt;
+
+&lt;p&gt;Make a local copy of the forked repo with &lt;code class=&quot;highlighter-rouge&quot;&gt;git clone&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;git clone https://github.com/marcanuy/feedr.git&lt;/kbd&gt;
+Cloning into 'feedr'...
+remote: Counting objects: 65, done.
+remote: Total 65 (delta 0), reused 0 (delta 0), pack-reused 65
+Ricezione degli oggetti: 100% (65/65), 178.73 KiB | 282.00 KiB/s, done.
+Risoluzione dei delta: 100% (22/22), done.
+Checking connectivity... fatto.
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;cd feedr&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;feedr$&lt;/span&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;configure-the-original-repo-as-a-remote&quot;&gt;Configure the original repo as a remote&lt;/h2&gt;
+
+&lt;p&gt;Having the original repo as a remote makes it possible to keep your
+code up to date with all the contributions made to the original repo
+and contribute your own code.&lt;/p&gt;
+
+&lt;p&gt;The convention is to name this remote repo &lt;code class=&quot;highlighter-rouge&quot;&gt;upstream&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;feedr$&lt;/span&gt; &lt;kbd&gt;git remote add upstream https://github.com/housed/feedr.git&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;feedr$&lt;/span&gt; &lt;kbd&gt;git remote -v&lt;/kbd&gt;
+origin  git@github.com:marcanuy/feedr.git (fetch)
+origin  git@github.com:marcanuy/feedr.git (push)
+upstream        https://github.com/housed/feedr.git (fetch)
+upstream        https://github.com/housed/feedr.git (push)
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;create-a-branch&quot;&gt;Create a branch&lt;/h2&gt;
+
+&lt;p&gt;Create a topic branch where you fix or improve the code and move to
+that branch.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;git checkout -b fix-indentation&lt;/kbd&gt;
+Switched to a new branch 'fix-indentation'
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;create-a-branch-with-new-changes&quot;&gt;Create a branch with new changes&lt;/h2&gt;
+
+&lt;p&gt;After working in the new branch, making some changes and &lt;em&gt;commits&lt;/em&gt;,
+push the new branch,&lt;code class=&quot;highlighter-rouge&quot;&gt;fix-indentation&lt;/code&gt; in this case, to your Github
+repo.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;git push origin fix-indentation&lt;/kbd&gt;
+Counting objects: 4, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 367 bytes | 0 bytes/s, done.
+Total 4 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To github.com:marcanuy/feedr.git
+ * [new branch]      fix-indentation -&amp;gt; fix-indentation
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;create-a-pull-request&quot;&gt;Create a pull request&lt;/h2&gt;
+
+&lt;p&gt;Now your changes are in a new branch in your Github repo, it is time
+to make a &lt;em&gt;pull request&lt;/em&gt; to merge your changes in the original repo.&lt;/p&gt;
+
+&lt;p&gt;The Github repo webpage shows:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Your recently pushed branches:
+    fix-indentation (less than a minute ago)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;and makes it available a button to send the &lt;strong&gt;Pull Request&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;After pressing the &lt;strong&gt;Pull request&lt;/strong&gt; button, the webpage redirects to
+&lt;strong&gt;Open a pull request&lt;/strong&gt; page, after selecting the base fork and the
+head fork, you can make the &lt;strong&gt;pull request&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now just wait to the repo owner to merge your fixes.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;marcanuy wants to merge 1 commit into housed:master from  marcanuy:fix-indentation&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</description>
+        <pubDate>Thu, 10 Nov 2016 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/contributing-to-a-github-repository-step-by-step/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/contributing-to-a-github-repository-step-by-step/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>git</category>
         
       </item>
     
@@ -925,78 +1063,6 @@ Article’s &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt;
         <category>theory</category>
         
         <category>web-development</category>
-        
-      </item>
-    
-      <item>
-        <title>Simple Debugging In Rails</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;There are two very simple ways to debug a rails app:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;printing debug information directly in a view&lt;/li&gt;
-  &lt;li&gt;Using &lt;code class=&quot;highlighter-rouge&quot;&gt;byebug&lt;/code&gt; gem&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;debug-info-in-views&quot;&gt;Debug info in views&lt;/h2&gt;
-
-&lt;p&gt;Adding the following line to &lt;code class=&quot;highlighter-rouge&quot;&gt;/app/views/layouts/application.html.erb&lt;/code&gt; to 
-show debugging information in each view &lt;strong&gt;only in the &lt;em&gt;development&lt;/em&gt; environment&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;development?&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;%&amp;gt;
-&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;byebug-gem&quot;&gt;Byebug gem&lt;/h2&gt;
-
-&lt;p&gt;Rails 5 has the &lt;code class=&quot;highlighter-rouge&quot;&gt;byebug&lt;/code&gt; gem included, adding &lt;code class=&quot;highlighter-rouge&quot;&gt;debugger&lt;/code&gt; to any controller 
-action, makes it possible to interact with the application in the console 
-server each time a view is accessed in the browser. Adding &lt;code class=&quot;highlighter-rouge&quot;&gt;debugger&lt;/code&gt; in
-a controller action:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UsersController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ApplicationController&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;show&lt;/span&gt;
-    &lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;debugger&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Then accessing a url of the application, the rails server shows 
-the &lt;code class=&quot;highlighter-rouge&quot;&gt;(byebug) &lt;/code&gt; prompt so the developer can inspect current view
-variables values, for example when accessing
-&lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000/users/1&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;(byebug)&lt;/span&gt; &lt;kbd&gt;@user.password_digest&lt;/kbd&gt;&lt;br /&gt;
-&quot;$2a$10$S3H9mBLQmfkBdaV3j/4M8ud7te9DwDwrreklqwjg4jt63oh528adv&quot;
-&lt;/samp&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Fri, 12 Aug 2016 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/simple-debugging-in-rails/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/simple-debugging-in-rails/</guid>
-        
-        <category>rails</category>
-        
-        <category>debugging</category>
-        
-        
-        <category>docs</category>
-        
-        <category>ruby</category>
-        
-        <category>rails</category>
         
       </item>
     
