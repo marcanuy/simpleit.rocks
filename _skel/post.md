@@ -24,3 +24,5 @@ weight: # order of a post relative to the same articles in a category
 
 {% comment %} main content {% endcomment %}
 ## Overview
+
+[Posts]({% link docs/ruby/jekyll/_posts/2016-06-12-understanding-jekyll-posts.md %})
