@@ -120,4 +120,10 @@ Now just wait to the repo owner to merge your fixes.
 
 > marcanuy wants to merge 1 commit into housed:master from  marcanuy:fix-indentation
  
+## References
+
+- [Syncing a fork](https://help.github.com/articles/syncing-a-fork/)
+- [Creating a pull request from a fork](https://help.github.com/articles/creating-a-pull-request-from-a-fork/)
+- [Forking Projects](https://guides.github.com/activities/forking/)
+
 [Github]: http://github.com/
