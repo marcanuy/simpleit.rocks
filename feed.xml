@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 11 Nov 2016 03:19:50 +0000</pubDate>
-    <lastBuildDate>Fri, 11 Nov 2016 03:19:50 +0000</lastBuildDate>
+    <pubDate>Mon, 14 Nov 2016 23:36:39 +0000</pubDate>
+    <lastBuildDate>Mon, 14 Nov 2016 23:36:39 +0000</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -157,6 +157,14 @@ head fork, you can make the &lt;strong&gt;pull request&lt;/strong&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;marcanuy wants to merge 1 commit into housed:master from  marcanuy:fix-indentation&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://help.github.com/articles/syncing-a-fork/&quot;&gt;Syncing a fork&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://help.github.com/articles/creating-a-pull-request-from-a-fork/&quot;&gt;Creating a pull request from a fork&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://guides.github.com/activities/forking/&quot;&gt;Forking Projects&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 </description>
         <pubDate>Thu, 10 Nov 2016 00:00:00 +0000</pubDate>
@@ -793,10 +801,25 @@ treat &lt;em&gt;utf-8&lt;/em&gt; encoding right.&lt;/p&gt;
 
 &lt;pre class=&quot;shell&quot;&gt;
 &lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;mysqldump -uroot -p database &amp;gt; utf8.dump&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;mysqldump -uroot -p database -r utf8.dump&lt;/kbd&gt;
 ...
 &lt;/samp&gt;
 &lt;/pre&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;-r&lt;/code&gt; or, the same,&lt;code class=&quot;highlighter-rouge&quot;&gt;--result-file&lt;/code&gt; option, will create the output in ASCII format.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_result-file&quot;&gt;
+  &lt;p&gt;–result-file=file_name, -r file_name&lt;/p&gt;
+
+  &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;      Direct output to the named file. The result file is created and its previous contents overwritten, even if an error
+      occurs while generating the dump.
+
+      This option should be used on Windows to prevent newline “\n” characters from being converted to “\r\n” carriage
+      return/newline sequences.
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/div&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;MySQL 5.7 &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_result-file&quot;&gt;Reference Manual&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
 
 &lt;h1 id=&quot;restoring-a-database&quot;&gt;Restoring a database&lt;/h1&gt;
 

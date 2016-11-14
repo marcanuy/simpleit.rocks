@@ -392,10 +392,25 @@ treat <em>utf-8</em> encoding right.</p>
 
 <pre class="shell">
 <samp>
-<span class="shell-prompt">$</span> <kbd>mysqldump -uroot -p database &gt; utf8.dump</kbd>
+<span class="shell-prompt">$</span> <kbd>mysqldump -uroot -p database -r utf8.dump</kbd>
 ...
 </samp>
 </pre>
+
+<p>The <code class="highlighter-rouge">-r</code> or, the same,<code class="highlighter-rouge">--result-file</code> option, will create the output in ASCII format.</p>
+
+<blockquote class="blockquote" cite="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_result-file">
+  <p>–result-file=file_name, -r file_name</p>
+
+  <div class="highlighter-rouge"><pre class="highlight"><code>      Direct output to the named file. The result file is created and its previous contents overwritten, even if an error
+      occurs while generating the dump.
+
+      This option should be used on Windows to prevent newline “\n” characters from being converted to “\r\n” carriage
+      return/newline sequences.
+</code></pre>
+  </div>
+  <footer class="blockquote-footer"> <cite>MySQL 5.7 <a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_result-file">Reference Manual</a></cite></footer>
+</blockquote>
 
 <h1 id="restoring-a-database">Restoring a database</h1>
 
