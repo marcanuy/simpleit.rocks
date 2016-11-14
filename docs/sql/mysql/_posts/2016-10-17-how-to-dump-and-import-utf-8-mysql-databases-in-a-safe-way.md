@@ -23,10 +23,23 @@ This is the correct way to dump a MySQL database safely:
 
 <pre class="shell">
 <samp>
-<span class="shell-prompt">$</span> <kbd>mysqldump -uroot -p database > utf8.dump</kbd>
+<span class="shell-prompt">$</span> <kbd>mysqldump -uroot -p database -r utf8.dump</kbd>
 ...
 </samp>
 </pre>
+
+The `-r` or, the same,`--result-file` option, will create the output in ASCII format.
+
+>  --result-file=file_name, -r file_name
+>
+>           Direct output to the named file. The result file is created and its previous contents overwritten, even if an error
+>           occurs while generating the dump.
+>
+>           This option should be used on Windows to prevent newline “\n” characters from being converted to “\r\n” carriage
+>           return/newline sequences.
+> <footer class="blockquote-footer"> <cite>MySQL 5.7 <a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_result-file">Reference Manual</a></cite></footer>
+{: class="blockquote" cite="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_result-file"}
+
 
 # Restoring a database
 
