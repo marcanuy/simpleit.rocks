@@ -71,7 +71,8 @@ create scripts and automate tasks easily.
 
 Having this configuration we can easily make a backup script to build
 a [cronjob](https://en.wikipedia.org/wiki/Cron) and automatically
-backup the database regularly using <kbd>mysqldump</kbd>
+backup the database regularly using <kbd>mysqldump</kbd>. Edit the
+file `backup.sh` with the following content.
 
 ~~~ bash
 #!/bin/bash
@@ -85,7 +86,16 @@ DB_OUT_FILENAME=$DEFAULTS_FILE-`date +\%Y\%m\%d`.sql.gz
 mysqldump --defaults-extra-file=$DEFAULTS_FILE $DATABASE 2>> $LOGS_DIR/$DATABASE.log | gzip - > $BACKUP_DIR/$DB_OUT_FILENAME
 ~~~
 
+Then make it executable <kbd>chmod +x backup.sh</kbd>
+
 ### Truncate MySQL tables from console
+
+>  TRUNCATE TABLE empties a table completely. It requires the DROP privilege. 
+> <footer class="blockquote-footer"> <cite>MySQL 5.7 Reference Manual in <a href="http://dev.mysql.com/doc/refman/5.7/en/truncate-table.html">14.1.34 TRUNCATE TABLE Syntax</a></cite></footer>
+{: class="blockquote" cite="http://dev.mysql.com/doc/refman/5.7/en/truncate-table.html"}
+
+We can remove all the content from all the tables of a database
+automatically with the following script `truncate_db.sh`:
 
 ~~~
 #!/bin/bash
@@ -95,6 +105,8 @@ DEFAULTS_FILE=$DATABASE.cnf
 
 mysql --defaults-extra-file="$DEFAULTS_FILE" -Nse 'show tables' $DATABASE | while read table; do mysql --defaults-extra-file="$DEFAULTS_FILE" -e "truncate table $table" $DATABASE; done
 ~~~
+
+Then make it executable <kbd>chmod +x truncate_db.sh</kbd>.
 
 ## Summary
 
