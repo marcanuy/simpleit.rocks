@@ -38,6 +38,9 @@
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2016-11-15T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
   {
@@ -310,7 +313,7 @@
      data-via=""
      data-text="Guide to use configuration files to handle MySQL user and password information so they are never typed in Linux console.
 "
-     data-related="marcanuy"
+     data-related="marcanuy,simpleitrocks"
      data-count="vertical">
     Tweet
   </a>
@@ -441,7 +444,8 @@ create scripts and automate tasks easily.</p>
 
 <p>Having this configuration we can easily make a backup script to build
 a <a href="https://en.wikipedia.org/wiki/Cron">cronjob</a> and automatically
-backup the database regularly using <kbd>mysqldump</kbd></p>
+backup the database regularly using <kbd>mysqldump</kbd>. Edit the
+file <code class="highlighter-rouge">backup.sh</code> with the following content.</p>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 <span class="c"># Backup database from console</span>
@@ -455,7 +459,17 @@ mysqldump --defaults-extra-file<span class="o">=</span><span class="nv">$DEFAULT
 </code></pre>
 </div>
 
+<p>Then make it executable <kbd>chmod +x backup.sh</kbd></p>
+
 <h3 id="truncate-mysql-tables-from-console">Truncate <abbr title="My Structured Query Language">MySQL</abbr> tables from console</h3>
+
+<blockquote class="blockquote" cite="http://dev.mysql.com/doc/refman/5.7/en/truncate-table.html">
+  <p>TRUNCATE TABLE empties a table completely. It requires the DROP privilege.</p>
+  <footer class="blockquote-footer"> <cite><abbr title="My Structured Query Language">MySQL</abbr> 5.7 Reference Manual in <a href="http://dev.mysql.com/doc/refman/5.7/en/truncate-table.html">14.1.34 TRUNCATE TABLE Syntax</a></cite></footer>
+</blockquote>
+
+<p>We can remove all the content from all the tables of a database
+automatically with the following script <code class="highlighter-rouge">truncate_db.sh</code>:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 <span class="c"># Truncate database tables from console</span>
@@ -465,6 +479,8 @@ mysqldump --defaults-extra-file<span class="o">=</span><span class="nv">$DEFAULT
 mysql --defaults-extra-file<span class="o">=</span><span class="s2">"</span><span class="nv">$DEFAULTS_FILE</span><span class="s2">"</span> -Nse <span class="s1">'show tables'</span> <span class="nv">$DATABASE</span> | <span class="k">while </span><span class="nb">read </span>table; <span class="k">do </span>mysql --defaults-extra-file<span class="o">=</span><span class="s2">"</span><span class="nv">$DEFAULTS_FILE</span><span class="s2">"</span> -e <span class="s2">"truncate table </span><span class="nv">$table</span><span class="s2">"</span> <span class="nv">$DATABASE</span>; <span class="k">done</span>
 </code></pre>
 </div>
+
+<p>Then make it executable <kbd>chmod +x truncate_db.sh</kbd>.</p>
 
 <h2 id="summary">Summary</h2>
 
@@ -829,11 +845,11 @@ the <code class="highlighter-rouge">mysql</code> or <code class="highlighter-rou
       <div class="col-xs-6">
         <ul class="footer-nav">
           <li>
-	    <i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by Marcelo Canina
+	      <i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by <a href="http://marcanuy.com" rel="author">Marcelo Canina</a>
 	  </li>
 	  
           <li>
-            <i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/marcanuy"><span class="username">marcanuy</span></a>
+            <i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/simpleitrocks"><span class="username">simpleitrocks</span></a>
 
           </li>
           
