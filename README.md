@@ -69,6 +69,10 @@ generated static files with `scripts/cibuild.sh`, then if everything
 is fine, the deployment is done to the `gh-pages` branch with
 `deploy.sh`, so Github Pages publish the website.
 
+To serve the website locally first
+install [Bower](https://bower.io/#install-bower) and then `$ bundle
+exec jekyll serve`.
+
 <hr />
 
 Coded by [marcanuy](http://marcanuy.com/).
