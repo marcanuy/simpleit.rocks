@@ -29,24 +29,24 @@
 
   
   <!-- Begin Jekyll SEO tag v2.0.0 -->
-<title>Django Overview - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Django Overview" />
-<meta name="description" content="Python Web framework overview" />
-<meta property="og:description" content="Python Web framework overview" />
-<link rel="canonical" href="http://simpleit.rocks/django-overview/" />
-<meta property="og:url" content="http://simpleit.rocks/django-overview/" />
+<title>Handling Mysql Credentials From Linux Command Line The Right Way - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Handling Mysql Credentials From Linux Command Line The Right Way" />
+<meta name="description" content="Guide to use configuration files to handle MySQL user and password information so they are never typed in Linux console." />
+<meta property="og:description" content="Guide to use configuration files to handle MySQL user and password information so they are never typed in Linux console." />
+<link rel="canonical" href="http://simpleit.rocks/handling-mysql-credentials-from-linux-command-line-the-right-way/" />
+<meta property="og:url" content="http://simpleit.rocks/handling-mysql-credentials-from-linux-command-line-the-right-way/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-06-02T00:00:00+00:00" />
+<meta property="article:published_time" content="2016-11-15T00:00:00+00:00" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "Django Overview",
-    "datePublished": "2016-06-02T00:00:00+00:00",
-    "description": "Python Web framework overview",
-    "url": "http://simpleit.rocks/django-overview/"
+    "headline": "Handling Mysql Credentials From Linux Command Line The Right Way",
+    "datePublished": "2016-11-15T00:00:00+00:00",
+    "description": "Guide to use configuration files to handle MySQL user and password information so they are never typed in Linux console.",
+    "url": "http://simpleit.rocks/handling-mysql-credentials-from-linux-command-line-the-right-way/"
   }
 </script>
 <!-- End Jekyll SEO tag -->
@@ -104,11 +104,11 @@
     
     
     
-    <h1 class="title">Django Overview </h1>
+    <h1 class="title">Handling Mysql Credentials From Linux Command Line The Right Way </h1>
     
     
     <p class="lead">
-      <small class="text-muted subtitle">Framework basic summary</small>
+      <small class="text-muted subtitle">Hide MySQL user and password from command line</small>
     </p>
     
   </div>
@@ -124,7 +124,7 @@
   <div class="post-meta">
     
     <i class="fa fa-calendar" aria-hidden="true"></i>
-    <time datetime="2016-06-02T00:00:00+00:00" itemprop="datePublished">Jun 2, 2016</time>
+    <time datetime="2016-11-15T00:00:00+00:00" itemprop="datePublished">Nov 15, 2016</time>
     
   </div>
   <div>
@@ -195,10 +195,10 @@
     class=active>
   
   <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/python">
+     itemprop="item" href="/docs/sql">
     
 
-    python
+    sql
   </a>
   
   <meta itemprop="position" content="3" />
@@ -219,10 +219,10 @@
     class=active>
   
   <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/python/django">
+     itemprop="item" href="/docs/sql/mysql">
     
 
-    django
+    mysql
   </a>
   
   <meta itemprop="position" content="4" />
@@ -246,7 +246,7 @@
        itemprop="item">
     
 
-    <span itemprop="name">Django Overview</span>
+    <span itemprop="name">Handling Mysql Credentials From Linux Command Line The Right Way</span>
   </span>
   
   <meta itemprop="position" content="5" />
@@ -288,17 +288,14 @@
       <div>
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
-<li class="toc-entry toc-h1"><a href="#concepts">Concepts</a></li>
-<li class="toc-entry toc-h1"><a href="#django-project-structure">Django project structure</a></li>
-<li class="toc-entry toc-h2"><a href="#models">Models</a></li>
-<li class="toc-entry toc-h2"><a href="#views">Views</a></li>
-<li class="toc-entry toc-h2"><a href="#templates">Templates</a></li>
-<li class="toc-entry toc-h2"><a href="#forms">Forms</a></li>
-<li class="toc-entry toc-h3"><a href="#form-methods">Form methods</a></li>
-<li class="toc-entry toc-h2"><a href="#testing">Testing</a></li>
-<li class="toc-entry toc-h3"><a href="#related-links">Related Links</a></li>
-<li class="toc-entry toc-h2"><a href="#admin">Admin</a></li>
-<li class="toc-entry toc-h1"><a href="#references">References</a></li>
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#setting-up-the-credentials-file">Setting up the credentials file</a></li>
+<li class="toc-entry toc-h2"><a href="#using-the-config-file">Using the config file</a></li>
+<li class="toc-entry toc-h2"><a href="#usage-examples">Usage examples</a></li>
+<li class="toc-entry toc-h3"><a href="#mysql-backup-script">MySQL Backup script</a></li>
+<li class="toc-entry toc-h3"><a href="#truncate-mysql-tables-from-console">Truncate MySQL tables from console</a></li>
+<li class="toc-entry toc-h2"><a href="#summary">Summary</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
       </div>
       <div>
@@ -309,9 +306,10 @@
       <div>
   <a class="twitter-share-button"
      href="https://twitter.com/share"
-     data-url="http://simpleit.rocks/django-overview/"
+     data-url="http://simpleit.rocks/handling-mysql-credentials-from-linux-command-line-the-right-way/"
      data-via=""
-     data-text="Python Web framework overview"
+     data-text="Guide to use configuration files to handle MySQL user and password information so they are never typed in Linux console.
+"
      data-related="marcanuy"
      data-count="vertical">
     Tweet
@@ -343,7 +341,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="http://simpleit.rocks/django-overview/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="http://simpleit.rocks/handling-mysql-credentials-from-linux-command-line-the-right-way/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -360,7 +358,8 @@
 
     
 	<p class="lead">
-	  Python Web framework overview
+	  Guide to use configuration files to handle MySQL user and password information so they are never typed in Linux console.
+
 	</p>
     
 
@@ -382,160 +381,104 @@
 </div>
 
 
-    <h1 id="concepts">Concepts</h1>
+    <h2 id="overview">Overview</h2>
 
-<p>Each Django <em>project</em> can be composed of many <em>apps</em>. An <em>app</em> is a small
-project that should focus on performing one task (e.g. A website project
-can have: a blog, ratings, news apps).</p>
+<p>Credentials should never by typed in the command line, it is better to
+handle them in configuration files so they are never shown in logs,
+processes and you don’t need to explicitly type them.</p>
 
-<h1 id="django-project-structure">Django project structure</h1>
+<p>This is specially useful to automate <abbr title="My Structured Query Language">MySQL</abbr> backups and use it safely
+in shared environments like a <abbr title="Virtual Private Server">VPS</abbr> or any shared hosting.</p>
 
-<p>A typical Django project, at first, has a very basic layout. After following
-<em>Django docs</em> suggestions, like creating the project
-<code class="highlighter-rouge">$ django-admin startproject my_project</code> and some <em>app</em>
-<code class="highlighter-rouge">$ python manage.py startapp my_app</code> will create the following structure:</p>
+<p>We use <abbr title="My Structured Query Language">MySQL</abbr> configuration files to configure credentials as they are
+read at the startup stage.</p>
 
-<pre>
-.
-└── mysite/
-    ├── manage.py
-    ├── mysite/
-    |   ├── __init__.py
-    |   ├── settings.py
-    |   ├── urls.py
-    |   └── wsgi.py
-    └── myapp/
-        ├── __init__.py
-        ├── admin.py
-        ├── apps.py
-        ├── migrations/
-        ├── __init__.py
-        ├── models.py
-        ├── tests.py
-        ├── urls.py
-        └── views.py
-</pre>
-
-<p class="alert alert-info">Default settings are located in <code class="highlighter-rouge">django/conf/global_settings.py</code>, they are
-overwritten in <code class="highlighter-rouge">mysite/settings.py</code></p>
-
-<p>The structure that sets up Django by default is very basic, when a project
-starts to grow, it starts to require a better approach, outlined in
-/django-project-directory-structure/
-that deals with other aspects of development and deployment such as:</p>
-
-<ul>
-  <li>deployment scripts</li>
-  <li>separated tests by units</li>
-  <li>having different environments for development, production (staging)</li>
-  <li>documentation for the project</li>
-</ul>
-
-<h2 id="models">Models</h2>
-
-<p>Fat models, thin views.</p>
-
-<h2 id="views">Views</h2>
-
-<ul>
-  <li>Generic views <a href="https://docs.djangoproject.com/en/1.9/topics/class-based-views/generic-display/">https://docs.djangoproject.com/en/1.9/topics/class-based-views/generic-display/</a></li>
-</ul>
-
-<h2 id="templates">Templates</h2>
-
-<h2 id="forms">Forms</h2>
-
-<p>In a Django web app, a form can refer to:</p>
-
-<ul>
-  <li>an <a href="https://www.w3.org/TR/html5/forms.html#forms">HTML form</a> a component of a Web page that has form controls</li>
-  <li>a <a href="https://docs.djangoproject.com/en/1.9/ref/forms/api/#django.forms.Form">Django Form</a> that produces an HTML form</li>
-  <li>the structured data returned when a form is submitted</li>
-  <li>all of the above interacting together</li>
-</ul>
-
-<blockquote class="blockquote" cite="https://docs.djangoproject.com/en/1.9/topics/forms/">
-  <p>Django handles three distinct parts of the work involved in forms</p>
-
-  <ol>
-    <li>preparing and restructuring data to make it ready for rendering</li>
-    <li>creating HTML forms for the data</li>
-    <li>receiving and processing submitted forms and data from the client</li>
-  </ol>
-
-  <footer class="blockquote-footer">Djangoproject.com tutorial</footer>
+<blockquote class="blockquote" cite="http://dev.mysql.com/doc/refman/5.7/en/option-files.html">
+  <p>Option files provide a convenient way to specify commonly used
+options so that they need not be entered on the command line each
+time you run a program.</p>
+  <footer class="blockquote-footer"> <cite><abbr title="My Structured Query Language">MySQL</abbr> 5.7 Reference Manual
+in <a href="http://dev.mysql.com/doc/refman/5.7/en/option-files.html">Using Option Files</a></cite></footer>
 </blockquote>
 
-<p>Most of the forms in Django should be created from models, using <a href="https://docs.djangoproject.com/en/1.9/topics/forms/modelforms/#modelform">ModelForms</a>, <a href="https://docs.djangoproject.com/en/1.9/ref/models/fields/">Model Fields</a> and <a href="https://docs.djangoproject.com/en/1.9/ref/csrf/">CSRF protection</a>.</p>
+<p class="alert alert-danger">Always avoid typing the user and password <code class="highlighter-rouge">$ mysql --host=localhost
+--user=myname --password=mypass mydb</code></p>
 
-<p>ModelForms are useful to:</p>
+<h2 id="setting-up-the-credentials-file">Setting up the credentials file</h2>
 
-<ul>
-  <li>generate HTML</li>
-  <li>use <a href="https://docs.djangoproject.com/en/1.9/ref/forms/validation/#using-validation-in-practice">built-in validators</a> approriate to each field. <code class="highlighter-rouge">forms.ModelForm.is_valid()</code></li>
-</ul>
+<p>We create a configuration file <code class="highlighter-rouge">mydb.cnf</code> with the following format.</p>
 
-<p>A ModelForm maps fields from model classes to HTML form <code class="highlighter-rouge">&lt;input&gt;</code> elements via a the Form class.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>[client]
+host=
+user=
+password=
+</code></pre>
+</div>
 
-<p class="alert alert-warning">One of the core features of Django Forms is that they make it easy to validate all the data.</p>
+<h2 id="using-the-config-file">Using the config file</h2>
 
-<h3 id="form-methods">Form methods</h3>
+<p>Then we can use the <code class="highlighter-rouge">defaults-extra-file</code> parameter to tell <abbr title="My Structured Query Language">MySQL</abbr> to read our configuration.</p>
 
-<p>If the form is used to retrieve data, it should use the <strong>GET method</strong>, 
-if it modifies data, it needs to use the <strong>POST method</strong>.</p>
+<blockquote class="blockquote" cite="http://dev.mysql.com/doc/refman/5.7/en/option-file-options.html#option_general_defaults-extra-file">
+  <p>–defaults-extra-file=file_name</p>
 
-<p>Reference: <a href="https://docs.djangoproject.com/en/1.9/topics/forms/">https://docs.djangoproject.com/en/1.9/topics/forms/</a></p>
-
-<h2 id="testing">Testing</h2>
-
-<ul>
-  <li><a href="https://docs.djangoproject.com/en/1.9/topics/testing/">https://docs.djangoproject.com/en/1.9/topics/testing/</a></li>
-  <li>Assertions available are from <em>unittest</em> and from Django’s <em>TestCase</em>
-so the full list of <em>assertions</em> available are:
-    <ul>
-      <li><a href="https://docs.djangoproject.com/en/dev/topics/testing/tools/#assertions">https://docs.djangoproject.com/en/dev/topics/testing/tools/#assertions</a></li>
-      <li><a href="https://docs.python.org/3/library/unittest.html#assert-methods">https://docs.python.org/3/library/unittest.html#assert-methods</a></li>
-    </ul>
-  </li>
-</ul>
-
-<blockquote cite="https://docs.djangoproject.com/en/1.9/topics/testing/">
-  <p>The preferred way to write tests in Django is using the
-<a href="https://docs.python.org/3/library/unittest.html#module-unittest">unittest</a> 
-module built in to the Python standard library</p>
+  <p>Read this option file after the global option file but (on Unix)
+  before the user option file and (on all platforms) before the login
+  path file. (For information about the order in which option files are
+  used, see Section 5.2.6, “Using Option Files”.) If the file does not
+  exist or is otherwise inaccessible, an error occurs. file_name is
+  interpreted relative to the current directory if given as a relative
+  path name rather than a full path name.</p>
+  <footer class="blockquote-footer"> <cite><abbr title="My Structured Query Language">MySQL</abbr> 5.7 Reference Manual <a href="http://dev.mysql.com/doc/refman/5.7/en/option-file-options.html#option_general_defaults-extra-file">5.2.7 Command-Line Options that Affect Option-File Handling</a></cite></footer>
 </blockquote>
 
-<blockquote cite="https://docs.djangoproject.com/en/1.9/topics/testing/overview/">
-  <p>In Django we subclasses from django.test.TestCase, which is a subclass of
-unittest.TestCase that runs each test inside a transaction to provide 
-isolation.</p>
-</blockquote>
+<h2 id="usage-examples">Usage examples</h2>
 
-<blockquote>
-  <p>Django provides a <a href="https://docs.djangoproject.com/en/1.9/intro/tutorial05/#the-django-test-client">test Client</a> 
-to simulate a user interacting with the code at the view level. We can use
-it in tests.py</p>
-</blockquote>
+<p>Having the credentials in a configuration file makes it possible to
+create scripts and automate tasks easily.</p>
 
-<h3 id="related-links">Related Links</h3>
+<h3 id="mysql-backup-script"><abbr title="My Structured Query Language">MySQL</abbr> Backup script</h3>
+
+<p>Having this configuration we can easily make a backup script to build
+a <a href="https://en.wikipedia.org/wiki/Cron">cronjob</a> and automatically
+backup the database regularly using <kbd>mysqldump</kbd></p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="c"># Backup database from console</span>
+<span class="nv">DATABASE</span><span class="o">=</span>
+<span class="nv">DEFAULTS_FILE</span><span class="o">=</span><span class="nv">$DATABASE</span>.cnf
+<span class="nv">BACKUP_DIR</span><span class="o">=</span>
+<span class="nv">LOGS_DIR</span><span class="o">=</span>
+
+<span class="nv">DB_OUT_FILENAME</span><span class="o">=</span><span class="nv">$DEFAULTS_FILE</span>-<span class="sb">`</span>date +<span class="se">\%</span>Y<span class="se">\%</span>m<span class="se">\%</span>d<span class="sb">`</span>.sql.gz
+mysqldump --defaults-extra-file<span class="o">=</span><span class="nv">$DEFAULTS_FILE</span> <span class="nv">$DATABASE</span> 2&gt;&gt; <span class="nv">$LOGS_DIR</span>/<span class="nv">$DATABASE</span>.log | gzip - &gt; <span class="nv">$BACKUP_DIR</span>/<span class="nv">$DB_OUT_FILENAME</span>
+</code></pre>
+</div>
+
+<h3 id="truncate-mysql-tables-from-console">Truncate <abbr title="My Structured Query Language">MySQL</abbr> tables from console</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="c"># Truncate database tables from console</span>
+<span class="nv">DATABASE</span><span class="o">=</span>
+<span class="nv">DEFAULTS_FILE</span><span class="o">=</span><span class="nv">$DATABASE</span>.cnf
+
+mysql --defaults-extra-file<span class="o">=</span><span class="s2">"</span><span class="nv">$DEFAULTS_FILE</span><span class="s2">"</span> -Nse <span class="s1">'show tables'</span> <span class="nv">$DATABASE</span> | <span class="k">while </span><span class="nb">read </span>table; <span class="k">do </span>mysql --defaults-extra-file<span class="o">=</span><span class="s2">"</span><span class="nv">$DEFAULTS_FILE</span><span class="s2">"</span> -e <span class="s2">"truncate table </span><span class="nv">$table</span><span class="s2">"</span> <span class="nv">$DATABASE</span>; <span class="k">done</span>
+</code></pre>
+</div>
+
+<h2 id="summary">Summary</h2>
+
+<p>Using <abbr title="My Structured Query Language">MySQL</abbr> options file, it is very easy to setup a safer environment
+than executing commands with the user or password shown in console.</p>
+
+<p>Backing up the database or perform any other task from console with
+the <code class="highlighter-rouge">mysql</code> or <code class="highlighter-rouge">mysqldump</code> command becomes trivial.</p>
+
+<h2 id="references">References</h2>
 
 <ul>
-  <li>Testing tutorial <a href="https://docs.djangoproject.com/en/1.9/topics/testing/">https://docs.djangoproject.com/en/1.9/topics/testing/</a></li>
-</ul>
-
-<h2 id="admin">Admin</h2>
-
-<ul>
-  <li>Edit models on the same page as a parent model with Model Inlines</li>
-</ul>
-<p><a href="https://docs.djangoproject.com/en/dev/ref/contrib/admin/#inlinemodeladmin-objects">https://docs.djangoproject.com/en/dev/ref/contrib/admin/#inlinemodeladmin-objects</a></p>
-
-<h1 id="references">References</h1>
-
-<ul>
-  <li><a href="/books/two-scoops-of-django/">Two Scoops Of Django</a></li>
-  <li>Official Documentation in categories <a href="https://docs.djangoproject.com/en/">https://docs.djangoproject.com/en/</a></li>
-  <li>Single page with links to each doc <a href="https://docs.djangoproject.com/en/1.9/contents/">https://docs.djangoproject.com/en/1.9/contents/</a></li>
+  <li><a href="https://gist.github.com/marcanuy/5977648">https://gist.github.com/marcanuy/5977648</a></li>
+  <li><a href="http://dev.mysql.com/doc/refman/5.7/en/option-files.html">http://dev.mysql.com/doc/refman/5.7/en/option-files.html</a></li>
 </ul>
 
 
@@ -551,7 +494,7 @@ it in tests.py</p>
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/django-overview/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/handling-mysql-credentials-from-linux-command-line-the-right-way/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -601,8 +544,198 @@ it in tests.py</p>
     
     
     
-    <a class="list-group-item active" href="/django-overview/">
-      Django Overview
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a class="list-group-item " href="/how-to-dump-and-import-utf-8-mysql-databases-in-a-safe-way/">
+      How To Dump And Import Utf 8 Mysql Databases In A Safe Way
     </a>
     
     
@@ -635,208 +768,14 @@ it in tests.py</p>
     
     
     
-    <a class="list-group-item " href="/custom-django-configurations-for-different-servers/">
-      Django Configuration and environment isolation
+    
+    
+    
+    
+    
+    <a class="list-group-item active" href="/handling-mysql-credentials-from-linux-command-line-the-right-way/">
+      Handling Mysql Credentials From Linux Command Line The Right Way
     </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <a class="list-group-item " href="/django-project-directory-structure/">
-      Django Project Directory Structure
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
   </div>

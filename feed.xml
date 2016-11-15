@@ -6,9 +6,131 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 14 Nov 2016 23:36:39 +0000</pubDate>
-    <lastBuildDate>Mon, 14 Nov 2016 23:36:39 +0000</lastBuildDate>
+    <pubDate>Tue, 15 Nov 2016 15:14:15 +0000</pubDate>
+    <lastBuildDate>Tue, 15 Nov 2016 15:14:15 +0000</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>Handling Mysql Credentials From Linux Command Line The Right Way</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Credentials should never by typed in the command line, it is better to
+handle them in configuration files so they are never shown in logs,
+processes and you don’t need to explicitly type them.&lt;/p&gt;
+
+&lt;p&gt;This is specially useful to automate &lt;abbr title=&quot;My Structured Query Language&quot;&gt;MySQL&lt;/abbr&gt; backups and use it safely
+in shared environments like a &lt;abbr title=&quot;Virtual Private Server&quot;&gt;VPS&lt;/abbr&gt; or any shared hosting.&lt;/p&gt;
+
+&lt;p&gt;We use &lt;abbr title=&quot;My Structured Query Language&quot;&gt;MySQL&lt;/abbr&gt; configuration files to configure credentials as they are
+read at the startup stage.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://dev.mysql.com/doc/refman/5.7/en/option-files.html&quot;&gt;
+  &lt;p&gt;Option files provide a convenient way to specify commonly used
+options so that they need not be entered on the command line each
+time you run a program.&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;abbr title=&quot;My Structured Query Language&quot;&gt;MySQL&lt;/abbr&gt; 5.7 Reference Manual
+in &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/option-files.html&quot;&gt;Using Option Files&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p class=&quot;alert alert-danger&quot;&gt;Always avoid typing the user and password &lt;code class=&quot;highlighter-rouge&quot;&gt;$ mysql --host=localhost
+--user=myname --password=mypass mydb&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;setting-up-the-credentials-file&quot;&gt;Setting up the credentials file&lt;/h2&gt;
+
+&lt;p&gt;We create a configuration file &lt;code class=&quot;highlighter-rouge&quot;&gt;mydb.cnf&lt;/code&gt; with the following format.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[client]
+host=
+user=
+password=
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;using-the-config-file&quot;&gt;Using the config file&lt;/h2&gt;
+
+&lt;p&gt;Then we can use the &lt;code class=&quot;highlighter-rouge&quot;&gt;defaults-extra-file&lt;/code&gt; parameter to tell &lt;abbr title=&quot;My Structured Query Language&quot;&gt;MySQL&lt;/abbr&gt; to read our configuration.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://dev.mysql.com/doc/refman/5.7/en/option-file-options.html#option_general_defaults-extra-file&quot;&gt;
+  &lt;p&gt;–defaults-extra-file=file_name&lt;/p&gt;
+
+  &lt;p&gt;Read this option file after the global option file but (on Unix)
+  before the user option file and (on all platforms) before the login
+  path file. (For information about the order in which option files are
+  used, see Section 5.2.6, “Using Option Files”.) If the file does not
+  exist or is otherwise inaccessible, an error occurs. file_name is
+  interpreted relative to the current directory if given as a relative
+  path name rather than a full path name.&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;abbr title=&quot;My Structured Query Language&quot;&gt;MySQL&lt;/abbr&gt; 5.7 Reference Manual &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/option-file-options.html#option_general_defaults-extra-file&quot;&gt;5.2.7 Command-Line Options that Affect Option-File Handling&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;usage-examples&quot;&gt;Usage examples&lt;/h2&gt;
+
+&lt;p&gt;Having the credentials in a configuration file makes it possible to
+create scripts and automate tasks easily.&lt;/p&gt;
+
+&lt;h3 id=&quot;mysql-backup-script&quot;&gt;&lt;abbr title=&quot;My Structured Query Language&quot;&gt;MySQL&lt;/abbr&gt; Backup script&lt;/h3&gt;
+
+&lt;p&gt;Having this configuration we can easily make a backup script to build
+a &lt;a href=&quot;https://en.wikipedia.org/wiki/Cron&quot;&gt;cronjob&lt;/a&gt; and automatically
+backup the database regularly using &lt;kbd&gt;mysqldump&lt;/kbd&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Backup database from console&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;DATABASE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;DEFAULTS_FILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$DATABASE&lt;/span&gt;.cnf
+&lt;span class=&quot;nv&quot;&gt;BACKUP_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;LOGS_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;DB_OUT_FILENAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$DEFAULTS_FILE&lt;/span&gt;-&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;date +&lt;span class=&quot;se&quot;&gt;\%&lt;/span&gt;Y&lt;span class=&quot;se&quot;&gt;\%&lt;/span&gt;m&lt;span class=&quot;se&quot;&gt;\%&lt;/span&gt;d&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;.sql.gz
+mysqldump --defaults-extra-file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$DEFAULTS_FILE&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$DATABASE&lt;/span&gt; 2&amp;gt;&amp;gt; &lt;span class=&quot;nv&quot;&gt;$LOGS_DIR&lt;/span&gt;/&lt;span class=&quot;nv&quot;&gt;$DATABASE&lt;/span&gt;.log | gzip - &amp;gt; &lt;span class=&quot;nv&quot;&gt;$BACKUP_DIR&lt;/span&gt;/&lt;span class=&quot;nv&quot;&gt;$DB_OUT_FILENAME&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;truncate-mysql-tables-from-console&quot;&gt;Truncate &lt;abbr title=&quot;My Structured Query Language&quot;&gt;MySQL&lt;/abbr&gt; tables from console&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Truncate database tables from console&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;DATABASE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;DEFAULTS_FILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$DATABASE&lt;/span&gt;.cnf
+
+mysql --defaults-extra-file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$DEFAULTS_FILE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; -Nse &lt;span class=&quot;s1&quot;&gt;'show tables'&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$DATABASE&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read &lt;/span&gt;table; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;mysql --defaults-extra-file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$DEFAULTS_FILE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&quot;truncate table &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$table&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$DATABASE&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;Using &lt;abbr title=&quot;My Structured Query Language&quot;&gt;MySQL&lt;/abbr&gt; options file, it is very easy to setup a safer environment
+than executing commands with the user or password shown in console.&lt;/p&gt;
+
+&lt;p&gt;Backing up the database or perform any other task from console with
+the &lt;code class=&quot;highlighter-rouge&quot;&gt;mysql&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;mysqldump&lt;/code&gt; command becomes trivial.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://gist.github.com/marcanuy/5977648&quot;&gt;https://gist.github.com/marcanuy/5977648&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/option-files.html&quot;&gt;http://dev.mysql.com/doc/refman/5.7/en/option-files.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Tue, 15 Nov 2016 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/handling-mysql-credentials-from-linux-command-line-the-right-way/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/handling-mysql-credentials-from-linux-command-line-the-right-way/</guid>
+        
+        <category>mysql</category>
+        
+        <category>bash</category>
+        
+        <category>console</category>
+        
+        
+        <category>docs</category>
+        
+        <category>sql</category>
+        
+        <category>mysql</category>
+        
+      </item>
     
       <item>
         <title>Auto Tweet New Blog Posts Based In A Website Feed</title>
@@ -1058,34 +1180,6 @@ Article’s &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt;
         <category>ruby</category>
         
         <category>rails</category>
-        
-      </item>
-    
-      <item>
-        <title>Authorization Versus Authentication In Web Apps</title>
-        <description>&lt;h2 id=&quot;authorization&quot;&gt;Authorization&lt;/h2&gt;
-
-&lt;p&gt;Authorization lets us control what the users of our site can do.&lt;/p&gt;
-
-&lt;p class=&quot;alert alert-danger&quot;&gt;What can they do?&lt;/p&gt;
-
-&lt;h2 id=&quot;authentication&quot;&gt;Authentication&lt;/h2&gt;
-
-&lt;p&gt;Authentication allows us to identify the users of the site.&lt;/p&gt;
-
-&lt;p class=&quot;alert alert-danger&quot;&gt;Who are them?&lt;/p&gt;
-
-</description>
-        <pubDate>Wed, 17 Aug 2016 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/authorization-versus-authentication-in-web-apps/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/authorization-versus-authentication-in-web-apps/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>theory</category>
-        
-        <category>web-development</category>
         
       </item>
     
