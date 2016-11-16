@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Simple IT 🤘 Rocks" href="http://simpleit.rocks/feed.xml">
+
+  <!-- jQuery -->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
+
+  <!-- Mermaid -->
+  <link rel="stylesheet" href="/bower_components/mermaid/dist/mermaid.forest.css" type="text/css" media="screen" />
+
+  <!-- Bootstrap -->
+  <!--link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css"-->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap-flex.css">
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <!-- Custom css -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  
+  <!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>Automatically Tweet New Blog Posts Based In Rss - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Automatically Tweet New Blog Posts Based In Rss" />
+<meta name="description" content="How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll." />
+<meta property="og:description" content="How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll." />
+<link rel="canonical" href="http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/" />
+<meta property="og:url" content="http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/" />
+<meta property="og:site_name" content="Simple IT 🤘 Rocks" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-11-10T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@marcanuy" />
+<meta property="fb:app_id" content="1822851531277021" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Automatically Tweet New Blog Posts Based In Rss",
+    "datePublished": "2016-11-10T00:00:00+00:00",
+    "description": "How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll.",
+    "url": "http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+
+  
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1912030305535489",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+
+</head>
+
+
+  <body>
+
+    
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28572639-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <header class="site-header">
+
+  <!-- mermaid -->
+  <script src="/bower_components/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+  <!-- endmermaid -->
+
+  <div class="text-xs-center m-b-2">
+
+    <a class="display-1" href="/" style="text-decoration: none">Simple IT 🤘 Rocks</a>
+
+  </div>
+
+  
+  <div class="jumbotron jumbotron-fluid bg-inverse">
+  <div class="container">
+    
+    
+    
+    
+    
+    <h1 class="title">Automatically Tweet New Blog Posts Based In Rss </h1>
+    
+    
+  </div>
+</div>
+
+  
+
+</header>
+
+
+    <div class="container-fluid">
+      <header class="post-header">
+  <div class="post-meta">
+    
+    <i class="fa fa-calendar" aria-hidden="true"></i>
+    <time datetime="2016-11-10T00:00:00+00:00" itemprop="datePublished">Nov 10, 2016</time>
+    
+  </div>
+  <div>
+    <div class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="list-/inline breadcrumb">
+
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/">
+    
+    <i class="fa fa-home" aria-hidden="true"></i>
+    
+
+    Home
+  </a>
+  
+  <meta itemprop="position" content="1" />
+</li>
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/docs">
+    
+
+    docs
+  </a>
+  
+  <meta itemprop="position" content="2" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/docs/web">
+    
+
+    web
+  </a>
+  
+  <meta itemprop="position" content="3" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class=active>
+  
+  <span itemscope itemtype="http://schema.org/Thing"
+       itemprop="item">
+    
+
+    <span itemprop="name">Automatically Tweet New Blog Posts Based In Rss</span>
+  </span>
+  
+  <meta itemprop="position" content="4" />
+</li>
+
+    
+
+    
+    
+  </ol>
+</div>
+
+  </div>
+</header>
+
+<div class="post-content" itemprop="articleBody">
+  <div class="row">
+
+  <div class="col-md-3 site-sidebar">
+    <div class="si-ad m-a-1">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_side_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5882730780"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
+  
+</div>
+
+    
+    <div class="sticky" style="position:sticky; top:10px">
+      <div>
+	<h4>Table of Contents</h4>
+	<ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#process">Process</a></li>
+<li class="toc-entry toc-h3"><a href="#set-up-a-virtual-environment">Set up a virtual environment</a></li>
+<li class="toc-entry toc-h3"><a href="#twitter-credentials">Twitter credentials</a></li>
+<li class="toc-entry toc-h3"><a href="#set-up-application">Set up application</a></li>
+<li class="toc-entry toc-h3"><a href="#install-dependencies">Install dependencies</a></li>
+<li class="toc-entry toc-h3"><a href="#execute-twitter-feeder">Execute Twitter feeder</a></li>
+<li class="toc-entry toc-h3"><a href="#schedule-posts">Schedule posts</a></li>
+<li class="toc-entry toc-h2"><a href="#reference">Reference</a></li>
+</ul>
+      </div>
+      <div>
+	<div class="site-share">
+  
+  <ul class="share-buttons list-inline m-b-1 text-xs-center">
+    <li class="list-inline-item">
+      <div>
+  <a class="twitter-share-button"
+     href="https://twitter.com/share"
+     data-url="http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/"
+     data-via=""
+     data-text="How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll."
+     data-related="marcanuy,simpleitrocks"
+     data-count="vertical">
+    Tweet
+  </a>
+  <script>
+   window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+    </li>
+    <li class="list-inline-item">
+      <div>
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!-- Place this tag where you want the +1 button to render. -->
+  <div class="g-plusone" data-size="tall"></div>
+</div>
+
+    </li>
+    <li class="list-inline-item">
+      <div>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) return;
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.0";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));</script>
+
+  <div class="fb-like" data-href="http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+</div>
+
+    </li>
+  </ul>
+  
+</div>
+
+      </div>
+    </div>
+    
+  </div> <!-- end col -->
+
+  <div class="col-md-8 site-content">
+
+    
+	<p class="lead">
+	  How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll.
+	</p>
+    
+
+    <div class="si-ad m-a-1">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_before_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="2929264389"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+
+    <h2 id="overview">Overview</h2>
+
+<p>Based in the <abbr title="Really Simple Syndication">RSS</abbr> feed generated by websites, feed a Twitter account
+with daily new blog posts.</p>
+
+<p>This method is specially useful for websites that has been built with
+static site generators, like <a href="/docs/ruby/jekyll/">Jekyll</a> for example, where they
+automatically publish a <abbr title="Really Simple Syndication">RSS</abbr> feed with new content in each build.</p>
+
+<p>Based in this information, you can set up a script in another server
+that will check the above feed, and if it detects new posts it will
+publish a link to it directly in Twitter.</p>
+
+<h2 id="process">Process</h2>
+
+<h3 id="set-up-a-virtual-environment">Set up a virtual environment</h3>
+
+<p>If you already have a virtual environment installed, you can skip this
+step. In Ubuntu you can install the package <code class="highlighter-rouge">python-virtualenv</code>.</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>apt install python-virtualenv</kbd>
+</samp>
+</pre>
+
+<p class="alert alert-info">Or refer to this <a href="/python-virtual-environments-using-virtualenv/">virtualenv installation guide</a>.</p>
+
+<p>Activate the virtual environment to install the required packages</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>virtualenv -p python2.7 ~/.virtualenvs/twitter_bot</kbd>
+Running virtualenv with interpreter /usr/bin/python2.7
+New python executable in /home/user/.virtualenvs/twitter_bot/bin/python2.7
+Also creating executable in /home/user/.virtualenvs/twitter_bot/bin/python
+</samp>
+<span class="shell-prompt">$</span> <kbd>source ~/.virtualenvs/twitter_bot/bin/activate</kbd>
+<span class="shell-prompt">(twitter_bot)$</span>
+</pre>
+
+<h3 id="twitter-credentials">Twitter credentials</h3>
+
+<p>Log into <a href="https://apps.twitter.com/">Twitter Apps</a> and select “Create
+New App”.</p>
+
+<p>Create the Application with the following content:</p>
+
+<dl>
+  <dt>Name</dt>
+  <dd>Website <abbr title="Really Simple Syndication">RSS</abbr> Twitter Feeder</dd>
+  <dt>Description</dt>
+  <dd>Automatic new blog posts publisher</dd>
+  <dt>Website</dt>
+  <dd>Example.com</dd>
+  <dt>Callback URL</dt>
+  <dd>
+    <Leave it="" empty="">
+
+</Leave>
+  </dd>
+</dl>
+<p>And then proceed to “Create your Twitter Application” button.</p>
+
+<p>Now go to “Keys and Access Tokens” tab, and make sure your app has
+rights to publish tweets, the <em>Access Level Read and write</em> option
+should be enabled.</p>
+
+<p>Then go to “Token Actions” and “Create my access token”.</p>
+
+<p>You will need the following items from this page:</p>
+
+<ul>
+  <li>Consumer Key (API Key)</li>
+  <li>Consumer Secret (API Secret)</li>
+  <li>Access Token</li>
+  <li>Access Token Secret</li>
+</ul>
+
+<h3 id="set-up-application">Set up application</h3>
+
+<p>We will use the <a href="https://github.com/housed/feedr">feedr</a> script to
+publish tweets, so we have to clone the repo:</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">(twitter_bot)$</span> <kbd>git clone https://github.com/housed/feedr.git</kbd>
+Cloning into 'feedr'...
+remote: Counting objects: 65, done.
+remote: Total 65 (delta 0), reused 0 (delta 0), pack-reused 65
+Unpacking objects: 100% (65/65), done.
+Checking connectivity... done.
+<span class="shell-prompt">(twitter_bot)$</span> <kbd>cd feedr</kbd>
+<span class="shell-prompt">(twitter_bot) feedr$</span>
+</samp>
+</pre>
+
+<p>Edit ` src/main.py` and add the previous generated Twitter consumer
+keys and replace the feed with your website.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Initialize the list of desired feeds</span>
+<span class="c"># Feed(Name, XML, Media, Hashtags)</span>
+<span class="n">FEEDS</span> <span class="o">=</span> <span class="p">[</span> <span class="n">Feed</span><span class="p">(</span><span class="s">'SimpleIt.Rocks'</span><span class="p">,</span> <span class="s">'http://simpleit.rocks/feed'</span><span class="p">,</span> <span class="s">''</span><span class="p">,</span> <span class="s">''</span><span class="p">)]</span>
+
+<span class="c"># Twitter Account Keys </span>
+<span class="n">CONSUMER_KEY</span> <span class="o">=</span> <span class="s">'consumer_key'</span>
+<span class="n">CONSUMER_SECRET</span> <span class="o">=</span> <span class="s">'consumer_secret'</span>
+<span class="n">ACCESS_KEY</span> <span class="o">=</span> <span class="s">'access_key'</span>
+<span class="n">ACCESS_SECRET</span> <span class="o">=</span> <span class="s">'access_secret'</span>
+
+</code></pre>
+</div>
+
+<h3 id="install-dependencies">Install dependencies</h3>
+
+<p><em>Feedr</em> relies on
+<a href="http://www.crummy.com/software/BeautifulSoup/">BeautifulSoup4</a>,
+<a href="https://pypi.python.org/pypi/feedparser">FeedParser</a>
+and <a href="http://www.tweepy.org/">Tweepy</a>.</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>pip install bs4</kbd>
+Downloading/unpacking bs4
+  Downloading bs4-0.0.1.tar.gz
+  Running setup.py (path:/home/user/.virtualenvs/twitter_bot/build/bs4/setup.py) egg_info for package bs4
+    
+Downloading/unpacking beautifulsoup4 (from bs4)
+  Downloading beautifulsoup4-4.5.1-py2-none-any.whl (83kB): 83kB downloaded
+Installing collected packages: bs4, beautifulsoup4
+  Running setup.py install for bs4
+    
+Successfully installed bs4 beautifulsoup4
+Cleaning up...
+</samp>
+</pre>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>pip install feedparser</kbd>
+Downloading/unpacking feedparser
+  Downloading feedparser-5.2.1.zip (1.2MB): 1.2MB downloaded
+  Running setup.py (path:/home/user/.virtualenvs/twitter_bot/build/feedparser/setup.py) egg_info for package feedparser
+    
+Installing collected packages: feedparser
+  Running setup.py install for feedparser
+    
+Successfully installed feedparser
+Cleaning up...
+</samp>
+</pre>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>pip install tweepy</kbd>
+Downloading/unpacking tweepy
+  Downloading tweepy-3.5.0-py2.py3-none-any.whl
+Downloading/unpacking requests&gt;=2.4.3 (from tweepy)
+  Downloading requests-2.11.1-py2.py3-none-any.whl (514kB): 514kB downloaded
+Downloading/unpacking six&gt;=1.7.3 (from tweepy)
+  Downloading six-1.10.0-py2.py3-none-any.whl
+Downloading/unpacking requests-oauthlib&gt;=0.4.1 (from tweepy)
+  Downloading requests_oauthlib-0.7.0-py2.py3-none-any.whl
+Downloading/unpacking oauthlib&gt;=0.6.2 (from requests-oauthlib&gt;=0.4.1-&gt;tweepy)
+  Downloading oauthlib-2.0.0.tar.gz (122kB): 122kB downloaded
+  Running setup.py (path:/home/user/.virtualenvs/twitter_bot/build/oauthlib/setup.py) egg_info for package oauthlib
+    
+Installing collected packages: tweepy, requests, six, requests-oauthlib, oauthlib
+  Running setup.py install for oauthlib
+    
+Successfully installed tweepy requests six requests-oauthlib oauthlib
+Cleaning up...
+
+</samp>
+</pre>
+
+<h3 id="execute-twitter-feeder">Execute Twitter feeder</h3>
+
+<p>After setting up credentials you can execute <code class="highlighter-rouge">feedr/src/main.py</code></p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>cd src</kbd>
+<span class="shell-prompt">(twitter_bot) feedr/src$</span> <kbd>python2.7 main.py</kbd>
+
+</samp>
+</pre>
+
+<h3 id="schedule-posts">Schedule posts</h3>
+
+<p>We set up a cron job to check for new posts every a certain amount of
+time, in this case every hour. We enter the crontab editor:</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>crontab -e</kbd>
+</samp>
+</pre>
+
+<p>And then we add the following line (adjust the path of your
+installation, in this case I have used <code class="highlighter-rouge">/opt/feedr</code>)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>0 * * * * cd /opt/feedr/src; ~/.virtualenvs/twitter_bot/bin/python2.7 main.py
+</code></pre>
+</div>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Web_feed">https://en.wikipedia.org/wiki/Web_feed</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/RSS">https://en.wikipedia.org/wiki/<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+  <li><a href="https://github.com/housed/feedr">https://github.com/housed/feedr</a></li>
+</ul>
+
+
+
+    <div class="post-comments">
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '/automatically-tweet-new-blog-posts-based-in-rss/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    
+    s.src = '//simpleitrocks.disqus.com/embed.js';
+    
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  
+  
+  
+</div>
+
+
+    <div class="row">
+      <div class="col-md-6">
+	
+
+
+
+
+
+
+
+	
+
+
+
+
+      </div>
+      <div class="col-md-5">
+	
+	
+	<div class="si-ad m-a-1">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_after_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5104001581"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+	
+      </div>
+    </div>
+  </div> <!-- end col -->
+</div>
+
+
+</div>
+
+    </div>
+
+    <footer class="site-footer p-y-3">
+
+  <div class="container">
+
+    <h2 class="footer-heading text-muted">Simple IT 🤘 Rocks</h2>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <ul class="footer-nav">
+          <li>
+	      <i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by <a href="http://marcanuy.com" rel="author">Marcelo Canina</a>
+	  </li>
+	  
+          <li>
+            <i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/simpleitrocks"><span class="username">simpleitrocks</span></a>
+
+          </li>
+          
+	  <li>
+	    <i class="fa fa-user" aria-hidden="true"></i><a href="/about">About</a>
+	  </li>
+	  <li>
+	    <i class="fa fa-search" aria-hidden="true"></i><a href="/search">Search</a>
+	  </li>
+        </ul>
+      </div>
+
+      <div class="col-xs-6">
+	<div class="text-xs-right text-muted">
+          <p>Clutter-free software concepts. Written on the go.
+</p>
+	</div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<div class="si-license bg-inverse">
+  <div class="text-muted text-sm-center">
+    <small>
+      Except as otherwise noted, the content of this page is licensed under
+      <a rel="license" class="text-info" href="https://creativecommons.org/licenses/by-nc/4.0/">
+	<i class="fa fa-creative-commons" aria-hidden="true"></i> BY-NC 4.0
+      </a>
+    </small>
+  </div>
+</div>
+
+
+
+  </body>
+
+</html>
