@@ -4,27 +4,24 @@ layout: base_post
 
 {% if page.description %}
 <p class="lead">
-  {{ page.description }}
+    {{ page.description }}
 </p>
 {% endif %}
 
 {{ content }}
-
-<!--div class="row books-listing"-->
-
-<div class="card-columns">
-  {% for book in site.books %}
-  <div class="card">
-    <img class="card-img-top" alt="{{ book.title}}" src="/assets/books/{{ book.image }}">
-    <div class="card-block">
-      <h4 class="card-title">{{ book.title }}</h4>
-      <p class="card-text">
-	{{ book.description }}
-      </p>
-      <a href="{{ book.url | prepend: site.baseurl }}" class="btn btn-info">More..</a>
+<div class="card-deck-wrapper">
+    <div class="card-deck">
+	{% for book in site.books %}
+	<div class="card">
+	    <img class="card-img-top img-fluid" alt="{{ book.title}}" src="/assets/books/{{ book.image }}">
+	    <div class="card-block">
+		<h4 class="card-title">{{ book.title }}</h4>
+		<p class="card-text">
+		    {{ book.description }}
+		</p>
+		<a href="{{ book.url | prepend: site.baseurl }}" class="btn btn-primary">More..</a>
+	    </div>
+	</div>
+	{% endfor %}
     </div>
-  </div>
-
-  {% endfor %}
 </div>
-
