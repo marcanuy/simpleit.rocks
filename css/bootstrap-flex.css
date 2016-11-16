@@ -5430,6 +5430,9 @@ a.text-gray-dark:hover {
     .site-footer .footer-nav li .fa {
       padding-right: 5px; }
 
+.site-header .bg-inverse h1 {
+  color: #aed6b7; }
+
 #error-page #search-box {
   margin-left: auto;
   margin-right: auto;
