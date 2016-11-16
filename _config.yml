@@ -15,7 +15,6 @@ description: > # this means to ignore newlines until "baseurl:"
 url: "http://simpleit.rocks" # the base hostname & protocol for your site
 
 author: marcanuy #Twitter handle
-twitter: simpleitrocks
 
 docs_dir: "docs"
   
@@ -41,9 +40,9 @@ gems:
   - jekyll-sitemap
   - jekyll-toc
   
-#jekyll-seo-plugin 
-#twitter:
-#  username: benbalter #The site's Twitter handle.
+#jekyll-seo-plugin (and footer)
+twitter:
+  username: simpleitrocks #The site's Twitter handle.
 #logo: "/assets/your-company-logo.png" #URL to a site-wide logo
 facebook:
   app_id: 1822851531277021
