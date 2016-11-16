@@ -1,5 +1,5 @@
 ---
-title: Script to automatically tweet new blog posts based in a website rss feed
+title: Bash script to automatically tweet new blog posts based in a website rss feed
 description: How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll.
 layout: post
 ---
