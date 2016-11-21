@@ -31,9 +31,11 @@ flow: > # Process flow graph
 ## Overview
 
 Developing a site that uses Google Adsense has to be treated carefully. 
-Developers often want to stop showing 
+Developers often want to avoid their own clicks to not being penalized
+by Google and minimize the speed of loading pages when debugging the
+site locally.
 
-It presents the following problems:
+It basically presents the following problems:
 
 - __accidental clicks__. Avoid _repeatedly accidentally clicking_ on served ads while 
 developing the site which can lead to an account ban.
@@ -48,7 +50,7 @@ developing the site which can lead to an account ban.
 - __speed__. Testing the site locally without waiting for each ad request 
 to resolve, avoiding any javascript external request.
 
-There are two main options to avoid these problems:
+There are two main options to avoid them:
 
 - telling Google that the _ad_ request is only for testing purposes
 - avoid the javascript request at all
