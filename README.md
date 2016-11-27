@@ -43,6 +43,9 @@ Post templates and snippets are located in [/_skel](https://github.com/marcanuy/
 
 Add the new post in the proper category inside [/docs](https://github.com/marcanuy/simpleit.rocks/tree/master/docs).
 
+Post content should contain headers from _h2_, since the main _h1_ is
+automatically generated from the post main title.
+
 ## Adding a category
 
 Create the category inside the `/docs` directory with the proper `index.md` file.
