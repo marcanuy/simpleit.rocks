@@ -21,5 +21,8 @@ weight: # order of a post relative to the other posts in a category
 
 ## References
 
-[Posts]({% link docs/ruby/jekyll/_posts/2016-06-12-understanding-jekyll-posts.md %})
+Simple link: [Posts]({% link docs/ruby/jekyll/_posts/2016-06-12-understanding-jekyll-posts.md %})
 
+Reference link: A link to the [kramdown hp].
+
+[kramdown hp]: http://kramdown.gettalong.org "hp"
