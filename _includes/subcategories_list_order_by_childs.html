@@ -3,7 +3,7 @@
 {% if my_page.dir contains include.page.dir and my_page.dir != include.page.dir %}
 {% assign my_page_category = my_page.dir | split:"/" | last %}
 {% if child == my_page_category %}
-<a class="list-group-item" href="{{ my_page.url }}">
+<a class="list-group-item list-group-item-action" href="{{ my_page.url }}">
   {{ my_page.title }}
 </a>
 {% endif %}

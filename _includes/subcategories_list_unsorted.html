@@ -1,6 +1,6 @@
 {% for my_page in site.pages %}
 {% if my_page.dir contains include.page.dir and my_page.dir != include.page.dir %}
-<a class="list-group-item" href="{{ my_page.url }}">
+<a class="list-group-item list-group-item-action" href="{{ my_page.url }}">
   {{ my_page.title }}
 </a>
 {% endif %}

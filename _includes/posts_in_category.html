@@ -25,7 +25,7 @@
     {% assign link_status="active" %}
     {% endif %}
     {% if post_dir == posts_category_path %}
-    <a class="list-group-item {{link_status}}" href="{{post.url}}">
+      <a class="list-group-item list-group-item-action {{link_status}}" href="{{post.url}}">
       {{ post.title }}
     </a>
     {% endif %}
