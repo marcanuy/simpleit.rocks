@@ -6,9 +6,155 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 27 Nov 2016 14:20:56 +0000</pubDate>
-    <lastBuildDate>Sun, 27 Nov 2016 14:20:56 +0000</lastBuildDate>
+    <pubDate>Mon, 28 Nov 2016 15:01:40 +0000</pubDate>
+    <lastBuildDate>Mon, 28 Nov 2016 15:01:40 +0000</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>Delete All Backup Files Recursively In Bash</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;The most popular *nix editors, &lt;a href=&quot;/docs/lisp/emacs/&quot;&gt;Emacs&lt;/a&gt; and Vim automatically generate
+backup files of each file you edit, this is because they both has the
+auto-save feature so you don’t lose your work if anything happens.&lt;/p&gt;
+
+&lt;p&gt;Vim backup files has &lt;code class=&quot;highlighter-rouge&quot;&gt;~&lt;/code&gt; at the end of the file as it was before you
+edited it: &lt;code class=&quot;highlighter-rouge&quot;&gt;foo.bar~&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Emacs backup files are surrounded by &lt;code class=&quot;highlighter-rouge&quot;&gt;#&lt;/code&gt; in their filenames: &lt;code class=&quot;highlighter-rouge&quot;&gt;#foo.bar#&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;We will show the commands to remove the files of the form &lt;code class=&quot;highlighter-rouge&quot;&gt;*~&lt;/code&gt; so they
+should be adjusted to work with &lt;code class=&quot;highlighter-rouge&quot;&gt;#*#&lt;/code&gt; files easily.&lt;/p&gt;
+
+&lt;h2 id=&quot;visualize-the-files-to-remove&quot;&gt;Visualize the files to remove&lt;/h2&gt;
+
+&lt;p&gt;Removing files is always a sensitive task, you should always check
+what files the command you execute will remove.&lt;/p&gt;
+
+&lt;p&gt;To see what files the command affects we use &lt;code class=&quot;highlighter-rouge&quot;&gt;find -name &quot;*~&quot; -print&lt;/code&gt;.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://man7.org/linux/man-pages/man1/find.1.html&quot;&gt;
+  &lt;p&gt;-print
+        print the full file name on the standard output,
+        followed by a newline.&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Find command _man_ page in &lt;a href=&quot;http://man7.org/linux/man-pages/man1/find.1.html&quot;&gt;General Commands Manual&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find -name &quot;*~&quot; -print&lt;/kbd&gt;
+./_includes/lang_nav.html~
+./_includes/head.html~
+./_includes/share_buttons.html~
+./_includes/adsense_content_1.html~
+./_includes/adsense_content_2.html~
+./_includes/adsense_side.html~
+./_sass/cached/_main.scss~
+./_sass/cached/_share_buttons.scss~
+./_sass/cached.scss~
+./_layouts/default.html~
+./index.md~
+./trans/hola.md~
+./trans/es.md~
+./trans/index.md~
+./README.md~
+./assets/main.scss~
+./Gemfile~
+./_config.yml~
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;If you need further information about each file you can also specify
+set a custom command, like &lt;code class=&quot;highlighter-rouge&quot;&gt;ls -l &amp;lt;file&amp;gt;&lt;/code&gt; with: &lt;code class=&quot;highlighter-rouge&quot;&gt;find -name &quot;*~&quot; -exec
+ls -l {} \;&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find -name &quot;*~&quot; -exec ls -l {} \;&lt;/kbd&gt;
+-rw-rw-r-- 1 marcanuy marcanuy 272 nov 22 23:21 ./_includes/lang_nav.html~
+-rw-rw-r-- 1 marcanuy marcanuy 1861 nov 22 23:21 ./_includes/head.html~
+-rw-rw-r-- 1 marcanuy marcanuy 2063 nov 22 15:07 ./_includes/share_buttons.html~
+-rw-rw-r-- 1 marcanuy marcanuy 543 nov 27 11:02 ./_includes/adsense_content_1.html~
+-rw-rw-r-- 1 marcanuy marcanuy 543 nov 27 11:07 ./_includes/adsense_content_2.html~
+-rw-rw-r-- 1 marcanuy marcanuy 538 nov 27 10:55 ./_includes/adsense_side.html~
+-rw-rw-r-- 1 marcanuy marcanuy 1143 nov 22 14:08 ./_sass/cached/_main.scss~
+-rw-rw-r-- 1 marcanuy marcanuy 331 nov 22 14:08 ./_sass/cached/_share_buttons.scss~
+-rw-rw-r-- 1 marcanuy marcanuy 46 nov 22 07:44 ./_sass/cached.scss~
+-rw-rw-r-- 1 marcanuy marcanuy 3324 nov 26 18:06 ./_layouts/default.html~
+-rw-r--r-- 1 marcanuy marcanuy 2569 nov 27 01:51 ./index.md~
+-rw-rw-r-- 1 marcanuy marcanuy 34 nov 26 16:20 ./trans/hola.md~
+-rw-rw-r-- 1 marcanuy marcanuy 2689 nov 27 01:45 ./trans/es.md~
+-rw-rw-r-- 1 marcanuy marcanuy 2256 nov 22 18:09 ./trans/index.md~
+-rw-rw-r-- 1 marcanuy marcanuy 835 nov 22 18:25 ./README.md~
+-rw-r--r-- 1 marcanuy marcanuy 947 nov 21 19:34 ./assets/main.scss~
+-rw-rw-r-- 1 marcanuy marcanuy 811 nov 21 19:53 ./Gemfile~
+-rw-r--r-- 1 marcanuy marcanuy 290 nov 22 13:36 ./_config.yml~
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;remove-files&quot;&gt;Remove files&lt;/h2&gt;
+
+&lt;p&gt;After making sure the above files we want to delete, we add the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;-delete&lt;/code&gt; flag: &lt;code class=&quot;highlighter-rouge&quot;&gt;find -name &quot;*~&quot; -print -delete&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find -name &quot;*~&quot; -print -delete&lt;/kbd&gt;
+./_includes/lang_nav.html~
+./_includes/head.html~
+./_includes/share_buttons.html~
+./_includes/adsense_content_1.html~
+./_includes/adsense_content_2.html~
+./_includes/adsense_side.html~
+./_sass/cached/_main.scss~
+./_sass/cached/_share_buttons.scss~
+./_sass/cached.scss~
+./_layouts/default.html~
+./index.md~
+./trans/hola.md~
+./trans/es.md~
+./trans/index.md~
+./README.md~
+./assets/main.scss~
+./Gemfile~
+./_config.yml~
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find -name &quot;*~&quot; -print&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p class=&quot;alert alert-danger&quot;&gt;The order of the -delete parameter matters&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;This is a simple sequence of commands to clean a directory from
+auto-saved and backup files.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Emacs AutoSave &lt;a href=&quot;https://www.emacswiki.org/emacs/AutoSave&quot;&gt;https://www.emacswiki.org/emacs/AutoSave&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Mon, 28 Nov 2016 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/delete-all-backup-files-recursively-in-bash/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/delete-all-backup-files-recursively-in-bash/</guid>
+        
+        <category>emacs</category>
+        
+        <category>vim</category>
+        
+        <category>bash</category>
+        
+        <category>backups</category>
+        
+        
+        <category>docs</category>
+        
+        <category>linux</category>
+        
+      </item>
     
       <item>
         <title>Handling Mysql Credentials From Linux Command Line The Right Way</title>
@@ -1330,75 +1476,6 @@ like &lt;code class=&quot;highlighter-rouge&quot;&gt;ionic-navbar&lt;/code&gt; t
         <category>mobile</category>
         
         <category>ionic</category>
-        
-      </item>
-    
-      <item>
-        <title>The Idiomatically Correct Way To Make An Instance Of A Many To One Relationship Model</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Having a many-to-one model relationship in Rails, an instance of such model
-can be manually made inserting the other model foreign id, but that is not
-the most natural way to express it in &lt;em&gt;Rails&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;The most common way to write such relationship in &lt;em&gt;Rails&lt;/em&gt; is to &lt;strong&gt;create the
-related model through its association&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
-
-&lt;p&gt;Having the following models&lt;/p&gt;
-
-&lt;div class=&quot;mermaid&quot;&gt;
-graph LR;
-    User--has_many--&amp;gt;Article;
-&lt;/div&gt;
-
-&lt;p&gt;then each &lt;code class=&quot;highlighter-rouge&quot;&gt;Article&lt;/code&gt; would have an &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt; &lt;em&gt;foreign key&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;manually-assign-fk&quot;&gt;Manually assign FK&lt;/h2&gt;
-
-&lt;p&gt;The &lt;em&gt;manually&lt;/em&gt; form for creating an &lt;code class=&quot;highlighter-rouge&quot;&gt;Article&lt;/code&gt; instance with an associated
-&lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; would be to create an User and assign its &lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt; to the 
-Article’s &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;name: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;John&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;vi&quot;&gt;@article&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Article&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;content: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Foobar&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;user_id: &lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;create-through-association&quot;&gt;Create through association&lt;/h2&gt;
-
-&lt;p&gt;Creating an article through the &lt;code class=&quot;highlighter-rouge&quot;&gt;user&lt;/code&gt; instance would automagically set
-&lt;code class=&quot;highlighter-rouge&quot;&gt;Article.user_id&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;name: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;John&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;vi&quot;&gt;@article&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;articles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;content: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Foobar&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/books/ruby-on-rails-tutorial/&quot;&gt;Ruby on rails tutorial Book&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://guides.rubyonrails.org/association_basics.html&quot;&gt;Active Record Associations&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Thu, 18 Aug 2016 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/the-idiomatically-correct-way-to-make-an-instance-of-a-many-to-one-relationship-model/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/the-idiomatically-correct-way-to-make-an-instance-of-a-many-to-one-relationship-model/</guid>
-        
-        <category>rails</category>
-        
-        <category>models</category>
-        
-        <category>web-development</category>
-        
-        
-        <category>docs</category>
-        
-        <category>ruby</category>
-        
-        <category>rails</category>
         
       </item>
     
