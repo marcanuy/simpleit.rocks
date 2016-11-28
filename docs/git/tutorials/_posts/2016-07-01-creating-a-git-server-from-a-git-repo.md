@@ -129,7 +129,7 @@ origin  user@gitserver.com:/srv/git/my_project.git (push)
 </samp>
 </pre>
 
-## Summary
+## Conclusions
 
 This is a simple way of enabling other users to contribute to your
 projects and having a centralized repository where your main stuff
