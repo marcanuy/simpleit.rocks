@@ -129,6 +129,15 @@ origin  user@gitserver.com:/srv/git/my_project.git (push)
 </samp>
 </pre>
 
+## Summary
+
+This is a simple way of enabling other users to contribute to your
+projects and having a centralized repository where your main stuff
+goes. 
+
+Now every other user that wants to contribute should `clone` the
+server repo and keep that up to date.
+
 ## References 
 
 - <https://git-scm.com/docs/git-clone>
