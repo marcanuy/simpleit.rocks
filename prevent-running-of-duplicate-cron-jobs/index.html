@@ -29,15 +29,15 @@
 
   
   <!-- Begin Jekyll SEO tag v2.0.0 -->
-<title>Jekyll basic concepts - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Jekyll basic concepts" />
-<meta name="description" content="Jekyll is the most popular static site generator, it has few basic concepts to understand how it works." />
-<meta property="og:description" content="Jekyll is the most popular static site generator, it has few basic concepts to understand how it works." />
-<link rel="canonical" href="http://simpleit.rocks/jekyll-basic-concepts/" />
-<meta property="og:url" content="http://simpleit.rocks/jekyll-basic-concepts/" />
+<title>Prevent Running Of Duplicate Cron Jobs - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Prevent Running Of Duplicate Cron Jobs" />
+<meta name="description" content="How to run no more than one unique instance of a script or command." />
+<meta property="og:description" content="How to run no more than one unique instance of a script or command." />
+<link rel="canonical" href="http://simpleit.rocks/prevent-running-of-duplicate-cron-jobs/" />
+<meta property="og:url" content="http://simpleit.rocks/prevent-running-of-duplicate-cron-jobs/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-05-08T00:00:00+00:00" />
+<meta property="article:published_time" content="2016-12-08T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@simpleitrocks" />
 <meta name="twitter:creator" content="@marcanuy" />
@@ -46,10 +46,10 @@
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "Jekyll basic concepts",
-    "datePublished": "2016-05-08T00:00:00+00:00",
-    "description": "Jekyll is the most popular static site generator, it has few basic concepts to understand how it works.",
-    "url": "http://simpleit.rocks/jekyll-basic-concepts/"
+    "headline": "Prevent Running Of Duplicate Cron Jobs",
+    "datePublished": "2016-12-08T00:00:00+00:00",
+    "description": "How to run no more than one unique instance of a script or command.",
+    "url": "http://simpleit.rocks/prevent-running-of-duplicate-cron-jobs/"
   }
 </script>
 <!-- End Jekyll SEO tag -->
@@ -107,12 +107,8 @@
     
     
     
-    <h1 class="title">Jekyll Basic Concepts </h1>
+    <h1 class="title">Prevent Running Of Duplicate Cron Jobs </h1>
     
-    
-    <p class="lead">
-      <small class="text-muted subtitle">Understanding Jekyll</small>
-    </p>
     
   </div>
 </div>
@@ -127,7 +123,7 @@
   <div class="post-meta">
     
     <i class="fa fa-calendar" aria-hidden="true"></i>
-    <time datetime="2016-05-08T00:00:00+00:00" itemprop="datePublished">May 8, 2016</time>
+    <time datetime="2016-12-08T00:00:00+00:00" itemprop="datePublished">Dec 8, 2016</time>
     
   </div>
   <div>
@@ -198,37 +194,13 @@
     class="breadcrumb-item">
   
   <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/ruby">
+     itemprop="item" href="/docs/bash">
     
 
-    ruby
+    bash
   </a>
   
   <meta itemprop="position" content="3" />
-</li>
-
-    
-
-    
-    
-    
-    
-    
-    
-
-
-<li itemprop="itemListElement" itemscope
-    itemtype="http://schema.org/ListItem"
-    class="breadcrumb-item">
-  
-  <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/ruby/jekyll">
-    
-
-    jekyll
-  </a>
-  
-  <meta itemprop="position" content="4" />
 </li>
 
     
@@ -249,10 +221,10 @@
        itemprop="item">
     
 
-    <span itemprop="name">Jekyll basic concepts</span>
+    <span itemprop="name">Prevent Running Of Duplicate Cron Jobs</span>
   </span>
   
-  <meta itemprop="position" content="5" />
+  <meta itemprop="position" content="4" />
 </li>
 
     
@@ -291,17 +263,12 @@
       <div>
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#definition">Definition</a></li>
-<li class="toc-entry toc-h3"><a href="#how-jekyll-generates-a-site">How Jekyll generates a site</a></li>
-<li class="toc-entry toc-h2"><a href="#articles">Articles</a></li>
-<li class="toc-entry toc-h3"><a href="#article-metadata">Article Metadata</a></li>
-<li class="toc-entry toc-h3"><a href="#predefined-global-variables">Predefined global variables</a></li>
-<li class="toc-entry toc-h2"><a href="#formatting-syntax">Formatting syntax</a></li>
-<li class="toc-entry toc-h2"><a href="#syntax-highlighting">Syntax highlighting</a></li>
-<li class="toc-entry toc-h2"><a href="#templating-system">Templating system</a></li>
-<li class="toc-entry toc-h3"><a href="#liquid-related-links">Liquid Related links</a></li>
-<li class="toc-entry toc-h2"><a href="#commands">Commands</a></li>
-<li class="toc-entry toc-h1"><a href="#references">References</a></li>
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#lock-file-approach">Lock file approach</a></li>
+<li class="toc-entry toc-h3"><a href="#using-flock">Using flock</a></li>
+<li class="toc-entry toc-h3"><a href="#using-run-one">Using run-one</a></li>
+<li class="toc-entry toc-h2"><a href="#summary">Summary</a></li>
+<li class="toc-entry toc-h2"><a href="#reference">Reference</a></li>
 </ul>
       </div>
       <div>
@@ -312,9 +279,9 @@
       <div>
   <a class="twitter-share-button"
      href="https://twitter.com/share"
-     data-url="http://simpleit.rocks/jekyll-basic-concepts/"
+     data-url="http://simpleit.rocks/prevent-running-of-duplicate-cron-jobs/"
      data-via=""
-     data-text="Jekyll is the most popular static site generator, it has few basic concepts to understand how it works."
+     data-text="How to run no more than one unique instance of a script or command."
      data-related="marcanuy,{"username"=>"simpleitrocks"}"
      data-count="vertical">
     Tweet
@@ -346,7 +313,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="http://simpleit.rocks/jekyll-basic-concepts/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="http://simpleit.rocks/prevent-running-of-duplicate-cron-jobs/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -363,7 +330,7 @@
 
     
 	<p class="lead">
-	  Jekyll is the most popular static site generator, it has few basic concepts to understand how it works.
+	  How to run no more than one unique instance of a script or command.
 	</p>
     
 
@@ -385,161 +352,84 @@
 </div>
 
 
-    <h2 id="definition">Definition</h2>
+    <h2 id="overview">Overview</h2>
 
-<blockquote cite="https://jekyllrb.com/docs/structure/">
-  <p>Jekyll is, at its core, a text transformation engine. 
-The concept behind the system is this: you give it text written in your
-favorite markup language, be that Markdown, Textile, or just plain HTML, 
-and it churns that through a layout or a series of layout files. 
-Throughout that process you can tweak how you want the site URLs to look, 
-what data gets displayed in the layout, and more.</p>
+<p>When you set up a cronjob you often want no more than one copy running
+at a time, so you need to apply a strategy to prevent a cron job from
+having multiple running instances when a script takes longer time to
+finish.</p>
+
+<p>This can be done “manually” with a a shell script that detects a
+running instance before executing it again, using <code class="highlighter-rouge">pidof</code>, or you can
+take benefit of software that are built to handle this scenario
+specifically like <code class="highlighter-rouge">flock</code> or <code class="highlighter-rouge">run-once</code>.</p>
+
+<h2 id="lock-file-approach">Lock file approach</h2>
+
+<p>A lock file is an ordinary file that it is created before executing the
+script, and removed after the script finishes.</p>
+
+<p>This way if any other command tries to execute the same script <strong>using
+the same lock file</strong> it will exit or wait until it can execute.</p>
+
+<h3 id="using-flock">Using flock</h3>
+
+<p>Most Linux distros already comes with
+the <a href="http://man7.org/linux/man-pages/man1/flock.1.html">flock</a>
+command.</p>
+
+<blockquote class="blockquote" cite="http://man7.org/linux/man-pages/man1/flock.1.html">
+  <p><code class="highlighter-rouge">flock</code> manages locks from within shell scripts or from the command line.</p>
+  <footer class="blockquote-footer"> <cite>Flock in <a href="http://man7.org/linux/man-pages/man1/flock.1.html">User Commands</a></cite></footer>
 </blockquote>
 
-<h3 id="how-jekyll-generates-a-site">How Jekyll generates a site</h3>
+<p>We use <code class="highlighter-rouge">flock</code> to execute the script, specifying explicitly the lock
+file to use, and to exit if the script is already running with the
+<code class="highlighter-rouge">-n</code> parameter.</p>
 
-<div class="mermaid">
-graph TB
-    defaultconf["Initialize a new Site with default configuration"]
-    defaultconf==&gt;read["Read Site data from disk and load it into internal data structures"]
-    read==&gt; customconf["Read custom _config.yml, overwrite default values"]
-    customconf==&gt;generate["Run each of the Generators"]
-    generate==&gt;render["Render the site to the destination folder"]
-    render==&gt;cleanup["Remove orphaned files and empty directories in destination"]
-    cleanup==&gt;write["Write static files, pages, and posts"]
-</div>
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>flock -n /tmp/myfind.lock myscript.sh</kbd>
+</samp>
+</pre>
 
-<p>Jekyll <em>Post</em> and <em>Pages</em> filenames works as urls slugs.</p>
+<p>For example, editing the <code class="highlighter-rouge">crontab</code> to execute the command every 5 minutes should look like:</p>
 
-<h2 id="articles">Articles</h2>
-
-<p>Content can be published in Jekyll in several ways:</p>
-
-<ul>
-  <li><a href="/understanding-jekyll-posts/">Posts</a></li>
-  <li><a href="/understanding-how-collections-work/">Collections</a></li>
-  <li>Pages</li>
-  <li>Data</li>
-</ul>
-
-<h3 id="article-metadata">Article Metadata</h3>
-
-<p>Each <a href="/understanding-jekyll-posts/">Post</a> is composed by <strong>metadata</strong> and <strong>content</strong>. This metadata is called the <em>Front Matter</em> and it needs to be located at the top of each post between the special characters <code class="highlighter-rouge">---</code> to assign custom variables to the current post.</p>
-
-<p>The <a href="https://jekyllrb.com/docs/frontmatter/">Front Matter</a> is the piece of code that tell Jekyll to process a page or post in a special way, where you can change the <em>layout</em>, <em>language</em> or more configurations that if not specified they just took the default settings of <em>config.yml</em>.
-.</p>
-
-<p>e.g.:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>---
-layout: post
-title: My cool blog
----
+<div class="highlighter-rouge"><pre class="highlight"><code>*/5 * * * * /usr/bin/flock -n /tmp/ms.lockfile /usr/local/bin/my_script --some-parameter
 </code></pre>
 </div>
 
-<p>It has two requirements:</p>
+<p>Every time the script takes longer than 5 minutes to execute, the
+<code class="highlighter-rouge">cronjob</code> will fail and leave the original script to finish.</p>
 
-<ul>
-  <li>It must be at the beginning of the file</li>
-  <li>It must be in <a href="http://yaml.org/">YAML</a> format</li>
-</ul>
+<h3 id="using-run-one">Using run-one</h3>
 
-<h3 id="predefined-global-variables">Predefined global variables</h3>
+<p>In some <em>distros</em> like <a href="https://apps.ubuntu.com/cat/applications/run-one">Ubuntu</a>, there is also
+the <a href="https://launchpad.net/run-one">run-one</a> utility that handles the
+lock automatically.</p>
 
-<p>Predefined global that can be specified in the front matter of a post or page.</p>
+<p>Example crontab with <code class="highlighter-rouge">run-one</code> for the previous script:</p>
 
-<dl>
-<dt>layout</dt>
-<dd>If set, this specifies the layout file to use. Use the layout file name without the file extension. Layout files must be placed in the _layouts directory.</dd>
-<dt>permalink</dt>
-<dd>If you need your processed blog post URLs to be something other than the site-wide style (default /year/month/day/title.html), then you can set this variable and it will be used as the final URL.</dd>
-<dt>published</dt>
-<dd>Set to false if you don’t want a specific post to show up when the site is generated. </dd>
-</dl>
-
-<p>Source: <a href="http://jekyllrb.com/docs/frontmatter/">http://jekyllrb.com/docs/frontmatter/</a></p>
-
-<h2 id="formatting-syntax">Formatting syntax</h2>
-
-<p>The most common formatting syntax used in posts and pages are:</p>
-
-<ul>
-  <li>Markdown <a href="https://daringfireball.net/projects/markdown/">https://daringfireball.net/projects/markdown/</a></li>
-  <li>kramdown (a more powerful Markdown superset and currently used in <em>Github pages</em>)</li>
-</ul>
-
-<h2 id="syntax-highlighting">Syntax highlighting</h2>
-
-<p>By default Jekyll uses <a href="https://github.com/jneen/rouge">Rouge</a> as its syntax highlter and is compatible with <a href="http://pygments.org/">Pygments</a> highlighter.</p>
-
-<h2 id="templating-system">Templating system</h2>
-
-<p>Jekyll uses the <strong>Liquid</strong> template engine: <a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">https://github.com/Shopify/liquid/wiki/Liquid-for-Designers</a>.</p>
-
-<p>The template files processed by <em>Liquid</em> uses three main concepts to generate the valid HTML files:</p>
-
-<ul>
-  <li>
-    <p><strong>Tags</strong></p>
-
-    <p>The programming logic in Luiqid themes</p>
-
-    <p><a href="https://help.shopify.com/themes/liquid/tags">https://help.shopify.com/themes/liquid/tags</a></p>
-
-    <p>e.g. <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">content</span><span class="w"> </span><span class="err">==</span><span class="w"> </span><span class="err">blank</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="p">}</span></code></p>
-  </li>
-  <li>
-    <p><strong>Objects</strong></p>
-
-    <p>Attributes containers to display content</p>
-
-    <p><a href="https://help.shopify.com/themes/liquid/objects">https://help.shopify.com/themes/liquid/objects</a></p>
-
-    <p>e.g. <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">page.slug</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="err">}</span></code></p>
-  </li>
-  <li>
-    <p><strong>Filters</strong></p>
-
-    <p>Modify the default output for each component</p>
-
-    <p><a href="https://help.shopify.com/themes/liquid/filters">https://help.shopify.com/themes/liquid/filters</a></p>
-
-    <p>e.g. <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">page.url</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">prepend:</span><span class="w"> </span><span class="err">site.baseurl</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="err">}</span></code></p>
-  </li>
-  <li>Liquid reference: <a href="https://help.shopify.com/themes/liquid">https://help.shopify.com/themes/liquid</a></li>
-  <li>Liquid cheatsheet: <a href="https://www.shopify.ca/partners/shopify-cheat-sheet">https://www.shopify.ca/partners/shopify-cheat-sheet</a></li>
-</ul>
-
-<h3 id="liquid-related-links">Liquid Related links</h3>
-
-<ul>
-  <li><a href="https://github.com/Shopify/liquid/wiki/liquid-for-designers">https://github.com/Shopify/liquid/wiki/liquid-for-designers</a></li>
-  <li><a href="https://www.shopify.ca/partners/shopify-cheat-sheet">https://www.shopify.ca/partners/shopify-cheat-sheet</a></li>
-  <li><a href="https://jekyllrb.com/docs/templates/">https://jekyllrb.com/docs/templates/</a></li>
-  <li><a href="https://help.shopify.com/themes/liquid/">https://help.shopify.com/themes/liquid/</a>
-    <ul>
-      <li><a href="https://www.shopify.ca/partners/shopify-cheat-sheet">https://www.shopify.ca/partners/shopify-cheat-sheet</a></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="commands">Commands</h2>
-
-<ul>
-  <li>Local instance with bundle</li>
-</ul>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>bundle <span class="nb">exec </span>jekyll serve --watch --drafts
+<div class="highlighter-rouge"><pre class="highlight"><code>*/5 * * * *   run-one /usr/local/bin/my_script --some-parameter
 </code></pre>
 </div>
 
-<h1 id="references">References</h1>
+<h2 id="summary">Summary</h2>
+
+<p>These approaches are easier and safer than detecting the running
+scripts manually which may lead to other problems.</p>
+
+<p>Not thinking what could happen if a duplicate running instance of a
+cronjob appears can lead to several problems that should not be
+overlooked and handled accordingly when defining them.</p>
+
+<h2 id="reference">Reference</h2>
 
 <ul>
-  <li><a href="https://jekyllrb.com/docs/home/">Jekyll Official Documentation</a></li>
+  <li>Crontab <a href="http://man7.org/linux/man-pages/man5/crontab.5.html">http://man7.org/linux/man-pages/man5/crontab.5.html</a></li>
+  <li><a href="http://serverfault.com/q/82857/135885">Prevent duplicate cron jobs running</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/File_locking">File locking</a></li>
 </ul>
-
 
 
     <div class="post-comments">
@@ -553,7 +443,7 @@ title: My cool blog
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/jekyll-basic-concepts/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/prevent-running-of-duplicate-cron-jobs/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -593,8 +483,228 @@ title: My cool blog
     
     
     
-      <a class="list-group-item list-group-item-action active" href="/jekyll-basic-concepts/">
-      Jekyll basic concepts
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action " href="/lightweight-solution-to-start-mysql-daemon-if-not-running/">
+      Bash Script to Find Out If MySQL Is Running Or Not
     </a>
     
     
@@ -622,233 +732,9 @@ title: My cool blog
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/jekyll-configuration-file-options/">
-      Jekyll Configuration File Options
+      <a class="list-group-item list-group-item-action active" href="/prevent-running-of-duplicate-cron-jobs/">
+      Prevent Running Of Duplicate Cron Jobs
     </a>
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/understanding-jekyll-posts/">
-      Understanding Jekyll Posts
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
   </div>
@@ -858,6 +744,116 @@ title: My cool blog
 	
 
 
+
+<h2>Articles</h2>
+<p>This article is being referenced in:</p>
+<div class="list-group">
+  
+  
+  
+  
+  
+  
+  
+  
+    <a href="/automatically-tweet-new-blog-posts-based-in-rss/" class="list-group-item list-group-item-action">
+    Bash script to automatically tweet new blog posts based in a website rss feed
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
 
 
       </div>

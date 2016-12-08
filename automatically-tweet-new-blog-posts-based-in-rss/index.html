@@ -557,9 +557,12 @@ time, in this case every hour. We enter the crontab editor:</p>
 <p>And then we add the following line (adjust the path of your
 installation, in this case I have used <code class="highlighter-rouge">/opt/feedr</code>)</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>0 * * * * cd /opt/feedr/src; ~/.virtualenvs/twitter_bot/bin/python2.7 main.py
+<div class="highlighter-rouge"><pre class="highlight"><code>0 * * * * cd /opt/feedr/src; flock -n /tmp/twbot.lock ~/.virtualenvs/twitter_bot/bin/python2.7 main.py
 </code></pre>
 </div>
+
+<p>We use the <code class="highlighter-rouge">flock</code> command to
+<a href="/prevent-running-of-duplicate-cron-jobs/">prevent duplicate cron job executions</a>.</p>
 
 <h2 id="reference">Reference</h2>
 

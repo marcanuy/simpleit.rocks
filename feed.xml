@@ -6,9 +6,101 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 28 Nov 2016 15:01:40 +0000</pubDate>
-    <lastBuildDate>Mon, 28 Nov 2016 15:01:40 +0000</lastBuildDate>
+    <pubDate>Thu, 08 Dec 2016 20:54:58 +0000</pubDate>
+    <lastBuildDate>Thu, 08 Dec 2016 20:54:58 +0000</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>Prevent Running Of Duplicate Cron Jobs</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;When you set up a cronjob you often want no more than one copy running
+at a time, so you need to apply a strategy to prevent a cron job from
+having multiple running instances when a script takes longer time to
+finish.&lt;/p&gt;
+
+&lt;p&gt;This can be done “manually” with a a shell script that detects a
+running instance before executing it again, using &lt;code class=&quot;highlighter-rouge&quot;&gt;pidof&lt;/code&gt;, or you can
+take benefit of software that are built to handle this scenario
+specifically like &lt;code class=&quot;highlighter-rouge&quot;&gt;flock&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;run-once&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;lock-file-approach&quot;&gt;Lock file approach&lt;/h2&gt;
+
+&lt;p&gt;A lock file is an ordinary file that it is created before executing the
+script, and removed after the script finishes.&lt;/p&gt;
+
+&lt;p&gt;This way if any other command tries to execute the same script &lt;strong&gt;using
+the same lock file&lt;/strong&gt; it will exit or wait until it can execute.&lt;/p&gt;
+
+&lt;h3 id=&quot;using-flock&quot;&gt;Using flock&lt;/h3&gt;
+
+&lt;p&gt;Most Linux distros already comes with
+the &lt;a href=&quot;http://man7.org/linux/man-pages/man1/flock.1.html&quot;&gt;flock&lt;/a&gt;
+command.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://man7.org/linux/man-pages/man1/flock.1.html&quot;&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;flock&lt;/code&gt; manages locks from within shell scripts or from the command line.&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Flock in &lt;a href=&quot;http://man7.org/linux/man-pages/man1/flock.1.html&quot;&gt;User Commands&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;We use &lt;code class=&quot;highlighter-rouge&quot;&gt;flock&lt;/code&gt; to execute the script, specifying explicitly the lock
+file to use, and to exit if the script is already running with the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;-n&lt;/code&gt; parameter.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;flock -n /tmp/myfind.lock myscript.sh&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;For example, editing the &lt;code class=&quot;highlighter-rouge&quot;&gt;crontab&lt;/code&gt; to execute the command every 5 minutes should look like:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;*/5 * * * * /usr/bin/flock -n /tmp/ms.lockfile /usr/local/bin/my_script --some-parameter
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Every time the script takes longer than 5 minutes to execute, the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;cronjob&lt;/code&gt; will fail and leave the original script to finish.&lt;/p&gt;
+
+&lt;h3 id=&quot;using-run-one&quot;&gt;Using run-one&lt;/h3&gt;
+
+&lt;p&gt;In some &lt;em&gt;distros&lt;/em&gt; like &lt;a href=&quot;https://apps.ubuntu.com/cat/applications/run-one&quot;&gt;Ubuntu&lt;/a&gt;, there is also
+the &lt;a href=&quot;https://launchpad.net/run-one&quot;&gt;run-one&lt;/a&gt; utility that handles the
+lock automatically.&lt;/p&gt;
+
+&lt;p&gt;Example crontab with &lt;code class=&quot;highlighter-rouge&quot;&gt;run-one&lt;/code&gt; for the previous script:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;*/5 * * * *   run-one /usr/local/bin/my_script --some-parameter
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;These approaches are easier and safer than detecting the running
+scripts manually which may lead to other problems.&lt;/p&gt;
+
+&lt;p&gt;Not thinking what could happen if a duplicate running instance of a
+cronjob appears can lead to several problems that should not be
+overlooked and handled accordingly when defining them.&lt;/p&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Crontab &lt;a href=&quot;http://man7.org/linux/man-pages/man5/crontab.5.html&quot;&gt;http://man7.org/linux/man-pages/man5/crontab.5.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://serverfault.com/q/82857/135885&quot;&gt;Prevent duplicate cron jobs running&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/File_locking&quot;&gt;File locking&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 08 Dec 2016 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/prevent-running-of-duplicate-cron-jobs/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/prevent-running-of-duplicate-cron-jobs/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>bash</category>
+        
+      </item>
     
       <item>
         <title>Delete All Backup Files Recursively In Bash</title>
@@ -495,9 +587,12 @@ time, in this case every hour. We enter the crontab editor:&lt;/p&gt;
 &lt;p&gt;And then we add the following line (adjust the path of your
 installation, in this case I have used &lt;code class=&quot;highlighter-rouge&quot;&gt;/opt/feedr&lt;/code&gt;)&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;0 * * * * cd /opt/feedr/src; ~/.virtualenvs/twitter_bot/bin/python2.7 main.py
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;0 * * * * cd /opt/feedr/src; flock -n /tmp/twbot.lock ~/.virtualenvs/twitter_bot/bin/python2.7 main.py
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+
+&lt;p&gt;We use the &lt;code class=&quot;highlighter-rouge&quot;&gt;flock&lt;/code&gt; command to
+&lt;a href=&quot;/prevent-running-of-duplicate-cron-jobs/&quot;&gt;prevent duplicate cron job executions&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
 
@@ -1368,114 +1463,6 @@ describes encoding sequences that take from one to four bytes.&lt;/p&gt;
         <category>sql</category>
         
         <category>mysql</category>
-        
-      </item>
-    
-      <item>
-        <title>Ionic 2 Framework Overview</title>
-        <description>&lt;h1 id=&quot;overview&quot;&gt;Overview&lt;/h1&gt;
-
-&lt;p&gt;Ionic 2 framework has been &lt;strong&gt;designed to build cross-platform mobile apps&lt;/strong&gt; and
-web apps in a way similar to building websites, i.e.: using HTML, CSS, and
-JavaScript (&lt;a href=&quot;https://angular.io/&quot;&gt;Angular&lt;/a&gt;) languages.&lt;/p&gt;
-
-&lt;p&gt;It is built on top of &lt;a href=&quot;https://cordova.apache.org/&quot;&gt;Cordova&lt;/a&gt;, a framework 
-to build mobile apps with HTML, CSS &amp;amp; JS.&lt;/p&gt;
-
-&lt;h1 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h1&gt;
-
-&lt;h2 id=&quot;installing&quot;&gt;Installing&lt;/h2&gt;
-
-&lt;p&gt;To use Ionic 2 installing Cordova is required: &lt;code class=&quot;highlighter-rouge&quot;&gt;$ sudo npm install -g cordova&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Then install Ionic: &lt;code class=&quot;highlighter-rouge&quot;&gt;$ npm install -g ionic@beta&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Start an &lt;a href=&quot;https://github.com/driftyco/ionic2-app-base&quot;&gt;Ionic project&lt;/a&gt;
-with the ionic_&lt;a href=&quot;https://github.com/driftyco/ionic2-starter-tutorial&quot;&gt;tutorial template&lt;/a&gt;_:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;$ ionic start myProject tutorial --v2&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Then, to run it, enter project directory and &lt;em&gt;run&lt;/em&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd myProject
-$ ionic platform add android
-$ ionic run android
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;or serve it with:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ionic serve
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;directory-structure&quot;&gt;Directory structure&lt;/h2&gt;
-
-&lt;p&gt;The basic structure of the app contains the following directories and files:&lt;/p&gt;
-
-&lt;pre&gt;
-config.xml
-ionic.config.json
-package.json       __the npm packages that will be in node_modules dir__
-resources/         __platform specific resources__
-tsconfig.json
-tslint.json
-hooks/
-node_modules/
-platforms/         __platform specific files e.g. for android or ios __
-plugins/           __where cordova plugins are stored when installed__
-src/               __our app source code__
-tsconfig.tmp.json
-www/
-&lt;/pre&gt;
-
-&lt;p&gt;The generated website will be in the &lt;code class=&quot;highlighter-rouge&quot;&gt;www&lt;/code&gt; directory with a 
-structure similar to:&lt;/p&gt;
-
-&lt;pre&gt;
-www/
-├── assets
-│   ├── fonts
-│   │   ├── ionicons.eot
-│   │   ├── ionicons.svg
-│   │   ├── ionicons.ttf
-│   │   ├── ionicons.woff
-│   │   └── ionicons.woff2
-│   ├── icon
-│   │   └── favicon.ico
-│   └── manifest.json
-├── build
-│   ├── main.css
-│   ├── main.js
-│   ├── main.js.map
-│   └── polyfills.js
-└── index.html       &amp;lt;-- root component of the app
-&lt;/pre&gt;
-
-&lt;h1 id=&quot;app-organization&quot;&gt;App organization&lt;/h1&gt;
-
-&lt;h2 id=&quot;pages&quot;&gt;Pages&lt;/h2&gt;
-
-&lt;p&gt;Each page of the application can be generated with &lt;code class=&quot;highlighter-rouge&quot;&gt;ionic generate page mylist&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;And will contain &lt;a href=&quot;https://ionicframework.com/docs/v2/components/&quot;&gt;components&lt;/a&gt;
-like &lt;code class=&quot;highlighter-rouge&quot;&gt;ionic-navbar&lt;/code&gt; that will help to quickly create app interfaces.&lt;/p&gt;
-
-&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://ionicframework.com/docs/v2/&quot;&gt;http://ionicframework.com/docs/v2/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Fri, 30 Sep 2016 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/ionic-2-framework-overview/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/ionic-2-framework-overview/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>mobile</category>
-        
-        <category>ionic</category>
         
       </item>
     
