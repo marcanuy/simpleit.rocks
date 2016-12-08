@@ -206,8 +206,11 @@ And then we add the following line (adjust the path of your
 installation, in this case I have used `/opt/feedr`)
 
 ~~~
-0 * * * * cd /opt/feedr/src; ~/.virtualenvs/twitter_bot/bin/python2.7 main.py
+0 * * * * cd /opt/feedr/src; flock -n /tmp/twbot.lock ~/.virtualenvs/twitter_bot/bin/python2.7 main.py
 ~~~
+
+We use the `flock` command to
+[prevent duplicate cron job executions]({% link docs/bash/_posts/2016-12-08-prevent-running-of-duplicate-cron-jobs.md %}). 
 
 ## Reference
 
