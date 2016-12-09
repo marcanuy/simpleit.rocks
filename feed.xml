@@ -6,9 +6,191 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 08 Dec 2016 20:54:58 +0000</pubDate>
-    <lastBuildDate>Thu, 08 Dec 2016 20:54:58 +0000</lastBuildDate>
+    <pubDate>Fri, 09 Dec 2016 11:50:18 +0000</pubDate>
+    <lastBuildDate>Fri, 09 Dec 2016 11:50:18 +0000</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>Shell Redirect Output And Errors To The Null Device In Bash</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;In shell scripting, you often want to avoid printing error messages to
+the console or discard any possible output the script could
+generate. Capturing program output can be done with &lt;em&gt;I/O Redirection&lt;/em&gt;
+in Linux.&lt;/p&gt;
+
+&lt;h2 id=&quot;concepts&quot;&gt;Concepts&lt;/h2&gt;
+
+&lt;p&gt;In Linux, everything is a file, even data streams and devices are
+treated like ordinary files.&lt;/p&gt;
+
+&lt;p&gt;There are always three default files open:&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;stdin&lt;/dt&gt;
+  &lt;dd&gt;the keyboard&lt;/dd&gt;
+  &lt;dt&gt;stdout&lt;/dt&gt;
+  &lt;dd&gt;the screen&lt;/dd&gt;
+  &lt;dt&gt;stderr&lt;/dt&gt;
+  &lt;dd&gt;error messages output to the screen&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;Output from these files can be captured and sent as input to another
+file, command, program or script. This is called &lt;strong&gt;redirection&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;How do you choose what file to handle? With &lt;strong&gt;file descriptors&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;file-descriptors&quot;&gt;File descriptors&lt;/h3&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://www.tldp.org/LDP/abs/html/io-redirection.html#FTN.AEN17894&quot;&gt;
+  &lt;p&gt;A file descriptor is simply a number that the operating system
+assigns to an open file to keep track of it. Consider it a
+simplified type of file pointer. It is analogous to a file handle in
+C.&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Chapter 20. I/O Redirection in &lt;a href=&quot;http://www.tldp.org/LDP/abs/html/io-redirection.html#FTN.AEN17894&quot;&gt;Advanced Bash-Scripting Guide&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Kowing the &lt;em&gt;file descriptors&lt;/em&gt; of each file, we can select with which
+one we want to work and process redirection between them.&lt;/p&gt;
+
+&lt;p&gt;The file descriptors for our open files are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;stdin: 0&lt;/li&gt;
+  &lt;li&gt;stdout: 1&lt;/li&gt;
+  &lt;li&gt;stderr: 2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Then we can use &lt;code class=&quot;highlighter-rouge&quot;&gt;M&amp;gt;N&lt;/code&gt; in each command to redirect the file descriptor
+&lt;strong&gt;M&lt;/strong&gt; to &lt;strong&gt;N&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;M&lt;/strong&gt;: file descriptor, which defaults to 1, if not explicitly set.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;N&lt;/strong&gt; can be:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;N&lt;/strong&gt;: filename,&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&amp;amp;N&lt;/strong&gt;: another file descriptor&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;null-device&quot;&gt;Null device&lt;/h3&gt;
+
+&lt;p&gt;Linux has a special device file that discards all data written to
+it. In Linux this device is &lt;strong&gt;/dev/null&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;redirect-to-the-null-device&quot;&gt;Redirect to the null device.&lt;/h2&gt;
+
+&lt;p&gt;The way to discard commands output and error messages is to redirect
+them to the &lt;em&gt;null device&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;This can be done explicitely redirecting both output and/or errors in
+many ways:&lt;/p&gt;
+
+&lt;p&gt;Redirect stdout to the null device:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1&amp;gt;/dev/null
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Redirect stderr to the null device&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2&amp;gt;/dev/null
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Redirect both stdout and stderr to the null device&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;amp;&amp;gt;/dev/null
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Redirect stderr to the same file of stdout&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1&amp;gt;/dev/null 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;examples&quot;&gt;Examples&lt;/h2&gt;
+
+&lt;p&gt;Let’s see a simple example with the &lt;code class=&quot;highlighter-rouge&quot;&gt;ls&lt;/code&gt; command:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;ls &amp;gt;/dev/null&lt;/kbd&gt;
+
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;stdout file descriptor isn’t present so it defaults to 1, any error
+would be echoed to the screen.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;ls -error 1&amp;gt;/dev/null&lt;/kbd&gt;
+ls: invalid option -- 'e'
+Try 'ls --help' for more information.
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;we only redirect &lt;em&gt;stdout&lt;/em&gt; but we still see the error generated by the
+command.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;ls -error 2&amp;gt;/dev/null&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;we produce an error with &lt;code class=&quot;highlighter-rouge&quot;&gt;ls&lt;/code&gt; but redirects the error output to the
+null device, so we don’t see any output in the screen.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;ls -error &amp;amp;&amp;gt;/dev/null&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;ls &amp;amp;&amp;gt;/dev/null&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;we avoid outputting errors and the standard command output.&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;Understanding &lt;em&gt;file descriptors&lt;/em&gt; is key to handle commands output and
+errors.&lt;/p&gt;
+
+&lt;p&gt;This is a common practice to avoid outputting anything in &lt;em&gt;cronjobs&lt;/em&gt;
+where the output would be sent to the users email.&lt;/p&gt;
+
+&lt;p&gt;Additionally, it is very useful to work with bash redirection not only
+to the null device.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.tldp.org/LDP/abs/html/io-redirection.html&quot;&gt;http://www.tldp.org/LDP/abs/html/io-redirection.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Null_device&quot;&gt;https://en.wikipedia.org/wiki/Null_device&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Standard_streams&quot;&gt;https://en.wikipedia.org/wiki/Standard_streams&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Device_file&quot;&gt;https://en.wikipedia.org/wiki/Device_file&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 09 Dec 2016 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/shell-redirect-output-and-errors-to-the-null-device-in-bash/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/shell-redirect-output-and-errors-to-the-null-device-in-bash/</guid>
+        
+        <category>bash</category>
+        
+        <category>linux</category>
+        
+        <category>redirection</category>
+        
+        
+        <category>docs</category>
+        
+        <category>bash</category>
+        
+      </item>
     
       <item>
         <title>Prevent Running Of Duplicate Cron Jobs</title>
@@ -1356,113 +1538,6 @@ to the official snippets
         <category>lisp</category>
         
         <category>emacs</category>
-        
-      </item>
-    
-      <item>
-        <title>How To Dump And Import Utf 8 Mysql Databases In A Safe Way</title>
-        <description>&lt;h1 id=&quot;overview&quot;&gt;Overview&lt;/h1&gt;
-
-&lt;p&gt;If you have a MySQL database with its character set encoded in
-&lt;a href=&quot;https://en.wikipedia.org/wiki/UTF-8&quot;&gt;UTF-8&lt;/a&gt;, then you need to treat it
-in a special way when dumping and restoring the database to be able to
-read its special characters.&lt;/p&gt;
-
-&lt;h1 id=&quot;dumping-a-database&quot;&gt;Dumping a database&lt;/h1&gt;
-
-&lt;p&gt;The common and quickest way of dumping a database with &lt;code class=&quot;highlighter-rouge&quot;&gt;mysqldump&lt;/code&gt; does not
-treat &lt;em&gt;utf-8&lt;/em&gt; encoding right.&lt;/p&gt;
-
-&lt;p&gt;Avoid doing it like:&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
-	mysqldump -uroot -p database &amp;gt; utf8.dump
-&lt;/div&gt;
-
-&lt;p&gt;This is the correct way to dump a MySQL database safely:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;mysqldump -uroot -p database -r utf8.dump&lt;/kbd&gt;
-...
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;-r&lt;/code&gt; or, the same,&lt;code class=&quot;highlighter-rouge&quot;&gt;--result-file&lt;/code&gt; option, will create the output in ASCII format.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_result-file&quot;&gt;
-  &lt;p&gt;–result-file=file_name, -r file_name&lt;/p&gt;
-
-  &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;      Direct output to the named file. The result file is created and its previous contents overwritten, even if an error
-      occurs while generating the dump.
-
-      This option should be used on Windows to prevent newline “\n” characters from being converted to “\r\n” carriage
-      return/newline sequences.
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/div&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;MySQL 5.7 &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_result-file&quot;&gt;Reference Manual&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;restoring-a-database&quot;&gt;Restoring a database&lt;/h1&gt;
-
-&lt;p&gt;Usually you will restore a database simply inserting the data with an input
-file descriptor &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&lt;/code&gt;, but this won’t handle &lt;code class=&quot;highlighter-rouge&quot;&gt;utf-8&lt;/code&gt; encoding properly, so
-this should be avoided:&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
-mysql -u username -p database &amp;lt; dump_file
-&lt;/div&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;mysql -uroot -p --default-character-set=utf8 database&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;mysql&amp;gt; &lt;/span&gt; &lt;kbd&gt;SET names 'utf8'&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;mysql&amp;gt; &lt;/span&gt; &lt;kbd&gt;SOURCE utf8.dump&lt;/kbd&gt;
-...
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h1 id=&quot;related-definitions&quot;&gt;Related Definitions&lt;/h1&gt;
-
-&lt;h2 id=&quot;character-set&quot;&gt;Character set&lt;/h2&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://dev.mysql.com/doc/refman/5.7/en/charset-general.html&quot;&gt;
-  &lt;p&gt;A character set is a set of symbols and encodings. A collation is a set 
-of rules for comparing characters in a character set. Let’s make the
-distinction clear with an example of an imaginary character set.
-Suppose that we have an alphabet with four letters: A, B, a, b. We give
-each letter a number: A = 0, B = 1, a = 2, b = 3. The letter A is a 
-symbol, the number 0 is the encoding for A, and the combination of all
-four letters and their encodings is a character set.&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt;Character Sets and Collations in General &lt;cite title=&quot;MySQL Docs&quot;&gt;MySQL Docs&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;utf-8&quot;&gt;UTF-8&lt;/h2&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://dev.mysql.com/doc/refman/5.7/en/charset-unicode-utf8.html&quot;&gt;
-  &lt;p&gt;UTF-8 (Unicode Transformation Format with 8-bit units) is an alternative 
-way to store Unicode data. It is implemented according to RFC 3629, which
-describes encoding sequences that take from one to four bytes.&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt;The utf8 Character Set (3-Byte UTF-8 Unicode Encoding) &lt;cite title=&quot;MySQL Docs&quot;&gt;MySQL Docs&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://makandracards.com/makandra/595-dumping-and-importing-from-to-mysql-in-an-utf-8-safe-way&quot;&gt;https://makandracards.com/makandra/595-dumping-and-importing-from-to-mysql-in-an-utf-8-safe-way&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Configuring the default database charset &lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html&quot;&gt;https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 17 Oct 2016 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/how-to-dump-and-import-utf-8-mysql-databases-in-a-safe-way/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/how-to-dump-and-import-utf-8-mysql-databases-in-a-safe-way/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>sql</category>
-        
-        <category>mysql</category>
         
       </item>
     

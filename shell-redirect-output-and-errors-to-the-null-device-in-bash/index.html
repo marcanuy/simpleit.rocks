@@ -29,15 +29,15 @@
 
   
   <!-- Begin Jekyll SEO tag v2.0.0 -->
-<title>How To Use Bower Scss With Jekyll - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="How To Use Bower Scss With Jekyll" />
-<meta name="description" content="Automatically converting SCSS files into CSS in each Jekyll build." />
-<meta property="og:description" content="Automatically converting SCSS files into CSS in each Jekyll build." />
-<link rel="canonical" href="http://simpleit.rocks/how-to-use-bower-scss-with-jekyll/" />
-<meta property="og:url" content="http://simpleit.rocks/how-to-use-bower-scss-with-jekyll/" />
+<title>Shell Redirect Output And Errors To The Null Device In Bash - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Shell Redirect Output And Errors To The Null Device In Bash" />
+<meta name="description" content="Understanding input and output redirection in bash shell scripts to avoid printing output and errors." />
+<meta property="og:description" content="Understanding input and output redirection in bash shell scripts to avoid printing output and errors." />
+<link rel="canonical" href="http://simpleit.rocks/shell-redirect-output-and-errors-to-the-null-device-in-bash/" />
+<meta property="og:url" content="http://simpleit.rocks/shell-redirect-output-and-errors-to-the-null-device-in-bash/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-06-18T00:00:00+00:00" />
+<meta property="article:published_time" content="2016-12-09T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@simpleitrocks" />
 <meta name="twitter:creator" content="@marcanuy" />
@@ -46,10 +46,10 @@
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "How To Use Bower Scss With Jekyll",
-    "datePublished": "2016-06-18T00:00:00+00:00",
-    "description": "Automatically converting SCSS files into CSS in each Jekyll build.",
-    "url": "http://simpleit.rocks/how-to-use-bower-scss-with-jekyll/"
+    "headline": "Shell Redirect Output And Errors To The Null Device In Bash",
+    "datePublished": "2016-12-09T00:00:00+00:00",
+    "description": "Understanding input and output redirection in bash shell scripts to avoid printing output and errors.",
+    "url": "http://simpleit.rocks/shell-redirect-output-and-errors-to-the-null-device-in-bash/"
   }
 </script>
 <!-- End Jekyll SEO tag -->
@@ -107,11 +107,11 @@
     
     
     
-    <h1 class="title">How To Use Bower Scss With Jekyll </h1>
+    <h1 class="title">Shell Redirect Output And Errors To The Null Device In Bash </h1>
     
     
     <p class="lead">
-      <small class="text-muted subtitle">Include any scss from bower</small>
+      <small class="text-muted subtitle">How to redirect output and errors to /dev/null in Bash</small>
     </p>
     
   </div>
@@ -127,7 +127,7 @@
   <div class="post-meta">
     
     <i class="fa fa-calendar" aria-hidden="true"></i>
-    <time datetime="2016-06-18T00:00:00+00:00" itemprop="datePublished">Jun 18, 2016</time>
+    <time datetime="2016-12-09T00:00:00+00:00" itemprop="datePublished">Dec 9, 2016</time>
     
   </div>
   <div>
@@ -198,61 +198,13 @@
     class="breadcrumb-item">
   
   <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/ruby">
+     itemprop="item" href="/docs/bash">
     
 
-    ruby
+    bash
   </a>
   
   <meta itemprop="position" content="3" />
-</li>
-
-    
-
-    
-    
-    
-    
-    
-    
-
-
-<li itemprop="itemListElement" itemscope
-    itemtype="http://schema.org/ListItem"
-    class="breadcrumb-item">
-  
-  <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/ruby/jekyll">
-    
-
-    jekyll
-  </a>
-  
-  <meta itemprop="position" content="4" />
-</li>
-
-    
-
-    
-    
-    
-    
-    
-    
-
-
-<li itemprop="itemListElement" itemscope
-    itemtype="http://schema.org/ListItem"
-    class="breadcrumb-item">
-  
-  <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/ruby/jekyll/tutorials">
-    
-
-    tutorials
-  </a>
-  
-  <meta itemprop="position" content="5" />
 </li>
 
     
@@ -273,10 +225,10 @@
        itemprop="item">
     
 
-    <span itemprop="name">How To Use Bower Scss With Jekyll</span>
+    <span itemprop="name">Shell Redirect Output And Errors To The Null Device In Bash</span>
   </span>
   
-  <meta itemprop="position" content="6" />
+  <meta itemprop="position" content="4" />
 </li>
 
     
@@ -315,14 +267,14 @@
       <div>
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#process">Process</a></li>
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#setup">Setup</a></li>
-<li class="toc-entry toc-h2"><a href="#generating-css-files-from-bower-directories">Generating CSS files from Bower directories</a></li>
-<li class="toc-entry toc-h2"><a href="#including-css-into-templates">Including CSS into templates</a></li>
-<li class="toc-entry toc-h2"><a href="#review">Review</a></li>
-<li class="toc-entry toc-h2"><a href="#references">References</a></li>
+<li class="toc-entry toc-h2"><a href="#concepts">Concepts</a></li>
+<li class="toc-entry toc-h3"><a href="#file-descriptors">File descriptors</a></li>
+<li class="toc-entry toc-h3"><a href="#null-device">Null device</a></li>
+<li class="toc-entry toc-h2"><a href="#redirect-to-the-null-device">Redirect to the null device.</a></li>
+<li class="toc-entry toc-h2"><a href="#examples">Examples</a></li>
 <li class="toc-entry toc-h2"><a href="#summary">Summary</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
       </div>
       <div>
@@ -333,9 +285,9 @@
       <div>
   <a class="twitter-share-button"
      href="https://twitter.com/share"
-     data-url="http://simpleit.rocks/how-to-use-bower-scss-with-jekyll/"
+     data-url="http://simpleit.rocks/shell-redirect-output-and-errors-to-the-null-device-in-bash/"
      data-via=""
-     data-text="Automatically converting SCSS files into CSS in each Jekyll build.
+     data-text="Understanding input and output redirection in bash shell scripts to avoid printing output and errors.
 "
      data-related="marcanuy,{"username"=>"simpleitrocks"}"
      data-count="vertical">
@@ -368,7 +320,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="http://simpleit.rocks/how-to-use-bower-scss-with-jekyll/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="http://simpleit.rocks/shell-redirect-output-and-errors-to-the-null-device-in-bash/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -385,7 +337,7 @@
 
     
 	<p class="lead">
-	  Automatically converting SCSS files into CSS in each Jekyll build.
+	  Understanding input and output redirection in bash shell scripts to avoid printing output and errors.
 
 	</p>
     
@@ -408,157 +360,168 @@
 </div>
 
 
-    <h2 id="process">Process</h2>
-<div class="row">
-  <div class="col-xl-6">
-    
-    <div>Current</div>
-    <div class="mermaid">
-      graph TB
-    A["$ bower update"]==>|Generates CSS|B
-    B["$ scss foo_package/style.scss css/style.css"]
-    B ==>|New package version| A
+    <h2 id="overview">Overview</h2>
 
-    </div>
-    
-  </div>
-  <div class="col-xl-6">
-    
-    <div>Goal</div>
-    <div class="mermaid">
-      graph TB
-    A["$ bower update"]==>|Generates CSS|B
-    B["Jekyll automatically convert Bower SCSS file <br> into /css/CSS-FILE in each build"]
+<p>In shell scripting, you often want to avoid printing error messages to
+the console or discard any possible output the script could
+generate. Capturing program output can be done with <em>I/O Redirection</em>
+in Linux.</p>
 
-    </div>
-    
-  </div>
-</div>
-<div class="si-tutorial-overview">
-  
-</div>
+<h2 id="concepts">Concepts</h2>
 
-<h2 id="overview">Overview</h2>
+<p>In Linux, everything is a file, even data streams and devices are
+treated like ordinary files.</p>
 
-<p><a href="https://bower.io/">Bower</a> makes it easier to keep up to date all the frameworks, libraries,
-assets, and utilities used in web development.</p>
+<p>There are always three default files open:</p>
 
-<p>Jekyll automatically generates <strong>css</strong> files from <strong>scss</strong>.</p>
+<dl>
+  <dt>stdin</dt>
+  <dd>the keyboard</dd>
+  <dt>stdout</dt>
+  <dd>the screen</dd>
+  <dt>stderr</dt>
+  <dd>error messages output to the screen</dd>
+</dl>
 
-<p>This tutorial shows how to use both of them togheter, using Bootstrap-flex 4
-as the example package.</p>
+<p>Output from these files can be captured and sent as input to another
+file, command, program or script. This is called <strong>redirection</strong>.</p>
 
-<h2 id="setup">Setup</h2>
+<p>How do you choose what file to handle? With <strong>file descriptors</strong>.</p>
 
-<p>The default usage of <a href="https://bower.io/">Bower</a> consists in having the packages downloaded to
-<code class="highlighter-rouge">/bower_components</code> directory.</p>
+<h3 id="file-descriptors">File descriptors</h3>
 
-<p>The problem is that Jekyll uses, by default, <code class="highlighter-rouge">/_sass</code> directory to put custom
-<code class="highlighter-rouge">.scss</code> files, that are then processed into some file located at <code class="highlighter-rouge">/css</code> directory.</p>
+<blockquote class="blockquote" cite="http://www.tldp.org/LDP/abs/html/io-redirection.html#FTN.AEN17894">
+  <p>A file descriptor is simply a number that the operating system
+assigns to an open file to keep track of it. Consider it a
+simplified type of file pointer. It is analogous to a file handle in
+C.</p>
+  <footer class="blockquote-footer"> <cite>Chapter 20. I/O Redirection in <a href="http://www.tldp.org/LDP/abs/html/io-redirection.html#FTN.AEN17894">Advanced Bash-Scripting Guide</a></cite></footer>
+</blockquote>
 
-<p>The goal is to be able to include the <code class="highlighter-rouge">bower_components</code> directories containing
-<code class="highlighter-rouge">.scss</code> files, into <code class="highlighter-rouge">/_sass</code> directory to be consistent with default configurations.</p>
+<p>Kowing the <em>file descriptors</em> of each file, we can select with which
+one we want to work and process redirection between them.</p>
 
-<p class="alert alert-danger">Bower_components directory shouldn’t be included into <code class="highlighter-rouge">/_sass</code> directory directly,
-because they can contain a lot of different files, not only <code class="highlighter-rouge">.scss</code>, like <code class="highlighter-rouge">.js</code> 
-or <code class="highlighter-rouge">css</code> files.</p>
+<p>The file descriptors for our open files are:</p>
 
-<p>In this tutorial the Bootstrap 4 bower package is structured as:</p>
+<ul>
+  <li>stdin: 0</li>
+  <li>stdout: 1</li>
+  <li>stderr: 2</li>
+</ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>bower_components/bootstrap/
-├── dist
-│   ├── css
-│   │   ├── bootstrap.css
-│   │   ├── bootstrap.min.css
-│   └── js
-├── ...
-└── scss
-    ├── _alert.scss
-    ├── _animation.scss
-    ├── bootstrap-flex.scss
-    ├── bootstrap-grid.scss
-    ├── bootstrap-reboot.scss
-    ├── bootstrap.scss
-    ├── _breadcrumb.scss
-    ├── ...
-    └── _variables.scss
+<p>Then we can use <code class="highlighter-rouge">M&gt;N</code> in each command to redirect the file descriptor
+<strong>M</strong> to <strong>N</strong>:</p>
 
+<ul>
+  <li><strong>M</strong>: file descriptor, which defaults to 1, if not explicitly set.</li>
+</ul>
+
+<p><strong>N</strong> can be:</p>
+
+<ul>
+  <li><strong>N</strong>: filename,</li>
+  <li><strong>&amp;N</strong>: another file descriptor</li>
+</ul>
+
+<h3 id="null-device">Null device</h3>
+
+<p>Linux has a special device file that discards all data written to
+it. In Linux this device is <strong>/dev/null</strong>.</p>
+
+<h2 id="redirect-to-the-null-device">Redirect to the null device.</h2>
+
+<p>The way to discard commands output and error messages is to redirect
+them to the <em>null device</em>.</p>
+
+<p>This can be done explicitely redirecting both output and/or errors in
+many ways:</p>
+
+<p>Redirect stdout to the null device:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1&gt;/dev/null
 </code></pre>
 </div>
 
-<p>We want to be able to include <code class="highlighter-rouge">/bower_components/bootstrap/scss/bootstrap-flex.scss</code>
-in our Jekyll website, as it is not currently distributed by default as a <code class="highlighter-rouge">css</code> file
-in <code class="highlighter-rouge">/bower_components/bootstrap/dist</code> folder.</p>
+<p>Redirect stderr to the null device</p>
 
-<h2 id="generating-css-files-from-bower-directories">Generating CSS files from Bower directories</h2>
-
-<p>A symbolic link should be created inside <code class="highlighter-rouge">/_sass</code> pointing to the bower
-directory containing the <code class="highlighter-rouge">.scss</code> files.</p>
-
-<p>In the base of the jekyll project:</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ln -s bower_components/bootstrap/ _sass/bootstrap
+<div class="highlighter-rouge"><pre class="highlight"><code>2&gt;/dev/null
 </code></pre>
 </div>
 
-<p>This creates a symbolic link named <code class="highlighter-rouge">bootstrap</code> inside the <code class="highlighter-rouge">/_sass</code>
-directory to <code class="highlighter-rouge">bower_components/bootstrap/</code>.</p>
+<p>Redirect both stdout and stderr to the null device</p>
 
-<p>To generate the automatically, Jekyll needs to have the following SCSS file
-in <code class="highlighter-rouge">/css/bootstrap-flex.scss</code>, so it can generate <code class="highlighter-rouge">/css/bootstrap-flex.css</code>.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>---
----
-@charset "utf-8";
-
-// Import partials from `sass_dir` (defaults to `_sass`)
-@import
-        "bootstrap/scss/bootstrap-flex"
-;
+<div class="highlighter-rouge"><pre class="highlight"><code>&amp;&gt;/dev/null
 </code></pre>
 </div>
 
-<p>Each time Jekyll builds a site it will create <code class="highlighter-rouge">/css/bootstrap-flex.css</code>.</p>
+<p>Redirect stderr to the same file of stdout</p>
 
-<h2 id="including-css-into-templates">Including CSS into templates</h2>
-
-<p>To make the website use the newly generated CSS file, it should be included
-in a template like:</p>
-
-<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="nt">link</span> <span class="nt">rel</span><span class="o">=</span><span class="s1">"stylesheet"</span> <span class="nt">type</span><span class="o">=</span><span class="s1">"text/css"</span> <span class="nt">href</span><span class="o">=</span><span class="s1">"/css/bootstrap-flex.css"</span><span class="o">&gt;</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>1&gt;/dev/null 2&gt;&amp;1
 </code></pre>
 </div>
 
-<h2 id="review">Review</h2>
+<h2 id="examples">Examples</h2>
 
-<p>This is a simple process respecting each package default directories, that makes it 
-easy to maintain Bower packages up to date, without having to regenerate
-them manually with the <code class="highlighter-rouge">scss</code> command.</p>
+<p>Let’s see a simple example with the <code class="highlighter-rouge">ls</code> command:</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>ls &gt;/dev/null</kbd>
+
+</samp>
+</pre>
+
+<p>stdout file descriptor isn’t present so it defaults to 1, any error
+would be echoed to the screen.</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>ls -error 1&gt;/dev/null</kbd>
+ls: invalid option -- 'e'
+Try 'ls --help' for more information.
+</samp>
+</pre>
+
+<p>we only redirect <em>stdout</em> but we still see the error generated by the
+command.</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>ls -error 2&gt;/dev/null</kbd>
+</samp>
+</pre>
+
+<p>we produce an error with <code class="highlighter-rouge">ls</code> but redirects the error output to the
+null device, so we don’t see any output in the screen.</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>ls -error &amp;&gt;/dev/null</kbd>
+<span class="shell-prompt">$</span> <kbd>ls &amp;&gt;/dev/null</kbd>
+</samp>
+</pre>
+
+<p>we avoid outputting errors and the standard command output.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Understanding <em>file descriptors</em> is key to handle commands output and
+errors.</p>
+
+<p>This is a common practice to avoid outputting anything in <em>cronjobs</em>
+where the output would be sent to the users email.</p>
+
+<p>Additionally, it is very useful to work with bash redirection not only
+to the null device.</p>
 
 <h2 id="references">References</h2>
 
 <ul>
-  <li>Assets Jekyll docs <a href="https://jekyllrb.com/docs/assets/">https://jekyllrb.com/docs/assets/</a></li>
-  <li>Bower docs <a href="https://bower.io/">https://bower.io/</a></li>
+  <li><a href="http://www.tldp.org/LDP/abs/html/io-redirection.html">http://www.tldp.org/LDP/abs/html/io-redirection.html</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Null_device">https://en.wikipedia.org/wiki/Null_device</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Standard_streams">https://en.wikipedia.org/wiki/Standard_streams</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Device_file">https://en.wikipedia.org/wiki/Device_file</a></li>
 </ul>
-
-
-
-
-<div class="">
-  <div class="">
-    <h2 id="summary">Summary</h2>
-    <div class="mermaid text-sm-center">
-      graph TB
-    A["Create symbolic link from Jekyll _sass directory to <br> Bower package directory"]
-    B["Create a SCSS file in /css directory <br> to process Bower SCSS file "]
-    A ==> B
-    B["Include the generated CSS file from /css in a layout"]
-
-    </div>  
-  </div>
-</div>
-
 
 
     <div class="post-comments">
@@ -572,7 +535,7 @@ them manually with the <code class="highlighter-rouge">scss</code> command.</p>
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/how-to-use-bower-scss-with-jekyll/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/shell-redirect-output-and-errors-to-the-null-device-in-bash/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -637,27 +600,18 @@ them manually with the <code class="highlighter-rouge">scss</code> command.</p>
     
     
     
-      <a class="list-group-item list-group-item-action " href="/how-to-handle-adsense-in-a-jekyll-development-environment/">
-      How To Handle Adsense In A Jekyll Development Environment
-    </a>
     
     
     
     
     
     
-      <a class="list-group-item list-group-item-action " href="/how-to-prevent-content-displaying-in-a-jekyll-development-environment/">
-      How To Prevent Content Displaying In A Jekyll Development Environment
-    </a>
     
     
     
     
     
     
-      <a class="list-group-item list-group-item-action " href="/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/">
-      How to implement breadcrumbs on a Jekyll site with nested categories
-    </a>
     
     
     
@@ -699,9 +653,6 @@ them manually with the <code class="highlighter-rouge">scss</code> command.</p>
     
     
     
-      <a class="list-group-item list-group-item-action active" href="/how-to-use-bower-scss-with-jekyll/">
-      How To Use Bower Scss With Jekyll
-    </a>
     
     
     
@@ -843,8 +794,9 @@ them manually with the <code class="highlighter-rouge">scss</code> command.</p>
     
     
     
-      <a class="list-group-item list-group-item-action " href="/automated-deployment-of-jekyll-websites-to-github-pages-with-a-git-push-to-github/">
-      Automated Deployment Of Jekyll Websites To Github Pages With A Git Push To Github
+    
+      <a class="list-group-item list-group-item-action " href="/lightweight-solution-to-start-mysql-daemon-if-not-running/">
+      Bash Script to Find Out If MySQL Is Running Or Not
     </a>
     
     
@@ -872,15 +824,18 @@ them manually with the <code class="highlighter-rouge">scss</code> command.</p>
     
     
     
+      <a class="list-group-item list-group-item-action " href="/prevent-running-of-duplicate-cron-jobs/">
+      Prevent Running Of Duplicate Cron Jobs
+    </a>
     
     
     
     
     
     
-    
-    
-    
+      <a class="list-group-item list-group-item-action active" href="/shell-redirect-output-and-errors-to-the-null-device-in-bash/">
+      Shell Redirect Output And Errors To The Null Device In Bash
+    </a>
     
     
   </div>
