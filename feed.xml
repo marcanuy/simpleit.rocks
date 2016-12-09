@@ -6,9 +6,32 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 09 Dec 2016 11:50:18 +0000</pubDate>
-    <lastBuildDate>Fri, 09 Dec 2016 11:50:18 +0000</lastBuildDate>
+    <pubDate>Fri, 09 Dec 2016 12:47:41 +0000</pubDate>
+    <lastBuildDate>Fri, 09 Dec 2016 12:47:41 +0000</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>Colors Palettes For Web Design</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Websites to choose the right color scheme for your web design:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Coolors &lt;a href=&quot;https://coolors.co/browser/best/1&quot;&gt;https://coolors.co/browser/best/1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Adobe Color CC &lt;a href=&quot;https://color.adobe.com/it/explore/most-popular/?time=all&quot;&gt;https://color.adobe.com/it/explore/most-popular/?time=all&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Fri, 09 Dec 2016 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/colors-palettes-for-web-design/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/colors-palettes-for-web-design/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>web</category>
+        
+      </item>
     
       <item>
         <title>Shell Redirect Output And Errors To The Null Device In Bash</title>
@@ -1440,104 +1463,6 @@ using the common Jekyll output directory &lt;code class=&quot;highlighter-rouge&
         <category>web</category>
         
         <category>html</category>
-        
-      </item>
-    
-      <item>
-        <title>Adding Custom Snippets To Yasnippet</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;When using &lt;a href=&quot;https://github.com/joaotavora/yasnippet&quot;&gt;Yasnippets&lt;/a&gt; (a
-popular template system for Emacs), you will usually need to add your
-custom snippets to easy the task of writing repetitive content.&lt;/p&gt;
-
-&lt;p&gt;To extend the snippets, there is a special snippet template that acts
-as a template in a similar way that &lt;em&gt;yasnippets&lt;/em&gt; handle other templates.&lt;/p&gt;
-
-&lt;h2 id=&quot;writing-a-snippet&quot;&gt;Writing a snippet&lt;/h2&gt;
-
-&lt;h3 id=&quot;snippet-directory&quot;&gt;Snippet directory&lt;/h3&gt;
-
-&lt;p&gt;The directory for storing snippets is defined by the variable
-&lt;code class=&quot;highlighter-rouge&quot;&gt;yas-snippet-dirs&lt;/code&gt; and by default is &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.emacs.d/snippets&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p class=&quot;alert alert-info&quot;&gt;You can check its value in your system with &lt;code class=&quot;highlighter-rouge&quot;&gt;C-v yas-snippet-dirs&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;creating-the-snippet&quot;&gt;Creating the snippet&lt;/h3&gt;
-
-&lt;p&gt;To create the snippet file execute the command &lt;code class=&quot;highlighter-rouge&quot;&gt;yas-new-snippet&lt;/code&gt; &lt;em&gt;(C-c
-&amp;amp; C-n)&lt;/em&gt;,
-yasnippets internally expands the &lt;code class=&quot;highlighter-rouge&quot;&gt;snippet-writing&lt;/code&gt; snippet.&lt;/p&gt;
-
-&lt;p&gt;A new buffer will open with the base model to define the new snippet
-in the &lt;strong&gt;snippet-mode&lt;/strong&gt; major mode.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# -*- mode: snippet -*-
-# name: 
-# key: 
-# --
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;example&quot;&gt;Example&lt;/h4&gt;
-
-&lt;p&gt;The following is an example of the current &lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt; statement in
-&lt;em&gt;Python&lt;/em&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# name: for ... in ... : ...
-# key: for
-# group : control structure
-# --
-for ${var} in ${collection}:
-    $0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p class=&quot;alert alert-info&quot;&gt;More details of the customizations can be found in
-the
-&lt;a href=&quot;https://joaotavora.github.io/yasnippet/snippet-development.html&quot;&gt;official documentation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;saving-the-snippet&quot;&gt;Saving the snippet&lt;/h3&gt;
-
-&lt;p&gt;The snippet will be saved in the default snippets directory and inside
-the current &lt;em&gt;major-mode&lt;/em&gt; subdirectory. For example, if we attempt to
-save the previous &lt;em&gt;python&lt;/em&gt; snippet it will be located in
-&lt;code class=&quot;highlighter-rouge&quot;&gt;.emacs.d/snippets/python-mode&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;testing-the-snippet&quot;&gt;Testing the snippet&lt;/h3&gt;
-
-&lt;p&gt;Once saved, the snippet can be tested with the command &lt;em&gt;M-x
-yas-tryout-snippet&lt;/em&gt; which will test the current snippet buffer
-template in other buffer with the proper &lt;em&gt;major mode&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;To load the new snippet just use &lt;code class=&quot;highlighter-rouge&quot;&gt;M-x yas-load-snippet-buffer&lt;/code&gt; and it
-will be available in other buffers.&lt;/p&gt;
-
-&lt;h2 id=&quot;notes&quot;&gt;Notes&lt;/h2&gt;
-
-&lt;p&gt;If you are extending the snippets definitions with something that
-would be useful for others, consider making
-a &lt;a href=&quot;https://help.github.com/articles/about-pull-requests&quot;&gt;pull request&lt;/a&gt;
-to the official snippets
-&lt;a href=&quot;https://github.com/AndreaCrotti/yasnippet-snippets&quot;&gt;repo&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://joaotavora.github.io/yasnippet/snippet-development.html&quot;&gt;https://joaotavora.github.io/yasnippet/snippet-development.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Tue, 01 Nov 2016 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/adding-custom-snippets-to-yasnippet/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/adding-custom-snippets-to-yasnippet/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>lisp</category>
-        
-        <category>emacs</category>
         
       </item>
     
