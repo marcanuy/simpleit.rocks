@@ -1,4 +1,7 @@
 {% assign author=site.data.people[page.author]%}
+
+{% if author %}
+
 <footer class="author-footer">
     <div class="media" itemtype="http://schema.org/Person">
 	<span itemprop="locationCreated contentLocation spatialCoverage" itemscope="itemscope" itemtype="http://schema.org/City" style="display:none"><span itemprop="name">{{ author.country }}</span>
@@ -31,3 +34,5 @@
 	</div>
     </div>
 </footer>
+
+{% endif %}
