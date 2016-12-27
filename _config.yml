@@ -32,6 +32,7 @@ defaults:
     values:
       layout: "post"
       toc: true
+      author: marcanuy
 
 disqus_id: "simpleitrocks"
 

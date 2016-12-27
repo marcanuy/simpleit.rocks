@@ -1,0 +1,33 @@
+{% assign author=site.data.people[page.author]%}
+<footer class="author-footer">
+    <div class="media" itemtype="http://schema.org/Person">
+	<span itemprop="locationCreated contentLocation spatialCoverage" itemscope="itemscope" itemtype="http://schema.org/City" style="display:none"><span itemprop="name">{{ author.country }}</span>
+	</span>
+	<link href="https://plus.google.com/{{author.google_plus}}/posts" rel="author"/>
+	<meta content="https://www.facebook.com/unix.root" property="article:author"/>
+	<meta content="@{{author.twitter}}" name="twitter:creator"/>
+	<meta content="https://plus.google.com/{{author.google_plus}}/posts" name="DC.creator"/>
+	<meta content="{{author.name}}" name="author"/>
+	
+	<a class="media-left" href="{{author.website}}" itemprop="url" rel="author">
+	    <img class="media-object rounded" alt="{{author.name}} - {{site.title}}" itemprop="image" src="https://www.gravatar.com/avatar/{{author.gravatar}}?s=80"/>
+	</a>
+	<div class="media-body">
+	    <h5 class="media-heading">
+		<address class="author-info clear" id="author-info" itemprop="author creator" itemscope="" itemtype="http://schema.org/Person">
+		    <span class="author-name" itemprop="name">{{author.name}}</span>
+		    <a class="a-social a-tw" href="https://twitter.com/{{author.twitter}}" itemprop="sameAs" target="_blank"><i class="fa fa-twitter-square"></i></a>
+		    <a class="a-social a-gp" href="https://plus.google.com/{{author.google_plus}}?rel=author" itemprop="url sameAs" rel="author" target="_blank"><i class="fa fa-google-plus-square"></i></a>
+		    <a class="a-social a-ln" href="https://www.linkedin.com/in/{{author.linkedin}}" itemprop="sameAs" target="_blank"><i class="fa fa-linkedin-square"></i></a>
+		    <a class="a-social a-email" href="mailto:{{author.mail}}" itemprop="email sameAs" target="_blank"><i class="fa fa-envelope-o"></i></a>
+		    <a class="a-social a-github" href="http://github.com/{{author.github}}" itemprop="github sameAs" target="_blank"><i class="fa fa-github"></i></a>
+		    <a class="a-social a-stackexchange" href="http://stackexchange.com/users/{{author.stackexchange}}?tab=accounts" itemprop="stackexchange sameAs" target="_blank"><i class="fa fa-stack-exchange"></i></a>
+		    <a class="a-social a-ins" href="https://www.instagram.com/{{author.instagram}}/" itemprop="sameAs" target="_blank"><i class="fa fa-instagram"></i></a>
+		</address>
+	    </h5>
+	    <div class="text-muted">
+		{{author.bio}}
+	    </div>
+	</div>
+    </div>
+</footer>
