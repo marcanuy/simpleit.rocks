@@ -67,7 +67,7 @@ in
 [Auto-deploying built products to gh-pages with Travis](https://gist.github.com/domenic/ec8b0fc8ab45f39403dd).
 
 Each time the website is pushed to Github master branch, Travis
-automatically checks for broken links executing `htlm-proofer` in the
+automatically checks for broken links executing `html-proofer` in the
 generated static files with `scripts/cibuild.sh`, then if everything
 is fine, the deployment is done to the `gh-pages` branch with
 `deploy.sh`, so Github Pages publish the website.

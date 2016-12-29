@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 27 Dec 2016 23:37:42 +0000</pubDate>
-    <lastBuildDate>Tue, 27 Dec 2016 23:37:42 +0000</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 22:35:35 +0000</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 22:35:35 +0000</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -394,6 +394,18 @@ ls -l {} \;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;After making sure the above files we want to delete, we add the
 &lt;code class=&quot;highlighter-rouge&quot;&gt;-delete&lt;/code&gt; flag: &lt;code class=&quot;highlighter-rouge&quot;&gt;find -name &quot;*~&quot; -print -delete&lt;/code&gt;.&lt;/p&gt;
 
+&lt;blockquote class=&quot;blockquote alert alert-danger&quot; cite=&quot;http://man7.org/linux/man-pages/man1/find.1.html&quot;&gt;
+  &lt;p&gt;Warnings: Don’t forget that the find command line is evaluated as an
+expression, so putting -delete first will make find try to delete
+everything below the starting points you specified. When testing a
+find command line that you later intend to use with -delete, you
+should explicitly specify -depth in order to avoid later surprises.
+Because -delete implies -depth, you cannot usefully use -prune and
+-delete together.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt; Find command in &lt;a href=&quot;http://man7.org/linux/man-pages/man1/find.1.html&quot;&gt;General Commands Manual&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
 &lt;pre class=&quot;shell&quot;&gt;
 &lt;samp&gt;
 &lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find -name &quot;*~&quot; -print -delete&lt;/kbd&gt;
@@ -424,12 +436,15 @@ ls -l {} \;&lt;/code&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 
-&lt;p&gt;This is a simple sequence of commands to clean a directory from
-auto-saved and backup files.&lt;/p&gt;
+&lt;p&gt;This is a simple way for removing backup files from Emacs and
+Vim. Special care should be taken when using the &lt;code class=&quot;highlighter-rouge&quot;&gt;delete&lt;/code&gt; action of
+the &lt;code class=&quot;highlighter-rouge&quot;&gt;find&lt;/code&gt; command, using it incorrectly could lead to deleting all
+the files recursively.&lt;/p&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
 &lt;ul&gt;
+  &lt;li&gt;Find command manual &lt;a href=&quot;http://man7.org/linux/man-pages/man1/find.1.html&quot;&gt;http://man7.org/linux/man-pages/man1/find.1.html&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Emacs AutoSave &lt;a href=&quot;https://www.emacswiki.org/emacs/AutoSave&quot;&gt;https://www.emacswiki.org/emacs/AutoSave&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
