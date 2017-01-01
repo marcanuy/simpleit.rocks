@@ -1,97 +1,97 @@
 ---
 layout: default
 description: >
-  <strong>Software development</strong> and <strong>server administration</strong> for
-  human beings <i class="fa fa-male" aria-hidden="true"></i>. <br>
-  Practical concepts, theory and tutorials.
+<strong>Software development</strong> and <strong>server administration</strong> for
+human beings <i class="fa fa-male" aria-hidden="true"></i>. <br>
+Practical concepts, theory and tutorials.
 ---
 
-  <hr>
-  <div class="text-xs-center my-3">
+<hr>
+<div class="text-xs-center my-3">
     {{ page.description }}
-  </div>
-  <hr>
-  
-  <div class="home">
-  
-  <div class="">
-    <h1>Categories</h1>
+</div>
+<hr>
 
-    {% capture first_level_categories %}
-    {% for page in site.pages %}
-    {% assign all_cats = page.dir | split:'/' %}
-    {%comment%}filter software docs and get only the first level of categories{%endcomment%}
-    {% if all_cats[1] == site.docs_dir %}
-    {{ all_cats[2] | strip }},
-    {% endif %}
-    {% endfor %}
-    {% endcapture %}
+<div class="home text-xs-center">
+    
+    <div class="categories my-3">
+	<h1>Categories</h1>
 
-    {% assign categories = first_level_categories | split: ',' | uniq %}
+	{% capture first_level_categories %}
+	{% for page in site.pages %}
+	{% assign all_cats = page.dir | split:'/' %}
+	{%comment%}filter software docs and get only the first level of categories{%endcomment%}
+	{% if all_cats[1] == site.docs_dir %}
+	{{ all_cats[2] | strip }},
+	{% endif %}
+	{% endfor %}
+	{% endcapture %}
 
-    <nav class="nav nav-inline">
-      {% for category in categories %}
-      {% unless category == blank %}
+	{% assign categories = first_level_categories | split: ',' | uniq %}
 
-      <a class="nav-link" href="{{ site.baseurl }}/{{ site.docs_dir}}/{{ category | strip }}/">
-	{{ category | strip | capitalize }}
-      </a>
-      {% endunless %}
-      {% endfor %}
-    </nav>
-  </div> <!--containter-->
-  
-  <hr />
+	<nav class="nav nav-inline">
+	    {% for category in categories %}
+	    {% unless category == blank %}
 
-  {% if post.categories contains site.docs_dir and post.categories.size == 1 %}
-  <h1>Uncategorized Posts</h1>
-  <div class="list-group">
-    {% for post in site.posts %}
-    {%comment%}if post.categories[0] == site.docs_dir and post.categories.size == 1 {%endcomment%}
-    <a class="list-group-item" href="{{ site.baseurl }}/{{ post.slug }}">
-      {{ post.title }}
-    </a>
-    {% endfor %}
-  </div>
-  
-  <hr />
-  {% endif%}
+	    <a class="nav-link" href="{{ site.baseurl }}/{{ site.docs_dir}}/{{ category | strip }}/">
+		{{ category | strip | capitalize }}
+	    </a>
+	    {% endunless %}
+	    {% endfor %}
+	</nav>
+    </div> <!--containter-->
+    
+    <hr />
 
-  <div>
-      <h1>Articles</h1>
-      <div class="list-group">
-	  {% for post in site.posts %}
-	  <a href="{{ post.url | prepend: site.baseurl }}" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">{{ post.title }}</h5>
-	      {% if post.description %}
-	      <p class="list-group-item-text">
-		  {{ post.description }}
-	      </p>
-	      {% endif %}
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  {{ post.categories | shift  | array_to_sentence_string }}
-	      </span>
-	  </a>
-	  {% endfor %}
-      </div> <!-- list group -->
-  </div> <!-- articles/posts -->
-  
-  <hr />
-
-  <div class="mb-1">
-    <h1>Full categories hierarchy</h1>
+    {% if post.categories contains site.docs_dir and post.categories.size == 1 %}
+    <h1>Uncategorized Posts</h1>
     <div class="list-group">
-      {% assign pages = site.pages | sort:'dir' %}
-      {% for page in pages %}
-      {% if page.title and page.dir != '/' and page.dir !='/about/' %}
-      <a class="list-group-item" href="{{ page.url | prepend: site.baseurl }}">
-	<span class="label label-info label-pill pull-xs-right">
-	  {{page.dir | remove_first: "/docs/"}}
-	</span>
-	{{ page.title }}
-      </a>
-      {% endif%}
-      {% endfor %}
+	{% for post in site.posts %}
+	{%comment%}if post.categories[0] == site.docs_dir and post.categories.size == 1 {%endcomment%}
+	<a class="list-group-item" href="{{ site.baseurl }}/{{ post.slug }}">
+	    {{ post.title }}
+	</a>
+	{% endfor %}
     </div>
-  </div>
+    
+    <hr />
+    {% endif%}
+
+    <div class="articles my-3">
+	<h1>Articles</h1>
+	<div class="list-group">
+	    {% for post in site.posts %}
+	    <a href="{{ post.url | prepend: site.baseurl }}" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">{{ post.title }}</h5>
+		{% if post.description %}
+		<p class="list-group-item-text">
+		    {{ post.description }}
+		</p>
+		{% endif %}
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    {{ post.categories | shift  | array_to_sentence_string }}
+		</span>
+	    </a>
+	    {% endfor %}
+	</div> <!-- list group -->
+    </div> <!-- articles/posts -->
+    
+    <hr />
+
+    <div class="hierarchy my-3">
+	<h1>Full categories hierarchy</h1>
+	<div class="list-group">
+	    {% assign pages = site.pages | sort:'dir' %}
+	    {% for page in pages %}
+	    {% if page.title and page.dir != '/' and page.dir !='/about/' %}
+	    <a class="list-group-item" href="{{ page.url | prepend: site.baseurl }}">
+		<span class="label label-info label-pill pull-xs-right">
+		    {{page.dir | remove_first: "/docs/"}}
+		</span>
+		{{ page.title }}
+	    </a>
+	    {% endif%}
+	    {% endfor %}
+	</div>
+    </div>
 </div>
