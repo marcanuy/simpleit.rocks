@@ -6,9 +6,194 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 29 Dec 2016 22:35:35 +0000</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 22:35:35 +0000</lastBuildDate>
+    <pubDate>Sun, 01 Jan 2017 15:38:29 +0000</pubDate>
+    <lastBuildDate>Sun, 01 Jan 2017 15:38:29 +0000</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>Flask Overview</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Flask is a microframework for Python based on Werkzeug, Jinja 2 and
+good intentions. And before you ask: It’s BSD licensed!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Flask is one of the most popular web frameworks in Github. This is an
+overview of its main concepts to get started quickly.&lt;/p&gt;
+
+&lt;h2 id=&quot;flask-script&quot;&gt;Flask script&lt;/h2&gt;
+
+&lt;p&gt;Flask, like most modern frameworks, has its own command &lt;code class=&quot;highlighter-rouge&quot;&gt;flask&lt;/code&gt; to
+perform tasks.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;flask --help&lt;/kbd&gt;
+Usage: flask [OPTIONS] COMMAND [ARGS]...
+
+  This shell command acts as general utility script for Flask applications.
+
+  It loads the application configured (through the FLASK_APP environment
+  variable) and then provides commands either provided by the application or
+  Flask itself.
+
+  The most useful commands are the &quot;run&quot; and &quot;shell&quot; command.
+
+  Example usage:
+
+    $ export FLASK_APP=hello.py
+    $ export FLASK_DEBUG=1
+    $ flask run
+
+Options:
+  --version  Show the flask version
+  --help     Show this message and exit.
+
+Commands:
+  run    Runs a development server.
+  shell  Runs a shell in the app context.
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;development-server&quot;&gt;Development server&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;flask&lt;/code&gt; command depends on the &lt;code class=&quot;highlighter-rouge&quot;&gt;FLASK_APP&lt;/code&gt; environment
+variable to know which app to work on, we start specifying this with
+the &lt;code class=&quot;highlighter-rouge&quot;&gt;export&lt;/code&gt; command, then if we run the flask development server it
+knows which file to refer to:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;export FLASK_APP=hello.py&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;flask run&lt;/kbd&gt;
+ * Running on http://127.0.0.1:5000/
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h3 id=&quot;reload-server-when-code-changes&quot;&gt;Reload server when code changes&lt;/h3&gt;
+
+&lt;p&gt;There is a special debug mode handled by the &lt;code class=&quot;highlighter-rouge&quot;&gt;FLASK_DEBUG&lt;/code&gt; environment
+variable that allows to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;reload the server automatically each time the code changes&lt;/li&gt;
+  &lt;li&gt;output debugging information on errors&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;export FLASK_DEBUG=1&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;flask run&lt;/kbd&gt;
+ * Forcing debug mode on
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 292-824-230
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;routing&quot;&gt;Routing&lt;/h2&gt;
+
+&lt;p&gt;Routing is done binding functions with URLs, using the &lt;a href=&quot;http://flask.pocoo.org/docs/0.12/api/#flask.Flask.route&quot;&gt;route()&lt;/a&gt;
+decorator.&lt;/p&gt;
+
+&lt;p&gt;For example, the URL &lt;code class=&quot;highlighter-rouge&quot;&gt;/hello-world&lt;/code&gt; would run the &lt;code class=&quot;highlighter-rouge&quot;&gt;hello()&lt;/code&gt; function:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@app.route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/hello-world'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Hello World'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;dynamic-urls&quot;&gt;Dynamic URLs&lt;/h3&gt;
+
+&lt;p&gt;Flask URLs can also handle variables specifying them like
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;variable_name&amp;gt;&lt;/code&gt; or more precisely using &lt;em&gt;converters&lt;/em&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;converter:variable_name&amp;gt;&lt;/code&gt; like &lt;code class=&quot;highlighter-rouge&quot;&gt;'/post/&amp;lt;int:post_id&amp;gt;'&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@app.route('/user/&amp;lt;username&amp;gt;')
+def show_user_profile(username):
+    # show the user profile for that user
+    return 'User %s' % username
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;reverse-urls&quot;&gt;Reverse URLs&lt;/h3&gt;
+
+&lt;p&gt;Generating URLs knowing the function name is also possible
+with &lt;a href=&quot;http://flask.pocoo.org/docs/0.12/api/#flask.url_for&quot;&gt;url_for&lt;/a&gt;
+like:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;python&lt;/kbd&gt;
+Python 3.5.2+ (default, Sep 22 2016, 12:18:14) 
+[GCC 6.2.0 20160927] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&lt;span class=&quot;shell-prompt&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt; &lt;kbd&gt;from flask import Flask, url_for&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt; &lt;kbd&gt;app = Flask(__name__)&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt; &lt;kbd&gt;@app.route('/login')&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;... &lt;/span&gt; &lt;kbd&gt;def login(): pass&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;... &lt;/span&gt; &lt;kbd&gt;&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt; &lt;kbd&gt;with app.test_request_context():&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;... &lt;/span&gt; &lt;kbd&gt;    print(url_for('login', next='/'))&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;... &lt;/span&gt; &lt;kbd&gt;&lt;/kbd&gt;
+/login?next=%2F
+&lt;span class=&quot;shell-prompt&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p class=&quot;alert alert-info&quot;&gt;&lt;a href=&quot;http://flask.pocoo.org/docs/0.12/api/#flask.Flask.test_request_context&quot;&gt;test_request_context()&lt;/a&gt; method
+tells Flask to behave like handling a request, even though
+we are using a Python shell.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;flask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;url_for&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@app.route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/login'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;login&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_request_context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;url_for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'login'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;basic-project-structure&quot;&gt;Basic project structure&lt;/h2&gt;
+
+&lt;p&gt;Flask applications are recommended to be installed and run as Python
+packages.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/myproject
+    /myproject
+		myproject.py ## application module
+		schema.sql   ## SQLite3 database
+        /static      ## static files like js and css
+        /templates   ## jinja2 templates
+	/tests
+		myproject_test.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Official docs &lt;a href=&quot;http://flask.pocoo.org/&quot;&gt;http://flask.pocoo.org/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Routing &lt;a href=&quot;http://flask.pocoo.org/docs/0.12/api/#flask.Flask.route&quot;&gt;http://flask.pocoo.org/docs/0.12/api/#flask.Flask.route&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Tutorial folder &lt;a href=&quot;http://flask.pocoo.org/docs/0.12/tutorial/folders/#tutorial-folders&quot;&gt;http://flask.pocoo.org/docs/0.12/tutorial/folders/#tutorial-folders&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sat, 31 Dec 2016 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/flask-overview-notes/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/flask-overview-notes/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>python</category>
+        
+        <category>flask</category>
+        
+      </item>
     
       <item>
         <title>Colors Palettes For Web Design</title>
@@ -1402,82 +1587,6 @@ the current status of the building, adding a similar code:&lt;/p&gt;
         <category>jekyll</category>
         
         <category>tutorials</category>
-        
-      </item>
-    
-      <item>
-        <title>How To Check Local Websites For Broken Links</title>
-        <description>
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;After generating a website statically, it is a good practice to check
-that there are no broken links or images, there are some popular
-command line tools for this, in this case I will be
-using &lt;a href=&quot;https://github.com/gjtorikian/html-proofer&quot;&gt;htmlproofer&lt;/a&gt;.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://github.com/gjtorikian/html-proofer&quot;&gt;
-  &lt;p&gt;HTMLProofer is a set of tests to validate your HTML output. These
-tests check if your image references are legitimate, if they have
-alt tags, if your internal links are working, and so on. It’s
-intended to be an all-in-one checker for your output.&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://github.com/gjtorikian/html-proofer&quot;&gt;HTMLProofer&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;install&quot;&gt;Install&lt;/h2&gt;
-
-&lt;p&gt;It can be installed directly with &lt;em&gt;&lt;a href=&quot;https://rubygems.org&quot;&gt;gem&lt;/a&gt;&lt;/em&gt;:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;gem install html-proofer&lt;/kbd&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;Or using &lt;em&gt;&lt;a href=&quot;http://bundler.io&quot;&gt;bundle&lt;/a&gt;&lt;/em&gt;:&lt;/p&gt;
-
-&lt;p&gt;Adding &lt;code class=&quot;highlighter-rouge&quot;&gt;gem 'html-proofer'&lt;/code&gt; to the file &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; and then:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;gem install html-proofer&lt;/kbd&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;executing&quot;&gt;Executing&lt;/h2&gt;
-
-&lt;p&gt;To test for broken links, just specify the directory, for example
-using the common Jekyll output directory &lt;code class=&quot;highlighter-rouge&quot;&gt;_site&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;htmlproofer ./_site&lt;/kbd&gt;
-0
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/gjtorikian/html-proofer&quot;&gt;https://github.com/gjtorikian/html-proofer&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://validator.w3.org/checklink&quot;&gt;https://validator.w3.org/checklink&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://jekyllrb.com/docs/continuous-integration/&quot;&gt;https://jekyllrb.com/docs/continuous-integration/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Tue, 01 Nov 2016 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/how-to-check-local-websites-for-broken-links/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/how-to-check-local-websites-for-broken-links/</guid>
-        
-        <category>html</category>
-        
-        <category>html5</category>
-        
-        <category>validator</category>
-        
-        <category>web-development</category>
-        
-        
-        <category>docs</category>
-        
-        <category>web</category>
-        
-        <category>html</category>
         
       </item>
     

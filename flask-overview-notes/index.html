@@ -29,15 +29,15 @@
 
   
   <!-- Begin Jekyll SEO tag v2.0.0 -->
-<title>Python Virtual Environments - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Python Virtual Environments" />
-<meta name="description" content="Handle dependencies and app versions for each project with python virtual environments." />
-<meta property="og:description" content="Handle dependencies and app versions for each project with python virtual environments." />
-<link rel="canonical" href="http://simpleit.rocks/python-virtual-environments-using-virtualenv/" />
-<meta property="og:url" content="http://simpleit.rocks/python-virtual-environments-using-virtualenv/" />
+<title>Flask Overview - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Flask Overview" />
+<meta name="description" content="Flask Python Web framework overview" />
+<meta property="og:description" content="Flask Python Web framework overview" />
+<link rel="canonical" href="http://simpleit.rocks/flask-overview-notes/" />
+<meta property="og:url" content="http://simpleit.rocks/flask-overview-notes/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-06-10T00:00:00+00:00" />
+<meta property="article:published_time" content="2016-12-31T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@simpleitrocks" />
 <meta name="twitter:creator" content="@marcanuy" />
@@ -46,10 +46,10 @@
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "Python Virtual Environments",
-    "datePublished": "2016-06-10T00:00:00+00:00",
-    "description": "Handle dependencies and app versions for each project with python virtual environments.",
-    "url": "http://simpleit.rocks/python-virtual-environments-using-virtualenv/"
+    "headline": "Flask Overview",
+    "datePublished": "2016-12-31T00:00:00+00:00",
+    "description": "Flask Python Web framework overview",
+    "url": "http://simpleit.rocks/flask-overview-notes/"
   }
 </script>
 <!-- End Jekyll SEO tag -->
@@ -107,11 +107,11 @@
     
     
     
-    <h1 class="title">Python Virtual Environments </h1>
+    <h1 class="title">Flask Overview </h1>
     
     
     <p class="lead">
-      <small class="text-muted subtitle">Project isolation</small>
+      <small class="text-muted subtitle">Framework basic summary</small>
     </p>
     
   </div>
@@ -127,7 +127,7 @@
   <div class="post-meta">
     
     <i class="fa fa-calendar" aria-hidden="true"></i>
-    <time datetime="2016-06-10T00:00:00+00:00" itemprop="datePublished">Jun 10, 2016</time>
+    <time datetime="2016-12-31T00:00:00+00:00" itemprop="datePublished">Dec 31, 2016</time>
     
   </div>
   <div>
@@ -222,37 +222,13 @@
     class="breadcrumb-item">
   
   <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/python/language">
+     itemprop="item" href="/docs/python/flask">
     
 
-    language
+    flask
   </a>
   
   <meta itemprop="position" content="4" />
-</li>
-
-    
-
-    
-    
-    
-    
-    
-    
-
-
-<li itemprop="itemListElement" itemscope
-    itemtype="http://schema.org/ListItem"
-    class="breadcrumb-item">
-  
-  <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/python/language/environment">
-    
-
-    environment
-  </a>
-  
-  <meta itemprop="position" content="5" />
 </li>
 
     
@@ -273,10 +249,10 @@
        itemprop="item">
     
 
-    <span itemprop="name">Python Virtual Environments</span>
+    <span itemprop="name">Flask Overview</span>
   </span>
   
-  <meta itemprop="position" content="6" />
+  <meta itemprop="position" content="5" />
 </li>
 
     
@@ -316,13 +292,14 @@
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#create-a-virtual-environment">Create a virtual environment</a></li>
-<li class="toc-entry toc-h2"><a href="#use-the-virtual-environment">Use the virtual environment</a></li>
-<li class="toc-entry toc-h2"><a href="#stop-using-the-virtual-environment">Stop using the virtual environment</a></li>
-<li class="toc-entry toc-h2"><a href="#virtualenvwrapper">virtualenvwrapper</a></li>
-<li class="toc-entry toc-h3"><a href="#virtualenvwrapper-workflow">virtualenvwrapper workflow</a></li>
-<li class="toc-entry toc-h2"><a href="#reference">Reference</a></li>
-<li class="toc-entry toc-h2"><a href="#pending">Pending</a></li>
+<li class="toc-entry toc-h2"><a href="#flask-script">Flask script</a></li>
+<li class="toc-entry toc-h2"><a href="#development-server">Development server</a></li>
+<li class="toc-entry toc-h3"><a href="#reload-server-when-code-changes">Reload server when code changes</a></li>
+<li class="toc-entry toc-h2"><a href="#routing">Routing</a></li>
+<li class="toc-entry toc-h3"><a href="#dynamic-urls">Dynamic URLs</a></li>
+<li class="toc-entry toc-h3"><a href="#reverse-urls">Reverse URLs</a></li>
+<li class="toc-entry toc-h2"><a href="#basic-project-structure">Basic project structure</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
       </div>
       <div>
@@ -333,9 +310,9 @@
       <div>
   <a class="twitter-share-button"
      href="https://twitter.com/share"
-     data-url="http://simpleit.rocks/python-virtual-environments-using-virtualenv/"
+     data-url="http://simpleit.rocks/flask-overview-notes/"
      data-via=""
-     data-text="Handle dependencies and app versions for each project with python virtual environments."
+     data-text="Flask Python Web framework overview"
      data-related="marcanuy,{"username"=>"simpleitrocks"}"
      data-count="vertical">
     Tweet
@@ -367,7 +344,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="http://simpleit.rocks/python-virtual-environments-using-virtualenv/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="http://simpleit.rocks/flask-overview-notes/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -384,7 +361,7 @@
 
     
 	<p class="lead">
-	  Handle dependencies and app versions for each project with python virtual environments.
+	  Flask Python Web framework overview
 	</p>
     
 
@@ -408,151 +385,172 @@
 
     <h2 id="overview">Overview</h2>
 
-<p>The tipical workflow to isolate a python project consist of the following steps:</p>
-
-<ol>
-  <li>Create a project dir</li>
-  <li>Create a virtual environment for the project outside its directory 
-structure
-    <ul>
-      <li><em>virtualenvwrapper</em> uses the variable WORKON_HOME to specify the 
- location of new virtual environments. The default value is
- <strong>$HOME/.virtualenvs</strong></li>
-    </ul>
-  </li>
-</ol>
-
-<p>Then each time you work on the project you have two alternatives:</p>
-
-<ul>
-  <li><strong>Manually activate the virtual environment</strong> for the project, so it
-handles all the commands instead of executing the current Operating 
-System ones. <code class="highlighter-rouge">source ~/.virtualenvs/my_project/bin/activate</code></li>
-  <li><strong>Configure a virtualenvwrapper</strong> and then just select your environment
-with a command like: <code class="highlighter-rouge">workon my_project</code></li>
-</ul>
-
-<h2 id="create-a-virtual-environment">Create a virtual environment</h2>
-
-<p>Create the virtual environment (preferable in a directory outside 
-the project)</p>
-
-<p>The preferred python version to use in the new environment can also 
-be specified.</p>
-
-<pre class="shell">
-<samp>
-<span class="shell-comment">#Create the project</span>
-<span class="shell-prompt">$</span> <kbd>mkdir my_project;</kbd>
-<span class="shell-comment">#Create the virtual environment</span>
-<span class="shell-prompt">$</span> <kbd>virtualenv -p python3.5 ~/.virtualenvs/my_project</kbd>
-</samp>
-</pre>
-
-<h2 id="use-the-virtual-environment">Use the virtual environment</h2>
-
-<p>To use the new environment, it should be <em>activated</em>.
-Any command executed after activating it, will use the packages
-installed in this virtual environment.</p>
-
-<p>Console prompt will change (in most cases) to reflect this situation
-prepending the virtual environment name in terminal prompt.</p>
-
-<pre class="shell">
-<samp>
-<span class="shell-prompt">$</span> <kbd>source ~/.virtualenvs/my_project/bin/activate</kbd>
-<span class="shell-prompt">(virtualenv)$</span>
-</samp>
-</pre>
-
-<h2 id="stop-using-the-virtual-environment">Stop using the virtual environment</h2>
-
-<pre class="shell">
-<samp>
-<span class="shell-prompt">(virtualenv)$</span> <kbd>deactivate</kbd>
-<span class="shell-prompt">$</span>
-</samp>
-</pre>
-
-<h2 id="virtualenvwrapper">virtualenvwrapper</h2>
-
-<p>Virtualenvwrapper makes it easier to perform <em>virtualenv</em> tasks. It is build upon the following concepts:</p>
-
-<ul>
-  <li>Projects</li>
-  <li>The source code that needs a special virtual environment specified in a <em>requirements</em> file.</li>
-  <li>The base directory for projects is specified in <strong>PROJECT_HOME</strong>.</li>
-  <li>A Virtualenv directory
-    <ul>
-      <li>All the <em>virtualenvs</em> for each project will be contained here in subdirectories.</li>
-      <li>Specified in the variable <strong>WORKON_HOME</strong>, by default will be: <em>$HOME/.virtualenvs</em></li>
-    </ul>
-  </li>
-</ul>
-
-<p><code class="highlighter-rouge">mkvirtualenv</code> provides the same options as <code class="highlighter-rouge">virtualenv</code> plus a few options. It creates by default the <em>virtualenv</em> environment in <code class="highlighter-rouge">~/.virtualenvs/&lt;env_name&gt;</code> and then activates it.</p>
-
-<p><samp>
-Usage: mkvirtualenv [-a project_path] [-i package] [-r requirements_file] [virtualenv options] env_name
-</samp></p>
-
-<h3 id="virtualenvwrapper-workflow">virtualenvwrapper workflow</h3>
-
-<p>Common workflow to work on a new <em>virtual environment</em> using
-<em>virtualenvwrapper</em>:</p>
-
-<ul>
-  <li>Create the virtual environment (by default in <strong>$WORKON_HOME</strong>)</li>
-</ul>
-
-<blockquote cite="http://virtualenvwrapper.readthedocs.io/en/latest/install.html#variable-workon-home">
-  <p>The variable WORKON_HOME tells virtualenvwrapper where to place your
-virtual environments. The default is $HOME/.virtualenvs. If the
-directory does not exist when virtualenvwrapper is loaded, it will
-be created automatically.</p>
+<blockquote>
+  <p>Flask is a microframework for Python based on Werkzeug, Jinja 2 and
+good intentions. And before you ask: It’s BSD licensed!</p>
 </blockquote>
 
+<p>Flask is one of the most popular web frameworks in Github. This is an
+overview of its main concepts to get started quickly.</p>
+
+<h2 id="flask-script">Flask script</h2>
+
+<p>Flask, like most modern frameworks, has its own command <code class="highlighter-rouge">flask</code> to
+perform tasks.</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>flask --help</kbd>
+Usage: flask [OPTIONS] COMMAND [ARGS]...
+
+  This shell command acts as general utility script for Flask applications.
+
+  It loads the application configured (through the FLASK_APP environment
+  variable) and then provides commands either provided by the application or
+  Flask itself.
+
+  The most useful commands are the "run" and "shell" command.
+
+  Example usage:
+
+    $ export FLASK_APP=hello.py
+    $ export FLASK_DEBUG=1
+    $ flask run
+
+Options:
+  --version  Show the flask version
+  --help     Show this message and exit.
+
+Commands:
+  run    Runs a development server.
+  shell  Runs a shell in the app context.
+</samp>
+</pre>
+
+<h2 id="development-server">Development server</h2>
+
+<p>The <code class="highlighter-rouge">flask</code> command depends on the <code class="highlighter-rouge">FLASK_APP</code> environment
+variable to know which app to work on, we start specifying this with
+the <code class="highlighter-rouge">export</code> command, then if we run the flask development server it
+knows which file to refer to:</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>export FLASK_APP=hello.py</kbd>
+<span class="shell-prompt">$</span> <kbd>flask run</kbd>
+ * Running on http://127.0.0.1:5000/
+</samp>
+</pre>
+
+<h3 id="reload-server-when-code-changes">Reload server when code changes</h3>
+
+<p>There is a special debug mode handled by the <code class="highlighter-rouge">FLASK_DEBUG</code> environment
+variable that allows to:</p>
+
 <ul>
-  <li>list the available <em>environments</em> and activate the project to work on
-with <a href="http://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html#workon">workon</a></li>
-  <li>Go to the project directory <a href="http://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html#cdvirtualenv"><code class="highlighter-rouge">cdvirtualenv</code></a></li>
-  <li><a href="http://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html#deactivate">deactivate</a> the environment when finished working</li>
+  <li>reload the server automatically each time the code changes</li>
+  <li>output debugging information on errors</li>
 </ul>
 
 <pre class="shell">
 <samp>
-<span class="shell-prompt">$</span> <kbd>mkvirtualenv myenvname</kbd>
-New python executable in /home/marcanuy/.virtualenvs/myenvname/bin/python
-Installing setuptools, pip, wheel...done.
-<span class="shell-comment text-muted">#the previous created env will appear listed, along the other envs</span>
-<span class="shell-prompt">(myenvname)$</span> <kbd>workon</kbd>
-myenvname
-<span class="shell-comment">#changes to the associated project directory</span>
-<span class="shell-prompt">(myenvname)$</span> <kbd>cdvirtualenv myenvname</kbd>
-<span class="shell-prompt">(myenvname)/opt/development/myproject$</span> <kbd>cdsitepackages</kbd>
-<span class="shell-prompt">(myenvname)~/.virtualenvs/myenvname/lib/python3.5/site-packages$</span> <kbd>cdvirtualenv</kbd>
-<span class="shell-comment">#finish work</span>
-<span class="shell-prompt">(myenvname)/opt/development/myproject$</span> <kbd>deactivate</kbd>
-<span class="shell-prompt">/opt/development/myproject$</span> <span class="cursor">_</span>
+<span class="shell-prompt">$</span> <kbd>export FLASK_DEBUG=1</kbd>
+<span class="shell-prompt">$</span> <kbd>flask run</kbd>
+ * Forcing debug mode on
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 292-824-230
 </samp>
 </pre>
 
-<p>To create a new environment having a requirements file and a specific python version: <code class="highlighter-rouge">mkvirtualenv -r requirements/local.txt -p /usr/bin/python3.5 myprojectname</code></p>
+<h2 id="routing">Routing</h2>
 
-<h2 id="reference">Reference</h2>
+<p>Routing is done binding functions with URLs, using the <a href="http://flask.pocoo.org/docs/0.12/api/#flask.Flask.route">route()</a>
+decorator.</p>
+
+<p>For example, the URL <code class="highlighter-rouge">/hello-world</code> would run the <code class="highlighter-rouge">hello()</code> function:</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="nd">@app.route</span><span class="p">(</span><span class="s">'/hello-world'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s">'Hello World'</span>
+</code></pre>
+</div>
+
+<h3 id="dynamic-urls">Dynamic URLs</h3>
+
+<p>Flask URLs can also handle variables specifying them like
+<code class="highlighter-rouge">&lt;variable_name&gt;</code> or more precisely using <em>converters</em>
+<code class="highlighter-rouge">&lt;converter:variable_name&gt;</code> like <code class="highlighter-rouge">'/post/&lt;int:post_id&gt;'</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>@app.route('/user/&lt;username&gt;')
+def show_user_profile(username):
+    # show the user profile for that user
+    return 'User %s' % username
+</code></pre>
+</div>
+
+<h3 id="reverse-urls">Reverse URLs</h3>
+
+<p>Generating URLs knowing the function name is also possible
+with <a href="http://flask.pocoo.org/docs/0.12/api/#flask.url_for">url_for</a>
+like:</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>python</kbd>
+Python 3.5.2+ (default, Sep 22 2016, 12:18:14) 
+[GCC 6.2.0 20160927] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+<span class="shell-prompt">&gt;&gt;&gt; </span> <kbd>from flask import Flask, url_for</kbd>
+<span class="shell-prompt">&gt;&gt;&gt; </span> <kbd>app = Flask(__name__)</kbd>
+<span class="shell-prompt">&gt;&gt;&gt; </span> <kbd>@app.route('/login')</kbd>
+<span class="shell-prompt">... </span> <kbd>def login(): pass</kbd>
+<span class="shell-prompt">... </span> <kbd></kbd>
+<span class="shell-prompt">&gt;&gt;&gt; </span> <kbd>with app.test_request_context():</kbd>
+<span class="shell-prompt">... </span> <kbd>    print(url_for('login', next='/'))</kbd>
+<span class="shell-prompt">... </span> <kbd></kbd>
+/login?next=%2F
+<span class="shell-prompt">&gt;&gt;&gt; </span>
+</samp>
+</pre>
+
+<p class="alert alert-info"><a href="http://flask.pocoo.org/docs/0.12/api/#flask.Flask.test_request_context">test_request_context()</a> method
+tells Flask to behave like handling a request, even though
+we are using a Python shell.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">url_for</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nd">@app.route</span><span class="p">(</span><span class="s">'/login'</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">def</span> <span class="nf">login</span><span class="p">():</span> <span class="k">pass</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">test_request_context</span><span class="p">():</span>
+<span class="o">...</span>  <span class="k">print</span> <span class="n">url_for</span><span class="p">(</span><span class="s">'login'</span><span class="p">,</span> <span class="nb">next</span><span class="o">=</span><span class="s">'/'</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h2 id="basic-project-structure">Basic project structure</h2>
+
+<p>Flask applications are recommended to be installed and run as Python
+packages.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/myproject
+    /myproject
+		myproject.py ## application module
+		schema.sql   ## SQLite3 database
+        /static      ## static files like js and css
+        /templates   ## jinja2 templates
+	/tests
+		myproject_test.py
+</code></pre>
+</div>
+
+<h2 id="references">References</h2>
 
 <ul>
-  <li>virtualenv <a href="https://virtualenv.pypa.io">https://virtualenv.pypa.io</a></li>
-  <li>virtualenvwrapper <a href="https://virtualenvwrapper.readthedocs.io">https://virtualenvwrapper.readthedocs.io</a></li>
-</ul>
-
-<h2 id="pending">Pending</h2>
-
-<ul>
-  <li><a href="https://docs.python.org/3/library/venv.html">https://docs.python.org/3/library/venv.html</a></li>
-  <li><a href="https://docs.python.org/3/using/scripts.html#pyvenv-creating-virtual-environments">https://docs.python.org/3/using/scripts.html#pyvenv-creating-virtual-environments</a></li>
-  <li><a href="https://realpython.com/blog/python/python-virtual-environments-a-primer/">https://realpython.com/blog/python/python-virtual-environments-a-primer/</a></li>
-  <li>PEP 405 – Python Virtual Environments <a href="https://www.python.org/dev/peps/pep-0405">https://www.python.org/dev/peps/pep-0405</a></li>
+  <li>Official docs <a href="http://flask.pocoo.org/">http://flask.pocoo.org/</a></li>
+  <li>Routing <a href="http://flask.pocoo.org/docs/0.12/api/#flask.Flask.route">http://flask.pocoo.org/docs/0.12/api/#flask.Flask.route</a></li>
+  <li>Tutorial folder <a href="http://flask.pocoo.org/docs/0.12/tutorial/folders/#tutorial-folders">http://flask.pocoo.org/docs/0.12/tutorial/folders/#tutorial-folders</a></li>
 </ul>
 
 
@@ -607,7 +605,7 @@ myenvname
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/python-virtual-environments-using-virtualenv/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/flask-overview-notes/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -640,122 +638,6 @@ myenvname
 	
 
 
-
-<h2>Articles</h2>
-<p>This article is being referenced in:</p>
-<div class="list-group">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    <a href="/custom-django-configurations-for-different-servers/" class="list-group-item list-group-item-action">
-    Django Configuration and environment isolation
-  </a>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</div>
 
 
       </div>
