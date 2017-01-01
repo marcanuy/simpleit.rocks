@@ -1,1302 +1,1139 @@
-<!DOCTYPE html>
-<html>
-  
-  <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-
-  <link rel="alternate" type="application/rss+xml" title="Simple IT 🤘 Rocks" href="http://simpleit.rocks/feed.xml">
-
-  <!-- jQuery -->
-  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-
-  <!-- Fontawesome -->
-  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
-
-  <!-- Mermaid -->
-  <link rel="stylesheet" href="/bower_components/mermaid/dist/mermaid.forest.css" type="text/css" media="screen" />
-
-  <!-- Bootstrap -->
-  <!--link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css"-->
-  <link rel="stylesheet" type="text/css" href="/css/bootstrap-flex.css">
-  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-  <!-- Custom css -->
-  <link rel="stylesheet" href="/css/main.css">
-
-  
-  <!-- Begin Jekyll SEO tag v2.0.0 -->
-<title>Simple IT 🤘 Rocks - Clutter-free software concepts. Written on the go.</title>
-<meta property="og:title" content="Simple IT 🤘 Rocks" />
-<meta name="description" content="Software development and server administration for human beings .  Practical concepts, theory and tutorials." />
-<meta property="og:description" content="Software development and server administration for human beings .  Practical concepts, theory and tutorials." />
-<link rel="canonical" href="http://simpleit.rocks/" />
-<meta property="og:url" content="http://simpleit.rocks/" />
-<meta property="og:site_name" content="Simple IT 🤘 Rocks" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:site" content="@simpleitrocks" />
-<meta name="twitter:creator" content="@marcanuy" />
-<meta property="fb:app_id" content="1822851531277021" />
-<script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "WebSite",
-    "name": "Simple IT 🤘 Rocks",
-    "headline": "Simple IT 🤘 Rocks",
-    "description": "Software development and server administration for human beings .  Practical concepts, theory and tutorials.",
-    "url": "http://simpleit.rocks/"
-  }
-</script>
-<!-- End Jekyll SEO tag -->
-
-  
-
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-1912030305535489",
-    enable_page_level_ads: true
-  });
-</script>
-
-
-
-</head>
-
-
-  <body>
-
+<hr>
+<div class="text-xs-center my-3">
     
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-28572639-2', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-
-
-    <header class="site-header">
-
-  <!-- mermaid -->
-  <script src="/bower_components/mermaid/dist/mermaid.min.js"></script>
-  <script>mermaid.initialize({startOnLoad:true});</script>
-  <!-- endmermaid -->
-
-  <div class="text-xs-center mb-2">
-
-    <a class="display-1" href="/" style="text-decoration: none">Simple IT 🤘 Rocks</a>
-
-  </div>
-
-  
-
-</header>
-
-
-    <div class="container-fluid">
-        <hr>
-  <div class="text-xs-center my-3">
-    <strong>Software development</strong> and <strong>server administration</strong> for human beings <i class="fa fa-male" aria-hidden="true"></i>. <br> Practical concepts, theory and tutorials.
-
-  </div>
-  <hr>
-  
-  <div class="home">
-  
-  <div class="">
-    <h1>Categories</h1>
-
-    
-
-    
-
-    <nav class="nav nav-inline">
-      
-      
-
-      <a class="nav-link" href="/docs/bash/">
-	Bash
-      </a>
-      
-      
-      
-
-      <a class="nav-link" href="/docs/git/">
-	Git
-      </a>
-      
-      
-      
-
-      <a class="nav-link" href="/docs/linux/">
-	Linux
-      </a>
-      
-      
-      
-
-      <a class="nav-link" href="/docs/lisp/">
-	Lisp
-      </a>
-      
-      
-      
-
-      <a class="nav-link" href="/docs/markup/">
-	Markup
-      </a>
-      
-      
-      
-
-      <a class="nav-link" href="/docs/mobile/">
-	Mobile
-      </a>
-      
-      
-      
-
-      <a class="nav-link" href="/docs/protocols/">
-	Protocols
-      </a>
-      
-      
-      
-
-      <a class="nav-link" href="/docs/python/">
-	Python
-      </a>
-      
-      
-      
-
-      <a class="nav-link" href="/docs/ruby/">
-	Ruby
-      </a>
-      
-      
-      
-
-      <a class="nav-link" href="/docs/sql/">
-	Sql
-      </a>
-      
-      
-      
-
-      <a class="nav-link" href="/docs/theory/">
-	Theory
-      </a>
-      
-      
-      
-
-      <a class="nav-link" href="/docs/web/">
-	Web
-      </a>
-      
-      
-      
-
-      <a class="nav-link" href="/docs//">
-	
-      </a>
-      
-      
-      
-
-      <a class="nav-link" href="/docs//">
-	
-      </a>
-      
-      
-    </nav>
-  </div> <!--containter-->
-  
-  <hr />
-
-  
-
-  <div>
-      <h1>Articles</h1>
-      <div class="list-group">
-	  
-	  <a href="/flask-overview-notes/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Flask Overview</h5>
-	      
-	      <p class="list-group-item-text">
-		  Flask Python Web framework overview
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  python and flask
-	      </span>
-	  </a>
-	  
-	  <a href="/colors-palettes-for-web-design/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Colors Palettes For Web Design</h5>
-	      
-	      <p class="list-group-item-text">
-		  Set of webs with color palettes.
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  web
-	      </span>
-	  </a>
-	  
-	  <a href="/shell-redirect-output-and-errors-to-the-null-device-in-bash/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Shell Redirect Output And Errors To The Null Device In Bash</h5>
-	      
-	      <p class="list-group-item-text">
-		  Understanding input and output redirection in bash shell scripts to avoid printing output and errors.
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  bash
-	      </span>
-	  </a>
-	  
-	  <a href="/prevent-running-of-duplicate-cron-jobs/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Prevent Running Of Duplicate Cron Jobs</h5>
-	      
-	      <p class="list-group-item-text">
-		  How to run no more than one unique instance of a script or command.
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  bash
-	      </span>
-	  </a>
-	  
-	  <a href="/delete-all-backup-files-recursively-in-bash/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Delete All Backup Files Recursively In Bash</h5>
-	      
-	      <p class="list-group-item-text">
-		  Remove all backup files generated by Vim or Emacs from Linux console using the Linux find command correctly.
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  linux
-	      </span>
-	  </a>
-	  
-	  <a href="/handling-mysql-credentials-from-linux-command-line-the-right-way/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Handling Mysql Credentials From Linux Command Line The Right Way</h5>
-	      
-	      <p class="list-group-item-text">
-		  Guide to use configuration files to handle MySQL user and password information so they are never typed in Linux console.
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  sql and mysql
-	      </span>
-	  </a>
-	  
-	  <a href="/automatically-tweet-new-blog-posts-based-in-rss/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Bash script to automatically tweet new blog posts based in a website rss feed</h5>
-	      
-	      <p class="list-group-item-text">
-		  How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll.
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  web
-	      </span>
-	  </a>
-	  
-	  <a href="/contributing-to-a-github-repository-step-by-step/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Contributing To A Github Repository Step By Step</h5>
-	      
-	      <p class="list-group-item-text">
-		  A detailed guide to contribute to a project in Github
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  git
-	      </span>
-	  </a>
-	  
-	  <a href="/lightweight-solution-to-start-mysql-daemon-if-not-running/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Bash Script to Find Out If MySQL Is Running Or Not</h5>
-	      
-	      <p class="list-group-item-text">
-		  A simple shell script to check if mysql server is running and start it if it's not.
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  bash
-	      </span>
-	  </a>
-	  
-	  <a href="/automated-deployment-of-jekyll-websites-to-github-pages-with-a-git-push-to-github/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Automated Deployment Of Jekyll Websites To Github Pages With A Git Push To Github</h5>
-	      
-	      <p class="list-group-item-text">
-		  
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby, jekyll, and tutorials
-	      </span>
-	  </a>
-	  
-	  <a href="/how-to-check-local-websites-for-broken-links/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">How To Check Local Websites For Broken Links</h5>
-	      
-	      <p class="list-group-item-text">
-		  Check a statically generated website for broken links and images.
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  web and html
-	      </span>
-	  </a>
-	  
-	  <a href="/adding-custom-snippets-to-yasnippet/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Adding Custom Snippets To Yasnippet</h5>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  lisp and emacs
-	      </span>
-	  </a>
-	  
-	  <a href="/how-to-dump-and-import-utf-8-mysql-databases-in-a-safe-way/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">How To Dump And Import Utf 8 Mysql Databases In A Safe Way</h5>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  sql and mysql
-	      </span>
-	  </a>
-	  
-	  <a href="/ionic-2-framework-overview/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Ionic 2 Framework Overview</h5>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  mobile and ionic
-	      </span>
-	  </a>
-	  
-	  <a href="/the-idiomatically-correct-way-to-make-an-instance-of-a-many-to-one-relationship-model/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">The Idiomatically Correct Way To Make An Instance Of A Many To One Relationship Model</h5>
-	      
-	      <p class="list-group-item-text">
-		  Make many-to-one idiomatically correct instances 
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby and rails
-	      </span>
-	  </a>
-	  
-	  <a href="/authorization-versus-authentication-in-web-apps/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Authorization Versus Authentication In Web Apps</h5>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  theory and web-development
-	      </span>
-	  </a>
-	  
-	  <a href="/simple-debugging-in-rails/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Simple Debugging In Rails</h5>
-	      
-	      <p class="list-group-item-text">
-		  Simple methods to debug when developing in rails.
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby and rails
-	      </span>
-	  </a>
-	  
-	  <a href="/what-is-the-difference-between-modules-and-classes-in-ruby/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">What Is The Difference Between Modules And Classes In Ruby</h5>
-	      
-	      <p class="list-group-item-text">
-		  Modules versus Classes in Ruby
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby and language
-	      </span>
-	  </a>
-	  
-	  <a href="/ruby-language-overview/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Ruby Language Overview</h5>
-	      
-	      <p class="list-group-item-text">
-		  Ruby programming language basic concepts.
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby and language
-	      </span>
-	  </a>
-	  
-	  <a href="/double-versus-single-quotes-in-ruby/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Double Versus Single Quotes In Ruby</h5>
-	      
-	      <p class="list-group-item-text">
-		  Difference between using double quotes and single quotes in ruby
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby and language
-	      </span>
-	  </a>
-	  
-	  <a href="/when-to-test-or-write-code-first-in-web-development/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">When To Test Or Write Code First In Web Development</h5>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  theory and testing
-	      </span>
-	  </a>
-	  
-	  <a href="/common-steps-to-start-a-rails-project/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Common Steps To Start A Rails Project</h5>
-	      
-	      <p class="list-group-item-text">
-		  Basic steps to start a rails app that will be hosted in a remote server and heroku, using sqlite3 in development and PostgreSQL in Heroku
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby and rails
-	      </span>
-	  </a>
-	  
-	  <a href="/ruby-on-rails-overview/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Ruby On Rails Overview</h5>
-	      
-	      <p class="list-group-item-text">
-		  A basic overview of Ruby on Rails main components and how they work together.
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby and rails
-	      </span>
-	  </a>
-	  
-	  <a href="/building-a-hello-world-app-in-ruby-on-rails-app/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Building A Hello World App In Ruby On Rails App</h5>
-	      
-	      <p class="list-group-item-text">
-		  Basic steps to start with Ruby on Rails.  
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby and rails
-	      </span>
-	  </a>
-	  
-	  <a href="/inserting-bootstrap-4-responsive-images-in-kramdown/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Inserting Bootstrap 4 Responsive Images In Kramdown</h5>
-	      
-	      <p class="list-group-item-text">
-		  How to insert images with the Bootstrap 4 responsive class in kramdown.
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  markup and kramdown
-	      </span>
-	  </a>
-	  
-	  <a href="/how-to-create-a-form-in-django/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">How To Create A Form In Django</h5>
-	      
-	      <p class="list-group-item-text">
-		  Django simplify and automates the process to create a form in simple steps.
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  python, django, and forms
-	      </span>
-	  </a>
-	  
-	  <a href="/when-to-use-http-post-or-get-methods-in-html-forms/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">When To Use Http Post Or Get Methods In Html Forms</h5>
-	      
-	      <p class="list-group-item-text">
-		  What's the difference between HTTP GET and POST methods? When to use methods GET and POST in HTML forms.
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  protocols and http
-	      </span>
-	  </a>
-	  
-	  <a href="/html-tags-for-software-development-blogs/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Appropriate HTML5 tags to show source code, commands and software related tasks on blogs</h5>
-	      
-	      <p class="list-group-item-text">
-		  Set of HTML5 tags recommended to show code and commands in a webpage.
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  web and html
-	      </span>
-	  </a>
-	  
-	  <a href="/django-project-directory-structure/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Django Project Directory Structure</h5>
-	      
-	      <p class="list-group-item-text">
-		  An approach on the most convenient way to organize directories for robust Django projects.
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  python and django
-	      </span>
-	  </a>
-	  
-	  <a href="/jekyll-variables-and-liquid-template-tags-cheatsheet/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Jekyll Variables and Liquid template tags cheatsheet</h5>
-	      
-	      <p class="list-group-item-text">
-		  Jekyll template tags summary.
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby, jekyll, and templates
-	      </span>
-	  </a>
-	  
-	  <a href="/jekyll-collections-versus-posts/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Jekyll Collections Versus Posts</h5>
-	      
-	      <p class="list-group-item-text">
-		  Jekyll Collections and Posts comparison.
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby, jekyll, and collections
-	      </span>
-	  </a>
-	  
-	  <a href="/creating-a-git-server-from-a-git-repo/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Creating a git server from a git repo</h5>
-	      
-	      <p class="list-group-item-text">
-		  Having a git server and a repo in another computer not present in the <br> server, create a centralized version of the repo in the server.
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  git and tutorials
-	      </span>
-	  </a>
-	  
-	  <a href="/git-basic-commands/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Remotes</h5>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  git and remotes
-	      </span>
-	  </a>
-	  
-	  <a href="/git-basic-concepts/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Git Basic Concepts</h5>
-	      
-	      <p class="list-group-item-text">
-		  Fundamental concepts to understand how Git works.
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  git and concepts
-	      </span>
-	  </a>
-	  
-	  <a href="/git-commands/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Git Commands</h5>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  git and commands
-	      </span>
-	  </a>
-	  
-	  <a href="/kramdown-general-concepts/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">kramdown General Concepts</h5>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  markup and kramdown
-	      </span>
-	  </a>
-	  
-	  <a href="/viewport-metatag-html/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">HTML viewport meta tag for responsive designs</h5>
-	      
-	      <p class="list-group-item-text">
-		  Viewport meta tag for Responsive Hiper Text Markup Language designs
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  web, html, and responsive
-	      </span>
-	  </a>
-	  
-	  <a href="/how-to-use-bower-scss-with-jekyll/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">How To Use Bower Scss With Jekyll</h5>
-	      
-	      <p class="list-group-item-text">
-		  Automatically converting SCSS files into CSS in each Jekyll build.
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby, jekyll, and tutorials
-	      </span>
-	  </a>
-	  
-	  <a href="/python-language-basic-concepts/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Python Language Basic Concepts</h5>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  python, language, and concepts
-	      </span>
-	  </a>
-	  
-	  <a href="/understanding-jekyll-posts/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Understanding Jekyll Posts</h5>
-	      
-	      <p class="list-group-item-text">
-		  
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby and jekyll
-	      </span>
-	  </a>
-	  
-	  <a href="/jekyll-configuration-file-options/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Jekyll Configuration File Options</h5>
-	      
-	      <p class="list-group-item-text">
-		  
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby and jekyll
-	      </span>
-	  </a>
-	  
-	  <a href="/understanding-how-collections-work/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Understanding How Collections Work</h5>
-	      
-	      <p class="list-group-item-text">
-		  Jekyll Collections usage and examples.
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby, jekyll, and collections
-	      </span>
-	  </a>
-	  
-	  <a href="/managing-ruby-gems-version-for-each-project/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Managing Ruby Gems Version For Each Project</h5>
-	      
-	      <p class="list-group-item-text">
-		  Handle Ruby's gem versions for each project.
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby and language
-	      </span>
-	  </a>
-	  
-	  <a href="/python-virtual-environments-using-virtualenv/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Python Virtual Environments</h5>
-	      
-	      <p class="list-group-item-text">
-		  Handle dependencies and app versions for each project with python virtual environments.
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  python, language, and environment
-	      </span>
-	  </a>
-	  
-	  <a href="/custom-django-configurations-for-different-servers/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Django Configuration and environment isolation</h5>
-	      
-	      <p class="list-group-item-text">
-		  Configure a Django project to handle multiple environments, creating different settings and handling packages for each one.
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  python and django
-	      </span>
-	  </a>
-	  
-	  <a href="/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">How to implement breadcrumbs on a Jekyll site with nested categories</h5>
-	      
-	      <p class="list-group-item-text">
-		  How to generate a list with links for each category when using hierarchical categories in Jekyll
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby, jekyll, and tutorials
-	      </span>
-	  </a>
-	  
-	  <a href="/how-to-prevent-content-displaying-in-a-jekyll-development-environment/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">How To Prevent Content Displaying In A Jekyll Development Environment</h5>
-	      
-	      <p class="list-group-item-text">
-		  How to prevent code execution when developing in Jekyll but displaying it in production. Avoid ads, analytics and disqus loading while developing.
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby, jekyll, and tutorials
-	      </span>
-	  </a>
-	  
-	  <a href="/how-to-handle-adsense-in-a-jekyll-development-environment/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">How To Handle Adsense In A Jekyll Development Environment</h5>
-	      
-	      <p class="list-group-item-text">
-		  Adsense ads should be treated in a special way when developing a website to avoid being penalized and improve performance.
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby, jekyll, and tutorials
-	      </span>
-	  </a>
-	  
-	  <a href="/writing-spanish-in-linux/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">How to Type Spanish Characters, Accents and Symbols in Linux</h5>
-	      
-	      <p class="list-group-item-text">
-		  Writing in Spanish in Linux. How to type Spanish special characters.
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  linux
-	      </span>
-	  </a>
-	  
-	  <a href="/html5-full-cheatsheet/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Html5 Full Cheatsheet</h5>
-	      
-	      <p class="list-group-item-text">
-		  Full HTML 5 cheatsheet. Quick reference for sections and elements <br> summary, with short explanations and usage examples.
-
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  web, html, and cheatsheets
-	      </span>
-	  </a>
-	  
-	  <a href="/django-overview/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Django Overview</h5>
-	      
-	      <p class="list-group-item-text">
-		  Python Web framework overview
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  python and django
-	      </span>
-	  </a>
-	  
-	  <a href="/python/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Python</h5>
-	      
-	      <p class="list-group-item-text">
-		  Phyton programming language
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  python and language
-	      </span>
-	  </a>
-	  
-	  <a href="/jekyll-basic-concepts/" class="list-group-item list-group-item-action">
-	      <h5 class="list-group-item-heading">Jekyll basic concepts</h5>
-	      
-	      <p class="list-group-item-text">
-		  Jekyll is the most popular static site generator, it has few basic concepts to understand how it works.
-	      </p>
-	      
-	      <span class="tag tag-default tag-pill pull-xs-2">
-		  ruby and jekyll
-	      </span>
-	  </a>
-	  
-      </div> <!-- list group -->
-  </div> <!-- articles/posts -->
-  
-  <hr />
-
-  <div class="mb-1">
-    <h1>Full categories hierarchy</h1>
-    <div class="list-group">
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      <a class="list-group-item" href="/books/">
-	<span class="label label-info label-pill pull-xs-right">
-	  /books/
-	</span>
-	Recommended books
-      </a>
-      
-      
-      
-      
-      
-      
-      
-      <a class="list-group-item" href="/docs/">
-	<span class="label label-info label-pill pull-xs-right">
-	  
-	</span>
-	Documents
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/bash/">
-	<span class="label label-info label-pill pull-xs-right">
-	  bash/
-	</span>
-	Documents
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/git/">
-	<span class="label label-info label-pill pull-xs-right">
-	  git/
-	</span>
-	Git
-      </a>
-      
-      
-      
-      
-      
-      <a class="list-group-item" href="/docs/git/concepts/">
-	<span class="label label-info label-pill pull-xs-right">
-	  git/concepts/
-	</span>
-	Git Concepts
-      </a>
-      
-      
-      
-      
-      
-      <a class="list-group-item" href="/docs/git/tutorials/">
-	<span class="label label-info label-pill pull-xs-right">
-	  git/tutorials/
-	</span>
-	Git Common Use Cases
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/linux/">
-	<span class="label label-info label-pill pull-xs-right">
-	  linux/
-	</span>
-	Linux
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/lisp/">
-	<span class="label label-info label-pill pull-xs-right">
-	  lisp/
-	</span>
-	Lisp
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/lisp/emacs/">
-	<span class="label label-info label-pill pull-xs-right">
-	  lisp/emacs/
-	</span>
-	GNU Emacs
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/markup/">
-	<span class="label label-info label-pill pull-xs-right">
-	  markup/
-	</span>
-	Markup Languages
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/markup/kramdown/">
-	<span class="label label-info label-pill pull-xs-right">
-	  markup/kramdown/
-	</span>
-	Kramdown category
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/markup/restructuredtext/">
-	<span class="label label-info label-pill pull-xs-right">
-	  markup/restructuredtext/
-	</span>
-	reStructuredText language
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/mobile/">
-	<span class="label label-info label-pill pull-xs-right">
-	  mobile/
-	</span>
-	Mobile
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/mobile/ionic/">
-	<span class="label label-info label-pill pull-xs-right">
-	  mobile/ionic/
-	</span>
-	Ionic Framework
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/protocols/">
-	<span class="label label-info label-pill pull-xs-right">
-	  protocols/
-	</span>
-	Protocols
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/protocols/http/">
-	<span class="label label-info label-pill pull-xs-right">
-	  protocols/http/
-	</span>
-	HTTP Protocol
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/python/">
-	<span class="label label-info label-pill pull-xs-right">
-	  python/
-	</span>
-	Python
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/python/django/">
-	<span class="label label-info label-pill pull-xs-right">
-	  python/django/
-	</span>
-	Django webframework
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/python/django/forms/">
-	<span class="label label-info label-pill pull-xs-right">
-	  python/django/forms/
-	</span>
-	Django Forms
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/python/flask/">
-	<span class="label label-info label-pill pull-xs-right">
-	  python/flask/
-	</span>
-	Flask web microframework
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/python/language/">
-	<span class="label label-info label-pill pull-xs-right">
-	  python/language/
-	</span>
-	Python Language
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/python/language/concepts/">
-	<span class="label label-info label-pill pull-xs-right">
-	  python/language/concepts/
-	</span>
-	Python Language Concepts
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/python/language/environment/">
-	<span class="label label-info label-pill pull-xs-right">
-	  python/language/environment/
-	</span>
-	Python Environment
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/ruby/">
-	<span class="label label-info label-pill pull-xs-right">
-	  ruby/
-	</span>
-	Ruby
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/ruby/jekyll/">
-	<span class="label label-info label-pill pull-xs-right">
-	  ruby/jekyll/
-	</span>
-	Jekyll
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/ruby/jekyll/collections/">
-	<span class="label label-info label-pill pull-xs-right">
-	  ruby/jekyll/collections/
-	</span>
-	Jekyll Collections
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/ruby/jekyll/templates/">
-	<span class="label label-info label-pill pull-xs-right">
-	  ruby/jekyll/templates/
-	</span>
-	Jekyll Templates
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/ruby/jekyll/tutorials/">
-	<span class="label label-info label-pill pull-xs-right">
-	  ruby/jekyll/tutorials/
-	</span>
-	Jekyll tutorials
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/ruby/language/">
-	<span class="label label-info label-pill pull-xs-right">
-	  ruby/language/
-	</span>
-	Ruby Language
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/ruby/rails/">
-	<span class="label label-info label-pill pull-xs-right">
-	  ruby/rails/
-	</span>
-	Ruby on Rails
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/sql/">
-	<span class="label label-info label-pill pull-xs-right">
-	  sql/
-	</span>
-	SQL
-      </a>
-      
-      
-      
-      
-      
-      <a class="list-group-item" href="/docs/theory/">
-	<span class="label label-info label-pill pull-xs-right">
-	  theory/
-	</span>
-	Theory
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/theory/testing/">
-	<span class="label label-info label-pill pull-xs-right">
-	  theory/testing/
-	</span>
-	Software Testing
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/theory/web-development/">
-	<span class="label label-info label-pill pull-xs-right">
-	  theory/web-development/
-	</span>
-	Web Development
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/web/">
-	<span class="label label-info label-pill pull-xs-right">
-	  web/
-	</span>
-	Web
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/web/html/">
-	<span class="label label-info label-pill pull-xs-right">
-	  web/html/
-	</span>
-	Basic HTML concepts
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/web/html/cheatsheets/">
-	<span class="label label-info label-pill pull-xs-right">
-	  web/html/cheatsheets/
-	</span>
-	HTML cheatsheets
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/web/html/responsive/">
-	<span class="label label-info label-pill pull-xs-right">
-	  web/html/responsive/
-	</span>
-	Responsive Web Design
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/docs/web/structured-data/">
-	<span class="label label-info label-pill pull-xs-right">
-	  web/structured-data/
-	</span>
-	Structured Data Markups
-      </a>
-      
-      
-      
-      <a class="list-group-item" href="/search/">
-	<span class="label label-info label-pill pull-xs-right">
-	  /search/
-	</span>
-	Search
-      </a>
-      
-      
-    </div>
-  </div>
 </div>
+<hr>
 
-    </div>
+<div class="home text-xs-center">
+    
+    <div class="categories my-3">
+	<h1>Categories</h1>
 
-    <footer class="site-footer py-3">
+	
 
-  <div class="container">
+	
 
-    <h2 class="footer-heading text-muted">Simple IT 🤘 Rocks</h2>
+	<nav class="nav nav-inline">
+	    
+	    
 
-    <div class="row">
-      <div class="col-xs-6">
-        <ul class="footer-nav">
-          <li>
-	      <i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by <a href="http://marcanuy.com" rel="author">Marcelo Canina</a>
-	  </li>
-	  
-          <li>
-            <i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/simpleitrocks"><span class="username">simpleitrocks</span></a>
+	    <a class="nav-link" href="/docs/bash/">
+		Bash
+	    </a>
+	    
+	    
+	    
 
-          </li>
-          
-	  <li>
-	    <i class="fa fa-user" aria-hidden="true"></i><a href="/about">About</a>
-	  </li>
-	  <li>
-	    <i class="fa fa-search" aria-hidden="true"></i><a href="/search">Search</a>
-	  </li>
-        </ul>
-      </div>
+	    <a class="nav-link" href="/docs/git/">
+		Git
+	    </a>
+	    
+	    
+	    
 
-      <div class="col-xs-6">
-	<div class="text-xs-right text-muted">
-          <p>Clutter-free software concepts. Written on the go.
-</p>
+	    <a class="nav-link" href="/docs/linux/">
+		Linux
+	    </a>
+	    
+	    
+	    
+
+	    <a class="nav-link" href="/docs/lisp/">
+		Lisp
+	    </a>
+	    
+	    
+	    
+
+	    <a class="nav-link" href="/docs/markup/">
+		Markup
+	    </a>
+	    
+	    
+	    
+
+	    <a class="nav-link" href="/docs/mobile/">
+		Mobile
+	    </a>
+	    
+	    
+	    
+
+	    <a class="nav-link" href="/docs/protocols/">
+		Protocols
+	    </a>
+	    
+	    
+	    
+
+	    <a class="nav-link" href="/docs/python/">
+		Python
+	    </a>
+	    
+	    
+	    
+
+	    <a class="nav-link" href="/docs/ruby/">
+		Ruby
+	    </a>
+	    
+	    
+	    
+
+	    <a class="nav-link" href="/docs/sql/">
+		Sql
+	    </a>
+	    
+	    
+	    
+
+	    <a class="nav-link" href="/docs/theory/">
+		Theory
+	    </a>
+	    
+	    
+	    
+
+	    <a class="nav-link" href="/docs/web/">
+		Web
+	    </a>
+	    
+	    
+	    
+
+	    <a class="nav-link" href="/docs//">
+		
+	    </a>
+	    
+	    
+	    
+
+	    <a class="nav-link" href="/docs//">
+		
+	    </a>
+	    
+	    
+	</nav>
+    </div> <!--containter-->
+    
+    <hr />
+
+    
+
+    <div class="articles my-3">
+	<h1>Articles</h1>
+	<div class="list-group">
+	    
+	    <a href="/flask-overview-notes/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Flask Overview</h5>
+		
+		<p class="list-group-item-text">
+		    Flask Python Web framework overview
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    python and flask
+		</span>
+	    </a>
+	    
+	    <a href="/colors-palettes-for-web-design/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Colors Palettes For Web Design</h5>
+		
+		<p class="list-group-item-text">
+		    Set of webs with color palettes.
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    web
+		</span>
+	    </a>
+	    
+	    <a href="/shell-redirect-output-and-errors-to-the-null-device-in-bash/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Shell Redirect Output And Errors To The Null Device In Bash</h5>
+		
+		<p class="list-group-item-text">
+		    Understanding input and output redirection in bash shell scripts to avoid printing output and errors.
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    bash
+		</span>
+	    </a>
+	    
+	    <a href="/prevent-running-of-duplicate-cron-jobs/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Prevent Running Of Duplicate Cron Jobs</h5>
+		
+		<p class="list-group-item-text">
+		    How to run no more than one unique instance of a script or command.
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    bash
+		</span>
+	    </a>
+	    
+	    <a href="/delete-all-backup-files-recursively-in-bash/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Delete All Backup Files Recursively In Bash</h5>
+		
+		<p class="list-group-item-text">
+		    Remove all backup files generated by Vim or Emacs from Linux console using the Linux find command correctly.
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    linux
+		</span>
+	    </a>
+	    
+	    <a href="/handling-mysql-credentials-from-linux-command-line-the-right-way/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Handling Mysql Credentials From Linux Command Line The Right Way</h5>
+		
+		<p class="list-group-item-text">
+		    Guide to use configuration files to handle MySQL user and password information so they are never typed in Linux console.
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    sql and mysql
+		</span>
+	    </a>
+	    
+	    <a href="/automatically-tweet-new-blog-posts-based-in-rss/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Bash script to automatically tweet new blog posts based in a website rss feed</h5>
+		
+		<p class="list-group-item-text">
+		    How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll.
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    web
+		</span>
+	    </a>
+	    
+	    <a href="/contributing-to-a-github-repository-step-by-step/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Contributing To A Github Repository Step By Step</h5>
+		
+		<p class="list-group-item-text">
+		    A detailed guide to contribute to a project in Github
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    git
+		</span>
+	    </a>
+	    
+	    <a href="/lightweight-solution-to-start-mysql-daemon-if-not-running/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Bash Script to Find Out If MySQL Is Running Or Not</h5>
+		
+		<p class="list-group-item-text">
+		    A simple shell script to check if mysql server is running and start it if it's not.
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    bash
+		</span>
+	    </a>
+	    
+	    <a href="/automated-deployment-of-jekyll-websites-to-github-pages-with-a-git-push-to-github/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Automated Deployment Of Jekyll Websites To Github Pages With A Git Push To Github</h5>
+		
+		<p class="list-group-item-text">
+		    
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby, jekyll, and tutorials
+		</span>
+	    </a>
+	    
+	    <a href="/how-to-check-local-websites-for-broken-links/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">How To Check Local Websites For Broken Links</h5>
+		
+		<p class="list-group-item-text">
+		    Check a statically generated website for broken links and images.
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    web and html
+		</span>
+	    </a>
+	    
+	    <a href="/adding-custom-snippets-to-yasnippet/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Adding Custom Snippets To Yasnippet</h5>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    lisp and emacs
+		</span>
+	    </a>
+	    
+	    <a href="/how-to-dump-and-import-utf-8-mysql-databases-in-a-safe-way/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">How To Dump And Import Utf 8 Mysql Databases In A Safe Way</h5>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    sql and mysql
+		</span>
+	    </a>
+	    
+	    <a href="/ionic-2-framework-overview/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Ionic 2 Framework Overview</h5>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    mobile and ionic
+		</span>
+	    </a>
+	    
+	    <a href="/the-idiomatically-correct-way-to-make-an-instance-of-a-many-to-one-relationship-model/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">The Idiomatically Correct Way To Make An Instance Of A Many To One Relationship Model</h5>
+		
+		<p class="list-group-item-text">
+		    Make many-to-one idiomatically correct instances 
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby and rails
+		</span>
+	    </a>
+	    
+	    <a href="/authorization-versus-authentication-in-web-apps/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Authorization Versus Authentication In Web Apps</h5>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    theory and web-development
+		</span>
+	    </a>
+	    
+	    <a href="/simple-debugging-in-rails/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Simple Debugging In Rails</h5>
+		
+		<p class="list-group-item-text">
+		    Simple methods to debug when developing in rails.
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby and rails
+		</span>
+	    </a>
+	    
+	    <a href="/what-is-the-difference-between-modules-and-classes-in-ruby/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">What Is The Difference Between Modules And Classes In Ruby</h5>
+		
+		<p class="list-group-item-text">
+		    Modules versus Classes in Ruby
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby and language
+		</span>
+	    </a>
+	    
+	    <a href="/ruby-language-overview/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Ruby Language Overview</h5>
+		
+		<p class="list-group-item-text">
+		    Ruby programming language basic concepts.
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby and language
+		</span>
+	    </a>
+	    
+	    <a href="/double-versus-single-quotes-in-ruby/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Double Versus Single Quotes In Ruby</h5>
+		
+		<p class="list-group-item-text">
+		    Difference between using double quotes and single quotes in ruby
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby and language
+		</span>
+	    </a>
+	    
+	    <a href="/when-to-test-or-write-code-first-in-web-development/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">When To Test Or Write Code First In Web Development</h5>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    theory and testing
+		</span>
+	    </a>
+	    
+	    <a href="/common-steps-to-start-a-rails-project/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Common Steps To Start A Rails Project</h5>
+		
+		<p class="list-group-item-text">
+		    Basic steps to start a rails app that will be hosted in a remote server and heroku, using sqlite3 in development and PostgreSQL in Heroku
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby and rails
+		</span>
+	    </a>
+	    
+	    <a href="/ruby-on-rails-overview/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Ruby On Rails Overview</h5>
+		
+		<p class="list-group-item-text">
+		    A basic overview of Ruby on Rails main components and how they work together.
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby and rails
+		</span>
+	    </a>
+	    
+	    <a href="/building-a-hello-world-app-in-ruby-on-rails-app/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Building A Hello World App In Ruby On Rails App</h5>
+		
+		<p class="list-group-item-text">
+		    Basic steps to start with Ruby on Rails.  
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby and rails
+		</span>
+	    </a>
+	    
+	    <a href="/inserting-bootstrap-4-responsive-images-in-kramdown/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Inserting Bootstrap 4 Responsive Images In Kramdown</h5>
+		
+		<p class="list-group-item-text">
+		    How to insert images with the Bootstrap 4 responsive class in kramdown.
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    markup and kramdown
+		</span>
+	    </a>
+	    
+	    <a href="/how-to-create-a-form-in-django/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">How To Create A Form In Django</h5>
+		
+		<p class="list-group-item-text">
+		    Django simplify and automates the process to create a form in simple steps.
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    python, django, and forms
+		</span>
+	    </a>
+	    
+	    <a href="/when-to-use-http-post-or-get-methods-in-html-forms/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">When To Use Http Post Or Get Methods In Html Forms</h5>
+		
+		<p class="list-group-item-text">
+		    What's the difference between HTTP GET and POST methods? When to use methods GET and POST in HTML forms.
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    protocols and http
+		</span>
+	    </a>
+	    
+	    <a href="/html-tags-for-software-development-blogs/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Appropriate HTML5 tags to show source code, commands and software related tasks on blogs</h5>
+		
+		<p class="list-group-item-text">
+		    Set of HTML5 tags recommended to show code and commands in a webpage.
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    web and html
+		</span>
+	    </a>
+	    
+	    <a href="/django-project-directory-structure/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Django Project Directory Structure</h5>
+		
+		<p class="list-group-item-text">
+		    An approach on the most convenient way to organize directories for robust Django projects.
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    python and django
+		</span>
+	    </a>
+	    
+	    <a href="/jekyll-variables-and-liquid-template-tags-cheatsheet/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Jekyll Variables and Liquid template tags cheatsheet</h5>
+		
+		<p class="list-group-item-text">
+		    Jekyll template tags summary.
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby, jekyll, and templates
+		</span>
+	    </a>
+	    
+	    <a href="/jekyll-collections-versus-posts/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Jekyll Collections Versus Posts</h5>
+		
+		<p class="list-group-item-text">
+		    Jekyll Collections and Posts comparison.
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby, jekyll, and collections
+		</span>
+	    </a>
+	    
+	    <a href="/creating-a-git-server-from-a-git-repo/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Creating a git server from a git repo</h5>
+		
+		<p class="list-group-item-text">
+		    Having a git server and a repo in another computer not present in the <br> server, create a centralized version of the repo in the server.
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    git and tutorials
+		</span>
+	    </a>
+	    
+	    <a href="/git-basic-commands/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Remotes</h5>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    git and remotes
+		</span>
+	    </a>
+	    
+	    <a href="/git-basic-concepts/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Git Basic Concepts</h5>
+		
+		<p class="list-group-item-text">
+		    Fundamental concepts to understand how Git works.
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    git and concepts
+		</span>
+	    </a>
+	    
+	    <a href="/git-commands/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Git Commands</h5>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    git and commands
+		</span>
+	    </a>
+	    
+	    <a href="/kramdown-general-concepts/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">kramdown General Concepts</h5>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    markup and kramdown
+		</span>
+	    </a>
+	    
+	    <a href="/viewport-metatag-html/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">HTML viewport meta tag for responsive designs</h5>
+		
+		<p class="list-group-item-text">
+		    Viewport meta tag for Responsive Hiper Text Markup Language designs
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    web, html, and responsive
+		</span>
+	    </a>
+	    
+	    <a href="/how-to-use-bower-scss-with-jekyll/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">How To Use Bower Scss With Jekyll</h5>
+		
+		<p class="list-group-item-text">
+		    Automatically converting SCSS files into CSS in each Jekyll build.
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby, jekyll, and tutorials
+		</span>
+	    </a>
+	    
+	    <a href="/python-language-basic-concepts/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Python Language Basic Concepts</h5>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    python, language, and concepts
+		</span>
+	    </a>
+	    
+	    <a href="/understanding-jekyll-posts/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Understanding Jekyll Posts</h5>
+		
+		<p class="list-group-item-text">
+		    
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby and jekyll
+		</span>
+	    </a>
+	    
+	    <a href="/jekyll-configuration-file-options/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Jekyll Configuration File Options</h5>
+		
+		<p class="list-group-item-text">
+		    
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby and jekyll
+		</span>
+	    </a>
+	    
+	    <a href="/understanding-how-collections-work/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Understanding How Collections Work</h5>
+		
+		<p class="list-group-item-text">
+		    Jekyll Collections usage and examples.
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby, jekyll, and collections
+		</span>
+	    </a>
+	    
+	    <a href="/managing-ruby-gems-version-for-each-project/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Managing Ruby Gems Version For Each Project</h5>
+		
+		<p class="list-group-item-text">
+		    Handle Ruby's gem versions for each project.
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby and language
+		</span>
+	    </a>
+	    
+	    <a href="/python-virtual-environments-using-virtualenv/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Python Virtual Environments</h5>
+		
+		<p class="list-group-item-text">
+		    Handle dependencies and app versions for each project with python virtual environments.
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    python, language, and environment
+		</span>
+	    </a>
+	    
+	    <a href="/custom-django-configurations-for-different-servers/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Django Configuration and environment isolation</h5>
+		
+		<p class="list-group-item-text">
+		    Configure a Django project to handle multiple environments, creating different settings and handling packages for each one.
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    python and django
+		</span>
+	    </a>
+	    
+	    <a href="/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">How to implement breadcrumbs on a Jekyll site with nested categories</h5>
+		
+		<p class="list-group-item-text">
+		    How to generate a list with links for each category when using hierarchical categories in Jekyll
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby, jekyll, and tutorials
+		</span>
+	    </a>
+	    
+	    <a href="/how-to-prevent-content-displaying-in-a-jekyll-development-environment/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">How To Prevent Content Displaying In A Jekyll Development Environment</h5>
+		
+		<p class="list-group-item-text">
+		    How to prevent code execution when developing in Jekyll but displaying it in production. Avoid ads, analytics and disqus loading while developing.
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby, jekyll, and tutorials
+		</span>
+	    </a>
+	    
+	    <a href="/how-to-handle-adsense-in-a-jekyll-development-environment/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">How To Handle Adsense In A Jekyll Development Environment</h5>
+		
+		<p class="list-group-item-text">
+		    Adsense ads should be treated in a special way when developing a website to avoid being penalized and improve performance.
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby, jekyll, and tutorials
+		</span>
+	    </a>
+	    
+	    <a href="/writing-spanish-in-linux/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">How to Type Spanish Characters, Accents and Symbols in Linux</h5>
+		
+		<p class="list-group-item-text">
+		    Writing in Spanish in Linux. How to type Spanish special characters.
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    linux
+		</span>
+	    </a>
+	    
+	    <a href="/html5-full-cheatsheet/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Html5 Full Cheatsheet</h5>
+		
+		<p class="list-group-item-text">
+		    Full HTML 5 cheatsheet. Quick reference for sections and elements <br> summary, with short explanations and usage examples.
+
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    web, html, and cheatsheets
+		</span>
+	    </a>
+	    
+	    <a href="/django-overview/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Django Overview</h5>
+		
+		<p class="list-group-item-text">
+		    Python Web framework overview
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    python and django
+		</span>
+	    </a>
+	    
+	    <a href="/python/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Python</h5>
+		
+		<p class="list-group-item-text">
+		    Phyton programming language
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    python and language
+		</span>
+	    </a>
+	    
+	    <a href="/jekyll-basic-concepts/" class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">Jekyll basic concepts</h5>
+		
+		<p class="list-group-item-text">
+		    Jekyll is the most popular static site generator, it has few basic concepts to understand how it works.
+		</p>
+		
+		<span class="tag tag-default tag-pill pull-xs-2">
+		    ruby and jekyll
+		</span>
+	    </a>
+	    
+	</div> <!-- list group -->
+    </div> <!-- articles/posts -->
+    
+    <hr />
+
+    <div class="hierarchy my-3">
+	<h1>Full categories hierarchy</h1>
+	<div class="list-group">
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    <a class="list-group-item" href="/books/">
+		<span class="label label-info label-pill pull-xs-right">
+		    /books/
+		</span>
+		Recommended books
+	    </a>
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/">
+		<span class="label label-info label-pill pull-xs-right">
+		    
+		</span>
+		Documents
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/bash/">
+		<span class="label label-info label-pill pull-xs-right">
+		    bash/
+		</span>
+		Documents
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/git/">
+		<span class="label label-info label-pill pull-xs-right">
+		    git/
+		</span>
+		Git
+	    </a>
+	    
+	    
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/git/concepts/">
+		<span class="label label-info label-pill pull-xs-right">
+		    git/concepts/
+		</span>
+		Git Concepts
+	    </a>
+	    
+	    
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/git/tutorials/">
+		<span class="label label-info label-pill pull-xs-right">
+		    git/tutorials/
+		</span>
+		Git Common Use Cases
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/linux/">
+		<span class="label label-info label-pill pull-xs-right">
+		    linux/
+		</span>
+		Linux
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/lisp/">
+		<span class="label label-info label-pill pull-xs-right">
+		    lisp/
+		</span>
+		Lisp
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/lisp/emacs/">
+		<span class="label label-info label-pill pull-xs-right">
+		    lisp/emacs/
+		</span>
+		GNU Emacs
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/markup/">
+		<span class="label label-info label-pill pull-xs-right">
+		    markup/
+		</span>
+		Markup Languages
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/markup/kramdown/">
+		<span class="label label-info label-pill pull-xs-right">
+		    markup/kramdown/
+		</span>
+		Kramdown category
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/markup/restructuredtext/">
+		<span class="label label-info label-pill pull-xs-right">
+		    markup/restructuredtext/
+		</span>
+		reStructuredText language
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/mobile/">
+		<span class="label label-info label-pill pull-xs-right">
+		    mobile/
+		</span>
+		Mobile
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/mobile/ionic/">
+		<span class="label label-info label-pill pull-xs-right">
+		    mobile/ionic/
+		</span>
+		Ionic Framework
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/protocols/">
+		<span class="label label-info label-pill pull-xs-right">
+		    protocols/
+		</span>
+		Protocols
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/protocols/http/">
+		<span class="label label-info label-pill pull-xs-right">
+		    protocols/http/
+		</span>
+		HTTP Protocol
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/python/">
+		<span class="label label-info label-pill pull-xs-right">
+		    python/
+		</span>
+		Python
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/python/django/">
+		<span class="label label-info label-pill pull-xs-right">
+		    python/django/
+		</span>
+		Django webframework
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/python/django/forms/">
+		<span class="label label-info label-pill pull-xs-right">
+		    python/django/forms/
+		</span>
+		Django Forms
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/python/flask/">
+		<span class="label label-info label-pill pull-xs-right">
+		    python/flask/
+		</span>
+		Flask web microframework
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/python/language/">
+		<span class="label label-info label-pill pull-xs-right">
+		    python/language/
+		</span>
+		Python Language
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/python/language/concepts/">
+		<span class="label label-info label-pill pull-xs-right">
+		    python/language/concepts/
+		</span>
+		Python Language Concepts
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/python/language/environment/">
+		<span class="label label-info label-pill pull-xs-right">
+		    python/language/environment/
+		</span>
+		Python Environment
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/ruby/">
+		<span class="label label-info label-pill pull-xs-right">
+		    ruby/
+		</span>
+		Ruby
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/ruby/jekyll/">
+		<span class="label label-info label-pill pull-xs-right">
+		    ruby/jekyll/
+		</span>
+		Jekyll
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/ruby/jekyll/collections/">
+		<span class="label label-info label-pill pull-xs-right">
+		    ruby/jekyll/collections/
+		</span>
+		Jekyll Collections
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/ruby/jekyll/templates/">
+		<span class="label label-info label-pill pull-xs-right">
+		    ruby/jekyll/templates/
+		</span>
+		Jekyll Templates
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/ruby/jekyll/tutorials/">
+		<span class="label label-info label-pill pull-xs-right">
+		    ruby/jekyll/tutorials/
+		</span>
+		Jekyll tutorials
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/ruby/language/">
+		<span class="label label-info label-pill pull-xs-right">
+		    ruby/language/
+		</span>
+		Ruby Language
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/ruby/rails/">
+		<span class="label label-info label-pill pull-xs-right">
+		    ruby/rails/
+		</span>
+		Ruby on Rails
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/sql/">
+		<span class="label label-info label-pill pull-xs-right">
+		    sql/
+		</span>
+		SQL
+	    </a>
+	    
+	    
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/theory/">
+		<span class="label label-info label-pill pull-xs-right">
+		    theory/
+		</span>
+		Theory
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/theory/testing/">
+		<span class="label label-info label-pill pull-xs-right">
+		    theory/testing/
+		</span>
+		Software Testing
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/theory/web-development/">
+		<span class="label label-info label-pill pull-xs-right">
+		    theory/web-development/
+		</span>
+		Web Development
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/web/">
+		<span class="label label-info label-pill pull-xs-right">
+		    web/
+		</span>
+		Web
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/web/html/">
+		<span class="label label-info label-pill pull-xs-right">
+		    web/html/
+		</span>
+		Basic HTML concepts
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/web/html/cheatsheets/">
+		<span class="label label-info label-pill pull-xs-right">
+		    web/html/cheatsheets/
+		</span>
+		HTML cheatsheets
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/web/html/responsive/">
+		<span class="label label-info label-pill pull-xs-right">
+		    web/html/responsive/
+		</span>
+		Responsive Web Design
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/docs/web/structured-data/">
+		<span class="label label-info label-pill pull-xs-right">
+		    web/structured-data/
+		</span>
+		Structured Data Markups
+	    </a>
+	    
+	    
+	    
+	    <a class="list-group-item" href="/search/">
+		<span class="label label-info label-pill pull-xs-right">
+		    /search/
+		</span>
+		Search
+	    </a>
+	    
+	    
 	</div>
-      </div>
     </div>
-
-  </div>
-</footer>
-
-<div class="si-license bg-inverse">
-  <div class="text-muted text-sm-center">
-    <small>
-      Except as otherwise noted, the content of this page is licensed under
-      <a rel="license" class="text-info" href="https://creativecommons.org/licenses/by-nc/4.0/">
-	<i class="fa fa-creative-commons" aria-hidden="true"></i> BY-NC 4.0
-      </a>
-    </small>
-  </div>
 </div>
-
-
-
-  </body>
-
-</html>

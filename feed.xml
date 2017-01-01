@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 01 Jan 2017 15:38:29 +0000</pubDate>
-    <lastBuildDate>Sun, 01 Jan 2017 15:38:29 +0000</lastBuildDate>
+    <pubDate>Sun, 01 Jan 2017 23:46:53 +0000</pubDate>
+    <lastBuildDate>Sun, 01 Jan 2017 23:46:53 +0000</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -170,7 +170,9 @@ packages.&lt;/p&gt;
         /static      ## static files like js and css
         /templates   ## jinja2 templates
 	/tests
-		myproject_test.py
+		test_myproject.py
+	setup.py     ## Setuptools packaging
+    MANIFEST.in
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
