@@ -163,7 +163,9 @@ packages.
         /static      ## static files like js and css
         /templates   ## jinja2 templates
 	/tests
-		myproject_test.py
+		test_myproject.py
+	setup.py     ## Setuptools packaging
+    MANIFEST.in
 ~~~
 
 ## References
