@@ -158,6 +158,7 @@ packages.
 ~~~
 /myproject
     /myproject
+		__init__.py  ## make the project a package
 		myproject.py ## application module
 		schema.sql   ## SQLite3 database
         /static      ## static files like js and css
