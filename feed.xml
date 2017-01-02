@@ -6,9 +6,9 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 02 Jan 2017 01:10:21 +0000</pubDate>
-    <lastBuildDate>Mon, 02 Jan 2017 01:10:21 +0000</lastBuildDate>
-    <generator>Jekyll v3.3.0</generator>
+    <pubDate>Mon, 02 Jan 2017 04:27:08 +0000</pubDate>
+    <lastBuildDate>Mon, 02 Jan 2017 04:27:08 +0000</lastBuildDate>
+    <generator>Jekyll v3.3.1</generator>
     
       <item>
         <title>Flask Overview</title>
@@ -165,6 +165,7 @@ packages.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/myproject
     /myproject
+		__init__.py  ## make the project a package
 		myproject.py ## application module
 		schema.sql   ## SQLite3 database
         /static      ## static files like js and css
@@ -621,6 +622,42 @@ Because -delete implies -depth, you cannot usefully use -prune and
 
 &lt;p class=&quot;alert alert-danger&quot;&gt;The order of the -delete parameter matters&lt;/p&gt;
 
+&lt;h2 id=&quot;alternative-using-git&quot;&gt;Alternative using git&lt;/h2&gt;
+
+&lt;p&gt;If you are working in a &lt;a href=&quot;/docs/git/&quot;&gt;git&lt;/a&gt; repo, then
+there is a high chance you want to delete all the untracked local
+files from your current branch, that would delete all the
+automatically created backup files and possibly some other files you
+don’t want to be there.&lt;/p&gt;
+
+&lt;p&gt;If this is the case then you can
+use &lt;a href=&quot;https://git-scm.com/docs/git-clean&quot;&gt;git clean&lt;/a&gt;.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://git-scm.com/docs/git-clean&quot;&gt;
+  &lt;p&gt;Cleans the working tree by recursively removing files that are not
+under version control, starting from the current directory.&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt;Documentation of &lt;cite&gt;&lt;a href=&quot;https://git-scm.com/docs/git-clean&quot;&gt;git-clean command&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;git clean -n&lt;/kbd&gt;
+Would remove _data/people.yml~
+Would remove _includes/author.html~
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;git clean&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Parameters used:&lt;/p&gt;
+
+&lt;p class=&quot;alert alert-info&quot;&gt;-n
+–dry-run
+Don’t actually remove anything, just show what would be done.&lt;/p&gt;
+
+&lt;p class=&quot;alert alert-info&quot;&gt;-i
+–interactive
+Show what would be done and clean files interactively. See “Interactive mode” for details.&lt;/p&gt;
+
 &lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 
 &lt;p&gt;This is a simple way for removing backup files from Emacs and
@@ -651,7 +688,7 @@ the files recursively.&lt;/p&gt;
         
         <category>docs</category>
         
-        <category>linux</category>
+        <category>bash</category>
         
       </item>
     
