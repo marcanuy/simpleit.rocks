@@ -138,6 +138,43 @@ After making sure the above files we want to delete, we add the
 The order of the -delete parameter matters
 {: class="alert alert-danger"}
 
+## Alternative using git
+
+If you are working in a [git]({% link docs/git/index.md %}) repo, then
+there is a high chance you want to delete all the untracked local
+files from your current branch, that would delete all the
+automatically created backup files and possibly some other files you
+don't want to be there.
+
+If this is the case then you can
+use [git clean](https://git-scm.com/docs/git-clean).
+
+> Cleans the working tree by recursively removing files that are not
+> under version control, starting from the current directory.
+> <footer class="blockquote-footer">Documentation of <cite><a href="https://git-scm.com/docs/git-clean">git-clean command</a></cite></footer>
+{: class="blockquote" cite="https://git-scm.com/docs/git-clean"}
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>git clean -n</kbd>
+Would remove _data/people.yml~
+Would remove _includes/author.html~
+<span class="shell-prompt">$</span> <kbd>git clean</kbd>
+</samp>
+</pre>
+
+Parameters used:
+
+-n
+--dry-run
+Don’t actually remove anything, just show what would be done.
+{: class="alert alert-info"}
+
+-i
+--interactive
+Show what would be done and clean files interactively. See “Interactive mode” for details.
+{: class="alert alert-info"}
+
 ## Summary
 
 This is a simple way for removing backup files from Emacs and
