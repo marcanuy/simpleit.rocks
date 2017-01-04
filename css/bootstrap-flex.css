@@ -5422,9 +5422,12 @@ a.text-gray-dark:hover {
 .site-content {
   padding-bottom: 3rem; }
 
+.site-sidebar {
+  border-right: 1px solid #e4e4e4; }
+
 .site-footer {
   background-color: #fbfbf7;
-  border-top: 1px solid #E4E4E4; }
+  border-top: 1px solid #e4e4e4; }
   .site-footer .footer-nav {
     list-style-type: none; }
     .site-footer .footer-nav li .fa {

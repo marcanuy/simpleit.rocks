@@ -264,6 +264,9 @@
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
 <li class="toc-entry toc-h2"><a href="#visualize-the-files-to-remove">Visualize the files to remove</a></li>
 <li class="toc-entry toc-h2"><a href="#remove-files">Remove files</a></li>
+<li class="toc-entry toc-h3"><a href="#important-notes">Important notes</a></li>
+<li class="toc-entry toc-h4"><a href="#find-parameters-order-matter">Find parameters order matter</a></li>
+<li class="toc-entry toc-h4"><a href="#safer-find-command">Safer find command</a></li>
 <li class="toc-entry toc-h2"><a href="#alternative-using-git">Alternative using git</a></li>
 <li class="toc-entry toc-h2"><a href="#summary">Summary</a></li>
 <li class="toc-entry toc-h2"><a href="#references">References</a></li>
@@ -437,18 +440,6 @@ ls -l {} \;</code></p>
 <p>After making sure the above files we want to delete, we add the
 <code class="highlighter-rouge">-delete</code> flag: <code class="highlighter-rouge">find -name "*~" -print -delete</code>.</p>
 
-<blockquote class="blockquote alert alert-danger" cite="http://man7.org/linux/man-pages/man1/find.1.html">
-  <p>Warnings: Don’t forget that the find command line is evaluated as an
-expression, so putting -delete first will make find try to delete
-everything below the starting points you specified. When testing a
-find command line that you later intend to use with -delete, you
-should explicitly specify -depth in order to avoid later surprises.
-Because -delete implies -depth, you cannot usefully use -prune and
--delete together.</p>
-
-  <footer class="blockquote-footer"> <cite> Find command in <a href="http://man7.org/linux/man-pages/man1/find.1.html">General Commands Manual</a></cite></footer>
-</blockquote>
-
 <pre class="shell">
 <samp>
 <span class="shell-prompt">$</span> <kbd>find -name "*~" -print -delete</kbd>
@@ -475,7 +466,33 @@ Because -delete implies -depth, you cannot usefully use -prune and
 </samp>
 </pre>
 
-<p class="alert alert-danger">The order of the -delete parameter matters</p>
+<h3 id="important-notes">Important notes</h3>
+
+<h4 id="find-parameters-order-matter">Find parameters order matter</h4>
+
+<blockquote class="blockquote alert alert-danger" cite="http://man7.org/linux/man-pages/man1/find.1.html">
+  <p>Warnings: Don’t forget that the find command line is evaluated as an
+expression, so putting -delete first will make find try to delete
+everything below the starting points you specified. When testing a
+find command line that you later intend to use with -delete, you
+should explicitly specify -depth in order to avoid later surprises.
+Because -delete implies -depth, you cannot usefully use -prune and
+-delete together.</p>
+
+  <footer class="blockquote-footer"> <cite> Find command in <a href="http://man7.org/linux/man-pages/man1/find.1.html">General Commands Manual</a></cite></footer>
+</blockquote>
+
+<p>This is: <strong>using the <code class="highlighter-rouge">-delete</code> switch before <code class="highlighter-rouge">-name</code> deletes all the
+file tree recursively</strong>.</p>
+
+<h4 id="safer-find-command">Safer find command</h4>
+
+<p>If your version of <code class="highlighter-rouge">find</code> doesn’t have the <code class="highlighter-rouge">-delete</code> switch, then you
+can execute <code class="highlighter-rouge">rm</code> on each matched file with <code class="highlighter-rouge">-exec rm {} \;</code>.</p>
+
+<pre class="shell">
+<span class="shell-prompt">$</span> <kbd>find -name "*~" -exec rm {} \;</kbd>
+</pre>
 
 <h2 id="alternative-using-git">Alternative using git</h2>
 
@@ -556,7 +573,6 @@ the files recursively.</p>
 		    <a class="a-social a-email" href="mailto:me@marcanuy.com" itemprop="email sameAs" target="_blank"><i class="fa fa-envelope-o"></i></a>
 		    <a class="a-social a-github" href="http://github.com/marcanuy" itemprop="github sameAs" target="_blank"><i class="fa fa-github"></i></a>
 		    <a class="a-social a-stackexchange" href="http://stackexchange.com/users/1193189?tab=accounts" itemprop="stackexchange sameAs" target="_blank"><i class="fa fa-stack-exchange"></i></a>
-		    <a class="a-social a-ins" href="https://www.instagram.com/marcanuy/" itemprop="sameAs" target="_blank"><i class="fa fa-instagram"></i></a>
 		</address>
 	    </h5>
 	    <div class="text-muted">

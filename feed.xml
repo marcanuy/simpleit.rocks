@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 02 Jan 2017 04:27:08 +0000</pubDate>
-    <lastBuildDate>Mon, 02 Jan 2017 04:27:08 +0000</lastBuildDate>
+    <pubDate>Wed, 04 Jan 2017 15:42:47 +0000</pubDate>
+    <lastBuildDate>Wed, 04 Jan 2017 15:42:47 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -582,18 +582,6 @@ ls -l {} \;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;After making sure the above files we want to delete, we add the
 &lt;code class=&quot;highlighter-rouge&quot;&gt;-delete&lt;/code&gt; flag: &lt;code class=&quot;highlighter-rouge&quot;&gt;find -name &quot;*~&quot; -print -delete&lt;/code&gt;.&lt;/p&gt;
 
-&lt;blockquote class=&quot;blockquote alert alert-danger&quot; cite=&quot;http://man7.org/linux/man-pages/man1/find.1.html&quot;&gt;
-  &lt;p&gt;Warnings: Don’t forget that the find command line is evaluated as an
-expression, so putting -delete first will make find try to delete
-everything below the starting points you specified. When testing a
-find command line that you later intend to use with -delete, you
-should explicitly specify -depth in order to avoid later surprises.
-Because -delete implies -depth, you cannot usefully use -prune and
--delete together.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt; Find command in &lt;a href=&quot;http://man7.org/linux/man-pages/man1/find.1.html&quot;&gt;General Commands Manual&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
 &lt;pre class=&quot;shell&quot;&gt;
 &lt;samp&gt;
 &lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find -name &quot;*~&quot; -print -delete&lt;/kbd&gt;
@@ -620,7 +608,33 @@ Because -delete implies -depth, you cannot usefully use -prune and
 &lt;/samp&gt;
 &lt;/pre&gt;
 
-&lt;p class=&quot;alert alert-danger&quot;&gt;The order of the -delete parameter matters&lt;/p&gt;
+&lt;h3 id=&quot;important-notes&quot;&gt;Important notes&lt;/h3&gt;
+
+&lt;h4 id=&quot;find-parameters-order-matter&quot;&gt;Find parameters order matter&lt;/h4&gt;
+
+&lt;blockquote class=&quot;blockquote alert alert-danger&quot; cite=&quot;http://man7.org/linux/man-pages/man1/find.1.html&quot;&gt;
+  &lt;p&gt;Warnings: Don’t forget that the find command line is evaluated as an
+expression, so putting -delete first will make find try to delete
+everything below the starting points you specified. When testing a
+find command line that you later intend to use with -delete, you
+should explicitly specify -depth in order to avoid later surprises.
+Because -delete implies -depth, you cannot usefully use -prune and
+-delete together.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt; Find command in &lt;a href=&quot;http://man7.org/linux/man-pages/man1/find.1.html&quot;&gt;General Commands Manual&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is: &lt;strong&gt;using the &lt;code class=&quot;highlighter-rouge&quot;&gt;-delete&lt;/code&gt; switch before &lt;code class=&quot;highlighter-rouge&quot;&gt;-name&lt;/code&gt; deletes all the
+file tree recursively&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;safer-find-command&quot;&gt;Safer find command&lt;/h4&gt;
+
+&lt;p&gt;If your version of &lt;code class=&quot;highlighter-rouge&quot;&gt;find&lt;/code&gt; doesn’t have the &lt;code class=&quot;highlighter-rouge&quot;&gt;-delete&lt;/code&gt; switch, then you
+can execute &lt;code class=&quot;highlighter-rouge&quot;&gt;rm&lt;/code&gt; on each matched file with &lt;code class=&quot;highlighter-rouge&quot;&gt;-exec rm {} \;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find -name &quot;*~&quot; -exec rm {} \;&lt;/kbd&gt;
+&lt;/pre&gt;
 
 &lt;h2 id=&quot;alternative-using-git&quot;&gt;Alternative using git&lt;/h2&gt;
 
