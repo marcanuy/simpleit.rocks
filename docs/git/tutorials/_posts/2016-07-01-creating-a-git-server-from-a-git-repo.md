@@ -99,7 +99,7 @@ Put the bare repository in the server.
 <pre class="shell">
 <samp>
 <span class="shell-prompt">$</span> <kbd>scp -r my_project.git user@gitserver.com:/srv/git</kbd>
-<span class="shell-prompt">$</span> <kbd>rm -r my_project.git</kbd>
+<span class="shell-prompt">$</span> <kbd>rm -fr my_project.git</kbd>
 </samp>
 </pre>
 
