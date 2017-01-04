@@ -97,18 +97,6 @@ ls -l {} \;`
 After making sure the above files we want to delete, we add the
 `-delete` flag: `find -name "*~" -print -delete`.
 
-> Warnings: Don't forget that the find command line is evaluated as an
-> expression, so putting -delete first will make find try to delete
-> everything below the starting points you specified. When testing a
-> find command line that you later intend to use with -delete, you
-> should explicitly specify -depth in order to avoid later surprises.
-> Because -delete implies -depth, you cannot usefully use -prune and
-> -delete together.
-> 
-> <footer class="blockquote-footer"> <cite> Find command in <a href="http://man7.org/linux/man-pages/man1/find.1.html">General Commands Manual</a></cite></footer>
-{: class="blockquote alert alert-danger" cite="http://man7.org/linux/man-pages/man1/find.1.html"}
-
-
 <pre class="shell">
 <samp>
 <span class="shell-prompt">$</span> <kbd>find -name "*~" -print -delete</kbd>
@@ -135,8 +123,32 @@ After making sure the above files we want to delete, we add the
 </samp>
 </pre>
 
-The order of the -delete parameter matters
-{: class="alert alert-danger"}
+### Important notes
+
+#### Find parameters order matter
+
+> Warnings: Don't forget that the find command line is evaluated as an
+> expression, so putting -delete first will make find try to delete
+> everything below the starting points you specified. When testing a
+> find command line that you later intend to use with -delete, you
+> should explicitly specify -depth in order to avoid later surprises.
+> Because -delete implies -depth, you cannot usefully use -prune and
+> -delete together.
+> 
+> <footer class="blockquote-footer"> <cite> Find command in <a href="http://man7.org/linux/man-pages/man1/find.1.html">General Commands Manual</a></cite></footer>
+{: class="blockquote alert alert-danger" cite="http://man7.org/linux/man-pages/man1/find.1.html"}
+
+This is: **using the `-delete` switch before `-name` deletes all the
+file tree recursively**.
+
+#### Safer find command
+
+If your version of `find` doesn't have the `-delete` switch, then you
+can execute `rm` on each matched file with `-exec rm {} \;`.
+
+<pre class="shell">
+<span class="shell-prompt">$</span> <kbd>find -name "*~" -exec rm {} \;</kbd>
+</pre>
 
 ## Alternative using git
 
