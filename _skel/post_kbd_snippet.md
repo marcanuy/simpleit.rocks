@@ -2,7 +2,9 @@
 
 <pre class="shell">
 <samp>
-<span class="shell-prompt">$</span> <kbd>sudo gem install rails -v 5.0.0</kbd>
+<span class="shell-comment"># installing</span>
+<span class="shell-prompt">$</span> <kbd>sudo gem install rails -v
+5.0.0</kbd>
 ...
 29 gems installed
 </samp>
