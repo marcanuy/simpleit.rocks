@@ -29,8 +29,8 @@
 
   
   <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Python Virtual Environments - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Python Virtual Environments" />
+<title>Python Projects Isolation Using Virtual Environments - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Python Projects Isolation Using Virtual Environments" />
 <meta name="description" content="Handle dependencies and app versions for each project with python virtual environments." />
 <meta property="og:description" content="Handle dependencies and app versions for each project with python virtual environments." />
 <link rel="canonical" href="http://simpleit.rocks/python-virtual-environments-using-virtualenv/" />
@@ -45,7 +45,7 @@
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
-"headline": "Python Virtual Environments",
+"headline": "Python Projects Isolation Using Virtual Environments",
 "datePublished": "2016-06-10T00:00:00+00:00",
 "description": "Handle dependencies and app versions for each project with python virtual environments.",
 "url": "http://simpleit.rocks/python-virtual-environments-using-virtualenv/"}</script>
@@ -105,7 +105,7 @@
     
     
     
-    <h1 class="title">Python Virtual Environments </h1>
+    <h1 class="title">Python Projects Isolation Using Virtual Environments </h1>
     
     
     <p class="lead">
@@ -271,7 +271,7 @@
        itemprop="item">
     
 
-    <span itemprop="name">Python Virtual Environments</span>
+    <span itemprop="name">Python Projects Isolation Using Virtual Environments</span>
   </span>
   
   <meta itemprop="position" content="6" />
@@ -314,13 +314,15 @@
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#create-a-virtual-environment">Create a virtual environment</a></li>
-<li class="toc-entry toc-h2"><a href="#use-the-virtual-environment">Use the virtual environment</a></li>
-<li class="toc-entry toc-h2"><a href="#stop-using-the-virtual-environment">Stop using the virtual environment</a></li>
-<li class="toc-entry toc-h2"><a href="#virtualenvwrapper">virtualenvwrapper</a></li>
+<li class="toc-entry toc-h2"><a href="#manually">Manually</a></li>
+<li class="toc-entry toc-h3"><a href="#create-a-virtual-environment">Create a virtual environment</a></li>
+<li class="toc-entry toc-h3"><a href="#use-the-virtual-environment">Use the virtual environment</a></li>
+<li class="toc-entry toc-h3"><a href="#stop-using-the-virtual-environment">Stop using the virtual environment</a></li>
+<li class="toc-entry toc-h2"><a href="#automatic">Automatic</a></li>
+<li class="toc-entry toc-h3"><a href="#virtualenvwrapper">virtualenvwrapper</a></li>
 <li class="toc-entry toc-h3"><a href="#virtualenvwrapper-workflow">virtualenvwrapper workflow</a></li>
+<li class="toc-entry toc-h2"><a href="#other-alternatives">Other alternatives</a></li>
 <li class="toc-entry toc-h2"><a href="#reference">Reference</a></li>
-<li class="toc-entry toc-h2"><a href="#pending">Pending</a></li>
 </ul>
       </div>
       <div>
@@ -423,14 +425,39 @@ structure
 <p>Then each time you work on the project you have two alternatives:</p>
 
 <ul>
-  <li><strong>Manually activate the virtual environment</strong> for the project, so it
-handles all the commands instead of executing the current Operating 
-System ones. <code class="highlighter-rouge">source ~/.virtualenvs/my_project/bin/activate</code></li>
-  <li><strong>Configure a virtualenvwrapper</strong> and then just select your environment
-with a command like: <code class="highlighter-rouge">workon my_project</code></li>
+  <li>Manually:
+    <ul>
+      <li><strong>Manually create and activate the virtual environment</strong> for the project
+        <ul>
+          <li>Create an instance where all the packages are installed for
+a specific project instead of executing those present in the
+Operating System, then you will need to active it each time you
+work in that project.</li>
+          <li><kbd>source ~/.virtualenvs/my_project/bin/activate</kbd></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Automatic:
+    <ul>
+      <li><strong>Configure a virtualenvwrapper</strong>
+        <ul>
+          <li>it provides often used processes as scripts and defines standard
+environment variables and installation paths.</li>
+          <li>Using it is as easy as select your environment with a command
+            <ul>
+              <li><kbd>workon my_project</kbd></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="create-a-virtual-environment">Create a virtual environment</h2>
+<h2 id="manually">Manually</h2>
+
+<h3 id="create-a-virtual-environment">Create a virtual environment</h3>
 
 <p>Create the virtual environment (preferable in a directory outside 
 the project)</p>
@@ -447,7 +474,7 @@ be specified.</p>
 </samp>
 </pre>
 
-<h2 id="use-the-virtual-environment">Use the virtual environment</h2>
+<h3 id="use-the-virtual-environment">Use the virtual environment</h3>
 
 <p>To use the new environment, it should be <em>activated</em>.
 Any command executed after activating it, will use the packages
@@ -463,7 +490,7 @@ prepending the virtual environment name in terminal prompt.</p>
 </samp>
 </pre>
 
-<h2 id="stop-using-the-virtual-environment">Stop using the virtual environment</h2>
+<h3 id="stop-using-the-virtual-environment">Stop using the virtual environment</h3>
 
 <pre class="shell">
 <samp>
@@ -472,7 +499,9 @@ prepending the virtual environment name in terminal prompt.</p>
 </samp>
 </pre>
 
-<h2 id="virtualenvwrapper">virtualenvwrapper</h2>
+<h2 id="automatic">Automatic</h2>
+
+<h3 id="virtualenvwrapper">virtualenvwrapper</h3>
 
 <p>Virtualenvwrapper makes it easier to perform <em>virtualenv</em> tasks. It is build upon the following concepts:</p>
 
@@ -499,21 +528,24 @@ Usage: mkvirtualenv [-a project_path] [-i package] [-r requirements_file] [virtu
 <p>Common workflow to work on a new <em>virtual environment</em> using
 <em>virtualenvwrapper</em>:</p>
 
-<ul>
-  <li>Create the virtual environment (by default in <strong>$WORKON_HOME</strong>)</li>
-</ul>
+<p class="alert alert-info">In Ubuntu it can be installed with <kbd>sudo apt-get install virtualenvwrapper</kbd></p>
 
-<blockquote cite="http://virtualenvwrapper.readthedocs.io/en/latest/install.html#variable-workon-home">
-  <p>The variable WORKON_HOME tells virtualenvwrapper where to place your
+<ul>
+  <li>Create the virtual environment
+    <ul>
+      <li>(by default it will available in <strong>$WORKON_HOME</strong>)</li>
+    </ul>
+
+    <blockquote cite="http://virtualenvwrapper.readthedocs.io/en/latest/install.html#variable-workon-home">
+      <p>The variable WORKON_HOME tells virtualenvwrapper where to place your
 virtual environments. The default is $HOME/.virtualenvs. If the
 directory does not exist when virtualenvwrapper is loaded, it will
 be created automatically.</p>
-</blockquote>
-
-<ul>
+    </blockquote>
+  </li>
   <li>list the available <em>environments</em> and activate the project to work on
 with <a href="http://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html#workon">workon</a></li>
-  <li>Go to the project directory <a href="http://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html#cdvirtualenv"><code class="highlighter-rouge">cdvirtualenv</code></a></li>
+  <li>Go to the project directory <a href="http://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html#cdvirtualenv">cdvirtualenv</a></li>
   <li><a href="http://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html#deactivate">deactivate</a> the environment when finished working</li>
 </ul>
 
@@ -535,21 +567,23 @@ myenvname
 </samp>
 </pre>
 
-<p>To create a new environment having a requirements file and a specific python version: <code class="highlighter-rouge">mkvirtualenv -r requirements/local.txt -p /usr/bin/python3.5 myprojectname</code></p>
+<p>To create a new environment having a requirements file and a specific
+python version: <kbd>mkvirtualenv -r requirements/local.txt -p
+/usr/bin/python3.5 myprojectname</kbd></p>
+
+<h2 id="other-alternatives">Other alternatives</h2>
+
+<ul>
+  <li><a href="https://docs.python.org/3/library/venv.html">https://docs.python.org/3/library/venv.html</a></li>
+  <li><a href="https://docs.python.org/3/using/scripts.html#pyvenv-creating-virtual-environments">https://docs.python.org/3/using/scripts.html#pyvenv-creating-virtual-environments</a></li>
+  <li><a href="https://realpython.com/blog/python/python-virtual-environments-a-primer/">https://realpython.com/blog/python/python-virtual-environments-a-primer/</a></li>
+</ul>
 
 <h2 id="reference">Reference</h2>
 
 <ul>
   <li>virtualenv <a href="https://virtualenv.pypa.io">https://virtualenv.pypa.io</a></li>
   <li>virtualenvwrapper <a href="https://virtualenvwrapper.readthedocs.io">https://virtualenvwrapper.readthedocs.io</a></li>
-</ul>
-
-<h2 id="pending">Pending</h2>
-
-<ul>
-  <li><a href="https://docs.python.org/3/library/venv.html">https://docs.python.org/3/library/venv.html</a></li>
-  <li><a href="https://docs.python.org/3/using/scripts.html#pyvenv-creating-virtual-environments">https://docs.python.org/3/using/scripts.html#pyvenv-creating-virtual-environments</a></li>
-  <li><a href="https://realpython.com/blog/python/python-virtual-environments-a-primer/">https://realpython.com/blog/python/python-virtual-environments-a-primer/</a></li>
   <li>PEP 405 – Python Virtual Environments <a href="https://www.python.org/dev/peps/pep-0405">https://www.python.org/dev/peps/pep-0405</a></li>
 </ul>
 
