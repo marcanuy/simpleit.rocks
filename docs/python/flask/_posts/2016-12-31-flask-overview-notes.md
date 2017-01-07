@@ -7,11 +7,14 @@ layout: post
 
 ## Overview
 
-> Flask is a microframework for Python based on Werkzeug, Jinja 2 and
-> good intentions. And before you ask: It's BSD licensed! 
-
 Flask is one of the most popular web frameworks in Github. This is an
 overview of its main concepts to get started quickly.
+
+> Flask is a microframework for Python based on Werkzeug, Jinja 2 and
+> good intentions.
+> 
+> <footer class="blockquote-footer"> <cite>Slogan at <a href="http://flask.pocoo.org/">Flask homepage</a></cite></footer>
+{: class="blockquote" cite="http://flask.pocoo.org/"}
 
 ## Flask script
 
