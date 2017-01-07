@@ -6,21 +6,23 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 05 Jan 2017 15:41:56 +0000</pubDate>
-    <lastBuildDate>Thu, 05 Jan 2017 15:41:56 +0000</lastBuildDate>
+    <pubDate>Sat, 07 Jan 2017 03:33:15 +0000</pubDate>
+    <lastBuildDate>Sat, 07 Jan 2017 03:33:15 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
         <title>Flask Overview</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Flask is a microframework for Python based on Werkzeug, Jinja 2 and
-good intentions. And before you ask: It’s BSD licensed!&lt;/p&gt;
-&lt;/blockquote&gt;
-
 &lt;p&gt;Flask is one of the most popular web frameworks in Github. This is an
 overview of its main concepts to get started quickly.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://flask.pocoo.org/&quot;&gt;
+  &lt;p&gt;Flask is a microframework for Python based on Werkzeug, Jinja 2 and
+good intentions.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Slogan at &lt;a href=&quot;http://flask.pocoo.org/&quot;&gt;Flask homepage&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
 
 &lt;h2 id=&quot;flask-script&quot;&gt;Flask script&lt;/h2&gt;
 
