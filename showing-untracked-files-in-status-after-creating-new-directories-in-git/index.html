@@ -287,6 +287,7 @@
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
 <li class="toc-entry toc-h2"><a href="#seeing-untracked-files">Seeing untracked files</a></li>
+<li class="toc-entry toc-h2"><a href="#showing-untracked-files">Showing untracked files</a></li>
 </ul>
       </div>
       <div>
@@ -416,17 +417,17 @@ On branch master
 Initial commit
 
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
+  (use "git add \&lt;file\&gt;..." to include in what will be committed)
 
 	new_feature/
 
 nothing added to commit but untracked files present (use "git add" to track)
-&lt;/samp&gt;
-&lt;/pre&gt;
+</samp>
+</pre>
 
-## Showing untracked files
+<h2 id="showing-untracked-files">Showing untracked files</h2>
 
-Using `git status untracked-files=all`:
+<p>Using <code class="highlighter-rouge">git status untracked-files=all</code>:</p>
 
 <pre class="shell">
 <samp>
@@ -458,13 +459,13 @@ configuration in `~/.config`:
 	showuntrackedfiles = all
 ~~~
 
-Or we can add that manually
+Or we can just add the above code manually to `~/.config`.
 
 ## References
 
 - Git status documentation &lt;https://git-scm.com/docs/git-status#git-status--ultmodegt&gt;
 - [Choose files to stage of a new directory with magit in Emacs](http://emacs.stackexchange.com/q/13729/8563)
-</file></samp></pre></file></samp></pre>
+</file></samp></pre>
 
 
     
