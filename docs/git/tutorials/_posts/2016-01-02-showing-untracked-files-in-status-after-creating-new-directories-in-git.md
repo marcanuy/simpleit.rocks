@@ -48,7 +48,7 @@ On branch master
 Initial commit
 
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
+  (use "git add \<file\>..." to include in what will be committed)
 
 	new_feature/
 
@@ -90,7 +90,7 @@ configuration in `~/.config`:
 	showuntrackedfiles = all
 ~~~
 
-Or we can add that manually
+Or we can just add the above code manually to `~/.config`.
 
 ## References
 
