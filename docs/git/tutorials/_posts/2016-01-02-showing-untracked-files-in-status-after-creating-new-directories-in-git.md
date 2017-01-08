@@ -68,7 +68,7 @@ On branch master
 Initial commit
 
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
+  (use "git add \<file\>..." to include in what will be committed)
 
 	new_feature/feature_a
 	new_feature/feature_b
