@@ -170,7 +170,11 @@ insecure in some scenarios, the standard itself states:
 | The password is cached by the webbrowser | Can be reused by any other request to the server, e.g. [CSRF] |
 | The password may be stored permanently in the browser | [CSRF] and it might be stolen by another user on a shared machine |
 
-  
+## Conclusions
+
+We have protected a directory with HTTP Basic Authentication, now
+every time we attempt to access that directory, tipically from a
+browser, it will ask for username/password credentials.
   
 ## References
 
