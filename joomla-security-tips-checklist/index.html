@@ -285,7 +285,16 @@
       <div>
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
 <li class="toc-entry toc-h2"><a href="#security-checklist">Security Checklist</a></li>
+<li class="toc-entry toc-h2"><a href="#upgrade-joomla">Upgrade Joomla</a></li>
+<li class="toc-entry toc-h3"><a href="#avoid-old-extensions">Avoid old extensions</a></li>
+<li class="toc-entry toc-h3"><a href="#adjust-files-and-directories-permissions">Adjust files and directories permissions</a></li>
+<li class="toc-entry toc-h4"><a href="#htaccess">htaccess</a></li>
+<li class="toc-entry toc-h4"><a href="#php-files">PHP files</a></li>
+<li class="toc-entry toc-h3"><a href="#fix-images-folder-allowed-files">Fix images folder allowed files</a></li>
+<li class="toc-entry toc-h3"><a href="#popular-extensions">Popular extensions</a></li>
+<li class="toc-entry toc-h3"><a href="#administrator-are-with-http-basic-auth">Administrator are with HTTP basic auth</a></li>
 </ul>
       </div>
       <div>
@@ -369,16 +378,56 @@
 </div>
 
 
-    <h2 id="security-checklist">Security Checklist</h2>
+    <h2 id="overview">Overview</h2>
 
-<ul>
-  <li>Protect the Administrator area, usually the <code class="highlighter-rouge">/administrator</code> path,
-with <a href="/protect-web-directories-with-http-basic-authentication-in-apache-server/">HTTP Basic Authentication</a>.
-<strong>Useful to
-prevent
-<a href="https://en.wikipedia.org/wiki/Dictionary_attack">dictionary attacks</a> in
-the Joomla Administrator area.</strong></li>
-</ul>
+<p>Tips to prevent your Joomla website from being hacked.</p>
+
+<h2 id="security-checklist">Security Checklist</h2>
+
+<h2 id="upgrade-joomla">Upgrade Joomla</h2>
+
+<p>Each new Joomla update come with several security patches, not
+updating means getting into troubles sooner or later, as new
+vulnerabilities are discovered from time to time.</p>
+
+<h3 id="avoid-old-extensions">Avoid old extensions</h3>
+
+<p>You should always keep your extensions updated, if you are using an
+old extension without support, find an alternative or deactivate it.</p>
+
+<h3 id="adjust-files-and-directories-permissions">Adjust files and directories permissions</h3>
+
+<h4 id="htaccess">htaccess</h4>
+
+<p><code class="highlighter-rouge">.htaccess</code> and <code class="highlighter-rouge">configuration.php</code> shouldn’t have write permissions,
+that would leave your them vulnerable to attacks.</p>
+
+<h4 id="php-files">PHP files</h4>
+
+<p>All the PHP files shouldn’t have write permissions.</p>
+
+<h3 id="fix-images-folder-allowed-files">Fix images folder allowed files</h3>
+
+<p>The images folder should only contains <strong>images</strong>, it should <a href="/securing-the-images-folder-in-joomla/">block
+users from trying to upload every other type of file</a>,
+specially <em>scripts</em>.</p>
+
+<h3 id="popular-extensions">Popular extensions</h3>
+
+<p>Not try new extensions until they are well tested or popular in the
+Joomla community.</p>
+
+<h3 id="administrator-are-with-http-basic-auth">Administrator are with HTTP basic auth</h3>
+
+<p>Protect the Administrator area, usually the <code class="highlighter-rouge">/administrator</code> path,
+with
+<a href="/protect-web-directories-with-http-basic-authentication-in-apache-server/">HTTP Basic Authentication</a>.</p>
+
+<p><strong>Useful to
+  prevent
+  <a href="https://en.wikipedia.org/wiki/Dictionary_attack">dictionary attacks</a> in
+  the Joomla Administrator area.</strong></p>
+
 
 
     
@@ -459,6 +508,309 @@ the Joomla Administrator area.</strong></li>
 
 
 
+
+<div class="post-same-category">
+  <h4>Articles in this category</h4>
+  <div class="list-group">
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action active" href="/joomla-security-tips-checklist/">
+      Joomla Security Tips Checklist
+    </a>
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action " href="/securing-the-images-folder-in-joomla/">
+      Securing The Images Folder In Joomla
+    </a>
+    
+    
+  </div>
+</div>
 
 
 	

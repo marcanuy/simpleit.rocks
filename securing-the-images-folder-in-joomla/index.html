@@ -29,15 +29,15 @@
 
   
   <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Bash Script to Find Out If MySQL Is Running Or Not - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Bash Script to Find Out If MySQL Is Running Or Not" />
-<meta name="description" content="A simple shell script to check if mysql server is running and start it if it’s not." />
-<meta property="og:description" content="A simple shell script to check if mysql server is running and start it if it’s not." />
-<link rel="canonical" href="http://simpleit.rocks/lightweight-solution-to-start-mysql-daemon-if-not-running/" />
-<meta property="og:url" content="http://simpleit.rocks/lightweight-solution-to-start-mysql-daemon-if-not-running/" />
+<title>Securing The Images Folder In Joomla - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Securing The Images Folder In Joomla" />
+<meta name="description" content="The images folder is one of the major security risks in Joomla, learn how to prevent being hacked through it." />
+<meta property="og:description" content="The images folder is one of the major security risks in Joomla, learn how to prevent being hacked through it." />
+<link rel="canonical" href="http://simpleit.rocks/securing-the-images-folder-in-joomla/" />
+<meta property="og:url" content="http://simpleit.rocks/securing-the-images-folder-in-joomla/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-11-09T00:00:00+00:00" />
+<meta property="article:published_time" content="2017-01-09T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@simpleitrocks" />
 <meta name="twitter:creator" content="@marcanuy" />
@@ -45,10 +45,10 @@
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
-"headline": "Bash Script to Find Out If MySQL Is Running Or Not",
-"datePublished": "2016-11-09T00:00:00+00:00",
-"description": "A simple shell script to check if mysql server is running and start it if it’s not.",
-"url": "http://simpleit.rocks/lightweight-solution-to-start-mysql-daemon-if-not-running/"}</script>
+"headline": "Securing The Images Folder In Joomla",
+"datePublished": "2017-01-09T00:00:00+00:00",
+"description": "The images folder is one of the major security risks in Joomla, learn how to prevent being hacked through it.",
+"url": "http://simpleit.rocks/securing-the-images-folder-in-joomla/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -105,7 +105,7 @@
     
     
     
-    <h1 class="title">Bash Script To Find Out If Mysql Is Running Or Not </h1>
+    <h1 class="title">Securing The Images Folder In Joomla </h1>
     
     
   </div>
@@ -121,7 +121,7 @@
   <div class="post-meta">
     
     <i class="fa fa-calendar" aria-hidden="true"></i>
-    <time datetime="2016-11-09T00:00:00+00:00" itemprop="datePublished">Nov 9, 2016</time>
+    <time datetime="2017-01-09T00:00:00+00:00" itemprop="datePublished">Jan 9, 2017</time>
     
   </div>
   <div>
@@ -192,10 +192,10 @@
     class="breadcrumb-item">
   
   <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/linux">
+     itemprop="item" href="/docs/php">
     
 
-    linux
+    php
   </a>
   
   <meta itemprop="position" content="3" />
@@ -216,10 +216,10 @@
     class="breadcrumb-item">
   
   <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/linux/shell">
+     itemprop="item" href="/docs/php/joomla">
     
 
-    shell
+    joomla
   </a>
   
   <meta itemprop="position" content="4" />
@@ -243,7 +243,7 @@
        itemprop="item">
     
 
-    <span itemprop="name">Bash Script to Find Out If MySQL Is Running Or Not</span>
+    <span itemprop="name">Securing The Images Folder In Joomla</span>
   </span>
   
   <meta itemprop="position" content="5" />
@@ -286,9 +286,12 @@
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#creating-the-script">Creating the script</a></li>
-<li class="toc-entry toc-h2"><a href="#cronjob">Cronjob</a></li>
-<li class="toc-entry toc-h2"><a href="#reference">Reference</a></li>
+<li class="toc-entry toc-h2"><a href="#strategies">Strategies</a></li>
+<li class="toc-entry toc-h3"><a href="#disable-script-execution-in-images-folder">Disable script execution in images folder</a></li>
+<li class="toc-entry toc-h3"><a href="#htaccess-whitelist">.htaccess whitelist</a></li>
+<li class="toc-entry toc-h3"><a href="#htaccess-blacklist">.htaccess blacklist</a></li>
+<li class="toc-entry toc-h2"><a href="#conclusion">Conclusion</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
       </div>
       <div>
@@ -299,9 +302,9 @@
       <div>
   <a class="twitter-share-button"
      href="https://twitter.com/share"
-     data-url="http://simpleit.rocks/lightweight-solution-to-start-mysql-daemon-if-not-running/"
+     data-url="http://simpleit.rocks/securing-the-images-folder-in-joomla/"
      data-via=""
-     data-text="A simple shell script to check if mysql server is running and start it if it's not."
+     data-text="The images folder is one of the major security risks in Joomla, learn how to prevent being hacked through it."
      data-related="marcanuy,{"username"=>"simpleitrocks"}"
      data-count="vertical">
     Tweet
@@ -333,7 +336,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="http://simpleit.rocks/lightweight-solution-to-start-mysql-daemon-if-not-running/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="http://simpleit.rocks/securing-the-images-folder-in-joomla/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -350,7 +353,7 @@
 
     
 	<p class="lead">
-	  A simple shell script to check if mysql server is running and start it if it's not.
+	  The images folder is one of the major security risks in Joomla, learn how to prevent being hacked through it.
 	</p>
     
 
@@ -374,84 +377,101 @@
 
     <h2 id="overview">Overview</h2>
 
-<p>This is a simple solution to monitor the MySQL daemon, if it detects
-that the daemon is not running, it starts it and send a notification
-email.</p>
+<p>The images folder is one the most vulnerable Joomla folders, because it allows
+users to upload files to your website. That could lead to serious
+security problems. The file types allowed to upload should be
+restricted to its minimum.</p>
 
-<p>It is a simpler solution than using other more complete software like
-<em>supervisord</em> or <em>MonIT</em>.</p>
+<p>We will use <code class="highlighter-rouge">.htaccess</code> to use several strategies to address this
+problem.</p>
 
-<h2 id="creating-the-script">Creating the script</h2>
+<p><code class="highlighter-rouge">.htaccess</code> are simply distributed configuration files, they “provide
+a way to make configuration changes on a per-directory basis”.</p>
 
-<p>Create the script <code class="highlighter-rouge">/root/scripts/monitor_mysql.sh</code> with the following
-content:</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
-
-<span class="c">##########</span>
-<span class="c"># Config #</span>
-<span class="c">##########</span>
-<span class="nv">mysql_daemon</span><span class="o">=</span><span class="s1">'mysqld'</span>
-<span class="nv">pgrep</span><span class="o">=</span><span class="s1">'/usr/bin/pgrep'</span>
-<span class="nv">mysql_start</span><span class="o">=</span><span class="s1">'sudo service mysql start'</span>
-<span class="nv">fail_msg</span><span class="o">=</span><span class="s2">"MySQL is down in </span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">."</span>
-
-<span class="c">##########</span>
-<span class="c"># Script #</span>
-<span class="c">##########</span>
-
-<span class="c">#look up process</span>
-<span class="nv">$pgrep</span> <span class="nv">$mysql_daemon</span> &gt; /dev/null
-<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span>; <span class="k">then
-    </span><span class="nb">echo</span> <span class="nv">$fail_msg</span>
-    <span class="nv">$mysql_start</span>
-<span class="k">fi</span>
-</code></pre>
-</div>
-
-<p>And make it executable:</p>
-
-<pre class="shell">
-<samp>
-<span class="shell-prompt">#</span> <kbd>chmod +x /root/scripts/monitor_mysql.sh</kbd>
-</samp>
-</pre>
-
-<h2 id="cronjob">Cronjob</h2>
-
-<p>Specify through <code class="highlighter-rouge">crontab</code> to run it every 10 minutes. Running</p>
-
-<pre class="shell">
-<samp>
-<span class="shell-prompt">#</span> <kbd>crontab -e</kbd>
-</samp>
-</pre>
-
-<p>Add the following lines:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>MAILTO=mail@example.com
-*/10 * * * * /root/scripts/monitor_mysql.sh
-</code></pre>
-</div>
-
-<p>Every time the script starts the daemon, an email will be sent with
-its output.</p>
-
-<blockquote class="blockquote" cite="http://man7.org/linux/man-pages/man5/crontab.5.html">
-  <p>cron(8) looks at the MAILTO variable if a mail needs to be send as a
-result of running any commands in that particular crontab.  If
-MAILTO is defined (and non-empty), mail is sent to the specified
-address.  If MAILTO is defined but empty (MAILTO=””), no mail is
-sent.  Otherwise, mail is sent to the owner of the crontab.</p>
-  <footer class="blockquote-footer"> <cite>Crontab <a href="http://man7.org/linux/man-pages/man5/crontab.5.html">man description</a></cite></footer>
-</blockquote>
-
-<h2 id="reference">Reference</h2>
+<p>In the images folder we can:</p>
 
 <ul>
-  <li>Crontab <a href="http://man7.org/linux/man-pages/man5/crontab.5.html">http://man7.org/linux/man-pages/man5/crontab.5.html</a></li>
-  <li><a href="https://gist.github.com/mheadd/5571023">Simple bash script to check whether MySQL is running</a></li>
+  <li>Disable script execution</li>
+  <li>Select which files you can upload to it</li>
+  <li>Select which files you can NOT upload to it</li>
 </ul>
+
+<h2 id="strategies">Strategies</h2>
+
+<h3 id="disable-script-execution-in-images-folder">Disable script execution in images folder</h3>
+
+<p>By default Joomla images directory is located in the <code class="highlighter-rouge">/images</code> folder,
+in this directory we add <code class="highlighter-rouge">.htaccess</code> with the following content:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>AddHandler cgi-script .php .pl .py .jsp .asp .htm .shtml .sh .cgi
+Options -ExecCGI
+</code></pre>
+</div>
+
+<p>We used
+the Apache <a href="http://httpd.apache.org/docs/current/mod/core.html#options">Options Directive</a> and <a href="http://httpd.apache.org/docs/current/mod/mod_mime.html#addhandler">AddHandler Directive</a>:</p>
+
+<p>First we tell Apache to treat the files ending with the above
+extensions as <abbr title="Common Gateway Interface">CGI</abbr> scripts, i.e.: be served by <a href="http://httpd.apache.org/docs/current/mod/mod_cgi.html">mod_cgi</a> handler, then we prevent the execution of those <abbr title="Common Gateway Interface">CGI</abbr>
+scripts.</p>
+
+<blockquote class="blockquote" cite="http://httpd.apache.org/docs/current/mod/core.html#options">
+  <p>The Options directive controls which server features are available
+in a particular directory.</p>
+
+  <footer class="blockquote-footer"> <cite>Options Directive in <a href="http://httpd.apache.org/docs/current/mod/core.html#options">Apache Core Features Manual</a></cite></footer>
+</blockquote>
+
+<h3 id="htaccess-whitelist">.htaccess whitelist</h3>
+
+<p>We can specify which file types we allow users to upload to the
+<code class="highlighter-rouge">images</code> folder:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;FilesMatch ".+\.(gif|jpe?g|png|pdf)$"&gt;
+Allow from all
+&lt;/FilesMatch&gt;
+</code></pre>
+</div>
+
+<p>That will allow the above filenames extensions and <strong>block</strong> every
+other extension from getting into the folder.</p>
+
+<blockquote class="blockquote" cite="https://httpd.apache.org/docs/2.4/mod/core.html#filesmatch">
+  <p>The <FilesMatch> directive limits the scope of the enclosed
+directives by filename, just as the <Files> directive does. However,
+it accepts a regular expression</Files></FilesMatch></p>
+
+  <footer class="blockquote-footer"> <cite><FilesMatch> Directive in <a href="https://httpd.apache.org/docs/2.4/mod/core.html#filesmatch">Apache docs</a>&lt;/cite&gt;&lt;/footer&gt;
+</FilesMatch></cite></footer>
+</blockquote>
+
+<h3 id="htaccess-blacklist">.htaccess blacklist</h3>
+
+<p>Instead of specifying which files we allow to upload, here we tell
+Apache to deny the upload of files with these extensions:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;FilesMatch "\.(asp|sh|php|php5|pl)$"&gt;
+Deny from all
+&lt;/FilesMatch&gt;
+</code></pre>
+</div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I found a good strategy to always <strong>disable script execution</strong> and
+then also select from one of the other two methods, <code class="highlighter-rouge">.htaccess</code> <strong>whitelist</strong> or
+<strong>blacklist</strong>, so if the attacker even handle to upload the file it won’t
+get their scripts executed.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>Apache docs <a href="http://httpd.apache.org/docs/current">http://httpd.apache.org/docs/current</a></li>
+  <li>Apache HTTP Server Tutorial: .htaccess files <a href="http://httpd.apache.org/docs/current/howto/htaccess.html">http://httpd.apache.org/docs/current/howto/htaccess.html</a></li>
+  <li>Apache FilesMatch Directive <a href="https://httpd.apache.org/docs/2.4/mod/core.html#filesmatch">https://httpd.apache.org/docs/2.4/mod/core.html#filesmatch</a></li>
+  <li>Security Checklist/You have been hacked or defaced <a href="https://docs.joomla.org/Security_Checklist/You_have_been_hacked_or_defaced">https://docs.joomla.org/Security_Checklist/You_have_been_hacked_or_defaced</a></li>
+</ul>
+
 
 
     
@@ -504,7 +524,7 @@ sent.  Otherwise, mail is sent to the owner of the crontab.</p>
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/lightweight-solution-to-start-mysql-daemon-if-not-running/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/securing-the-images-folder-in-joomla/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -769,8 +789,58 @@ sent.  Otherwise, mail is sent to the owner of the crontab.</p>
     
     
     
-      <a class="list-group-item list-group-item-action active" href="/lightweight-solution-to-start-mysql-daemon-if-not-running/">
-      Bash Script to Find Out If MySQL Is Running Or Not
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action " href="/joomla-security-tips-checklist/">
+      Joomla Security Tips Checklist
     </a>
     
     
@@ -778,67 +848,9 @@ sent.  Otherwise, mail is sent to the owner of the crontab.</p>
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/delete-all-backup-files-recursively-in-bash/">
-      Delete All Backup Files Recursively In Bash
+      <a class="list-group-item list-group-item-action active" href="/securing-the-images-folder-in-joomla/">
+      Securing The Images Folder In Joomla
     </a>
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/prevent-running-of-duplicate-cron-jobs/">
-      Prevent Running Of Duplicate Cron Jobs
-    </a>
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/shell-redirect-output-and-errors-to-the-null-device-in-bash/">
-      Shell Redirect Output And Errors To The Null Device In Bash
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
   </div>
@@ -848,6 +860,130 @@ sent.  Otherwise, mail is sent to the owner of the crontab.</p>
 	
 
 
+
+<h2>Articles</h2>
+<p>This article is being referenced in:</p>
+<div class="list-group">
+  
+  
+  
+  
+    <a href="/joomla-security-tips-checklist/" class="list-group-item list-group-item-action">
+    Joomla Security Tips Checklist
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
 
 
       </div>

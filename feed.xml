@@ -6,22 +6,181 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 09 Jan 2017 17:58:03 +0000</pubDate>
-    <lastBuildDate>Mon, 09 Jan 2017 17:58:03 +0000</lastBuildDate>
+    <pubDate>Mon, 09 Jan 2017 21:41:01 +0000</pubDate>
+    <lastBuildDate>Mon, 09 Jan 2017 21:41:01 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
-        <title>Joomla Security Tips Checklist</title>
-        <description>&lt;h2 id=&quot;security-checklist&quot;&gt;Security Checklist&lt;/h2&gt;
+        <title>Securing The Images Folder In Joomla</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;The images folder is one the most vulnerable Joomla folders, because it allows
+users to upload files to your website. That could lead to serious
+security problems. The file types allowed to upload should be
+restricted to its minimum.&lt;/p&gt;
+
+&lt;p&gt;We will use &lt;code class=&quot;highlighter-rouge&quot;&gt;.htaccess&lt;/code&gt; to use several strategies to address this
+problem.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.htaccess&lt;/code&gt; are simply distributed configuration files, they “provide
+a way to make configuration changes on a per-directory basis”.&lt;/p&gt;
+
+&lt;p&gt;In the images folder we can:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Protect the Administrator area, usually the &lt;code class=&quot;highlighter-rouge&quot;&gt;/administrator&lt;/code&gt; path,
-with &lt;a href=&quot;/protect-web-directories-with-http-basic-authentication-in-apache-server/&quot;&gt;HTTP Basic Authentication&lt;/a&gt;.
-&lt;strong&gt;Useful to
-prevent
-&lt;a href=&quot;https://en.wikipedia.org/wiki/Dictionary_attack&quot;&gt;dictionary attacks&lt;/a&gt; in
-the Joomla Administrator area.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Disable script execution&lt;/li&gt;
+  &lt;li&gt;Select which files you can upload to it&lt;/li&gt;
+  &lt;li&gt;Select which files you can NOT upload to it&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&quot;strategies&quot;&gt;Strategies&lt;/h2&gt;
+
+&lt;h3 id=&quot;disable-script-execution-in-images-folder&quot;&gt;Disable script execution in images folder&lt;/h3&gt;
+
+&lt;p&gt;By default Joomla images directory is located in the &lt;code class=&quot;highlighter-rouge&quot;&gt;/images&lt;/code&gt; folder,
+in this directory we add &lt;code class=&quot;highlighter-rouge&quot;&gt;.htaccess&lt;/code&gt; with the following content:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;AddHandler cgi-script .php .pl .py .jsp .asp .htm .shtml .sh .cgi
+Options -ExecCGI
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We used
+the Apache &lt;a href=&quot;http://httpd.apache.org/docs/current/mod/core.html#options&quot;&gt;Options Directive&lt;/a&gt; and &lt;a href=&quot;http://httpd.apache.org/docs/current/mod/mod_mime.html#addhandler&quot;&gt;AddHandler Directive&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;First we tell Apache to treat the files ending with the above
+extensions as &lt;abbr title=&quot;Common Gateway Interface&quot;&gt;CGI&lt;/abbr&gt; scripts, i.e.: be served by &lt;a href=&quot;http://httpd.apache.org/docs/current/mod/mod_cgi.html&quot;&gt;mod_cgi&lt;/a&gt; handler, then we prevent the execution of those &lt;abbr title=&quot;Common Gateway Interface&quot;&gt;CGI&lt;/abbr&gt;
+scripts.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://httpd.apache.org/docs/current/mod/core.html#options&quot;&gt;
+  &lt;p&gt;The Options directive controls which server features are available
+in a particular directory.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Options Directive in &lt;a href=&quot;http://httpd.apache.org/docs/current/mod/core.html#options&quot;&gt;Apache Core Features Manual&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;htaccess-whitelist&quot;&gt;.htaccess whitelist&lt;/h3&gt;
+
+&lt;p&gt;We can specify which file types we allow users to upload to the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;images&lt;/code&gt; folder:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;FilesMatch &quot;.+\.(gif|jpe?g|png|pdf)$&quot;&amp;gt;
+Allow from all
+&amp;lt;/FilesMatch&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;That will allow the above filenames extensions and &lt;strong&gt;block&lt;/strong&gt; every
+other extension from getting into the folder.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://httpd.apache.org/docs/2.4/mod/core.html#filesmatch&quot;&gt;
+  &lt;p&gt;The &lt;FilesMatch&gt; directive limits the scope of the enclosed
+directives by filename, just as the &lt;Files&gt; directive does. However,
+it accepts a regular expression&lt;/Files&gt;&lt;/FilesMatch&gt;&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;FilesMatch&gt; Directive in &lt;a href=&quot;https://httpd.apache.org/docs/2.4/mod/core.html#filesmatch&quot;&gt;Apache docs&lt;/a&gt;&amp;lt;/cite&amp;gt;&amp;lt;/footer&amp;gt;
+&lt;/FilesMatch&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;htaccess-blacklist&quot;&gt;.htaccess blacklist&lt;/h3&gt;
+
+&lt;p&gt;Instead of specifying which files we allow to upload, here we tell
+Apache to deny the upload of files with these extensions:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;FilesMatch &quot;\.(asp|sh|php|php5|pl)$&quot;&amp;gt;
+Deny from all
+&amp;lt;/FilesMatch&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;I found a good strategy to always &lt;strong&gt;disable script execution&lt;/strong&gt; and
+then also select from one of the other two methods, &lt;code class=&quot;highlighter-rouge&quot;&gt;.htaccess&lt;/code&gt; &lt;strong&gt;whitelist&lt;/strong&gt; or
+&lt;strong&gt;blacklist&lt;/strong&gt;, so if the attacker even handle to upload the file it won’t
+get their scripts executed.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Apache docs &lt;a href=&quot;http://httpd.apache.org/docs/current&quot;&gt;http://httpd.apache.org/docs/current&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Apache HTTP Server Tutorial: .htaccess files &lt;a href=&quot;http://httpd.apache.org/docs/current/howto/htaccess.html&quot;&gt;http://httpd.apache.org/docs/current/howto/htaccess.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Apache FilesMatch Directive &lt;a href=&quot;https://httpd.apache.org/docs/2.4/mod/core.html#filesmatch&quot;&gt;https://httpd.apache.org/docs/2.4/mod/core.html#filesmatch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Security Checklist/You have been hacked or defaced &lt;a href=&quot;https://docs.joomla.org/Security_Checklist/You_have_been_hacked_or_defaced&quot;&gt;https://docs.joomla.org/Security_Checklist/You_have_been_hacked_or_defaced&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Mon, 09 Jan 2017 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/securing-the-images-folder-in-joomla/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/securing-the-images-folder-in-joomla/</guid>
+        
+        <category>joomla,</category>
+        
+        <category>images,</category>
+        
+        <category>htaccess</category>
+        
+        
+        <category>docs</category>
+        
+        <category>php</category>
+        
+        <category>joomla</category>
+        
+      </item>
+    
+      <item>
+        <title>Joomla Security Tips Checklist</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Tips to prevent your Joomla website from being hacked.&lt;/p&gt;
+
+&lt;h2 id=&quot;security-checklist&quot;&gt;Security Checklist&lt;/h2&gt;
+
+&lt;h2 id=&quot;upgrade-joomla&quot;&gt;Upgrade Joomla&lt;/h2&gt;
+
+&lt;p&gt;Each new Joomla update come with several security patches, not
+updating means getting into troubles sooner or later, as new
+vulnerabilities are discovered from time to time.&lt;/p&gt;
+
+&lt;h3 id=&quot;avoid-old-extensions&quot;&gt;Avoid old extensions&lt;/h3&gt;
+
+&lt;p&gt;You should always keep your extensions updated, if you are using an
+old extension without support, find an alternative or deactivate it.&lt;/p&gt;
+
+&lt;h3 id=&quot;adjust-files-and-directories-permissions&quot;&gt;Adjust files and directories permissions&lt;/h3&gt;
+
+&lt;h4 id=&quot;htaccess&quot;&gt;htaccess&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.htaccess&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;configuration.php&lt;/code&gt; shouldn’t have write permissions,
+that would leave your them vulnerable to attacks.&lt;/p&gt;
+
+&lt;h4 id=&quot;php-files&quot;&gt;PHP files&lt;/h4&gt;
+
+&lt;p&gt;All the PHP files shouldn’t have write permissions.&lt;/p&gt;
+
+&lt;h3 id=&quot;fix-images-folder-allowed-files&quot;&gt;Fix images folder allowed files&lt;/h3&gt;
+
+&lt;p&gt;The images folder should only contains &lt;strong&gt;images&lt;/strong&gt;, it should &lt;a href=&quot;/securing-the-images-folder-in-joomla/&quot;&gt;block
+users from trying to upload every other type of file&lt;/a&gt;,
+specially &lt;em&gt;scripts&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;popular-extensions&quot;&gt;Popular extensions&lt;/h3&gt;
+
+&lt;p&gt;Not try new extensions until they are well tested or popular in the
+Joomla community.&lt;/p&gt;
+
+&lt;h3 id=&quot;administrator-are-with-http-basic-auth&quot;&gt;Administrator are with HTTP basic auth&lt;/h3&gt;
+
+&lt;p&gt;Protect the Administrator area, usually the &lt;code class=&quot;highlighter-rouge&quot;&gt;/administrator&lt;/code&gt; path,
+with
+&lt;a href=&quot;/protect-web-directories-with-http-basic-authentication-in-apache-server/&quot;&gt;HTTP Basic Authentication&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Useful to
+  prevent
+  &lt;a href=&quot;https://en.wikipedia.org/wiki/Dictionary_attack&quot;&gt;dictionary attacks&lt;/a&gt; in
+  the Joomla Administrator area.&lt;/strong&gt;&lt;/p&gt;
+
 </description>
         <pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate>
         <link>http://simpleit.rocks/joomla-security-tips-checklist/</link>
@@ -1324,152 +1483,6 @@ installation, in this case I have used &lt;code class=&quot;highlighter-rouge&qu
         <category>docs</category>
         
         <category>web</category>
-        
-      </item>
-    
-      <item>
-        <title>Contributing To A Github Repository Step By Step</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Simply guide to contribute to any project in Github. The basic
-workflow consist of&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Fork the repository&lt;/li&gt;
-  &lt;li&gt;Make a fix or contribution&lt;/li&gt;
-  &lt;li&gt;Submit a pull request to the original project&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;forking&quot;&gt;Forking&lt;/h2&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://help.github.com/articles/fork-a-repo/&quot;&gt;
-  &lt;p&gt;A fork is a copy of a repository. Forking a repository allows you to
-freely experiment with changes without affecting the original
-project.&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Fork A Repo in &lt;a href=&quot;https://help.github.com/articles/fork-a-repo/&quot;&gt;Github help&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Go to the project you want to contribute and press the &lt;strong&gt;Fork&lt;/strong&gt;
-button.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://github-images.s3.amazonaws.com/help/bootcamp/Bootcamp-Fork.png&quot; alt=&quot;fork&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;That will generate a copy of the repository in your Github profile
-where you can work with the code.&lt;/p&gt;
-
-&lt;p&gt;In this example I will fork the following
-repo: &lt;a href=&quot;https://github.com/housed/feedr&quot;&gt;https://github.com/housed/feedr&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;clone-the-forked-repo&quot;&gt;Clone the forked repo&lt;/h2&gt;
-
-&lt;p&gt;Make a local copy of the forked repo with &lt;code class=&quot;highlighter-rouge&quot;&gt;git clone&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;git clone https://github.com/marcanuy/feedr.git&lt;/kbd&gt;
-Cloning into 'feedr'...
-remote: Counting objects: 65, done.
-remote: Total 65 (delta 0), reused 0 (delta 0), pack-reused 65
-Ricezione degli oggetti: 100% (65/65), 178.73 KiB | 282.00 KiB/s, done.
-Risoluzione dei delta: 100% (22/22), done.
-Checking connectivity... fatto.
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;cd feedr&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;feedr$&lt;/span&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;configure-the-original-repo-as-a-remote&quot;&gt;Configure the original repo as a remote&lt;/h2&gt;
-
-&lt;p&gt;Having the original repo as a remote makes it possible to keep your
-code up to date with all the contributions made to the original repo
-and contribute your own code.&lt;/p&gt;
-
-&lt;p&gt;The convention is to name this remote repo &lt;code class=&quot;highlighter-rouge&quot;&gt;upstream&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;feedr$&lt;/span&gt; &lt;kbd&gt;git remote add upstream https://github.com/housed/feedr.git&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;feedr$&lt;/span&gt; &lt;kbd&gt;git remote -v&lt;/kbd&gt;
-origin  git@github.com:marcanuy/feedr.git (fetch)
-origin  git@github.com:marcanuy/feedr.git (push)
-upstream        https://github.com/housed/feedr.git (fetch)
-upstream        https://github.com/housed/feedr.git (push)
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;create-a-branch&quot;&gt;Create a branch&lt;/h2&gt;
-
-&lt;p&gt;Create a topic branch where you fix or improve the code and move to
-that branch.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;git checkout -b fix-indentation&lt;/kbd&gt;
-Switched to a new branch 'fix-indentation'
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;create-a-branch-with-new-changes&quot;&gt;Create a branch with new changes&lt;/h2&gt;
-
-&lt;p&gt;After working in the new branch, making some changes and &lt;em&gt;commits&lt;/em&gt;,
-push the new branch,&lt;code class=&quot;highlighter-rouge&quot;&gt;fix-indentation&lt;/code&gt; in this case, to your Github
-repo.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;git push origin fix-indentation&lt;/kbd&gt;
-Counting objects: 4, done.
-Delta compression using up to 2 threads.
-Compressing objects: 100% (4/4), done.
-Writing objects: 100% (4/4), 367 bytes | 0 bytes/s, done.
-Total 4 (delta 2), reused 0 (delta 0)
-remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
-To github.com:marcanuy/feedr.git
- * [new branch]      fix-indentation -&amp;gt; fix-indentation
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;create-a-pull-request&quot;&gt;Create a pull request&lt;/h2&gt;
-
-&lt;p&gt;Now your changes are in a new branch in your Github repo, it is time
-to make a &lt;em&gt;pull request&lt;/em&gt; to merge your changes in the original repo.&lt;/p&gt;
-
-&lt;p&gt;The Github repo webpage shows:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Your recently pushed branches:
-    fix-indentation (less than a minute ago)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;and makes it available a button to send the &lt;strong&gt;Pull Request&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;After pressing the &lt;strong&gt;Pull request&lt;/strong&gt; button, the webpage redirects to
-&lt;strong&gt;Open a pull request&lt;/strong&gt; page, after selecting the base fork and the
-head fork, you can make the &lt;strong&gt;pull request&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Now just wait to the repo owner to merge your fixes.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;marcanuy wants to merge 1 commit into housed:master from  marcanuy:fix-indentation&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.github.com/articles/syncing-a-fork/&quot;&gt;Syncing a fork&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.github.com/articles/creating-a-pull-request-from-a-fork/&quot;&gt;Creating a pull request from a fork&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://guides.github.com/activities/forking/&quot;&gt;Forking Projects&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Thu, 10 Nov 2016 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/contributing-to-a-github-repository-step-by-step/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/contributing-to-a-github-repository-step-by-step/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>git</category>
         
       </item>
     
