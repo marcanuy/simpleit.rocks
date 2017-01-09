@@ -237,9 +237,6 @@
 <loc>http://simpleit.rocks/</loc>
 </url>
 <url>
-<loc>http://simpleit.rocks/docs/bash/</loc>
-</url>
-<url>
 <loc>http://simpleit.rocks/docs/git/commands/</loc>
 </url>
 <url>
@@ -253,6 +250,9 @@
 </url>
 <url>
 <loc>http://simpleit.rocks/docs/git/</loc>
+</url>
+<url>
+<loc>http://simpleit.rocks/docs/linux/shell/</loc>
 </url>
 <url>
 <loc>http://simpleit.rocks/docs/linux/</loc>
