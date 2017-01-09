@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 09 Jan 2017 03:26:55 +0000</pubDate>
-    <lastBuildDate>Mon, 09 Jan 2017 03:26:55 +0000</lastBuildDate>
+    <pubDate>Mon, 09 Jan 2017 14:30:25 +0000</pubDate>
+    <lastBuildDate>Mon, 09 Jan 2017 14:30:25 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -98,10 +98,46 @@ Require valid-user
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h3 id=&quot;create-apache-passwords-file&quot;&gt;Create Apache passwords file&lt;/h3&gt;
+&lt;h3 id=&quot;passwords-file&quot;&gt;Passwords file&lt;/h3&gt;
+
+&lt;p&gt;We use the &lt;code class=&quot;highlighter-rouge&quot;&gt;htpasswd&lt;/code&gt; command to manage user files for basic
+authentication.&lt;/p&gt;
+
+&lt;p&gt;Command overview:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;htpasswd --help&lt;/kbd&gt;
+Usage:
+	htpasswd [-cimBdpsDv] [-C cost] passwordfile username
+	htpasswd -b[cmBdpsDv] [-C cost] passwordfile username password
+
+	htpasswd -n[imBdps] [-C cost] username
+	htpasswd -nb[mBdps] [-C cost] username password
+ -c  Create a new file.
+ -n  Don't update file; display results on stdout.
+ -b  Use the password from the command line rather than prompting for it.
+ -i  Read password from stdin without verification (for script usage).
+ -m  Force MD5 encryption of the password (default).
+ -B  Force bcrypt encryption of the password (very secure).
+ -C  Set the computing time used for the bcrypt algorithm
+     (higher is more secure but slower, default: 5, valid: 4 to 31).
+ -d  Force CRYPT encryption of the password (8 chars max, insecure).
+ -s  Force SHA encryption of the password (insecure).
+ -p  Do not encrypt the password (plaintext, insecure).
+ -D  Delete the specified user.
+ -v  Verify password for the specified user.
+On other systems than Windows and NetWare the '-p' flag will probably not work.
+The SHA algorithm does not use a salt and is less secure than the MD5 algorithm.
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h4 id=&quot;create-passwords-file&quot;&gt;Create passwords file&lt;/h4&gt;
 
 &lt;p&gt;Create a directory &lt;strong&gt;outside apache document root&lt;/strong&gt;, only Apache should
 access the password file.&lt;/p&gt;
+
+&lt;p&gt;Using the &lt;code class=&quot;highlighter-rouge&quot;&gt;htpasswd -c&lt;/code&gt; creates the &lt;em&gt;passwdfile&lt;/em&gt;.&lt;/p&gt;
 
 &lt;pre class=&quot;shell&quot;&gt;
 &lt;samp&gt;
@@ -109,6 +145,9 @@ access the password file.&lt;/p&gt;
 &lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;chmod 0660 /home/secure/apasswords&lt;/kbd&gt;
 &lt;span class=&quot;shell-comment&quot;&gt;# Create password file with user foobar&lt;/span&gt;
 &lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;htpasswd -c /home/secure/apasswords foobar&lt;/kbd&gt;
+New password:
+Re-type new password:
+Adding password for user foobar
 &lt;span class=&quot;shell-comment&quot;&gt;# In this case the server user and group is www-data&lt;/span&gt;
 &lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;chown www-data:www-data /home/secure/apasswords&lt;/kbd&gt;
 &lt;/samp&gt;
@@ -119,15 +158,32 @@ access the password file.&lt;/p&gt;
 &lt;p class=&quot;alert alert-info&quot;&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;mkdir -p&lt;/code&gt; creates all the folder structure specified in the
 parameters&lt;/p&gt;
 
-&lt;h3 id=&quot;to-add-more-users&quot;&gt;To add more users&lt;/h3&gt;
+&lt;h4 id=&quot;htpasswd-commands&quot;&gt;htpasswd commands&lt;/h4&gt;
+
+&lt;h5 id=&quot;to-add-more-users&quot;&gt;To add more users&lt;/h5&gt;
 
 &lt;p&gt;To change or add more users of the file, the same command can be used
-without the &lt;code class=&quot;highlighter-rouge&quot;&gt;-c&lt;/code&gt; option, to add the user &lt;code class=&quot;highlighter-rouge&quot;&gt;john&lt;/code&gt;.&lt;/p&gt;
+without the &lt;code class=&quot;highlighter-rouge&quot;&gt;-c&lt;/code&gt; option, to add the user &lt;code class=&quot;highlighter-rouge&quot;&gt;john&lt;/code&gt;:&lt;/p&gt;
 
 &lt;pre class=&quot;shell&quot;&gt;
 &lt;samp&gt;
 &lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;htpasswd .htpasswd john&lt;/kbd&gt;
+New password:
+Re-type new password:
+Adding password for user foobar
+&lt;/samp&gt;
+&lt;/pre&gt;
 
+&lt;h4 id=&quot;changing-existing-users-passwords&quot;&gt;Changing existing users passwords&lt;/h4&gt;
+
+&lt;p&gt;We execute the same command with the user that we want to change:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;htpasswd .htpasswd john &lt;/kbd&gt;
+New password:
+Re-type new password:
+Updating password for user foobar
 &lt;/samp&gt;
 &lt;/pre&gt;
 

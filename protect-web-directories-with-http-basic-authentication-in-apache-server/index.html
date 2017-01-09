@@ -317,8 +317,11 @@
 <li class="toc-entry toc-h2"><a href="#concepts">Concepts</a></li>
 <li class="toc-entry toc-h2"><a href="#steps-to-secure-a-directory">Steps to secure a directory</a></li>
 <li class="toc-entry toc-h3"><a href="#create-apache-htaccess">Create Apache .htaccess</a></li>
-<li class="toc-entry toc-h3"><a href="#create-apache-passwords-file">Create Apache passwords file</a></li>
-<li class="toc-entry toc-h3"><a href="#to-add-more-users">To add more users</a></li>
+<li class="toc-entry toc-h3"><a href="#passwords-file">Passwords file</a></li>
+<li class="toc-entry toc-h4"><a href="#create-passwords-file">Create passwords file</a></li>
+<li class="toc-entry toc-h4"><a href="#htpasswd-commands">htpasswd commands</a></li>
+<li class="toc-entry toc-h5"><a href="#to-add-more-users">To add more users</a></li>
+<li class="toc-entry toc-h4"><a href="#changing-existing-users-passwords">Changing existing users passwords</a></li>
 <li class="toc-entry toc-h2"><a href="#risks">Risks</a></li>
 <li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
@@ -462,10 +465,46 @@ Require valid-user
 </code></pre>
 </div>
 
-<h3 id="create-apache-passwords-file">Create Apache passwords file</h3>
+<h3 id="passwords-file">Passwords file</h3>
+
+<p>We use the <code class="highlighter-rouge">htpasswd</code> command to manage user files for basic
+authentication.</p>
+
+<p>Command overview:</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>htpasswd --help</kbd>
+Usage:
+	htpasswd [-cimBdpsDv] [-C cost] passwordfile username
+	htpasswd -b[cmBdpsDv] [-C cost] passwordfile username password
+
+	htpasswd -n[imBdps] [-C cost] username
+	htpasswd -nb[mBdps] [-C cost] username password
+ -c  Create a new file.
+ -n  Don't update file; display results on stdout.
+ -b  Use the password from the command line rather than prompting for it.
+ -i  Read password from stdin without verification (for script usage).
+ -m  Force MD5 encryption of the password (default).
+ -B  Force bcrypt encryption of the password (very secure).
+ -C  Set the computing time used for the bcrypt algorithm
+     (higher is more secure but slower, default: 5, valid: 4 to 31).
+ -d  Force CRYPT encryption of the password (8 chars max, insecure).
+ -s  Force SHA encryption of the password (insecure).
+ -p  Do not encrypt the password (plaintext, insecure).
+ -D  Delete the specified user.
+ -v  Verify password for the specified user.
+On other systems than Windows and NetWare the '-p' flag will probably not work.
+The SHA algorithm does not use a salt and is less secure than the MD5 algorithm.
+</samp>
+</pre>
+
+<h4 id="create-passwords-file">Create passwords file</h4>
 
 <p>Create a directory <strong>outside apache document root</strong>, only Apache should
 access the password file.</p>
+
+<p>Using the <code class="highlighter-rouge">htpasswd -c</code> creates the <em>passwdfile</em>.</p>
 
 <pre class="shell">
 <samp>
@@ -473,6 +512,9 @@ access the password file.</p>
 <span class="shell-prompt">$</span> <kbd>chmod 0660 /home/secure/apasswords</kbd>
 <span class="shell-comment"># Create password file with user foobar</span>
 <span class="shell-prompt">$</span> <kbd>htpasswd -c /home/secure/apasswords foobar</kbd>
+New password:
+Re-type new password:
+Adding password for user foobar
 <span class="shell-comment"># In this case the server user and group is www-data</span>
 <span class="shell-prompt">$</span> <kbd>chown www-data:www-data /home/secure/apasswords</kbd>
 </samp>
@@ -483,15 +525,32 @@ access the password file.</p>
 <p class="alert alert-info">The <code class="highlighter-rouge">mkdir -p</code> creates all the folder structure specified in the
 parameters</p>
 
-<h3 id="to-add-more-users">To add more users</h3>
+<h4 id="htpasswd-commands">htpasswd commands</h4>
+
+<h5 id="to-add-more-users">To add more users</h5>
 
 <p>To change or add more users of the file, the same command can be used
-without the <code class="highlighter-rouge">-c</code> option, to add the user <code class="highlighter-rouge">john</code>.</p>
+without the <code class="highlighter-rouge">-c</code> option, to add the user <code class="highlighter-rouge">john</code>:</p>
 
 <pre class="shell">
 <samp>
 <span class="shell-prompt">$</span> <kbd>htpasswd .htpasswd john</kbd>
+New password:
+Re-type new password:
+Adding password for user foobar
+</samp>
+</pre>
 
+<h4 id="changing-existing-users-passwords">Changing existing users passwords</h4>
+
+<p>We execute the same command with the user that we want to change:</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>htpasswd .htpasswd john </kbd>
+New password:
+Re-type new password:
+Updating password for user foobar
 </samp>
 </pre>
 
