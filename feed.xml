@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 09 Jan 2017 14:30:25 +0000</pubDate>
-    <lastBuildDate>Mon, 09 Jan 2017 14:30:25 +0000</lastBuildDate>
+    <pubDate>Mon, 09 Jan 2017 17:04:54 +0000</pubDate>
+    <lastBuildDate>Mon, 09 Jan 2017 17:04:54 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -226,6 +226,12 @@ user-id and password are passed over the network as cleartext.&lt;/p&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
+
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+
+&lt;p&gt;We have protected a directory with HTTP Basic Authentication, now
+every time we attempt to access that directory, tipically from a
+browser, it will ask for username/password credentials.&lt;/p&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
