@@ -6,9 +6,194 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 08 Jan 2017 17:16:26 +0000</pubDate>
-    <lastBuildDate>Sun, 08 Jan 2017 17:16:26 +0000</lastBuildDate>
+    <pubDate>Mon, 09 Jan 2017 03:26:55 +0000</pubDate>
+    <lastBuildDate>Mon, 09 Jan 2017 03:26:55 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Joomla Security Tips Checklist</title>
+        <description>&lt;h2 id=&quot;security-checklist&quot;&gt;Security Checklist&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Protect the Administrator area, usually the &lt;code class=&quot;highlighter-rouge&quot;&gt;/administrator&lt;/code&gt; path,
+with &lt;a href=&quot;/protect-web-directories-with-http-basic-authentication-in-apache-server/&quot;&gt;HTTP Basic Authentication&lt;/a&gt;.
+&lt;strong&gt;Useful to
+prevent
+&lt;a href=&quot;https://en.wikipedia.org/wiki/Dictionary_attack&quot;&gt;dictionary attacks&lt;/a&gt; in
+the Joomla Administrator area.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/joomla-security-tips-checklist/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/joomla-security-tips-checklist/</guid>
+        
+        <category>joomla</category>
+        
+        
+        <category>docs</category>
+        
+        <category>php</category>
+        
+        <category>joomla</category>
+        
+      </item>
+    
+      <item>
+        <title>Protect Web Directories With Http Basic Authentication In Apache Server</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;HTTP Basic Auth is very common in the web, although it is not the most
+secure one.&lt;/p&gt;
+
+&lt;p&gt;It’s simplicity makes it a simple choice to add a layer of security to
+web directory quickly, not needing &lt;em&gt;sessions&lt;/em&gt; nor &lt;em&gt;cookies&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;concepts&quot;&gt;Concepts&lt;/h2&gt;
+
+&lt;p&gt;HTTP Basic authentication needs that a client provides a username
+and password when making a request.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://tools.ietf.org/html/rfc7617&quot;&gt;
+  &lt;p&gt;The “Basic” Hypertext Transfer Protocol (HTTP)
+authentication scheme, transmits credentials as user-id/password
+pairs, encoded using Base64&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; The 'Basic' HTTP Authentication Scheme in &lt;cite&gt;&lt;a href=&quot;https://tools.ietf.org/html/rfc7617&quot;&gt;RFC 7617&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;steps-to-secure-a-directory&quot;&gt;Steps to secure a directory&lt;/h2&gt;
+
+&lt;p&gt;To use HTTP Basic Authentication on a server, you need to create two files&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.htaccess&lt;/code&gt;: specifies which directory to protect&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.htpasswd&lt;/code&gt;: passwords file&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The each time you access the directory of &lt;code class=&quot;highlighter-rouge&quot;&gt;.htaccess&lt;/code&gt; it asks for
+&lt;em&gt;username&lt;/em&gt; and &lt;em&gt;password&lt;/em&gt; validating it against &lt;code class=&quot;highlighter-rouge&quot;&gt;.htpasswd&lt;/code&gt;
+credentials.&lt;/p&gt;
+
+&lt;p&gt;We will end up having this directories structure:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/home
+	/secure
+		/apasswords
+...
+/var
+	/www
+		/myprotected
+			.htaccess
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;create-apache-htaccess&quot;&gt;Create Apache .htaccess&lt;/h3&gt;
+
+&lt;p&gt;Add an &lt;code class=&quot;highlighter-rouge&quot;&gt;.htaccess&lt;/code&gt; file inside each directory that will be protected
+with the following content, in this case in &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/www/myprotected/.htaccess&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;AuthType Basic
+AuthName &quot;Restricted Access&quot;
+AuthUserFile /home/secure/apasswords
+Require valid-user
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;create-apache-passwords-file&quot;&gt;Create Apache passwords file&lt;/h3&gt;
+
+&lt;p&gt;Create a directory &lt;strong&gt;outside apache document root&lt;/strong&gt;, only Apache should
+access the password file.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;mkdir -p /home/secure/&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;chmod 0660 /home/secure/apasswords&lt;/kbd&gt;
+&lt;span class=&quot;shell-comment&quot;&gt;# Create password file with user foobar&lt;/span&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;htpasswd -c /home/secure/apasswords foobar&lt;/kbd&gt;
+&lt;span class=&quot;shell-comment&quot;&gt;# In this case the server user and group is www-data&lt;/span&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;chown www-data:www-data /home/secure/apasswords&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p class=&quot;alert alert-info&quot;&gt;/home/secure/apasswords must be only readable by Apache web server&lt;/p&gt;
+
+&lt;p class=&quot;alert alert-info&quot;&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;mkdir -p&lt;/code&gt; creates all the folder structure specified in the
+parameters&lt;/p&gt;
+
+&lt;h3 id=&quot;to-add-more-users&quot;&gt;To add more users&lt;/h3&gt;
+
+&lt;p&gt;To change or add more users of the file, the same command can be used
+without the &lt;code class=&quot;highlighter-rouge&quot;&gt;-c&lt;/code&gt; option, to add the user &lt;code class=&quot;highlighter-rouge&quot;&gt;john&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;htpasswd .htpasswd john&lt;/kbd&gt;
+
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;risks&quot;&gt;Risks&lt;/h2&gt;
+
+&lt;p&gt;The HTTP Basic authentication has several issues that makes it
+insecure in some scenarios, the standard itself states:&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://tools.ietf.org/html/rfc7617&quot;&gt;
+  &lt;p&gt;This scheme is not considered to be a secure method of user
+authentication unless used in conjunction with some external secure
+system such as TLS (Transport Layer Security, [RFC5246]), as the
+user-id and password are passed over the network as cleartext.&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; The 'Basic' HTTP Authentication Scheme in &lt;cite&gt;&lt;a href=&quot;https://tools.ietf.org/html/rfc7617&quot;&gt;RFC 7617&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;HTTP Basic auth issue&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Insecurity issue&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Password is sent in base64 encoding&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Password can be converted to plaintext &lt;em&gt;(solved by using [Secure Sockets Layer])&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Password is sent for each request&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Larger attack window&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;The password is cached by the webbrowser&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Can be reused by any other request to the server, e.g. &lt;a href=&quot;https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)&quot;&gt;CSRF&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;The password may be stored permanently in the browser&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)&quot;&gt;CSRF&lt;/a&gt; and it might be stolen by another user on a shared machine&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;RFC 7617 ‘Basic’ HTTP Authentication Scheme &lt;a href=&quot;https://tools.ietf.org/html/rfc7617&quot;&gt;https://tools.ietf.org/html/rfc7617&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Information Security Answer: &lt;a href=&quot;http://security.stackexchange.com/a/990/66281&quot;&gt;Is BASIC-Auth secure if done over HTTPS?&lt;/a&gt; by &lt;a href=&quot;http://security.stackexchange.com/users/33/avid&quot;&gt;AviD♦&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Basic_access_authentication&quot;&gt;https://en.wikipedia.org/wiki/Basic_access_authentication&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sat, 07 Jan 2017 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/protect-web-directories-with-http-basic-authentication-in-apache-server/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/protect-web-directories-with-http-basic-authentication-in-apache-server/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>web</category>
+        
+        <category>servers</category>
+        
+        <category>apache</category>
+        
+      </item>
     
       <item>
         <title>Flask Overview</title>
@@ -1217,431 +1402,6 @@ head fork, you can make the &lt;strong&gt;pull request&lt;/strong&gt;.&lt;/p&gt;
         <category>docs</category>
         
         <category>git</category>
-        
-      </item>
-    
-      <item>
-        <title>Bash Script to Find Out If MySQL Is Running Or Not</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;This is a simple solution to monitor the MySQL daemon, if it detects
-that the daemon is not running, it starts it and send a notification
-email.&lt;/p&gt;
-
-&lt;p&gt;It is a simpler solution than using other more complete software like
-&lt;em&gt;supervisord&lt;/em&gt; or &lt;em&gt;MonIT&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;creating-the-script&quot;&gt;Creating the script&lt;/h2&gt;
-
-&lt;p&gt;Create the script &lt;code class=&quot;highlighter-rouge&quot;&gt;/root/scripts/monitor_mysql.sh&lt;/code&gt; with the following
-content:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;##########&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Config #&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;##########&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;mysql_daemon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'mysqld'&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;pgrep&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/usr/bin/pgrep'&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;mysql_start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'sudo service mysql start'&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;fail_msg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;MySQL is down in &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;hostname&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.&quot;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;##########&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Script #&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;##########&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;#look up process&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$pgrep&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$mysql_daemon&lt;/span&gt; &amp;gt; /dev/null
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$?&lt;/span&gt; -ne 0 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
-    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$fail_msg&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;$mysql_start&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;And make it executable:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;#&lt;/span&gt; &lt;kbd&gt;chmod +x /root/scripts/monitor_mysql.sh&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;cronjob&quot;&gt;Cronjob&lt;/h2&gt;
-
-&lt;p&gt;Specify through &lt;code class=&quot;highlighter-rouge&quot;&gt;crontab&lt;/code&gt; to run it every 10 minutes. Running&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;#&lt;/span&gt; &lt;kbd&gt;crontab -e&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;Add the following lines:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MAILTO=mail@example.com
-*/10 * * * * /root/scripts/monitor_mysql.sh
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Every time the script starts the daemon, an email will be sent with
-its output.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://man7.org/linux/man-pages/man5/crontab.5.html&quot;&gt;
-  &lt;p&gt;cron(8) looks at the MAILTO variable if a mail needs to be send as a
-result of running any commands in that particular crontab.  If
-MAILTO is defined (and non-empty), mail is sent to the specified
-address.  If MAILTO is defined but empty (MAILTO=””), no mail is
-sent.  Otherwise, mail is sent to the owner of the crontab.&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Crontab &lt;a href=&quot;http://man7.org/linux/man-pages/man5/crontab.5.html&quot;&gt;man description&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Crontab &lt;a href=&quot;http://man7.org/linux/man-pages/man5/crontab.5.html&quot;&gt;http://man7.org/linux/man-pages/man5/crontab.5.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://gist.github.com/mheadd/5571023&quot;&gt;Simple bash script to check whether MySQL is running&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Wed, 09 Nov 2016 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/lightweight-solution-to-start-mysql-daemon-if-not-running/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/lightweight-solution-to-start-mysql-daemon-if-not-running/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>bash</category>
-        
-      </item>
-    
-      <item>
-        <title>Automated Deployment Of Jekyll Websites To Github Pages With A Git Push To Github</title>
-        <description>
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;A step-by-step guide to publish a Jekyll website automatically after
-doing a &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt; to Github.&lt;/p&gt;
-
-&lt;p&gt;This guide makes use of &lt;em&gt;Github Pages&lt;/em&gt;, &lt;em&gt;Jekyll&lt;/em&gt; and &lt;em&gt;Travis CI&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Github offers a free service called &lt;a href=&quot;https://pages.github.com&quot;&gt;Github Pages&lt;/a&gt; to host regular
-&lt;abbr title=&quot;HyperTextMarkupLanguage&quot;&gt;HTML&lt;/abbr&gt; content hosted directly from users GitHub repositories.&lt;/p&gt;
-
-&lt;p&gt;It has a special, built-in support, for Jekyll, one of the most popular static
-site generators, but you will have to use the Jekyll version currently
-supported by Github (not always the latest one) and it does not allow
-custom Jekyll plugins, because Jekyll is executed with the &lt;code class=&quot;highlighter-rouge&quot;&gt;--safe&lt;/code&gt; flag.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://jekyllrb.com/docs/plugins/&quot;&gt;
-  &lt;p&gt;GitHub Pages is powered by Jekyll. However, all Pages sites are
-generated using the –safe option to disable custom plugins for
-security reasons. Unfortunately, this means your plugins won’t work
-if you’re deploying to GitHub Pages.&lt;/p&gt;
-
-  &lt;p&gt;You can still use GitHub Pages to publish your site, but you’ll need
-to convert the site locally and push the generated static files to
-your GitHub repository instead of the Jekyll source files.&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt;&lt;cite&gt;&lt;a href=&quot;https://jekyllrb.com/docs/plugins/&quot;&gt;Plugins on GitHub Pages&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;A simple way to overcome these limitations is to manually build the
-site before pushing to the repo or make use of automation tools like
-Travis CI that will do this job for us in each &lt;em&gt;push&lt;/em&gt; to Github.&lt;/p&gt;
-
-&lt;h2 id=&quot;steps&quot;&gt;Steps&lt;/h2&gt;
-
-&lt;h3 id=&quot;create-the-basic-travisyml-file&quot;&gt;Create the basic .travis.yml file&lt;/h3&gt;
-
-&lt;p&gt;Travis configuration is stored in &lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt;, we will create a new
-one with the following contents (adjust versions to your needs):&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ruby&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;rvm&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;2.3.1&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;before_script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;npm install -g bower&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bower install&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;chmod +x ./deploy.sh&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bash ./deploy.sh&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;NOKOGIRI_USE_SYSTEM_LIBRARIES=true&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;COMMIT_AUTHOR_EMAIL&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;me@marcanuy.com&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;sudo&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;false&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;create-the-deployment-script-deploysh&quot;&gt;Create the deployment script deploy.sh&lt;/h3&gt;
-
-&lt;p&gt;We will create the following &lt;code class=&quot;highlighter-rouge&quot;&gt;deploy.sh&lt;/code&gt; script:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -e &lt;span class=&quot;c&quot;&gt;# Exit with nonzero exit code if anything fails&lt;/span&gt;
-
-&lt;span class=&quot;nv&quot;&gt;SOURCE_BRANCH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;master&quot;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;TARGET_BRANCH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gh-pages&quot;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;doCompile &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;JEKYLL_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build -d out/
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# Pull requests and commits to other branches shouldn't try to deploy, just build to verify&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$TRAVIS_PULL_REQUEST&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; !&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;false&quot;&lt;/span&gt; -o &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$TRAVIS_BRANCH&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; !&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$SOURCE_BRANCH&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
-    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Skipping deploy; just doing a build.&quot;&lt;/span&gt;
-    doCompile
-    &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
-&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# Save some useful information&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;REPO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;git config remote.origin.url&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;SSH_REPO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;REPO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/https&lt;/span&gt;:&lt;span class=&quot;p&quot;&gt;\/\/github.com\//git@github.com&lt;/span&gt;:&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;SHA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;git rev-parse --verify HEAD&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# Clone the existing gh-pages for this repo into out/&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)&lt;/span&gt;
-git clone &lt;span class=&quot;nv&quot;&gt;$REPO&lt;/span&gt; out
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;out
-git checkout &lt;span class=&quot;nv&quot;&gt;$TARGET_BRANCH&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; git checkout --orphan &lt;span class=&quot;nv&quot;&gt;$TARGET_BRANCH&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..
-
-&lt;span class=&quot;c&quot;&gt;# Clean out existing contents&lt;/span&gt;
-rm -rf out/&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
-
-&lt;span class=&quot;c&quot;&gt;# Run our compile script&lt;/span&gt;
-doCompile
-
-&lt;span class=&quot;c&quot;&gt;# Now let's go have some fun with the cloned repo&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;out
-git config user.name &lt;span class=&quot;s2&quot;&gt;&quot;Travis CI&quot;&lt;/span&gt;
-git config user.email &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$COMMIT_AUTHOR_EMAIL&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# If there are no changes to the compiled out (e.g. this is a README update) then just bail.&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -z &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;git diff --exit-code&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
-    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;No changes to the output on this push; exiting.&quot;&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
-&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# Commit the &quot;changes&quot;, i.e. the new version.&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# The delta will show diffs between new and old versions.&lt;/span&gt;
-git add .
-git commit -m &lt;span class=&quot;s2&quot;&gt;&quot;Deploy to GitHub Pages: &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;SHA&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;ENCRYPTED_KEY_VAR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;encrypted_&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ENCRYPTION_LABEL&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;_key&quot;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;ENCRYPTED_IV_VAR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;encrypted_&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ENCRYPTION_LABEL&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;_iv&quot;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;ENCRYPTED_KEY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!ENCRYPTED_KEY_VAR&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;ENCRYPTED_IV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!ENCRYPTED_IV_VAR&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
-openssl aes-256-cbc -K &lt;span class=&quot;nv&quot;&gt;$ENCRYPTED_KEY&lt;/span&gt; -iv &lt;span class=&quot;nv&quot;&gt;$ENCRYPTED_IV&lt;/span&gt; -in deploy_key.enc -out deploy_key -d
-chmod 600 deploy_key
-&lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;ssh-agent -s&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
-ssh-add deploy_key
-
-&lt;span class=&quot;c&quot;&gt;# Now that we're all set up, we can push.&lt;/span&gt;
-git push &lt;span class=&quot;nv&quot;&gt;$SSH_REPO&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$TARGET_BRANCH&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The script basically performs the following actions:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Create the &lt;em&gt;gh-pages&lt;/em&gt; branch &lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout --orphan gh-pages&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://git-scm.com/docs/git-checkout&quot;&gt;
-  &lt;p&gt;Updates files in the working tree to match the version in the index
-or the specified tree. If no paths are given, git checkout will also
-update HEAD to set the specified branch as the current branch.&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; git checkout orphan flag in &lt;cite&gt;&lt;a href=&quot;https://git-scm.com/docs/git-checkout&quot;&gt;git-checkout&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Generate the Jekyll build inside &lt;code class=&quot;highlighter-rouge&quot;&gt;out/&lt;/code&gt; directory&lt;/li&gt;
-  &lt;li&gt;Commit and deploy generated files to &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt; branch&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;enable-travis-for-the-repository&quot;&gt;Enable Travis for the repository&lt;/h3&gt;
-
-&lt;p&gt;Sign in to Travis CI with your GitHub account.&lt;/p&gt;
-
-&lt;p&gt;Once you’re signed in, Travis will synchronize your repositories from
-GitHub. Go to your profile page and enable Travis CI for the
-repository you want to build.&lt;/p&gt;
-
-&lt;h3 id=&quot;generate-credentials&quot;&gt;Generate credentials&lt;/h3&gt;
-
-&lt;p&gt;We need to generate credentials to be able to publish the &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt;
-branch contents on GitHub
-using
-&lt;a href=&quot;https://docs.travis-ci.com/user/encrypting-files/&quot;&gt;Travis Automated Encryption&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h4 id=&quot;generating-a-new-ssh-key-to-use-with-travis&quot;&gt;Generating a new SSH key to use with Travis&lt;/h4&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;ssh-keygen -t rsa -b 4096 -C &quot;your_github_email@example.com&quot;&lt;/kbd&gt;
-Generating public/private rsa key pair.
-Enter file in which to save the key (/home/marcanuy/.ssh/id_rsa): &lt;kbd&gt;deploy_key&lt;/kbd&gt;
-Enter passphrase (empty for no passphrase): 
-Enter same passphrase again: 
-Your identification has been saved in deploy_key.
-Your public key has been saved in deploy_key.pub.
-The key fingerprint is:
-SHA256:vn3O/NkfKHg2nb9p0J7yam72elUInAHa0MtGWbsZ048 me@marcanuy.com
-The key's randomart image is:
-+---[RSA 4096]----+
-|        .o.=o+   |
-|        .o=.* .  |
-|       oo+o.oo.+ |
-|       o+ o  oE o|
-|       .S ooo o .|
-|          .  o..o|
-|           o o++o|
-|            o=-*=|
-|            =*xX*|
-+----[SHA256]-----+
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h3 id=&quot;add-deploy-key-to-github-keys&quot;&gt;Add deploy key to GitHub keys&lt;/h3&gt;
-
-&lt;p&gt;Add the generated &lt;strong&gt;public key&lt;/strong&gt;: &lt;code class=&quot;highlighter-rouge&quot;&gt;deploy_key.pub&lt;/code&gt; to your repository at
-https://github.com/&lt;your name=&quot;&quot;&gt;/&lt;your repo=&quot;&quot;&gt;/settings/keys.&lt;/your&gt;&lt;/your&gt;&lt;/p&gt;
-
-&lt;p&gt;You can copy easily with &lt;code class=&quot;highlighter-rouge&quot;&gt;xclip&lt;/code&gt; and then paste it in the keys textbox:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;xclip -sel clip &amp;lt; deploy_key.pub&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;&lt;img class=&quot;img-fluid&quot; alt=&quot;Responsive image&quot; src=&quot;/assets/travis_add_deploy_key.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Detailed steps are &lt;a href=&quot;https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/&quot;&gt;in this Github guide&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;encrypt-the-generated-deploy-key-with-the-travis-client&quot;&gt;Encrypt the generated deploy key with the Travis client&lt;/h3&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;travis encrypt-file deploy_key --add&lt;/kbd&gt;
-Detected repository as marcanuy/simpleit.rocks, is this correct? |yes| &lt;kbd&gt;yes&lt;/kbd&gt;
-encrypting deploy_key for marcanuy/emacside.com
-storing result as deploy_key.enc
-storing secure env variables for decryption
-
-Make sure to add deploy_key.enc to the git repository.
-Make sure not to add deploy_key to the git repository.
-Commit all changes to your .travis.yml.
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h3 id=&quot;edit-travisyml-with-encryption-ids&quot;&gt;Edit .travis.yml with encryption ids&lt;/h3&gt;
-
-&lt;p&gt;The previous step added the before_install section with the proper
-command to decrypt the &lt;code class=&quot;highlighter-rouge&quot;&gt;deploy_key&lt;/code&gt;, now we have to detect the
-encription id and add an environment variable like: ` ENCRYPTION_LABEL: “&amp;lt;…. encryption label from previous step ….&amp;gt;”`&lt;/p&gt;
-
-&lt;p&gt;The encription id is the string between &lt;code class=&quot;highlighter-rouge&quot;&gt;$encrypted_&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;_key&lt;/code&gt; in
-the automatically added &lt;code class=&quot;highlighter-rouge&quot;&gt;before_install&lt;/code&gt; line:&lt;/p&gt;
-
-&lt;p&gt;
-openssl aes-256-cbc -K $encrypted_&lt;span style=&quot;color:red&quot;&gt;0c6d27255ccf&lt;/span&gt;_key -iv $encrypted_0c6d27255ccf_iv -in deploy_key.enc -out deploy_key -d.
-&lt;/p&gt;
-
-&lt;p&gt;In the previous case I will have to add the line &lt;code class=&quot;highlighter-rouge&quot;&gt;- ENCRYPTION_LABEL:
-0c6d27255ccf&lt;/code&gt;, the file &lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt; will look like:&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ENCRYPTION_LABEL&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;0c6d27255ccf&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;So the final &lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt; is:&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ruby&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;rvm&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;2.3.1&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;before_script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;npm install -g bower&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bower install&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;chmod +x ./deploy.sh&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;./deploy.sh&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;NOKOGIRI_USE_SYSTEM_LIBRARIES=true&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;COMMIT_AUTHOR_EMAIL&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;me@marcanuy.com&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ENCRYPTION_LABEL&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;0c6d27255ccf&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;sudo&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;false&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;before_install&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;openssl aes-256-cbc -K $encrypted_0c6d27255ccf_key -iv $encrypted_0c6d27255ccf_iv -in deploy_key.enc -out deploy_key -d&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;add-deploy-key-to-gitignore&quot;&gt;Add deploy key to gitignore:&lt;/h3&gt;
-
-&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt; add &lt;em&gt;deploy_key&lt;/em&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;_site
-.sass-cache
-.jekyll-metadata
-bower_components
-deploy_key
-deploy_key.pub
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;adding-the-travis-button-to-github-readme&quot;&gt;Adding the travis button to github readme&lt;/h3&gt;
-
-&lt;p&gt;In your project &lt;code class=&quot;highlighter-rouge&quot;&gt;README&lt;/code&gt; file you can add the fancy Travis button with
-the current status of the building, adding a similar code:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[![Build Status](https://travis-ci.org/marcanuy/emacside.com.svg?branch=master)](https://travis-ci.org/marcanuy/emacside.com)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;You can find your project button url following &lt;a href=&quot;https://docs.travis-ci.com/user/status-images/&quot;&gt;this guide&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;p&gt;This guide is heavily based in &lt;a href=&quot;https://gist.github.com/domenic/ec8b0fc8ab45f39403dd&quot;&gt;Auto-deploying built products to gh-pages with
-  Travis&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Related articles:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.travis-ci.com/user/encrypting-files/&quot;&gt;https://docs.travis-ci.com/user/encrypting-files/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/settings/keys&quot;&gt;https://github.com/settings/keys&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#generating-a-new-ssh-key&quot;&gt;https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#generating-a-new-ssh-key&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/&quot;&gt;https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://awestruct.org/auto-deploy-to-github-pages/&quot;&gt;http://awestruct.org/auto-deploy-to-github-pages/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://jekyllrb.com/docs/deployment-methods/&quot;&gt;https://jekyllrb.com/docs/deployment-methods/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://jekyllrb.com/docs/continuous-integration/&quot;&gt;https://jekyllrb.com/docs/continuous-integration/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Tue, 08 Nov 2016 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/automated-deployment-of-jekyll-websites-to-github-pages-with-a-git-push-to-github/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/automated-deployment-of-jekyll-websites-to-github-pages-with-a-git-push-to-github/</guid>
-        
-        <category>git</category>
-        
-        <category>github</category>
-        
-        <category>gh-pages</category>
-        
-        <category>jekyll</category>
-        
-        <category>travis</category>
-        
-        
-        <category>docs</category>
-        
-        <category>ruby</category>
-        
-        <category>jekyll</category>
-        
-        <category>tutorials</category>
         
       </item>
     

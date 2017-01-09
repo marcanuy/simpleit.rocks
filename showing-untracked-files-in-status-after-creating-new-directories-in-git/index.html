@@ -288,6 +288,8 @@
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
 <li class="toc-entry toc-h2"><a href="#seeing-untracked-files">Seeing untracked files</a></li>
 <li class="toc-entry toc-h2"><a href="#showing-untracked-files">Showing untracked files</a></li>
+<li class="toc-entry toc-h2"><a href="#setting-as-the-default-behaviour">Setting as the default behaviour</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
       </div>
       <div>
@@ -437,35 +439,36 @@ On branch master
 Initial commit
 
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
+  (use "git add \&lt;file\&gt;..." to include in what will be committed)
 
 	new_feature/feature_a
 	new_feature/feature_b
 
 nothing added to commit but untracked files present (use "git add" to track)
-&lt;/samp&gt;
-&lt;/pre&gt;
+</samp>
+</pre>
 
-Now we can stage new files directly.
+<p>Now we can stage new files directly.</p>
 
-## Setting as the default behaviour
+<h2 id="setting-as-the-default-behaviour">Setting as the default behaviour</h2>
 
-To save this setting, we use `git config --global
-status.showuntrackedfiles all` so it will add the following to git
-configuration in `~/.config`:
+<p>To save this setting, we use <code class="highlighter-rouge">git config --global
+status.showuntrackedfiles all</code> so it will add the following to git
+configuration in <code class="highlighter-rouge">~/.config</code>:</p>
 
-~~~
-[status]
+<div class="highlighter-rouge"><pre class="highlight"><code>[status]
 	showuntrackedfiles = all
-~~~
+</code></pre>
+</div>
 
-Or we can just add the above code manually to `~/.config`.
+<p>Or we can just add the above code manually to <code class="highlighter-rouge">~/.config</code>.</p>
 
-## References
+<h2 id="references">References</h2>
 
-- Git status documentation &lt;https://git-scm.com/docs/git-status#git-status--ultmodegt&gt;
-- [Choose files to stage of a new directory with magit in Emacs](http://emacs.stackexchange.com/q/13729/8563)
-</file></samp></pre>
+<ul>
+  <li>Git status documentation <a href="https://git-scm.com/docs/git-status#git-status--ultmodegt">https://git-scm.com/docs/git-status#git-status--ultmodegt</a></li>
+  <li><a href="http://emacs.stackexchange.com/q/13729/8563">Choose files to stage of a new directory with magit in Emacs</a></li>
+</ul>
 
 
     
@@ -675,6 +678,16 @@ Or we can just add the above code manually to `~/.config`.
       <a class="list-group-item list-group-item-action " href="/creating-a-git-server-from-a-git-repo/">
       Creating a git server from a git repo
     </a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
