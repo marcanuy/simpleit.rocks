@@ -210,7 +210,7 @@ installation, in this case I have used `/opt/feedr`)
 ~~~
 
 We use the `flock` command to
-[prevent duplicate cron job executions]({% link docs/bash/_posts/2016-12-08-prevent-running-of-duplicate-cron-jobs.md %}). 
+[prevent duplicate cron job executions]({% link docs/linux/shell/_posts/2016-12-08-prevent-running-of-duplicate-cron-jobs.md %}). 
 
 ## Reference
 
