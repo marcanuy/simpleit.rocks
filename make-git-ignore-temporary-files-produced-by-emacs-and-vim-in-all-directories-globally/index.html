@@ -29,15 +29,15 @@
 
   
   <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Bash script to automatically tweet new blog posts based in a website rss feed - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Bash script to automatically tweet new blog posts based in a website rss feed" />
-<meta name="description" content="How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll." />
-<meta property="og:description" content="How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll." />
-<link rel="canonical" href="http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/" />
-<meta property="og:url" content="http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/" />
+<title>Make Git Ignore Temporary Files Produced By Emacs And Vim In All Directories Globally - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Make Git Ignore Temporary Files Produced By Emacs And Vim In All Directories Globally" />
+<meta name="description" content="Ignore backup files produced by VIm and Emacs in all your git projects" />
+<meta property="og:description" content="Ignore backup files produced by VIm and Emacs in all your git projects" />
+<link rel="canonical" href="http://simpleit.rocks/make-git-ignore-temporary-files-produced-by-emacs-and-vim-in-all-directories-globally/" />
+<meta property="og:url" content="http://simpleit.rocks/make-git-ignore-temporary-files-produced-by-emacs-and-vim-in-all-directories-globally/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-11-10T00:00:00+00:00" />
+<meta property="article:published_time" content="2017-01-09T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@simpleitrocks" />
 <meta name="twitter:creator" content="@marcanuy" />
@@ -45,10 +45,10 @@
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
-"headline": "Bash script to automatically tweet new blog posts based in a website rss feed",
-"datePublished": "2016-11-10T00:00:00+00:00",
-"description": "How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll.",
-"url": "http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/"}</script>
+"headline": "Make Git Ignore Temporary Files Produced By Emacs And Vim In All Directories Globally",
+"datePublished": "2017-01-09T00:00:00+00:00",
+"description": "Ignore backup files produced by VIm and Emacs in all your git projects",
+"url": "http://simpleit.rocks/make-git-ignore-temporary-files-produced-by-emacs-and-vim-in-all-directories-globally/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -105,7 +105,7 @@
     
     
     
-    <h1 class="title">Bash Script To Automatically Tweet New Blog Posts Based In A Website Rss Feed </h1>
+    <h1 class="title">Make Git Ignore Temporary Files Produced By Emacs And Vim In All Directories Globally </h1>
     
     
   </div>
@@ -121,7 +121,7 @@
   <div class="post-meta">
     
     <i class="fa fa-calendar" aria-hidden="true"></i>
-    <time datetime="2016-11-10T00:00:00+00:00" itemprop="datePublished">Nov 10, 2016</time>
+    <time datetime="2017-01-09T00:00:00+00:00" itemprop="datePublished">Jan 9, 2017</time>
     
   </div>
   <div>
@@ -192,10 +192,10 @@
     class="breadcrumb-item">
   
   <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/web">
+     itemprop="item" href="/docs/git">
     
 
-    web
+    git
   </a>
   
   <meta itemprop="position" content="3" />
@@ -219,7 +219,7 @@
        itemprop="item">
     
 
-    <span itemprop="name">Bash script to automatically tweet new blog posts based in a website rss feed</span>
+    <span itemprop="name">Make Git Ignore Temporary Files Produced By Emacs And Vim In All Directories Globally</span>
   </span>
   
   <meta itemprop="position" content="4" />
@@ -262,14 +262,13 @@
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#process">Process</a></li>
-<li class="toc-entry toc-h3"><a href="#set-up-a-virtual-environment">Set up a virtual environment</a></li>
-<li class="toc-entry toc-h3"><a href="#twitter-credentials">Twitter credentials</a></li>
-<li class="toc-entry toc-h3"><a href="#set-up-application">Set up application</a></li>
-<li class="toc-entry toc-h3"><a href="#install-dependencies">Install dependencies</a></li>
-<li class="toc-entry toc-h3"><a href="#execute-twitter-feeder">Execute Twitter feeder</a></li>
-<li class="toc-entry toc-h3"><a href="#schedule-posts">Schedule posts</a></li>
-<li class="toc-entry toc-h2"><a href="#reference">Reference</a></li>
+<li class="toc-entry toc-h2"><a href="#enabling-gitignore-globally">Enabling gitignore globally</a></li>
+<li class="toc-entry toc-h2"><a href="#gitignore">gitignore</a></li>
+<li class="toc-entry toc-h3"><a href="#gitignore-for-emacs">gitignore for Emacs</a></li>
+<li class="toc-entry toc-h3"><a href="#gitignore-for-vim">gitignore for Vim</a></li>
+<li class="toc-entry toc-h2"><a href="#other-global-gitignore-properties">Other global gitignore properties</a></li>
+<li class="toc-entry toc-h2"><a href="#conclusion">Conclusion</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
       </div>
       <div>
@@ -280,9 +279,9 @@
       <div>
   <a class="twitter-share-button"
      href="https://twitter.com/share"
-     data-url="http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/"
+     data-url="http://simpleit.rocks/make-git-ignore-temporary-files-produced-by-emacs-and-vim-in-all-directories-globally/"
      data-via=""
-     data-text="How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll."
+     data-text="Ignore backup files produced by VIm and Emacs in all your git projects"
      data-related="marcanuy,{"username"=>"simpleitrocks"}"
      data-count="vertical">
     Tweet
@@ -314,7 +313,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="http://simpleit.rocks/make-git-ignore-temporary-files-produced-by-emacs-and-vim-in-all-directories-globally/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -331,7 +330,7 @@
 
     
 	<p class="lead">
-	  How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll.
+	  Ignore backup files produced by VIm and Emacs in all your git projects
 	</p>
     
 
@@ -355,219 +354,190 @@
 
     <h2 id="overview">Overview</h2>
 
-<p>Based in the <abbr title="Really Simple Syndication">RSS</abbr> feed generated by websites, feed a Twitter account
-with daily new blog posts.</p>
+<p>Using VIm and <a href="/docs/lisp/emacs/">Emacs</a> on a daily basis is very common for programmers.</p>
 
-<p>This method is specially useful for websites that has been built with
-static site generators, like <a href="/docs/ruby/jekyll/">Jekyll</a> for example, where they
-automatically publish a <abbr title="Really Simple Syndication">RSS</abbr> feed with new content in each build.</p>
+<p>They have recovering systems to avoid losing work if a computer
+crashes, that would make your directories full of strange files ending
+in <code class="highlighter-rouge">~</code>, swap files (<code class="highlighter-rouge">.swp</code>) or backup files named like <code class="highlighter-rouge">#&lt;filename&gt;#</code>.</p>
 
-<p>Based in this information, you can set up a script in another server
-that will check the above feed, and if it detects new posts it will
-publish a link to it directly in Twitter.</p>
+<p>Those files would appear from time to time in your <kbd>git
+status</kbd> listings that wouldn’t add any valuable information.</p>
 
-<h2 id="process">Process</h2>
+<p>Better than disabling them, is to avoid seeing them globally, so any new
+<code class="highlighter-rouge">git</code> repository won’t show them in the <code class="highlighter-rouge">status</code> of changed file list
+but you will still be able to recover them if anything bad happens
+while editing.</p>
 
-<h3 id="set-up-a-virtual-environment">Set up a virtual environment</h3>
+<h2 id="enabling-gitignore-globally">Enabling gitignore globally</h2>
 
-<p>If you already have a virtual environment installed, you can skip this
-step. In Ubuntu you can install the package <code class="highlighter-rouge">python-virtualenv</code>.</p>
-
-<pre class="shell">
-<samp>
-<span class="shell-prompt">$</span> <kbd>apt install python-virtualenv</kbd>
-</samp>
-</pre>
-
-<p class="alert alert-info">Or refer to this <a href="/python-virtual-environments-using-virtualenv/">virtualenv installation guide</a>.</p>
-
-<p>Activate the virtual environment to install the required packages</p>
+<p>We will set up a global <code class="highlighter-rouge">.gitignore_global</code> file, i.e.: a list of rules for
+ignoring files in every <em>Git</em> repository on the computer.</p>
 
 <pre class="shell">
 <samp>
-<span class="shell-prompt">$</span> <kbd>virtualenv -p python2.7 ~/.virtualenvs/twitter_bot</kbd>
-Running virtualenv with interpreter /usr/bin/python2.7
-New python executable in /home/user/.virtualenvs/twitter_bot/bin/python2.7
-Also creating executable in /home/user/.virtualenvs/twitter_bot/bin/python
-</samp>
-<span class="shell-prompt">$</span> <kbd>source ~/.virtualenvs/twitter_bot/bin/activate</kbd>
-<span class="shell-prompt">(twitter_bot)$</span>
-</pre>
+<span class="shell-prompt">$</span> <kbd>git config --global core.excludesfile ~/.gitignore_global</kbd>
 
-<h3 id="twitter-credentials">Twitter credentials</h3>
-
-<p>Log into <a href="https://apps.twitter.com/">Twitter Apps</a> and select “Create
-New App”.</p>
-
-<p>Create the Application with the following content:</p>
-
-<dl>
-  <dt>Name</dt>
-  <dd>Website <abbr title="Really Simple Syndication">RSS</abbr> Twitter Feeder</dd>
-  <dt>Description</dt>
-  <dd>Automatic new blog posts publisher</dd>
-  <dt>Website</dt>
-  <dd>Example.com</dd>
-  <dt>Callback URL</dt>
-  <dd>
-    <Leave it="" empty="">
-
-</Leave>
-  </dd>
-</dl>
-<p>And then proceed to “Create your Twitter Application” button.</p>
-
-<p>Now go to “Keys and Access Tokens” tab, and make sure your app has
-rights to publish tweets, the <em>Access Level Read and write</em> option
-should be enabled.</p>
-
-<p>Then go to “Token Actions” and “Create my access token”.</p>
-
-<p>You will need the following items from this page:</p>
-
-<ul>
-  <li>Consumer Key (API Key)</li>
-  <li>Consumer Secret (API Secret)</li>
-  <li>Access Token</li>
-  <li>Access Token Secret</li>
-</ul>
-
-<h3 id="set-up-application">Set up application</h3>
-
-<p>We will use the <a href="https://github.com/housed/feedr">feedr</a> script to
-publish tweets, so we have to clone the repo:</p>
-
-<pre class="shell">
-<samp>
-<span class="shell-prompt">(twitter_bot)$</span> <kbd>git clone https://github.com/housed/feedr.git</kbd>
-Cloning into 'feedr'...
-remote: Counting objects: 65, done.
-remote: Total 65 (delta 0), reused 0 (delta 0), pack-reused 65
-Unpacking objects: 100% (65/65), done.
-Checking connectivity... done.
-<span class="shell-prompt">(twitter_bot)$</span> <kbd>cd feedr</kbd>
-<span class="shell-prompt">(twitter_bot) feedr$</span>
 </samp>
 </pre>
 
-<p>Edit ` src/main.py` and add the previous generated Twitter consumer
-keys and replace the feed with your website.</p>
+<p>This command will automatically set the following configuration in
+your <a href="https://git-scm.com/docs/git-config#git-config-gitconfig"><code class="highlighter-rouge">~/.gitconfig_global</code></a> file.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Initialize the list of desired feeds</span>
-<span class="c"># Feed(Name, XML, Media, Hashtags)</span>
-<span class="n">FEEDS</span> <span class="o">=</span> <span class="p">[</span> <span class="n">Feed</span><span class="p">(</span><span class="s">'SimpleIt.Rocks'</span><span class="p">,</span> <span class="s">'http://simpleit.rocks/feed'</span><span class="p">,</span> <span class="s">''</span><span class="p">,</span> <span class="s">''</span><span class="p">)]</span>
-
-<span class="c"># Twitter Account Keys </span>
-<span class="n">CONSUMER_KEY</span> <span class="o">=</span> <span class="s">'consumer_key'</span>
-<span class="n">CONSUMER_SECRET</span> <span class="o">=</span> <span class="s">'consumer_secret'</span>
-<span class="n">ACCESS_KEY</span> <span class="o">=</span> <span class="s">'access_key'</span>
-<span class="n">ACCESS_SECRET</span> <span class="o">=</span> <span class="s">'access_secret'</span>
-
+<div class="highlighter-rouge"><pre class="highlight"><code>[core]
+        excludesfile = /home/user/.gitignore_global
 </code></pre>
 </div>
 
-<h3 id="install-dependencies">Install dependencies</h3>
+<blockquote class="blockquote" cite="https://git-scm.com/docs/gitignore">
+  <p>Patterns which a user wants Git to ignore in all situations (e.g.,
+backup or temporary files generated by the user’s editor of choice)
+generally go into a file specified by core.excludesFile in the user’s
+~/.gitconfig. Its default value is $XDG_CONFIG_HOME/git/ignore. If
+$XDG_CONFIG_HOME is either not set or empty, $HOME/.config/git/ignore
+is used instead.</p>
 
-<p><em>Feedr</em> relies on
-<a href="http://www.crummy.com/software/BeautifulSoup/">BeautifulSoup4</a>,
-<a href="https://pypi.python.org/pypi/feedparser">FeedParser</a>
-and <a href="http://www.tweepy.org/">Tweepy</a>.</p>
+  <footer class="blockquote-footer"> <cite>gitignore in <a href="https://git-scm.com/docs/gitignore">git documentation</a></cite></footer>
+</blockquote>
 
-<pre class="shell">
-<samp>
-<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>pip install bs4</kbd>
-Downloading/unpacking bs4
-  Downloading bs4-0.0.1.tar.gz
-  Running setup.py (path:/home/user/.virtualenvs/twitter_bot/build/bs4/setup.py) egg_info for package bs4
-    
-Downloading/unpacking beautifulsoup4 (from bs4)
-  Downloading beautifulsoup4-4.5.1-py2-none-any.whl (83kB): 83kB downloaded
-Installing collected packages: bs4, beautifulsoup4
-  Running setup.py install for bs4
-    
-Successfully installed bs4 beautifulsoup4
-Cleaning up...
-</samp>
-</pre>
+<h2 id="gitignore">gitignore</h2>
 
-<pre class="shell">
-<samp>
-<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>pip install feedparser</kbd>
-Downloading/unpacking feedparser
-  Downloading feedparser-5.2.1.zip (1.2MB): 1.2MB downloaded
-  Running setup.py (path:/home/user/.virtualenvs/twitter_bot/build/feedparser/setup.py) egg_info for package feedparser
-    
-Installing collected packages: feedparser
-  Running setup.py install for feedparser
-    
-Successfully installed feedparser
-Cleaning up...
-</samp>
-</pre>
+<p>Github has a great project with useful <code class="highlighter-rouge">.gitignore</code> files
+optimized for a Operating System and editor specific.</p>
 
-<pre class="shell">
-<samp>
-<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>pip install tweepy</kbd>
-Downloading/unpacking tweepy
-  Downloading tweepy-3.5.0-py2.py3-none-any.whl
-Downloading/unpacking requests&gt;=2.4.3 (from tweepy)
-  Downloading requests-2.11.1-py2.py3-none-any.whl (514kB): 514kB downloaded
-Downloading/unpacking six&gt;=1.7.3 (from tweepy)
-  Downloading six-1.10.0-py2.py3-none-any.whl
-Downloading/unpacking requests-oauthlib&gt;=0.4.1 (from tweepy)
-  Downloading requests_oauthlib-0.7.0-py2.py3-none-any.whl
-Downloading/unpacking oauthlib&gt;=0.6.2 (from requests-oauthlib&gt;=0.4.1-&gt;tweepy)
-  Downloading oauthlib-2.0.0.tar.gz (122kB): 122kB downloaded
-  Running setup.py (path:/home/user/.virtualenvs/twitter_bot/build/oauthlib/setup.py) egg_info for package oauthlib
-    
-Installing collected packages: tweepy, requests, six, requests-oauthlib, oauthlib
-  Running setup.py install for oauthlib
-    
-Successfully installed tweepy requests six requests-oauthlib oauthlib
-Cleaning up...
+<p>We grab the ones for Emacs and Vim (I don’t think you ever need any
+other editor ;)</p>
 
-</samp>
-</pre>
+<p>You should put them together in a single <code class="highlighter-rouge">~/.gitignore_global</code> file
+that will be processed globally.</p>
 
-<h3 id="execute-twitter-feeder">Execute Twitter feeder</h3>
+<h3 id="gitignore-for-emacs">gitignore for Emacs</h3>
 
-<p>After setting up credentials you can execute <code class="highlighter-rouge">feedr/src/main.py</code></p>
+<p><a href="https://github.com/github/gitignore/blob/master/Global/Emacs.gitignore">Gitignore for Emacs</a> editor:</p>
 
-<pre class="shell">
-<samp>
-<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>cd src</kbd>
-<span class="shell-prompt">(twitter_bot) feedr/src$</span> <kbd>python2.7 main.py</kbd>
+<div class="highlighter-rouge"><pre class="highlight"><code># -*- mode: gitignore; -*-
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
 
-</samp>
-</pre>
+# Org-mode
+.org-id-locations
+*_archive
 
-<h3 id="schedule-posts">Schedule posts</h3>
+# flymake-mode
+*_flymake.*
 
-<p>We set up a cron job to check for new posts every a certain amount of
-time, in this case every hour. We enter the crontab editor:</p>
+# eshell files
+/eshell/history
+/eshell/lastdir
 
-<pre class="shell">
-<samp>
-<span class="shell-prompt">$</span> <kbd>crontab -e</kbd>
-</samp>
-</pre>
+# elpa packages
+/elpa/
 
-<p>And then we add the following line (adjust the path of your
-installation, in this case I have used <code class="highlighter-rouge">/opt/feedr</code>)</p>
+# reftex files
+*.rel
 
-<div class="highlighter-rouge"><pre class="highlight"><code>0 * * * * cd /opt/feedr/src; flock -n /tmp/twbot.lock ~/.virtualenvs/twitter_bot/bin/python2.7 main.py
+# AUCTeX auto folder
+/auto/
+
+# cask packages
+.cask/
+dist/
+
+# Flycheck
+flycheck_*.el
+
+# server auth directory
+/server/
+
+# projectiles files
+.projectile
+
+# directory configuration
+.dir-locals.el
 </code></pre>
 </div>
 
-<p>We use the <code class="highlighter-rouge">flock</code> command to
-<a href="/prevent-running-of-duplicate-cron-jobs/">prevent duplicate cron job executions</a>.</p>
+<h3 id="gitignore-for-vim">gitignore for Vim</h3>
 
-<h2 id="reference">Reference</h2>
+<p><a href="https://github.com/github/gitignore/blob/master/Global/Vim.gitignore">Gitignore for Vim</a> editor:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+# session
+Session.vim
+# temporary
+.netrwhist
+*~
+# auto-generated tag files
+tags
+</code></pre>
+</div>
+
+<h2 id="other-global-gitignore-properties">Other global gitignore properties</h2>
+
+<p>Other common .gitignore configurations are also available in
+ Github’s <a href="https://gist.github.com/octocat/9257657">gist</a> that may
+ worth adding them to the global gitignore file:</p>
+
+<noscript><pre># Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it&#39;s better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db</pre></noscript>
+<script src="https://gist.github.com/octocat/9257657.js"> </script>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Now every time you work in a new or old project you won’t have to deal
+with any backup files automatically generated by Vim or Emacs.</p>
+
+<h2 id="references">References</h2>
 
 <ul>
-  <li><a href="https://en.wikipedia.org/wiki/Web_feed">https://en.wikipedia.org/wiki/Web_feed</a></li>
-  <li><a href="https://en.wikipedia.org/wiki/RSS">https://en.wikipedia.org/wiki/<abbr title="Really Simple Syndication">RSS</abbr></a></li>
-  <li><a href="https://github.com/housed/feedr">https://github.com/housed/feedr</a></li>
+  <li>Emacs 18.6.3 Recovering Data from Auto-Saves <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Recover.html">https://www.gnu.org/software/emacs/manual/html_node/emacs/Recover.html</a></li>
+  <li>Vim documentation: recover <a href="http://vimdoc.sourceforge.net/htmldoc/recover.html">http://vimdoc.sourceforge.net/htmldoc/recover.html</a></li>
+  <li>Github gitignore project <a href="https://github.com/github/gitignore/tree/master/Global">https://github.com/github/gitignore/tree/master/Global</a></li>
+  <li>Gitignore file in git documentation <a href="https://git-scm.com/docs/gitignore">https://git-scm.com/docs/gitignore</a></li>
 </ul>
 
 
@@ -622,7 +592,7 @@ installation, in this case I have used <code class="highlighter-rouge">/opt/feed
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/automatically-tweet-new-blog-posts-based-in-rss/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/make-git-ignore-temporary-files-produced-by-emacs-and-vim-in-all-directories-globally/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -892,13 +862,8 @@ installation, in this case I have used <code class="highlighter-rouge">/opt/feed
     
     
     
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action active" href="/automatically-tweet-new-blog-posts-based-in-rss/">
-      Bash script to automatically tweet new blog posts based in a website rss feed
+      <a class="list-group-item list-group-item-action " href="/contributing-to-a-github-repository-step-by-step/">
+      Contributing To A Github Repository Step By Step
     </a>
     
     
@@ -926,29 +891,34 @@ installation, in this case I have used <code class="highlighter-rouge">/opt/feed
     
     
     
-      <a class="list-group-item list-group-item-action " href="/colors-palettes-for-web-design/">
-      Colors Palettes For Web Design
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action active" href="/make-git-ignore-temporary-files-produced-by-emacs-and-vim-in-all-directories-globally/">
+      Make Git Ignore Temporary Files Produced By Emacs And Vim In All Directories Globally
     </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
