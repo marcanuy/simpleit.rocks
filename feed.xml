@@ -6,9 +6,123 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 10 Jan 2017 03:20:20 +0000</pubDate>
-    <lastBuildDate>Tue, 10 Jan 2017 03:20:20 +0000</lastBuildDate>
+    <pubDate>Tue, 10 Jan 2017 04:14:17 +0000</pubDate>
+    <lastBuildDate>Tue, 10 Jan 2017 04:14:17 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Change All Files Permissions To 644 And Directories To 755 Commands</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;There are two common task in Linux environments when handling files
+and folders permissions, you often will want to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;give directories read and write privileges  &lt;strong&gt;(drwxr-xr-x)&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;give files read privileges &lt;strong&gt;(-rw-r–r–)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This can be done safely with &lt;kbd&gt;find&lt;/kbd&gt; and &lt;kbd&gt;chmod&lt;/kbd&gt;
+commands, taking some precautions.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;chmod --help&lt;/kbd&gt;
+Usage: chmod [OPTION]... MODE[,MODE]... FILE...
+  or:  chmod [OPTION]... OCTAL-MODE FILE...
+  or:  chmod [OPTION]... --reference=RFILE FILE...
+Change the mode of each FILE to MODE.
+With --reference, change the mode of each FILE to that of RFILE.
+
+  -c, --changes          like verbose but report only when a change is made
+  -f, --silent, --quiet  suppress most error messages
+  -v, --verbose          output a diagnostic for every file processed
+      --no-preserve-root  do not treat '/' specially (the default)
+      --preserve-root    fail to operate recursively on '/'
+      --reference=RFILE  use RFILE's mode instead of MODE values
+  -R, --recursive        change files and directories recursively
+      --help     display this help and exit
+      --version  output version information and exit
+
+Each MODE is of the form '[ugoa]*([-+=]([rwxXst]*|[ugo]))+|[-+=][0-7]+'.
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;change-directory-permissions&quot;&gt;Change directory permissions&lt;/h2&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find /path -type d -exec chmod 755 {} +&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;change-files-permissions&quot;&gt;Change files permissions&lt;/h2&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find /path -type f -exec chmod 644 {} +&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;run-chmod-efficiently&quot;&gt;Run chmod efficiently&lt;/h2&gt;
+
+&lt;p&gt;To avoid spawning one chmod process per file, we can pipe find output
+to &lt;kbd&gt;xargs&lt;/kbd&gt;. This can be helpful if there are many files to
+process.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find /path -type d -print0 | xargs -0 chmod 755&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find /path -type f -print0 | xargs -0 chmod 644&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;blockquote class=&quot;blockquote&quot;&gt;
+  &lt;p&gt;-print0
+     True;  print the full file name on the standard output, followed
+     by a null character (instead of the newline character that -print
+     uses). This allows file names that contain newlines or other
+     types of white space to be correctly interpreted by programs that
+     process the find output. This option corresponds to the -0 option
+     of xargs.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Find manual page&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;xargs --help&lt;/kbd&gt;
+Usage: xargs [OPTION]... COMMAND [INITIAL-ARGS]...
+Run COMMAND with arguments INITIAL-ARGS and more arguments read from input.
+
+Mandatory and optional arguments to long options are also
+mandatory or optional for the corresponding short option.
+  -0, --null                   items are separated by a null, not whitespace;
+                                 disables quote and backslash processing and
+                                 logical EOF processing
+..(truncated)
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Superuser answer to &lt;a href=&quot;http://superuser.com/a/91938/158197&quot;&gt;How to chmod all directories except files (recursively)?&lt;/a&gt; by &lt;a href=&quot;http://superuser.com/users/263/nik&quot;&gt;nik&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;StackOverflow: &lt;a href=&quot;http://stackoverflow.com/q/6085156/1165509&quot;&gt;Using semicolon (;) vs plus (+) with exec in find&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 10 Jan 2017 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/change-all-files-permissions-to-644-and-directories-to-755-commands/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/change-all-files-permissions-to-644-and-directories-to-755-commands/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>linux</category>
+        
+        <category>shell</category>
+        
+      </item>
     
       <item>
         <title>Securing The Images Folder In Joomla</title>
@@ -1130,219 +1244,6 @@ overlooked and handled accordingly when defining them.&lt;/p&gt;
         <pubDate>Thu, 08 Dec 2016 00:00:00 +0000</pubDate>
         <link>http://simpleit.rocks/prevent-running-of-duplicate-cron-jobs/</link>
         <guid isPermaLink="true">http://simpleit.rocks/prevent-running-of-duplicate-cron-jobs/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>linux</category>
-        
-        <category>shell</category>
-        
-      </item>
-    
-      <item>
-        <title>Delete All Backup Files Recursively In Bash</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;The most popular *nix editors, &lt;a href=&quot;/docs/lisp/emacs/&quot;&gt;Emacs&lt;/a&gt; and Vim automatically generate
-backup files of each file you edit, this is because they both has the
-auto-save feature so you don’t lose your work if anything happens.&lt;/p&gt;
-
-&lt;p&gt;Vim backup files has &lt;code class=&quot;highlighter-rouge&quot;&gt;~&lt;/code&gt; at the end of the file as it was before you
-edited it: &lt;code class=&quot;highlighter-rouge&quot;&gt;foo.bar~&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Emacs backup files are surrounded by &lt;code class=&quot;highlighter-rouge&quot;&gt;#&lt;/code&gt; in their filenames: &lt;code class=&quot;highlighter-rouge&quot;&gt;#foo.bar#&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;We will show the commands to remove the files of the form &lt;code class=&quot;highlighter-rouge&quot;&gt;*~&lt;/code&gt; so they
-should be adjusted to work with &lt;code class=&quot;highlighter-rouge&quot;&gt;#*#&lt;/code&gt; files easily.&lt;/p&gt;
-
-&lt;h2 id=&quot;visualize-the-files-to-remove&quot;&gt;Visualize the files to remove&lt;/h2&gt;
-
-&lt;p&gt;Removing files is always a sensitive task, you should always check
-what files the command you execute will remove.&lt;/p&gt;
-
-&lt;p&gt;To see what files the command affects we use &lt;code class=&quot;highlighter-rouge&quot;&gt;find -name &quot;*~&quot; -print&lt;/code&gt;.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://man7.org/linux/man-pages/man1/find.1.html&quot;&gt;
-  &lt;p&gt;-print
-        print the full file name on the standard output,
-        followed by a newline.&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Find command _man_ page in &lt;a href=&quot;http://man7.org/linux/man-pages/man1/find.1.html&quot;&gt;General Commands Manual&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find -name &quot;*~&quot; -print&lt;/kbd&gt;
-./_includes/lang_nav.html~
-./_includes/head.html~
-./_includes/share_buttons.html~
-./_includes/adsense_content_1.html~
-./_includes/adsense_content_2.html~
-./_includes/adsense_side.html~
-./_sass/cached/_main.scss~
-./_sass/cached/_share_buttons.scss~
-./_sass/cached.scss~
-./_layouts/default.html~
-./index.md~
-./trans/hola.md~
-./trans/es.md~
-./trans/index.md~
-./README.md~
-./assets/main.scss~
-./Gemfile~
-./_config.yml~
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;If you need further information about each file you can also specify
-set a custom command, like &lt;code class=&quot;highlighter-rouge&quot;&gt;ls -l &amp;lt;file&amp;gt;&lt;/code&gt; with: &lt;code class=&quot;highlighter-rouge&quot;&gt;find -name &quot;*~&quot; -exec
-ls -l {} \;&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find -name &quot;*~&quot; -exec ls -l {} \;&lt;/kbd&gt;
--rw-rw-r-- 1 marcanuy marcanuy 272 nov 22 23:21 ./_includes/lang_nav.html~
--rw-rw-r-- 1 marcanuy marcanuy 1861 nov 22 23:21 ./_includes/head.html~
--rw-rw-r-- 1 marcanuy marcanuy 2063 nov 22 15:07 ./_includes/share_buttons.html~
--rw-rw-r-- 1 marcanuy marcanuy 543 nov 27 11:02 ./_includes/adsense_content_1.html~
--rw-rw-r-- 1 marcanuy marcanuy 543 nov 27 11:07 ./_includes/adsense_content_2.html~
--rw-rw-r-- 1 marcanuy marcanuy 538 nov 27 10:55 ./_includes/adsense_side.html~
--rw-rw-r-- 1 marcanuy marcanuy 1143 nov 22 14:08 ./_sass/cached/_main.scss~
--rw-rw-r-- 1 marcanuy marcanuy 331 nov 22 14:08 ./_sass/cached/_share_buttons.scss~
--rw-rw-r-- 1 marcanuy marcanuy 46 nov 22 07:44 ./_sass/cached.scss~
--rw-rw-r-- 1 marcanuy marcanuy 3324 nov 26 18:06 ./_layouts/default.html~
--rw-r--r-- 1 marcanuy marcanuy 2569 nov 27 01:51 ./index.md~
--rw-rw-r-- 1 marcanuy marcanuy 34 nov 26 16:20 ./trans/hola.md~
--rw-rw-r-- 1 marcanuy marcanuy 2689 nov 27 01:45 ./trans/es.md~
--rw-rw-r-- 1 marcanuy marcanuy 2256 nov 22 18:09 ./trans/index.md~
--rw-rw-r-- 1 marcanuy marcanuy 835 nov 22 18:25 ./README.md~
--rw-r--r-- 1 marcanuy marcanuy 947 nov 21 19:34 ./assets/main.scss~
--rw-rw-r-- 1 marcanuy marcanuy 811 nov 21 19:53 ./Gemfile~
--rw-r--r-- 1 marcanuy marcanuy 290 nov 22 13:36 ./_config.yml~
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;remove-files&quot;&gt;Remove files&lt;/h2&gt;
-
-&lt;p&gt;After making sure the above files we want to delete, we add the
-&lt;code class=&quot;highlighter-rouge&quot;&gt;-delete&lt;/code&gt; flag: &lt;code class=&quot;highlighter-rouge&quot;&gt;find -name &quot;*~&quot; -print -delete&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find -name &quot;*~&quot; -print -delete&lt;/kbd&gt;
-./_includes/lang_nav.html~
-./_includes/head.html~
-./_includes/share_buttons.html~
-./_includes/adsense_content_1.html~
-./_includes/adsense_content_2.html~
-./_includes/adsense_side.html~
-./_sass/cached/_main.scss~
-./_sass/cached/_share_buttons.scss~
-./_sass/cached.scss~
-./_layouts/default.html~
-./index.md~
-./trans/hola.md~
-./trans/es.md~
-./trans/index.md~
-./README.md~
-./assets/main.scss~
-./Gemfile~
-./_config.yml~
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find -name &quot;*~&quot; -print&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h3 id=&quot;important-notes&quot;&gt;Important notes&lt;/h3&gt;
-
-&lt;h4 id=&quot;find-parameters-order-matter&quot;&gt;Find parameters order matter&lt;/h4&gt;
-
-&lt;blockquote class=&quot;blockquote alert alert-danger&quot; cite=&quot;http://man7.org/linux/man-pages/man1/find.1.html&quot;&gt;
-  &lt;p&gt;Warnings: Don’t forget that the find command line is evaluated as an
-expression, so putting -delete first will make find try to delete
-everything below the starting points you specified. When testing a
-find command line that you later intend to use with -delete, you
-should explicitly specify -depth in order to avoid later surprises.
-Because -delete implies -depth, you cannot usefully use -prune and
--delete together.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt; Find command in &lt;a href=&quot;http://man7.org/linux/man-pages/man1/find.1.html&quot;&gt;General Commands Manual&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;This is: &lt;strong&gt;using the &lt;code class=&quot;highlighter-rouge&quot;&gt;-delete&lt;/code&gt; switch before &lt;code class=&quot;highlighter-rouge&quot;&gt;-name&lt;/code&gt; deletes all the
-file tree recursively&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h4 id=&quot;safer-find-command&quot;&gt;Safer find command&lt;/h4&gt;
-
-&lt;p&gt;If your version of &lt;code class=&quot;highlighter-rouge&quot;&gt;find&lt;/code&gt; doesn’t have the &lt;code class=&quot;highlighter-rouge&quot;&gt;-delete&lt;/code&gt; switch, then you
-can execute &lt;code class=&quot;highlighter-rouge&quot;&gt;rm&lt;/code&gt; on each matched file with &lt;code class=&quot;highlighter-rouge&quot;&gt;-exec rm {} \;&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find -name &quot;*~&quot; -exec rm {} \;&lt;/kbd&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;alternative-using-git&quot;&gt;Alternative using git&lt;/h2&gt;
-
-&lt;p&gt;If you are working in a &lt;a href=&quot;/docs/git/&quot;&gt;git&lt;/a&gt; repo, then
-there is a high chance you want to delete all the untracked local
-files from your current branch, that would delete all the
-automatically created backup files and possibly some other files you
-don’t want to be there.&lt;/p&gt;
-
-&lt;p&gt;If this is the case then you can
-use &lt;a href=&quot;https://git-scm.com/docs/git-clean&quot;&gt;git clean&lt;/a&gt;.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://git-scm.com/docs/git-clean&quot;&gt;
-  &lt;p&gt;Cleans the working tree by recursively removing files that are not
-under version control, starting from the current directory.&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt;Documentation of &lt;cite&gt;&lt;a href=&quot;https://git-scm.com/docs/git-clean&quot;&gt;git-clean command&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;git clean -n&lt;/kbd&gt;
-Would remove _data/people.yml~
-Would remove _includes/author.html~
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;git clean&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;Parameters used:&lt;/p&gt;
-
-&lt;p class=&quot;alert alert-info&quot;&gt;-n
-–dry-run
-Don’t actually remove anything, just show what would be done.&lt;/p&gt;
-
-&lt;p class=&quot;alert alert-info&quot;&gt;-i
-–interactive
-Show what would be done and clean files interactively. See “Interactive mode” for details.&lt;/p&gt;
-
-&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
-
-&lt;p&gt;This is a simple way for removing backup files from Emacs and
-Vim. Special care should be taken when using the &lt;code class=&quot;highlighter-rouge&quot;&gt;delete&lt;/code&gt; action of
-the &lt;code class=&quot;highlighter-rouge&quot;&gt;find&lt;/code&gt; command, using it incorrectly could lead to deleting all
-the files recursively.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Find command manual &lt;a href=&quot;http://man7.org/linux/man-pages/man1/find.1.html&quot;&gt;http://man7.org/linux/man-pages/man1/find.1.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Emacs AutoSave &lt;a href=&quot;https://www.emacswiki.org/emacs/AutoSave&quot;&gt;https://www.emacswiki.org/emacs/AutoSave&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Mon, 28 Nov 2016 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/delete-all-backup-files-recursively-in-bash/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/delete-all-backup-files-recursively-in-bash/</guid>
-        
-        <category>emacs</category>
-        
-        <category>vim</category>
-        
-        <category>bash</category>
-        
-        <category>backups</category>
         
         
         <category>docs</category>
