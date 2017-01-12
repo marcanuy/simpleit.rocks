@@ -40,6 +40,7 @@ gems:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-toc
+  - jekyll-gist
   
 #jekyll-seo-plugin (and footer)
 twitter:
