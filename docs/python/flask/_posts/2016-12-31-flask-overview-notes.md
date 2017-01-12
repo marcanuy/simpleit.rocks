@@ -340,4 +340,4 @@ packages.
 - Tutorial folder <http://flask.pocoo.org/docs/0.12/tutorial/folders/#tutorial-folders>
 - Explore flask book <http://explore-flask.readthedocs.io/en/latest/configuration.html>
 
-[WSGI]: Web Server Gateway Interface
+*[WSGI]: Web Server Gateway Interface
