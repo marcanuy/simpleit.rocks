@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://simpleit.rocks/organize-a-flask-project-to-handle-production-and-development-environments-effectively/</loc>
+<lastmod>2017-01-11T00:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>http://simpleit.rocks/change-all-files-permissions-to-644-and-directories-to-755-commands/</loc>
 <lastmod>2017-01-10T00:00:00+00:00</lastmod>
 </url>
@@ -23,6 +27,10 @@
 <url>
 <loc>http://simpleit.rocks/protect-web-directories-with-http-basic-authentication-in-apache-server/</loc>
 <lastmod>2017-01-07T00:00:00+00:00</lastmod>
+</url>
+<url>
+<loc>http://simpleit.rocks/understanding-how-python-packages-modules-and-imports-work/</loc>
+<lastmod>2017-01-02T00:00:00+00:00</lastmod>
 </url>
 <url>
 <loc>http://simpleit.rocks/flask-overview-notes/</loc>

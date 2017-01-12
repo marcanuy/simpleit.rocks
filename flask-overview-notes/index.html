@@ -29,8 +29,8 @@
 
   
   <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Flask Overview - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Flask Overview" />
+<title>An Overview Of Flask Main Concepts And How It Works - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="An Overview Of Flask Main Concepts And How It Works" />
 <meta name="description" content="Flask Python Web framework overview" />
 <meta property="og:description" content="Flask Python Web framework overview" />
 <link rel="canonical" href="http://simpleit.rocks/flask-overview-notes/" />
@@ -45,7 +45,7 @@
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
-"headline": "Flask Overview",
+"headline": "An Overview Of Flask Main Concepts And How It Works",
 "datePublished": "2016-12-31T00:00:00+00:00",
 "description": "Flask Python Web framework overview",
 "url": "http://simpleit.rocks/flask-overview-notes/"}</script>
@@ -105,7 +105,7 @@
     
     
     
-    <h1 class="title">Flask Overview </h1>
+    <h1 class="title">An Overview Of Flask Main Concepts And How It Works </h1>
     
     
     <p class="lead">
@@ -247,7 +247,7 @@
        itemprop="item">
     
 
-    <span itemprop="name">Flask Overview</span>
+    <span itemprop="name">An Overview Of Flask Main Concepts And How It Works</span>
   </span>
   
   <meta itemprop="position" content="5" />
@@ -291,6 +291,13 @@
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
 <li class="toc-entry toc-h2"><a href="#flask-script">Flask script</a></li>
+<li class="toc-entry toc-h3"><a href="#configuration">Configuration</a></li>
+<li class="toc-entry toc-h4"><a href="#populating-the-configuration">Populating the Configuration</a></li>
+<li class="toc-entry toc-h4"><a href="#dict-keys">dict keys</a></li>
+<li class="toc-entry toc-h4"><a href="#files">Files</a></li>
+<li class="toc-entry toc-h4"><a href="#python-files">Python files</a></li>
+<li class="toc-entry toc-h4"><a href="#objects">Objects</a></li>
+<li class="toc-entry toc-h4"><a href="#others">Others</a></li>
 <li class="toc-entry toc-h2"><a href="#development-server">Development server</a></li>
 <li class="toc-entry toc-h3"><a href="#reload-server-when-code-changes">Reload server when code changes</a></li>
 <li class="toc-entry toc-h2"><a href="#routing">Routing</a></li>
@@ -383,8 +390,9 @@
 
     <h2 id="overview">Overview</h2>
 
-<p>Flask is one of the most popular web frameworks in Github. This is an
-overview of its main concepts to get started quickly.</p>
+<p>Flask is one of the Python’s most popular web frameworks. This is an
+overview of its main concepts to get started quickly and understand
+how it works.</p>
 
 <blockquote class="blockquote" cite="http://flask.pocoo.org/">
   <p>Flask is a microframework for Python based on Werkzeug, Jinja 2 and
@@ -427,7 +435,173 @@ Commands:
 </samp>
 </pre>
 
+<p>Every Flask application you create is an instance of the
+<code class="highlighter-rouge">flask.Flask</code> class. The flask object implements a [<abbr title="Web Server Gateway Interface">WSGI</abbr>] application
+and acts as the central object.</p>
+
+<p>The <code class="highlighter-rouge">flask.Flask</code> class is responsible for handling all the
+<strong>view functions</strong>, <strong>URLs routing</strong> and <strong>templates setup</strong>, so in a
+simple app, you will end up having a single file.</p>
+
+<p>To create a Flask app, we instantiate <code class="highlighter-rouge">flask.Flask</code> in our main module
+or in the <code class="highlighter-rouge">__init__.py</code> file of the package like:</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>The first parameter tells Flask what belongs to this app, if you are
+using a single module, then <code class="highlighter-rouge">__name__</code> is enough, but if not then you
+should specify the name of the package or module you are using to help
+Flask to find resources, improve debugging information, etc.</p>
+
+<p>This is what a typical Flask app skeleton looks like:</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+
+<span class="c"># create application</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="c"># Load default config and override config from an environment variable</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span> 
+
+<span class="c"># db management</span>
+
+<span class="c"># routes and views</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s">'/'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">show_a_url</span><span class="p">():</span>
+     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">'show_me.html'</span><span class="p">,</span> <span class="o">..</span><span class="p">)</span>
+
+<span class="c"># local server running</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+	<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<h3 id="configuration">Configuration</h3>
+
+<p><code class="highlighter-rouge">flask.Flask.config</code> or likely <code class="highlighter-rouge">app.config</code> contains the configuration
+dictionary, it is an instance of <code class="highlighter-rouge">config.Config</code>
+from
+<a href="https://docs.python.org/3/library/stdtypes.html#mapping-types-dict">dict</a> behaving
+like a
+common
+<a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">Python dictionary</a> but
+supports additional methods to load a configurations from special dictionaries
+and files.</p>
+
+<p class="alert alert-success">See also: <a href="/organize-a-flask-project-to-handle-production-and-development-environments-effectively/">How to configure Flask to have different configuration files in production and development environments</a></p>
+
+<h4 id="populating-the-configuration">Populating the Configuration</h4>
+
+<p>The <code class="highlighter-rouge">config.Config</code> allows us to populate the configuration dictionary
+in several ways.</p>
+
+<p>A common pattern for simple apps that don’t need to have
+configurations for multiple environments is to load the configuration
+from the <code class="highlighter-rouge">yourapplication.default_settings</code> module and then override
+the values with the contents of the file the
+<code class="highlighter-rouge">YOURAPPLICATION_SETTINGS</code> environment variable points to:</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="s">'yourapplication.default_settings'</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_envvar</span><span class="p">(</span><span class="s">'YOURAPPLICATION_SETTINGS'</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>And then setup the environment variable with <kbd>$ export
+YOURAPPLICATION_SETTINGS=/path/to/settings.cfg</kbd>.</p>
+
+<p>The available methods include:</p>
+
+<h4 id="dict-keys">dict keys</h4>
+
+<p>Defining or updating new configurations like a normal dicttionary</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code>  <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">'SQLALCHEMY_TRACK_MODIFICATIONS'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+  <span class="c"># many keys at once</span>
+  <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="n">DEBUG</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">SECRET_KEY</span><span class="o">=</span><span class="s">'...'</span>
+  <span class="p">)</span>
+</code></pre>
+</div>
+
+<h4 id="files">Files</h4>
+
+<p>Configuration can be stored in Python files with values in
+<em>uppercase</em>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>DEBUG = False
+SECRET_KEY = '?\xbf,\xb4\x8d\xa3"&lt;\x9c\xb0@\x0f5\xab,w\xee\x8d$0\x13\x8b83'
+</code></pre>
+</div>
+
+<h4 id="python-files">Python files</h4>
+
+<p>Creating a configuration in a Python file and loading it:</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code>  <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_pyfile</span><span class="p">(</span><span class="s">'yourconfig.cfg'</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p>load configuration from an environment variable pointing to a file</p>
+
+    <pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>export YOURAPPLICATION_SETTINGS='/path/to/config/file'</kbd>
+</samp>
+</pre>
+
+    <p>Then in your code, load it using <code class="highlighter-rouge">config.Config.from_envvar</code>:</p>
+
+    <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_envvar</span><span class="p">(</span><span class="s">'YOURAPPLICATION_SETTINGS'</span><span class="p">)</span>
+</code></pre>
+    </div>
+
+    <p class="alert alert-info">This is the same of doing
+<code class="highlighter-rouge">app.config.from_pyfile(os.environ['YOURAPPLICATION_SETTINGS'])</code>
+with a nicer error message</p>
+  </li>
+</ul>
+
+<h4 id="objects">Objects</h4>
+
+<p>Define configuration variables and add them with the <code class="highlighter-rouge">from_object</code>
+  method, updating the vales of each variable:</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code>  <span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">True</span>
+  <span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="s">'development key'</span>
+  <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h4 id="others">Others</h4>
+
+<ul>
+  <li>From a <code class="highlighter-rouge">json</code> file with <code class="highlighter-rouge">config.Config.from_json</code>.</li>
+  <li>from mappings: <code class="highlighter-rouge">config.Config.from_mapping</code></li>
+</ul>
+
 <h2 id="development-server">Development server</h2>
+
+<p>Flask comes with a development server to debug and test your app
+locally, it shouldn’t be used in a production environment mainly because two reasons:</p>
+
+<ul>
+  <li>it doesn’t scale well and</li>
+  <li>serves only one request at a time</li>
+</ul>
+
+<p>The <kbd>flask run</kbd> command will end up calling
+<code class="highlighter-rouge">flask.Flask.run()</code>, this will always start a local [<abbr title="Web Server Gateway Interface">WSGI</abbr>], so you
+need to make sure it is located in the block executed when running
+python scripts like <code class="highlighter-rouge">if __name__ == '__main__': </code>, to avoid executing
+it when serving your app in another web server.</p>
 
 <p>The <code class="highlighter-rouge">flask</code> command depends on the <code class="highlighter-rouge">FLASK_APP</code> environment
 variable to know which app to work on, we start specifying this with
@@ -539,11 +713,11 @@ packages.</p>
 		__init__.py  ## make the project a package
 		myproject.py ## application module
 		schema.sql   ## SQLite3 database
-        /static      ## static files like js and css
-        /templates   ## jinja2 templates
-	/tests
-		test_myproject.py
-	setup.py     ## Setuptools packaging
+        /static      ## static files like js and css; var: `static_folder`
+        /templates   ## jinja2 templates; var: `template_folder`
+    /tests
+        test_myproject.py
+    setup.py     ## Setuptools packaging
     MANIFEST.in
 </code></pre>
 </div>
@@ -554,7 +728,9 @@ packages.</p>
   <li>Official docs <a href="http://flask.pocoo.org/">http://flask.pocoo.org/</a></li>
   <li>Routing <a href="http://flask.pocoo.org/docs/0.12/api/#flask.Flask.route">http://flask.pocoo.org/docs/0.12/api/#flask.Flask.route</a></li>
   <li>Tutorial folder <a href="http://flask.pocoo.org/docs/0.12/tutorial/folders/#tutorial-folders">http://flask.pocoo.org/docs/0.12/tutorial/folders/#tutorial-folders</a></li>
+  <li>Explore flask book <a href="http://explore-flask.readthedocs.io/en/latest/configuration.html">http://explore-flask.readthedocs.io/en/latest/configuration.html</a></li>
 </ul>
+
 
 
     
@@ -635,6 +811,334 @@ packages.</p>
 
 
 
+
+<div class="post-same-category">
+  <h4>Articles in this category</h4>
+  <div class="list-group">
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action active" href="/flask-overview-notes/">
+      An Overview Of Flask Main Concepts And How It Works
+    </a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action " href="/organize-a-flask-project-to-handle-production-and-development-environments-effectively/">
+      Organize A Flask Project To Handle Production And Development Environments Effectively
+    </a>
+    
+    
+  </div>
+</div>
 
 
 	
