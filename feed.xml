@@ -6,9 +6,106 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 21 Jan 2017 17:09:40 +0000</pubDate>
-    <lastBuildDate>Sat, 21 Jan 2017 17:09:40 +0000</lastBuildDate>
+    <pubDate>Tue, 24 Jan 2017 18:09:39 +0000</pubDate>
+    <lastBuildDate>Tue, 24 Jan 2017 18:09:39 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Avoid Using Flask Instance Folder When Deploying To Heroku</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Flask framework comes with an elegant solution to store credentials
+and sensitive information, it is the usage of &lt;strong&gt;instance
+folders&lt;/strong&gt;. Unfortunately this approach would have not sense if you
+plan to deploy your &lt;em&gt;webapp&lt;/em&gt; to Heroku, &lt;strong&gt;flask’s instance folder is
+not compatible with Heroku&lt;/strong&gt; because the nature of its filesystem,
+that is, the way the files are organized on the disk.&lt;/p&gt;
+
+&lt;h2 id=&quot;instance-folders-problem&quot;&gt;Instance folders problem&lt;/h2&gt;
+
+&lt;p&gt;From Flask 0.8, &lt;a href=&quot;http://flask.pocoo.org/docs/0.12/config/#instance-folders&quot;&gt;instance folders&lt;/a&gt; are the recommended way to store
+sensitive information:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;designed to not be under version control and be deployment specific.&lt;/p&gt;
+
+  &lt;p&gt;It’s the perfect place to drop things that either change at runtime or
+configuration files.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;But if you deploy to Heroku, its &lt;em&gt;Dynos&lt;/em&gt; are cycled every 24 hours due
+to its &lt;a href=&quot;https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem&quot;&gt;ephemereal system&lt;/a&gt;. As the project’s instance folder would
+be out of version control, if you
+can
+&lt;a href=&quot;http://stackoverflow.com/q/27761986/1165509&quot;&gt;somehow copy it to Heroku&lt;/a&gt;,
+it will disappear after some time.&lt;/p&gt;
+
+&lt;blockquote class=&quot;alert alert-info&quot;&gt;
+  &lt;p&gt;A dyno is a lightweight Linux container that runs a single
+user-specified command. Each dyno gets its own ephemeral filesystem,
+with a fresh copy of the most recently deployed code, any files
+written will be discarded the moment the dyno is stopped or
+restarted&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So the only solution to set all the sensitive information in
+production is to set each environment variable, one by one, without
+the possibility to drop all your sensitive environment variables in a
+&lt;em&gt;config&lt;/em&gt; file in the instance folder.&lt;/p&gt;
+
+&lt;h2 id=&quot;alternative-use-a-local-env-file&quot;&gt;Alternative: use a local .env file&lt;/h2&gt;
+
+&lt;p&gt;To view all of your Flask app’s config vars, you can use &lt;kbd&gt;heroku config&lt;/kbd&gt;.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; heroku config&lt;kbd&gt;&lt;/kbd&gt;
+=== myapp-1234 Config Vars
+APP_CONFIG_FILE:                /app/config.py
+DATABASE_URL:                   postgres://asldfkjwg:2152134jsdfj23i5234j@ec2-194-32-16.compute-2.amazonaws.com:2232/aslkdgjsadj234
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Then you can create the same variables for your local environment with
+&lt;kbd&gt;$ heroku config:get CONFIG-VAR-NAME -s  &amp;gt;&amp;gt; .env&lt;/kbd&gt;.&lt;/p&gt;
+
+&lt;p&gt;After adding &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt; to avoid committing your local
+environment variables, you can customize them locally and add
+&lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt; support to your flask apps in development and deployments with
+the &lt;code class=&quot;highlighter-rouge&quot;&gt;python-dotenv&lt;/code&gt;
+package: &lt;a href=&quot;https://github.com/theskumar/python-dotenv&quot;&gt;https://github.com/theskumar/python-dotenv&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This way we achieve a strict &lt;strong&gt;separation of config from code&lt;/strong&gt;, which
+complies with twelve-factor’s third statement: 
+&lt;a href=&quot;https://12factor.net/config&quot;&gt;Store config in the environment&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://flask.pocoo.org/docs/0.12/config/#instance-folders&quot;&gt;http://flask.pocoo.org/docs/0.12/config/#instance-folders&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://devcenter.heroku.com/articles/dynos&quot;&gt;https://devcenter.heroku.com/articles/dynos&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://12factor.net/config&quot;&gt;https://12factor.net/config&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Tue, 24 Jan 2017 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/avoid-using-flask-instance-folder-when-deploying-to-heroku/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/avoid-using-flask-instance-folder-when-deploying-to-heroku/</guid>
+        
+        <category>heroku,</category>
+        
+        <category>deployment,</category>
+        
+        <category>web-development</category>
+        
+        
+        <category>docs</category>
+        
+        <category>python</category>
+        
+        <category>flask</category>
+        
+      </item>
     
       <item>
         <title>Organize A Flask Project To Handle Production And Development Environments Effectively</title>
@@ -1426,29 +1523,6 @@ packages.&lt;/p&gt;
         <category>python</category>
         
         <category>flask</category>
-        
-      </item>
-    
-      <item>
-        <title>Colors Palettes For Web Design</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Websites to choose the right color scheme for your web design:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Coolors &lt;a href=&quot;https://coolors.co/browser/best/1&quot;&gt;https://coolors.co/browser/best/1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Adobe Color CC &lt;a href=&quot;https://color.adobe.com/it/explore/most-popular/?time=all&quot;&gt;https://color.adobe.com/it/explore/most-popular/?time=all&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Fri, 09 Dec 2016 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/colors-palettes-for-web-design/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/colors-palettes-for-web-design/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>web</category>
         
       </item>
     

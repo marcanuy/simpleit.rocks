@@ -29,15 +29,15 @@
 
   
   <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Joomla Security Tips Checklist - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Joomla Security Tips Checklist" />
-<meta name="description" content="A list of tips to secure a Joomla installation" />
-<meta property="og:description" content="A list of tips to secure a Joomla installation" />
-<link rel="canonical" href="http://simpleit.rocks/joomla-security-tips-checklist/" />
-<meta property="og:url" content="http://simpleit.rocks/joomla-security-tips-checklist/" />
+<title>Avoid Using Flask Instance Folder When Deploying To Heroku - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Avoid Using Flask Instance Folder When Deploying To Heroku" />
+<meta name="description" content="Overview" />
+<meta property="og:description" content="Overview" />
+<link rel="canonical" href="http://simpleit.rocks/avoid-using-flask-instance-folder-when-deploying-to-heroku/" />
+<meta property="og:url" content="http://simpleit.rocks/avoid-using-flask-instance-folder-when-deploying-to-heroku/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-01-08T00:00:00+00:00" />
+<meta property="article:published_time" content="2017-01-24T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@simpleitrocks" />
 <meta name="twitter:creator" content="@marcanuy" />
@@ -45,10 +45,10 @@
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
-"headline": "Joomla Security Tips Checklist",
-"datePublished": "2017-01-08T00:00:00+00:00",
-"description": "A list of tips to secure a Joomla installation",
-"url": "http://simpleit.rocks/joomla-security-tips-checklist/"}</script>
+"headline": "Avoid Using Flask Instance Folder When Deploying To Heroku",
+"datePublished": "2017-01-24T00:00:00+00:00",
+"description": "Overview",
+"url": "http://simpleit.rocks/avoid-using-flask-instance-folder-when-deploying-to-heroku/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -105,7 +105,7 @@
     
     
     
-    <h1 class="title">Joomla Security Tips Checklist </h1>
+    <h1 class="title">Avoid Using Flask Instance Folder When Deploying To Heroku </h1>
     
     
   </div>
@@ -121,7 +121,7 @@
   <div class="post-meta">
     
     <i class="fa fa-calendar" aria-hidden="true"></i>
-    <time datetime="2017-01-08T00:00:00+00:00" itemprop="datePublished">Jan 8, 2017</time>
+    <time datetime="2017-01-24T00:00:00+00:00" itemprop="datePublished">Jan 24, 2017</time>
     
   </div>
   <div>
@@ -192,10 +192,10 @@
     class="breadcrumb-item">
   
   <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/php">
+     itemprop="item" href="/docs/python">
     
 
-    php
+    python
   </a>
   
   <meta itemprop="position" content="3" />
@@ -216,10 +216,10 @@
     class="breadcrumb-item">
   
   <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/php/joomla">
+     itemprop="item" href="/docs/python/flask">
     
 
-    joomla
+    flask
   </a>
   
   <meta itemprop="position" content="4" />
@@ -243,7 +243,7 @@
        itemprop="item">
     
 
-    <span itemprop="name">Joomla Security Tips Checklist</span>
+    <span itemprop="name">Avoid Using Flask Instance Folder When Deploying To Heroku</span>
   </span>
   
   <meta itemprop="position" content="5" />
@@ -286,15 +286,9 @@
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#security-checklist">Security Checklist</a></li>
-<li class="toc-entry toc-h2"><a href="#upgrade-joomla">Upgrade Joomla</a></li>
-<li class="toc-entry toc-h3"><a href="#avoid-old-extensions">Avoid old extensions</a></li>
-<li class="toc-entry toc-h3"><a href="#adjust-files-and-directories-permissions">Adjust files and directories permissions</a></li>
-<li class="toc-entry toc-h4"><a href="#htaccess">htaccess</a></li>
-<li class="toc-entry toc-h4"><a href="#php-files">PHP files</a></li>
-<li class="toc-entry toc-h3"><a href="#fix-images-folder-allowed-files">Fix images folder allowed files</a></li>
-<li class="toc-entry toc-h3"><a href="#popular-extensions">Popular extensions</a></li>
-<li class="toc-entry toc-h3"><a href="#administrator-are-with-http-basic-auth">Administrator are with HTTP basic auth</a></li>
+<li class="toc-entry toc-h2"><a href="#instance-folders-problem">Instance folders problem</a></li>
+<li class="toc-entry toc-h2"><a href="#alternative-use-a-local-env-file">Alternative: use a local .env file</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
       </div>
       <div>
@@ -305,9 +299,9 @@
       <div>
   <a class="twitter-share-button"
      href="https://twitter.com/share"
-     data-url="http://simpleit.rocks/joomla-security-tips-checklist/"
+     data-url="http://simpleit.rocks/avoid-using-flask-instance-folder-when-deploying-to-heroku/"
      data-via=""
-     data-text="A list of tips to secure a Joomla installation"
+     data-text=""
      data-related="marcanuy,{"username"=>"simpleitrocks"}"
      data-count="vertical">
     Tweet
@@ -339,7 +333,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="http://simpleit.rocks/joomla-security-tips-checklist/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="http://simpleit.rocks/avoid-using-flask-instance-folder-when-deploying-to-heroku/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -354,10 +348,6 @@
 
   <div class="col-md-8 site-content">
 
-    
-	<p class="lead">
-	  A list of tips to secure a Joomla installation
-	</p>
     
 
     <div class="si-ad m-1 mx-auto">
@@ -380,53 +370,78 @@
 
     <h2 id="overview">Overview</h2>
 
-<p>Tips to prevent your Joomla website from being hacked.</p>
+<p>Flask framework comes with an elegant solution to store credentials
+and sensitive information, it is the usage of <strong>instance
+folders</strong>. Unfortunately this approach would have not sense if you
+plan to deploy your <em>webapp</em> to Heroku, <strong>flask’s instance folder is
+not compatible with Heroku</strong> because the nature of its filesystem,
+that is, the way the files are organized on the disk.</p>
 
-<h2 id="security-checklist">Security Checklist</h2>
+<h2 id="instance-folders-problem">Instance folders problem</h2>
 
-<h2 id="upgrade-joomla">Upgrade Joomla</h2>
+<p>From Flask 0.8, <a href="http://flask.pocoo.org/docs/0.12/config/#instance-folders">instance folders</a> are the recommended way to store
+sensitive information:</p>
 
-<p>Each new Joomla update come with several security patches, not
-updating means getting into troubles sooner or later, as new
-vulnerabilities are discovered from time to time.</p>
+<blockquote>
+  <p>designed to not be under version control and be deployment specific.</p>
 
-<h3 id="avoid-old-extensions">Avoid old extensions</h3>
+  <p>It’s the perfect place to drop things that either change at runtime or
+configuration files.</p>
+</blockquote>
 
-<p>You should always keep your extensions updated, if you are using an
-old extension without support, find an alternative or deactivate it.</p>
+<p>But if you deploy to Heroku, its <em>Dynos</em> are cycled every 24 hours due
+to its <a href="https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem">ephemereal system</a>. As the project’s instance folder would
+be out of version control, if you
+can
+<a href="http://stackoverflow.com/q/27761986/1165509">somehow copy it to Heroku</a>,
+it will disappear after some time.</p>
 
-<h3 id="adjust-files-and-directories-permissions">Adjust files and directories permissions</h3>
+<blockquote class="alert alert-info">
+  <p>A dyno is a lightweight Linux container that runs a single
+user-specified command. Each dyno gets its own ephemeral filesystem,
+with a fresh copy of the most recently deployed code, any files
+written will be discarded the moment the dyno is stopped or
+restarted</p>
+</blockquote>
 
-<h4 id="htaccess">htaccess</h4>
+<p>So the only solution to set all the sensitive information in
+production is to set each environment variable, one by one, without
+the possibility to drop all your sensitive environment variables in a
+<em>config</em> file in the instance folder.</p>
 
-<p><code class="highlighter-rouge">.htaccess</code> and <code class="highlighter-rouge">configuration.php</code> shouldn’t have write permissions,
-that would leave your them vulnerable to attacks.</p>
+<h2 id="alternative-use-a-local-env-file">Alternative: use a local .env file</h2>
 
-<h4 id="php-files">PHP files</h4>
+<p>To view all of your Flask app’s config vars, you can use <kbd>heroku config</kbd>.</p>
 
-<p>All the PHP files shouldn’t have write permissions.</p>
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> heroku config<kbd></kbd>
+=== myapp-1234 Config Vars
+APP_CONFIG_FILE:                /app/config.py
+DATABASE_URL:                   postgres://asldfkjwg:2152134jsdfj23i5234j@ec2-194-32-16.compute-2.amazonaws.com:2232/aslkdgjsadj234
+</samp>
+</pre>
 
-<h3 id="fix-images-folder-allowed-files">Fix images folder allowed files</h3>
+<p>Then you can create the same variables for your local environment with
+<kbd>$ heroku config:get CONFIG-VAR-NAME -s  &gt;&gt; .env</kbd>.</p>
 
-<p>The images folder should only contains <strong>images</strong>, it should <a href="/securing-the-images-folder-in-joomla/">block
-users from trying to upload every other type of file</a>,
-specially <em>scripts</em>.</p>
+<p>After adding <code class="highlighter-rouge">.env</code> to <code class="highlighter-rouge">.gitignore</code> to avoid committing your local
+environment variables, you can customize them locally and add
+<code class="highlighter-rouge">.env</code> support to your flask apps in development and deployments with
+the <code class="highlighter-rouge">python-dotenv</code>
+package: <a href="https://github.com/theskumar/python-dotenv">https://github.com/theskumar/python-dotenv</a>.</p>
 
-<h3 id="popular-extensions">Popular extensions</h3>
+<p>This way we achieve a strict <strong>separation of config from code</strong>, which
+complies with twelve-factor’s third statement: 
+<a href="https://12factor.net/config">Store config in the environment</a></p>
 
-<p>Not try new extensions until they are well tested or popular in the
-Joomla community.</p>
+<h2 id="references">References</h2>
 
-<h3 id="administrator-are-with-http-basic-auth">Administrator are with HTTP basic auth</h3>
-
-<p>Protect the Administrator area, usually the <code class="highlighter-rouge">/administrator</code> path,
-with
-<a href="/protect-web-directories-with-http-basic-authentication-in-apache-server/">HTTP Basic Authentication</a>.</p>
-
-<p><strong>Useful to
-  prevent
-  <a href="https://en.wikipedia.org/wiki/Dictionary_attack">dictionary attacks</a> in
-  the Joomla Administrator area.</strong></p>
+<ul>
+  <li><a href="http://flask.pocoo.org/docs/0.12/config/#instance-folders">http://flask.pocoo.org/docs/0.12/config/#instance-folders</a></li>
+  <li><a href="https://devcenter.heroku.com/articles/dynos">https://devcenter.heroku.com/articles/dynos</a></li>
+  <li><a href="https://12factor.net/config">https://12factor.net/config</a></li>
+</ul>
 
 
 
@@ -480,7 +495,7 @@ with
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/joomla-security-tips-checklist/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/avoid-using-flask-instance-folder-when-deploying-to-heroku/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -785,23 +800,8 @@ with
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action active" href="/joomla-security-tips-checklist/">
-      Joomla Security Tips Checklist
+      <a class="list-group-item list-group-item-action " href="/flask-overview-notes/">
+      An Overview Of Flask Main Concepts And How It Works
     </a>
     
     
@@ -819,8 +819,33 @@ with
     
     
     
-      <a class="list-group-item list-group-item-action " href="/securing-the-images-folder-in-joomla/">
-      Securing The Images Folder In Joomla
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action " href="/organize-a-flask-project-to-handle-production-and-development-environments-effectively/">
+      Organize A Flask Project To Handle Production And Development Environments Effectively
     </a>
     
     
@@ -828,15 +853,9 @@ with
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+      <a class="list-group-item list-group-item-action active" href="/avoid-using-flask-instance-folder-when-deploying-to-heroku/">
+      Avoid Using Flask Instance Folder When Deploying To Heroku
+    </a>
     
     
   </div>
