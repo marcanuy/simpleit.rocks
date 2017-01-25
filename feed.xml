@@ -6,9 +6,238 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Jan 2017 18:09:39 +0000</pubDate>
-    <lastBuildDate>Tue, 24 Jan 2017 18:09:39 +0000</lastBuildDate>
+    <pubDate>Wed, 25 Jan 2017 04:50:47 +0000</pubDate>
+    <lastBuildDate>Wed, 25 Jan 2017 04:50:47 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Accessing Specific Items From Data Files In Jekyll</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Having a sample data file, we explore some of the options we have to
+access a specific item.&lt;/p&gt;
+
+&lt;p&gt;For the data file &lt;code class=&quot;highlighter-rouge&quot;&gt;projects.yml&lt;/code&gt; located in &lt;code class=&quot;highlighter-rouge&quot;&gt;/_data/projects.yml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;funtime&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;www.funtime.url&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;This is really fun&lt;/span&gt;
+
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;supertime&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;www.supertime.url&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;This is really super&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;How can we access the data item whose project name is &lt;code class=&quot;highlighter-rouge&quot;&gt;funtime&lt;/code&gt;?&lt;/p&gt;
+
+&lt;h1 id=&quot;using-an-index&quot;&gt;Using an index&lt;/h1&gt;
+
+&lt;p&gt;If we know the data item index, we can access them directly, in this
+case it is located in the position “0”:&lt;/p&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;“project”=&amp;gt;”funtime”,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;“url”=&amp;gt;”www.funtime.url”,“description”=&amp;gt;”This&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;really&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;fun”&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;iterating&quot;&gt;Iterating&lt;/h2&gt;
+
+&lt;p&gt;Iterating through all the data looking for an attribute&lt;/p&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Outputs:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;“project”=&amp;gt;”funtime”,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;“url”=&amp;gt;”www.funtime.url”,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;“description”=&amp;gt;”This&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;really&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;fun”&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;changing-the-data-file&quot;&gt;Changing the data file&lt;/h2&gt;
+
+&lt;p&gt;The above data file can be optimized to make it more elegant and use
+the project name as their key:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;funtime&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;www.funtime.url&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;This is really fun&lt;/span&gt;
+
+&lt;span class=&quot;s&quot;&gt;supertime&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;www.supertime.url&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;This is really super&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This way we can access each of the items directly:&lt;/p&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;So it would output:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;“url”=&amp;gt;”www.funtime.url”,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;“description”=&amp;gt;”This&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;really&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;fun”&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Tue, 24 Jan 2017 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>ruby</category>
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>Managing Environment Configuration Variables In Flask With Dotenv</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Often when developing apps with Flask we need to set up environment
+variables to keep sensitive information secure and out of version
+control.&lt;/p&gt;
+
+&lt;p&gt;This article describes how to set up environment config variables in
+Flask with &lt;em&gt;python-dotenv&lt;/em&gt; and why we can’t rely in Flask’ instance
+folder.&lt;/p&gt;
+
+&lt;h2 id=&quot;dotenv-versus-instance-folders&quot;&gt;dotenv versus instance folders&lt;/h2&gt;
+
+&lt;p&gt;Flask introduces the concept of &lt;strong&gt;instance folder&lt;/strong&gt;, designed to store
+sensitive information like credentials and passwords for your local
+environment, the main problem is that
+&lt;a href=&quot;/avoid-using-flask-instance-folder-when-deploying-to-heroku/&quot;&gt;it can’t work with ephemeral filesystems&lt;/a&gt; like
+the one Heroku uses.&lt;/p&gt;
+
+&lt;p&gt;In this case the perfect fit for this is to use python-dotenv, so we
+define environment config variables in Heroku and locally we put them
+in &lt;code class=&quot;highlighter-rouge&quot;&gt;/.env&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;install&quot;&gt;Install&lt;/h2&gt;
+
+&lt;p&gt;First we install it with &lt;kbd&gt;pip install -U python-dotenv&lt;/kbd&gt;&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;&lt;/kbd&gt;
+Collecting python-dotenv
+  Downloading python-dotenv-0.6.2.tar.gz
+Collecting click&amp;gt;=5.0 (from python-dotenv)
+  Downloading click-6.7-py2.py3-none-any.whl (71kB)
+    100% |████████████████████████████████| 71kB 756kB/s 
+Building wheels for collected packages: python-dotenv
+  Running setup.py bdist_wheel for python-dotenv ... done
+  Stored in directory: /home/user/.cache/pip/wheels/07/08/3a/7591582130baac86479ca3b7cb6314c9878e877645267d25c9
+Successfully built python-dotenv
+Installing collected packages: click, python-dotenv
+  Found existing installation: click 6.6
+    Uninstalling click-6.6:
+      Successfully uninstalled click-6.6
+Successfully installed click-6.7 python-dotenv-0.6.2
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;requirementstxt&quot;&gt;requirements.txt&lt;/h2&gt;
+
+&lt;p&gt;We add the new package to the requirements file.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;pip freeze &amp;gt; requirements.txt&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;gitignore&quot;&gt;gitignore&lt;/h2&gt;
+
+&lt;p&gt;We make sure that we won’t add it to the source code version control
+adding it to &lt;code class=&quot;highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;echo &quot;.env&quot; &amp;gt;&amp;gt; .gitignore&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;add-variables&quot;&gt;add variables&lt;/h2&gt;
+
+&lt;p&gt;Add variables to &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt;, optionally copy all the environment variables
+from your heroku app to have this as a skeleton to fill with local
+variables:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;heroku config -s &amp;gt;&amp;gt; .env&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p class=&quot;alert alert-info&quot;&gt;-s, –shell         # output config vars in shell format&lt;/p&gt;
+
+&lt;p&gt;or simply add them manually to &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt;, for example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;TWITTER_CONSUMER_KEY=MYINCREDIBLEKEY
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;use-the-new-environment-variables&quot;&gt;use the new environment variables&lt;/h2&gt;
+
+&lt;p&gt;Now we can use this environment variables in our Flask app.&lt;/p&gt;
+
+&lt;p&gt;Having the following typical structure:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;myapp
+	.env
+	myapp
+		__init__.py
+		myapp.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I like to initialize my app in &lt;code class=&quot;highlighter-rouge&quot;&gt;/myapp/__init.py__&lt;/code&gt;, but it should be
+the same if you add this to &lt;code class=&quot;highlighter-rouge&quot;&gt;/myapp/myapp.py&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;flask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;dotenv&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_dotenv&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#...&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# load dotenv in the base root&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;APP_ROOT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dirname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__file__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'..'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;# refers to application_top&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;dotenv_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;APP_ROOT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'.env'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;load_dotenv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dotenv_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tw_consumer_key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getenv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'TWITTER_CONSUMER_KEY'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;I find it useful to use &lt;code class=&quot;highlighter-rouge&quot;&gt;dotenv&lt;/code&gt; for sensitive variables and custom
+ paths, and &lt;a href=&quot;/organize-a-flask-project-to-handle-production-and-development-environments-effectively/&quot;&gt;maintain other variables in version control separated by
+ server, like development, testing or production&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 24 Jan 2017 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/managing-environment-configuration-variables-in-flask-with-dotenv/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/managing-environment-configuration-variables-in-flask-with-dotenv/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>python</category>
+        
+        <category>flask</category>
+        
+      </item>
     
       <item>
         <title>Avoid Using Flask Instance Folder When Deploying To Heroku</title>
@@ -109,12 +338,12 @@ complies with twelve-factor’s third statement:
     
       <item>
         <title>Organize A Flask Project To Handle Production And Development Environments Effectively</title>
-        <description>&lt;p&gt;Separated configurations for Development and Production&lt;/p&gt;
+        <description>&lt;h2 id=&quot;separated-configurations-for-development-and-production&quot;&gt;Separated configurations for Development and Production&lt;/h2&gt;
 
 &lt;p&gt;In most situations, applications would need different configurations
 for each environment: Production, Staging, Development, etc.&lt;/p&gt;
 
-&lt;h5 id=&quot;load-default-config-and-an-environment-specific&quot;&gt;Load default config and an environment specific&lt;/h5&gt;
+&lt;h2 id=&quot;load-default-config-and-an-environment-specific-one&quot;&gt;Load default config and an environment specific one&lt;/h2&gt;
 
 &lt;p&gt;The easiest way to have multiple configurations is to:&lt;/p&gt;
 
@@ -146,7 +375,7 @@ YOURAPPLICATION_SETTINGS=/path/to/config.py&lt;/kbd&gt;
 &lt;p&gt;This way it will always load the default &lt;em&gt;configs&lt;/em&gt; and then our custom
 variables from &lt;code class=&quot;highlighter-rouge&quot;&gt;YOURAPPLICATION_SETTINGS&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h5 id=&quot;instance-paths&quot;&gt;Instance paths&lt;/h5&gt;
+&lt;h2 id=&quot;instance-paths&quot;&gt;Instance paths&lt;/h2&gt;
 
 &lt;p&gt;From Flask 0.8, there is the concept of &lt;strong&gt;instance folders&lt;/strong&gt;. The
 instance folder is a good fit for configuration files because it is
@@ -157,6 +386,8 @@ to &lt;code class=&quot;highlighter-rouge&quot;&gt;/.gitignore&lt;/code&gt;.&lt;
 
 &lt;p&gt;By default, Flask looks for a folder named &lt;code class=&quot;highlighter-rouge&quot;&gt;instance&lt;/code&gt; in the same
 level of your main file or the package.&lt;/p&gt;
+
+&lt;h2 id=&quot;behaviour&quot;&gt;Behaviour&lt;/h2&gt;
 
 &lt;p&gt;Using this folder and having environment specific configuration files
 in the &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; folder we end up having the following directory structure:&lt;/p&gt;
@@ -203,6 +434,8 @@ invoking the app:&lt;/p&gt;
 &lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;export APP_CONFIG_FILE=/var/www/yourapp/config/production.py&lt;/kbd&gt;
 &lt;/pre&gt;
 
+&lt;h2 id=&quot;final&quot;&gt;Final&lt;/h2&gt;
+
 &lt;p&gt;Now your folder structure should look like:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;myapp
@@ -218,6 +451,9 @@ invoking the app:&lt;/p&gt;
    └── myapp.py
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+
+&lt;p&gt;It can be useful to also add support for &lt;code class=&quot;highlighter-rouge&quot;&gt;dotenv&lt;/code&gt; to &lt;a href=&quot;/managing-environment-configuration-variables-in-flask-with-dotenv/&quot;&gt;handle sensitive
+variables when deploying to Heroku&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
@@ -989,540 +1225,6 @@ browser, it will ask for username/password credentials.&lt;/p&gt;
         <category>servers</category>
         
         <category>apache</category>
-        
-      </item>
-    
-      <item>
-        <title>Understanding How Python Packages Modules And Imports Work</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Learning about Python’s package system is fundamental for a better
-understanding of how Python works and design better software.&lt;/p&gt;
-
-&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
-
-&lt;p&gt;Package support was supported first by a standard Python library
-module in version 1.3 with the module &lt;abbr title=&quot;New Imports&quot;&gt;ni&lt;/abbr&gt; and later, in Pyhon 1.5, was
-incoporated in the interpreter.&lt;/p&gt;
-
-&lt;p&gt;A &lt;strong&gt;module is a file&lt;/strong&gt; containing Python &lt;em&gt;definitions&lt;/em&gt; and
-&lt;em&gt;statements&lt;/em&gt;. Its main goals are:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;organize code&lt;/li&gt;
-  &lt;li&gt;preventing naming conflicts&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Defining a module also defines its &lt;strong&gt;namespace&lt;/strong&gt;, i.e. “the place where a
-variable is stored”.&lt;/p&gt;
-
-&lt;p&gt;Code from other modules can be used by the process of &lt;strong&gt;importing&lt;/strong&gt; it
-in the current module. The most popular way of importing other modules
-functionality is using the &lt;a href=&quot;https://docs.python.org/3/reference/simple_stmts.html#import&quot;&gt;import statement&lt;/a&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt; and passing the
-&lt;a href=&quot;https://docs.python.org/3/glossary.html#term-qualified-name&quot;&gt;fully qualified name&lt;/a&gt; of the module.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://docs.python.org/3/glossary.html#term-qualified-name&quot;&gt;
-  &lt;p&gt;Fully qualified name&lt;/p&gt;
-
-  &lt;p&gt;A dotted name showing the “path” from a module’s global scope to a
-  class, function or method defined in that module, as defined in PEP
-  3155.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Python documentation &lt;a href=&quot;https://docs.python.org/3/glossary.html#term-qualified-name&quot;&gt;qualified name&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote class=&quot;alert alert-info&quot;&gt;
-  &lt;p&gt;Package &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt; is a method to structure Python’s module namespace by
-using “dotted module names”&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;For example, &lt;code class=&quot;highlighter-rouge&quot;&gt;import math&lt;/code&gt; makes it possible to use &lt;code class=&quot;highlighter-rouge&quot;&gt;math&lt;/code&gt; functions
-in the module that imported it like &lt;code class=&quot;highlighter-rouge&quot;&gt;math.pi&lt;/code&gt; to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;pi&lt;/code&gt;
-function.&lt;/p&gt;
-
-&lt;h3 id=&quot;module-search-path&quot;&gt;Module Search Path&lt;/h3&gt;
-
-&lt;p&gt;How does the &lt;em&gt;import statement&lt;/em&gt; knows where the &lt;code class=&quot;highlighter-rouge&quot;&gt;math&lt;/code&gt; module is
-located?&lt;/p&gt;
-
-&lt;p&gt;The interpreter looks sequentially in specific locations until it finds
-it&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Was the file passed to the interpreter?
-    &lt;ul&gt;
-      &lt;li&gt;&lt;strong&gt;Yes&lt;/strong&gt; - It looks in the directory containing the input script.&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;No&lt;/strong&gt; - It looks in the current directory.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;a list of directory names specified in the &lt;a href=&quot;https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH&quot;&gt;PYTHONPATH&lt;/a&gt; environment
-variable
-    &lt;ul&gt;
-      &lt;li&gt;&lt;small&gt; &lt;em&gt;PYTHONPATH&lt;/em&gt; augments the default search path for module files, its
-format is the same as the shell’s PATH &lt;/small&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$PYTHONPATH&lt;/code&gt; is typically empty and can be found with &lt;kbd&gt;echo $PYTHONPATH&lt;/kbd&gt;.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;The installation-dependent default.
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;The actual list of folders python searches for libraries can be
-found with&lt;/p&gt;
-
-        &lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;python3.5&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt; &lt;kbd&gt;import sys&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt; &lt;kbd&gt;print(sys.path)&lt;/kbd&gt;
-['', '/usr/lib/python35.zip', '/usr/lib/python3.5', '/usr/lib/python3.5/plat-x86_64-linux-gnu', '/usr/lib/python3.5/lib-dynload', '/usr/local/lib/python3.5/dist-packages', '/usr/lib/python3/dist-packages']
-&lt;span class=&quot;shell-prompt&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p class=&quot;alert alert-info&quot;&gt;&lt;a href=&quot;https://docs.python.org/3/library/sys.html#sys.path&quot;&gt;sys.path&lt;/a&gt; is a
-list of strings that specifies the search path for
-modules. Initialized from the environment variable PYTHONPATH, plus an
-installation-dependent default. It can be modified using standard list
-operations, adding more directories to the discover modules &lt;em&gt;paths&lt;/em&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;sys.path.insert(0, '/path/to/package')&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;packages&quot;&gt;Packages&lt;/h3&gt;
-
-&lt;p&gt;Packages are basically collection of modules.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://docs.python.org/3/tutorial/modules.html#packages&quot;&gt;
-  &lt;p&gt;Packages are a way of structuring Python’s module namespace by using
-“dotted module names”&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Python packages in &lt;a href=&quot;https://docs.python.org/3/tutorial/modules.html#packages&quot;&gt;official
-tutorial&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Besides one can just add a subdirectory to the &lt;code class=&quot;highlighter-rouge&quot;&gt;sys.path&lt;/code&gt; list, &lt;strong&gt;packages
-are an elegant solution to keep related modules together&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;For example, the module name &lt;code class=&quot;highlighter-rouge&quot;&gt;my-package.my-module&lt;/code&gt; designates a sub module named &lt;strong&gt;my-module&lt;/strong&gt; in a
-package named &lt;strong&gt;my-package&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;A simple package with a &lt;em&gt;module&lt;/em&gt; and two &lt;em&gt;sub packages&lt;/em&gt; may look like this:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;my-package/                 Top-level package
-      __init__.py           Initialize package
-      my-module.py
-      my-subpackage/        Subpackage 
-              __init__.py
-              ...
-      my-other-subpackage/  Subpackage
-              __init__.py
-              ...
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;__init__.py&lt;/code&gt; file in each directory has two main functions:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Marking packages&lt;/strong&gt;: It marks a directory as a Python package (or
-sub package), which makes its files ending in &lt;code class=&quot;highlighter-rouge&quot;&gt;.py&lt;/code&gt; considered
-Python modules.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Initialize code&lt;/strong&gt;: Code inside &lt;code class=&quot;highlighter-rouge&quot;&gt;__init__.py&lt;/code&gt; is executed when the
-package is imported, but it can be empty also.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p class=&quot;alert alert-danger&quot;&gt;Python 3.3+ has [Implicit Namespace Packages] allowing to create
-packages without &lt;code class=&quot;highlighter-rouge&quot;&gt;__init__.py&lt;/code&gt; files.&lt;/p&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Built-in Package Support in Python
-1.5 &lt;a href=&quot;http://legacy.python.org/doc/essays/packages.html&quot;&gt;http://legacy.python.org/doc/essays/packages.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;The Python Language Reference » The import system &lt;a href=&quot;https://docs.python.org/3/reference/import.html&quot;&gt;https://docs.python.org/3/reference/import.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://askubuntu.com/a/385030/43253&quot;&gt;What does my PYTHONPATH contain?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;https://docs.python.org/3/tutorial/modules.html#the-module-search-path&quot;&gt;https://docs.python.org/3/tutorial/modules.html#the-module-search-path&lt;/a&gt;&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Mon, 02 Jan 2017 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/understanding-how-python-packages-modules-and-imports-work/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/understanding-how-python-packages-modules-and-imports-work/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>python</category>
-        
-        <category>language</category>
-        
-        <category>concepts</category>
-        
-      </item>
-    
-      <item>
-        <title>An Overview Of Flask Main Concepts And How It Works</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Flask is one of the Python’s most popular web frameworks. This is an
-overview of its main concepts to get started quickly and understand
-how it works.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://flask.pocoo.org/&quot;&gt;
-  &lt;p&gt;Flask is a microframework for Python based on Werkzeug, Jinja 2 and
-good intentions.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Slogan at &lt;a href=&quot;http://flask.pocoo.org/&quot;&gt;Flask homepage&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;flask-script&quot;&gt;Flask script&lt;/h2&gt;
-
-&lt;p&gt;Flask, like most modern frameworks, has its own command &lt;code class=&quot;highlighter-rouge&quot;&gt;flask&lt;/code&gt; to
-perform tasks.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;flask --help&lt;/kbd&gt;
-Usage: flask [OPTIONS] COMMAND [ARGS]...
-
-  This shell command acts as general utility script for Flask applications.
-
-  It loads the application configured (through the FLASK_APP environment
-  variable) and then provides commands either provided by the application or
-  Flask itself.
-
-  The most useful commands are the &quot;run&quot; and &quot;shell&quot; command.
-
-  Example usage:
-
-    $ export FLASK_APP=hello.py
-    $ export FLASK_DEBUG=1
-    $ flask run
-
-Options:
-  --version  Show the flask version
-  --help     Show this message and exit.
-
-Commands:
-  run    Runs a development server.
-  shell  Runs a shell in the app context.
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;Every Flask application you create is an instance of the
-&lt;code class=&quot;highlighter-rouge&quot;&gt;flask.Flask&lt;/code&gt; class. The flask object implements a [&lt;abbr title=&quot;Web Server Gateway Interface&quot;&gt;WSGI&lt;/abbr&gt;] application
-and acts as the central object.&lt;/p&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;flask.Flask&lt;/code&gt; class is responsible for handling all the
-&lt;strong&gt;view functions&lt;/strong&gt;, &lt;strong&gt;URLs routing&lt;/strong&gt; and &lt;strong&gt;templates setup&lt;/strong&gt;, so in a
-simple app, you will end up having a single file.&lt;/p&gt;
-
-&lt;p&gt;To create a Flask app, we instantiate &lt;code class=&quot;highlighter-rouge&quot;&gt;flask.Flask&lt;/code&gt; in our main module
-or in the &lt;code class=&quot;highlighter-rouge&quot;&gt;__init__.py&lt;/code&gt; file of the package like:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;flask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The first parameter tells Flask what belongs to this app, if you are
-using a single module, then &lt;code class=&quot;highlighter-rouge&quot;&gt;__name__&lt;/code&gt; is enough, but if not then you
-should specify the name of the package or module you are using to help
-Flask to find resources, improve debugging information, etc.&lt;/p&gt;
-
-&lt;p&gt;This is what a typical Flask app skeleton looks like:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;flask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# create application&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# Load default config and override config from an environment variable&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt; 
-
-&lt;span class=&quot;c&quot;&gt;# db management&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# routes and views&lt;/span&gt;
-&lt;span class=&quot;nd&quot;&gt;@app.route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;show_a_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;render_template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'show_me.html'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# local server running&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'__main__'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;configuration&quot;&gt;Configuration&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;flask.Flask.config&lt;/code&gt; or likely &lt;code class=&quot;highlighter-rouge&quot;&gt;app.config&lt;/code&gt; contains the configuration
-dictionary, it is an instance of &lt;code class=&quot;highlighter-rouge&quot;&gt;config.Config&lt;/code&gt;
-from
-&lt;a href=&quot;https://docs.python.org/3/library/stdtypes.html#mapping-types-dict&quot;&gt;dict&lt;/a&gt; behaving
-like a
-common
-&lt;a href=&quot;https://docs.python.org/3/tutorial/datastructures.html#dictionaries&quot;&gt;Python dictionary&lt;/a&gt; but
-supports additional methods to load a configurations from special dictionaries
-and files.&lt;/p&gt;
-
-&lt;p class=&quot;alert alert-success&quot;&gt;See also: &lt;a href=&quot;/organize-a-flask-project-to-handle-production-and-development-environments-effectively/&quot;&gt;How to configure Flask to have different configuration files in production and development environments&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;populating-the-configuration&quot;&gt;Populating the Configuration&lt;/h4&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;config.Config&lt;/code&gt; allows us to populate the configuration dictionary
-in several ways.&lt;/p&gt;
-
-&lt;p&gt;A common pattern for simple apps that don’t need to have
-configurations for multiple environments is to load the configuration
-from the &lt;code class=&quot;highlighter-rouge&quot;&gt;yourapplication.default_settings&lt;/code&gt; module and then override
-the values with the contents of the file the
-&lt;code class=&quot;highlighter-rouge&quot;&gt;YOURAPPLICATION_SETTINGS&lt;/code&gt; environment variable points to:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'yourapplication.default_settings'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_envvar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'YOURAPPLICATION_SETTINGS'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;And then setup the environment variable with &lt;kbd&gt;$ export
-YOURAPPLICATION_SETTINGS=/path/to/settings.cfg&lt;/kbd&gt;.&lt;/p&gt;
-
-&lt;p&gt;The available methods include:&lt;/p&gt;
-
-&lt;h4 id=&quot;dict-keys&quot;&gt;dict keys&lt;/h4&gt;
-
-&lt;p&gt;Defining or updating new configurations like a normal dicttionary&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'SQLALCHEMY_TRACK_MODIFICATIONS'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
-  &lt;span class=&quot;c&quot;&gt;# many keys at once&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;DEBUG&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;SECRET_KEY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'...'&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;files&quot;&gt;Files&lt;/h4&gt;
-
-&lt;p&gt;Configuration can be stored in Python files with values in
-&lt;em&gt;uppercase&lt;/em&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;DEBUG = False
-SECRET_KEY = '?\xbf,\xb4\x8d\xa3&quot;&amp;lt;\x9c\xb0@\x0f5\xab,w\xee\x8d$0\x13\x8b83'
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;python-files&quot;&gt;Python files&lt;/h4&gt;
-
-&lt;p&gt;Creating a configuration in a Python file and loading it:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_pyfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'yourconfig.cfg'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;load configuration from an environment variable pointing to a file&lt;/p&gt;
-
-    &lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;export YOURAPPLICATION_SETTINGS='/path/to/config/file'&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-    &lt;p&gt;Then in your code, load it using &lt;code class=&quot;highlighter-rouge&quot;&gt;config.Config.from_envvar&lt;/code&gt;:&lt;/p&gt;
-
-    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_envvar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'YOURAPPLICATION_SETTINGS'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-
-    &lt;p class=&quot;alert alert-info&quot;&gt;This is the same of doing
-&lt;code class=&quot;highlighter-rouge&quot;&gt;app.config.from_pyfile(os.environ['YOURAPPLICATION_SETTINGS'])&lt;/code&gt;
-with a nicer error message&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;objects&quot;&gt;Objects&lt;/h4&gt;
-
-&lt;p&gt;Define configuration variables and add them with the &lt;code class=&quot;highlighter-rouge&quot;&gt;from_object&lt;/code&gt;
-  method, updating the vales of each variable:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;DEBUG&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;SECRET_KEY&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'development key'&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;others&quot;&gt;Others&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;From a &lt;code class=&quot;highlighter-rouge&quot;&gt;json&lt;/code&gt; file with &lt;code class=&quot;highlighter-rouge&quot;&gt;config.Config.from_json&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;from mappings: &lt;code class=&quot;highlighter-rouge&quot;&gt;config.Config.from_mapping&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;development-server&quot;&gt;Development server&lt;/h2&gt;
-
-&lt;p&gt;Flask comes with a development server to debug and test your app
-locally, it shouldn’t be used in a production environment mainly because two reasons:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;it doesn’t scale well and&lt;/li&gt;
-  &lt;li&gt;serves only one request at a time&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The &lt;kbd&gt;flask run&lt;/kbd&gt; command will end up calling
-&lt;code class=&quot;highlighter-rouge&quot;&gt;flask.Flask.run()&lt;/code&gt;, this will always start a local [&lt;abbr title=&quot;Web Server Gateway Interface&quot;&gt;WSGI&lt;/abbr&gt;], so you
-need to make sure it is located in the block executed when running
-python scripts like &lt;code class=&quot;highlighter-rouge&quot;&gt;if __name__ == '__main__': &lt;/code&gt;, to avoid executing
-it when serving your app in another web server.&lt;/p&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;flask&lt;/code&gt; command depends on the &lt;code class=&quot;highlighter-rouge&quot;&gt;FLASK_APP&lt;/code&gt; environment
-variable to know which app to work on, we start specifying this with
-the &lt;code class=&quot;highlighter-rouge&quot;&gt;export&lt;/code&gt; command, then if we run the flask development server it
-knows which file to refer to:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;export FLASK_APP=hello.py&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;flask run&lt;/kbd&gt;
- * Running on http://127.0.0.1:5000/
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h3 id=&quot;reload-server-when-code-changes&quot;&gt;Reload server when code changes&lt;/h3&gt;
-
-&lt;p&gt;There is a special debug mode handled by the &lt;code class=&quot;highlighter-rouge&quot;&gt;FLASK_DEBUG&lt;/code&gt; environment
-variable that allows to:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;reload the server automatically each time the code changes&lt;/li&gt;
-  &lt;li&gt;output debugging information on errors&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;export FLASK_DEBUG=1&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;flask run&lt;/kbd&gt;
- * Forcing debug mode on
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
- * Restarting with stat
- * Debugger is active!
- * Debugger pin code: 292-824-230
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;routing&quot;&gt;Routing&lt;/h2&gt;
-
-&lt;p&gt;Routing is done binding functions with URLs, using the &lt;a href=&quot;http://flask.pocoo.org/docs/0.12/api/#flask.Flask.route&quot;&gt;route()&lt;/a&gt;
-decorator.&lt;/p&gt;
-
-&lt;p&gt;For example, the URL &lt;code class=&quot;highlighter-rouge&quot;&gt;/hello-world&lt;/code&gt; would run the &lt;code class=&quot;highlighter-rouge&quot;&gt;hello()&lt;/code&gt; function:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@app.route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/hello-world'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Hello World'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;dynamic-urls&quot;&gt;Dynamic URLs&lt;/h3&gt;
-
-&lt;p&gt;Flask URLs can also handle variables specifying them like
-&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;variable_name&amp;gt;&lt;/code&gt; or more precisely using &lt;em&gt;converters&lt;/em&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;converter:variable_name&amp;gt;&lt;/code&gt; like &lt;code class=&quot;highlighter-rouge&quot;&gt;'/post/&amp;lt;int:post_id&amp;gt;'&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@app.route('/user/&amp;lt;username&amp;gt;')
-def show_user_profile(username):
-    # show the user profile for that user
-    return 'User %s' % username
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;reverse-urls&quot;&gt;Reverse URLs&lt;/h3&gt;
-
-&lt;p&gt;Generating URLs knowing the function name is also possible
-with &lt;a href=&quot;http://flask.pocoo.org/docs/0.12/api/#flask.url_for&quot;&gt;url_for&lt;/a&gt;
-like:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;python&lt;/kbd&gt;
-Python 3.5.2+ (default, Sep 22 2016, 12:18:14) 
-[GCC 6.2.0 20160927] on linux
-Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
-&lt;span class=&quot;shell-prompt&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt; &lt;kbd&gt;from flask import Flask, url_for&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt; &lt;kbd&gt;app = Flask(__name__)&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt; &lt;kbd&gt;@app.route('/login')&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;... &lt;/span&gt; &lt;kbd&gt;def login(): pass&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;... &lt;/span&gt; &lt;kbd&gt;&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt; &lt;kbd&gt;with app.test_request_context():&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;... &lt;/span&gt; &lt;kbd&gt;    print(url_for('login', next='/'))&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;... &lt;/span&gt; &lt;kbd&gt;&lt;/kbd&gt;
-/login?next=%2F
-&lt;span class=&quot;shell-prompt&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p class=&quot;alert alert-info&quot;&gt;&lt;a href=&quot;http://flask.pocoo.org/docs/0.12/api/#flask.Flask.test_request_context&quot;&gt;test_request_context()&lt;/a&gt; method
-tells Flask to behave like handling a request, even though
-we are using a Python shell.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;flask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;url_for&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@app.route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/login'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;login&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_request_context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;url_for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'login'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;basic-project-structure&quot;&gt;Basic project structure&lt;/h2&gt;
-
-&lt;p&gt;Flask applications are recommended to be installed and run as Python
-packages.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/myproject
-    /myproject
-		__init__.py  ## make the project a package
-		myproject.py ## application module
-		schema.sql   ## SQLite3 database
-        /static      ## static files like js and css; var: `static_folder`
-        /templates   ## jinja2 templates; var: `template_folder`
-    /tests
-        test_myproject.py
-    setup.py     ## Setuptools packaging
-    MANIFEST.in
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Official docs &lt;a href=&quot;http://flask.pocoo.org/&quot;&gt;http://flask.pocoo.org/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Routing &lt;a href=&quot;http://flask.pocoo.org/docs/0.12/api/#flask.Flask.route&quot;&gt;http://flask.pocoo.org/docs/0.12/api/#flask.Flask.route&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Tutorial folder &lt;a href=&quot;http://flask.pocoo.org/docs/0.12/tutorial/folders/#tutorial-folders&quot;&gt;http://flask.pocoo.org/docs/0.12/tutorial/folders/#tutorial-folders&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Explore flask book &lt;a href=&quot;http://explore-flask.readthedocs.io/en/latest/configuration.html&quot;&gt;http://explore-flask.readthedocs.io/en/latest/configuration.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Sat, 31 Dec 2016 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/flask-overview-notes/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/flask-overview-notes/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>python</category>
-        
-        <category>flask</category>
         
       </item>
     

@@ -29,15 +29,15 @@
 
   
   <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Bash script to automatically tweet new blog posts based in a website rss feed - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Bash script to automatically tweet new blog posts based in a website rss feed" />
-<meta name="description" content="How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll." />
-<meta property="og:description" content="How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll." />
-<link rel="canonical" href="http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/" />
-<meta property="og:url" content="http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/" />
+<title>Managing Environment Configuration Variables In Flask With Dotenv - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Managing Environment Configuration Variables In Flask With Dotenv" />
+<meta name="description" content="How to manage environment variables for a specific app using dotenv." />
+<meta property="og:description" content="How to manage environment variables for a specific app using dotenv." />
+<link rel="canonical" href="http://simpleit.rocks/managing-environment-configuration-variables-in-flask-with-dotenv/" />
+<meta property="og:url" content="http://simpleit.rocks/managing-environment-configuration-variables-in-flask-with-dotenv/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-11-10T00:00:00+00:00" />
+<meta property="article:published_time" content="2017-01-24T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@simpleitrocks" />
 <meta name="twitter:creator" content="@marcanuy" />
@@ -45,10 +45,10 @@
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
-"headline": "Bash script to automatically tweet new blog posts based in a website rss feed",
-"datePublished": "2016-11-10T00:00:00+00:00",
-"description": "How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll.",
-"url": "http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/"}</script>
+"headline": "Managing Environment Configuration Variables In Flask With Dotenv",
+"datePublished": "2017-01-24T00:00:00+00:00",
+"description": "How to manage environment variables for a specific app using dotenv.",
+"url": "http://simpleit.rocks/managing-environment-configuration-variables-in-flask-with-dotenv/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -105,7 +105,7 @@
     
     
     
-    <h1 class="title">Bash Script To Automatically Tweet New Blog Posts Based In A Website Rss Feed </h1>
+    <h1 class="title">Managing Environment Configuration Variables In Flask With Dotenv </h1>
     
     
   </div>
@@ -121,7 +121,7 @@
   <div class="post-meta">
     
     <i class="fa fa-calendar" aria-hidden="true"></i>
-    <time datetime="2016-11-10T00:00:00+00:00" itemprop="datePublished">Nov 10, 2016</time>
+    <time datetime="2017-01-24T00:00:00+00:00" itemprop="datePublished">Jan 24, 2017</time>
     
   </div>
   <div>
@@ -192,13 +192,37 @@
     class="breadcrumb-item">
   
   <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/web">
+     itemprop="item" href="/docs/python">
     
 
-    web
+    python
   </a>
   
   <meta itemprop="position" content="3" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/docs/python/flask">
+    
+
+    flask
+  </a>
+  
+  <meta itemprop="position" content="4" />
 </li>
 
     
@@ -219,10 +243,10 @@
        itemprop="item">
     
 
-    <span itemprop="name">Bash script to automatically tweet new blog posts based in a website rss feed</span>
+    <span itemprop="name">Managing Environment Configuration Variables In Flask With Dotenv</span>
   </span>
   
-  <meta itemprop="position" content="4" />
+  <meta itemprop="position" content="5" />
 </li>
 
     
@@ -262,14 +286,13 @@
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#process">Process</a></li>
-<li class="toc-entry toc-h3"><a href="#set-up-a-virtual-environment">Set up a virtual environment</a></li>
-<li class="toc-entry toc-h3"><a href="#twitter-credentials">Twitter credentials</a></li>
-<li class="toc-entry toc-h3"><a href="#set-up-application">Set up application</a></li>
-<li class="toc-entry toc-h3"><a href="#install-dependencies">Install dependencies</a></li>
-<li class="toc-entry toc-h3"><a href="#execute-twitter-feeder">Execute Twitter feeder</a></li>
-<li class="toc-entry toc-h3"><a href="#schedule-posts">Schedule posts</a></li>
-<li class="toc-entry toc-h2"><a href="#reference">Reference</a></li>
+<li class="toc-entry toc-h2"><a href="#dotenv-versus-instance-folders">dotenv versus instance folders</a></li>
+<li class="toc-entry toc-h2"><a href="#install">Install</a></li>
+<li class="toc-entry toc-h2"><a href="#requirementstxt">requirements.txt</a></li>
+<li class="toc-entry toc-h2"><a href="#gitignore">gitignore</a></li>
+<li class="toc-entry toc-h2"><a href="#add-variables">add variables</a></li>
+<li class="toc-entry toc-h2"><a href="#use-the-new-environment-variables">use the new environment variables</a></li>
+<li class="toc-entry toc-h2"><a href="#conclusion">Conclusion</a></li>
 </ul>
       </div>
       <div>
@@ -280,9 +303,9 @@
       <div>
   <a class="twitter-share-button"
      href="https://twitter.com/share"
-     data-url="http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/"
+     data-url="http://simpleit.rocks/managing-environment-configuration-variables-in-flask-with-dotenv/"
      data-via=""
-     data-text="How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll."
+     data-text="How to manage environment variables for a specific app using dotenv."
      data-related="marcanuy,{"username"=>"simpleitrocks"}"
      data-count="vertical">
     Tweet
@@ -314,7 +337,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="http://simpleit.rocks/managing-environment-configuration-variables-in-flask-with-dotenv/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -331,7 +354,7 @@
 
     
 	<p class="lead">
-	  How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll.
+	  How to manage environment variables for a specific app using dotenv.
 	</p>
     
 
@@ -355,221 +378,127 @@
 
     <h2 id="overview">Overview</h2>
 
-<p>Based in the <abbr title="Really Simple Syndication">RSS</abbr> feed generated by websites, feed a Twitter account
-with daily new blog posts.</p>
+<p>Often when developing apps with Flask we need to set up environment
+variables to keep sensitive information secure and out of version
+control.</p>
 
-<p>This method is specially useful for websites that has been built with
-static site generators, like <a href="/docs/ruby/jekyll/">Jekyll</a> for example, where they
-automatically publish a <abbr title="Really Simple Syndication">RSS</abbr> feed with new content in each build.</p>
+<p>This article describes how to set up environment config variables in
+Flask with <em>python-dotenv</em> and why we can’t rely in Flask’ instance
+folder.</p>
 
-<p>Based in this information, you can set up a script in another server
-that will check the above feed, and if it detects new posts it will
-publish a link to it directly in Twitter.</p>
+<h2 id="dotenv-versus-instance-folders">dotenv versus instance folders</h2>
 
-<h2 id="process">Process</h2>
+<p>Flask introduces the concept of <strong>instance folder</strong>, designed to store
+sensitive information like credentials and passwords for your local
+environment, the main problem is that
+<a href="/avoid-using-flask-instance-folder-when-deploying-to-heroku/">it can’t work with ephemeral filesystems</a> like
+the one Heroku uses.</p>
 
-<h3 id="set-up-a-virtual-environment">Set up a virtual environment</h3>
+<p>In this case the perfect fit for this is to use python-dotenv, so we
+define environment config variables in Heroku and locally we put them
+in <code class="highlighter-rouge">/.env</code>.</p>
 
-<p>If you already have a virtual environment installed, you can skip this
-step. In Ubuntu you can install the package <code class="highlighter-rouge">python-virtualenv</code>.</p>
+<h2 id="install">Install</h2>
 
-<pre class="shell">
-<samp>
-<span class="shell-prompt">$</span> <kbd>apt install python-virtualenv</kbd>
-</samp>
-</pre>
-
-<p class="alert alert-info">Or refer to this <a href="/python-virtual-environments-using-virtualenv/">virtualenv installation guide</a>.</p>
-
-<p>Activate the virtual environment to install the required packages</p>
+<p>First we install it with <kbd>pip install -U python-dotenv</kbd></p>
 
 <pre class="shell">
 <samp>
-<span class="shell-prompt">$</span> <kbd>virtualenv -p python2.7 ~/.virtualenvs/twitter_bot</kbd>
-Running virtualenv with interpreter /usr/bin/python2.7
-New python executable in /home/user/.virtualenvs/twitter_bot/bin/python2.7
-Also creating executable in /home/user/.virtualenvs/twitter_bot/bin/python
+<span class="shell-prompt">$</span> <kbd></kbd>
+Collecting python-dotenv
+  Downloading python-dotenv-0.6.2.tar.gz
+Collecting click&gt;=5.0 (from python-dotenv)
+  Downloading click-6.7-py2.py3-none-any.whl (71kB)
+    100% |████████████████████████████████| 71kB 756kB/s 
+Building wheels for collected packages: python-dotenv
+  Running setup.py bdist_wheel for python-dotenv ... done
+  Stored in directory: /home/user/.cache/pip/wheels/07/08/3a/7591582130baac86479ca3b7cb6314c9878e877645267d25c9
+Successfully built python-dotenv
+Installing collected packages: click, python-dotenv
+  Found existing installation: click 6.6
+    Uninstalling click-6.6:
+      Successfully uninstalled click-6.6
+Successfully installed click-6.7 python-dotenv-0.6.2
 </samp>
-<span class="shell-prompt">$</span> <kbd>source ~/.virtualenvs/twitter_bot/bin/activate</kbd>
-<span class="shell-prompt">(twitter_bot)$</span>
 </pre>
 
-<h3 id="twitter-credentials">Twitter credentials</h3>
+<h2 id="requirementstxt">requirements.txt</h2>
 
-<p>Log into <a href="https://apps.twitter.com/">Twitter Apps</a> and select “Create
-New App”.</p>
-
-<p>Create the Application with the following content:</p>
-
-<dl>
-  <dt>Name</dt>
-  <dd>Website <abbr title="Really Simple Syndication">RSS</abbr> Twitter Feeder</dd>
-  <dt>Description</dt>
-  <dd>Automatic new blog posts publisher</dd>
-  <dt>Website</dt>
-  <dd>Example.com</dd>
-  <dt>Callback URL</dt>
-  <dd>
-    <Leave it="" empty="">
-
-</Leave>
-  </dd>
-</dl>
-<p>And then proceed to “Create your Twitter Application” button.</p>
-
-<p>Now go to “Keys and Access Tokens” tab, and make sure your app has
-rights to publish tweets, the <em>Access Level Read and write</em> option
-should be enabled.</p>
-
-<p>Then go to “Token Actions” and “Create my access token”.</p>
-
-<p>You will need the following items from this page:</p>
-
-<ul>
-  <li>Consumer Key (API Key)</li>
-  <li>Consumer Secret (API Secret)</li>
-  <li>Access Token</li>
-  <li>Access Token Secret</li>
-</ul>
-
-<h3 id="set-up-application">Set up application</h3>
-
-<p>We will use the <a href="https://github.com/housed/feedr">feedr</a> script to
-publish tweets, so we have to clone the repo:</p>
+<p>We add the new package to the requirements file.</p>
 
 <pre class="shell">
 <samp>
-<span class="shell-prompt">(twitter_bot)$</span> <kbd>git clone https://github.com/housed/feedr.git</kbd>
-Cloning into 'feedr'...
-remote: Counting objects: 65, done.
-remote: Total 65 (delta 0), reused 0 (delta 0), pack-reused 65
-Unpacking objects: 100% (65/65), done.
-Checking connectivity... done.
-<span class="shell-prompt">(twitter_bot)$</span> <kbd>cd feedr</kbd>
-<span class="shell-prompt">(twitter_bot) feedr$</span>
+<span class="shell-prompt">$</span> <kbd>pip freeze &gt; requirements.txt</kbd>
 </samp>
 </pre>
 
-<p>Edit ` src/main.py` and add the previous generated Twitter consumer
-keys and replace the feed with your website.</p>
+<h2 id="gitignore">gitignore</h2>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Initialize the list of desired feeds</span>
-<span class="c"># Feed(Name, XML, Media, Hashtags)</span>
-<span class="n">FEEDS</span> <span class="o">=</span> <span class="p">[</span> <span class="n">Feed</span><span class="p">(</span><span class="s">'SimpleIt.Rocks'</span><span class="p">,</span> <span class="s">'http://simpleit.rocks/feed'</span><span class="p">,</span> <span class="s">''</span><span class="p">,</span> <span class="s">''</span><span class="p">)]</span>
+<p>We make sure that we won’t add it to the source code version control
+adding it to <code class="highlighter-rouge">.gitignore</code>:</p>
 
-<span class="c"># Twitter Account Keys </span>
-<span class="n">CONSUMER_KEY</span> <span class="o">=</span> <span class="s">'consumer_key'</span>
-<span class="n">CONSUMER_SECRET</span> <span class="o">=</span> <span class="s">'consumer_secret'</span>
-<span class="n">ACCESS_KEY</span> <span class="o">=</span> <span class="s">'access_key'</span>
-<span class="n">ACCESS_SECRET</span> <span class="o">=</span> <span class="s">'access_secret'</span>
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>echo ".env" &gt;&gt; .gitignore</kbd>
+</samp>
+</pre>
 
+<h2 id="add-variables">add variables</h2>
+
+<p>Add variables to <code class="highlighter-rouge">.env</code>, optionally copy all the environment variables
+from your heroku app to have this as a skeleton to fill with local
+variables:</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>heroku config -s &gt;&gt; .env</kbd>
+</samp>
+</pre>
+
+<p class="alert alert-info">-s, –shell         # output config vars in shell format</p>
+
+<p>or simply add them manually to <code class="highlighter-rouge">.env</code>, for example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>TWITTER_CONSUMER_KEY=MYINCREDIBLEKEY
 </code></pre>
 </div>
 
-<h3 id="install-dependencies">Install dependencies</h3>
+<h2 id="use-the-new-environment-variables">use the new environment variables</h2>
 
-<p><em>Feedr</em> relies on
-<a href="http://www.crummy.com/software/BeautifulSoup/">BeautifulSoup4</a>,
-<a href="https://pypi.python.org/pypi/feedparser">FeedParser</a>
-and <a href="http://www.tweepy.org/">Tweepy</a>.</p>
+<p>Now we can use this environment variables in our Flask app.</p>
 
-<pre class="shell">
-<samp>
-<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>pip install bs4</kbd>
-Downloading/unpacking bs4
-  Downloading bs4-0.0.1.tar.gz
-  Running setup.py (path:/home/user/.virtualenvs/twitter_bot/build/bs4/setup.py) egg_info for package bs4
-    
-Downloading/unpacking beautifulsoup4 (from bs4)
-  Downloading beautifulsoup4-4.5.1-py2-none-any.whl (83kB): 83kB downloaded
-Installing collected packages: bs4, beautifulsoup4
-  Running setup.py install for bs4
-    
-Successfully installed bs4 beautifulsoup4
-Cleaning up...
-</samp>
-</pre>
+<p>Having the following typical structure:</p>
 
-<pre class="shell">
-<samp>
-<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>pip install feedparser</kbd>
-Downloading/unpacking feedparser
-  Downloading feedparser-5.2.1.zip (1.2MB): 1.2MB downloaded
-  Running setup.py (path:/home/user/.virtualenvs/twitter_bot/build/feedparser/setup.py) egg_info for package feedparser
-    
-Installing collected packages: feedparser
-  Running setup.py install for feedparser
-    
-Successfully installed feedparser
-Cleaning up...
-</samp>
-</pre>
-
-<pre class="shell">
-<samp>
-<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>pip install tweepy</kbd>
-Downloading/unpacking tweepy
-  Downloading tweepy-3.5.0-py2.py3-none-any.whl
-Downloading/unpacking requests&gt;=2.4.3 (from tweepy)
-  Downloading requests-2.11.1-py2.py3-none-any.whl (514kB): 514kB downloaded
-Downloading/unpacking six&gt;=1.7.3 (from tweepy)
-  Downloading six-1.10.0-py2.py3-none-any.whl
-Downloading/unpacking requests-oauthlib&gt;=0.4.1 (from tweepy)
-  Downloading requests_oauthlib-0.7.0-py2.py3-none-any.whl
-Downloading/unpacking oauthlib&gt;=0.6.2 (from requests-oauthlib&gt;=0.4.1-&gt;tweepy)
-  Downloading oauthlib-2.0.0.tar.gz (122kB): 122kB downloaded
-  Running setup.py (path:/home/user/.virtualenvs/twitter_bot/build/oauthlib/setup.py) egg_info for package oauthlib
-    
-Installing collected packages: tweepy, requests, six, requests-oauthlib, oauthlib
-  Running setup.py install for oauthlib
-    
-Successfully installed tweepy requests six requests-oauthlib oauthlib
-Cleaning up...
-
-</samp>
-</pre>
-
-<h3 id="execute-twitter-feeder">Execute Twitter feeder</h3>
-
-<p>After setting up credentials you can execute <code class="highlighter-rouge">feedr/src/main.py</code></p>
-
-<pre class="shell">
-<samp>
-<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>cd src</kbd>
-<span class="shell-prompt">(twitter_bot) feedr/src$</span> <kbd>python2.7 main.py</kbd>
-
-</samp>
-</pre>
-
-<h3 id="schedule-posts">Schedule posts</h3>
-
-<p>We set up a cron job to check for new posts every a certain amount of
-time, in this case every hour. We enter the crontab editor:</p>
-
-<pre class="shell">
-<samp>
-<span class="shell-prompt">$</span> <kbd>crontab -e</kbd>
-</samp>
-</pre>
-
-<p>And then we add the following line (adjust the path of your
-installation, in this case I have used <code class="highlighter-rouge">/opt/feedr</code>)</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>0 * * * * cd /opt/feedr/src; flock -n /tmp/twbot.lock ~/.virtualenvs/twitter_bot/bin/python2.7 main.py
+<div class="highlighter-rouge"><pre class="highlight"><code>myapp
+	.env
+	myapp
+		__init__.py
+		myapp.py
 </code></pre>
 </div>
 
-<p>We use the <code class="highlighter-rouge">flock</code> command to
-<a href="/prevent-running-of-duplicate-cron-jobs/">prevent duplicate cron job executions</a>.</p>
+<p>I like to initialize my app in <code class="highlighter-rouge">/myapp/__init.py__</code>, but it should be
+the same if you add this to <code class="highlighter-rouge">/myapp/myapp.py</code>.</p>
 
-<h2 id="reference">Reference</h2>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="c">#...</span>
 
-<ul>
-  <li><a href="https://en.wikipedia.org/wiki/Web_feed">https://en.wikipedia.org/wiki/Web_feed</a></li>
-  <li><a href="https://en.wikipedia.org/wiki/RSS">https://en.wikipedia.org/wiki/<abbr title="Really Simple Syndication">RSS</abbr></a></li>
-  <li><a href="https://github.com/housed/feedr">https://github.com/housed/feedr</a></li>
-</ul>
+<span class="c"># load dotenv in the base root</span>
+<span class="n">APP_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">),</span> <span class="s">'..'</span><span class="p">)</span>   <span class="c"># refers to application_top</span>
+<span class="n">dotenv_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">APP_ROOT</span><span class="p">,</span> <span class="s">'.env'</span><span class="p">)</span>
+<span class="n">load_dotenv</span><span class="p">(</span><span class="n">dotenv_path</span><span class="p">)</span>
 
+<span class="n">tw_consumer_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">'TWITTER_CONSUMER_KEY'</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I find it useful to use <code class="highlighter-rouge">dotenv</code> for sensitive variables and custom
+ paths, and <a href="/organize-a-flask-project-to-handle-production-and-development-environments-effectively/">maintain other variables in version control separated by
+ server, like development, testing or production</a>.</p>
 
 
     
@@ -622,7 +551,7 @@ installation, in this case I have used <code class="highlighter-rouge">/opt/feed
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/automatically-tweet-new-blog-posts-based-in-rss/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/managing-environment-configuration-variables-in-flask-with-dotenv/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -897,8 +826,38 @@ installation, in this case I have used <code class="highlighter-rouge">/opt/feed
     
     
     
-      <a class="list-group-item list-group-item-action active" href="/automatically-tweet-new-blog-posts-based-in-rss/">
-      Bash script to automatically tweet new blog posts based in a website rss feed
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action " href="/flask-overview-notes/">
+      An Overview Of Flask Main Concepts And How It Works
     </a>
     
     
@@ -926,8 +885,23 @@ installation, in this case I have used <code class="highlighter-rouge">/opt/feed
     
     
     
-      <a class="list-group-item list-group-item-action " href="/colors-palettes-for-web-design/">
-      Colors Palettes For Web Design
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action " href="/organize-a-flask-project-to-handle-production-and-development-environments-effectively/">
+      Organize A Flask Project To Handle Production And Development Environments Effectively
     </a>
     
     
@@ -935,55 +909,18 @@ installation, in this case I have used <code class="highlighter-rouge">/opt/feed
     
     
     
+      <a class="list-group-item list-group-item-action " href="/avoid-using-flask-instance-folder-when-deploying-to-heroku/">
+      Avoid Using Flask Instance Folder When Deploying To Heroku
+    </a>
     
     
     
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+      <a class="list-group-item list-group-item-action active" href="/managing-environment-configuration-variables-in-flask-with-dotenv/">
+      Managing Environment Configuration Variables In Flask With Dotenv
+    </a>
     
     
     
@@ -998,6 +935,146 @@ installation, in this case I have used <code class="highlighter-rouge">/opt/feed
 	
 
 
+
+<h2>Articles</h2>
+<p>This article is being referenced in:</p>
+<div class="list-group">
+  
+  
+  
+  
+  
+  
+  
+  
+    <a href="/organize-a-flask-project-to-handle-production-and-development-environments-effectively/" class="list-group-item list-group-item-action">
+    Organize A Flask Project To Handle Production And Development Environments Effectively
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
 
 
       </div>

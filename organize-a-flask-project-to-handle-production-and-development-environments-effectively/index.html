@@ -285,8 +285,11 @@
       <div>
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
-<li class="toc-entry toc-h5"><a href="#load-default-config-and-an-environment-specific">Load default config and an environment specific</a></li>
-<li class="toc-entry toc-h5"><a href="#instance-paths">Instance paths</a></li>
+<li class="toc-entry toc-h2"><a href="#separated-configurations-for-development-and-production">Separated configurations for Development and Production</a></li>
+<li class="toc-entry toc-h2"><a href="#load-default-config-and-an-environment-specific-one">Load default config and an environment specific one</a></li>
+<li class="toc-entry toc-h2"><a href="#instance-paths">Instance paths</a></li>
+<li class="toc-entry toc-h2"><a href="#behaviour">Behaviour</a></li>
+<li class="toc-entry toc-h2"><a href="#final">Final</a></li>
 <li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
       </div>
@@ -371,12 +374,12 @@
 </div>
 
 
-    <p>Separated configurations for Development and Production</p>
+    <h2 id="separated-configurations-for-development-and-production">Separated configurations for Development and Production</h2>
 
 <p>In most situations, applications would need different configurations
 for each environment: Production, Staging, Development, etc.</p>
 
-<h5 id="load-default-config-and-an-environment-specific">Load default config and an environment specific</h5>
+<h2 id="load-default-config-and-an-environment-specific-one">Load default config and an environment specific one</h2>
 
 <p>The easiest way to have multiple configurations is to:</p>
 
@@ -408,7 +411,7 @@ YOURAPPLICATION_SETTINGS=/path/to/config.py</kbd>
 <p>This way it will always load the default <em>configs</em> and then our custom
 variables from <code class="highlighter-rouge">YOURAPPLICATION_SETTINGS</code>.</p>
 
-<h5 id="instance-paths">Instance paths</h5>
+<h2 id="instance-paths">Instance paths</h2>
 
 <p>From Flask 0.8, there is the concept of <strong>instance folders</strong>. The
 instance folder is a good fit for configuration files because it is
@@ -419,6 +422,8 @@ to <code class="highlighter-rouge">/.gitignore</code>.</p>
 
 <p>By default, Flask looks for a folder named <code class="highlighter-rouge">instance</code> in the same
 level of your main file or the package.</p>
+
+<h2 id="behaviour">Behaviour</h2>
 
 <p>Using this folder and having environment specific configuration files
 in the <code class="highlighter-rouge">config</code> folder we end up having the following directory structure:</p>
@@ -465,6 +470,8 @@ invoking the app:</p>
 <span class="shell-prompt">$</span> <kbd>export APP_CONFIG_FILE=/var/www/yourapp/config/production.py</kbd>
 </pre>
 
+<h2 id="final">Final</h2>
+
 <p>Now your folder structure should look like:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>myapp
@@ -480,6 +487,9 @@ invoking the app:</p>
    └── myapp.py
 </code></pre>
 </div>
+
+<p>It can be useful to also add support for <code class="highlighter-rouge">dotenv</code> to <a href="/managing-environment-configuration-variables-in-flask-with-dotenv/">handle sensitive
+variables when deploying to Heroku</a>.</p>
 
 <h2 id="references">References</h2>
 
@@ -902,6 +912,20 @@ invoking the app:</p>
     </a>
     
     
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action " href="/managing-environment-configuration-variables-in-flask-with-dotenv/">
+      Managing Environment Configuration Variables In Flask With Dotenv
+    </a>
+    
+    
+    
+    
+    
+    
+    
   </div>
 </div>
 
@@ -913,6 +937,10 @@ invoking the app:</p>
 <h2>Articles</h2>
 <p>This article is being referenced in:</p>
 <div class="list-group">
+  
+  
+  
+  
   
   
   

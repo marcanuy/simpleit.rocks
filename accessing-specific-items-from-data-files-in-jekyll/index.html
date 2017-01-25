@@ -29,15 +29,15 @@
 
   
   <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Bash script to automatically tweet new blog posts based in a website rss feed - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Bash script to automatically tweet new blog posts based in a website rss feed" />
-<meta name="description" content="How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll." />
-<meta property="og:description" content="How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll." />
-<link rel="canonical" href="http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/" />
-<meta property="og:url" content="http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/" />
+<title>Accessing Specific Items From Data Files In Jekyll - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Accessing Specific Items From Data Files In Jekyll" />
+<meta name="description" content="Accessing Specific Data Items from files in Jekyll’s _data directory" />
+<meta property="og:description" content="Accessing Specific Data Items from files in Jekyll’s _data directory" />
+<link rel="canonical" href="http://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/" />
+<meta property="og:url" content="http://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-11-10T00:00:00+00:00" />
+<meta property="article:published_time" content="2017-01-24T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@simpleitrocks" />
 <meta name="twitter:creator" content="@marcanuy" />
@@ -45,10 +45,10 @@
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
-"headline": "Bash script to automatically tweet new blog posts based in a website rss feed",
-"datePublished": "2016-11-10T00:00:00+00:00",
-"description": "How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll.",
-"url": "http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/"}</script>
+"headline": "Accessing Specific Items From Data Files In Jekyll",
+"datePublished": "2017-01-24T00:00:00+00:00",
+"description": "Accessing Specific Data Items from files in Jekyll’s _data directory",
+"url": "http://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -105,7 +105,7 @@
     
     
     
-    <h1 class="title">Bash Script To Automatically Tweet New Blog Posts Based In A Website Rss Feed </h1>
+    <h1 class="title">Accessing Specific Items From Data Files In Jekyll </h1>
     
     
   </div>
@@ -121,7 +121,7 @@
   <div class="post-meta">
     
     <i class="fa fa-calendar" aria-hidden="true"></i>
-    <time datetime="2016-11-10T00:00:00+00:00" itemprop="datePublished">Nov 10, 2016</time>
+    <time datetime="2017-01-24T00:00:00+00:00" itemprop="datePublished">Jan 24, 2017</time>
     
   </div>
   <div>
@@ -192,13 +192,37 @@
     class="breadcrumb-item">
   
   <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/web">
+     itemprop="item" href="/docs/ruby">
     
 
-    web
+    ruby
   </a>
   
   <meta itemprop="position" content="3" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="http://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="http://schema.org/Thing"
+     itemprop="item" href="/docs/ruby/jekyll">
+    
+
+    jekyll
+  </a>
+  
+  <meta itemprop="position" content="4" />
 </li>
 
     
@@ -219,10 +243,10 @@
        itemprop="item">
     
 
-    <span itemprop="name">Bash script to automatically tweet new blog posts based in a website rss feed</span>
+    <span itemprop="name">Accessing Specific Items From Data Files In Jekyll</span>
   </span>
   
-  <meta itemprop="position" content="4" />
+  <meta itemprop="position" content="5" />
 </li>
 
     
@@ -262,14 +286,9 @@
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#process">Process</a></li>
-<li class="toc-entry toc-h3"><a href="#set-up-a-virtual-environment">Set up a virtual environment</a></li>
-<li class="toc-entry toc-h3"><a href="#twitter-credentials">Twitter credentials</a></li>
-<li class="toc-entry toc-h3"><a href="#set-up-application">Set up application</a></li>
-<li class="toc-entry toc-h3"><a href="#install-dependencies">Install dependencies</a></li>
-<li class="toc-entry toc-h3"><a href="#execute-twitter-feeder">Execute Twitter feeder</a></li>
-<li class="toc-entry toc-h3"><a href="#schedule-posts">Schedule posts</a></li>
-<li class="toc-entry toc-h2"><a href="#reference">Reference</a></li>
+<li class="toc-entry toc-h1"><a href="#using-an-index">Using an index</a></li>
+<li class="toc-entry toc-h2"><a href="#iterating">Iterating</a></li>
+<li class="toc-entry toc-h2"><a href="#changing-the-data-file">Changing the data file</a></li>
 </ul>
       </div>
       <div>
@@ -280,9 +299,9 @@
       <div>
   <a class="twitter-share-button"
      href="https://twitter.com/share"
-     data-url="http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/"
+     data-url="http://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/"
      data-via=""
-     data-text="How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll."
+     data-text="Accessing Specific Data Items from files in Jekyll's _data directory"
      data-related="marcanuy,{"username"=>"simpleitrocks"}"
      data-count="vertical">
     Tweet
@@ -314,7 +333,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="http://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="http://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -331,7 +350,7 @@
 
     
 	<p class="lead">
-	  How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll.
+	  Accessing Specific Data Items from files in Jekyll's _data directory
 	</p>
     
 
@@ -355,221 +374,78 @@
 
     <h2 id="overview">Overview</h2>
 
-<p>Based in the <abbr title="Really Simple Syndication">RSS</abbr> feed generated by websites, feed a Twitter account
-with daily new blog posts.</p>
+<p>Having a sample data file, we explore some of the options we have to
+access a specific item.</p>
 
-<p>This method is specially useful for websites that has been built with
-static site generators, like <a href="/docs/ruby/jekyll/">Jekyll</a> for example, where they
-automatically publish a <abbr title="Really Simple Syndication">RSS</abbr> feed with new content in each build.</p>
+<p>For the data file <code class="highlighter-rouge">projects.yml</code> located in <code class="highlighter-rouge">/_data/projects.yml</code>:</p>
 
-<p>Based in this information, you can set up a script in another server
-that will check the above feed, and if it detects new posts it will
-publish a link to it directly in Twitter.</p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="pi">-</span> <span class="s">project</span><span class="pi">:</span> <span class="s">funtime</span>
+  <span class="s">url</span><span class="pi">:</span> <span class="s">www.funtime.url</span>
+  <span class="s">description</span><span class="pi">:</span> <span class="s">This is really fun</span>
 
-<h2 id="process">Process</h2>
-
-<h3 id="set-up-a-virtual-environment">Set up a virtual environment</h3>
-
-<p>If you already have a virtual environment installed, you can skip this
-step. In Ubuntu you can install the package <code class="highlighter-rouge">python-virtualenv</code>.</p>
-
-<pre class="shell">
-<samp>
-<span class="shell-prompt">$</span> <kbd>apt install python-virtualenv</kbd>
-</samp>
-</pre>
-
-<p class="alert alert-info">Or refer to this <a href="/python-virtual-environments-using-virtualenv/">virtualenv installation guide</a>.</p>
-
-<p>Activate the virtual environment to install the required packages</p>
-
-<pre class="shell">
-<samp>
-<span class="shell-prompt">$</span> <kbd>virtualenv -p python2.7 ~/.virtualenvs/twitter_bot</kbd>
-Running virtualenv with interpreter /usr/bin/python2.7
-New python executable in /home/user/.virtualenvs/twitter_bot/bin/python2.7
-Also creating executable in /home/user/.virtualenvs/twitter_bot/bin/python
-</samp>
-<span class="shell-prompt">$</span> <kbd>source ~/.virtualenvs/twitter_bot/bin/activate</kbd>
-<span class="shell-prompt">(twitter_bot)$</span>
-</pre>
-
-<h3 id="twitter-credentials">Twitter credentials</h3>
-
-<p>Log into <a href="https://apps.twitter.com/">Twitter Apps</a> and select “Create
-New App”.</p>
-
-<p>Create the Application with the following content:</p>
-
-<dl>
-  <dt>Name</dt>
-  <dd>Website <abbr title="Really Simple Syndication">RSS</abbr> Twitter Feeder</dd>
-  <dt>Description</dt>
-  <dd>Automatic new blog posts publisher</dd>
-  <dt>Website</dt>
-  <dd>Example.com</dd>
-  <dt>Callback URL</dt>
-  <dd>
-    <Leave it="" empty="">
-
-</Leave>
-  </dd>
-</dl>
-<p>And then proceed to “Create your Twitter Application” button.</p>
-
-<p>Now go to “Keys and Access Tokens” tab, and make sure your app has
-rights to publish tweets, the <em>Access Level Read and write</em> option
-should be enabled.</p>
-
-<p>Then go to “Token Actions” and “Create my access token”.</p>
-
-<p>You will need the following items from this page:</p>
-
-<ul>
-  <li>Consumer Key (API Key)</li>
-  <li>Consumer Secret (API Secret)</li>
-  <li>Access Token</li>
-  <li>Access Token Secret</li>
-</ul>
-
-<h3 id="set-up-application">Set up application</h3>
-
-<p>We will use the <a href="https://github.com/housed/feedr">feedr</a> script to
-publish tweets, so we have to clone the repo:</p>
-
-<pre class="shell">
-<samp>
-<span class="shell-prompt">(twitter_bot)$</span> <kbd>git clone https://github.com/housed/feedr.git</kbd>
-Cloning into 'feedr'...
-remote: Counting objects: 65, done.
-remote: Total 65 (delta 0), reused 0 (delta 0), pack-reused 65
-Unpacking objects: 100% (65/65), done.
-Checking connectivity... done.
-<span class="shell-prompt">(twitter_bot)$</span> <kbd>cd feedr</kbd>
-<span class="shell-prompt">(twitter_bot) feedr$</span>
-</samp>
-</pre>
-
-<p>Edit ` src/main.py` and add the previous generated Twitter consumer
-keys and replace the feed with your website.</p>
-
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Initialize the list of desired feeds</span>
-<span class="c"># Feed(Name, XML, Media, Hashtags)</span>
-<span class="n">FEEDS</span> <span class="o">=</span> <span class="p">[</span> <span class="n">Feed</span><span class="p">(</span><span class="s">'SimpleIt.Rocks'</span><span class="p">,</span> <span class="s">'http://simpleit.rocks/feed'</span><span class="p">,</span> <span class="s">''</span><span class="p">,</span> <span class="s">''</span><span class="p">)]</span>
-
-<span class="c"># Twitter Account Keys </span>
-<span class="n">CONSUMER_KEY</span> <span class="o">=</span> <span class="s">'consumer_key'</span>
-<span class="n">CONSUMER_SECRET</span> <span class="o">=</span> <span class="s">'consumer_secret'</span>
-<span class="n">ACCESS_KEY</span> <span class="o">=</span> <span class="s">'access_key'</span>
-<span class="n">ACCESS_SECRET</span> <span class="o">=</span> <span class="s">'access_secret'</span>
-
+<span class="pi">-</span> <span class="s">project</span><span class="pi">:</span> <span class="s">supertime</span>
+  <span class="s">url</span><span class="pi">:</span> <span class="s">www.supertime.url</span>
+  <span class="s">description</span><span class="pi">:</span> <span class="s">This is really super</span>
 </code></pre>
 </div>
 
-<h3 id="install-dependencies">Install dependencies</h3>
+<p>How can we access the data item whose project name is <code class="highlighter-rouge">funtime</code>?</p>
 
-<p><em>Feedr</em> relies on
-<a href="http://www.crummy.com/software/BeautifulSoup/">BeautifulSoup4</a>,
-<a href="https://pypi.python.org/pypi/feedparser">FeedParser</a>
-and <a href="http://www.tweepy.org/">Tweepy</a>.</p>
+<h1 id="using-an-index">Using an index</h1>
 
-<pre class="shell">
-<samp>
-<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>pip install bs4</kbd>
-Downloading/unpacking bs4
-  Downloading bs4-0.0.1.tar.gz
-  Running setup.py (path:/home/user/.virtualenvs/twitter_bot/build/bs4/setup.py) egg_info for package bs4
-    
-Downloading/unpacking beautifulsoup4 (from bs4)
-  Downloading beautifulsoup4-4.5.1-py2-none-any.whl (83kB): 83kB downloaded
-Installing collected packages: bs4, beautifulsoup4
-  Running setup.py install for bs4
-    
-Successfully installed bs4 beautifulsoup4
-Cleaning up...
-</samp>
-</pre>
+<p>If we know the data item index, we can access them directly, in this
+case it is located in the position “0”:</p>
 
-<pre class="shell">
-<samp>
-<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>pip install feedparser</kbd>
-Downloading/unpacking feedparser
-  Downloading feedparser-5.2.1.zip (1.2MB): 1.2MB downloaded
-  Running setup.py (path:/home/user/.virtualenvs/twitter_bot/build/feedparser/setup.py) egg_info for package feedparser
-    
-Installing collected packages: feedparser
-  Running setup.py install for feedparser
-    
-Successfully installed feedparser
-Cleaning up...
-</samp>
-</pre>
-
-<pre class="shell">
-<samp>
-<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>pip install tweepy</kbd>
-Downloading/unpacking tweepy
-  Downloading tweepy-3.5.0-py2.py3-none-any.whl
-Downloading/unpacking requests&gt;=2.4.3 (from tweepy)
-  Downloading requests-2.11.1-py2.py3-none-any.whl (514kB): 514kB downloaded
-Downloading/unpacking six&gt;=1.7.3 (from tweepy)
-  Downloading six-1.10.0-py2.py3-none-any.whl
-Downloading/unpacking requests-oauthlib&gt;=0.4.1 (from tweepy)
-  Downloading requests_oauthlib-0.7.0-py2.py3-none-any.whl
-Downloading/unpacking oauthlib&gt;=0.6.2 (from requests-oauthlib&gt;=0.4.1-&gt;tweepy)
-  Downloading oauthlib-2.0.0.tar.gz (122kB): 122kB downloaded
-  Running setup.py (path:/home/user/.virtualenvs/twitter_bot/build/oauthlib/setup.py) egg_info for package oauthlib
-    
-Installing collected packages: tweepy, requests, six, requests-oauthlib, oauthlib
-  Running setup.py install for oauthlib
-    
-Successfully installed tweepy requests six requests-oauthlib oauthlib
-Cleaning up...
-
-</samp>
-</pre>
-
-<h3 id="execute-twitter-feeder">Execute Twitter feeder</h3>
-
-<p>After setting up credentials you can execute <code class="highlighter-rouge">feedr/src/main.py</code></p>
-
-<pre class="shell">
-<samp>
-<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>cd src</kbd>
-<span class="shell-prompt">(twitter_bot) feedr/src$</span> <kbd>python2.7 main.py</kbd>
-
-</samp>
-</pre>
-
-<h3 id="schedule-posts">Schedule posts</h3>
-
-<p>We set up a cron job to check for new posts every a certain amount of
-time, in this case every hour. We enter the crontab editor:</p>
-
-<pre class="shell">
-<samp>
-<span class="shell-prompt">$</span> <kbd>crontab -e</kbd>
-</samp>
-</pre>
-
-<p>And then we add the following line (adjust the path of your
-installation, in this case I have used <code class="highlighter-rouge">/opt/feedr</code>)</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>0 * * * * cd /opt/feedr/src; flock -n /tmp/twbot.lock ~/.virtualenvs/twitter_bot/bin/python2.7 main.py
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>
 </code></pre>
 </div>
 
-<p>We use the <code class="highlighter-rouge">flock</code> command to
-<a href="/prevent-running-of-duplicate-cron-jobs/">prevent duplicate cron job executions</a>.</p>
+<p>Output:</p>
 
-<h2 id="reference">Reference</h2>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="w">    </span><span class="p">{</span><span class="err">“project”=&gt;”funtime”,</span><span class="w"> </span><span class="err">“url”=&gt;”www.funtime.url”,“description”=&gt;”This</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">really</span><span class="w"> </span><span class="err">fun”</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
 
-<ul>
-  <li><a href="https://en.wikipedia.org/wiki/Web_feed">https://en.wikipedia.org/wiki/Web_feed</a></li>
-  <li><a href="https://en.wikipedia.org/wiki/RSS">https://en.wikipedia.org/wiki/<abbr title="Really Simple Syndication">RSS</abbr></a></li>
-  <li><a href="https://github.com/housed/feedr">https://github.com/housed/feedr</a></li>
-</ul>
+<h2 id="iterating">Iterating</h2>
 
+<p>Iterating through all the data looking for an attribute</p>
+
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<p>Outputs:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="err">“project”=&gt;”funtime”,</span><span class="w"> </span><span class="err">“url”=&gt;”www.funtime.url”,</span><span class="w"> </span><span class="err">“description”=&gt;”This</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">really</span><span class="w"> </span><span class="err">fun”</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h2 id="changing-the-data-file">Changing the data file</h2>
+
+<p>The above data file can be optimized to make it more elegant and use
+the project name as their key:</p>
+
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">funtime</span><span class="pi">:</span>
+  <span class="s">url</span><span class="pi">:</span> <span class="s">www.funtime.url</span>
+  <span class="s">description</span><span class="pi">:</span> <span class="s">This is really fun</span>
+
+<span class="s">supertime</span><span class="pi">:</span>
+  <span class="s">url</span><span class="pi">:</span> <span class="s">www.supertime.url</span>
+  <span class="s">description</span><span class="pi">:</span> <span class="s">This is really super</span>
+</code></pre>
+</div>
+
+<p>This way we can access each of the items directly:</p>
+
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<p>So it would output:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="err">“url”=&gt;”www.funtime.url”,</span><span class="w"> </span><span class="err">“description”=&gt;”This</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">really</span><span class="w"> </span><span class="err">fun”</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
 
 
     
@@ -622,7 +498,7 @@ installation, in this case I have used <code class="highlighter-rouge">/opt/feed
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/automatically-tweet-new-blog-posts-based-in-rss/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/accessing-specific-items-from-data-files-in-jekyll/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -667,267 +543,8 @@ installation, in this case I have used <code class="highlighter-rouge">/opt/feed
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action active" href="/automatically-tweet-new-blog-posts-based-in-rss/">
-      Bash script to automatically tweet new blog posts based in a website rss feed
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/colors-palettes-for-web-design/">
-      Colors Palettes For Web Design
+      <a class="list-group-item list-group-item-action " href="/jekyll-basic-concepts/">
+      Jekyll basic concepts
     </a>
     
     
@@ -989,6 +606,273 @@ installation, in this case I have used <code class="highlighter-rouge">/opt/feed
     
     
     
+    
+      <a class="list-group-item list-group-item-action " href="/jekyll-configuration-file-options/">
+      Jekyll Configuration File Options
+    </a>
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action " href="/understanding-jekyll-posts/">
+      Understanding Jekyll Posts
+    </a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action active" href="/accessing-specific-items-from-data-files-in-jekyll/">
+      Accessing Specific Items From Data Files In Jekyll
+    </a>
     
     
   </div>
