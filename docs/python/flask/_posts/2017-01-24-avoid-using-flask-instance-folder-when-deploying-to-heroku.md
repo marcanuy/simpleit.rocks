@@ -1,5 +1,5 @@
 ---
-description: 
+description: Flask solution to handle sensitive data does not work in Heroku.
 tags: heroku, deployment, web-development
 ---
 

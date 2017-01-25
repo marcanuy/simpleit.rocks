@@ -3,12 +3,12 @@ description: How to configure Flask to handle different configuration files base
 layout: post
 ---
 
-Separated configurations for Development and Production
+## Separated configurations for Development and Production
 
 In most situations, applications would need different configurations
 for each environment: Production, Staging, Development, etc.
 
-##### Load default config and an environment specific
+## Load default config and an environment specific one
 
 The easiest way to have multiple configurations is to:
 
@@ -39,7 +39,7 @@ YOURAPPLICATION_SETTINGS=/path/to/config.py</kbd>
 This way it will always load the default *configs* and then our custom
 variables from `YOURAPPLICATION_SETTINGS`.
 
-##### Instance paths
+## Instance paths
 
 From Flask 0.8, there is the concept of **instance folders**. The
 instance folder is a good fit for configuration files because it is
@@ -51,6 +51,8 @@ to `/.gitignore`.
 
 By default, Flask looks for a folder named `instance` in the same
 level of your main file or the package.
+
+## Behaviour
 
 Using this folder and having environment specific configuration files
 in the `config` folder we end up having the following directory structure:
@@ -95,6 +97,7 @@ invoking the app:
 <span class="shell-prompt">$</span> <kbd>export APP_CONFIG_FILE=/var/www/yourapp/config/production.py</kbd>
 </pre>
 
+## Final
 
 Now your folder structure should look like:
 
@@ -111,6 +114,9 @@ myapp
    ├── __init__.py
    └── myapp.py
 ~~~
+
+It can be useful to also add support for `dotenv` to [handle sensitive
+variables when deploying to Heroku]({% link docs/python/flask/_posts/2017-01-24-managing-environment-configuration-variables-in-flask-with-dotenv.md %}).
 
 ## References
 
