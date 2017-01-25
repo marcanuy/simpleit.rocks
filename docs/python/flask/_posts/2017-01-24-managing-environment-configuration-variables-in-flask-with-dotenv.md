@@ -18,7 +18,7 @@ folder.
 Flask introduces the concept of **instance folder**, designed to store
 sensitive information like credentials and passwords for your local
 environment, the main problem is that
-[it can't work with ephemeral filesystems]({% link /docs/python/flask/_posts/2017-01-24-avoid-using-flask-instance-folder-when-deploying-to-heroku.md %}) like
+[it can't work with ephemeral filesystems]({% link docs/python/flask/_posts/2017-01-24-avoid-using-flask-instance-folder-when-deploying-to-heroku.md %}) like
 the one Heroku uses.
 
 In this case the perfect fit for this is to use python-dotenv, so we
@@ -126,4 +126,4 @@ tw_consumer_key = os.getenv('TWITTER_CONSUMER_KEY')
 
 I find it useful to use `dotenv` for sensitive variables and custom
  paths, and [maintain other variables in version control separated by
- server, like development, testing or production]({% link /docs/python/flask/_posts/2017-01-11-organize-a-flask-project-to-handle-production-and-development-environments-effectively.md %}).
+ server, like development, testing or production]({% link docs/python/flask/_posts/2017-01-11-organize-a-flask-project-to-handle-production-and-development-environments-effectively.md %}).
