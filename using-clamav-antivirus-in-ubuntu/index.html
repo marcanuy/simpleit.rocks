@@ -29,15 +29,15 @@
 
   
   <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Understanding Jekyll Posts - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Understanding Jekyll Posts" />
-<meta name="description" content="Overview" />
-<meta property="og:description" content="Overview" />
-<link rel="canonical" href="http://simpleit.rocks/understanding-jekyll-posts/" />
-<meta property="og:url" content="http://simpleit.rocks/understanding-jekyll-posts/" />
+<title>Using Clamav Antivirus In Ubuntu - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Using Clamav Antivirus In Ubuntu" />
+<meta name="description" content="How to scan for viruses with ClamAV in Ubuntu." />
+<meta property="og:description" content="How to scan for viruses with ClamAV in Ubuntu." />
+<link rel="canonical" href="http://simpleit.rocks/using-clamav-antivirus-in-ubuntu/" />
+<meta property="og:url" content="http://simpleit.rocks/using-clamav-antivirus-in-ubuntu/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-06-12T00:00:00+00:00" />
+<meta property="article:published_time" content="2017-01-25T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@simpleitrocks" />
 <meta name="twitter:creator" content="@marcanuy" />
@@ -45,10 +45,10 @@
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
-"headline": "Understanding Jekyll Posts",
-"datePublished": "2016-06-12T00:00:00+00:00",
-"description": "Overview",
-"url": "http://simpleit.rocks/understanding-jekyll-posts/"}</script>
+"headline": "Using Clamav Antivirus In Ubuntu",
+"datePublished": "2017-01-25T00:00:00+00:00",
+"description": "How to scan for viruses with ClamAV in Ubuntu.",
+"url": "http://simpleit.rocks/using-clamav-antivirus-in-ubuntu/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -105,7 +105,7 @@
     
     
     
-    <h1 class="title">Understanding Jekyll Posts </h1>
+    <h1 class="title">Using Clamav Antivirus In Ubuntu </h1>
     
     
   </div>
@@ -121,7 +121,7 @@
   <div class="post-meta">
     
     <i class="fa fa-calendar" aria-hidden="true"></i>
-    <time datetime="2016-06-12T00:00:00+00:00" itemprop="datePublished">Jun 12, 2016</time>
+    <time datetime="2017-01-25T00:00:00+00:00" itemprop="datePublished">Jan 25, 2017</time>
     
   </div>
   <div>
@@ -192,37 +192,13 @@
     class="breadcrumb-item">
   
   <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/ruby">
+     itemprop="item" href="/docs/linux">
     
 
-    ruby
+    linux
   </a>
   
   <meta itemprop="position" content="3" />
-</li>
-
-    
-
-    
-    
-    
-    
-    
-    
-
-
-<li itemprop="itemListElement" itemscope
-    itemtype="http://schema.org/ListItem"
-    class="breadcrumb-item">
-  
-  <a itemscope itemtype="http://schema.org/Thing"
-     itemprop="item" href="/docs/ruby/jekyll">
-    
-
-    jekyll
-  </a>
-  
-  <meta itemprop="position" content="4" />
 </li>
 
     
@@ -243,10 +219,10 @@
        itemprop="item">
     
 
-    <span itemprop="name">Understanding Jekyll Posts</span>
+    <span itemprop="name">Using Clamav Antivirus In Ubuntu</span>
   </span>
   
-  <meta itemprop="position" content="5" />
+  <meta itemprop="position" content="4" />
 </li>
 
     
@@ -286,11 +262,12 @@
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#post-metadata">Post metadata</a></li>
-<li class="toc-entry toc-h3"><a href="#variables">Variables</a></li>
-<li class="toc-entry toc-h3"><a href="#variables-of-a-post-and-documents-posts">Variables of a Post and Documents Posts</a></li>
-<li class="toc-entry toc-h4"><a href="#front-matter">Front matter</a></li>
-<li class="toc-entry toc-h4"><a href="#in-templates">In templates</a></li>
+<li class="toc-entry toc-h2"><a href="#why-do-we-need-antivirus-in-linux">Why do we need antivirus in Linux</a></li>
+<li class="toc-entry toc-h2"><a href="#install">Install</a></li>
+<li class="toc-entry toc-h3"><a href="#update-db">Update db</a></li>
+<li class="toc-entry toc-h2"><a href="#scan-commands">Scan commands</a></li>
+<li class="toc-entry toc-h2"><a href="#other-notes">Other notes</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
       </div>
       <div>
@@ -301,9 +278,9 @@
       <div>
   <a class="twitter-share-button"
      href="https://twitter.com/share"
-     data-url="http://simpleit.rocks/understanding-jekyll-posts/"
+     data-url="http://simpleit.rocks/using-clamav-antivirus-in-ubuntu/"
      data-via=""
-     data-text=""
+     data-text="How to scan for viruses with ClamAV in Ubuntu."
      data-related="marcanuy,{"username"=>"simpleitrocks"}"
      data-count="vertical">
     Tweet
@@ -335,7 +312,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="http://simpleit.rocks/understanding-jekyll-posts/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="http://simpleit.rocks/using-clamav-antivirus-in-ubuntu/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -352,7 +329,7 @@
 
     
 	<p class="lead">
-	  
+	  How to scan for viruses with ClamAV in Ubuntu.
 	</p>
     
 
@@ -376,92 +353,115 @@
 
     <h2 id="overview">Overview</h2>
 
-<p>Posts can be nested in subdirectories but they always must be inside 
-a <code class="highlighter-rouge">_posts</code> folder.</p>
+<p>There are viruses for all platforms, they are just more common on
+Windows.</p>
 
-<p>Their filename should follow the following format: <code class="highlighter-rouge">YYYY-MM-DD-article-name.MARKUP</code>.</p>
+<p>Having an antivirus in Linux is just another tool to help you protect
+the system, you won’t be entirely safe just using it, you also need
+safe practices.</p>
 
-<p>In this case <code class="highlighter-rouge">article-name</code> will be used as the post <em>slug</em> and if there is no <em>title</em> in the <em>front matter</em> of the post, it will be converted to a title version removing the <code class="highlighter-rouge">-</code> chars.</p>
+<p>We will install <em>ClamAV</em>, one of the most popular antivirus software
+for Linux.</p>
 
-<h2 id="post-metadata">Post metadata</h2>
+<blockquote class="blockquote" cite="https://www.clamav.net/">
+  <p>ClamAV® is an open source antivirus engine for detecting trojans,
+viruses, malware &amp; other malicious threats.</p>
 
-<p>This is a common term used in <a href="https://en.wikipedia.org/wiki/Book_design#Front_matter">Book design</a>,
-to refer to the first section of a book, usually its smallest section.</p>
+  <footer class="blockquote-footer"> <cite><a href="https://www.clamav.net/"></a></cite></footer>
+</blockquote>
 
-<p>In a Jekyll context, each <em>post</em> can have page-specific variables to be included at the beginning of the file using <a href="http://yaml.org/">YAML format</a>. This metadata is called in Jekyll <strong>Front Matter</strong>, and is the common place to define things like the post <strong>title</strong>, <strong>layout</strong>, <strong>description</strong>, or override site-wide variable values.</p>
+<h2 id="why-do-we-need-antivirus-in-linux">Why do we need antivirus in Linux</h2>
 
-<p>A common post looks like the following code, where the front matter goes inside <code class="highlighter-rouge">---</code> tag, and then the content of the <em>post</em>:</p>
+<p>My choice is to have an antivirus to run from time to time or at
+suspicious files and folders, but <strong>not having it running as
+daemon</strong> to avoid a performance decrease in the system.</p>
 
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="nn">---</span>
-<span class="s">layout</span><span class="pi">:</span> <span class="s">post</span>
-<span class="s">title</span><span class="pi">:</span> <span class="s">My cool blog</span>
-<span class="nn">---</span>
+<h2 id="install">Install</h2>
 
-<span class="s">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed</span>
-<span class="s">do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-<span class="s">Ut enim ad minim veniam, quis nostrud exercitation ullamco</span> 
-<span class="s">laboris nisi ut aliquip ex ea commodo consequat.</span>
-</code></pre>
-</div>
+<p>To install we use the <em>clamav</em> package:</p>
 
-<h3 id="variables">Variables</h3>
+<pre class="shell">
+<samp>
+<span class="shell-prompt">#</span> <kbd>apt-get install clamav</kbd>
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Suggested packages:
+  clamav-docs
+The following NEW packages will be installed:
+  clamav
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 0 B/90.5 kB of archives.
+After this operation, 695 kB of additional disk space will be used.
+Selecting previously unselected package clamav.
+(Reading database ... 34590 files and directories currently installed.)
+Preparing to unpack .../clamav_0.99.2+addedllvm-0ubuntu0.14.04.1_amd64.deb ...
+Unpacking clamav (0.99.2+addedllvm-0ubuntu0.14.04.1) ...
+Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+Setting up clamav (0.99.2+addedllvm-0ubuntu0.14.04.1) ...
+</samp>
+</pre>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>.
-├── one_category
-│   └── second_category
-│      └── _posts
-│	     └── nested_post.md
-└── _posts
-   ├── a_post.md
-   └── another_post.md
-</code></pre>
-</div>
+<h3 id="update-db">Update db</h3>
 
-<h3 id="variables-of-a-post-and-documents-posts">Variables of a Post and Documents Posts</h3>
+<p>Now we need to update the signatures so we have our virus database
+updated with <code class="highlighter-rouge">freshclam</code>.</p>
 
-<div class="mermaid">
-graph LR
-    Collections["Collections"] == 1 === ColRelationship{" "}
-    ColRelationship == N === Collection
-    Collection["Collection<hr />label<br />docs<br />files<br />relative_directory<br />directory<br />output"] == 1 === relationship{" "}
-    relationship == N === Document["Document<hr />path<br />relative_path<br />collection<br />date"]
-</div>
+<pre class="shell">
+<samp>
+<span class="shell-prompt">#</span> <kbd>freshclam</kbd>
+ClamAV update process started at Wed Jan 25 15:05:36 2017
+Downloading main.cvd [100%]
+main.cvd updated (version: 57, sigs: 4218790, f-level: 60, builder: amishhammer)
+Downloading daily.cvd [100%]
+daily.cvd updated (version: 22948, sigs: 1449757, f-level: 63, builder: neo)
+Downloading bytecode.cvd [100%]
+bytecode.cvd updated (version: 289, sigs: 57, f-level: 63, builder: neo)
+Database updated (5668604 signatures) from db.local.clamav.net (IP: 155.98.64.87)
+</samp>
+</pre>
 
-<h4 id="front-matter">Front matter</h4>
+<h2 id="scan-commands">Scan commands</h2>
 
-<p>Predefined Variables that can be used in the <em>front matter</em> for a <em>post</em>:</p>
+<p>To scan a directory recursively we use <code class="highlighter-rouge">-r</code> and <code class="highlighter-rouge">-i</code> to just display
+the infected files.</p>
 
-<dl>
-<dt>page.title</dt>
-<dd>The title of the Page.</dd>
-<dt>page.date</dt>
-<dd>The Date assigned to the Post. This can be overridden in a Post’s front matter by specifying a new date/time in the format YYYY-MM-DD HH:MM:SS (assuming UTC), or YYYY-MM-DD HH:MM:SS +/-TTTT (to specify a time zone using an offset from UTC. e.g. 2008-12-14 10:30:00 +0900).</dd>
-<dt>page.categories</dt>
-<dd>The list of categories to which this post belongs. Categories are derived from the directory structure above the _posts directory. For example, a post at /work/code/_posts/2008-12-24-closures.md would have this field set to ['work', 'code']. These can also be specified in the YAML Front Matter.</dd>
-<dt>page.tags</dt>
-<dd>The list of tags to which this post belongs. These can be specified in the YAML Front Matter.</dd>
-</dl>
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>clamscan -r --bell -i ~/Downloads/</kbd>
 
-<h4 id="in-templates">In templates</h4>
+----------- SCAN SUMMARY -----------
+Known viruses: 5663100
+Engine version: 0.99.2
+Scanned directories: 61
+Scanned files: 380
+Infected files: 0
+Data scanned: 1077.08 MB
+Data read: 551.12 MB (ratio 1.95:1)
+Time: 298.129 sec (4 m 58 s)
+</samp>
+</pre>
 
-<p>Variables also available in templates</p>
+<h2 id="other-notes">Other notes</h2>
 
-<dl>
-<dt>page.content</dt>
-<dd>The content of the Page, rendered or un-rendered depending upon what Liquid is being processed and what page is.</dd>
-<dt>page.excerpt</dt>
-<dd>The un-rendered excerpt of the Page.</dd>
-<dt>page.url</dt>
-<dd>The URL of the Post without the domain, but with a leading slash, e.g. /2008/12/14/my-post.html</dd>
-<dt>page.id</dt>
-<dd>An identifier unique to the Post (useful in RSS feeds). e.g. /2008/12/14/my-post</dd>
-<dt>page.path</dt>
-<dd>The path to the raw post or page. Example usage: Linking back to the page or post’s source on GitHub. This can be overridden in the YAML Front Matter.</dd>
-<dt>page.next</dt>
-<dd>The next post relative to the position of the current post in site.posts. Returns nil for the last entry.</dd>
-<dt>page.previous</dt>
-<dd>The previous post relative to the position of the current post in site.posts. Returns nil for the first entry. </dd>
-</dl>
+<p>Some other good security recommendations:</p>
+
+<ul>
+  <li>keep software updated</li>
+  <li>beware phishing sites (browsing through web pages that looks like
+another popular ones)</li>
+  <li>analyze command before running them or use trusted sources.</li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://help.ubuntu.com/community/ClamAV">https://help.ubuntu.com/community/ClamAV</a></li>
+  <li><a href="http://askubuntu.com/q/250290/43253">How do I scan for viruses with ClamAV?</a></li>
+</ul>
+
+<p><em>Tested in Ubuntu 16.10</em></p>
+
 
 
     
@@ -514,7 +514,7 @@ graph LR
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/understanding-jekyll-posts/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/using-clamav-antivirus-in-ubuntu/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -559,8 +559,28 @@ graph LR
     
     
     
-      <a class="list-group-item list-group-item-action " href="/jekyll-basic-concepts/">
-      Jekyll basic concepts
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action " href="/writing-spanish-in-linux/">
+      How to Type Spanish Characters, Accents and Symbols in Linux
     </a>
     
     
@@ -623,18 +643,12 @@ graph LR
     
     
     
-      <a class="list-group-item list-group-item-action " href="/jekyll-configuration-file-options/">
-      Jekyll Configuration File Options
-    </a>
     
     
     
     
     
     
-      <a class="list-group-item list-group-item-action active" href="/understanding-jekyll-posts/">
-      Understanding Jekyll Posts
-    </a>
     
     
     
@@ -834,60 +848,8 @@ graph LR
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/accessing-specific-items-from-data-files-in-jekyll/">
-      Accessing Specific Items From Data Files In Jekyll
+      <a class="list-group-item list-group-item-action " href="/setting-up-a-fresh-linux-server/">
+      Setting Up A Fresh Linux Server
     </a>
     
     
@@ -900,9 +862,39 @@ graph LR
     
     
     
-      <a class="list-group-item list-group-item-action " href="/what-are-the-supported-language-highlighters-in-jekyll/">
-      What Are The Supported Language Highlighters In Jekyll
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action active" href="/using-clamav-antivirus-in-ubuntu/">
+      Using Clamav Antivirus In Ubuntu
     </a>
+    
+    
+    
+    
+    
     
     
   </div>
@@ -912,154 +904,6 @@ graph LR
 	
 
 
-
-<h2>Articles</h2>
-<p>This article is being referenced in:</p>
-<div class="list-group">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    <a href="/understanding-how-collections-work/" class="list-group-item list-group-item-action">
-    Understanding How Collections Work
-  </a>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    <a href="/jekyll-basic-concepts/" class="list-group-item list-group-item-action">
-    Jekyll basic concepts
-  </a>
-  
-  
-  
-  
-</div>
 
 
       </div>

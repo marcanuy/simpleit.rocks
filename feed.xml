@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 25 Jan 2017 16:34:59 +0000</pubDate>
-    <lastBuildDate>Wed, 25 Jan 2017 16:34:59 +0000</lastBuildDate>
+    <pubDate>Wed, 25 Jan 2017 19:00:45 +0000</pubDate>
+    <lastBuildDate>Wed, 25 Jan 2017 19:00:45 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -331,6 +331,135 @@ def get_or_create_user(session, model, **kwargs):
         <category>ruby</category>
         
         <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>Using Clamav Antivirus In Ubuntu</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;There are viruses for all platforms, they are just more common on
+Windows.&lt;/p&gt;
+
+&lt;p&gt;Having an antivirus in Linux is just another tool to help you protect
+the system, you won’t be entirely safe just using it, you also need
+safe practices.&lt;/p&gt;
+
+&lt;p&gt;We will install &lt;em&gt;ClamAV&lt;/em&gt;, one of the most popular antivirus software
+for Linux.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://www.clamav.net/&quot;&gt;
+  &lt;p&gt;ClamAV® is an open source antivirus engine for detecting trojans,
+viruses, malware &amp;amp; other malicious threats.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://www.clamav.net/&quot;&gt;&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;why-do-we-need-antivirus-in-linux&quot;&gt;Why do we need antivirus in Linux&lt;/h2&gt;
+
+&lt;p&gt;My choice is to have an antivirus to run from time to time or at
+suspicious files and folders, but &lt;strong&gt;not having it running as
+daemon&lt;/strong&gt; to avoid a performance decrease in the system.&lt;/p&gt;
+
+&lt;h2 id=&quot;install&quot;&gt;Install&lt;/h2&gt;
+
+&lt;p&gt;To install we use the &lt;em&gt;clamav&lt;/em&gt; package:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;#&lt;/span&gt; &lt;kbd&gt;apt-get install clamav&lt;/kbd&gt;
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Suggested packages:
+  clamav-docs
+The following NEW packages will be installed:
+  clamav
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 0 B/90.5 kB of archives.
+After this operation, 695 kB of additional disk space will be used.
+Selecting previously unselected package clamav.
+(Reading database ... 34590 files and directories currently installed.)
+Preparing to unpack .../clamav_0.99.2+addedllvm-0ubuntu0.14.04.1_amd64.deb ...
+Unpacking clamav (0.99.2+addedllvm-0ubuntu0.14.04.1) ...
+Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+Setting up clamav (0.99.2+addedllvm-0ubuntu0.14.04.1) ...
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h3 id=&quot;update-db&quot;&gt;Update db&lt;/h3&gt;
+
+&lt;p&gt;Now we need to update the signatures so we have our virus database
+updated with &lt;code class=&quot;highlighter-rouge&quot;&gt;freshclam&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;#&lt;/span&gt; &lt;kbd&gt;freshclam&lt;/kbd&gt;
+ClamAV update process started at Wed Jan 25 15:05:36 2017
+Downloading main.cvd [100%]
+main.cvd updated (version: 57, sigs: 4218790, f-level: 60, builder: amishhammer)
+Downloading daily.cvd [100%]
+daily.cvd updated (version: 22948, sigs: 1449757, f-level: 63, builder: neo)
+Downloading bytecode.cvd [100%]
+bytecode.cvd updated (version: 289, sigs: 57, f-level: 63, builder: neo)
+Database updated (5668604 signatures) from db.local.clamav.net (IP: 155.98.64.87)
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;scan-commands&quot;&gt;Scan commands&lt;/h2&gt;
+
+&lt;p&gt;To scan a directory recursively we use &lt;code class=&quot;highlighter-rouge&quot;&gt;-r&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;-i&lt;/code&gt; to just display
+the infected files.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;clamscan -r --bell -i ~/Downloads/&lt;/kbd&gt;
+
+----------- SCAN SUMMARY -----------
+Known viruses: 5663100
+Engine version: 0.99.2
+Scanned directories: 61
+Scanned files: 380
+Infected files: 0
+Data scanned: 1077.08 MB
+Data read: 551.12 MB (ratio 1.95:1)
+Time: 298.129 sec (4 m 58 s)
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;other-notes&quot;&gt;Other notes&lt;/h2&gt;
+
+&lt;p&gt;Some other good security recommendations:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;keep software updated&lt;/li&gt;
+  &lt;li&gt;beware phishing sites (browsing through web pages that looks like
+another popular ones)&lt;/li&gt;
+  &lt;li&gt;analyze command before running them or use trusted sources.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://help.ubuntu.com/community/ClamAV&quot;&gt;https://help.ubuntu.com/community/ClamAV&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://askubuntu.com/q/250290/43253&quot;&gt;How do I scan for viruses with ClamAV?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Tested in Ubuntu 16.10&lt;/em&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 25 Jan 2017 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/using-clamav-antivirus-in-ubuntu/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/using-clamav-antivirus-in-ubuntu/</guid>
+        
+        <category>antivirus,</category>
+        
+        <category>security</category>
+        
+        
+        <category>docs</category>
+        
+        <category>linux</category>
         
       </item>
     
@@ -1262,74 +1391,6 @@ with any backup files automatically generated by Vim or Emacs.&lt;/p&gt;
         <category>docs</category>
         
         <category>git</category>
-        
-      </item>
-    
-      <item>
-        <title>Joomla Security Tips Checklist</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Tips to prevent your Joomla website from being hacked.&lt;/p&gt;
-
-&lt;h2 id=&quot;security-checklist&quot;&gt;Security Checklist&lt;/h2&gt;
-
-&lt;h2 id=&quot;upgrade-joomla&quot;&gt;Upgrade Joomla&lt;/h2&gt;
-
-&lt;p&gt;Each new Joomla update come with several security patches, not
-updating means getting into troubles sooner or later, as new
-vulnerabilities are discovered from time to time.&lt;/p&gt;
-
-&lt;h3 id=&quot;avoid-old-extensions&quot;&gt;Avoid old extensions&lt;/h3&gt;
-
-&lt;p&gt;You should always keep your extensions updated, if you are using an
-old extension without support, find an alternative or deactivate it.&lt;/p&gt;
-
-&lt;h3 id=&quot;adjust-files-and-directories-permissions&quot;&gt;Adjust files and directories permissions&lt;/h3&gt;
-
-&lt;h4 id=&quot;htaccess&quot;&gt;htaccess&lt;/h4&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.htaccess&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;configuration.php&lt;/code&gt; shouldn’t have write permissions,
-that would leave your them vulnerable to attacks.&lt;/p&gt;
-
-&lt;h4 id=&quot;php-files&quot;&gt;PHP files&lt;/h4&gt;
-
-&lt;p&gt;All the PHP files shouldn’t have write permissions.&lt;/p&gt;
-
-&lt;h3 id=&quot;fix-images-folder-allowed-files&quot;&gt;Fix images folder allowed files&lt;/h3&gt;
-
-&lt;p&gt;The images folder should only contains &lt;strong&gt;images&lt;/strong&gt;, it should &lt;a href=&quot;/securing-the-images-folder-in-joomla/&quot;&gt;block
-users from trying to upload every other type of file&lt;/a&gt;,
-specially &lt;em&gt;scripts&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;popular-extensions&quot;&gt;Popular extensions&lt;/h3&gt;
-
-&lt;p&gt;Not try new extensions until they are well tested or popular in the
-Joomla community.&lt;/p&gt;
-
-&lt;h3 id=&quot;administrator-are-with-http-basic-auth&quot;&gt;Administrator are with HTTP basic auth&lt;/h3&gt;
-
-&lt;p&gt;Protect the Administrator area, usually the &lt;code class=&quot;highlighter-rouge&quot;&gt;/administrator&lt;/code&gt; path,
-with
-&lt;a href=&quot;/protect-web-directories-with-http-basic-authentication-in-apache-server/&quot;&gt;HTTP Basic Authentication&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Useful to
-  prevent
-  &lt;a href=&quot;https://en.wikipedia.org/wiki/Dictionary_attack&quot;&gt;dictionary attacks&lt;/a&gt; in
-  the Joomla Administrator area.&lt;/strong&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/joomla-security-tips-checklist/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/joomla-security-tips-checklist/</guid>
-        
-        <category>joomla</category>
-        
-        
-        <category>docs</category>
-        
-        <category>php</category>
-        
-        <category>joomla</category>
         
       </item>
     
