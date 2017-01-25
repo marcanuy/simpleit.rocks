@@ -6,9 +6,333 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 25 Jan 2017 04:50:47 +0000</pubDate>
-    <lastBuildDate>Wed, 25 Jan 2017 04:50:47 +0000</lastBuildDate>
+    <pubDate>Wed, 25 Jan 2017 16:34:59 +0000</pubDate>
+    <lastBuildDate>Wed, 25 Jan 2017 16:34:59 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>What Are The Supported Language Highlighters In Jekyll</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;To highlight code snippets in Jekyll post’s, there are many
+highlighters that can be used. Jekyll comes with &lt;em&gt;Rouge&lt;/em&gt; by
+default.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://github.com/jneen/rouge&quot;&gt;
+  &lt;p&gt;Rouge is a pure-ruby syntax highlighter. It can highlight 100
+different languages, and output HTML or ANSI 256-color text. Its
+HTML output is compatible with stylesheets designed for pygments.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Rouge &lt;a href=&quot;https://github.com/jneen/rouge&quot;&gt;project&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This article explores how to see the languages that Jekyll support in
+your current environment and the list of languages for which Jekyll
+can generate syntax highlighting in posts.&lt;/p&gt;
+
+&lt;h2 id=&quot;command&quot;&gt;Command&lt;/h2&gt;
+
+&lt;p&gt;To know which languages can have code syntax highlighted, we can user
+the command &lt;code class=&quot;highlighter-rouge&quot;&gt;rougify&lt;/code&gt; that is part of
+the &lt;a href=&quot;https://rubygems.org/gems/rouge&quot;&gt;rouge gem&lt;/a&gt; already installed by Jekyll.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;rougify --help&lt;/kbd&gt;
+usage: rougify [command] [args...]
+
+where &lt;command /&gt; is one of:
+        highlight       highlight code
+        help            print help info
+        style           print CSS styles
+        list            list available lexers
+        version         print the rouge version number
+
+See `rougify help &lt;command /&gt;` for more info.
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;list&quot;&gt;List&lt;/h2&gt;
+
+&lt;p&gt;As of &lt;em&gt;rouge&lt;/em&gt; version &lt;code class=&quot;highlighter-rouge&quot;&gt;1.11.1&lt;/code&gt;, this is the complete list of languages
+that it supports.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;rougify version&lt;/kbd&gt;
+1.11.1
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;rougify list&lt;/kbd&gt;
+== Available Lexers ==                                                                                                       [168/287]
+actionscript: ActionScript [aliases: as,as3]
+
+apache: configuration files for Apache web server
+
+apiblueprint: Markdown based API description language. [aliases: apiblueprint,apib]
+
+applescript: The AppleScript scripting language by Apple Inc. (http://developer.apple.com/applescript/) [aliases: applescript]
+
+biml: BIML, Business Intelligence Markup Language
+
+c: The C programming language
+
+ceylon: Say more, more clearly.
+
+cfscript: CFScript, the CFML scripting language [aliases: cfc]
+
+clojure: The Clojure programming language (clojure.org) [aliases: clj,cljs]
+
+cmake: The cross-platform, open-source build system
+
+coffeescript: The Coffeescript programming language (coffeescript.org) [aliases: coffee,coffee-script]
+
+common_lisp: The Common Lisp variant of Lisp (common-lisp.net) [aliases: cl,common-lisp,elisp,emacs-lisp]
+
+conf: A generic lexer for configuration files [aliases: config,configuration]
+
+coq: Coq (coq.inria.fr)
+
+cpp: The C++ programming language [aliases: c++]
+
+csharp: a multi-paradigm language targeting .NET [aliases: c#,cs]
+
+css: Cascading Style Sheets, used to style web pages
+
+d: The D programming language(dlang.org) [aliases: dlang]
+
+dart: The Dart programming language (dartlang.com)                                                                           [131/287]
+
+diff: Lexes unified diffs or patches [aliases: patch,udiff]
+
+eiffel: Eiffel programming language
+
+elixir: Elixir language (elixir-lang.org) [aliases: elixir,exs]
+
+erb: Embedded ruby template files [aliases: eruby,rhtml]
+
+erlang: The Erlang programming language (erlang.org) [aliases: erl]
+
+factor: Factor, the practical stack language (factorcode.org)
+
+fortran: Fortran 95 Programming Language
+
+gherkin: A business-readable spec DSL ( github.com/cucumber/cucumber/wiki/Gherkin ) [aliases: cucumber,behat]
+
+glsl: The GLSL shader language
+
+go: The Go programming language (http://golang.org) [aliases: go,golang]
+
+gradle: A powerful build system for the JVM
+
+groovy: The Groovy programming language (http://www.groovy-lang.org/)
+
+haml: The Haml templating system for Ruby (haml.info) [aliases: HAML]
+
+handlebars: the Handlebars and Mustache templating languages [aliases: hbs,mustache]
+
+haskell: The Haskell programming language (haskell.org) [aliases: hs]
+
+html: HTML, the markup language of the web
+
+http: http requests and responses
+
+ini: the INI configuration format                                                                                             [95/287]
+
+io: The IO programming language (http://iolanguage.com)
+
+java: The Java programming language (java.com)
+
+javascript: JavaScript, the browser scripting language [aliases: js]
+
+jinja: Django/Jinja template engine (jinja.pocoo.org) [aliases: django]
+
+json: JavaScript Object Notation (json.org)
+
+json-doc: JavaScript Object Notation with extenstions for documentation
+
+jsonnet: An elegant, formally-specified config language for JSON
+
+julia: The Julia programming language [aliases: jl]
+
+kotlin: Kotlin &amp;lt;http://kotlinlang.org&amp;gt;
+
+liquid: Liquid is a templating engine for Ruby (liquidmarkup.org)
+
+literate_coffeescript: Literate coffeescript [aliases: litcoffee]
+
+literate_haskell: Literate haskell [aliases: lithaskell,lhaskell,lhs]
+
+llvm: The LLVM Compiler Infrastructure (http://llvm.org/)
+
+lua: Lua (http://www.lua.org)
+
+make: Makefile syntax [aliases: makefile,mf,gnumake,bsdmake]
+
+markdown: Markdown, a light-weight markup language for authors [aliases: md,mkd]
+
+matlab: Matlab [aliases: m]
+
+moonscript: Moonscript (http://www.moonscript.org) [aliases: moon]                                                            [59/287]
+
+nasm: Netwide Assembler
+
+nginx: configuration files for the nginx web server (nginx.org)
+
+nim: The Nim programming language (http://nim-lang.org/) [aliases: nimrod]
+
+objective_c: an extension of C commonly used to write Apple software [aliases: objc]
+
+ocaml: Objective CAML (ocaml.org)
+
+pascal: a procedural programming language commonly used as a teaching language.
+
+perl: The Perl scripting language (perl.org) [aliases: pl]
+
+php: The PHP scripting language (php.net) [aliases: php,php3,php4,php5]
+
+plaintext: A boring lexer that doesn't highlight anything [aliases: text]
+
+powershell: powershell [aliases: posh]
+
+praat: The Praat scripting language (praat.org)
+
+prolog: The Prolog programming language (http://en.wikipedia.org/wiki/Prolog) [aliases: prolog]
+
+properties: .properties config files for Java
+
+protobuf: Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data [aliases: proto]
+
+puppet: The Puppet configuration management language (puppetlabs.org) [aliases: pp]
+
+python: The Python programming language (python.org) [aliases: py]
+
+qml: QML, a UI markup language [aliases: qml]
+
+r: The R statistics language (r-project.org) [aliases: r,R,s,S]                                                               [23/287]
+
+racket: Racket is a Lisp descended from Scheme (racket-lang.org)
+
+ruby: The Ruby programming language (ruby-lang.org) [aliases: rb]
+
+rust: The Rust programming language (rust-lang.org) [aliases: rs]
+
+sass: The Sass stylesheet language language (sass-lang.com)
+
+scala: The Scala programming language (scala-lang.org) [aliases: scala]
+
+scheme: The Scheme variant of Lisp
+
+scss: SCSS stylesheets (sass-lang.com)
+
+sed: sed, the ultimate stream editor
+
+shell: Various shell languages, including sh and bash [aliases: bash,zsh,ksh,sh]
+
+shell_session: A generic lexer for shell session and command line [aliases: terminal,console]
+
+slim: The Slim template language
+
+smalltalk: The Smalltalk programming language [aliases: st,squeak]
+
+smarty: Smarty Template Engine [aliases: smarty]
+
+sml: Standard ML [aliases: ml]
+
+sql: Structured Query Language, for relational databases
+
+swift: Multi paradigm, compiled programming language developed by Apple for iOS and OS X development. (developer.apple.com/swift)
+
+tap: Test Anything Protocol [aliases: tap]
+
+tcl: The Tool Command Language (tcl.tk)
+
+tex: The TeX typesetting system [aliases: TeX,LaTeX,latex]
+
+toml: the TOML configuration format (https://github.com/mojombo/toml)
+
+tulip: The tulip programming language http://github.com/jneen/tulip [aliases: tlp]
+
+twig: Twig template engine (twig.sensiolabs.org)
+
+typescript: TypeScript, a superset of JavaScript [aliases: ts]
+
+vb: Visual Basic [aliases: visualbasic]
+
+verilog: The System Verilog hardware description language
+
+viml: VimL, the scripting language for the Vim editor (vim.org) [aliases: vim,vimscript,ex]
+
+xml: &lt;desc for=&quot;this-lexer&quot;&gt;XML&lt;/desc&gt;
+
+yaml: Yaml Ain't Markup Language (yaml.org) [aliases: yml]
+
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;The list is also available as a wiki page online
+at
+&lt;a href=&quot;https://github.com/jneen/rouge/wiki/List-of-supported-languages-and-lexers&quot;&gt;Rouge wiki&lt;/a&gt;,
+this won’t be always up to date but will cover most of the languages
+you will ever need.&lt;/p&gt;
+
+&lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;
+
+&lt;p&gt;To use any of the above languages, you need to enclose the code
+snippets with three or more tilde characters &lt;code class=&quot;highlighter-rouge&quot;&gt;~~~&lt;/code&gt; and specify the
+language or an alias appending it to the end of the starting line, for
+example, to highlight a python snippet the
+&lt;a href=&quot;https://kramdown.gettalong.org/syntax.html#fenced-code-blocks&quot;&gt;kramdown markdown parser&lt;/a&gt;
+we use &lt;strong&gt;fenced code blocks&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~~~ python
+# a comment
+import datetime
+
+def get_or_create_user(session, model, **kwargs):
+    instance = session.query(model).filter_by(twitter_user_id=kwargs[&quot;twitter_user_id&quot;]).first()
+	return instance
+~~~
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;or using the alias &lt;code class=&quot;highlighter-rouge&quot;&gt;py&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~~~ py
+# ...
+~~~
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then when rendered it will look like:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# a comment&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;datetime&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_or_create_user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter_by&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;twitter_user_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;twitter_user_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jekyllrb.com/docs/templates/&quot;&gt;https://jekyllrb.com/docs/templates/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jneen/rouge&quot;&gt;https://github.com/jneen/rouge&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://kramdown.gettalong.org/syntax.html&quot;&gt;https://kramdown.gettalong.org/syntax.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 25 Jan 2017 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/what-are-the-supported-language-highlighters-in-jekyll/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/what-are-the-supported-language-highlighters-in-jekyll/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>ruby</category>
+        
+        <category>jekyll</category>
+        
+      </item>
     
       <item>
         <title>Accessing Specific Items From Data Files In Jekyll</title>
@@ -1006,225 +1330,6 @@ with
         <category>php</category>
         
         <category>joomla</category>
-        
-      </item>
-    
-      <item>
-        <title>Protect Web Directories With Http Basic Authentication In Apache Server</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;HTTP Basic Auth is very common in the web, although it is not the most
-secure one.&lt;/p&gt;
-
-&lt;p&gt;It’s simplicity makes it a simple choice to add a layer of security to
-web directory quickly, not needing &lt;em&gt;sessions&lt;/em&gt; nor &lt;em&gt;cookies&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;concepts&quot;&gt;Concepts&lt;/h2&gt;
-
-&lt;p&gt;HTTP Basic authentication needs that a client provides a username
-and password when making a request.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://tools.ietf.org/html/rfc7617&quot;&gt;
-  &lt;p&gt;The “Basic” Hypertext Transfer Protocol (HTTP)
-authentication scheme, transmits credentials as user-id/password
-pairs, encoded using Base64&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; The 'Basic' HTTP Authentication Scheme in &lt;cite&gt;&lt;a href=&quot;https://tools.ietf.org/html/rfc7617&quot;&gt;RFC 7617&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;steps-to-secure-a-directory&quot;&gt;Steps to secure a directory&lt;/h2&gt;
-
-&lt;p&gt;To use HTTP Basic Authentication on a server, you need to create two files&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.htaccess&lt;/code&gt;: specifies which directory to protect&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.htpasswd&lt;/code&gt;: passwords file&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The each time you access the directory of &lt;code class=&quot;highlighter-rouge&quot;&gt;.htaccess&lt;/code&gt; it asks for
-&lt;em&gt;username&lt;/em&gt; and &lt;em&gt;password&lt;/em&gt; validating it against &lt;code class=&quot;highlighter-rouge&quot;&gt;.htpasswd&lt;/code&gt;
-credentials.&lt;/p&gt;
-
-&lt;p&gt;We will end up having this directories structure:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/home
-	/secure
-		/apasswords
-...
-/var
-	/www
-		/myprotected
-			.htaccess
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;create-apache-htaccess&quot;&gt;Create Apache .htaccess&lt;/h3&gt;
-
-&lt;p&gt;Add an &lt;code class=&quot;highlighter-rouge&quot;&gt;.htaccess&lt;/code&gt; file inside each directory that will be protected
-with the following content, in this case in &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/www/myprotected/.htaccess&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;AuthType Basic
-AuthName &quot;Restricted Access&quot;
-AuthUserFile /home/secure/apasswords
-Require valid-user
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;passwords-file&quot;&gt;Passwords file&lt;/h3&gt;
-
-&lt;p&gt;We use the &lt;code class=&quot;highlighter-rouge&quot;&gt;htpasswd&lt;/code&gt; command to manage user files for basic
-authentication.&lt;/p&gt;
-
-&lt;p&gt;Command overview:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;htpasswd --help&lt;/kbd&gt;
-Usage:
-	htpasswd [-cimBdpsDv] [-C cost] passwordfile username
-	htpasswd -b[cmBdpsDv] [-C cost] passwordfile username password
-
-	htpasswd -n[imBdps] [-C cost] username
-	htpasswd -nb[mBdps] [-C cost] username password
- -c  Create a new file.
- -n  Don't update file; display results on stdout.
- -b  Use the password from the command line rather than prompting for it.
- -i  Read password from stdin without verification (for script usage).
- -m  Force MD5 encryption of the password (default).
- -B  Force bcrypt encryption of the password (very secure).
- -C  Set the computing time used for the bcrypt algorithm
-     (higher is more secure but slower, default: 5, valid: 4 to 31).
- -d  Force CRYPT encryption of the password (8 chars max, insecure).
- -s  Force SHA encryption of the password (insecure).
- -p  Do not encrypt the password (plaintext, insecure).
- -D  Delete the specified user.
- -v  Verify password for the specified user.
-On other systems than Windows and NetWare the '-p' flag will probably not work.
-The SHA algorithm does not use a salt and is less secure than the MD5 algorithm.
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h4 id=&quot;create-passwords-file&quot;&gt;Create passwords file&lt;/h4&gt;
-
-&lt;p&gt;Create a directory &lt;strong&gt;outside apache document root&lt;/strong&gt;, only Apache should
-access the password file.&lt;/p&gt;
-
-&lt;p&gt;Using the &lt;code class=&quot;highlighter-rouge&quot;&gt;htpasswd -c&lt;/code&gt; creates the &lt;em&gt;passwdfile&lt;/em&gt;.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;mkdir -p /home/secure/&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;chmod 0660 /home/secure/apasswords&lt;/kbd&gt;
-&lt;span class=&quot;shell-comment&quot;&gt;# Create password file with user foobar&lt;/span&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;htpasswd -c /home/secure/apasswords foobar&lt;/kbd&gt;
-New password:
-Re-type new password:
-Adding password for user foobar
-&lt;span class=&quot;shell-comment&quot;&gt;# In this case the server user and group is www-data&lt;/span&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;chown www-data:www-data /home/secure/apasswords&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p class=&quot;alert alert-info&quot;&gt;/home/secure/apasswords must be only readable by Apache web server&lt;/p&gt;
-
-&lt;p class=&quot;alert alert-info&quot;&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;mkdir -p&lt;/code&gt; creates all the folder structure specified in the
-parameters&lt;/p&gt;
-
-&lt;h4 id=&quot;htpasswd-commands&quot;&gt;htpasswd commands&lt;/h4&gt;
-
-&lt;h5 id=&quot;to-add-more-users&quot;&gt;To add more users&lt;/h5&gt;
-
-&lt;p&gt;To change or add more users of the file, the same command can be used
-without the &lt;code class=&quot;highlighter-rouge&quot;&gt;-c&lt;/code&gt; option, to add the user &lt;code class=&quot;highlighter-rouge&quot;&gt;john&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;htpasswd .htpasswd john&lt;/kbd&gt;
-New password:
-Re-type new password:
-Adding password for user foobar
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h4 id=&quot;changing-existing-users-passwords&quot;&gt;Changing existing users passwords&lt;/h4&gt;
-
-&lt;p&gt;We execute the same command with the user that we want to change:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;htpasswd .htpasswd john &lt;/kbd&gt;
-New password:
-Re-type new password:
-Updating password for user foobar
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;risks&quot;&gt;Risks&lt;/h2&gt;
-
-&lt;p&gt;The HTTP Basic authentication has several issues that makes it
-insecure in some scenarios, the standard itself states:&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://tools.ietf.org/html/rfc7617&quot;&gt;
-  &lt;p&gt;This scheme is not considered to be a secure method of user
-authentication unless used in conjunction with some external secure
-system such as TLS (Transport Layer Security, [RFC5246]), as the
-user-id and password are passed over the network as cleartext.&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; The 'Basic' HTTP Authentication Scheme in &lt;cite&gt;&lt;a href=&quot;https://tools.ietf.org/html/rfc7617&quot;&gt;RFC 7617&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;HTTP Basic auth issue&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Insecurity issue&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Password is sent in base64 encoding&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Password can be converted to plaintext &lt;em&gt;(solved by using [Secure Sockets Layer])&lt;/em&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Password is sent for each request&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Larger attack window&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;The password is cached by the webbrowser&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Can be reused by any other request to the server, e.g. &lt;a href=&quot;https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)&quot;&gt;CSRF&lt;/a&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;The password may be stored permanently in the browser&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)&quot;&gt;CSRF&lt;/a&gt; and it might be stolen by another user on a shared machine&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
-
-&lt;p&gt;We have protected a directory with HTTP Basic Authentication, now
-every time we attempt to access that directory, tipically from a
-browser, it will ask for username/password credentials.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;RFC 7617 ‘Basic’ HTTP Authentication Scheme &lt;a href=&quot;https://tools.ietf.org/html/rfc7617&quot;&gt;https://tools.ietf.org/html/rfc7617&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Information Security Answer: &lt;a href=&quot;http://security.stackexchange.com/a/990/66281&quot;&gt;Is BASIC-Auth secure if done over HTTPS?&lt;/a&gt; by &lt;a href=&quot;http://security.stackexchange.com/users/33/avid&quot;&gt;AviD♦&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Basic_access_authentication&quot;&gt;https://en.wikipedia.org/wiki/Basic_access_authentication&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Sat, 07 Jan 2017 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/protect-web-directories-with-http-basic-authentication-in-apache-server/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/protect-web-directories-with-http-basic-authentication-in-apache-server/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>web</category>
-        
-        <category>servers</category>
-        
-        <category>apache</category>
         
       </item>
     
