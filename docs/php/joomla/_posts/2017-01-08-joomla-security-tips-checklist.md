@@ -24,7 +24,7 @@ old extension without support, find an alternative or deactivate it.
 
 ### Adjust files and directories permissions
 
-[Change all files permissions to 644 and directories to 755]({% link docs/php/joomla/_posts/2017-01-10-change-all-files-permissions-to-644-and-directories-to-755-commands.md %}).
+[Change all files permissions to 644 and directories to 755]({% link docs/linux/shell/_posts/2017-01-10-change-all-files-permissions-to-644-and-directories-to-755-commands.md %}).
 
 Files owner should be your user so you can edit them, while your group
 (with lesser rights) should be the web server. 

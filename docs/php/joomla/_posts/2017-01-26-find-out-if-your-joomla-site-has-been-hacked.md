@@ -146,5 +146,8 @@ know commands and strategies to recover our sites and keep them safe.
 
 ## References
 
+- <http://www.gregfreeman.io/2013/how-to-tell-if-your-php-site-has-been-compromised/>
+- <https://www.bluebridgedev.com/hacked-joomla-files>
+- <https://www.joomshaper.com/blog/my-joomla-site-was-hacked-what-to-do>
 - <https://www.google.com/transparencyreport/safebrowsing/diagnostic/index.html>
 - The Joomla Hacking Compendium <https://www.exploit-db.com/papers/15780/>
