@@ -290,11 +290,10 @@
 <li class="toc-entry toc-h2"><a href="#upgrade-joomla">Upgrade Joomla</a></li>
 <li class="toc-entry toc-h3"><a href="#avoid-old-extensions">Avoid old extensions</a></li>
 <li class="toc-entry toc-h3"><a href="#adjust-files-and-directories-permissions">Adjust files and directories permissions</a></li>
-<li class="toc-entry toc-h4"><a href="#htaccess">htaccess</a></li>
-<li class="toc-entry toc-h4"><a href="#php-files">PHP files</a></li>
 <li class="toc-entry toc-h3"><a href="#fix-images-folder-allowed-files">Fix images folder allowed files</a></li>
 <li class="toc-entry toc-h3"><a href="#popular-extensions">Popular extensions</a></li>
-<li class="toc-entry toc-h3"><a href="#administrator-are-with-http-basic-auth">Administrator are with HTTP basic auth</a></li>
+<li class="toc-entry toc-h2"><a href="#administrator-area-with-http-basic-auth">Administrator area with HTTP basic auth</a></li>
+<li class="toc-entry toc-h2"><a href="#related">Related</a></li>
 </ul>
       </div>
       <div>
@@ -397,14 +396,23 @@ old extension without support, find an alternative or deactivate it.</p>
 
 <h3 id="adjust-files-and-directories-permissions">Adjust files and directories permissions</h3>
 
-<h4 id="htaccess">htaccess</h4>
+<p><a href="/change-all-files-permissions-to-644-and-directories-to-755-commands/">Change all files permissions to 644 and directories to 755</a>.</p>
 
-<p><code class="highlighter-rouge">.htaccess</code> and <code class="highlighter-rouge">configuration.php</code> shouldn’t have write permissions,
-that would leave your them vulnerable to attacks.</p>
+<p>Files owner should be your user so you can edit them, while your group
+(with lesser rights) should be the web server.</p>
 
-<h4 id="php-files">PHP files</h4>
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>chown -R user:www-data /var/www/joomla-dir</kbd>
+</samp>
+</pre>
 
-<p>All the PHP files shouldn’t have write permissions.</p>
+<dl>
+  <dt>htaccess</dt>
+  <dd><code class="highlighter-rouge">.htaccess</code> and <code class="highlighter-rouge">configuration.php</code> shouldn’t have write permissions, it would leave them vulnerable to attacks.</dd>
+  <dt>PHP files</dt>
+  <dd>All the PHP files shouldn’t have write permissions.</dd>
+</dl>
 
 <h3 id="fix-images-folder-allowed-files">Fix images folder allowed files</h3>
 
@@ -417,7 +425,7 @@ specially <em>scripts</em>.</p>
 <p>Not try new extensions until they are well tested or popular in the
 Joomla community.</p>
 
-<h3 id="administrator-are-with-http-basic-auth">Administrator are with HTTP basic auth</h3>
+<h2 id="administrator-area-with-http-basic-auth">Administrator area with HTTP basic auth</h2>
 
 <p>Protect the Administrator area, usually the <code class="highlighter-rouge">/administrator</code> path,
 with
@@ -428,6 +436,11 @@ with
   <a href="https://en.wikipedia.org/wiki/Dictionary_attack">dictionary attacks</a> in
   the Joomla Administrator area.</strong></p>
 
+<h2 id="related">Related</h2>
+
+<p>After having a secure website it is worth
+reading
+<a href="/find-out-if-your-joomla-site-has-been-hacked/">How to find Malware and hacked files on a Joomla Site</a>.</p>
 
 
     
@@ -857,6 +870,15 @@ with
     
     
     
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action " href="/find-out-if-your-joomla-site-has-been-hacked/">
+      Find Out If Your Joomla Site Has Been Hacked
+    </a>
     
     
   </div>

