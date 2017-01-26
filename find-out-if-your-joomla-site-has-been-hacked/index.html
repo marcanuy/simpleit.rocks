@@ -489,7 +489,7 @@ doing before removing it.</p>
 permission 777.</p>
 
 <pre class="shell">
-<span class="shell-prompt">$</span> <kbd>find . \(-type f -o -type d\) -perm 0777 -print </kbd>
+<span class="shell-prompt">$</span> <kbd>find . -type f,d -perm 0777 -print </kbd>
 </pre>
 
 <blockquote class="blockquote">
@@ -507,6 +507,9 @@ permission 777.</p>
 
   <footer class="blockquote-footer"> <cite>Find man page</cite></footer>
 </blockquote>
+
+<p>Also we can choose many file types at once separating them with ‘,’
+like <code class="highlighter-rouge">-type=d,f</code> where <code class="highlighter-rouge">d</code> stands for <em>directory</em> and <code class="highlighter-rouge">f</code> for <em>files</em>.</p>
 
 <p>Then we can modify it a bit to scan through all the 777 files on the
 server and show ones with <code class="highlighter-rouge">.php</code> to look for uploaded scripts:</p>

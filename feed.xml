@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 26 Jan 2017 17:11:05 +0000</pubDate>
-    <lastBuildDate>Thu, 26 Jan 2017 17:11:05 +0000</lastBuildDate>
+    <pubDate>Thu, 26 Jan 2017 17:15:31 +0000</pubDate>
+    <lastBuildDate>Thu, 26 Jan 2017 17:15:31 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -124,7 +124,7 @@ doing before removing it.&lt;/p&gt;
 permission 777.&lt;/p&gt;
 
 &lt;pre class=&quot;shell&quot;&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find . \(-type f -o -type d\) -perm 0777 -print &lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find . -type f,d -perm 0777 -print &lt;/kbd&gt;
 &lt;/pre&gt;
 
 &lt;blockquote class=&quot;blockquote&quot;&gt;
@@ -142,6 +142,9 @@ permission 777.&lt;/p&gt;
 
   &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Find man page&lt;/cite&gt;&lt;/footer&gt;
 &lt;/blockquote&gt;
+
+&lt;p&gt;Also we can choose many file types at once separating them with ‘,’
+like &lt;code class=&quot;highlighter-rouge&quot;&gt;-type=d,f&lt;/code&gt; where &lt;code class=&quot;highlighter-rouge&quot;&gt;d&lt;/code&gt; stands for &lt;em&gt;directory&lt;/em&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; for &lt;em&gt;files&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;Then we can modify it a bit to scan through all the 777 files on the
 server and show ones with &lt;code class=&quot;highlighter-rouge&quot;&gt;.php&lt;/code&gt; to look for uploaded scripts:&lt;/p&gt;
