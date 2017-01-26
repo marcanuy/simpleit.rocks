@@ -111,7 +111,7 @@ Check out for writable upload directories. The `find` command can be used to sca
 permission 777.
 
 <pre class="shell">
-<span class="shell-prompt">$</span> <kbd>find . \(-type f -o -type d\) -perm 0777 -print </kbd>
+<span class="shell-prompt">$</span> <kbd>find . -type f,d -perm 0777 -print </kbd>
 </pre>
 
 > -perm mode
@@ -129,6 +129,8 @@ permission 777.
 > <footer class="blockquote-footer"> <cite>Find man page</cite></footer>
 {: class="blockquote"}
 
+Also we can choose many file types at once separating them with ','
+like `-type=d,f` where `d` stands for *directory* and `f` for *files*.
 
 Then we can modify it a bit to scan through all the 777 files on the
 server and show ones with `.php` to look for uploaded scripts:
