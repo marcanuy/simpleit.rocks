@@ -6,9 +6,239 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 26 Jan 2017 17:15:31 +0000</pubDate>
-    <lastBuildDate>Thu, 26 Jan 2017 17:15:31 +0000</lastBuildDate>
+    <pubDate>Thu, 26 Jan 2017 23:38:56 +0000</pubDate>
+    <lastBuildDate>Thu, 26 Jan 2017 23:38:56 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Essential Seo Tips And Techniques From Trusted Sources</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;This article is a curated list of Search Engine Optimization
+techniques from top Search Engines and trusted sources to improve your
+search engine presence and design better websites.&lt;/p&gt;
+
+&lt;h2 id=&quot;facts&quot;&gt;Facts&lt;/h2&gt;
+
+&lt;h3 id=&quot;android&quot;&gt;Android&lt;/h3&gt;
+
+&lt;p&gt;Apps are favored on search results made from Android devices.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2015/04/drive-app-installs-through-app-indexing.html&quot;&gt;
+  &lt;p&gt;App Indexing, when indexed content from your app is relevant to a
+search done on Google on Android devices, people may start to see app
+install buttons for your app in search results. we are starting to use
+App Indexing as a ranking signal for all users on Android, regardless
+of whether they have your app installed or not.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Lawrence Chang, Product Manager &lt;a href=&quot;https://webmasters.googleblog.com/2015/04/drive-app-installs-through-app-indexing.html&quot;&gt;2015-04-16&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;crawling&quot;&gt;Crawling&lt;/h3&gt;
+
+&lt;p&gt;Crawling rate is not a ranking signal.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2017/01/what-crawl-budget-means-for-googlebot.html&quot;&gt;
+  &lt;p&gt;Google uses hundreds of signals to rank the results, and while
+crawling is necessary for being in the results, it’s not a ranking
+signal.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Gary Illyes: Crawling and Indexing teams at What Crawl Budget Means for Googlebot &lt;a href=&quot;https://webmasters.googleblog.com/2017/01/what-crawl-budget-means-for-googlebot.html&quot;&gt;2017-01-16&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;https&quot;&gt;HTTPS&lt;/h3&gt;
+
+&lt;p&gt;HTTPS is a ranking signal and is better than HTTP.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2014/08/https-as-ranking-signal.html&quot;&gt;
+  &lt;p&gt;we’re starting to use HTTPS as a ranking signal. For now it’s only a
+very lightweight signal — affecting fewer than 1% of global queries,
+and carrying less weight than other signals such as high-quality
+content — while we give webmasters time to switch to HTTPS. But over
+time, we may decide to strengthen it, because we’d like to encourage
+all website owners to switch from HTTP to HTTPS to keep everyone
+safe on the web.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;HTTPS as a ranking signal &lt;a href=&quot;https://webmasters.googleblog.com/2014/08/https-as-ranking-signal.html&quot;&gt;2014-08-06&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2015/12/indexing-https-pages-by-default.html&quot;&gt;
+  &lt;p&gt;we also started giving a slight ranking boost to HTTPS&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt; Indexing HTTPS pages by default - Zineb Ait Bahajji, WTA, and the Google Security and Indexing teams &lt;a href=&quot;https://webmasters.googleblog.com/2015/12/indexing-https-pages-by-default.html&quot;&gt;2015-12-17&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;images&quot;&gt;Images&lt;/h3&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://www.youtube.com/watch?time_continue=1&amp;amp;v=GMf6FmRus2M&quot;&gt;
+  &lt;p&gt;Google potentially use EXIF data from pictures as a ranking factor&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Matt Cutts video &lt;a href=&quot;https://www.youtube.com/watch?time_continue=1&amp;amp;v=GMf6FmRus2M&quot;&gt;2014-02-14&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;inbound-links&quot;&gt;Inbound Links&lt;/h3&gt;
+
+&lt;p&gt;Links from other websites should be gained through:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;merit-based and&lt;/li&gt;
+  &lt;li&gt;freely-volunteered&lt;/li&gt;
+  &lt;li&gt;relevant to geographic location&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2008/10/good-times-with-inbound-links.html&quot;&gt;
+  &lt;p&gt;Inbound links are links from pages on external sites linking back to
+your site. Inbound links can bring new users to your site, and when
+the links are merit-based and freely-volunteered as an editorial
+choice, they’re also one of the positive signals to Google about
+your site’s importance. Other signals include things like our
+analysis of your site’s content, its relevance to a geographic
+location, etc&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Maile Ohye, Developer Programs Tech Lead &lt;a href=&quot;https://webmasters.googleblog.com/2008/10/good-times-with-inbound-links.html&quot;&gt;2008-10-09&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;content&quot;&gt;Content&lt;/h3&gt;
+
+&lt;p&gt;Search query intent is favored over a mobile friendly site, i.e.: a
+non mobile-friendly site with better content than a mobile friendly
+one with less relevant content will be preferred.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2016/03/continuing-to-make-web-more-mobile.html&quot;&gt;
+  &lt;p&gt;the intent of the search query is still a very strong signal — so
+even if a page with high quality content is not mobile-friendly, it
+could still rank well if it has great, relevant content.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Continuing to make web more mobile &lt;a href=&quot;https://webmasters.googleblog.com/2016/03/continuing-to-make-web-more-mobile.html&quot;&gt;2016-03-16&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;high-quality-content&quot;&gt;High Quality Content&lt;/h4&gt;
+
+&lt;p&gt;According to &lt;a href=&quot;https://webmasters.googleblog.com/2011/05/more-guidance-on-building-high-quality.html&quot;&gt;this guide from Google High Quality Content is&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Articles with truthful information&lt;/li&gt;
+    &lt;li&gt;Articles written by an expert or enthusiast who knows the topic well&lt;/li&gt;
+    &lt;li&gt;Avoid having duplicate, overlapping, or redundant articles on the
+same or similar topics with slightly different keyword variations&lt;/li&gt;
+    &lt;li&gt;Secure enough to give credit card information to the site&lt;/li&gt;
+    &lt;li&gt;Avoid spelling, stylistic, or factual errors&lt;/li&gt;
+    &lt;li&gt;Topics driven by genuine interests of readers of the site, avoid to
+generate content by attempting to guess what might rank well in
+search engines&lt;/li&gt;
+    &lt;li&gt;Provide articles with original content or information, original reporting, original research, and/or original analysis&lt;/li&gt;
+    &lt;li&gt;Provide pages with substantial value when compared to other pages in search results&lt;/li&gt;
+    &lt;li&gt;Perform quality control on content&lt;/li&gt;
+    &lt;li&gt;Have articles describing both sides of a story&lt;/li&gt;
+    &lt;li&gt;Be a recognized authority on articles topics&lt;/li&gt;
+    &lt;li&gt;Avoid mass-produced articles to a large number of creators, or
+spread across a large network of sites, so that individual pages or
+sites don’t get as much attention or care&lt;/li&gt;
+    &lt;li&gt;For a health related query, this site should be trusted by users&lt;/li&gt;
+    &lt;li&gt;The site should be recognized as an authoritative source when mentioned by name&lt;/li&gt;
+    &lt;li&gt;Articles should provide a complete or comprehensive description of the topic&lt;/li&gt;
+    &lt;li&gt;Articles should contain insightful analysis or interesting information that is beyond obvious&lt;/li&gt;
+    &lt;li&gt;Is this the sort of page you’d want to bookmark, share with a friend, or recommend?&lt;/li&gt;
+    &lt;li&gt;Avoid including an excessive amount of ads that distract from or
+ interfere with the main content of the article&lt;/li&gt;
+    &lt;li&gt;Articles should have the quality to be included in a printed magazine, encyclopedia or book&lt;/li&gt;
+    &lt;li&gt;Avoid writing articles that are short, unsubstantial, or otherwise lacking in helpful specifics&lt;/li&gt;
+    &lt;li&gt;Produce pages with great care and attention to detail&lt;/li&gt;
+    &lt;li&gt;Make users happy from reading your articles&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;metadata&quot;&gt;Metadata&lt;/h3&gt;
+
+&lt;p&gt;Google does not use the keywords meta tag in web ranking&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2009/09/google-does-not-use-keywords-meta-tag.html&quot;&gt;
+  &lt;p&gt;At least for Google’s web search results currently (September 2009),
+the answer is no. Google doesn’t use the “keywords” meta tag in our
+web search ranking.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Matt Cutts, Search Quality Team &lt;a href=&quot;https://webmasters.googleblog.com/2009/09/google-does-not-use-keywords-meta-tag.html&quot;&gt;2009-09-21&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;mobile&quot;&gt;Mobile&lt;/h3&gt;
+
+&lt;p&gt;Mobile friendly contribute to a positive ranking.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2016/08/helping-users-easily-access-content-on.html&quot;&gt;
+  &lt;p&gt;To keep search results uncluttered, we’ll be removing the label,
+although the mobile-friendly criteria will continue to be a ranking
+signal.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Helping users easily access content on mobile &lt;a href=&quot;https://webmasters.googleblog.com/2016/08/helping-users-easily-access-content-on.html&quot;&gt;2016-08-23&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Mobile friendly websites are boosted on mobile search results.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2015/04/rolling-out-mobile-friendly-update.html&quot;&gt;
+  &lt;p&gt;As we noted earlier this year, today’s the day we begin globally
+rolling out our mobile-friendly update. We’re boosting the ranking
+of mobile-friendly pages on mobile search results. Now searchers can
+more easily find high-quality and relevant results where text is
+readable without tapping or zooming, tap targets are spaced
+appropriately, and the page avoids unplayable content or horizontal
+scrolling.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Rolling out the mobile-friendly update by Takaki Makino and Doantam Phan &lt;a href=&quot;https://webmasters.googleblog.com/2015/04/rolling-out-mobile-friendly-update.html&quot;&gt;2015-04-15&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;social&quot;&gt;Social&lt;/h3&gt;
+
+&lt;p&gt;Google +1 button amount of shares may increase web pages ranking.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2011/03/introducing-1-button.html&quot;&gt;
+  &lt;p&gt;We’ll add +1 buttons to search results and ads on Google.com. We’ll
+also start to look at +1’s as one of the many signals we use to
+determine a page’s relevance and ranking, including social signals
+from other services. For +1’s, as with any new ranking signal, we’ll
+be starting carefully and learning how those signals affect search
+quality over time.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;David Byttow, Software Engineer, +1 Button &lt;a href=&quot;https://webmasters.googleblog.com/2011/03/introducing-1-button.html&quot;&gt;2011-03-08&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;speed&quot;&gt;Speed&lt;/h3&gt;
+
+&lt;p&gt;Site speed is a ranking signal, fast loading websites are preferred.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2010/04/using-site-speed-in-web-search-ranking.html&quot;&gt;
+  &lt;p&gt;You may have heard that here at Google we’re obsessed with speed, in
+our products and on the web. As part of that effort, today we’re
+including a new signal in our search ranking algorithms: site
+speed. Site speed reflects how quickly a website responds to web
+requests.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Amit Singhal, Google Fellow and Matt Cutts, Principal Engineer, Google Search Quality Team &lt;a href=&quot;https://webmasters.googleblog.com/2010/04/using-site-speed-in-web-search-ranking.html&quot;&gt;2010-04-09&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://webmasters.googleblog.com&quot;&gt;http://webmasters.googleblog.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://support.google.com&quot;&gt;http://support.google.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://developers.google.com&quot;&gt;http://developers.google.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 26 Jan 2017 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/essential-seo-tips-and-techniques-from-trusted-sources/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/essential-seo-tips-and-techniques-from-trusted-sources/</guid>
+        
+        <category>ranking,</category>
+        
+        <category>seo</category>
+        
+        
+        <category>docs</category>
+        
+        <category>web</category>
+        
+        <category>seo</category>
+        
+      </item>
     
       <item>
         <title>Find Out If Your Joomla Site Has Been Hacked</title>
@@ -1334,37 +1564,6 @@ get their scripts executed.&lt;/p&gt;
         <category>php</category>
         
         <category>joomla</category>
-        
-      </item>
-    
-      <item>
-        <title>Setting Up A Fresh Linux Server</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;This is a checklist to have in mind all the tasks I find useful to
-make after installing Linux in a computer.&lt;/p&gt;
-
-&lt;p&gt;What steps to take after installing a fresh Linux server, mainly
-oriented to a developer user.&lt;/p&gt;
-
-&lt;h2 id=&quot;checklist&quot;&gt;Checklist&lt;/h2&gt;
-
-&lt;h3 id=&quot;git&quot;&gt;Git&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/showing-untracked-files-in-status-after-creating-new-directories-in-git/&quot;&gt;Show untracked files In Git Status After Creating New Directories In Git&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/make-git-ignore-temporary-files-produced-by-emacs-and-vim-in-all-directories-globally/&quot;&gt;Ignore emacs and vim backup files in git with gitignore globally&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Mon, 09 Jan 2017 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/setting-up-a-fresh-linux-server/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/setting-up-a-fresh-linux-server/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>linux</category>
         
       </item>
     
