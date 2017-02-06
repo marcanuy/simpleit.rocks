@@ -6,9 +6,203 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 26 Jan 2017 23:38:56 +0000</pubDate>
-    <lastBuildDate>Thu, 26 Jan 2017 23:38:56 +0000</lastBuildDate>
+    <pubDate>Mon, 06 Feb 2017 20:07:28 +0000</pubDate>
+    <lastBuildDate>Mon, 06 Feb 2017 20:07:28 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Adding A Twitter Sign In Button To A Website Flow Summary</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Twitter uses &lt;a href=&quot;https://oauth.net/&quot;&gt;OAuth&lt;/a&gt;, an open protocol to allow secure authorization in
+a standard method from applications, to provide authorized access to its API.&lt;/p&gt;
+
+&lt;p&gt;This is a summary of the process described in &lt;a href=&quot;https://dev.twitter.com/oauth&quot;&gt;https://dev.twitter.com/oauth&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;twitter-oauth&quot;&gt;Twitter oauth&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://dev.twitter.com/oauth&quot;&gt;Twitter&lt;/a&gt;
+uses &lt;a href=&quot;https://oauth.net/&quot;&gt;OAuth&lt;/a&gt; 1.0A so users are not required to
+share their passwords with third party applications.&lt;/p&gt;
+
+&lt;p&gt;In OAuth 1.0A there are two forms of authentication:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;User authentication
+    &lt;ul&gt;
+      &lt;li&gt;is a form of authentication where your application makes API requests on end-users behalf&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Application-only authentication
+    &lt;ul&gt;
+      &lt;li&gt;is a form of authentication where your application makes API requests on its own behalf&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;To make authorized calls to Twitter’s APIs, your application must
+first obtain an OAuth access token on behalf of a Twitter user (or,
+you could issue Application-only authenticated requests, when user
+context is not required).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;To have a &lt;a href=&quot;https://dev.twitter.com/web/sign-in/implementing&quot;&gt;sign-in button&lt;/a&gt; tokens are obtained like this:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Obtain a &lt;strong&gt;request token&lt;/strong&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token_secret&lt;/code&gt;)
+also sending an &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_callback&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;obtain a &lt;strong&gt;request token&lt;/strong&gt; by sending a signed message
+to
+&lt;a href=&quot;https://api.twitter.com/oauth/request_token&quot;&gt;https://api.twitter.com/oauth/request_token&lt;/a&gt; with
+an &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_callback&lt;/code&gt; parameter indicating where the user will be
+redirected in &lt;em&gt;Step 2&lt;/em&gt;.&lt;/li&gt;
+      &lt;li&gt;Check that the HTTP status of the response is 200 (success)&lt;/li&gt;
+      &lt;li&gt;parameters returned:
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token&lt;/code&gt; (store for next step)&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token_secret&lt;/code&gt; (store for next step)&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_callback_confirmed&lt;/code&gt; (verify it is true)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Redirect the user to Twitter including the &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token&lt;/code&gt;.
+    &lt;ul&gt;
+      &lt;li&gt;We need to direct the user to Twitter to complete sign in.&lt;/li&gt;
+      &lt;li&gt;Redirect user with a GET
+to
+&lt;a href=&quot;https://dev.twitter.com/oauth/reference/get/oauth/authenticate&quot;&gt;https://api.twitter.com/oauth/authenticate&lt;/a&gt;
+including the &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token&lt;/code&gt; parameter from &lt;em&gt;Step 1&lt;/em&gt;. (Probably
+an HTTP 302 redirect)
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GET oauth Authenticate&lt;/code&gt; method differs from &lt;code class=&quot;highlighter-rouge&quot;&gt;GET oauth / authorize&lt;/code&gt;
+in that if the user has already granted the application
+permission, the redirect will occur without the user having to
+re-approve the application.
+            &lt;ul&gt;
+              &lt;li&gt;&lt;strong&gt;To realize this behavior, you must enable the Use Sign in
+with Twitter setting on your application record.&lt;/strong&gt;
+                &lt;ul&gt;
+                  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Allow this application to be used to Sign in with Twitter&lt;/code&gt;
+checkbox&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;The sign in endpoint can behave in three different ways
+depending on this status:
+            &lt;ul&gt;
+              &lt;li&gt;&lt;strong&gt;Signed in and approved&lt;/strong&gt;
+                &lt;ul&gt;
+                  &lt;li&gt;If the user:
+                    &lt;ul&gt;
+                      &lt;li&gt;is signed in on twitter.com and&lt;/li&gt;
+                      &lt;li&gt;has already approved the calling application&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/li&gt;
+                  &lt;li&gt;then they will be immediately authenticated and returned to
+the callback URL with a valid OAuth &lt;em&gt;request token&lt;/em&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;strong&gt;Signed in but not approved&lt;/strong&gt;
+                &lt;ul&gt;
+                  &lt;li&gt;If the user:
+                    &lt;ul&gt;
+                      &lt;li&gt;is signed in to twitter.com &lt;strong&gt;but&lt;/strong&gt;&lt;/li&gt;
+                      &lt;li&gt;has not approved the calling application&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/li&gt;
+                  &lt;li&gt;then:
+                    &lt;ul&gt;
+                      &lt;li&gt;a request to share access with the calling application
+will be shown&lt;/li&gt;
+                      &lt;li&gt;After accepting the authorization request
+                        &lt;ul&gt;
+                          &lt;li&gt;the user will be redirected to the callback URL with a
+valid OAuth &lt;em&gt;request token&lt;/em&gt;&lt;/li&gt;
+                        &lt;/ul&gt;
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;strong&gt;Not signed in&lt;/strong&gt;
+                &lt;ul&gt;
+                  &lt;li&gt;If the user is not signed in on twitter.com&lt;/li&gt;
+                  &lt;li&gt;then they will be prompted
+                    &lt;ul&gt;
+                      &lt;li&gt;to enter their credentials and&lt;/li&gt;
+                      &lt;li&gt;grant access for the application to access their
+information on the same screen.&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/li&gt;
+                  &lt;li&gt;Once signed in,
+                    &lt;ul&gt;
+                      &lt;li&gt;the user will be returned to the callback URL with a
+valid OAuth &lt;em&gt;request token&lt;/em&gt;.&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;Upon a successful authentication, your &lt;strong&gt;callback_url&lt;/strong&gt; would
+receive a request containing
+            &lt;ul&gt;
+              &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token&lt;/code&gt; and&lt;/li&gt;
+              &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_verifier &lt;/code&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Convert the request token to an access token (Upgrade request token)
+    &lt;ul&gt;
+      &lt;li&gt;To render the &lt;strong&gt;request token&lt;/strong&gt; into a usable &lt;strong&gt;access token&lt;/strong&gt;:
+        &lt;ul&gt;
+          &lt;li&gt;your application must make a request to the &lt;code class=&quot;highlighter-rouge&quot;&gt;POST oauth /
+access_token&lt;/code&gt;
+endpoint
+&lt;a href=&quot;https://dev.twitter.com/oauth/reference/post/oauth/access_token&quot;&gt;https://api.twitter.com/oauth/access_token&lt;/a&gt;,
+containing the &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_verifier&lt;/code&gt; value obtained in step 2&lt;/li&gt;
+          &lt;li&gt;Twitter generates the &lt;strong&gt;access token&lt;/strong&gt;&lt;/li&gt;
+          &lt;li&gt;Twitter response with
+            &lt;ul&gt;
+              &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token&lt;/code&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token_secret&lt;/code&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;screen_name&lt;/code&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;token&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;token secret&lt;/code&gt; should be stored and used for future authenticated requests to the Twitter API.&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://oauth.net/&quot;&gt;https://oauth.net/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dev.twitter.com/oauth/overview/faq&quot;&gt;https://dev.twitter.com/oauth/overview/faq&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 06 Feb 2017 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/adding-a-twitter-sign-in-button-to-a-website-flow-summary/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/adding-a-twitter-sign-in-button-to-a-website-flow-summary/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>apis</category>
+        
+        <category>twitter</category>
+        
+      </item>
     
       <item>
         <title>Essential Seo Tips And Techniques From Trusted Sources</title>
@@ -1445,125 +1639,6 @@ mandatory or optional for the corresponding short option.
         <category>linux</category>
         
         <category>shell</category>
-        
-      </item>
-    
-      <item>
-        <title>Securing The Images Folder In Joomla</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;The images folder is one the most vulnerable Joomla folders, because it allows
-users to upload files to your website. That could lead to serious
-security problems. The file types allowed to upload should be
-restricted to its minimum.&lt;/p&gt;
-
-&lt;p&gt;We will use &lt;code class=&quot;highlighter-rouge&quot;&gt;.htaccess&lt;/code&gt; to use several strategies to address this
-problem.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.htaccess&lt;/code&gt; are simply distributed configuration files, they “provide
-a way to make configuration changes on a per-directory basis”.&lt;/p&gt;
-
-&lt;p&gt;In the images folder we can:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Disable script execution&lt;/li&gt;
-  &lt;li&gt;Select which files you can upload to it&lt;/li&gt;
-  &lt;li&gt;Select which files you can NOT upload to it&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;strategies&quot;&gt;Strategies&lt;/h2&gt;
-
-&lt;h3 id=&quot;disable-script-execution-in-images-folder&quot;&gt;Disable script execution in images folder&lt;/h3&gt;
-
-&lt;p&gt;By default Joomla images directory is located in the &lt;code class=&quot;highlighter-rouge&quot;&gt;/images&lt;/code&gt; folder,
-in this directory we add &lt;code class=&quot;highlighter-rouge&quot;&gt;.htaccess&lt;/code&gt; with the following content:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;AddHandler cgi-script .php .pl .py .jsp .asp .htm .shtml .sh .cgi
-Options -ExecCGI
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;We used
-the Apache &lt;a href=&quot;http://httpd.apache.org/docs/current/mod/core.html#options&quot;&gt;Options Directive&lt;/a&gt; and &lt;a href=&quot;http://httpd.apache.org/docs/current/mod/mod_mime.html#addhandler&quot;&gt;AddHandler Directive&lt;/a&gt;:&lt;/p&gt;
-
-&lt;p&gt;First we tell Apache to treat the files ending with the above
-extensions as &lt;abbr title=&quot;Common Gateway Interface&quot;&gt;CGI&lt;/abbr&gt; scripts, i.e.: be served by &lt;a href=&quot;http://httpd.apache.org/docs/current/mod/mod_cgi.html&quot;&gt;mod_cgi&lt;/a&gt; handler, then we prevent the execution of those &lt;abbr title=&quot;Common Gateway Interface&quot;&gt;CGI&lt;/abbr&gt;
-scripts.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://httpd.apache.org/docs/current/mod/core.html#options&quot;&gt;
-  &lt;p&gt;The Options directive controls which server features are available
-in a particular directory.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Options Directive in &lt;a href=&quot;http://httpd.apache.org/docs/current/mod/core.html#options&quot;&gt;Apache Core Features Manual&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;htaccess-whitelist&quot;&gt;.htaccess whitelist&lt;/h3&gt;
-
-&lt;p&gt;We can specify which file types we allow users to upload to the
-&lt;code class=&quot;highlighter-rouge&quot;&gt;images&lt;/code&gt; folder:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;FilesMatch &quot;.+\.(gif|jpe?g|png|pdf)$&quot;&amp;gt;
-Allow from all
-&amp;lt;/FilesMatch&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;That will allow the above filenames extensions and &lt;strong&gt;block&lt;/strong&gt; every
-other extension from getting into the folder.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://httpd.apache.org/docs/2.4/mod/core.html#filesmatch&quot;&gt;
-  &lt;p&gt;The &lt;FilesMatch&gt; directive limits the scope of the enclosed
-directives by filename, just as the &lt;Files&gt; directive does. However,
-it accepts a regular expression&lt;/Files&gt;&lt;/FilesMatch&gt;&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;FilesMatch&gt; Directive in &lt;a href=&quot;https://httpd.apache.org/docs/2.4/mod/core.html#filesmatch&quot;&gt;Apache docs&lt;/a&gt;&amp;lt;/cite&amp;gt;&amp;lt;/footer&amp;gt;
-&lt;/FilesMatch&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;htaccess-blacklist&quot;&gt;.htaccess blacklist&lt;/h3&gt;
-
-&lt;p&gt;Instead of specifying which files we allow to upload, here we tell
-Apache to deny the upload of files with these extensions:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;FilesMatch &quot;\.(asp|sh|php|php5|pl)$&quot;&amp;gt;
-Deny from all
-&amp;lt;/FilesMatch&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;I found a good strategy to always &lt;strong&gt;disable script execution&lt;/strong&gt; and
-then also select from one of the other two methods, &lt;code class=&quot;highlighter-rouge&quot;&gt;.htaccess&lt;/code&gt; &lt;strong&gt;whitelist&lt;/strong&gt; or
-&lt;strong&gt;blacklist&lt;/strong&gt;, so if the attacker even handle to upload the file it won’t
-get their scripts executed.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Apache docs &lt;a href=&quot;http://httpd.apache.org/docs/current&quot;&gt;http://httpd.apache.org/docs/current&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Apache HTTP Server Tutorial: .htaccess files &lt;a href=&quot;http://httpd.apache.org/docs/current/howto/htaccess.html&quot;&gt;http://httpd.apache.org/docs/current/howto/htaccess.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Apache FilesMatch Directive &lt;a href=&quot;https://httpd.apache.org/docs/2.4/mod/core.html#filesmatch&quot;&gt;https://httpd.apache.org/docs/2.4/mod/core.html#filesmatch&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Security Checklist/You have been hacked or defaced &lt;a href=&quot;https://docs.joomla.org/Security_Checklist/You_have_been_hacked_or_defaced&quot;&gt;https://docs.joomla.org/Security_Checklist/You_have_been_hacked_or_defaced&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Mon, 09 Jan 2017 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/securing-the-images-folder-in-joomla/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/securing-the-images-folder-in-joomla/</guid>
-        
-        <category>joomla,</category>
-        
-        <category>images,</category>
-        
-        <category>htaccess</category>
-        
-        
-        <category>docs</category>
-        
-        <category>php</category>
-        
-        <category>joomla</category>
         
       </item>
     
