@@ -29,15 +29,15 @@
 
   
   <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>How to implement breadcrumbs on a Jekyll site with nested categories - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="How to implement breadcrumbs on a Jekyll site with nested categories" />
-<meta name="description" content="How to generate a list with links for each category when using hierarchical categories in Jekyll" />
-<meta property="og:description" content="How to generate a list with links for each category when using hierarchical categories in Jekyll" />
-<link rel="canonical" href="http://simpleit.rocks/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/" />
-<meta property="og:url" content="http://simpleit.rocks/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/" />
+<title>How To Customize Bootstrap 4 In Jekyll Usage And Installation Guide - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="How To Customize Bootstrap 4 In Jekyll Usage And Installation Guide" />
+<meta name="description" content="Guide to add Bootstrap 4 to Jekyll with focus on having also a css stylesheet using bootstrap variables and custom variables." />
+<meta property="og:description" content="Guide to add Bootstrap 4 to Jekyll with focus on having also a css stylesheet using bootstrap variables and custom variables." />
+<link rel="canonical" href="http://simpleit.rocks/how-to-customize-bootstrap-4-in-jekyll-usage-and-installation-guide/" />
+<meta property="og:url" content="http://simpleit.rocks/how-to-customize-bootstrap-4-in-jekyll-usage-and-installation-guide/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-06-07T00:00:00+00:00" />
+<meta property="article:published_time" content="2017-02-27T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@simpleitrocks" />
 <meta name="twitter:creator" content="@marcanuy" />
@@ -45,10 +45,10 @@
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
-"headline": "How to implement breadcrumbs on a Jekyll site with nested categories",
-"datePublished": "2016-06-07T00:00:00+00:00",
-"description": "How to generate a list with links for each category when using hierarchical categories in Jekyll",
-"url": "http://simpleit.rocks/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/"}</script>
+"headline": "How To Customize Bootstrap 4 In Jekyll Usage And Installation Guide",
+"datePublished": "2017-02-27T00:00:00+00:00",
+"description": "Guide to add Bootstrap 4 to Jekyll with focus on having also a css stylesheet using bootstrap variables and custom variables.",
+"url": "http://simpleit.rocks/how-to-customize-bootstrap-4-in-jekyll-usage-and-installation-guide/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -105,12 +105,8 @@
     
     
     
-    <h1 class="title">How To Implement Breadcrumbs On A Jekyll Site With Nested Categories </h1>
+    <h1 class="title">How To Customize Bootstrap 4 In Jekyll Usage And Installation Guide </h1>
     
-    
-    <p class="lead">
-      <small class="text-muted subtitle">Hierarchical categories and breadcrumbs</small>
-    </p>
     
   </div>
 </div>
@@ -125,7 +121,7 @@
   <div class="post-meta">
     
     <i class="fa fa-calendar" aria-hidden="true"></i>
-    <time datetime="2016-06-07T00:00:00+00:00" itemprop="datePublished">Jun 7, 2016</time>
+    <time datetime="2017-02-27T00:00:00+00:00" itemprop="datePublished">Feb 27, 2017</time>
     
   </div>
   <div>
@@ -271,7 +267,7 @@
        itemprop="item">
     
 
-    <span itemprop="name">How to implement breadcrumbs on a Jekyll site with nested categories</span>
+    <span itemprop="name">How To Customize Bootstrap 4 In Jekyll Usage And Installation Guide</span>
   </span>
   
   <meta itemprop="position" content="6" />
@@ -314,9 +310,16 @@
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#breadcrumb-code">Breadcrumb code</a></li>
-<li class="toc-entry toc-h2"><a href="#posts-layouts">Posts layouts</a></li>
-<li class="toc-entry toc-h2"><a href="#output">Output</a></li>
+<li class="toc-entry toc-h2"><a href="#background">Background</a></li>
+<li class="toc-entry toc-h2"><a href="#installing-bootstrap-4">Installing Bootstrap 4</a></li>
+<li class="toc-entry toc-h2"><a href="#adding-new-sass-load-paths">Adding new Sass load paths</a></li>
+<li class="toc-entry toc-h2"><a href="#add-javascript">Add javascript</a></li>
+<li class="toc-entry toc-h2"><a href="#import-bootstrap-and-use-sass-variables">Import Bootstrap and use Sass variables</a></li>
+<li class="toc-entry toc-h3"><a href="#create-variables-sass-partial">Create variables Sass partial</a></li>
+<li class="toc-entry toc-h3"><a href="#import-variables-from-main-sass-file">Import variables from main Sass file</a></li>
+<li class="toc-entry toc-h2"><a href="#adding-css-to-layout">Adding css to layout</a></li>
+<li class="toc-entry toc-h2"><a href="#conclusion">Conclusion</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
       </div>
       <div>
@@ -327,10 +330,9 @@
       <div>
   <a class="twitter-share-button"
      href="https://twitter.com/share"
-     data-url="http://simpleit.rocks/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/"
+     data-url="http://simpleit.rocks/how-to-customize-bootstrap-4-in-jekyll-usage-and-installation-guide/"
      data-via=""
-     data-text="How to generate a list with links for each category when using hierarchical categories in Jekyll
-"
+     data-text="Guide to add Bootstrap 4 to Jekyll with focus on having also a css stylesheet using bootstrap variables and custom variables."
      data-related="marcanuy,{"username"=>"simpleitrocks"}"
      data-count="vertical">
     Tweet
@@ -362,7 +364,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="http://simpleit.rocks/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="http://simpleit.rocks/how-to-customize-bootstrap-4-in-jekyll-usage-and-installation-guide/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -379,8 +381,7 @@
 
     
 	<p class="lead">
-	  How to generate a list with links for each category when using hierarchical categories in Jekyll
-
+	  Guide to add Bootstrap 4 to Jekyll with focus on having also a css stylesheet using bootstrap variables and custom variables.
 	</p>
     
 
@@ -404,107 +405,252 @@
 
     <h2 id="overview">Overview</h2>
 
-<p>One of the ways to structure content in a Jekyll environment is to put
-<em>posts</em> in subdirectories, where each subdirectory becomes a <em>category</em>
-of the <em>post</em>.</p>
+<p>The real power of Bootstrap is in its customizations, it is not
+just adding Bootstrap’s javascript and stylesheet to use its
+components, we need to change and use its variables in our style
+sheets also.</p>
 
-<p>For example, the post <code class="highlighter-rouge">2016-06-08-my_title.md</code> in this directory structure
-<code class="highlighter-rouge">/docs/science/_posts/2016-06-08-my_title.md</code> automatically gets the 
-categories <code class="highlighter-rouge">docs</code> and <code class="highlighter-rouge">science</code>.</p>
+<p>This is a guide to make it easy to use Bootstrap 4 with a Jekyll
+website and make it easy to customize it using its variables and
+defining new ones.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>.
-└── docs
-    ├── index.md
-    └── science
-        ├── index.md
-        └── _posts
-            └── 2016-06-08-my_title.md
+<h2 id="background">Background</h2>
+
+<p>Jekyll provides built-in support for <em>syntactically awesome
+stylesheets</em> (<a href="http://sass-lang.com/">Sass</a>).</p>
+
+<p>Sass is a <abbr title="Cascading Style Sheets">CSS</abbr> extension language, it provides:</p>
+
+<ul>
+  <li>Variables</li>
+  <li>Nesting elements
+    <ul>
+      <li>Loops</li>
+      <li>Arguments</li>
+    </ul>
+  </li>
+  <li>Selector inheritance</li>
+</ul>
+
+<p>It consists of two syntaxes:</p>
+
+<ul>
+  <li>the original, indented, syntax uses the <code class="highlighter-rouge">.sass</code> extension.</li>
+  <li>the newer syntax, more similar to <abbr title="Cascading Style Sheets">CSS</abbr>, uses <code class="highlighter-rouge">.scss</code> extension.</li>
+</ul>
+
+<p>To make Jekyll process these SASS files, we need to create files with
+the proper extension name (<code class="highlighter-rouge">.scss</code> or <code class="highlighter-rouge">.sass</code>) and start the file
+contents with two lines of triple dashes.</p>
+
+<p>A file named <code class="highlighter-rouge">css/styles.scss</code> will be rendered like <code class="highlighter-rouge">css/styles.css</code>.</p>
+
+<p>As Bootstrap switched from <code class="highlighter-rouge">Less</code> to <code class="highlighter-rouge">Sass</code><sup id="fnref:bs-blog"><a href="#fn:bs-blog" class="footnote">1</a></sup> now we can use
+it directly without relying in parallel projects like <a href="https://github.com/twbs/bootstrap-sass">bootstrap-sass</a>
+used with Bootstrap 3.</p>
+
+<h2 id="installing-bootstrap-4">Installing Bootstrap 4</h2>
+
+<p>We will be using the package manager <a href="https://bower.io">Bower</a> to install Bootstrap. At
+our Jekyll website root folder we use the <kbd>bower install</kbd>
+command. In this case I will be using <code class="highlighter-rouge">bootstrap#v4.0.0-alpha.6</code> but
+you can find the latest one
+at
+<a href="https://v4-alpha.getbootstrap.com/getting-started/download/#bower">https://v4-alpha.getbootstrap.com/getting-started/download/#bower</a>.</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>bower install bootstrap#v4.0.0-alpha.6</kbd>
+bower bootstrap#v4.0.0-alpha.6  cached https://github.com/twbs/bootstrap.git#4.0.0-alpha.6
+bower bootstrap#v4.0.0-alpha.6         validate 4.0.0-alpha.6 against https://github.com/twbs/bootstrap.git#v4.0.0-alpha.6
+bower jquery#&gt;=1.9.1                     cached https://github.com/jquery/jquery-dist.git#3.1.1
+bower jquery#&gt;=1.9.1                   validate 3.1.1 against https://github.com/jquery/jquery-dist.git#&gt;=1.9.1
+bower tether#^1.4.0                      cached https://github.com/HubSpot/tether.git#1.4.0
+bower tether#^1.4.0                    validate 1.4.0 against https://github.com/HubSpot/tether.git#^1.4.0
+bower bootstrap#v4.0.0-alpha.6          install bootstrap#4.0.0-alpha.6
+bower jquery#&gt;=1.9.1                    install jquery#3.1.1
+bower tether#^1.4.0                     install tether#1.4.0
+
+bootstrap#4.0.0-alpha.6 bower_components/bootstrap
+├── jquery#3.1.1
+└── tether#1.4.0
+
+jquery#3.1.1 bower_components/jquery
+
+tether#1.4.0 bower_components/tether
+</samp>
+</pre>
+
+<h2 id="adding-new-sass-load-paths">Adding new Sass load paths</h2>
+
+<p>We need to add this new path so Jekyll can process its Sass
+files.</p>
+
+<p>Jekyll will look at the folder specified by the <code class="highlighter-rouge">sass_dir</code>
+configuration key (<code class="highlighter-rouge">/_sass</code> by default), but it also supports extending
+it, so it will process other folders too.</p>
+
+<p>Instead of setting a custom sass folder with:</p>
+
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">sass</span><span class="pi">:</span>
+    <span class="s">sass_dir</span><span class="pi">:</span> <span class="s">_sass</span>
 </code></pre>
 </div>
 
-<p>Then a <em>breadcrumb</em> included in each post/category layout, can automatically
-generate a link to each path of the structure</p>
+<p>we use the <code class="highlighter-rouge">load-paths</code><sup id="fnref:load-paths"><a href="#fn:load-paths" class="footnote">2</a></sup> key in <code class="highlighter-rouge">_config.yml</code> to add more paths:</p>
 
-<h2 id="breadcrumb-code">Breadcrumb code</h2>
-
-<p>The <em>breadcrumbs</em> code should be placed at <code class="highlighter-rouge">/_includes/breadcrumbs.html</code>:</p>
-
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>    <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">categories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">path</span><span class="w"> </span><span class="ow">contains</span><span class="w"> </span><span class="s2">"posts"</span><span class="w"> </span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="nt">comment</span><span class="w"> </span><span class="p">%}</span><span class="c"> posts are like /docs/python/_posts/2016-06-06-foobar.md </span><span class="p">{%</span><span class="w"> </span><span class="nt">endcomment</span><span class="w"> </span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">categories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">path</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">split</span><span class="p">:</span><span class="s2">"/"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">pop</span><span class="w"> </span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="nt">comment</span><span class="w"> </span><span class="p">%}</span><span class="c"> pages are like /docs/python/index.md </span><span class="p">{%</span><span class="w"> </span><span class="nt">endcomment</span><span class="w"> </span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">categories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">path</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">split</span><span class="p">:</span><span class="s2">"/"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">pop</span><span class="w">  </span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">route</span><span class="o">=</span><span class="s2">""</span><span class="w"> </span><span class="p">%}</span>
-	
-    &lt;a href="/"&gt;Home&lt;/a&gt;
-    <span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>category<span class="w"> </span>in<span class="w"> </span>categories<span class="w"> </span><span class="p">%}</span>
-    &lt;span class="prompt"&gt;&gt;&gt;&lt;/span&gt;
-    <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">route</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">route</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">append</span><span class="p">:</span><span class="w"> </span><span class="s1">'/'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">append</span><span class="p">:</span><span class="w"> </span>category<span class="w"> </span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">forloop</span><span class="p">.</span><span class="nv">last</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">category</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"_posts"</span><span class="w"> </span><span class="p">%}</span>
-    <span class="p">{{</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="p">}}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="kr">elsif</span><span class="w"> </span><span class="nv">forloop</span><span class="p">.</span><span class="nv">last</span><span class="w"> </span><span class="p">%}</span>
-    <span class="p">{{</span><span class="w"> </span><span class="nv">category</span><span class="w"> </span><span class="p">}}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">%}</span>
-    &lt;a href="<span class="p">{{</span><span class="w"> </span><span class="nv">route</span><span class="w"> </span><span class="p">}}</span>"&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">category</span><span class="w"> </span><span class="p">}}</span>&lt;/a&gt; 
-    <span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">sass</span><span class="pi">:</span>
+    <span class="s">load_paths</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">_sass</span>
+        <span class="pi">-</span> <span class="s">bower_components</span>
 </code></pre>
 </div>
 
-<h2 id="posts-layouts">Posts layouts</h2>
+<p class="alert alert-danger"><code class="highlighter-rouge">load_paths</code> only works in safe mode<sup id="fnref:safe-mode"><a href="#fn:safe-mode" class="footnote">3</a></sup></p>
 
-<p>Each layout used in category pages and posts should <em>include</em>
-the <em>breadcrumbs.html</em> code, with the current <code class="highlighter-rouge">page path</code> and <code class="highlighter-rouge">title</code>
-parameters.</p>
+<h2 id="add-javascript">Add javascript</h2>
 
-<p>In <code class="highlighter-rouge">/_layouts/post.html</code>:</p>
+<p>Add Bootstrap core JavaScript, JQuery and Tether<sup id="fnref:tether"><a href="#fn:tether" class="footnote">4</a></sup> (already installed when
+installing Bootstrap) at the end of the document so the pages load
+faster, just before the <code class="highlighter-rouge">&lt;/body&gt;</code> HTML tag.</p>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>..
-<span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span><span class="na">breadcrumbs</span><span class="p">.</span><span class="na">html</span><span class="w"> </span><span class="na">path</span><span class="o">=</span><span class="nv">page</span><span class="p">.</span><span class="nv">path</span><span class="w"> </span><span class="na">title</span><span class="o">=</span><span class="nv">page</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="p">%}</span>
-..
+<p>We add them in the default layout at <code class="highlighter-rouge">_layouts/default.html</code> or in
+<code class="highlighter-rouge">footer.html</code> in the <code class="highlighter-rouge">_includes</code> folder:</p>
+
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>&lt;html&gt;
+&lt;body&gt;
+...
+&lt;script src="/bower_components/jquery/dist/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="/bower_components/tether/dist/js/tether.min.js"&gt;&lt;/script&gt;
+&lt;script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
 </div>
 
-<h2 id="output">Output</h2>
+<h2 id="import-bootstrap-and-use-sass-variables">Import Bootstrap and use Sass variables</h2>
 
-<p>The previous scheme would generate the following <em>breadcrumb</em> for each case.</p>
+<h3 id="create-variables-sass-partial">Create variables Sass partial</h3>
+<p>To be able to define new variables and reuse the ones defined in
+Bootstrap, we create a new partial Sass file <code class="highlighter-rouge">_sass/_variables.scss</code>.</p>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>URL</th>
-      <th style="text-align: left">Generated Breadcrumb</th>
-      <th style="text-align: left">Served Filename</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>/</td>
-      <td style="text-align: left">home</td>
-      <td style="text-align: left">index.html</td>
-    </tr>
-    <tr>
-      <td>/docs</td>
-      <td style="text-align: left">home &gt; docs</td>
-      <td style="text-align: left">docs/index.md</td>
-    </tr>
-    <tr>
-      <td>/docs/science</td>
-      <td style="text-align: left">home &gt; docs &gt; science</td>
-      <td style="text-align: left">docs/science/index.md</td>
-    </tr>
-    <tr>
-      <td>/docs/science/my_title *</td>
-      <td style="text-align: left">home &gt; docs &gt; science &gt; my title</td>
-      <td style="text-align: left">docs/science/_posts/2016-06-08-my_title.md</td>
-    </tr>
-  </tbody>
-</table>
+<p>We define our variables, overwrite the ones we want from Bootstrap
+<code class="highlighter-rouge">bower_components/bootstrap/scss/_variables.scss</code> and then we import
+the Bootstrap variables.</p>
 
-<p class="alert alert-warning" role="alert">(*) Using <em>titles</em> without <em>dates</em> in <code class="highlighter-rouge">_config.yml</code> with <code class="highlighter-rouge">permalink: /:title/</code></p>
+<p>In <code class="highlighter-rouge">_sass/_variables.scss</code>:</p>
+
+<div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="nv">$custom-font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">"../bower_components/bootstrap/scss/variables"</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<h3 id="import-variables-from-main-sass-file">Import variables from main Sass file</h3>
+
+<p>After we have our variables, we import them from our main style sheet:</p>
+
+<p>In <code class="highlighter-rouge">css/styles.scss</code> we import them and then work with our styles,
+using the above variables:</p>
+
+<div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="nt">---</span>
+<span class="nt">---</span>
+
+<span class="o">@</span><span class="nt">import</span> <span class="s2">"variables"</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">"bootstrap/scss/bootstrap"</span><span class="p">;</span>
+
+<span class="nc">.content</span> <span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="nv">$custom-font-size</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p class="alert alert-danger">Don’t miss the triple dashes at the beginning of the file to ensure
+Jekyll reads the file to be transformed into <abbr title="Cascading Style Sheets">CSS</abbr> later</p>
+
+<h2 id="adding-css-to-layout">Adding css to layout</h2>
+
+<p>After we have our <code class="highlighter-rouge">css/styles.scss</code>, Jekyll will process it and
+generate the final <abbr title="Cascading Style Sheets">CSS</abbr> file: <code class="highlighter-rouge">css/style.css</code>.</p>
+
+<p>That is the path we need to add to our layout, in the <code class="highlighter-rouge">&lt;head&gt;</code>
+section of <code class="highlighter-rouge">_layouts/default.html</code> we include the css: <code class="highlighter-rouge">&lt;link
+rel="stylesheet" href="/css/main.css"&gt;</code></p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="c">&lt;!-- site css --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/css/styles.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>When we will our site, Jekyll will process the <code class="highlighter-rouge">.scss</code> files with our
+custom variables and we will have them in our <code class="highlighter-rouge">css/styles.css</code>. In
+this example its content starts with the Bootstrap code and ends with
+our custom <code class="highlighter-rouge">_styles.scss</code> processed, looking like:</p>
+
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="c">/*!
+ * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
+ * Copyright 2011-2017 The Bootstrap Authors
+ * Copyright 2011-2017 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */</span>
+<span class="c">/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */</span>
+<span class="nt">html</span> <span class="p">{</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="nb">sans-serif</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">1.15</span><span class="p">;</span>
+  <span class="nl">-ms-text-size-adjust</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">-webkit-text-size-adjust</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="o">...</span>
+
+<span class="nc">.content</span> <span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span> 
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>Sass (stylesheet language) <a href="https://en.wikipedia.org/wiki/Sass_(stylesheet_language)">https://en.wikipedia.org/wiki/Sass_(stylesheet_language)</a></li>
+  <li>Sass project website <a href="http://sass-lang.com/">http://sass-lang.com/</a></li>
+  <li>Bootstrap 4 customization <a href="http://v4-alpha.getbootstrap.com/getting-started/options/">http://v4-alpha.getbootstrap.com/getting-started/options/</a></li>
+</ul>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:bs-blog">
+
+      <p><a href="http://blog.getbootstrap.com/2015/08/19/bootstrap-4-alpha/">http://blog.getbootstrap.com/2015/08/19/bootstrap-4-alpha/</a></p>
+
+      <blockquote>
+        <p>Moved from Less to Sass. Bootstrap now compiles faster than ever
+thanks to Libsass, and we join an increasingly large community of
+Sass developers.</p>
+      </blockquote>
+      <p><a href="#fnref:bs-blog" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:load-paths">
+      <p><a href="https://github.com/jekyll/jekyll/issues/3366">Issue</a> referring the code at <a href="https://github.com/jekyll/jekyll-sass-converter/blob/master/lib/jekyll/converters/scss.rb#L77">https://github.com/jekyll/jekyll-sass-converter/blob/master/lib/jekyll/converters/scss.rb#L77</a>&nbsp;<a href="#fnref:load-paths" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:safe-mode">
+
+      <p>Safe mode disables custom plugins, and ignores symbolic links.&nbsp;<a href="#fnref:safe-mode" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:tether">
+
+      <p><a href="http://github.hubspot.com/tether/">Tether</a> is a small,
+focused JavaScript library for defining and managing the position of
+user interface (UI) elements in relation to one another on a web page
+used by Bootstrap&nbsp;<a href="#fnref:tether" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 
 
     
@@ -557,7 +703,7 @@ parameters.</p>
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/how-to-customize-bootstrap-4-in-jekyll-usage-and-installation-guide/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -645,7 +791,7 @@ parameters.</p>
     
     
     
-      <a class="list-group-item list-group-item-action active" href="/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/">
+      <a class="list-group-item list-group-item-action " href="/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/">
       How to implement breadcrumbs on a Jekyll site with nested categories
     </a>
     
@@ -967,7 +1113,7 @@ parameters.</p>
     
     
     
-      <a class="list-group-item list-group-item-action " href="/how-to-customize-bootstrap-4-in-jekyll-usage-and-installation-guide/">
+      <a class="list-group-item list-group-item-action active" href="/how-to-customize-bootstrap-4-in-jekyll-usage-and-installation-guide/">
       How To Customize Bootstrap 4 In Jekyll Usage And Installation Guide
     </a>
     
