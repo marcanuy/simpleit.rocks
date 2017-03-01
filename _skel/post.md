@@ -19,7 +19,18 @@ weight: # order of a post relative to the other posts in a category
 
 ## Summary
 
+This is some text.[^1]. Other text.[^footnote].
+
 ## References
+
+[^1]: Some *crazy* footnote definition.
+
+[^footnote]:
+	> Blockquotes can be in a footnote.
+
+		as well as code blocks
+
+	or, naturally, simple paragraphs.
 
 Simple link: [Posts]({% link docs/ruby/jekyll/_posts/2016-06-12-understanding-jekyll-posts.md %})
 
