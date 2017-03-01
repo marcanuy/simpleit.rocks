@@ -15,8 +15,8 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "bootstrap#v4.0.0-alpha.5",
-    "mermaid": "^6.0.0",
-    "font-awesome": "fontawesome#^4.6.3"
+    "bootstrap": "bootstrap#v4.0.0-alpha.6",
+    "mermaid": "^7.0.0",
+    "font-awesome": "^4.7.0"
   }
 }
