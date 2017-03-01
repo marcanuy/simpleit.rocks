@@ -1,5 +1,5 @@
 ---
-description: Guide to add Bootstrap 4 to Jekyll with focus on having also a CSS stylesheet using bootstrap variables and also custom variables.
+description: Guide to add Bootstrap 4 to Jekyll with focus on having also a CSS stylesheet using its variables and custom ones.
 ---
 
 ## Overview
