@@ -1,0 +1,244 @@
+---
+description: Guide to add Bootstrap 4 to Jekyll with focus on having also a CSS stylesheet using bootstrap variables and also custom variables.
+---
+
+## Overview
+
+The real power of Bootstrap is to use and redefine its variables in
+our custom designs, that means, we should not simply add Bootstrap's
+javascript and CSS stylesheets to use its components, we need to
+change them and not making all the web look boringly the same.
+
+This is a guide to make it easy to use Bootstrap 4 with a Jekyll
+website and make it easy to customize it using its variables and
+defining new ones.
+
+## Background
+
+Jekyll provides built-in support for *syntactically awesome
+stylesheets* ([Sass]). 
+
+Sass is a CSS extension language, it provides:
+
+- Variables
+- Nesting elements
+  - Loops
+  - Arguments
+- Selector inheritance
+
+It consists of two syntaxes:
+
+- the original, indented, syntax uses the `.sass` extension.
+- the newer syntax, more similar to CSS, uses `.scss` extension.
+
+To make Jekyll process these SASS files, we need to create files with
+the proper extension name (`.scss` or `.sass`) and start the file
+contents with two lines of triple dashes.
+
+A file named `css/styles.scss` will be rendered like `css/styles.css`.
+
+As Bootstrap switched from `Less` to `Sass`[^bs-blog] now we can use
+it directly without relying in parallel projects like [bootstrap-sass](https://github.com/twbs/bootstrap-sass)
+used with Bootstrap 3.
+
+## Installing Bootstrap 4
+
+We will be using the package manager [Bower] to install Bootstrap. At
+our Jekyll website root folder we use the <kbd>bower install</kbd>
+command. In this case I will be using `bootstrap#v4.0.0-alpha.6` but
+you can find the latest one
+at
+<https://v4-alpha.getbootstrap.com/getting-started/download/#bower>.
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>bower install bootstrap#v4.0.0-alpha.6</kbd>
+bower bootstrap#v4.0.0-alpha.6  cached https://github.com/twbs/bootstrap.git#4.0.0-alpha.6
+bower bootstrap#v4.0.0-alpha.6         validate 4.0.0-alpha.6 against https://github.com/twbs/bootstrap.git#v4.0.0-alpha.6
+bower jquery#>=1.9.1                     cached https://github.com/jquery/jquery-dist.git#3.1.1
+bower jquery#>=1.9.1                   validate 3.1.1 against https://github.com/jquery/jquery-dist.git#>=1.9.1
+bower tether#^1.4.0                      cached https://github.com/HubSpot/tether.git#1.4.0
+bower tether#^1.4.0                    validate 1.4.0 against https://github.com/HubSpot/tether.git#^1.4.0
+bower bootstrap#v4.0.0-alpha.6          install bootstrap#4.0.0-alpha.6
+bower jquery#>=1.9.1                    install jquery#3.1.1
+bower tether#^1.4.0                     install tether#1.4.0
+
+bootstrap#4.0.0-alpha.6 bower_components/bootstrap
+├── jquery#3.1.1
+└── tether#1.4.0
+
+jquery#3.1.1 bower_components/jquery
+
+tether#1.4.0 bower_components/tether
+</samp>
+</pre>
+
+## Adding new Sass load paths
+
+We need to add this new path so Jekyll can process its Sass
+files. 
+
+Jekyll will look at the folder specified by the `sass_dir`
+configuration key (`/_sass` by default), but it also supports extending
+it, so it will process other folders too.
+
+Instead of setting a custom sass folder with:
+
+~~~ yaml
+sass:
+    sass_dir: _sass
+~~~
+
+we use the `load-paths`[^load-paths] key in `_config.yml` to add more paths:
+
+~~~ yaml
+sass:
+    load_paths:
+        - _sass
+        - bower_components
+~~~
+
+`load_paths` only works in safe mode[^safe-mode]
+{: .alert .alert-danger}
+
+## Add javascript
+
+Add Bootstrap core JavaScript, JQuery and Tether[^tether] (already installed when
+installing Bootstrap) at the end of the document so the pages load
+faster, just before the `</body>` HTML tag.
+
+We add them in the default layout at `_layouts/default.html` or in
+`footer.html` in the `_includes` folder:
+
+~~~ liquid
+<html>
+<body>
+...
+<script src="{{site.baseurl}}/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="{{site.baseurl}}/bower_components/tether/dist/js/tether.min.js"></script>
+<script src="{{site.baseurl}}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
+~~~
+
+## Import Bootstrap and use Sass variables
+
+### Create variables Sass partial
+
+To be able to define new variables and reuse the ones defined in
+Bootstrap, we create a new partial Sass file `_sass/_variables.scss`.
+
+1. We define our variables
+2. Overwrite the ones we want from Bootstrap
+`bower_components/bootstrap/scss/_variables.scss` and then 
+3. we import the Bootstrap variables.
+
+When Scss process each file, it only defines the variables that do not
+exists yet, so we can overwrite Bootstrap's variables defining them
+before importing them.
+{: .alert .alert-info }
+
+In `_sass/_variables.scss`:
+
+~~~ scss
+$custom-font-size: 20px;
+@import "../bower_components/bootstrap/scss/variables";
+~~~
+
+### Import variables from main Sass file
+
+After we have our variables, we import them from our main style sheet:
+
+In `css/styles.scss` we import them and then work with our styles,
+using the above variables:
+
+~~~ scss
+---
+---
+
+@import "variables";
+@import "bootstrap/scss/bootstrap";
+
+.content {
+  font-size: $custom-font-size;
+}
+~~~
+
+Don't miss the triple dashes at the beginning of the file to ensure
+Jekyll reads the file to be transformed into CSS later
+{: .alert .alert-danger}
+
+## Add css to layout
+
+After we have our `css/styles.scss`, Jekyll will process it and
+generate the final CSS file: `css/style.css`.
+
+That is the path we need to add to our layout, in the `<head>`
+section of `_layouts/default.html` we include the css: `<link
+rel="stylesheet" href="/css/main.css">`
+
+~~~html
+<html>
+<head>
+<!-- site css -->
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+</html>
+~~~
+
+## Conclusion
+
+When we will our site, Jekyll will process the `.scss` files with our
+custom variables and we will have them in our `css/styles.css`. In
+this example its content starts with the Bootstrap code and ends with
+our custom `_styles.scss` processed, looking like:
+
+~~~ css
+/*!
+ * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
+ * Copyright 2011-2017 The Bootstrap Authors
+ * Copyright 2011-2017 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; }
+
+...
+
+.content {
+  font-size: 20px; 
+}
+
+~~~
+
+## References
+
+- Sass (stylesheet language) <https://en.wikipedia.org/wiki/Sass_(stylesheet_language)>
+- Sass project website <http://sass-lang.com/>
+- Bootstrap 4 customization <http://v4-alpha.getbootstrap.com/getting-started/options/>
+
+[Sass]: http://sass-lang.com/
+[Bower]: https://bower.io
+[^load-paths]: [Issue](https://github.com/jekyll/jekyll/issues/3366) referring the code at <https://github.com/jekyll/jekyll-sass-converter/blob/master/lib/jekyll/converters/scss.rb#L77>
+[^tether]:
+    [Tether](http://github.hubspot.com/tether/) is a small,
+    focused JavaScript library for defining and managing the position of
+    user interface (UI) elements in relation to one another on a web page
+    used by Bootstrap
+	
+*[CSS]: Cascading Style Sheets
+
+[^bs-blog]:
+    <http://blog.getbootstrap.com/2015/08/19/bootstrap-4-alpha/>
+	
+	> Moved from Less to Sass. Bootstrap now compiles faster than ever
+    > thanks to Libsass, and we join an increasingly large community of
+    > Sass developers.
+
+[^safe-mode]:
+    Safe mode disables custom plugins, and ignores symbolic links.
+
