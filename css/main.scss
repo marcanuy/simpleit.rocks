@@ -3,54 +3,127 @@
 ---
 @charset "utf-8";
 
+@import
+        "variables",
+        "syntax-highlighting",
+        "bootstrap/scss/bootstrap.scss"
+;
 
+.site-content {
+    padding-bottom: 3rem;
+}
 
-// Our variables
-$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
-$base-font-weight: 400;
-$small-font-size:  $base-font-size * 0.875;
-$base-line-height: 1.5;
+.site-sidebar {
+    border-right: 1px solid #e4e4e4;
+}
 
-$spacing-unit:     30px;
+.site-footer {
+    background-color: #fbfbf7;
+    border-top: 1px solid #e4e4e4;
+    .footer-nav {
+	list-style-type: none;
 
-$text-color:       #111;
-$background-color: #fdfdfd;
-$brand-color:      #2a7ae2;
+	li .fa {
+	    padding-right: 5px;
+	}
+    }
+}
 
-$grey-color:       #828282;
-$grey-color-light: lighten($grey-color, 40%);
-$grey-color-dark:  darken($grey-color, 25%);
+.site-header {
+    .bg-inverse {
+	h1 {
+	    color: $gray-lighter;
+	}
+    }
+}
 
-// Width of the content area
-$content-width:    800px;
+#error-page #search-box {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    min-width: 300px;
+}
 
-$on-palm:          600px;
-$on-laptop:        800px;
-
-
-
-// Use media queries like this:
-// @include media-query($on-palm) {
-//     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
-//     }
-// }
-@mixin media-query($device) {
-    @media screen and (max-width: $device) {
-        @content;
+#error-page {
+    .gsc-input-box {
+	height: auto;
+    }
+    
+    .gsc-search-button{
+	height: auto;
+	width: auto;
     }
 }
 
 
+.mermaid .edgeLabel {
+    color: $gray-dark;
+}
 
-// Import partials from `sass_dir` (defaults to `_sass`)
-/* @import */
-/*         "base", */
-/*         "layout", */
-/*         "syntax-highlighting" */
-/* ; */
-@import
-        "syntax-highlighting"
-;
+#search-page {
+    margin: 5% auto;
+
+    .gsc-input-box {
+	height: auto;
+    }
+    
+    .gsc-search-button{
+	height: auto;
+	width: auto;
+    }   
+}
+
+.share-buttons {
+    li {
+	vertical-align: top;
+    }
+}
+
+.shell {
+
+    background-color: $kbd-bg;
+    padding: 0.5rem 1rem;
+    border-radius: 0.2rem;
+    box-shadow: inset 0 -0.1rem 0 rgba(0, 0, 0, 0.25);
+    color: $kbd-color;
+    
+    .shell-prompt {
+	color: #0c0;
+	font-weight: bold;
+    }
+
+    .shell-comment {
+	color: grey;
+    }
+
+    kbd {
+	box-shadow: none;
+	font-weight: bold;
+    }
+
+}
+
+.section-nav {
+
+    .toc-h3 {
+	margin-left: 1em;
+	font-size: 0.9em;
+    }
+
+    .toc-h4 {
+	margin-left: 2em;
+	font-size: 0.8em;
+    }
+
+}
+
+.author-footer {
+    border-top: 1px solid #eee;
+    margin: 2em auto;
+    padding-top: 2em;
+    
+    img {
+	border: 1px solid #eee;
+	padding: 2px;
+    }
+}

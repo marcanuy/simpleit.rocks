@@ -26,7 +26,7 @@
 
       <div class="col-xs-6">
 	<div class="text-xs-right text-muted">
-          <p>{{ site.description }}</p>
+            <p>{{ site.description }}</p>
 	</div>
       </div>
     </div>
@@ -35,3 +35,7 @@
 </footer>
 
 {% include license.html %}
+
+<script src="{{'/bower_components/jquery/dist/jquery.min.js' | prepend: site.baseurl}}"></script>
+<script src="{{'/bower_components/tether/dist/js/tether.min.js' | prepend: site.baseurl}}"></script>
+<script src="{{'/bower_components/bootstrap/dist/js/bootstrap.min.js' | prepend: site.baseurl}}"></script>
