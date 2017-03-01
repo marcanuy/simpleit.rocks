@@ -83,7 +83,7 @@
   <script>mermaid.initialize({startOnLoad:true});</script>
   <!-- endmermaid -->
 
-  <div class="text-xs-center mb-2">
+  <div class="text-xs-center mb-2 text-center">
 
     <a class="display-1" href="/" style="text-decoration: none">Simple IT 🤘 Rocks</a>
 
@@ -916,44 +916,38 @@ using the common Jekyll output directory <code class="highlighter-rouge">_site</
 
     </div>
 
-    <footer class="site-footer py-3">
+    <footer class="container-fluid site-footer py-3">
+    <div class="container">
+	<div class="row justify-content-between align-items-center">
+	    <div class="col-4">
+		<h2 class="footer-heading text-muted">Simple IT 🤘 Rocks</h2>
+		<ul class="footer-nav px-0">
+		    <li>
+			<i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by <a href="http://marcanuy.com" rel="author">Marcelo Canina</a>
+		    </li>
+		    
+		    <li>
+			<i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/simpleitrocks"><span class="username">simpleitrocks</span></a>
 
-  <div class="container">
-
-    <h2 class="footer-heading text-muted">Simple IT 🤘 Rocks</h2>
-
-    <div class="row">
-      <div class="col-xs-6">
-        <ul class="footer-nav">
-          <li>
-	      <i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by <a href="http://marcanuy.com" rel="author">Marcelo Canina</a>
-	  </li>
-	  
-          <li>
-            <i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/simpleitrocks"><span class="username">simpleitrocks</span></a>
-
-          </li>
-          
-	  <li>
-	    <i class="fa fa-user" aria-hidden="true"></i><a href="/about">About</a>
-	  </li>
-	  <li>
-	    <i class="fa fa-search" aria-hidden="true"></i><a href="/search">Search</a>
-	  </li>
-        </ul>
-      </div>
-
-      <div class="col-xs-6">
-	<div class="text-xs-right text-muted">
-            <p>Clutter-free software concepts. Written on the go.
+		    </li>
+		    
+		    <li>
+			<i class="fa fa-user" aria-hidden="true"></i><a href="/about">About</a>
+		    </li>
+		    <li>
+			<i class="fa fa-search" aria-hidden="true"></i><a href="/search">Search</a>
+		    </li>
+		</ul>
+	    </div>
+	    <div class="col-4">
+		<div class="text-xs-right text-muted">
+		    <p>Clutter-free software concepts. Written on the go.
 </p>
+		</div>
+	    </div>
 	</div>
-      </div>
     </div>
-
-  </div>
 </footer>
-
 <div class="si-license bg-inverse">
   <div class="text-muted text-sm-center">
     <small>
@@ -964,7 +958,6 @@ using the common Jekyll output directory <code class="highlighter-rouge">_site</
     </small>
   </div>
 </div>
-
 
 <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/bower_components/tether/dist/js/tether.min.js"></script>
