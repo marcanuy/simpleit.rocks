@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 01 Mar 2017 05:13:27 +0000</pubDate>
-    <lastBuildDate>Wed, 01 Mar 2017 05:13:27 +0000</lastBuildDate>
+    <pubDate>Wed, 01 Mar 2017 22:41:39 +0000</pubDate>
+    <lastBuildDate>Wed, 01 Mar 2017 22:41:39 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -129,9 +129,9 @@ faster, just before the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;
 &lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;html&amp;gt;
 &amp;lt;body&amp;gt;
 ...
-&amp;lt;script src=&quot;/bower_components/jquery/dist/jquery.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;script src=&quot;/bower_components/tether/dist/js/tether.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;script src=&quot;/bower_components/bootstrap/dist/js/bootstrap.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/bower_components/jquery/dist/jquery.min.js'&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;prepend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.baseurl&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/bower_components/tether/dist/js/tether.min.js'&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;prepend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.baseurl&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/bower_components/bootstrap/dist/js/bootstrap.min.js'&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;prepend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.baseurl&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;&amp;lt;/script&amp;gt;
 &amp;lt;/body&amp;gt;
 &amp;lt;/html&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -200,6 +200,22 @@ rel=&quot;stylesheet&quot; href=&quot;/css/main.css&quot;&amp;gt;&lt;/code&gt;&l
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;all-together&quot;&gt;All together&lt;/h2&gt;
+
+&lt;p&gt;This is the basic flow Jekyll follows processing these Scss files to
+generate &lt;code class=&quot;highlighter-rouge&quot;&gt;css/styles.css&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph TB
+        STYLESSCSS[&quot;Jekyll reads &lt;strong&gt;/css/styles.scss&lt;/strong&gt;&quot;]--&amp;gt;partials{&quot;imports Sass partials&quot;}
+        partials--&amp;gt; |&quot;import variables&quot;|VARS
+        partials--&amp;gt; |&quot;import bootstrap/scss/bootstrap&quot;|BS_SCSS
+        VARS[&quot;/_sass/_variables.scss&quot;]--&amp;gt;BS_VARIABLES
+        BS_VARIABLES[&quot;@import '../bower_components/bootstrap/scss/variables';&quot;]--&amp;gt;STYLESCSS
+        BS_SCSS[&quot;/bower_components/bootstrap/scss/bootstrap.scss&quot;]--&amp;gt;STYLESCSS
+        STYLESCSS[&quot;Generates /css/style.css&quot;]
 &lt;/div&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
