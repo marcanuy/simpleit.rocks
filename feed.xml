@@ -6,9 +6,283 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 01 Mar 2017 04:57:36 +0000</pubDate>
-    <lastBuildDate>Wed, 01 Mar 2017 04:57:36 +0000</lastBuildDate>
+    <pubDate>Wed, 01 Mar 2017 05:09:25 +0000</pubDate>
+    <lastBuildDate>Wed, 01 Mar 2017 05:09:25 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>How To Add Bootstrap 4 To Jekyll The Right Way</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;The real power of Bootstrap is to use and redefine its variables in
+our custom designs, that means, we should not simply add Bootstrap’s
+javascript and &lt;abbr title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/abbr&gt; stylesheets to use its components, we need to
+change them and not making all the web look boringly the same.&lt;/p&gt;
+
+&lt;p&gt;This is a guide to make it easy to use Bootstrap 4 with a Jekyll
+website and make it easy to customize it using its variables and
+defining new ones.&lt;/p&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;Jekyll provides built-in support for &lt;em&gt;syntactically awesome
+stylesheets&lt;/em&gt; (&lt;a href=&quot;http://sass-lang.com/&quot;&gt;Sass&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Sass is a &lt;abbr title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/abbr&gt; extension language, it provides:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Variables&lt;/li&gt;
+  &lt;li&gt;Nesting elements
+    &lt;ul&gt;
+      &lt;li&gt;Loops&lt;/li&gt;
+      &lt;li&gt;Arguments&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Selector inheritance&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It consists of two syntaxes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the original, indented, syntax uses the &lt;code class=&quot;highlighter-rouge&quot;&gt;.sass&lt;/code&gt; extension.&lt;/li&gt;
+  &lt;li&gt;the newer syntax, more similar to &lt;abbr title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/abbr&gt;, uses &lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt; extension.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To make Jekyll process these SASS files, we need to create files with
+the proper extension name (&lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;.sass&lt;/code&gt;) and start the file
+contents with two lines of triple dashes.&lt;/p&gt;
+
+&lt;p&gt;A file named &lt;code class=&quot;highlighter-rouge&quot;&gt;css/styles.scss&lt;/code&gt; will be rendered like &lt;code class=&quot;highlighter-rouge&quot;&gt;css/styles.css&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;As Bootstrap switched from &lt;code class=&quot;highlighter-rouge&quot;&gt;Less&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;Sass&lt;/code&gt;&lt;sup id=&quot;fnref:bs-blog&quot;&gt;&lt;a href=&quot;#fn:bs-blog&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; now we can use
+it directly without relying in parallel projects like &lt;a href=&quot;https://github.com/twbs/bootstrap-sass&quot;&gt;bootstrap-sass&lt;/a&gt;
+used with Bootstrap 3.&lt;/p&gt;
+
+&lt;h2 id=&quot;installing-bootstrap-4&quot;&gt;Installing Bootstrap 4&lt;/h2&gt;
+
+&lt;p&gt;We will be using the package manager &lt;a href=&quot;https://bower.io&quot;&gt;Bower&lt;/a&gt; to install Bootstrap. At
+our Jekyll website root folder we use the &lt;kbd&gt;bower install&lt;/kbd&gt;
+command. In this case I will be using &lt;code class=&quot;highlighter-rouge&quot;&gt;bootstrap#v4.0.0-alpha.6&lt;/code&gt; but
+you can find the latest one
+at
+&lt;a href=&quot;https://v4-alpha.getbootstrap.com/getting-started/download/#bower&quot;&gt;https://v4-alpha.getbootstrap.com/getting-started/download/#bower&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;bower install bootstrap#v4.0.0-alpha.6&lt;/kbd&gt;
+bower bootstrap#v4.0.0-alpha.6  cached https://github.com/twbs/bootstrap.git#4.0.0-alpha.6
+bower bootstrap#v4.0.0-alpha.6         validate 4.0.0-alpha.6 against https://github.com/twbs/bootstrap.git#v4.0.0-alpha.6
+bower jquery#&amp;gt;=1.9.1                     cached https://github.com/jquery/jquery-dist.git#3.1.1
+bower jquery#&amp;gt;=1.9.1                   validate 3.1.1 against https://github.com/jquery/jquery-dist.git#&amp;gt;=1.9.1
+bower tether#^1.4.0                      cached https://github.com/HubSpot/tether.git#1.4.0
+bower tether#^1.4.0                    validate 1.4.0 against https://github.com/HubSpot/tether.git#^1.4.0
+bower bootstrap#v4.0.0-alpha.6          install bootstrap#4.0.0-alpha.6
+bower jquery#&amp;gt;=1.9.1                    install jquery#3.1.1
+bower tether#^1.4.0                     install tether#1.4.0
+
+bootstrap#4.0.0-alpha.6 bower_components/bootstrap
+├── jquery#3.1.1
+└── tether#1.4.0
+
+jquery#3.1.1 bower_components/jquery
+
+tether#1.4.0 bower_components/tether
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;adding-new-sass-load-paths&quot;&gt;Adding new Sass load paths&lt;/h2&gt;
+
+&lt;p&gt;We need to add this new path so Jekyll can process its Sass
+files.&lt;/p&gt;
+
+&lt;p&gt;Jekyll will look at the folder specified by the &lt;code class=&quot;highlighter-rouge&quot;&gt;sass_dir&lt;/code&gt;
+configuration key (&lt;code class=&quot;highlighter-rouge&quot;&gt;/_sass&lt;/code&gt; by default), but it also supports extending
+it, so it will process other folders too.&lt;/p&gt;
+
+&lt;p&gt;Instead of setting a custom sass folder with:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;sass&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;sass_dir&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;_sass&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;we use the &lt;code class=&quot;highlighter-rouge&quot;&gt;load-paths&lt;/code&gt;&lt;sup id=&quot;fnref:load-paths&quot;&gt;&lt;a href=&quot;#fn:load-paths&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; key in &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; to add more paths:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;sass&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;load_paths&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;_sass&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bower_components&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p class=&quot;alert alert-danger&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;load_paths&lt;/code&gt; only works in safe mode&lt;sup id=&quot;fnref:safe-mode&quot;&gt;&lt;a href=&quot;#fn:safe-mode&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;add-javascript&quot;&gt;Add javascript&lt;/h2&gt;
+
+&lt;p&gt;Add Bootstrap core JavaScript, JQuery and Tether&lt;sup id=&quot;fnref:tether&quot;&gt;&lt;a href=&quot;#fn:tether&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; (already installed when
+installing Bootstrap) at the end of the document so the pages load
+faster, just before the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;/body&amp;gt;&lt;/code&gt; HTML tag.&lt;/p&gt;
+
+&lt;p&gt;We add them in the default layout at &lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts/default.html&lt;/code&gt; or in
+&lt;code class=&quot;highlighter-rouge&quot;&gt;footer.html&lt;/code&gt; in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_includes&lt;/code&gt; folder:&lt;/p&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;html&amp;gt;
+&amp;lt;body&amp;gt;
+...
+&amp;lt;script src=&quot;/bower_components/jquery/dist/jquery.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src=&quot;/bower_components/tether/dist/js/tether.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src=&quot;/bower_components/bootstrap/dist/js/bootstrap.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;import-bootstrap-and-use-sass-variables&quot;&gt;Import Bootstrap and use Sass variables&lt;/h2&gt;
+
+&lt;h3 id=&quot;create-variables-sass-partial&quot;&gt;Create variables Sass partial&lt;/h3&gt;
+
+&lt;p&gt;To be able to define new variables and reuse the ones defined in
+Bootstrap, we create a new partial Sass file &lt;code class=&quot;highlighter-rouge&quot;&gt;_sass/_variables.scss&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;We define our variables&lt;/li&gt;
+  &lt;li&gt;Overwrite the ones we want from Bootstrap
+&lt;code class=&quot;highlighter-rouge&quot;&gt;bower_components/bootstrap/scss/_variables.scss&lt;/code&gt; and then&lt;/li&gt;
+  &lt;li&gt;we import the Bootstrap variables.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p class=&quot;alert alert-info&quot;&gt;When Scss process each file, it only defines the variables that do not
+exists yet, so we can overwrite Bootstrap’s variables defining them
+before importing them.&lt;/p&gt;
+
+&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;_sass/_variables.scss&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-scss highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$custom-font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;../bower_components/bootstrap/scss/variables&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;import-variables-from-main-sass-file&quot;&gt;Import variables from main Sass file&lt;/h3&gt;
+
+&lt;p&gt;After we have our variables, we import them from our main style sheet:&lt;/p&gt;
+
+&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;css/styles.scss&lt;/code&gt; we import them and then work with our styles,
+using the above variables:&lt;/p&gt;
+
+&lt;div class=&quot;language-scss highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;variables&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;bootstrap/scss/bootstrap&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;.content&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$custom-font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p class=&quot;alert alert-danger&quot;&gt;Don’t miss the triple dashes at the beginning of the file to ensure
+Jekyll reads the file to be transformed into &lt;abbr title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/abbr&gt; later&lt;/p&gt;
+
+&lt;h2 id=&quot;add-css-to-layout&quot;&gt;Add css to layout&lt;/h2&gt;
+
+&lt;p&gt;After we have our &lt;code class=&quot;highlighter-rouge&quot;&gt;css/styles.scss&lt;/code&gt;, Jekyll will process it and
+generate the final &lt;abbr title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/abbr&gt; file: &lt;code class=&quot;highlighter-rouge&quot;&gt;css/style.css&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;That is the path we need to add to our layout, in the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt;
+section of &lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts/default.html&lt;/code&gt; we include the css: &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;link
+rel=&quot;stylesheet&quot; href=&quot;/css/main.css&quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- site css --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/css/styles.css&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;When we will our site, Jekyll will process the &lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt; files with our
+custom variables and we will have them in our &lt;code class=&quot;highlighter-rouge&quot;&gt;css/styles.css&lt;/code&gt;. In
+this example its content starts with the Bootstrap code and ends with
+our custom &lt;code class=&quot;highlighter-rouge&quot;&gt;_styles.scss&lt;/code&gt; processed, looking like:&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;/*!
+ * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
+ * Copyright 2011-2017 The Bootstrap Authors
+ * Copyright 2011-2017 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;html&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-family&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sans-serif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;line-height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1.15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;-ms-text-size-adjust&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;-webkit-text-size-adjust&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;.content&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Sass (stylesheet language) &lt;a href=&quot;https://en.wikipedia.org/wiki/Sass_(stylesheet_language)&quot;&gt;https://en.wikipedia.org/wiki/Sass_(stylesheet_language)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Sass project website &lt;a href=&quot;http://sass-lang.com/&quot;&gt;http://sass-lang.com/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Bootstrap 4 customization &lt;a href=&quot;http://v4-alpha.getbootstrap.com/getting-started/options/&quot;&gt;http://v4-alpha.getbootstrap.com/getting-started/options/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:bs-blog&quot;&gt;
+
+      &lt;p&gt;&lt;a href=&quot;http://blog.getbootstrap.com/2015/08/19/bootstrap-4-alpha/&quot;&gt;http://blog.getbootstrap.com/2015/08/19/bootstrap-4-alpha/&lt;/a&gt;&lt;/p&gt;
+
+      &lt;blockquote&gt;
+        &lt;p&gt;Moved from Less to Sass. Bootstrap now compiles faster than ever
+thanks to Libsass, and we join an increasingly large community of
+Sass developers.&lt;/p&gt;
+      &lt;/blockquote&gt;
+      &lt;p&gt;&lt;a href=&quot;#fnref:bs-blog&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:load-paths&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://github.com/jekyll/jekyll/issues/3366&quot;&gt;Issue&lt;/a&gt; referring the code at &lt;a href=&quot;https://github.com/jekyll/jekyll-sass-converter/blob/master/lib/jekyll/converters/scss.rb#L77&quot;&gt;https://github.com/jekyll/jekyll-sass-converter/blob/master/lib/jekyll/converters/scss.rb#L77&lt;/a&gt;&amp;nbsp;&lt;a href=&quot;#fnref:load-paths&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:safe-mode&quot;&gt;
+
+      &lt;p&gt;Safe mode disables custom plugins, and ignores symbolic links.&amp;nbsp;&lt;a href=&quot;#fnref:safe-mode&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:tether&quot;&gt;
+
+      &lt;p&gt;&lt;a href=&quot;http://github.hubspot.com/tether/&quot;&gt;Tether&lt;/a&gt; is a small,
+focused JavaScript library for defining and managing the position of
+user interface (UI) elements in relation to one another on a web page
+used by Bootstrap&amp;nbsp;&lt;a href=&quot;#fnref:tether&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Mon, 27 Feb 2017 00:00:00 +0000</pubDate>
+        <link>http://simpleit.rocks/how-to-add-bootstrap-4-to-jekyll-the-right-way/</link>
+        <guid isPermaLink="true">http://simpleit.rocks/how-to-add-bootstrap-4-to-jekyll-the-right-way/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>ruby</category>
+        
+        <category>jekyll</category>
+        
+        <category>tutorials</category>
+        
+      </item>
     
       <item>
         <title>Adding A Twitter Sign In Button To A Website Flow Summary</title>
@@ -1525,120 +1799,6 @@ variables when deploying to Heroku&lt;/a&gt;.&lt;/p&gt;
         <category>python</category>
         
         <category>flask</category>
-        
-      </item>
-    
-      <item>
-        <title>How to change all files permissions to 644 and directories to 755</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;There are two common task in Linux environments when handling files
-and folders permissions, you often will want to:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;give directories read and write privileges  &lt;strong&gt;(drwxr-xr-x)&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;give files read privileges &lt;strong&gt;(-rw-r–r–)&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This can be done safely with &lt;kbd&gt;find&lt;/kbd&gt; and &lt;kbd&gt;chmod&lt;/kbd&gt;
-commands, taking some precautions.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;chmod --help&lt;/kbd&gt;
-Usage: chmod [OPTION]... MODE[,MODE]... FILE...
-  or:  chmod [OPTION]... OCTAL-MODE FILE...
-  or:  chmod [OPTION]... --reference=RFILE FILE...
-Change the mode of each FILE to MODE.
-With --reference, change the mode of each FILE to that of RFILE.
-
-  -c, --changes          like verbose but report only when a change is made
-  -f, --silent, --quiet  suppress most error messages
-  -v, --verbose          output a diagnostic for every file processed
-      --no-preserve-root  do not treat '/' specially (the default)
-      --preserve-root    fail to operate recursively on '/'
-      --reference=RFILE  use RFILE's mode instead of MODE values
-  -R, --recursive        change files and directories recursively
-      --help     display this help and exit
-      --version  output version information and exit
-
-Each MODE is of the form '[ugoa]*([-+=]([rwxXst]*|[ugo]))+|[-+=][0-7]+'.
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;change-directory-permissions&quot;&gt;Change directory permissions&lt;/h2&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find /path -type d -exec chmod 755 {} +&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;change-files-permissions&quot;&gt;Change files permissions&lt;/h2&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find /path -type f -exec chmod 644 {} +&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;run-chmod-efficiently&quot;&gt;Run chmod efficiently&lt;/h2&gt;
-
-&lt;p&gt;To avoid spawning one chmod process per file, we can pipe find output
-to &lt;kbd&gt;xargs&lt;/kbd&gt;. This can be helpful if there are many files to
-process.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find /path -type d -print0 | xargs -0 chmod 755&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find /path -type f -print0 | xargs -0 chmod 644&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-  &lt;p&gt;-print0
-     True;  print the full file name on the standard output, followed
-     by a null character (instead of the newline character that -print
-     uses). This allows file names that contain newlines or other
-     types of white space to be correctly interpreted by programs that
-     process the find output. This option corresponds to the -0 option
-     of xargs.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Find manual page&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;xargs --help&lt;/kbd&gt;
-Usage: xargs [OPTION]... COMMAND [INITIAL-ARGS]...
-Run COMMAND with arguments INITIAL-ARGS and more arguments read from input.
-
-Mandatory and optional arguments to long options are also
-mandatory or optional for the corresponding short option.
-  -0, --null                   items are separated by a null, not whitespace;
-                                 disables quote and backslash processing and
-                                 logical EOF processing
-..(truncated)
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Superuser answer to &lt;a href=&quot;http://superuser.com/a/91938/158197&quot;&gt;How to chmod all directories except files (recursively)?&lt;/a&gt; by &lt;a href=&quot;http://superuser.com/users/263/nik&quot;&gt;nik&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;StackOverflow: &lt;a href=&quot;http://stackoverflow.com/q/6085156/1165509&quot;&gt;Using semicolon (;) vs plus (+) with exec in find&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Tue, 10 Jan 2017 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/change-all-files-permissions-to-644-and-directories-to-755-commands/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/change-all-files-permissions-to-644-and-directories-to-755-commands/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>linux</category>
-        
-        <category>shell</category>
         
       </item>
     
