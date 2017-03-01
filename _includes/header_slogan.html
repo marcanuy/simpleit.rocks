@@ -9,7 +9,15 @@
     {% endif %}
     {% if include.subtitle %}
     <p class="lead">
-      <small class="text-muted subtitle">{{ include.subtitle }}</small>
+	<small class="text-muted subtitle">{{ include.subtitle }}</small>
+	{% if page.date %}
+	<br />
+	<small class="text-muted subtitle">
+
+	    <i class="fa fa-calendar text-muted" aria-hidden="true"></i>
+	    <time class="text-muted" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
+	</small>
+	{% endif %}
     </p>
     {% endif %}
   </div>
