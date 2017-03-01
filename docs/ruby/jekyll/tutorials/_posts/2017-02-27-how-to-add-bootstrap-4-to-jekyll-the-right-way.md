@@ -114,9 +114,9 @@ We add them in the default layout at `_layouts/default.html` or in
 <html>
 <body>
 ...
-<script src="{{site.baseurl}}/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="{{site.baseurl}}/bower_components/tether/dist/js/tether.min.js"></script>
-<script src="{{site.baseurl}}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="{% raw %}{{'/bower_components/jquery/dist/jquery.min.js' | prepend: site.baseurl}}{% endraw %}"></script>
+<script src="{% raw %}{{'/bower_components/tether/dist/js/tether.min.js' | prepend: site.baseurl}}{% endraw %}"></script>
+<script src="{% raw %}{{'/bower_components/bootstrap/dist/js/bootstrap.min.js' | prepend: site.baseurl}}{% endraw %}"></script>
 </body>
 </html>
 ~~~
@@ -185,6 +185,22 @@ rel="stylesheet" href="/css/main.css">`
 </head>
 </html>
 ~~~
+
+## All together
+
+This is the basic flow Jekyll follows processing these Scss files to
+generate `css/styles.css`:
+
+<div class="mermaid">
+graph TB
+        STYLESSCSS["Jekyll reads <strong>/css/styles.scss</strong>"]-->partials{"imports Sass partials"}
+        partials--> |"import variables"|VARS
+        partials--> |"import bootstrap/scss/bootstrap"|BS_SCSS
+        VARS["/_sass/_variables.scss"]-->BS_VARIABLES
+        BS_VARIABLES["@import '../bower_components/bootstrap/scss/variables';"]-->STYLESCSS
+        BS_SCSS["/bower_components/bootstrap/scss/bootstrap.scss"]-->STYLESCSS
+        STYLESCSS["Generates /css/style.css"]
+</div>
 
 ## Conclusion
 
