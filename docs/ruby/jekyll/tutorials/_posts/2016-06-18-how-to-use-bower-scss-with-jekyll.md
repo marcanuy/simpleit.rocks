@@ -92,7 +92,7 @@ $ ln -s bower_components/bootstrap/ _sass/bootstrap
 This creates a symbolic link named `bootstrap` inside the `/_sass`
 directory to `bower_components/bootstrap/`.
 
-To generate the automatically, Jekyll needs to have the following SCSS file
+To generate them automatically, Jekyll needs to have the following SCSS file
 in `/css/bootstrap-flex.scss`, so it can generate `/css/bootstrap-flex.css`.
 
 {%raw%}
