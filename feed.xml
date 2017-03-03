@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 02 Mar 2017 20:00:33 +0000</pubDate>
-    <lastBuildDate>Thu, 02 Mar 2017 20:00:33 +0000</lastBuildDate>
+    <pubDate>Fri, 03 Mar 2017 03:39:35 +0000</pubDate>
+    <lastBuildDate>Fri, 03 Mar 2017 03:39:35 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -146,14 +146,19 @@ Bootstrap, we create a new partial Sass file &lt;code class=&quot;highlighter-ro
 
 &lt;ol&gt;
   &lt;li&gt;We define our variables&lt;/li&gt;
-  &lt;li&gt;Overwrite the ones we want from Bootstrap
-&lt;code class=&quot;highlighter-rouge&quot;&gt;bower_components/bootstrap/scss/_variables.scss&lt;/code&gt; and then&lt;/li&gt;
+  &lt;li&gt;“Overwrite” the ones we want from Bootstrap
+&lt;code class=&quot;highlighter-rouge&quot;&gt;bower_components/bootstrap/scss/_variables.scss&lt;/code&gt; before loading them
+and then&lt;/li&gt;
   &lt;li&gt;we import the Bootstrap variables.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p class=&quot;alert alert-info&quot;&gt;When Scss process each file, it only defines the variables that do not
-exists yet, so we can overwrite Bootstrap’s variables defining them
-before importing them.&lt;/p&gt;
+&lt;p class=&quot;alert alert-danger&quot;&gt;All the variables defined in Bootstrap 4 have the &lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;!default&lt;/code&gt;&lt;/strong&gt;&lt;sup id=&quot;fnref:scss_default&quot;&gt;&lt;a href=&quot;#fn:scss_default&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;
+property at the end.
+When Jekyll process each Scss file, &lt;strong&gt;it only defines the variables that do not
+have been assigned any value yet&lt;/strong&gt;, so we can define Bootstrap’s
+variables before Bootstrap itself define them. It is important to do
+this &lt;strong&gt;before importing the variables&lt;/strong&gt; because there are many of them
+depending on each other to calculate &lt;abbr title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/abbr&gt; properties values.&lt;/p&gt;
 
 &lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;_sass/_variables.scss&lt;/code&gt;:&lt;/p&gt;
 
@@ -281,6 +286,40 @@ Sass developers.&lt;/p&gt;
 focused JavaScript library for defining and managing the position of
 user interface (UI) elements in relation to one another on a web page
 used by Bootstrap&amp;nbsp;&lt;a href=&quot;#fnref:tether&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:scss_default&quot;&gt;
+
+      &lt;p&gt;SASS Variable Defaults: !default &lt;a href=&quot;http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html#variable_defaults_&quot;&gt;http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html#variable_defaults_&lt;/a&gt;&lt;/p&gt;
+
+      &lt;blockquote&gt;
+        &lt;p&gt;You can assign to variables if they aren’t already assigned by adding the !default flag to the end of the value. This means that if the variable has already been assigned to, it won’t be re-assigned, but if it doesn’t have a value yet, it will be given one.&lt;/p&gt;
+      &lt;/blockquote&gt;
+
+      &lt;blockquote&gt;
+        &lt;p&gt;For example:&lt;/p&gt;
+      &lt;/blockquote&gt;
+
+      &lt;div class=&quot;language-scss highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;First content&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Second content?&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$new_content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;First time reference&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nn&quot;&gt;#main&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;new-content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$new_content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+
+      &lt;blockquote&gt;
+        &lt;p&gt;is compiled to:&lt;/p&gt;
+      &lt;/blockquote&gt;
+
+      &lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;#main&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&quot;First content&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;new-content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&quot;First time reference&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+      &lt;p&gt;&lt;a href=&quot;#fnref:scss_default&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;

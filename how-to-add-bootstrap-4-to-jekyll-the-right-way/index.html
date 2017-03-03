@@ -83,7 +83,7 @@
   <script>mermaid.initialize({startOnLoad:true});</script>
   <!-- endmermaid -->
 
-  <div class="text-xs-center mb-2 text-center">
+  <div class="mb-2 text-center">
 
     <a class="display-1" href="/" style="text-decoration: none">Simple IT 🤘 Rocks</a>
 
@@ -372,7 +372,7 @@
 	</p>
     
 
-    <div class="si-ad m-1 mx-auto">
+    <div class="si-ad m-3 mx-auto">
   
 
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -524,14 +524,19 @@ Bootstrap, we create a new partial Sass file <code class="highlighter-rouge">_sa
 
 <ol>
   <li>We define our variables</li>
-  <li>Overwrite the ones we want from Bootstrap
-<code class="highlighter-rouge">bower_components/bootstrap/scss/_variables.scss</code> and then</li>
+  <li>“Overwrite” the ones we want from Bootstrap
+<code class="highlighter-rouge">bower_components/bootstrap/scss/_variables.scss</code> before loading them
+and then</li>
   <li>we import the Bootstrap variables.</li>
 </ol>
 
-<p class="alert alert-info">When Scss process each file, it only defines the variables that do not
-exists yet, so we can overwrite Bootstrap’s variables defining them
-before importing them.</p>
+<p class="alert alert-danger">All the variables defined in Bootstrap 4 have the <strong><code class="highlighter-rouge">!default</code></strong><sup id="fnref:scss_default"><a href="#fn:scss_default" class="footnote">5</a></sup>
+property at the end.
+When Jekyll process each Scss file, <strong>it only defines the variables that do not
+have been assigned any value yet</strong>, so we can define Bootstrap’s
+variables before Bootstrap itself define them. It is important to do
+this <strong>before importing the variables</strong> because there are many of them
+depending on each other to calculate <abbr title="Cascading Style Sheets">CSS</abbr> properties values.</p>
 
 <p>In <code class="highlighter-rouge">_sass/_variables.scss</code>:</p>
 
@@ -659,6 +664,40 @@ Sass developers.</p>
 focused JavaScript library for defining and managing the position of
 user interface (UI) elements in relation to one another on a web page
 used by Bootstrap&nbsp;<a href="#fnref:tether" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:scss_default">
+
+      <p>SASS Variable Defaults: !default <a href="http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html#variable_defaults_">http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html#variable_defaults_</a></p>
+
+      <blockquote>
+        <p>You can assign to variables if they aren’t already assigned by adding the !default flag to the end of the value. This means that if the variable has already been assigned to, it won’t be re-assigned, but if it doesn’t have a value yet, it will be given one.</p>
+      </blockquote>
+
+      <blockquote>
+        <p>For example:</p>
+      </blockquote>
+
+      <div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="nv">$content</span><span class="p">:</span> <span class="s2">"First content"</span><span class="p">;</span>
+<span class="nv">$content</span><span class="p">:</span> <span class="s2">"Second content?"</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$new_content</span><span class="p">:</span> <span class="s2">"First time reference"</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+
+<span class="nn">#main</span> <span class="p">{</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="nv">$content</span><span class="p">;</span>
+  <span class="na">new-content</span><span class="p">:</span> <span class="nv">$new_content</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+      </div>
+
+      <blockquote>
+        <p>is compiled to:</p>
+      </blockquote>
+
+      <div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="nf">#main</span> <span class="p">{</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="s1">"First content"</span><span class="p">;</span>
+  <span class="py">new-content</span><span class="p">:</span> <span class="s1">"First time reference"</span><span class="p">;</span> <span class="p">}</span>
+</code></pre>
+      </div>
+      <p><a href="#fnref:scss_default" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -1194,7 +1233,7 @@ used by Bootstrap&nbsp;<a href="#fnref:tether" class="reversefootnote">&#8617;</
 		</ul>
 	    </div>
 	    <div class="col-4">
-		<div class="text-xs-right text-muted">
+		<div class="text-muted">
 		    <p>Clutter-free software concepts. Written on the go.
 </p>
 		</div>
