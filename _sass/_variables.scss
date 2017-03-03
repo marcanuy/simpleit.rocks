@@ -1,24 +1,48 @@
-// Our variables
-$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
-$base-font-weight: 400;
-$small-font-size:  $base-font-size * 0.875;
-$base-line-height: 1.5;
+// Start with assigning color names to specific hex values.
+$white:  #fff;
+$black:  #000;
+$red:    adjust-hue(darken(#d9534f, 10%), 25deg);
+$orange: adjust-hue(darken(#f0ad4e, 10%), 25deg);
+$yellow: adjust-hue(darken(#ffd500, 10%), 25deg);
+$green:  adjust-hue(darken(#5cb85c, 10%), 25deg);
+$blue:   adjust-hue(darken(#0275d8, 10%), 25deg);
+$teal:   adjust-hue(darken(#5bc0de, 10%), 25deg);
+$pink:   adjust-hue(darken(#ff5b77, 10%), 25deg);
+$purple: adjust-hue(darken(#613d7c, 10%), 25deg);
 
-$spacing-unit:     30px;
+// Create grayscale
+$gray-dark:                 adjust-hue(darken(#292b2c, 10%), 25deg);
+$gray:                      adjust-hue(darken(#464a4c, 10%), 25deg);
+$gray-light:                adjust-hue(darken(#636c72, 10%), 25deg);
+$gray-lighter:              adjust-hue(darken(#eceeef, 10%), 25deg);
+$gray-lightest:             adjust-hue(darken(#f7f7f9, 10%), 25deg);
 
-$text-color:       #111;
-$background-color: #fdfdfd;
-$brand-color:      #2a7ae2;
+// Reassign color vars to semantic color scheme
+$brand-primary:             $blue;
+$brand-success:             $green;
+$brand-info:                $teal;
+$brand-warning:             $orange;
+$brand-danger:              $red;
+$brand-inverse:             $gray-dark;
 
-$grey-color:       #828282;
-$grey-color-light: lighten($grey-color, 40%);
-$grey-color-dark:  darken($grey-color, 25%);
+// Fonts
+$font-family-serif:      Georgia, "Times New Roman", Times, serif;
+$font-family-base:       $font-family-serif;
 
-// Width of the content area
-$content-width:    800px;
+$font-size-base: 1.1rem;
+$font-size-lg:   1.35rem;
+$font-size-sm:   .890rem;
+$font-size-xs:   .85rem;
 
-$on-palm:          600px;
-$on-laptop:        800px;
+// Global options
+
+$spacer:                    2rem;
+$enable-rounded:            true;
+$enable-shadows:            true;
+$enable-gradients:          true;
+$enable-transitions:        true;
+$enable-hover-media-query:  false;
+$enable-grid-classes:       true;
+$enable-print-styles:       true;
 
 @import "../bower_components/bootstrap/scss/variables";

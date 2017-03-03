@@ -7,12 +7,12 @@ description: >
 ---
 
 <hr>
-<div class="text-xs-center my-3">
+<div class="text-center my-3">
     {{ page.description }}
 </div>
 <hr>
 
-<div class="home text-xs-center">
+<div class="home text-center">
     
     <div class="categories my-3">
 	<h1>Categories</h1>
@@ -61,16 +61,24 @@ description: >
 	<h1>Articles</h1>
 	<div class="list-group">
 	    {% for post in site.posts %}
-	    <a href="{{ post.url | prepend: site.baseurl }}" class="list-group-item list-group-item-action">
-		<h5 class="list-group-item-heading">{{ post.title }}</h5>
+	    <a href="{{ post.url | prepend: site.baseurl }}" class="list-group-item list-group-item-action flex-column align-items-start">
+		<div class="d-flex w-100 justify-/content-between">
+		    <h4 class="mb-1">{{ post.title }}</h4>
+		    <small class="pull-1 mx-1">
+			{% assign postcats = post.categories | shift %}
+			{% for category in postcats %}
+			<div class="badge badge-pill badge-default">
+			    {{category}}
+			</div>
+			{% endfor %}
+		    </small>
+		</div>
 		{% if post.description %}
-		<p class="list-group-item-text">
+		<p class="mb-1">
 		    {{ post.description }}
 		</p>
 		{% endif %}
-		<span class="tag tag-default tag-pill pull-xs-2">
-		    {{ post.categories | shift  | array_to_sentence_string }}
-		</span>
+
 	    </a>
 	    {% endfor %}
 	</div> <!-- list group -->
@@ -85,7 +93,7 @@ description: >
 	    {% for page in pages %}
 	    {% if page.title and page.dir != '/' and page.dir !='/about/' %}
 	    <a class="list-group-item" href="{{ page.url | prepend: site.baseurl }}">
-		<span class="label label-info label-pill pull-xs-right">
+		<span class="label label-info label-pill pull-right">
 		    {{page.dir | remove_first: "/docs/"}}
 		</span>
 		{{ page.title }}
