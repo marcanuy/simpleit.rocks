@@ -30,7 +30,7 @@ description: >
 	{% endif %}
 	{% endfor %}
 
-	<ul class="nav flex-column flex-xl-row">
+	<ul class="nav flex-column flex-xl-row justify-content-center">
 	    {% for category in categories %}
 	    <li class="nav-item">
 		<a class="nav-link" href="{{ site.baseurl }}/{{ site.docs_dir}}/{{ category | strip }}/">{{ category | strip | capitalize }}</a>
