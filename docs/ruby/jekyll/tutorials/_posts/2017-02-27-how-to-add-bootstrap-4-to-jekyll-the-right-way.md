@@ -129,14 +129,19 @@ To be able to define new variables and reuse the ones defined in
 Bootstrap, we create a new partial Sass file `_sass/_variables.scss`.
 
 1. We define our variables
-2. Overwrite the ones we want from Bootstrap
-`bower_components/bootstrap/scss/_variables.scss` and then 
+2. "Overwrite" the ones we want from Bootstrap
+`bower_components/bootstrap/scss/_variables.scss` before loading them
+and then 
 3. we import the Bootstrap variables.
 
-When Scss process each file, it only defines the variables that do not
-exists yet, so we can overwrite Bootstrap's variables defining them
-before importing them.
-{: .alert .alert-info }
+All the variables defined in Bootstrap 4 have the **`!default`**[^scss_default]
+property at the end.
+When Jekyll process each Scss file, **it only defines the variables that do not
+have been assigned any value yet**, so we can define Bootstrap's
+variables before Bootstrap itself define them. It is important to do
+this **before importing the variables** because there are many of them
+depending on each other to calculate CSS properties values.
+{: .alert .alert-danger }
 
 In `_sass/_variables.scss`:
 
@@ -258,3 +263,28 @@ html {
 [^safe-mode]:
     Safe mode disables custom plugins, and ignores symbolic links.
 
+[^scss_default]:
+	SASS Variable Defaults: !default <http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html#variable_defaults_>
+
+	> You can assign to variables if they aren’t already assigned by adding the !default flag to the end of the value. This means that if the variable has already been assigned to, it won’t be re-assigned, but if it doesn’t have a value yet, it will be given one.
+
+	> For example:
+
+    ~~~scss
+	$content: "First content";
+	$content: "Second content?" !default;
+	$new_content: "First time reference" !default;
+
+	#main {
+	  content: $content;
+	  new-content: $new_content;
+	}
+	~~~
+
+	> is compiled to:
+
+	~~~css
+	#main {
+	  content: "First content";
+	  new-content: "First time reference"; }
+	~~~
