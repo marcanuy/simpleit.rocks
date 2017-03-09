@@ -8,5 +8,5 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="{{ site.url }}{{ include.url | remove: 'index.html' }}" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="{{ include.url | absolute_url }}" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>

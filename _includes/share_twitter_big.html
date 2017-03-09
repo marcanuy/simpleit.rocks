@@ -1,14 +1,14 @@
 <div>
-  <a class="twitter-share-button"
-     href="https://twitter.com/share"
-     data-url="{{ site.url }}{{ include.url | remove: 'index.html' }}"
-     data-via=""
-     data-text="{{ include.text }}"
-     data-related="{{site.author}},{{site.twitter}}"
-     data-count="vertical">
-    Tweet
-  </a>
-  <script>
-   window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
-  </script>
+    <a class="twitter-share-button"
+       href="https://twitter.com/share"
+       data-url="{{ include.url | remove: 'index.html' | absolute_url }}"
+       data-via=""
+       data-text="{{ include.text }}"
+       data-related="{{site.author}},{{site.twitter}}"
+       data-count="vertical">
+	Tweet
+    </a>
+    <script>
+     window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+    </script>
 </div>
