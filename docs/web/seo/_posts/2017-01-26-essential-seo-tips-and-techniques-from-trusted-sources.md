@@ -9,6 +9,15 @@ This article is a curated list of Search Engine Optimization
 techniques from top Search Engines and trusted sources to improve your
 search engine presence and design better websites.
 
+It mainly consists of special clues given in Google blog posts.
+
+> Google's algorithms rely on more than 200 unique signals or "clues"
+> that make it possible to surface what you might be looking
+> for. These signals include things like the specific words that
+> appear on websites, the freshness of content, your region and
+> PageRank.
+{: class="blockquote" cite="https://webmasters.googleblog.com/2016/09/penguin-is-now-part-of-our-core.html"}
+
 ## Facts
 
 ### Android
@@ -23,6 +32,19 @@ Apps are favored on search results made from Android devices.
 > 
 > <footer class="blockquote-footer"> <cite>Lawrence Chang, Product Manager <a href="https://webmasters.googleblog.com/2015/04/drive-app-installs-through-app-indexing.html">2015-04-16</a></cite></footer>
 {: class="blockquote" cite="https://webmasters.googleblog.com/2015/04/drive-app-installs-through-app-indexing.html"}
+
+Signed-in users would likely see content from apps they have
+installed. ([App Indexing](https://support.google.com/googleplay/android-developer/answer/6041489?hl=en) allows
+Google to surface this information in search results)
+
+> Starting today, we will begin to use information from indexed apps
+> as a factor in ranking for signed-in users who have the app
+> installed. As a result, we may now surface content from indexed apps
+> more prominently in search. To find out how to implement App
+> Indexing, which allows us to surface this information in search
+> results
+> <footer class="blockquote-footer"> <cite>Takaki Makino, Chaesang Jung, and Doantam Phan in Finding more mobile-friendly search results <a href="https://webmasters.googleblog.com/2015/02/finding-more-mobile-friendly-search.html">2015-02-26</a></cite></footer>
+{: class="blockquote" cite="https://webmasters.googleblog.com/2015/02/finding-more-mobile-friendly-search.html"}
 
 
 ### Crawling
@@ -41,6 +63,9 @@ Crawling rate is not a ranking signal.
 
 HTTPS is a ranking signal and is better than HTTP.
 
+> over the past few months we’ve been running tests taking into
+> account whether sites use secure, encrypted connections as a signal in
+> our search ranking algorithms. We've seen positive results, so
 > we're starting to use HTTPS as a ranking signal. For now it's only a
 > very lightweight signal — affecting fewer than 1% of global queries,
 > and carrying less weight than other signals such as high-quality
@@ -84,7 +109,7 @@ Links from other websites should be gained through:
 {: class="blockquote" cite="https://webmasters.googleblog.com/2008/10/good-times-with-inbound-links.html"}
 
 
-### Content
+### Search Query
 
 Search query intent is favored over a mobile friendly site, i.e.: a
 non mobile-friendly site with better content than a mobile friendly
@@ -97,7 +122,7 @@ one with less relevant content will be preferred.
 > <footer class="blockquote-footer"> <cite>Continuing to make web more mobile <a href="https://webmasters.googleblog.com/2016/03/continuing-to-make-web-more-mobile.html">2016-03-16</a></cite></footer>
 {: class="blockquote" cite="https://webmasters.googleblog.com/2016/03/continuing-to-make-web-more-mobile.html"}
 
-#### High Quality Content
+### High Quality Content
 
 According to [this guide from Google High Quality Content is](https://webmasters.googleblog.com/2011/05/more-guidance-on-building-high-quality.html):
 
@@ -165,6 +190,27 @@ Mobile friendly websites are boosted on mobile search results.
 > <footer class="blockquote-footer"> <cite>Rolling out the mobile-friendly update by Takaki Makino and Doantam Phan <a href="https://webmasters.googleblog.com/2015/04/rolling-out-mobile-friendly-update.html">2015-04-15</a></cite></footer>
 {: class="blockquote" cite="https://webmasters.googleblog.com/2015/04/rolling-out-mobile-friendly-update.html"}
 
+> Last year, we started using mobile-friendliness as a ranking signal
+> on mobile searches. Today we’re announcing that beginning in May,
+> we’ll start rolling out an update to mobile search results that
+> increases the effect of the ranking signal to help our users find
+> even more pages that are relevant and mobile-friendly.
+> <footer class="blockquote-footer"> <cite>Klemen Kloboves, Software Engineer  <a href="https://webmasters.googleblog.com/2016/03/continuing-to-make-web-more-mobile.html">2016-03-16</a></cite></footer>
+{: class="blockquote" cite="https://webmasters.googleblog.com/2016/03/continuing-to-make-web-more-mobile.html"}
+
+Mobile-friendly websites are more likely to appear in search results
+over other non-mobile friendly sites with similar content.
+
+> Starting April 21, we will be expanding our use of
+> mobile-friendliness as a ranking signal. This change will affect
+> mobile searches in all languages worldwide and will have a
+> significant impact in our search results. Consequently, users will
+> find it easier to get relevant, high quality search results that are
+> optimized for their devices. 
+> <footer class="blockquote-footer"> <cite>Takaki Makino, Chaesang Jung, and Doantam Phan in Finding more mobile-friendly search results <a href="https://webmasters.googleblog.com/2015/02/finding-more-mobile-friendly-search.html">2015-02-26</a></cite></footer>
+{: class="blockquote" cite="https://webmasters.googleblog.com/2015/02/finding-more-mobile-friendly-search.html"}
+
+
 ### Social
 
 Google +1 button amount of shares may increase web pages ranking.
@@ -192,6 +238,20 @@ Site speed is a ranking signal, fast loading websites are preferred.
 > 
 > <footer class="blockquote-footer"> <cite>Amit Singhal, Google Fellow and Matt Cutts, Principal Engineer, Google Search Quality Team <a href="https://webmasters.googleblog.com/2010/04/using-site-speed-in-web-search-ranking.html">2010-04-09</a></cite></footer>
 {: class="blockquote" cite="https://webmasters.googleblog.com/2010/04/using-site-speed-in-web-search-ranking.html"}
+
+Why is speed important to Google? Websites with fast loading times
+are good to:
+
+- internet users, improving user experience while browsing
+- reduces operating costs
+
+> Faster sites create happy users and we've seen in our internal
+> studies that when a site responds slowly, visitors spend less time
+> there. But faster sites don't just improve user experience; recent
+> data shows that improving site speed also reduces operating costs.
+> <footer class="blockquote-footer"> <cite>Amit Singhal, Google Fellow and Matt Cutts, Principal Engineer, Google Search Quality Team <a href="https://webmasters.googleblog.com/2010/04/using-site-speed-in-web-search-ranking.html">2010-04-09</a></cite></footer>
+{: class="blockquote" cite="https://webmasters.googleblog.com/2010/04/using-site-speed-in-web-search-ranking.html"}
+
 
 
 ## References
