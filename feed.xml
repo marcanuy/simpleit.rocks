@@ -4,10 +4,10 @@
     <title>Simple IT 🤘 Rocks</title>
     <description>Clutter-free software concepts. Written on the go.
 </description>
-    <link>http://simpleit.rocks/</link>
-    <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 09 Mar 2017 17:45:46 +0000</pubDate>
-    <lastBuildDate>Thu, 09 Mar 2017 17:45:46 +0000</lastBuildDate>
+    <link>https://simpleit.rocks/</link>
+    <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 09 Mar 2017 20:27:25 +0000</pubDate>
+    <lastBuildDate>Thu, 09 Mar 2017 20:27:25 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -325,8 +325,8 @@ used by Bootstrap&amp;nbsp;&lt;a href=&quot;#fnref:tether&quot; class=&quot;reve
 &lt;/div&gt;
 </description>
         <pubDate>Mon, 27 Feb 2017 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/how-to-add-bootstrap-4-to-jekyll-the-right-way/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/how-to-add-bootstrap-4-to-jekyll-the-right-way/</guid>
+        <link>https://simpleit.rocks/how-to-add-bootstrap-4-to-jekyll-the-right-way/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/how-to-add-bootstrap-4-to-jekyll-the-right-way/</guid>
         
         
         <category>docs</category>
@@ -521,8 +521,8 @@ containing the &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_verifier&lt
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 06 Feb 2017 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/adding-a-twitter-sign-in-button-to-a-website-flow-summary/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/adding-a-twitter-sign-in-button-to-a-website-flow-summary/</guid>
+        <link>https://simpleit.rocks/adding-a-twitter-sign-in-button-to-a-website-flow-summary/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/adding-a-twitter-sign-in-button-to-a-website-flow-summary/</guid>
         
         
         <category>docs</category>
@@ -812,8 +812,8 @@ data shows that improving site speed also reduces operating costs.&lt;/p&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 26 Jan 2017 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/essential-seo-tips-and-techniques-from-trusted-sources/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/essential-seo-tips-and-techniques-from-trusted-sources/</guid>
+        <link>https://simpleit.rocks/essential-seo-tips-and-techniques-from-trusted-sources/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/essential-seo-tips-and-techniques-from-trusted-sources/</guid>
         
         <category>ranking,</category>
         
@@ -992,8 +992,8 @@ know commands and strategies to recover our sites and keep them safe.&lt;/p&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 26 Jan 2017 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/find-out-if-your-joomla-site-has-been-hacked/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/find-out-if-your-joomla-site-has-been-hacked/</guid>
+        <link>https://simpleit.rocks/find-out-if-your-joomla-site-has-been-hacked/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/find-out-if-your-joomla-site-has-been-hacked/</guid>
         
         
         <category>docs</category>
@@ -1316,8 +1316,8 @@ def get_or_create_user(session, model, **kwargs):
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 25 Jan 2017 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/what-are-the-supported-language-highlighters-in-jekyll/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/what-are-the-supported-language-highlighters-in-jekyll/</guid>
+        <link>https://simpleit.rocks/what-are-the-supported-language-highlighters-in-jekyll/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/what-are-the-supported-language-highlighters-in-jekyll/</guid>
         
         
         <category>docs</category>
@@ -1443,8 +1443,8 @@ another popular ones)&lt;/li&gt;
 
 </description>
         <pubDate>Wed, 25 Jan 2017 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/using-clamav-antivirus-in-ubuntu/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/using-clamav-antivirus-in-ubuntu/</guid>
+        <link>https://simpleit.rocks/using-clamav-antivirus-in-ubuntu/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/using-clamav-antivirus-in-ubuntu/</guid>
         
         <category>antivirus,</category>
         
@@ -1535,8 +1535,8 @@ the project name as their key:&lt;/p&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Tue, 24 Jan 2017 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/</guid>
+        <link>https://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/</guid>
         
         
         <category>docs</category>
@@ -1674,8 +1674,8 @@ the same if you add this to &lt;code class=&quot;highlighter-rouge&quot;&gt;/mya
  server, like development, testing or production&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Tue, 24 Jan 2017 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/managing-environment-configuration-variables-in-flask-with-dotenv/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/managing-environment-configuration-variables-in-flask-with-dotenv/</guid>
+        <link>https://simpleit.rocks/managing-environment-configuration-variables-in-flask-with-dotenv/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/managing-environment-configuration-variables-in-flask-with-dotenv/</guid>
         
         
         <category>docs</category>
@@ -1765,8 +1765,8 @@ complies with twelve-factor’s third statement:
 
 </description>
         <pubDate>Tue, 24 Jan 2017 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/avoid-using-flask-instance-folder-when-deploying-to-heroku/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/avoid-using-flask-instance-folder-when-deploying-to-heroku/</guid>
+        <link>https://simpleit.rocks/avoid-using-flask-instance-folder-when-deploying-to-heroku/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/avoid-using-flask-instance-folder-when-deploying-to-heroku/</guid>
         
         <category>heroku,</category>
         
@@ -1910,8 +1910,8 @@ variables when deploying to Heroku&lt;/a&gt;.&lt;/p&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 11 Jan 2017 00:00:00 +0000</pubDate>
-        <link>http://simpleit.rocks/organize-a-flask-project-to-handle-production-and-development-environments-effectively/</link>
-        <guid isPermaLink="true">http://simpleit.rocks/organize-a-flask-project-to-handle-production-and-development-environments-effectively/</guid>
+        <link>https://simpleit.rocks/organize-a-flask-project-to-handle-production-and-development-environments-effectively/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/organize-a-flask-project-to-handle-production-and-development-environments-effectively/</guid>
         
         
         <category>docs</category>
