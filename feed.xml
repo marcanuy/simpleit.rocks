@@ -6,8 +6,8 @@
 </description>
     <link>http://simpleit.rocks/</link>
     <atom:link href="http://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 03 Mar 2017 17:31:35 +0000</pubDate>
-    <lastBuildDate>Fri, 03 Mar 2017 17:31:35 +0000</lastBuildDate>
+    <pubDate>Thu, 09 Mar 2017 17:45:46 +0000</pubDate>
+    <lastBuildDate>Thu, 09 Mar 2017 17:45:46 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -541,6 +541,16 @@ containing the &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_verifier&lt
 techniques from top Search Engines and trusted sources to improve your
 search engine presence and design better websites.&lt;/p&gt;
 
+&lt;p&gt;It mainly consists of special clues given in Google blog posts.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2016/09/penguin-is-now-part-of-our-core.html&quot;&gt;
+  &lt;p&gt;Google’s algorithms rely on more than 200 unique signals or “clues”
+that make it possible to surface what you might be looking
+for. These signals include things like the specific words that
+appear on websites, the freshness of content, your region and
+PageRank.&lt;/p&gt;
+&lt;/blockquote&gt;
+
 &lt;h2 id=&quot;facts&quot;&gt;Facts&lt;/h2&gt;
 
 &lt;h3 id=&quot;android&quot;&gt;Android&lt;/h3&gt;
@@ -555,6 +565,20 @@ App Indexing as a ranking signal for all users on Android, regardless
 of whether they have your app installed or not.&lt;/p&gt;
 
   &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Lawrence Chang, Product Manager &lt;a href=&quot;https://webmasters.googleblog.com/2015/04/drive-app-installs-through-app-indexing.html&quot;&gt;2015-04-16&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Signed-in users would likely see content from apps they have
+installed. (&lt;a href=&quot;https://support.google.com/googleplay/android-developer/answer/6041489?hl=en&quot;&gt;App Indexing&lt;/a&gt; allows
+Google to surface this information in search results)&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2015/02/finding-more-mobile-friendly-search.html&quot;&gt;
+  &lt;p&gt;Starting today, we will begin to use information from indexed apps
+as a factor in ranking for signed-in users who have the app
+installed. As a result, we may now surface content from indexed apps
+more prominently in search. To find out how to implement App
+Indexing, which allows us to surface this information in search
+results&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Takaki Makino, Chaesang Jung, and Doantam Phan in Finding more mobile-friendly search results &lt;a href=&quot;https://webmasters.googleblog.com/2015/02/finding-more-mobile-friendly-search.html&quot;&gt;2015-02-26&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;crawling&quot;&gt;Crawling&lt;/h3&gt;
@@ -574,7 +598,10 @@ signal.&lt;/p&gt;
 &lt;p&gt;HTTPS is a ranking signal and is better than HTTP.&lt;/p&gt;
 
 &lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2014/08/https-as-ranking-signal.html&quot;&gt;
-  &lt;p&gt;we’re starting to use HTTPS as a ranking signal. For now it’s only a
+  &lt;p&gt;over the past few months we’ve been running tests taking into
+account whether sites use secure, encrypted connections as a signal in
+our search ranking algorithms. We’ve seen positive results, so
+we’re starting to use HTTPS as a ranking signal. For now it’s only a
 very lightweight signal — affecting fewer than 1% of global queries,
 and carrying less weight than other signals such as high-quality
 content — while we give webmasters time to switch to HTTPS. But over
@@ -620,7 +647,7 @@ location, etc&lt;/p&gt;
   &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Maile Ohye, Developer Programs Tech Lead &lt;a href=&quot;https://webmasters.googleblog.com/2008/10/good-times-with-inbound-links.html&quot;&gt;2008-10-09&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;content&quot;&gt;Content&lt;/h3&gt;
+&lt;h3 id=&quot;search-query&quot;&gt;Search Query&lt;/h3&gt;
 
 &lt;p&gt;Search query intent is favored over a mobile friendly site, i.e.: a
 non mobile-friendly site with better content than a mobile friendly
@@ -634,7 +661,7 @@ could still rank well if it has great, relevant content.&lt;/p&gt;
   &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Continuing to make web more mobile &lt;a href=&quot;https://webmasters.googleblog.com/2016/03/continuing-to-make-web-more-mobile.html&quot;&gt;2016-03-16&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
 &lt;/blockquote&gt;
 
-&lt;h4 id=&quot;high-quality-content&quot;&gt;High Quality Content&lt;/h4&gt;
+&lt;h3 id=&quot;high-quality-content&quot;&gt;High Quality Content&lt;/h3&gt;
 
 &lt;p&gt;According to &lt;a href=&quot;https://webmasters.googleblog.com/2011/05/more-guidance-on-building-high-quality.html&quot;&gt;this guide from Google High Quality Content is&lt;/a&gt;:&lt;/p&gt;
 
@@ -709,6 +736,28 @@ scrolling.&lt;/p&gt;
   &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Rolling out the mobile-friendly update by Takaki Makino and Doantam Phan &lt;a href=&quot;https://webmasters.googleblog.com/2015/04/rolling-out-mobile-friendly-update.html&quot;&gt;2015-04-15&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
 &lt;/blockquote&gt;
 
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2016/03/continuing-to-make-web-more-mobile.html&quot;&gt;
+  &lt;p&gt;Last year, we started using mobile-friendliness as a ranking signal
+on mobile searches. Today we’re announcing that beginning in May,
+we’ll start rolling out an update to mobile search results that
+increases the effect of the ranking signal to help our users find
+even more pages that are relevant and mobile-friendly.&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Klemen Kloboves, Software Engineer  &lt;a href=&quot;https://webmasters.googleblog.com/2016/03/continuing-to-make-web-more-mobile.html&quot;&gt;2016-03-16&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Mobile-friendly websites are more likely to appear in search results
+over other non-mobile friendly sites with similar content.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2015/02/finding-more-mobile-friendly-search.html&quot;&gt;
+  &lt;p&gt;Starting April 21, we will be expanding our use of
+mobile-friendliness as a ranking signal. This change will affect
+mobile searches in all languages worldwide and will have a
+significant impact in our search results. Consequently, users will
+find it easier to get relevant, high quality search results that are
+optimized for their devices.&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Takaki Makino, Chaesang Jung, and Doantam Phan in Finding more mobile-friendly search results &lt;a href=&quot;https://webmasters.googleblog.com/2015/02/finding-more-mobile-friendly-search.html&quot;&gt;2015-02-26&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
 &lt;h3 id=&quot;social&quot;&gt;Social&lt;/h3&gt;
 
 &lt;p&gt;Google +1 button amount of shares may increase web pages ranking.&lt;/p&gt;
@@ -735,6 +784,22 @@ including a new signal in our search ranking algorithms: site
 speed. Site speed reflects how quickly a website responds to web
 requests.&lt;/p&gt;
 
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Amit Singhal, Google Fellow and Matt Cutts, Principal Engineer, Google Search Quality Team &lt;a href=&quot;https://webmasters.googleblog.com/2010/04/using-site-speed-in-web-search-ranking.html&quot;&gt;2010-04-09&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Why is speed important to Google? Websites with fast loading times
+are good to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;internet users, improving user experience while browsing&lt;/li&gt;
+  &lt;li&gt;reduces operating costs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2010/04/using-site-speed-in-web-search-ranking.html&quot;&gt;
+  &lt;p&gt;Faster sites create happy users and we’ve seen in our internal
+studies that when a site responds slowly, visitors spend less time
+there. But faster sites don’t just improve user experience; recent
+data shows that improving site speed also reduces operating costs.&lt;/p&gt;
   &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Amit Singhal, Google Fellow and Matt Cutts, Principal Engineer, Google Search Quality Team &lt;a href=&quot;https://webmasters.googleblog.com/2010/04/using-site-speed-in-web-search-ranking.html&quot;&gt;2010-04-09&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
 &lt;/blockquote&gt;
 
