@@ -12,7 +12,7 @@ description: > # this means to ignore newlines until "baseurl:"
   Clutter-free software concepts.
   Written on the go.
 #baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://simpleit.rocks" # the base hostname & protocol for your site
+url: "https://simpleit.rocks" # the base hostname & protocol for your site
 
 author: marcanuy #Twitter handle
 
