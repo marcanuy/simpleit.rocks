@@ -23,8 +23,8 @@
   <!-- Begin Jekyll SEO tag v2.1.0 -->
 <title>Prevent Running Of Duplicate Cron Jobs - Simple IT 🤘 Rocks</title>
 <meta property="og:title" content="Prevent Running Of Duplicate Cron Jobs" />
-<meta name="description" content="How to run no more than one unique instance of a script or command." />
-<meta property="og:description" content="How to run no more than one unique instance of a script or command." />
+<meta name="description" content="How to run no more than one unique instance of a script or command. Prevent duplicate cron jobs running." />
+<meta property="og:description" content="How to run no more than one unique instance of a script or command. Prevent duplicate cron jobs running." />
 <link rel="canonical" href="https://simpleit.rocks/prevent-running-of-duplicate-cron-jobs/" />
 <meta property="og:url" content="https://simpleit.rocks/prevent-running-of-duplicate-cron-jobs/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
@@ -39,7 +39,7 @@
 "@type": "BlogPosting",
 "headline": "Prevent Running Of Duplicate Cron Jobs",
 "datePublished": "2016-12-08T00:00:00+00:00",
-"description": "How to run no more than one unique instance of a script or command.",
+"description": "How to run no more than one unique instance of a script or command. Prevent duplicate cron jobs running.",
 "url": "https://simpleit.rocks/prevent-running-of-duplicate-cron-jobs/"}</script>
 <!-- End Jekyll SEO tag -->
 
@@ -272,6 +272,7 @@
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#script-approach">Script approach</a></li>
 <li class="toc-entry toc-h2"><a href="#lock-file-approach">Lock file approach</a></li>
 <li class="toc-entry toc-h3"><a href="#using-flock">Using flock</a></li>
 <li class="toc-entry toc-h3"><a href="#using-run-one">Using run-one</a></li>
@@ -289,7 +290,7 @@
        href="https://twitter.com/share"
        data-url="https://simpleit.rocks/prevent-running-of-duplicate-cron-jobs/"
        data-via=""
-       data-text="How to run no more than one unique instance of a script or command."
+       data-text="How to run no more than one unique instance of a script or command. Prevent duplicate cron jobs running."
        data-related="marcanuy,{"username"=>"simpleitrocks"}"
        data-count="vertical">
 	Tweet
@@ -338,7 +339,7 @@
 
     
 	<p class="lead">
-	  How to run no more than one unique instance of a script or command.
+	  How to run no more than one unique instance of a script or command. Prevent duplicate cron jobs running.
 	</p>
     
 
@@ -362,23 +363,107 @@
 
     <h2 id="overview">Overview</h2>
 
-<p>When you set up a cronjob you often want no more than one copy running
-at a time, so you need to apply a strategy to prevent a cron job from
-having multiple running instances when a script takes longer time to
-finish.</p>
+<p>When you set up a cron job, sometimes you need to make sure that you
+will always have just <strong>one running instance at a time</strong>. This is
+useful also when you want to be sure that a script that can take
+longer than expected does not get executed again if the previous call
+hasn’t finished.</p>
 
-<p>This can be done “manually” with a a shell script that detects a
-running instance before executing it again, using <code class="highlighter-rouge">pidof</code>, or you can
-take benefit of software that are built to handle this scenario
-specifically like <code class="highlighter-rouge">flock</code> or <code class="highlighter-rouge">run-once</code>.</p>
+<p>This can be done with another <em>caller</em> shell script that detects a
+running instance before executing it again (e.g.: using <code class="highlighter-rouge">pidof</code>), or
+you can use programs written specifically to handle this situation
+(e.g.: <code class="highlighter-rouge">flock</code> or <code class="highlighter-rouge">run-once</code>).</p>
+
+<p>In this tutorial we will be using different approaches to have just
+one instance of an example script called <code class="highlighter-rouge">main.sh</code> that simply prints
+“Hello” in an infinite while loop.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+<span class="k">while </span><span class="nb">true
+ </span><span class="k">do
+    </span><span class="nb">echo</span> <span class="s2">"Hello"</span>
+    sleep 2
+ <span class="k">done</span>
+</code></pre>
+</div>
+
+<p>And make it executable.</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>chmod +x main.sh</kbd>
+<span class="shell-prompt">$</span> <kbd>./main.sh</kbd>
+Hello
+Hello
+...
+</samp>
+</pre>
+
+<h2 id="script-approach">Script approach</h2>
+
+<p>We make a script <code class="highlighter-rouge">caller.sh</code> that launches the program we want to run
+only if the process’ <em>id</em> of the script isn’t already running.</p>
+
+<div class="mermaid">
+graph TD
+    shell["$ caller.sh"]
+    if{"Is main.sh running?"}
+	shell--&gt;if
+	if--&gt;|yes|exit1
+	if--&gt;|not|main.sh
+	main.sh--&gt;exit0["Exit Status 0"]
+</div>
+
+<p>To find the process ID of our running script (omitting the calling
+script) we use <kbd>pidof</kbd>.</p>
+
+<p>In <code class="highlighter-rouge">caller.sh</code>:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="k">if </span>pidof -o %PPID -x <span class="s2">"main.sh"</span>&gt;/dev/null; <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"Process already running"</span>
+	<span class="nb">exit </span>1
+<span class="k">fi</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-x     Scripts too - this causes the program to also return process id's of shells running the named scripts.
+-o omitpid
+             Tells pidof to omit processes with that process id. The special pid %PPID can be used to name the parent process  of
+             the pidof program, in other words the calling shell or shell script.
+EXIT STATUS
+	0      At least one program was found with the requested name.
+	1      No program was found with the requested name.
+</code></pre>
+</div>
+
+<p>Then the first time we run <kbd>caller.sh</kbd> it will launch
+<kbd>main.sh</kbd>, successive calls would exit the script.</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>./caller.sh</kbd>
+Hello
+Hello
+...
+</samp>
+</pre>
+
+<p>If we try to launch it again from another shell:</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>./caller.sh</kbd>
+./main.sh already running
+</samp>
+</pre>
 
 <h2 id="lock-file-approach">Lock file approach</h2>
 
-<p>A lock file is an ordinary file that it is created before executing the
+<p>A <strong>lock file</strong> is an ordinary file that it is created before executing the
 script, and removed after the script finishes.</p>
 
 <p>This way if any other command tries to execute the same script <strong>using
-the same lock file</strong> it will exit or wait until it can execute.</p>
+the same lock file</strong> it will exit or wait until it can run it.</p>
 
 <h3 id="using-flock">Using flock</h3>
 
@@ -424,11 +509,8 @@ lock automatically.</p>
 
 <h2 id="summary">Summary</h2>
 
-<p>These approaches are easier and safer than detecting the running
-scripts manually which may lead to other problems.</p>
-
-<p>Not thinking what could happen if a duplicate running instance of a
-cronjob appears can lead to several problems that should not be
+<p>It is a good practice to avoid duplicate running instances of
+cron jobs as they may lead to several problems that should not be
 overlooked and handled accordingly when defining them.</p>
 
 <h2 id="reference">Reference</h2>
@@ -437,6 +519,10 @@ overlooked and handled accordingly when defining them.</p>
   <li>Crontab <a href="http://man7.org/linux/man-pages/man5/crontab.5.html">http://man7.org/linux/man-pages/man5/crontab.5.html</a></li>
   <li><a href="http://serverfault.com/q/82857/135885">Prevent duplicate cron jobs running</a></li>
   <li><a href="https://en.wikipedia.org/wiki/File_locking">File locking</a></li>
+  <li><a href="http://stackoverflow.com/a/28563464/1165509">shell script execution check if it is already running or not</a></li>
+  <li><a href="https://linux.die.net/man/8/pidof">pidof(8) - Linux man page</a></li>
+  <li><a href="https://linux.die.net/man/1/flock">flock(1) - Linux man page</a></li>
+  <li><a href="http://manpages.ubuntu.com/manpages/precise/man1/run-one.1.html">run-one Ubuntu manual</a></li>
 </ul>
 
 

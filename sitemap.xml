@@ -2,23 +2,23 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://simpleit.rocks/books/common-lisp-a-gentle-introduction-to-symbolic-computation-david-touretzky/</loc>
-<lastmod>2017-03-09T20:48:52+00:00</lastmod>
+<lastmod>2017-04-03T22:16:50+00:00</lastmod>
 </url>
 <url>
 <loc>https://simpleit.rocks/books/practical-common-lisp-peter-seibel/</loc>
-<lastmod>2017-03-09T20:48:52+00:00</lastmod>
+<lastmod>2017-04-03T22:16:50+00:00</lastmod>
 </url>
 <url>
 <loc>https://simpleit.rocks/books/ruby-on-rails-tutorial/</loc>
-<lastmod>2017-03-09T20:48:52+00:00</lastmod>
+<lastmod>2017-04-03T22:16:50+00:00</lastmod>
 </url>
 <url>
 <loc>https://simpleit.rocks/books/two-scoops-of-django/</loc>
-<lastmod>2017-03-09T20:48:52+00:00</lastmod>
+<lastmod>2017-04-03T22:16:50+00:00</lastmod>
 </url>
 <url>
 <loc>https://simpleit.rocks/books/writing-gnu-emacs-extensions-book-by-glickstein/</loc>
-<lastmod>2017-03-09T20:48:52+00:00</lastmod>
+<lastmod>2017-04-03T22:16:50+00:00</lastmod>
 </url>
 <url>
 <loc>https://simpleit.rocks/showing-untracked-files-in-status-after-creating-new-directories-in-git/</loc>
@@ -525,6 +525,6 @@
 </url>
 <url>
 <loc>https://simpleit.rocks/googlecc7326a598a074da.html</loc>
-<lastmod>2017-03-09T20:47:34+00:00</lastmod>
+<lastmod>2017-04-03T22:15:37+00:00</lastmod>
 </url>
 </urlset>
