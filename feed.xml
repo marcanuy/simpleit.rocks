@@ -6,9 +6,85 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 03 Apr 2017 22:30:42 +0000</pubDate>
-    <lastBuildDate>Mon, 03 Apr 2017 22:30:42 +0000</lastBuildDate>
+    <pubDate>Mon, 03 Apr 2017 23:12:14 +0000</pubDate>
+    <lastBuildDate>Mon, 03 Apr 2017 23:12:14 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>What To Do After Launching A Website</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;I’ve created an amazing
+website, &lt;a href=&quot;http://www.namecheap.com/?aff=35306&quot;&gt;buyed a domain&lt;/a&gt; and
+purchased a &lt;a href=&quot;https://m.do.co/c/b54bbc9a3125&quot;&gt;web hosting service&lt;/a&gt;,
+what’s next?&lt;/p&gt;
+
+&lt;p&gt;This is a check list of common resources I find useful to check to see
+if they fit my website needs, like setting up a CDN, cache, several
+optimizations, analytics, etc.&lt;/p&gt;
+
+&lt;h2 id=&quot;statistics&quot;&gt;Statistics&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Set up Google Analytics &lt;a href=&quot;http://www.google.com/analytics/&quot;&gt;http://www.google.com/analytics/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;performance&quot;&gt;Performance&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Set up Google Search Console (former Webmaster Tools)
+    &lt;ul&gt;
+      &lt;li&gt;Add HTTPS, WWW and non-WWW versions and select the preferred one&lt;/li&gt;
+      &lt;li&gt;Submit Sitemap.xml to Search Console&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Monitor website’s uptime
+    &lt;ul&gt;
+      &lt;li&gt;It can be set up with a custom monitoring tool like a
+free &lt;a href=&quot;https://github.com/phpservermon/phpservermon&quot;&gt;https://github.com/phpservermon/phpservermon&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;or using some tools provided by services like Cloudflare&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Google’s PageSpeed
+Insights &lt;a href=&quot;https://developers.google.com/speed/docs/insights/&quot;&gt;https://developers.google.com/speed/docs/insights/&lt;/a&gt;&lt;/p&gt;
+
+    &lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://developers.google.com/speed/docs/insights/&quot;&gt;
+      &lt;p&gt;Page Speed Insights measures the performance of a page for mobile
+devices and desktop devices. It fetches the url twice, once with a
+mobile user-agent, and once with a desktop-user agent.&lt;/p&gt;
+
+      &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://developers.google.com/speed/docs/insights/&quot;&gt;About PageSpeed Insights&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Set up Cloudflare &lt;a href=&quot;https://www.cloudflare.com&quot;&gt;https://www.cloudflare.com&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;CDN&lt;/li&gt;
+      &lt;li&gt;Enable HTTPS Page Rules&lt;/li&gt;
+      &lt;li&gt;Static files compression and minification (especially CSS and JS)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;seo&quot;&gt;SEO&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Check for missing &lt;code class=&quot;highlighter-rouge&quot;&gt;description&lt;/code&gt; meta tag in HTML &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt; pages section.&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Mon, 03 Apr 2017 00:00:00 +0000</pubDate>
+        <link>https://simpleit.rocks/what-to-do-after-launching-a-website/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/what-to-do-after-launching-a-website/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>web</category>
+        
+        <category>html</category>
+        
+      </item>
     
       <item>
         <title>How To Add Bootstrap 4 To Jekyll The Right Way</title>
@@ -1773,145 +1849,6 @@ complies with twelve-factor’s third statement:
         <category>deployment,</category>
         
         <category>web-development</category>
-        
-        
-        <category>docs</category>
-        
-        <category>python</category>
-        
-        <category>flask</category>
-        
-      </item>
-    
-      <item>
-        <title>Organize A Flask Project To Handle Production And Development Environments Effectively</title>
-        <description>&lt;h2 id=&quot;separated-configurations-for-development-and-production&quot;&gt;Separated configurations for Development and Production&lt;/h2&gt;
-
-&lt;p&gt;In most situations, applications would need different configurations
-for each environment: Production, Staging, Development, etc.&lt;/p&gt;
-
-&lt;h2 id=&quot;load-default-config-and-an-environment-specific-one&quot;&gt;Load default config and an environment specific one&lt;/h2&gt;
-
-&lt;p&gt;The easiest way to have multiple configurations is to:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;use a default configuration that is always loaded and&lt;/li&gt;
-  &lt;li&gt;the default configuration is under version control (e.g.: part of the &lt;em&gt;git&lt;/em&gt; project repo) and&lt;/li&gt;
-  &lt;li&gt;Use an environment variable to switch between the configurations that overrides the values as needed in each environment&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Example:&lt;/p&gt;
-
-&lt;p&gt;Having a configuration that loads configuration values from the
-specified &lt;em&gt;config&lt;/em&gt; environment &lt;code class=&quot;highlighter-rouge&quot;&gt;YOURAPPLICATION_SETTINGS&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'yourapplication.default_settings'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_envvar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'YOURAPPLICATION_SETTINGS'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Then we create a separate config.py for each &lt;em&gt;env&lt;/em&gt; and export the
-configuration path:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;export
-YOURAPPLICATION_SETTINGS=/path/to/config.py&lt;/kbd&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;This way it will always load the default &lt;em&gt;configs&lt;/em&gt; and then our custom
-variables from &lt;code class=&quot;highlighter-rouge&quot;&gt;YOURAPPLICATION_SETTINGS&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;instance-paths&quot;&gt;Instance paths&lt;/h2&gt;
-
-&lt;p&gt;From Flask 0.8, there is the concept of &lt;strong&gt;instance folders&lt;/strong&gt;. The
-instance folder is a good fit for configuration files because it is
-designed to &lt;strong&gt;not be under version control&lt;/strong&gt; and &lt;strong&gt;be deployment specific&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p class=&quot;alert alert-info&quot;&gt;To keep the &lt;em&gt;instance&lt;/em&gt; folder out of versioning in &lt;em&gt;Git&lt;/em&gt; add &lt;code class=&quot;highlighter-rouge&quot;&gt;instance/&lt;/code&gt;
-to &lt;code class=&quot;highlighter-rouge&quot;&gt;/.gitignore&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;By default, Flask looks for a folder named &lt;code class=&quot;highlighter-rouge&quot;&gt;instance&lt;/code&gt; in the same
-level of your main file or the package.&lt;/p&gt;
-
-&lt;h2 id=&quot;behaviour&quot;&gt;Behaviour&lt;/h2&gt;
-
-&lt;p&gt;Using this folder and having environment specific configuration files
-in the &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; folder we end up having the following directory structure:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;...
-config/
-  __init__.py
-  default.py
-  development.py
-  production.py
-instance/
-  config.py
-myapp/
-  __init__.py
-  myapp.py
-  ..
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;To have the configurations loaded we have to:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;load the default config in &lt;code class=&quot;highlighter-rouge&quot;&gt;config/default.py&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;load configuration from instance folder  &lt;code class=&quot;highlighter-rouge&quot;&gt;instance/config.py&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Load the file specified by the &lt;code class=&quot;highlighter-rouge&quot;&gt;APP_CONFIG_FILE&lt;/code&gt; environment
-variable&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;myapp/__init__.py&lt;/code&gt; we load them:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# myapp/__init__.py&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instance_relative_config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'config.default'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_pyfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'config.py'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_envvar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'APP_CONFIG_FILE'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Then set the environment variable depending on the server we are
-invoking the app:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;export APP_CONFIG_FILE=/var/www/yourapp/config/production.py&lt;/kbd&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;final&quot;&gt;Final&lt;/h2&gt;
-
-&lt;p&gt;Now your folder structure should look like:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;myapp
-├── config
-│   ├── __init__.py     # empty
-│   ├── development.py
-│   ├── default.py
-│   └── production.py
-├── instance
-│   └── config.py
-└── myapp
-   ├── __init__.py
-   └── myapp.py
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;It can be useful to also add support for &lt;code class=&quot;highlighter-rouge&quot;&gt;dotenv&lt;/code&gt; to &lt;a href=&quot;/managing-environment-configuration-variables-in-flask-with-dotenv/&quot;&gt;handle sensitive
-variables when deploying to Heroku&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Explore flask book &lt;a href=&quot;http://explore-flask.readthedocs.io/en/latest/configuration.html&quot;&gt;http://explore-flask.readthedocs.io/en/latest/configuration.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/q/41615662/1165509&quot;&gt;Non existing path when setting up Flask to have separated configurations for each environment&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Wed, 11 Jan 2017 00:00:00 +0000</pubDate>
-        <link>https://simpleit.rocks/organize-a-flask-project-to-handle-production-and-development-environments-effectively/</link>
-        <guid isPermaLink="true">https://simpleit.rocks/organize-a-flask-project-to-handle-production-and-development-environments-effectively/</guid>
         
         
         <category>docs</category>
