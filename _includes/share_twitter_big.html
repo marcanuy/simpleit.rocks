@@ -3,7 +3,7 @@
        href="https://twitter.com/share"
        data-url="{{ include.url | remove: 'index.html' | absolute_url }}"
        data-via=""
-       data-text="{{ include.text }}"
+       data-text="{{ include.text | truncate: 100 }}"
        data-related="{{site.author}},{{site.twitter}}"
        data-count="vertical">
 	Tweet
