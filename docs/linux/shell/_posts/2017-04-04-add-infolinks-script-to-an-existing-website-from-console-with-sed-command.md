@@ -62,7 +62,12 @@ parameter `-f`:
 > -f script-file
 > --file=script-file
 >
->    Add the commands contained in the file script-file to the set of commands to be run while processing the input.
+>    Add the commands contained in the file script-file to the set of
+> commands to be run while processing the input.
+> 
+> <footer class="blockquote-footer"> <cite>sed linux manual</cite></footer>
+{: class="blockquote"}
+
 
 ### Transform all files
 
