@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="{{ '/bower_components/font-awesome/css/font-awesome.min.css' | prepend: site.baseurl }}" type="text/css" media="screen" />
 
   
-  {% if page.content contains "mermaid" %}
+  {% if page.content contains "mermaid" or page.layout == "tutorial" %}
   <!-- Mermaid -->
   <link rel="stylesheet" href="{{ '/bower_components/mermaid/dist/mermaid.forest.css' | prepend: site.baseurl }}" type="text/css" media="screen" />
   {% endif %}
