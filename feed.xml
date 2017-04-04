@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 04 Apr 2017 14:50:58 +0000</pubDate>
-    <lastBuildDate>Tue, 04 Apr 2017 14:50:58 +0000</lastBuildDate>
+    <pubDate>Tue, 04 Apr 2017 16:31:24 +0000</pubDate>
+    <lastBuildDate>Tue, 04 Apr 2017 16:31:24 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -68,11 +68,14 @@ var infolinks_wsid &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0;&lt;span cla
 &lt;p&gt;We will use this file as the script to be inserted by &lt;em&gt;sed&lt;/em&gt; with the
 parameter &lt;code class=&quot;highlighter-rouge&quot;&gt;-f&lt;/code&gt;:&lt;/p&gt;
 
-&lt;blockquote&gt;
+&lt;blockquote class=&quot;blockquote&quot;&gt;
   &lt;p&gt;-f script-file
 –file=script-file&lt;/p&gt;
 
-  &lt;p&gt;Add the commands contained in the file script-file to the set of commands to be run while processing the input.&lt;/p&gt;
+  &lt;p&gt;Add the commands contained in the file script-file to the set of
+commands to be run while processing the input.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;sed linux manual&lt;/cite&gt;&lt;/footer&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;transform-all-files&quot;&gt;Transform all files&lt;/h3&gt;
