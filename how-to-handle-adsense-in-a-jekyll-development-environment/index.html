@@ -315,7 +315,7 @@
 <li class="toc-entry toc-h2"><a href="#process">Process</a></li>
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
 <li class="toc-entry toc-h2"><a href="#alternative-1-google-code-parameter-to-make-tests">Alternative 1: Google code parameter to make tests</a></li>
-<li class="toc-entry toc-h2"><a href="#alternative-2-stop-showing-adsense-ads">Alternative 2: Stop showing adsense ads</a></li>
+<li class="toc-entry toc-h2"><a href="#alternative-2-avoid-showing-adsense-ads-locally">Alternative 2: Avoid showing adsense ads locally</a></li>
 <li class="toc-entry toc-h2"><a href="#environment-in-jekyll-liquid-template">Environment in Jekyll liquid template</a></li>
 <li class="toc-entry toc-h2"><a href="#summary">Summary</a></li>
 </ul>
@@ -448,12 +448,14 @@ site locally.</p>
 developing the site which can lead to an account ban.</li>
 </ul>
 
-<blockquote cite="https://support.google.com/adsense/answer/1348754?hl=en#q1">
+<blockquote class="blockquote" cite="https://support.google.com/adsense/answer/1348754?hl=en#q1">
   <p>Although publishers are not permitted to click on their own ads for any
 reason, we do understand that accidental clicks may occur. We therefore
 don’t require that you contact us every time you click on your ads. Rest
 assured that your account is being properly credited for all clicks and
 impressions we consider to be valid.</p>
+
+  <footer class="blockquote-footer"> <cite>How to keep your account in good standing <a href="https://support.google.com/adsense/answer/1348754">Clicks and impressions</a></cite></footer>
 </blockquote>
 
 <ul>
@@ -478,22 +480,27 @@ avoid accidental clicks and set them up as tests.</p>
 to modify an <em>ad</em> code and if not enabled in production, <strong>ads clicks won’t
 generate any revenue</strong>.</p>
 
-<blockquote cite="https://developers.google.com/custom-search-ads/docs/reference">
+<blockquote class="blockquote" cite="https://developers.google.com/custom-search-ads/docs/reference">
   <p>To use this code you must have an AdSense account
 with active permission to use AdSense Custom Search Ads.</p>
+
+  <footer class="blockquote-footer"> <cite>AdSense Custom Search Ads <a href="https://developers.google.com/custom-search-ads/docs/reference">Reference</a></cite></footer>
 </blockquote>
 
-<p>The parameter is <code class="highlighter-rouge">'adtest' : 'on'</code> and it is defined:</p>
+<p>The parameter is <code class="highlighter-rouge">'adtest' : 'on'</code> and it is defined like:</p>
 
-<blockquote cite="https://developers.google.com/custom-search-ads/docs/reference#page-level-parameter-descriptions">
+<blockquote class="blockquote" cite="https://developers.google.com/custom-search-ads/docs/reference#page-level-parameter-descriptions">
   <p>The adtest parameter is used to indicate that a request for ads is a test. 
 When the adtest parameter has a value of on, Google treats the request as
-a test and does not count the ad impressions or track the clickthrough results.</p>
+a test and does not count the ad impressions or track the
+clickthrough results.</p>
+
+  <footer class="blockquote-footer"> <cite>AdSense Custom Search Ads <a href="https://developers.google.com/custom-search-ads/docs/reference#page-level-parameter-descriptions">Reference</a></cite></footer>
 </blockquote>
 
 <p>An <em>easier</em> and <em>safer</em> alternative is to avoid the ad request at all.</p>
 
-<h2 id="alternative-2-stop-showing-adsense-ads">Alternative 2: Stop showing adsense ads</h2>
+<h2 id="alternative-2-avoid-showing-adsense-ads-locally">Alternative 2: Avoid showing adsense ads locally</h2>
 
 <p>Jekyll templates can access the value of an environment variable passed
 at build time to avoid any external javascript request. Based on this
@@ -506,16 +513,20 @@ possible to hide the ads in liquid templates</p>
 
 <p>To build a production ready jekyll site it can be specified like this:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nv">JEKYLL_ENV</span><span class="o">=</span>production jekyll build
-</code></pre>
-</div>
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>JEKYLL_ENV=production jekyll build</kbd>
 
-<p>When using a [Bundler command]
-it should be used like:</p>
+</samp>
+</pre>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nv">JEKYLL_ENV</span><span class="o">=</span>production bundle <span class="nb">exec </span>jekyll build
-</code></pre>
-</div>
+<p>When using <strong>bundler</strong> it should be used like:</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>JEKYLL_ENV=production bundle exec jekyll build</kbd>
+</samp>
+</pre>
 
 <h2 id="environment-in-jekyll-liquid-template">Environment in Jekyll liquid template</h2>
 
