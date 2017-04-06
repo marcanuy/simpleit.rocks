@@ -575,11 +575,11 @@ Jekyll reads the file to be transformed into <abbr title="Cascading Style Sheets
 <h2 id="add-css-to-layout">Add css to layout</h2>
 
 <p>After we have our <code class="highlighter-rouge">css/styles.scss</code>, Jekyll will process it and
-generate the final <abbr title="Cascading Style Sheets">CSS</abbr> file: <code class="highlighter-rouge">css/style.css</code>.</p>
+generate the final <abbr title="Cascading Style Sheets">CSS</abbr> file: <code class="highlighter-rouge">css/styles.css</code>.</p>
 
 <p>That is the path we need to add to our layout, in the <code class="highlighter-rouge">&lt;head&gt;</code>
 section of <code class="highlighter-rouge">_layouts/default.html</code> we include the css: <code class="highlighter-rouge">&lt;link
-rel="stylesheet" href="/css/main.css"&gt;</code></p>
+rel="stylesheet" href="/css/styles.css"&gt;</code></p>
 
 <div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;</span>
@@ -603,7 +603,7 @@ graph TB
         VARS["/_sass/_variables.scss"]--&gt;BS_VARIABLES
         BS_VARIABLES["@import '../bower_components/bootstrap/scss/variables';"]--&gt;STYLESCSS
         BS_SCSS["/bower_components/bootstrap/scss/bootstrap.scss"]--&gt;STYLESCSS
-        STYLESCSS["Generates /css/style.css"]
+        STYLESCSS["Generates /css/styles.css"]
 </div>
 
 <h2 id="conclusion">Conclusion</h2>

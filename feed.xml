@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 06 Apr 2017 13:33:37 +0000</pubDate>
-    <lastBuildDate>Thu, 06 Apr 2017 13:33:37 +0000</lastBuildDate>
+    <pubDate>Thu, 06 Apr 2017 13:34:10 +0000</pubDate>
+    <lastBuildDate>Thu, 06 Apr 2017 13:34:10 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -389,11 +389,11 @@ Jekyll reads the file to be transformed into &lt;abbr title=&quot;Cascading Styl
 &lt;h2 id=&quot;add-css-to-layout&quot;&gt;Add css to layout&lt;/h2&gt;
 
 &lt;p&gt;After we have our &lt;code class=&quot;highlighter-rouge&quot;&gt;css/styles.scss&lt;/code&gt;, Jekyll will process it and
-generate the final &lt;abbr title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/abbr&gt; file: &lt;code class=&quot;highlighter-rouge&quot;&gt;css/style.css&lt;/code&gt;.&lt;/p&gt;
+generate the final &lt;abbr title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/abbr&gt; file: &lt;code class=&quot;highlighter-rouge&quot;&gt;css/styles.css&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;That is the path we need to add to our layout, in the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt;
 section of &lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts/default.html&lt;/code&gt; we include the css: &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;link
-rel=&quot;stylesheet&quot; href=&quot;/css/main.css&quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+rel=&quot;stylesheet&quot; href=&quot;/css/styles.css&quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
@@ -417,7 +417,7 @@ graph TB
         VARS[&quot;/_sass/_variables.scss&quot;]--&amp;gt;BS_VARIABLES
         BS_VARIABLES[&quot;@import '../bower_components/bootstrap/scss/variables';&quot;]--&amp;gt;STYLESCSS
         BS_SCSS[&quot;/bower_components/bootstrap/scss/bootstrap.scss&quot;]--&amp;gt;STYLESCSS
-        STYLESCSS[&quot;Generates /css/style.css&quot;]
+        STYLESCSS[&quot;Generates /css/styles.css&quot;]
 &lt;/div&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
