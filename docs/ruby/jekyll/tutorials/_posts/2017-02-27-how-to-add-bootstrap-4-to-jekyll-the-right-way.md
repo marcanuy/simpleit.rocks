@@ -176,11 +176,11 @@ Jekyll reads the file to be transformed into CSS later
 ## Add css to layout
 
 After we have our `css/styles.scss`, Jekyll will process it and
-generate the final CSS file: `css/style.css`.
+generate the final CSS file: `css/styles.css`.
 
 That is the path we need to add to our layout, in the `<head>`
 section of `_layouts/default.html` we include the css: `<link
-rel="stylesheet" href="/css/main.css">`
+rel="stylesheet" href="/css/styles.css">`
 
 ~~~html
 <html>
@@ -204,7 +204,7 @@ graph TB
         VARS["/_sass/_variables.scss"]-->BS_VARIABLES
         BS_VARIABLES["@import '../bower_components/bootstrap/scss/variables';"]-->STYLESCSS
         BS_SCSS["/bower_components/bootstrap/scss/bootstrap.scss"]-->STYLESCSS
-        STYLESCSS["Generates /css/style.css"]
+        STYLESCSS["Generates /css/styles.css"]
 </div>
 
 ## Conclusion
