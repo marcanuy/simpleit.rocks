@@ -45,6 +45,12 @@ optimizations, analytics, etc.
   
 ## SEO
 
+- Add your site’s name, logo, and social links
+  - <https://developers.google.com/search/docs/data-types/sitename>
+  - <https://developers.google.com/search/docs/data-types/logo>
+  - <https://developers.google.com/search/docs/data-types/social-profile-links>
+- Enable breadcrumbs <https://developers.google.com/search/docs/data-types/breadcrumbs>	
+- Add a sitelinks searchbox <https://developers.google.com/search/docs/data-types/sitelinks-searchbox>
 - Check for missing `description` meta tag in HTML `<head>` pages section.
 
 
