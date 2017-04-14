@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 06 Apr 2017 13:34:10 +0000</pubDate>
-    <lastBuildDate>Thu, 06 Apr 2017 13:34:10 +0000</lastBuildDate>
+    <pubDate>Fri, 14 Apr 2017 21:18:29 +0000</pubDate>
+    <lastBuildDate>Fri, 14 Apr 2017 21:18:29 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -190,6 +190,15 @@ mobile user-agent, and once with a desktop-user agent.&lt;/p&gt;
 &lt;h2 id=&quot;seo&quot;&gt;SEO&lt;/h2&gt;
 
 &lt;ul&gt;
+  &lt;li&gt;Add your site’s name, logo, and social links
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://developers.google.com/search/docs/data-types/sitename&quot;&gt;https://developers.google.com/search/docs/data-types/sitename&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://developers.google.com/search/docs/data-types/logo&quot;&gt;https://developers.google.com/search/docs/data-types/logo&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://developers.google.com/search/docs/data-types/social-profile-links&quot;&gt;https://developers.google.com/search/docs/data-types/social-profile-links&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Enable breadcrumbs &lt;a href=&quot;https://developers.google.com/search/docs/data-types/breadcrumbs&quot;&gt;https://developers.google.com/search/docs/data-types/breadcrumbs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Add a sitelinks searchbox &lt;a href=&quot;https://developers.google.com/search/docs/data-types/sitelinks-searchbox&quot;&gt;https://developers.google.com/search/docs/data-types/sitelinks-searchbox&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Check for missing &lt;code class=&quot;highlighter-rouge&quot;&gt;description&lt;/code&gt; meta tag in HTML &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt; pages section.&lt;/li&gt;
 &lt;/ul&gt;
 
