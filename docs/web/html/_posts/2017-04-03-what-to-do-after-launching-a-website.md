@@ -52,5 +52,9 @@ optimizations, analytics, etc.
 - Enable breadcrumbs <https://developers.google.com/search/docs/data-types/breadcrumbs>	
 - Add a sitelinks searchbox <https://developers.google.com/search/docs/data-types/sitelinks-searchbox>
 - Check for missing `description` meta tag in HTML `<head>` pages section.
-
+- Validate HTML: <https://validator.w3.org/>
+- Submit a [sitemap](http://sitemaps.org/) to Google Search Console
+- Add [OpenGraph](http://ogp.me/)
+  and [Twitter cards](https://dev.twitter.com/cards/)
+- Generate an [AMP](https://www.ampproject.org/docs/guides) version of the website
 
