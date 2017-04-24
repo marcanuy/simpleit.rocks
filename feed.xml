@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 24 Apr 2017 17:20:50 +0000</pubDate>
-    <lastBuildDate>Mon, 24 Apr 2017 17:20:50 +0000</lastBuildDate>
+    <pubDate>Mon, 24 Apr 2017 17:56:44 +0000</pubDate>
+    <lastBuildDate>Mon, 24 Apr 2017 17:56:44 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -167,7 +167,7 @@ with &lt;a href=&quot;https://console.aws.amazon.com/route53/home&quot;&gt;&lt;a
 
 &lt;dl class=&quot;row&quot;&gt;
   &lt;dt class=&quot;col-sm-3&quot;&gt;Name:&lt;/dt&gt;
-  &lt;dd class=&quot;col-sm-9&quot;&gt;(leave it empty)&amp;gt;&lt;/dd&gt;
+  &lt;dd class=&quot;col-sm-9&quot;&gt;(leave it empty)&lt;/dd&gt;
   
   &lt;dt class=&quot;col-sm-3&quot;&gt;Type:&lt;/dt&gt;
   &lt;dd class=&quot;col-sm-9&quot;&gt;Alias: Yes&lt;/dd&gt;
@@ -228,7 +228,7 @@ Server: AmazonS3
   &lt;dd class=&quot;col-sm-9&quot;&gt;&lt;blockquote&gt;print lines matching a pattern&lt;/blockquote&gt;&lt;/dd&gt;
 
   &lt;dt class=&quot;col-sm-3&quot;&gt;&lt;kbd&gt;grep -E, --extended-regexp&lt;/kbd&gt;&lt;/dt&gt;
-  &lt;dd class=&quot;col-sm-9&quot;&gt;Interpret PATTERN as an extended regular expression (ERE, see below).&lt;/dd&gt;
+  &lt;dd class=&quot;col-sm-9&quot;&gt;Interpret PATTERN as an extended regular expression.&lt;/dd&gt;
 &lt;/dl&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
