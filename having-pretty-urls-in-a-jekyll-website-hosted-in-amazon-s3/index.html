@@ -449,11 +449,34 @@ to the server.</p>
 <p>An easy way to do it is to have a shell script that removes them after
 building the site.</p>
 
-<pre class="shell">
-<samp>
-<span class="shell-prompt">$</span> <kbd>find _site/ -type f -name '*.html' -print0 | while read -d $'\0' f; do mv "$f" "${f%.html}"; done</kbd>
-</samp>
-</pre>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>find _site/ -type f -name <span class="s1">'*.html'</span> -print0 | <span class="k">while </span><span class="nb">read</span> -d <span class="nv">$'</span><span class="se">\0</span><span class="s1">' f; do mv "$f" "${f%.html}"; done
+</span></code></pre>
+</div>
+
+<p>Command explanation:</p>
+
+<dl class="row"> 
+<dt class="col-sm-3">-type f</dt> 
+<dd class="col-sm-9">
+File is of type "regular file"
+</dd> 
+<dt class="col-sm-3">-name pattern</dt> 
+<dd class="col-sm-9">
+<blockquote>Base of file name (the path with the leading directories removed) matches shell pattern pattern.</blockquote>
+</dd> 
+<dt class="col-sm-3">-print0</dt> 
+<dd class="col-sm-9">
+<blockquote>True;  print the full file name on the standard output, followed by a
+null character (instead of the newline character that -print uses).
+This allows file names that contain newlines or other types of white
+space to be correctly interpreted by programs that process the find
+output. This option corresponds to the -0 option of xargs.</blockquote>
+</dd> 
+<dt class="col-sm-3">read -d delimiter</dt> 
+<dd class="col-sm-9">
+<blockquote>The first character of DELIM is used to terminate the input line, rather than newline.</blockquote>
+</dd> 
+</dl>
 
 <p>Example:</p>
 
@@ -508,7 +531,10 @@ the URL that does not have extensions will work.</p>
 <h2 id="references">References</h2>
 
 <ul>
-  <li>Index documents in S3 <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/IndexDocumentSupport.html">http://docs.aws.amazon.com/AmazonS3/latest/dev/IndexDocumentSupport.html</a></li>
+  <li>Index documents in
+S3
+<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/IndexDocumentSupport.html">http://docs.aws.amazon.com/AmazonS3/latest/dev/IndexDocumentSupport.html</a></li>
+  <li>Caching user input in bash <a href="http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_08_02.html">http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_08_02.html</a></li>
   <li><a href="http://stackoverflow.com/users/507519/thkala">thkala</a> answer in <a href="http://stackoverflow.com/a/4509530/1165509">Linux: remove file extensions for multiple files</a></li>
 </ul>
 

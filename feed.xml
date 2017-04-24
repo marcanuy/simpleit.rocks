@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 24 Apr 2017 21:58:44 +0000</pubDate>
-    <lastBuildDate>Mon, 24 Apr 2017 21:58:44 +0000</lastBuildDate>
+    <pubDate>Mon, 24 Apr 2017 22:11:48 +0000</pubDate>
+    <lastBuildDate>Mon, 24 Apr 2017 22:11:48 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -60,11 +60,34 @@ to the server.&lt;/p&gt;
 &lt;p&gt;An easy way to do it is to have a shell script that removes them after
 building the site.&lt;/p&gt;
 
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find _site/ -type f -name '*.html' -print0 | while read -d $'\0' f; do mv &quot;$f&quot; &quot;${f%.html}&quot;; done&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find _site/ -type f -name &lt;span class=&quot;s1&quot;&gt;'*.html'&lt;/span&gt; -print0 | &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt; -d &lt;span class=&quot;nv&quot;&gt;$'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\0&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;' f; do mv &quot;$f&quot; &quot;${f%.html}&quot;; done
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Command explanation:&lt;/p&gt;
+
+&lt;dl class=&quot;row&quot;&gt; 
+&lt;dt class=&quot;col-sm-3&quot;&gt;-type f&lt;/dt&gt; 
+&lt;dd class=&quot;col-sm-9&quot;&gt;
+File is of type &quot;regular file&quot;
+&lt;/dd&gt; 
+&lt;dt class=&quot;col-sm-3&quot;&gt;-name pattern&lt;/dt&gt; 
+&lt;dd class=&quot;col-sm-9&quot;&gt;
+&lt;blockquote&gt;Base of file name (the path with the leading directories removed) matches shell pattern pattern.&lt;/blockquote&gt;
+&lt;/dd&gt; 
+&lt;dt class=&quot;col-sm-3&quot;&gt;-print0&lt;/dt&gt; 
+&lt;dd class=&quot;col-sm-9&quot;&gt;
+&lt;blockquote&gt;True;  print the full file name on the standard output, followed by a
+null character (instead of the newline character that -print uses).
+This allows file names that contain newlines or other types of white
+space to be correctly interpreted by programs that process the find
+output. This option corresponds to the -0 option of xargs.&lt;/blockquote&gt;
+&lt;/dd&gt; 
+&lt;dt class=&quot;col-sm-3&quot;&gt;read -d delimiter&lt;/dt&gt; 
+&lt;dd class=&quot;col-sm-9&quot;&gt;
+&lt;blockquote&gt;The first character of DELIM is used to terminate the input line, rather than newline.&lt;/blockquote&gt;
+&lt;/dd&gt; 
+&lt;/dl&gt;
 
 &lt;p&gt;Example:&lt;/p&gt;
 
@@ -119,7 +142,10 @@ the URL that does not have extensions will work.&lt;/p&gt;
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Index documents in S3 &lt;a href=&quot;http://docs.aws.amazon.com/AmazonS3/latest/dev/IndexDocumentSupport.html&quot;&gt;http://docs.aws.amazon.com/AmazonS3/latest/dev/IndexDocumentSupport.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Index documents in
+S3
+&lt;a href=&quot;http://docs.aws.amazon.com/AmazonS3/latest/dev/IndexDocumentSupport.html&quot;&gt;http://docs.aws.amazon.com/AmazonS3/latest/dev/IndexDocumentSupport.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Caching user input in bash &lt;a href=&quot;http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_08_02.html&quot;&gt;http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_08_02.html&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/users/507519/thkala&quot;&gt;thkala&lt;/a&gt; answer in &lt;a href=&quot;http://stackoverflow.com/a/4509530/1165509&quot;&gt;Linux: remove file extensions for multiple files&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
