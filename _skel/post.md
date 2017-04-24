@@ -38,6 +38,10 @@ Reference link: A link to the [kramdown hp].
 
 [kramdown hp]: http://kramdown.gettalong.org "hp"
 
+<hr>
+
+Definition lists:
+
 <dl class="row">
   <dt class="col-sm-3">Description lists</dt>
   <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
@@ -53,3 +57,11 @@ Reference link: A link to the [kramdown hp].
     </dl>
   </dd>
 </dl>
+
+<hr>
+
+Abbreviations: 
+
+This is an HTML example.
+
+*[HTML]: Hyper Text Markup Language
