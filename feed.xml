@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 24 Apr 2017 17:56:44 +0000</pubDate>
-    <lastBuildDate>Mon, 24 Apr 2017 17:56:44 +0000</lastBuildDate>
+    <pubDate>Mon, 24 Apr 2017 18:25:17 +0000</pubDate>
+    <lastBuildDate>Mon, 24 Apr 2017 18:25:17 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -187,8 +187,9 @@ with &lt;a href=&quot;https://console.aws.amazon.com/route53/home&quot;&gt;&lt;a
 
 &lt;h2 id=&quot;verification&quot;&gt;Verification&lt;/h2&gt;
 
-&lt;p&gt;Now wait the changes propagate, and then verify it is all working as
-expected for HTTP, &lt;abbr title=&quot;Hypertext Transfer Protocol (HTTP) within a connection encrypted by Transport Layer Security&quot;&gt;HTTPS&lt;/abbr&gt; and WWW, non-WWW URLs:&lt;/p&gt;
+&lt;p&gt;All DNS changes and &lt;abbr title=&quot;Amazon CloudFront – Content Delivery Network (CDN)&quot;&gt;CDN&lt;/abbr&gt; setup take time to propagate, you will have to
+wait for propagation, then verify it is all working as expected for
+HTTP, &lt;abbr title=&quot;Hypertext Transfer Protocol (HTTP) within a connection encrypted by Transport Layer Security&quot;&gt;HTTPS&lt;/abbr&gt; and WWW, non-WWW URLs:&lt;/p&gt;
 
 &lt;pre class=&quot;shell&quot;&gt;
 &lt;samp&gt;
