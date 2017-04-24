@@ -6,9 +6,262 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 15 Apr 2017 15:26:50 +0000</pubDate>
-    <lastBuildDate>Sat, 15 Apr 2017 15:26:50 +0000</lastBuildDate>
+    <pubDate>Mon, 24 Apr 2017 17:20:50 +0000</pubDate>
+    <lastBuildDate>Mon, 24 Apr 2017 17:20:50 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Redirect HTTP to HTTPS and WWW to non-WWW with AWS S3, Cloudfront and Route 53 with a custom domain</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;This guide explains how to have a custom domain with a secure
+connections, using Amazon services only.&lt;/p&gt;
+
+&lt;p&gt;After finishing the guide you will have the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a static website hosted in Amazon &lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;abbr title=&quot;Hypertext Transfer Protocol (HTTP) within a connection encrypted by Transport Layer Security&quot;&gt;HTTPS&lt;/abbr&gt; enabled&lt;/li&gt;
+  &lt;li&gt;all your requests redirects to the non-WWW version
+&lt;code class=&quot;highlighter-rouge&quot;&gt;https://example.com&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;using Cloudfront &lt;abbr title=&quot;Amazon CloudFront – Content Delivery Network (CDN)&quot;&gt;CDN&lt;/abbr&gt;.&lt;/li&gt;
+  &lt;li&gt;using &lt;abbr title=&quot;Managed Cloud DNS - Domain Name System - Amazon Route 53 | AWS&quot;&gt;Route 53&lt;/abbr&gt;, Amazon’s domain name server manager&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;set-up-s3&quot;&gt;Set up &lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt; allows you to store and retrieve any amount of data, in particular
+it makes it easy to set up static websites. The data hosted in &lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt; is
+saved as &lt;em&gt;objects&lt;/em&gt; and each object can have its custom permissions.&lt;/p&gt;
+
+&lt;h3 id=&quot;set-up-buckets&quot;&gt;Set up buckets&lt;/h3&gt;
+
+&lt;p&gt;To have our website hosted in &lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt;, we need to configure two buckets
+in &lt;a href=&quot;https://console.aws.amazon.com/s3/buckets/&quot;&gt;https://console.aws.amazon.com/s3/buckets/&lt;/a&gt;:&lt;/p&gt;
+
+&lt;h4 id=&quot;non-www-bucket&quot;&gt;non-WWW bucket&lt;/h4&gt;
+
+&lt;p&gt;One bucket for the naked domain called: &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com&lt;/code&gt;. This bucket will hold
+our static website files.&lt;/p&gt;
+
+&lt;p&gt;Turn on the Static Website Hosting for &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Adjust permissions to allow reading your objects, go to the bucket
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Permissions&lt;/code&gt; tab, and then &lt;code class=&quot;highlighter-rouge&quot;&gt;Bucket Policy&lt;/code&gt;. We need to configure the
+&lt;em&gt;Action&lt;/em&gt;: &lt;strong&gt;s3:GetObject&lt;/strong&gt;, then if you don’t use the generator, it
+will look something like:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2012-10-17&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Policy1492008478664&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Statement&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Sid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Stmt1492008213599&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Effect&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Allow&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Principal&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Action&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;s3:GetObject&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Resource&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;arn:aws:s3:::example.com/*&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;www-bucket&quot;&gt;WWW bucket&lt;/h4&gt;
+
+&lt;p&gt;Another bucket for the www-version domain called: &lt;code class=&quot;highlighter-rouge&quot;&gt;www.example.com&lt;/code&gt;. This
+bucket will redirect all the requests that start with &lt;strong&gt;&lt;em&gt;WWW&lt;/em&gt;&lt;/strong&gt; to the
+non WWW version.&lt;/p&gt;
+
+&lt;p&gt;Turn on the Static Website Hosting for &lt;code class=&quot;highlighter-rouge&quot;&gt;www.example.com&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Go to &lt;code class=&quot;highlighter-rouge&quot;&gt;Properties&lt;/code&gt; tabs, &lt;code class=&quot;highlighter-rouge&quot;&gt;Static Website Hosting&lt;/code&gt; and select
+&lt;strong&gt;Redirect requests&lt;/strong&gt; with the following values:&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Target bucket or domain&lt;/dt&gt;
+  &lt;dd&gt;example.com&lt;/dd&gt;
+  &lt;dt&gt;Protocol&lt;/dt&gt;
+  &lt;dd&gt;https&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h3 id=&quot;set-up-cdn&quot;&gt;Set up &lt;abbr title=&quot;Amazon CloudFront – Content Delivery Network (CDN)&quot;&gt;CDN&lt;/abbr&gt;&lt;/h3&gt;
+
+&lt;p&gt;We need a CloudFront Distribution for each &lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt; bucket, so each website
+will have its own &lt;abbr title=&quot;Amazon CloudFront – Content Delivery Network (CDN)&quot;&gt;CDN&lt;/abbr&gt;.&lt;/p&gt;
+
+&lt;p&gt;Go to &lt;a href=&quot;https://console.aws.amazon.com/cloudfront/&quot;&gt;https://console.aws.amazon.com/cloudfront/&lt;/a&gt; and create two
+&lt;strong&gt;distributions&lt;/strong&gt; with just the default settings but with small
+changes.&lt;/p&gt;
+
+&lt;h4 id=&quot;cdn-for-examplecom&quot;&gt;&lt;abbr title=&quot;Amazon CloudFront – Content Delivery Network (CDN)&quot;&gt;CDN&lt;/abbr&gt; for example.com&lt;/h4&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;origin&lt;/code&gt; setting should contain the custom URL endpoint of our &lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt;
+website, &lt;strong&gt;avoid selecting the one that the dropdown list suggests for
+us&lt;/strong&gt; (REST endpoint) as we need the &lt;em&gt;web site endpoint&lt;/em&gt;, not the
+bucket, it should have the following form:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;bucket-name&amp;gt;.s3-website-&amp;lt;region&amp;gt;.amazonaws.com&lt;/code&gt;, in this case:&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Origin&lt;/dt&gt;
+  &lt;dd&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;example.com.s3-website-us-east-1.amazonaws.com&lt;/code&gt;&lt;/dd&gt;
+  &lt;dt&gt;Default Cache Behavior Settings / Viewer Protocol Policy&lt;/dt&gt;
+  &lt;dd&gt;Redirect HTTP to &lt;abbr title=&quot;Hypertext Transfer Protocol (HTTP) within a connection encrypted by Transport Layer Security&quot;&gt;HTTPS&lt;/abbr&gt;&lt;/dd&gt;
+  &lt;dt&gt;Distribution Settings / Alternate Domain Names (CNAMEs)&lt;/dt&gt;
+  &lt;dd&gt;example.com&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p class=&quot;alert alert-info&quot;&gt;Do &lt;strong&gt;not&lt;/strong&gt; set the &lt;code class=&quot;highlighter-rouge&quot;&gt;Default Root Object&lt;/code&gt; property.&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Distribution Settings / SSL Certificate:&lt;/dt&gt;
+  &lt;dd&gt;Custom SSL Certificate (example.com)&lt;/dd&gt;
+  &lt;dd&gt;Request or Import a Certificate with ACM&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;When you create the Certificate &lt;strong&gt;include both domains&lt;/strong&gt; as we are
+going to use this in the other distribution also:&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Add domain names&lt;/dt&gt;
+  &lt;dd&gt;example.com&lt;/dd&gt;
+  &lt;dd&gt;www.example.com&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;And follow the instructions to validate the certificate, then make
+sure it is selected in the &lt;em&gt;Distribution&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Leave all other setting with their default value.&lt;/p&gt;
+
+&lt;h4 id=&quot;cdn-for-wwwexamplecom&quot;&gt;&lt;abbr title=&quot;Amazon CloudFront – Content Delivery Network (CDN)&quot;&gt;CDN&lt;/abbr&gt; for www.example.com&lt;/h4&gt;
+
+&lt;p&gt;Create another distribution for the &lt;code class=&quot;highlighter-rouge&quot;&gt;www.example.com&lt;/code&gt; domain with
+these values:&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Origin&lt;/dt&gt;
+  &lt;dd&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;www.example.com.s3-website-us-east-1.amazonaws.com&lt;/code&gt;&lt;/dd&gt;
+  &lt;dt&gt;Default Cache Behavior Settings / Viewer Protocol Policy&lt;/dt&gt;
+  &lt;dd&gt;Redirect HTTP to &lt;abbr title=&quot;Hypertext Transfer Protocol (HTTP) within a connection encrypted by Transport Layer Security&quot;&gt;HTTPS&lt;/abbr&gt;&lt;/dd&gt;
+  &lt;dt&gt;Distribution Settings / Alternate Domain Names (CNAMEs)&lt;/dt&gt;
+  &lt;dd&gt;www.example.com&lt;/dd&gt;
+  &lt;dt&gt;Distribution Settings / SSL Certificate:&lt;/dt&gt;
+  &lt;dd&gt;Custom SSL Certificate (example.com)&lt;/dd&gt;
+  &lt;dd&gt;Select our previously created certificate that includes this domain&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h3 id=&quot;set-up-domains&quot;&gt;Set up domains&lt;/h3&gt;
+
+&lt;p&gt;We are almost there, now it is time to configure the DNS registry
+with &lt;a href=&quot;https://console.aws.amazon.com/route53/home&quot;&gt;&lt;abbr title=&quot;Managed Cloud DNS - Domain Name System - Amazon Route 53 | AWS&quot;&gt;Route 53&lt;/abbr&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Go to &lt;strong&gt;DNS management&lt;/strong&gt; / &lt;strong&gt;Hosted Zones&lt;/strong&gt; and create a hosted zone
+&lt;code class=&quot;highlighter-rouge&quot;&gt;example.com.&lt;/code&gt;:&lt;/p&gt;
+
+&lt;dl class=&quot;row&quot;&gt;
+  &lt;dt class=&quot;col-sm-3&quot;&gt;Domain Name:&lt;/dt&gt;
+  &lt;dd class=&quot;col-sm-9&quot;&gt;example.com.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;In this hosted zone, create a &lt;strong&gt;Record Set&lt;/strong&gt; with these values:&lt;/p&gt;
+
+&lt;dl class=&quot;row&quot;&gt;
+  &lt;dt class=&quot;col-sm-3&quot;&gt;Name:&lt;/dt&gt;
+  &lt;dd class=&quot;col-sm-9&quot;&gt;(leave it empty)&amp;gt;&lt;/dd&gt;
+  
+  &lt;dt class=&quot;col-sm-3&quot;&gt;Type:&lt;/dt&gt;
+  &lt;dd class=&quot;col-sm-9&quot;&gt;Alias: Yes&lt;/dd&gt;
+  &lt;dd class=&quot;col-sm-9 offset-sm-3&quot;&gt;Select the CloudFront distribution corresponding to &lt;strong&gt;example.com&lt;/strong&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;Then create another &lt;strong&gt;Record Set&lt;/strong&gt; for &lt;code class=&quot;highlighter-rouge&quot;&gt;www.example.com&lt;/code&gt;:&lt;/p&gt;
+
+&lt;dl class=&quot;row&quot;&gt;
+  &lt;dt class=&quot;col-sm-3&quot;&gt;Name:&lt;/dt&gt;
+  &lt;dd class=&quot;col-sm-9&quot;&gt;www&lt;/dd&gt;
+  
+  &lt;dt class=&quot;col-sm-3&quot;&gt;Type:&lt;/dt&gt;
+  &lt;dd class=&quot;col-sm-9&quot;&gt;Alias: Yes&lt;/dd&gt;
+  &lt;dd class=&quot;col-sm-9 offset-sm-3&quot;&gt;Select the CloudFront distribution corresponding to &lt;strong&gt;www.example.com&lt;/strong&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&quot;verification&quot;&gt;Verification&lt;/h2&gt;
+
+&lt;p&gt;Now wait the changes propagate, and then verify it is all working as
+expected for HTTP, &lt;abbr title=&quot;Hypertext Transfer Protocol (HTTP) within a connection encrypted by Transport Layer Security&quot;&gt;HTTPS&lt;/abbr&gt; and WWW, non-WWW URLs:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;curl -sI http://example.com | grep -E '(301|Server|Location|X-Cache|HTTP)'&lt;/kbd&gt;
+HTTP/1.1 301 Moved Permanently
+Server: CloudFront
+Location: https://example.com/
+X-Cache: Redirect from cloudfront
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;curl -sI https://example.com | grep -E '(X-Cache|HTTP)'&lt;/kbd&gt;
+HTTP/1.1 200 OK
+X-Cache: Hit from cloudfront
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;curl -sI http://www.example.com | grep -E '(301|Server|Location|X-Cache|HTTP)'&lt;/kbd&gt;
+HTTP/1.1 301 Moved Permanently
+Server: CloudFront
+Location: https://www.example.com/
+X-Cache: Redirect from cloudfront
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;curl -sI https://www.example.com | grep -E '(301|Server|Location|HTTP)'&lt;/kbd&gt;
+HTTP/1.1 301 Moved Permanently
+Location: https://example.com/
+Server: AmazonS3
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Explanation of commands:&lt;/p&gt;
+
+&lt;dl class=&quot;row&quot;&gt;
+  &lt;dt class=&quot;col-sm-3&quot;&gt;&lt;kbd&gt;curl&lt;/kbd&gt;&lt;/dt&gt;
+  &lt;dd class=&quot;col-sm-9&quot;&gt;&lt;blockquote&gt;curl - transfer a URL&lt;/blockquote&gt;&lt;/dd&gt;
+
+  &lt;dt class=&quot;col-sm-3&quot;&gt;&lt;kbd&gt;curl -s&lt;/kbd&gt;&lt;/dt&gt;
+  &lt;dd class=&quot;col-sm-9&quot;&gt;Silent  or  quiet mode. Don't show progress meter or error messages.&lt;/dd&gt;
+
+  &lt;dt class=&quot;col-sm-3&quot;&gt;&lt;kbd&gt;curl -I&lt;/kbd&gt;&lt;/dt&gt;
+  &lt;dd class=&quot;col-sm-9&quot;&gt;(HTTP/FTP/FILE) Fetch the HTTP-header only&lt;/dd&gt;
+
+  &lt;dt class=&quot;col-sm-3&quot;&gt;&lt;kbd&gt;grep&lt;/kbd&gt;&lt;/dt&gt;
+  &lt;dd class=&quot;col-sm-9&quot;&gt;&lt;blockquote&gt;print lines matching a pattern&lt;/blockquote&gt;&lt;/dd&gt;
+
+  &lt;dt class=&quot;col-sm-3&quot;&gt;&lt;kbd&gt;grep -E, --extended-regexp&lt;/kbd&gt;&lt;/dt&gt;
+  &lt;dd class=&quot;col-sm-9&quot;&gt;Interpret PATTERN as an extended regular expression (ERE, see below).&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Now all the requests to &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com&lt;/code&gt; will be served by
+&lt;code class=&quot;highlighter-rouge&quot;&gt;https://example.com&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt; docs &lt;a href=&quot;https://aws.amazon.com/s3/&quot;&gt;https://aws.amazon.com/s3/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Cloudfront docs &lt;a href=&quot;https://aws.amazon.com/cloudfront/&quot;&gt;https://aws.amazon.com/cloudfront/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;abbr title=&quot;Managed Cloud DNS - Domain Name System - Amazon Route 53 | AWS&quot;&gt;Route 53&lt;/abbr&gt; &lt;a href=&quot;https://aws.amazon.com/route53/&quot;&gt;https://aws.amazon.com/route53/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/users/796468/rki&quot;&gt;RKI&lt;/a&gt; answer in &lt;a href=&quot;http://stackoverflow.com/a/42869783/1165509&quot;&gt;Cloudfront redirect www to naked domain with ssl&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt; Website features can be used in conjunction with Amazon CloudFront. However, &lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt; Website uses a different domain name than regular &lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt; buckets. In this case, you’ll need to set the Origin Domain Name of your CloudFront distribution’s origin configuration to new.rdegges.com.s3 website us east 1.amazonaws.com.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</description>
+        <pubDate>Sat, 22 Apr 2017 00:00:00 +0000</pubDate>
+        <link>https://simpleit.rocks/redirect-http-to-https-and-www-to-non-www-with-aws-s3-bucket-cloudfront-route-53-and-a-custom-domain/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/redirect-http-to-https-and-www-to-non-www-with-aws-s3-bucket-cloudfront-route-53-and-a-custom-domain/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>web</category>
+        
+        <category>hostings</category>
+        
+      </item>
     
       <item>
         <title>Add Infolinks Script To An Existing Website From Console With Sed Command</title>
@@ -1755,145 +2008,6 @@ the project name as their key:&lt;/p&gt;
         <category>ruby</category>
         
         <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>Managing Environment Configuration Variables In Flask With Dotenv</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Often when developing apps with Flask we need to set up environment
-variables to keep sensitive information secure and out of version
-control.&lt;/p&gt;
-
-&lt;p&gt;This article describes how to set up environment config variables in
-Flask with &lt;em&gt;python-dotenv&lt;/em&gt; and why we can’t rely in Flask’ instance
-folder.&lt;/p&gt;
-
-&lt;h2 id=&quot;dotenv-versus-instance-folders&quot;&gt;dotenv versus instance folders&lt;/h2&gt;
-
-&lt;p&gt;Flask introduces the concept of &lt;strong&gt;instance folder&lt;/strong&gt;, designed to store
-sensitive information like credentials and passwords for your local
-environment, the main problem is that
-&lt;a href=&quot;/avoid-using-flask-instance-folder-when-deploying-to-heroku/&quot;&gt;it can’t work with ephemeral filesystems&lt;/a&gt; like
-the one Heroku uses.&lt;/p&gt;
-
-&lt;p&gt;In this case the perfect fit for this is to use python-dotenv, so we
-define environment config variables in Heroku and locally we put them
-in &lt;code class=&quot;highlighter-rouge&quot;&gt;/.env&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;install&quot;&gt;Install&lt;/h2&gt;
-
-&lt;p&gt;First we install it with &lt;kbd&gt;pip install -U python-dotenv&lt;/kbd&gt;&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;&lt;/kbd&gt;
-Collecting python-dotenv
-  Downloading python-dotenv-0.6.2.tar.gz
-Collecting click&amp;gt;=5.0 (from python-dotenv)
-  Downloading click-6.7-py2.py3-none-any.whl (71kB)
-    100% |████████████████████████████████| 71kB 756kB/s 
-Building wheels for collected packages: python-dotenv
-  Running setup.py bdist_wheel for python-dotenv ... done
-  Stored in directory: /home/user/.cache/pip/wheels/07/08/3a/7591582130baac86479ca3b7cb6314c9878e877645267d25c9
-Successfully built python-dotenv
-Installing collected packages: click, python-dotenv
-  Found existing installation: click 6.6
-    Uninstalling click-6.6:
-      Successfully uninstalled click-6.6
-Successfully installed click-6.7 python-dotenv-0.6.2
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;requirementstxt&quot;&gt;requirements.txt&lt;/h2&gt;
-
-&lt;p&gt;We add the new package to the requirements file.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;pip freeze &amp;gt; requirements.txt&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;gitignore&quot;&gt;gitignore&lt;/h2&gt;
-
-&lt;p&gt;We make sure that we won’t add it to the source code version control
-adding it to &lt;code class=&quot;highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;echo &quot;.env&quot; &amp;gt;&amp;gt; .gitignore&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;add-variables&quot;&gt;add variables&lt;/h2&gt;
-
-&lt;p&gt;Add variables to &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt;, optionally copy all the environment variables
-from your heroku app to have this as a skeleton to fill with local
-variables:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;heroku config -s &amp;gt;&amp;gt; .env&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p class=&quot;alert alert-info&quot;&gt;-s, –shell         # output config vars in shell format&lt;/p&gt;
-
-&lt;p&gt;or simply add them manually to &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt;, for example:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;TWITTER_CONSUMER_KEY=MYINCREDIBLEKEY
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;use-the-new-environment-variables&quot;&gt;use the new environment variables&lt;/h2&gt;
-
-&lt;p&gt;Now we can use this environment variables in our Flask app.&lt;/p&gt;
-
-&lt;p&gt;Having the following typical structure:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;myapp
-	.env
-	myapp
-		__init__.py
-		myapp.py
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;I like to initialize my app in &lt;code class=&quot;highlighter-rouge&quot;&gt;/myapp/__init.py__&lt;/code&gt;, but it should be
-the same if you add this to &lt;code class=&quot;highlighter-rouge&quot;&gt;/myapp/myapp.py&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;flask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;dotenv&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_dotenv&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#...&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# load dotenv in the base root&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;APP_ROOT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dirname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__file__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'..'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;# refers to application_top&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;dotenv_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;APP_ROOT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'.env'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;load_dotenv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dotenv_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;tw_consumer_key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getenv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'TWITTER_CONSUMER_KEY'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;I find it useful to use &lt;code class=&quot;highlighter-rouge&quot;&gt;dotenv&lt;/code&gt; for sensitive variables and custom
- paths, and &lt;a href=&quot;/organize-a-flask-project-to-handle-production-and-development-environments-effectively/&quot;&gt;maintain other variables in version control separated by
- server, like development, testing or production&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 24 Jan 2017 00:00:00 +0000</pubDate>
-        <link>https://simpleit.rocks/managing-environment-configuration-variables-in-flask-with-dotenv/</link>
-        <guid isPermaLink="true">https://simpleit.rocks/managing-environment-configuration-variables-in-flask-with-dotenv/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>python</category>
-        
-        <category>flask</category>
         
       </item>
     
