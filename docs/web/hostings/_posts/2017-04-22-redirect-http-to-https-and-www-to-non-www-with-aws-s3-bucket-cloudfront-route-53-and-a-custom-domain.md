@@ -10,11 +10,11 @@ connections, using Amazon services only.
 
 After finishing the guide you will have the following:
 
-- a static website hosted in Amazon [S3]
-- [HTTPS] enabled
+- a static website hosted in Amazon S3
+- HTTPS enabled
 - all your requests redirects to the non-WWW version
   `https://example.com` 
-- using Cloudfront [CDN].
+- using Cloudfront CDN.
 - using Route 53, Amazon's domain name server manager
 
 ## Set up S3
@@ -76,7 +76,7 @@ Protocol
 ### Set up CDN
 
 We need a CloudFront Distribution for each S3 bucket, so each website
-will have its own [CDN].
+will have its own CDN.
 
 Go to <https://console.aws.amazon.com/cloudfront/> and create two
 **distributions** with just the default settings but with small
@@ -138,7 +138,7 @@ Distribution Settings / SSL Certificate:
 
 ### Set up domains
 
-We are almost there, now it is time to configure the [DNS] registry
+We are almost there, now it is time to configure the DNS registry
 with [Route 53](https://console.aws.amazon.com/route53/home).
 
 Go to **DNS management** / **Hosted Zones** and create a hosted zone
@@ -231,7 +231,7 @@ Now all the requests to `example.com` will be served by
 
 >S3 Website features can be used in conjunction with Amazon CloudFront. However, S3 Website uses a different domain name than regular S3 buckets. In this case, you'll need to set the Origin Domain Name of your CloudFront distribution's origin configuration to new.rdegges.com.s3 website us east 1.amazonaws.com.
 
-[S3]: Amazon Simple Storage Service
-[CDN]: Amazon CloudFront – Content Delivery Network (CDN)
-[Route 53]: Managed Cloud DNS - Domain Name System - Amazon Route 53 | AWS
-[HTTPS]: Hypertext Transfer Protocol (HTTP) within a connection encrypted by Transport Layer Security
+*[S3]: Amazon Simple Storage Service
+*[CDN]: Amazon CloudFront – Content Delivery Network (CDN)
+*[Route 53]: Managed Cloud DNS - Domain Name System - Amazon Route 53 | AWS
+*[HTTPS]: Hypertext Transfer Protocol (HTTP) within a connection encrypted by Transport Layer Security
