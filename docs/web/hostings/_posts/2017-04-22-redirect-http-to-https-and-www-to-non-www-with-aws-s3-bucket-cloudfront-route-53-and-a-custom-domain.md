@@ -173,8 +173,9 @@ Then create another **Record Set** for `www.example.com`:
 
 ## Verification
 
-Now wait the changes propagate, and then verify it is all working as
-expected for HTTP, HTTPS and WWW, non-WWW URLs:
+All DNS changes and CDN setup take time to propagate, you will have to
+wait for propagation, then verify it is all working as expected for
+HTTP, HTTPS and WWW, non-WWW URLs:
 
 <pre class="shell">
 <samp>
