@@ -153,7 +153,7 @@ In this hosted zone, create a **Record Set** with these values:
 
 <dl class="row">
   <dt class="col-sm-3">Name:</dt>
-  <dd class="col-sm-9">(leave it empty)></dd>
+  <dd class="col-sm-9">(leave it empty)</dd>
   
   <dt class="col-sm-3">Type:</dt>
   <dd class="col-sm-9">Alias: Yes</dd>
@@ -214,7 +214,7 @@ Explanation of commands:
   <dd class="col-sm-9"><blockquote>print lines matching a pattern</blockquote></dd>
 
   <dt class="col-sm-3"><kbd>grep -E, --extended-regexp</kbd></dt>
-  <dd class="col-sm-9">Interpret PATTERN as an extended regular expression (ERE, see below).</dd>
+  <dd class="col-sm-9">Interpret PATTERN as an extended regular expression.</dd>
 </dl>
 
 ## Conclusion
