@@ -144,26 +144,32 @@ with [Route 53](https://console.aws.amazon.com/route53/home).
 Go to **DNS management** / **Hosted Zones** and create a hosted zone
 `example.com.`:
 
-Domain Name:
-- **example.com.**
+<dl class="row">
+  <dt class="col-sm-3">Domain Name:</dt>
+  <dd class="col-sm-9">example.com.</dd>
+</dl>
 
-Create a **Record Set** with these values: 
+In this hosted zone, create a **Record Set** with these values: 
 
-Name:
-: <leave it empty>
-
-Type:
-: Alias: Yes
-: Select the CloudFront distribution corresponding to `example.com`
+<dl class="row">
+  <dt class="col-sm-3">Name:</dt>
+  <dd class="col-sm-9">(leave it empty)></dd>
+  
+  <dt class="col-sm-3">Type:</dt>
+  <dd class="col-sm-9">Alias: Yes</dd>
+  <dd class="col-sm-9 offset-sm-3">Select the CloudFront distribution corresponding to <strong>example.com</strong></dd>
+</dl>
 
 Then create another **Record Set** for `www.example.com`:
 
-Name:
-: **www**
-
-Type:
-: Alias: Yes
-: Select the CloudFront distribution corresponding to `www.example.com`
+<dl class="row">
+  <dt class="col-sm-3">Name:</dt>
+  <dd class="col-sm-9">www</dd>
+  
+  <dt class="col-sm-3">Type:</dt>
+  <dd class="col-sm-9">Alias: Yes</dd>
+  <dd class="col-sm-9 offset-sm-3">Select the CloudFront distribution corresponding to <strong>www.example.com</strong></dd>
+</dl>
 
 ## Verification
 
