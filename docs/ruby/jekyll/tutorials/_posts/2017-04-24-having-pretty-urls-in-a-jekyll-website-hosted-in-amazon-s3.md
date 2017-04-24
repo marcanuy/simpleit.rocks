@@ -42,11 +42,35 @@ to the server.
 An easy way to do it is to have a shell script that removes them after
 building the site.
 
-<pre class="shell">
-<samp>
-<span class="shell-prompt">$</span> <kbd>find _site/ -type f -name '*.html' -print0 | while read -d $'\0' f; do mv "$f" "${f%.html}"; done</kbd>
-</samp>
-</pre>
+~~~ bash
+find _site/ -type f -name '*.html' -print0 | while read -d $'\0' f; do mv "$f" "${f%.html}"; done
+~~~
+
+Command explanation:
+
+<dl class="row"> 
+<dt class="col-sm-3">-type f</dt> 
+<dd class="col-sm-9">
+File is of type "regular file"
+</dd> 
+<dt class="col-sm-3">-name pattern</dt> 
+<dd class="col-sm-9">
+<blockquote>Base of file name (the path with the leading directories removed) matches shell pattern pattern.</blockquote>
+</dd> 
+<dt class="col-sm-3">-print0</dt> 
+<dd class="col-sm-9">
+<blockquote>True;  print the full file name on the standard output, followed by a
+null character (instead of the newline character that -print uses).
+This allows file names that contain newlines or other types of white
+space to be correctly interpreted by programs that process the find
+output. This option corresponds to the -0 option of xargs.</blockquote>
+</dd> 
+<dt class="col-sm-3">read -d delimiter</dt> 
+<dd class="col-sm-9">
+<blockquote>The first character of DELIM is used to terminate the input line, rather than newline.</blockquote>
+</dd> 
+</dl>
+
 
 Example:
 
@@ -100,5 +124,8 @@ the URL that does not have extensions will work.
 
 ## References
 
-- Index documents in S3 <http://docs.aws.amazon.com/AmazonS3/latest/dev/IndexDocumentSupport.html>
+- Index documents in
+  S3
+  <http://docs.aws.amazon.com/AmazonS3/latest/dev/IndexDocumentSupport.html>
+- Caching user input in bash <http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_08_02.html>
 - [thkala](http://stackoverflow.com/users/507519/thkala) answer in [Linux: remove file extensions for multiple files](http://stackoverflow.com/a/4509530/1165509)
