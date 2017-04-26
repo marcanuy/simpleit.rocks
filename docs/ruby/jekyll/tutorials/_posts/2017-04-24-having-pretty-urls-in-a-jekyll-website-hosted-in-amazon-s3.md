@@ -134,7 +134,7 @@ interpret them as `Content-Type: binary/octet-stream`. Other files
 will get the correct *Content-Type*.
 
 The
-[Amazon S3 Command Line Interface](docs.aws.amazon.com/cli/latest/reference/s3/) has
+[Amazon S3 Command Line Interface](http://docs.aws.amazon.com/cli/latest/reference/s3/) has
 a special parameter to set the correct *Content-Type* for each file
 when
 [copying](http://docs.aws.amazon.com/cli/latest/reference/s3/cp.html)
@@ -156,8 +156,19 @@ aws s3 cp _site/ s3://cachedpage.co/ --content-type text/html --recursive --excl
 ### Copy the rest of the files
 
 ~~~ bash
-aws s3 cp _site/ s3://cachedpage.co/ --recursive --include "*.*"
+aws s3 cp _site/ s3://cachedpage.co/ --recursive --exclude "*" --include "*.*"
 ~~~
+
+> Note that, by default, all files are included. This means that
+> providing only an --include filter will not change what files are
+> transferred. --include will only re-include files that have been
+> excluded from an --exclude filter. If you only want to upload files
+> with a particular extension, you need to first exclude all files,
+> then re-include the files with the particular extension.
+> 
+> <footer class="blockquote-footer"> <cite><a href="http://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters">Use of Exclude and Include Filters</a></cite></footer>
+{: class="blockquote" cite="http://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters"}
+
 
 ## Final script
 
@@ -182,11 +193,13 @@ echo "Building site..."
 JEKYLL_ENV=production bundle exec jekyll build
 
 echo "Removing .html extension"
-find _site/ -type f -name '*.html' -print0 | while read -d $'\0' f; do mv "$f" "${f%.html}"; done
+find _site/ -type f ! -iname 'index.html' -iname '*.html' -print0 | while read -d $'\0' f; do mv "$f" "${f%.html}"; done
 
 echo "Copying files to server"
+aws s3 cp _site/ s3://cachedpage.co/ --recursive --exclude "*" --include "*.*"
+
+echo "Copying files with content type..."
 aws s3 cp _site/ $s3_bucket --content-type text/html --recursive --exclude "*.*"
-aws s3 cp _site/ $s3_bucket --recursive --include "*.*"
 ~~~
 
 ## Conclusion
