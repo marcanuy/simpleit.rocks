@@ -53,8 +53,30 @@ optimizations, analytics, etc.
 - Add a sitelinks searchbox <https://developers.google.com/search/docs/data-types/sitelinks-searchbox>
 - Check for missing `description` meta tag in HTML `<head>` pages section.
 - Validate HTML: <https://validator.w3.org/>
-- Submit a [sitemap](http://sitemaps.org/) to Google Search Console
 - Add [OpenGraph](http://ogp.me/)
   and [Twitter cards](https://dev.twitter.com/cards/)
 - Generate an [AMP](https://www.ampproject.org/docs/guides) version of the website
 
+### Search Engines
+
+#### Submit URLs
+
+- Bing: <https://www.bing.com/toolbox/submit-site-url>
+
+
+## Sitemaps
+
+- Include sitemaps in [robots.txt](https://developers.google.com/webmasters/control-crawl-index/docs/robots_txt) file using a `sitemap: [absoluteURL]` directive.
+
+Supported by Google, Ask, Bing, Yahoo; defined on <http://sitemaps.org>.
+{: .alert .alert-info}
+ 
+- Submit a [sitemap](http://sitemaps.org/) to 
+  - Google Search
+    Console <https://www.google.com/webmasters/tools/sitemap-list>
+  - Bing (and Yahoo!) <>
+  - Yandex <https://webmaster.yandex.com/site/*/indexing/sitemap/>
+  
+## HTML
+
+- Add [Favicons](https://en.wikipedia.org/wiki/Favicon) for different platforms.
