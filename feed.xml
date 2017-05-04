@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 01 May 2017 05:00:53 +0000</pubDate>
-    <lastBuildDate>Mon, 01 May 2017 05:00:53 +0000</lastBuildDate>
+    <pubDate>Thu, 04 May 2017 19:26:21 +0000</pubDate>
+    <lastBuildDate>Thu, 04 May 2017 19:26:21 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -924,12 +924,43 @@ mobile user-agent, and once with a desktop-user agent.&lt;/p&gt;
   &lt;li&gt;Add a sitelinks searchbox &lt;a href=&quot;https://developers.google.com/search/docs/data-types/sitelinks-searchbox&quot;&gt;https://developers.google.com/search/docs/data-types/sitelinks-searchbox&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Check for missing &lt;code class=&quot;highlighter-rouge&quot;&gt;description&lt;/code&gt; meta tag in HTML &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt; pages section.&lt;/li&gt;
   &lt;li&gt;Validate HTML: &lt;a href=&quot;https://validator.w3.org/&quot;&gt;https://validator.w3.org/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Submit a &lt;a href=&quot;http://sitemaps.org/&quot;&gt;sitemap&lt;/a&gt; to Google Search Console&lt;/li&gt;
   &lt;li&gt;Add &lt;a href=&quot;http://ogp.me/&quot;&gt;OpenGraph&lt;/a&gt;
 and &lt;a href=&quot;https://dev.twitter.com/cards/&quot;&gt;Twitter cards&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Generate an &lt;a href=&quot;https://www.ampproject.org/docs/guides&quot;&gt;AMP&lt;/a&gt; version of the website&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h3 id=&quot;search-engines&quot;&gt;Search Engines&lt;/h3&gt;
+
+&lt;h4 id=&quot;submit-urls&quot;&gt;Submit URLs&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Bing: &lt;a href=&quot;https://www.bing.com/toolbox/submit-site-url&quot;&gt;https://www.bing.com/toolbox/submit-site-url&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;sitemaps&quot;&gt;Sitemaps&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Include sitemaps in &lt;a href=&quot;https://developers.google.com/webmasters/control-crawl-index/docs/robots_txt&quot;&gt;robots.txt&lt;/a&gt; file using a &lt;code class=&quot;highlighter-rouge&quot;&gt;sitemap: [absoluteURL]&lt;/code&gt; directive.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p class=&quot;alert alert-info&quot;&gt;Supported by Google, Ask, Bing, Yahoo; defined on &lt;a href=&quot;http://sitemaps.org&quot;&gt;http://sitemaps.org&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Submit a &lt;a href=&quot;http://sitemaps.org/&quot;&gt;sitemap&lt;/a&gt; to
+    &lt;ul&gt;
+      &lt;li&gt;Google Search
+Console &lt;a href=&quot;https://www.google.com/webmasters/tools/sitemap-list&quot;&gt;https://www.google.com/webmasters/tools/sitemap-list&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;Bing (and Yahoo!) &amp;lt;&amp;gt;&lt;/li&gt;
+      &lt;li&gt;Yandex &lt;a href=&quot;https://webmaster.yandex.com/site/*/indexing/sitemap/&quot;&gt;https://webmaster.yandex.com/site/*/indexing/sitemap/&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;html&quot;&gt;HTML&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Add &lt;a href=&quot;https://en.wikipedia.org/wiki/Favicon&quot;&gt;Favicons&lt;/a&gt; for different platforms.&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         <pubDate>Mon, 03 Apr 2017 00:00:00 +0000</pubDate>
         <link>https://simpleit.rocks/what-to-do-after-launching-a-website/</link>
