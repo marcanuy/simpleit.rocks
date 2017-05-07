@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 05 May 2017 04:03:42 +0000</pubDate>
-    <lastBuildDate>Fri, 05 May 2017 04:03:42 +0000</lastBuildDate>
+    <pubDate>Sun, 07 May 2017 14:01:58 +0000</pubDate>
+    <lastBuildDate>Sun, 07 May 2017 14:01:58 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -1017,7 +1017,7 @@ stylesheets&lt;/em&gt; (&lt;a href=&quot;http://sass-lang.com/&quot;&gt;Sass&lt;
 the proper extension name (&lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;.sass&lt;/code&gt;) and start the file
 contents with two lines of triple dashes.&lt;/p&gt;
 
-&lt;p&gt;A file named &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/styles.scss&lt;/code&gt; will be rendered like &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/styles.css&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;A file named &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/main.scss&lt;/code&gt; will be rendered like &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/main.css&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;As Bootstrap switched from &lt;code class=&quot;highlighter-rouge&quot;&gt;Less&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;Sass&lt;/code&gt;&lt;sup id=&quot;fnref:bs-blog&quot;&gt;&lt;a href=&quot;#fn:bs-blog&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; now we can use
 it directly without relying in parallel projects like &lt;a href=&quot;https://github.com/twbs/bootstrap-sass&quot;&gt;bootstrap-sass&lt;/a&gt;
@@ -1136,7 +1136,7 @@ depending on each other to calculate &lt;abbr title=&quot;Cascading Style Sheets
 
 &lt;p&gt;After we have our variables, we import them from our main style sheet:&lt;/p&gt;
 
-&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/styles.scss&lt;/code&gt; we import them and then work with our styles,
+&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/main.scss&lt;/code&gt; we import them and then work with our styles,
 using the above variables:&lt;/p&gt;
 
 &lt;div class=&quot;language-scss highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
@@ -1156,17 +1156,17 @@ Jekyll reads the file to be transformed into &lt;abbr title=&quot;Cascading Styl
 
 &lt;h2 id=&quot;add-css-to-layout&quot;&gt;Add css to layout&lt;/h2&gt;
 
-&lt;p&gt;After we have our &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/styles.scss&lt;/code&gt;, Jekyll will process it and
-generate the final &lt;abbr title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/abbr&gt; file: &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/styles.css&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;After we have our &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/main.scss&lt;/code&gt;, Jekyll will process it and
+generate the final &lt;abbr title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/abbr&gt; file: &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/main.css&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;That is the path we need to add to our layout, in the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt;
 section of &lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts/default.html&lt;/code&gt; we include the css: &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;link
-rel=&quot;stylesheet&quot; href=&quot;/assets/styles.css&quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+rel=&quot;stylesheet&quot; href=&quot;/assets/main.css&quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- site css --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/assets/styles.css&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/assets/main.css&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -1175,25 +1175,25 @@ rel=&quot;stylesheet&quot; href=&quot;/assets/styles.css&quot;&amp;gt;&lt;/code&
 &lt;h2 id=&quot;all-together&quot;&gt;All together&lt;/h2&gt;
 
 &lt;p&gt;This is the basic flow Jekyll follows processing these Scss files to
-generate &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/styles.css&lt;/code&gt;:&lt;/p&gt;
+generate &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/main.css&lt;/code&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;mermaid&quot;&gt;
 graph TB
-        STYLESSCSS[&quot;Jekyll reads &lt;strong&gt;/assets/styles.scss&lt;/strong&gt;&quot;]--&amp;gt;partials{&quot;imports Sass partials&quot;}
+        STYLESSCSS[&quot;Jekyll reads &lt;strong&gt;/assets/main.scss&lt;/strong&gt;&quot;]--&amp;gt;partials{&quot;imports Sass partials&quot;}
         partials--&amp;gt; |&quot;import variables&quot;|VARS
         partials--&amp;gt; |&quot;import bootstrap/scss/bootstrap&quot;|BS_SCSS
         VARS[&quot;/_sass/_variables.scss&quot;]--&amp;gt;BS_VARIABLES
         BS_VARIABLES[&quot;@import '../bower_components/bootstrap/scss/variables';&quot;]--&amp;gt;STYLESCSS
         BS_SCSS[&quot;/bower_components/bootstrap/scss/bootstrap.scss&quot;]--&amp;gt;STYLESCSS
-        STYLESCSS[&quot;Generates /assets/styles.css&quot;]
+        STYLESCSS[&quot;Generates /assets/main.css&quot;]
 &lt;/div&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;When we will our site, Jekyll will process the &lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt; files with our
-custom variables and we will have them in our &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/styles.css&lt;/code&gt;. In
+custom variables and we will have them in our &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/main.css&lt;/code&gt;. In
 this example its content starts with the Bootstrap code and ends with
-our custom &lt;code class=&quot;highlighter-rouge&quot;&gt;_styles.scss&lt;/code&gt; processed, looking like:&lt;/p&gt;
+our custom &lt;code class=&quot;highlighter-rouge&quot;&gt;_main.scss&lt;/code&gt; processed, looking like:&lt;/p&gt;
 
 &lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;/*!
  * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
