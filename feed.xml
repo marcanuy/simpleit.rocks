@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 07 May 2017 14:01:58 +0000</pubDate>
-    <lastBuildDate>Sun, 07 May 2017 14:01:58 +0000</lastBuildDate>
+    <pubDate>Sun, 07 May 2017 15:07:03 +0000</pubDate>
+    <lastBuildDate>Sun, 07 May 2017 15:07:03 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -1187,6 +1187,12 @@ graph TB
         BS_SCSS[&quot;/bower_components/bootstrap/scss/bootstrap.scss&quot;]--&amp;gt;STYLESCSS
         STYLESCSS[&quot;Generates /assets/main.css&quot;]
 &lt;/div&gt;
+
+&lt;h2 id=&quot;other&quot;&gt;Other&lt;/h2&gt;
+
+&lt;p&gt;There is an example repository with a basic jekyll instance with just
+bootstrap 4 included in a jekyll blank
+site: &lt;a href=&quot;https://github.com/marcanuy/jekyll-bootstrap4&quot;&gt;https://github.com/marcanuy/jekyll-bootstrap4&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
