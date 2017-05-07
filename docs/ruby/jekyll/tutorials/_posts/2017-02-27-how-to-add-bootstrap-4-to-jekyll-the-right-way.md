@@ -207,6 +207,12 @@ graph TB
         STYLESCSS["Generates /assets/main.css"]
 </div>
 
+## Other
+
+There is an example repository with a basic jekyll instance with just
+bootstrap 4 included in a jekyll blank
+site: <https://github.com/marcanuy/jekyll-bootstrap4>.
+
 ## Conclusion
 
 When we will our site, Jekyll will process the `.scss` files with our
