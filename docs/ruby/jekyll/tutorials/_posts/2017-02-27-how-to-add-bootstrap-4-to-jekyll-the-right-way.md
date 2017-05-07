@@ -35,7 +35,7 @@ To make Jekyll process these SASS files, we need to create files with
 the proper extension name (`.scss` or `.sass`) and start the file
 contents with two lines of triple dashes.
 
-A file named `assets/styles.scss` will be rendered like `assets/styles.css`.
+A file named `assets/main.scss` will be rendered like `assets/main.css`.
 
 As Bootstrap switched from `Less` to `Sass`[^bs-blog] now we can use
 it directly without relying in parallel projects like [bootstrap-sass](https://github.com/twbs/bootstrap-sass)
@@ -154,7 +154,7 @@ $custom-font-size: 20px;
 
 After we have our variables, we import them from our main style sheet:
 
-In `assets/styles.scss` we import them and then work with our styles,
+In `assets/main.scss` we import them and then work with our styles,
 using the above variables:
 
 ~~~ scss
@@ -175,18 +175,18 @@ Jekyll reads the file to be transformed into CSS later
 
 ## Add css to layout
 
-After we have our `assets/styles.scss`, Jekyll will process it and
-generate the final CSS file: `assets/styles.css`.
+After we have our `assets/main.scss`, Jekyll will process it and
+generate the final CSS file: `assets/main.css`.
 
 That is the path we need to add to our layout, in the `<head>`
 section of `_layouts/default.html` we include the css: `<link
-rel="stylesheet" href="/assets/styles.css">`
+rel="stylesheet" href="/assets/main.css">`
 
 ~~~html
 <html>
 <head>
 <!-- site css -->
-<link rel="stylesheet" href="/assets/styles.css">
+<link rel="stylesheet" href="/assets/main.css">
 </head>
 </html>
 ~~~
@@ -194,25 +194,25 @@ rel="stylesheet" href="/assets/styles.css">`
 ## All together
 
 This is the basic flow Jekyll follows processing these Scss files to
-generate `assets/styles.css`:
+generate `assets/main.css`:
 
 <div class="mermaid">
 graph TB
-        STYLESSCSS["Jekyll reads <strong>/assets/styles.scss</strong>"]-->partials{"imports Sass partials"}
+        STYLESSCSS["Jekyll reads <strong>/assets/main.scss</strong>"]-->partials{"imports Sass partials"}
         partials--> |"import variables"|VARS
         partials--> |"import bootstrap/scss/bootstrap"|BS_SCSS
         VARS["/_sass/_variables.scss"]-->BS_VARIABLES
         BS_VARIABLES["@import '../bower_components/bootstrap/scss/variables';"]-->STYLESCSS
         BS_SCSS["/bower_components/bootstrap/scss/bootstrap.scss"]-->STYLESCSS
-        STYLESCSS["Generates /assets/styles.css"]
+        STYLESCSS["Generates /assets/main.css"]
 </div>
 
 ## Conclusion
 
 When we will our site, Jekyll will process the `.scss` files with our
-custom variables and we will have them in our `assets/styles.css`. In
+custom variables and we will have them in our `assets/main.css`. In
 this example its content starts with the Bootstrap code and ends with
-our custom `_styles.scss` processed, looking like:
+our custom `_main.scss` processed, looking like:
 
 ~~~ css
 /*!
