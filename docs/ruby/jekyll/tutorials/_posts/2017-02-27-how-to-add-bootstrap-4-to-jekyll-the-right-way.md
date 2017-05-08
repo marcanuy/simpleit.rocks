@@ -209,13 +209,21 @@ graph TB
 
 ## Other
 
-There is an example repository with a basic jekyll instance with just
-bootstrap 4 included in a jekyll blank
-site: <https://github.com/marcanuy/jekyll-bootstrap4>.
+The result of this guide is shown below:
+
+- an example repository with a basic jekyll instance with just
+bootstrap 4 included in a blank
+site: <https://github.com/marcanuy/jekyll-bootstrap4> 
+
+- a step by step video:
+
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="//www.youtube.com/embed/0EI1V_Whgto" allowfullscreen></iframe>
+</div>
 
 ## Conclusion
 
-When we will our site, Jekyll will process the `.scss` files with our
+When we build our site, Jekyll will process the `.scss` files with our
 custom variables and we will have them in our `assets/main.css`. In
 this example its content starts with the Bootstrap code and ends with
 our custom `_main.scss` processed, looking like:
