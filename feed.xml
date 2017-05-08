@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 08 May 2017 05:23:44 +0000</pubDate>
-    <lastBuildDate>Mon, 08 May 2017 05:23:44 +0000</lastBuildDate>
+    <pubDate>Mon, 08 May 2017 14:14:20 +0000</pubDate>
+    <lastBuildDate>Mon, 08 May 2017 14:14:20 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -1080,7 +1080,7 @@ it, so it will process other folders too.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p class=&quot;alert alert-danger&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;load_paths&lt;/code&gt; only works in safe mode&lt;sup id=&quot;fnref:safe-mode&quot;&gt;&lt;a href=&quot;#fn:safe-mode&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p class=&quot;alert alert-danger&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;load_paths&lt;/code&gt; only works when &lt;strong&gt;not&lt;/strong&gt; in safe mode&lt;sup id=&quot;fnref:safe-mode&quot;&gt;&lt;a href=&quot;#fn:safe-mode&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;add-javascript&quot;&gt;Add javascript&lt;/h2&gt;
 
@@ -1262,7 +1262,15 @@ Sass developers.&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:safe-mode&quot;&gt;
 
-      &lt;p&gt;Safe mode disables custom plugins, and ignores symbolic links.&amp;nbsp;&lt;a href=&quot;#fnref:safe-mode&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;Safe mode disables custom plugins, and ignores symbolic links.&lt;/p&gt;
+
+      &lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://github.com/jekyll/jekyll-sass-converter/issues/44#issuecomment-169858494&quot;&gt;
+        &lt;p&gt;The reason multiple load paths are shut off in safe mode is
+because of a fundamental inability to trust non-user content.&lt;/p&gt;
+
+        &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;parkr comment in &lt;a href=&quot;https://github.com/jekyll/jekyll-sass-converter/issues/44#issuecomment-169858494&quot;&gt;Allow multiple load_paths in safe mode&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+      &lt;/blockquote&gt;
+      &lt;p&gt;&lt;a href=&quot;#fnref:safe-mode&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:tether&quot;&gt;
 

@@ -524,7 +524,7 @@ it, so it will process other folders too.</p>
 </code></pre>
 </div>
 
-<p class="alert alert-danger"><code class="highlighter-rouge">load_paths</code> only works in safe mode<sup id="fnref:safe-mode"><a href="#fn:safe-mode" class="footnote">3</a></sup></p>
+<p class="alert alert-danger"><code class="highlighter-rouge">load_paths</code> only works when <strong>not</strong> in safe mode<sup id="fnref:safe-mode"><a href="#fn:safe-mode" class="footnote">3</a></sup></p>
 
 <h2 id="add-javascript">Add javascript</h2>
 
@@ -706,7 +706,15 @@ Sass developers.</p>
     </li>
     <li id="fn:safe-mode">
 
-      <p>Safe mode disables custom plugins, and ignores symbolic links.&nbsp;<a href="#fnref:safe-mode" class="reversefootnote">&#8617;</a></p>
+      <p>Safe mode disables custom plugins, and ignores symbolic links.</p>
+
+      <blockquote class="blockquote" cite="https://github.com/jekyll/jekyll-sass-converter/issues/44#issuecomment-169858494">
+        <p>The reason multiple load paths are shut off in safe mode is
+because of a fundamental inability to trust non-user content.</p>
+
+        <footer class="blockquote-footer"> <cite>parkr comment in <a href="https://github.com/jekyll/jekyll-sass-converter/issues/44#issuecomment-169858494">Allow multiple load_paths in safe mode</a></cite></footer>
+      </blockquote>
+      <p><a href="#fnref:safe-mode" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:tether">
 
