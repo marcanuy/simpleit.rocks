@@ -98,7 +98,7 @@ sass:
         - bower_components
 ~~~
 
-`load_paths` only works in safe mode[^safe-mode]
+`load_paths` only works when **not** in safe mode[^safe-mode]
 {: .alert .alert-danger}
 
 ## Add javascript
@@ -275,7 +275,14 @@ html {
     > Sass developers.
 
 [^safe-mode]:
-    Safe mode disables custom plugins, and ignores symbolic links.
+    Safe mode disables custom plugins, and ignores symbolic links. 
+	
+	> The reason multiple load paths are shut off in safe mode is
+	> because of a fundamental inability to trust non-user content.
+	> 
+	> <footer class="blockquote-footer"> <cite>parkr comment in <a href="https://github.com/jekyll/jekyll-sass-converter/issues/44#issuecomment-169858494">Allow multiple load_paths in safe mode</a></cite></footer>
+	{: class="blockquote" cite="https://github.com/jekyll/jekyll-sass-converter/issues/44#issuecomment-169858494"}
+	
 
 [^scss_default]:
 	SASS Variable Defaults: !default <http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html#variable_defaults_>
