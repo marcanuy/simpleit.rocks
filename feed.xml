@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 07 May 2017 15:07:03 +0000</pubDate>
-    <lastBuildDate>Sun, 07 May 2017 15:07:03 +0000</lastBuildDate>
+    <pubDate>Mon, 08 May 2017 05:23:44 +0000</pubDate>
+    <lastBuildDate>Mon, 08 May 2017 05:23:44 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -1190,13 +1190,26 @@ graph TB
 
 &lt;h2 id=&quot;other&quot;&gt;Other&lt;/h2&gt;
 
-&lt;p&gt;There is an example repository with a basic jekyll instance with just
-bootstrap 4 included in a jekyll blank
-site: &lt;a href=&quot;https://github.com/marcanuy/jekyll-bootstrap4&quot;&gt;https://github.com/marcanuy/jekyll-bootstrap4&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The result of this guide is shown below:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;an example repository with a basic jekyll instance with just
+bootstrap 4 included in a blank
+site: &lt;a href=&quot;https://github.com/marcanuy/jekyll-bootstrap4&quot;&gt;https://github.com/marcanuy/jekyll-bootstrap4&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;a step by step video:&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;embed-responsive embed-responsive-16by9&quot;&gt;
+  &lt;iframe class=&quot;embed-responsive-item&quot; src=&quot;//www.youtube.com/embed/0EI1V_Whgto&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
-&lt;p&gt;When we will our site, Jekyll will process the &lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt; files with our
+&lt;p&gt;When we build our site, Jekyll will process the &lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt; files with our
 custom variables and we will have them in our &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/main.css&lt;/code&gt;. In
 this example its content starts with the Bootstrap code and ends with
 our custom &lt;code class=&quot;highlighter-rouge&quot;&gt;_main.scss&lt;/code&gt; processed, looking like:&lt;/p&gt;
