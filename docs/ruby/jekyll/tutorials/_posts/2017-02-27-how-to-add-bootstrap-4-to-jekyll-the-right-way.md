@@ -209,17 +209,18 @@ graph TB
 
 ## Other
 
-The result of this guide is shown below:
-
-- an example repository with a basic jekyll instance with just
-bootstrap 4 included in a blank
-site: <https://github.com/marcanuy/jekyll-bootstrap4> 
-
-- a step by step video:
+You’ll find
+a
+[minimal example of a site](https://github.com/marcanuy/jekyll-bootstrap4) in
+Jekyll hosted on GitHub, based on this article and ready to use, and
+the following step by step video:
 
 <div class="embed-responsive embed-responsive-16by9">
   <iframe class="embed-responsive-item" src="//www.youtube.com/embed/0EI1V_Whgto" allowfullscreen></iframe>
 </div>
+
+It is also part of a Jekyll starter
+site [jekyll-skeleton](https://github.com/marcanuy/jekyll-skeleton).
 
 ## Conclusion
 
