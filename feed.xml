@@ -6,9 +6,409 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 08 May 2017 18:27:16 +0000</pubDate>
-    <lastBuildDate>Mon, 08 May 2017 18:27:16 +0000</lastBuildDate>
+    <pubDate>Tue, 09 May 2017 16:50:19 +0000</pubDate>
+    <lastBuildDate>Tue, 09 May 2017 16:50:19 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Multilingual Jekyll Without Plugins</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;This article shows a solution to have a multi language jekyll website
+based mainly in having a file that groups all the available
+translations for each page.&lt;/p&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;A common configuration for a multilanguage site is to use
+subdirectories with Generic top-level domains (gTLDs).&lt;/p&gt;
+
+&lt;p&gt;This way the URLs of your site would look like: &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com/&amp;lt;lang&amp;gt;/&lt;/code&gt;,
+e.g.:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;English &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com/en/&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Spanish &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com/es/&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;German &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com/de/&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This configuration has the benefit that it is easy to configure, can
+use Search Console geotargeting and requires low maintenance as it is
+in the same host.&lt;/p&gt;
+
+&lt;p&gt;To indicate to Search Engines that the German URL is the
+German-language equivalent of the Spanish page, one of three ways can
+be used:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;HTML link element in header&lt;/li&gt;
+  &lt;li&gt;HTTP header&lt;/li&gt;
+  &lt;li&gt;Sitemap&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In this guide I will be using the first one, adding a &lt;code class=&quot;highlighter-rouge&quot;&gt;link&lt;/code&gt; element
+in the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt; section of each HTML page. Each language page URL
+should identify different language versions, &lt;strong&gt;including itself&lt;/strong&gt;&lt;sup id=&quot;fnref:confirmationlink&quot;&gt;&lt;a href=&quot;#fn:confirmationlink&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;So the markup to tell Search Engine’s algorithms to consider all of
+these pages as alternate versions of each other is:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;link rel=&quot;alternate&quot; hreflang=&quot;es&quot; href=&quot;http://example.com/es&quot; /&amp;gt;
+&amp;lt;link rel=&quot;alternate&quot; hreflang=&quot;de&quot; href=&quot;http://example.com/de&quot; /&amp;gt;
+&amp;lt;link rel=&quot;alternate&quot; hreflang=&quot;en&quot; href=&quot;http://example.com/en&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To achieve this structure in Jekyll we will use:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;language subdirectories&lt;/li&gt;
+  &lt;li&gt;two data files
+    &lt;ul&gt;
+      &lt;li&gt;one to specify the navigation structure of the website&lt;/li&gt;
+      &lt;li&gt;another one to map posts and pages equivalents based in their full path&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;steps&quot;&gt;Steps&lt;/h2&gt;
+
+&lt;p&gt;I will create a new Jekyll site to show the process:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;jekyll new --blank mysite&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;cd mysite&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;bundle init&lt;/kbd&gt;
+Writing new Gemfile to /mysite/Gemfile
+&lt;span class=&quot;shell-prompt&quot;&gt;mysite$&lt;/span&gt; &lt;kbd&gt;tree&lt;/kbd&gt;
+.
+├── _drafts
+├── Gemfile
+├── index.html
+├── _layouts
+└── _posts
+
+3 directories, 2 file
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Edit &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; to have the Jekyll gem:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source &quot;https://rubygems.org&quot;
+
+gem &quot;jekyll&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;bundle install&lt;/kbd&gt;
+...
+Bundle complete! 1 Gemfile dependency, 19 gems now installed.
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h3 id=&quot;language-directories&quot;&gt;Language directories&lt;/h3&gt;
+
+&lt;p&gt;For each language we create a new directory that will contain its
+posts, pages and, eventually, some categories as subdirectories.&lt;/p&gt;
+
+&lt;p&gt;In this example, one for English &lt;code class=&quot;highlighter-rouge&quot;&gt;/en&lt;/code&gt;, one for Spanish &lt;code class=&quot;highlighter-rouge&quot;&gt;/es&lt;/code&gt; and one
+for German &lt;code class=&quot;highlighter-rouge&quot;&gt;/de&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;mysite$&lt;/span&gt; &lt;kbd&gt;mkdir -vp {en,es/_posts,de/_posts}&lt;/kbd&gt;
+mkdir: created directory 'en'
+mkdir: created directory 'es'
+mkdir: created directory 'es/_posts'
+mkdir: created directory 'de'
+mkdir: created directory 'de/_posts'
+&lt;span class=&quot;shell-prompt&quot;&gt;mysite$&lt;/span&gt; &lt;kbd&gt;mv _posts/ en/&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;mysite$&lt;/span&gt; &lt;kbd&gt;tree&lt;/kbd&gt;
+├── de
+│   └── _posts
+├── _drafts
+├── en
+│   └── _posts
+├── es
+│   └── _posts
+├── index.html
+└── _layouts
+
+8 directories, 1 file
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;This way our URLs will be generated containing the language at the
+first level.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://example.com/es/...
+http://example.com/de/...
+http://example.com/en/...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Following this example we create example posts in each language.&lt;/p&gt;
+
+&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;en/_posts/2017-05-08-hello-world.md&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+title: Hello World
+---
+
+A &quot;Hello, World!&quot; program is a computer program that outputs or displays &quot;Hello, World!&quot; to a user. Being a very simple program in most programming languages...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;es/_posts/2017-05-08-hola-mundo.md&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+title: Hola Mundo
+---
+
+En informática, un programa Hola mundo es el que imprime el texto
+«¡Hola, mundo!» ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;de/_posts/2017-05-08-hallo-welt.md&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+title: Hallo Welt
+---
+
+Ein Hallo-Welt-Programm ist ein kleines Computerprogramm, das auf
+möglichst einfache Weise zeigen soll...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;tree&lt;/kbd&gt;
+.
+├── de
+│   └── _posts
+│       └── 2017-05-08-hallo-welt.md
+├── _drafts
+├── en
+│   └── _posts
+│       └── 2017-05-08-hello-world.md
+├── es
+│   └── _posts
+│       └── 2017-05-08-hola-mundo.md
+├── Gemfile
+├── Gemfile.lock
+├── index.html
+└── _layouts
+
+8 directories, 6 files
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h3 id=&quot;set-post-language&quot;&gt;Set post language&lt;/h3&gt;
+
+&lt;p&gt;Now we automatically set the language of each post depending on the
+above language folder
+using
+&lt;a href=&quot;https://jekyllrb.com/docs/configuration/#front-matter-defaults&quot;&gt;Front Matter Defaults&lt;/a&gt;,
+in &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;defaults&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;#languages&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;en&quot;&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;default&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;es&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;es&quot;&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;de&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;de&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Every post and page located inside each folder, will automatically get
+the right language.&lt;/p&gt;
+
+&lt;p&gt;So each webpage should have the language specified at the opening html
+tag: &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;In the default layout in &lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts/default.html&lt;/code&gt; using English as the
+fallback language:&lt;/p&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.lang&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'en'&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;
+    &amp;lt;head&amp;gt;
+    &amp;lt;/head&amp;gt;
+    &amp;lt;body&amp;gt;
+	&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+    &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If you don’t put the post/page in one of the language subdirectories,
+then you will need to specify its language in the front matter, i.e.:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+title: &quot;Prueba&quot;
+lang: es
+---
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;map-set&quot;&gt;Map set&lt;/h3&gt;
+
+&lt;p&gt;Each time we add a post or page, the full path of each page should be
+added to a special &lt;code class=&quot;highlighter-rouge&quot;&gt;_data/map.yml&lt;/code&gt; where we specify which files are
+equivalent in the other languages.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-
+  en: en/_posts/2017-05-08-hello-world.md 
+  es: es/_posts/2017-05-08-hola-mundo.md
+  de: de/_posts/2017-05-08-hallo-welt.md
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;navigation-menu&quot;&gt;Navigation menu&lt;/h3&gt;
+
+&lt;p&gt;We create an include that iterates through pages and posts and select
+only the group (located in &lt;code class=&quot;highlighter-rouge&quot;&gt;_data/map.yml&lt;/code&gt;) which one of its items
+equals the current page path. In &lt;code class=&quot;highlighter-rouge&quot;&gt;_includes/lang_nav.html&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;nav&amp;gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;block&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.data.map&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;item&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;block[page.lang]&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;trans&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;block&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;trans_path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;trans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;trans_path&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt; 
+
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;item&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;posts&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &amp;lt;a hreflang=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot; class=&quot;active&quot;&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;locales&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/a&amp;gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &amp;lt;a hreflang=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot; href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;absolute_url}}&quot;&amp;gt;{{site.data.locales[item.lang].title}}&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;{%&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;endif&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pages&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pages&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;trans_path&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;item&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;pages&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &amp;lt;a hreflang=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot; class=&quot;active&quot;&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;locales&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/a&amp;gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &amp;lt;a hreflang=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot; href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;absolute_url}}&quot;&amp;gt;{{site.data.locales[item.lang].title}}&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;{%&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;endif&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+
+&amp;lt;/nav&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And use it in a layout:&lt;/p&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;body&amp;gt;
+...
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;lang_nav&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;alternate-links&quot;&gt;Alternate links&lt;/h3&gt;
+
+&lt;p&gt;Finally to create the urls with the &lt;em&gt;alternate&lt;/em&gt; link tags, in
+&lt;code class=&quot;highlighter-rouge&quot;&gt;_includes/alternate.html&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;block&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.data.map&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;item&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;block[page.lang]&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;trans&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;block&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;trans_path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;trans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;trans_path&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;item&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;posts&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&amp;lt;link rel=&quot;alternate&quot; hreflang=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot; href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;absolute_url}}&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;/&amp;gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;{%&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;endfor&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pages&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pages&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;trans_path&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;item&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;pages&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&amp;lt;link rel=&quot;alternate&quot; hreflang=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot; href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;absolute_url}}&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;/&amp;gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;{%&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;endfor&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And use it in the head section of the layout:&lt;/p&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;head&amp;gt;
+...
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;alternate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&amp;lt;/head&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;repo&quot;&gt;Repo&lt;/h2&gt;
+
+&lt;p&gt;Putting it all together: &lt;a href=&quot;https://github.com/marcanuy/jekyll-multilanguage&quot;&gt;https://github.com/marcanuy/jekyll-multilanguage&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.google.com/webmasters/answer/182192?hl=en#1&quot;&gt;Multi-regional and multilingual sites&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.google.com/webmasters/answer/189077?hl=en&amp;amp;ref_topic=2370587&quot;&gt;Use hreflang for language and regional URLs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.google.com/webmasters/answer/2620865?hl=en&amp;amp;ref_topic=2370587&quot;&gt;Use a sitemap to indicate alternate language pages&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:confirmationlink&quot;&gt;
+
+      &lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://support.google.com/webmasters/answer/189077?hl=en&amp;amp;ref_topic=2370587&quot;&gt;
+        &lt;p&gt;If page A links to page B, page B must link back to page A. If
+this is not the case for all pages that use hreflang
+annotations, those annotations may be ignored or not interpreted
+correctly.&lt;/p&gt;
+
+        &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Missing confirmation links in &lt;a href=&quot;https://support.google.com/webmasters/answer/189077?hl=en&amp;amp;ref_topic=2370587&quot;&gt;Common Mistakes&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+      &lt;/blockquote&gt;
+      &lt;p&gt;&lt;a href=&quot;#fnref:confirmationlink&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Mon, 08 May 2017 00:00:00 +0000</pubDate>
+        <link>https://simpleit.rocks/multilingual-jekyll-without-plugins/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/multilingual-jekyll-without-plugins/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>ruby</category>
+        
+        <category>jekyll</category>
+        
+        <category>tutorials</category>
+        
+      </item>
     
       <item>
         <title>Having Pretty Urls In A Jekyll Website Hosted In Amazon S3</title>
@@ -1989,330 +2389,6 @@ know commands and strategies to recover our sites and keep them safe.&lt;/p&gt;
         <category>php</category>
         
         <category>joomla</category>
-        
-      </item>
-    
-      <item>
-        <title>What Are The Supported Language Highlighters In Jekyll</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;To highlight code snippets in Jekyll post’s, there are many
-highlighters that can be used. Jekyll comes with &lt;em&gt;Rouge&lt;/em&gt; by
-default.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://github.com/jneen/rouge&quot;&gt;
-  &lt;p&gt;Rouge is a pure-ruby syntax highlighter. It can highlight 100
-different languages, and output HTML or ANSI 256-color text. Its
-HTML output is compatible with stylesheets designed for pygments.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Rouge &lt;a href=&quot;https://github.com/jneen/rouge&quot;&gt;project&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;This article explores how to see the languages that Jekyll support in
-your current environment and the list of languages for which Jekyll
-can generate syntax highlighting in posts.&lt;/p&gt;
-
-&lt;h2 id=&quot;command&quot;&gt;Command&lt;/h2&gt;
-
-&lt;p&gt;To know which languages can have code syntax highlighted, we can user
-the command &lt;code class=&quot;highlighter-rouge&quot;&gt;rougify&lt;/code&gt; that is part of
-the &lt;a href=&quot;https://rubygems.org/gems/rouge&quot;&gt;rouge gem&lt;/a&gt; already installed by Jekyll.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;rougify --help&lt;/kbd&gt;
-usage: rougify [command] [args...]
-
-where &lt;command /&gt; is one of:
-        highlight       highlight code
-        help            print help info
-        style           print CSS styles
-        list            list available lexers
-        version         print the rouge version number
-
-See `rougify help &lt;command /&gt;` for more info.
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;list&quot;&gt;List&lt;/h2&gt;
-
-&lt;p&gt;As of &lt;em&gt;rouge&lt;/em&gt; version &lt;code class=&quot;highlighter-rouge&quot;&gt;1.11.1&lt;/code&gt;, this is the complete list of languages
-that it supports.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;rougify version&lt;/kbd&gt;
-1.11.1
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;rougify list&lt;/kbd&gt;
-== Available Lexers ==                                                                                                       [168/287]
-actionscript: ActionScript [aliases: as,as3]
-
-apache: configuration files for Apache web server
-
-apiblueprint: Markdown based API description language. [aliases: apiblueprint,apib]
-
-applescript: The AppleScript scripting language by Apple Inc. (http://developer.apple.com/applescript/) [aliases: applescript]
-
-biml: BIML, Business Intelligence Markup Language
-
-c: The C programming language
-
-ceylon: Say more, more clearly.
-
-cfscript: CFScript, the CFML scripting language [aliases: cfc]
-
-clojure: The Clojure programming language (clojure.org) [aliases: clj,cljs]
-
-cmake: The cross-platform, open-source build system
-
-coffeescript: The Coffeescript programming language (coffeescript.org) [aliases: coffee,coffee-script]
-
-common_lisp: The Common Lisp variant of Lisp (common-lisp.net) [aliases: cl,common-lisp,elisp,emacs-lisp]
-
-conf: A generic lexer for configuration files [aliases: config,configuration]
-
-coq: Coq (coq.inria.fr)
-
-cpp: The C++ programming language [aliases: c++]
-
-csharp: a multi-paradigm language targeting .NET [aliases: c#,cs]
-
-css: Cascading Style Sheets, used to style web pages
-
-d: The D programming language(dlang.org) [aliases: dlang]
-
-dart: The Dart programming language (dartlang.com)                                                                           [131/287]
-
-diff: Lexes unified diffs or patches [aliases: patch,udiff]
-
-eiffel: Eiffel programming language
-
-elixir: Elixir language (elixir-lang.org) [aliases: elixir,exs]
-
-erb: Embedded ruby template files [aliases: eruby,rhtml]
-
-erlang: The Erlang programming language (erlang.org) [aliases: erl]
-
-factor: Factor, the practical stack language (factorcode.org)
-
-fortran: Fortran 95 Programming Language
-
-gherkin: A business-readable spec DSL ( github.com/cucumber/cucumber/wiki/Gherkin ) [aliases: cucumber,behat]
-
-glsl: The GLSL shader language
-
-go: The Go programming language (http://golang.org) [aliases: go,golang]
-
-gradle: A powerful build system for the JVM
-
-groovy: The Groovy programming language (http://www.groovy-lang.org/)
-
-haml: The Haml templating system for Ruby (haml.info) [aliases: HAML]
-
-handlebars: the Handlebars and Mustache templating languages [aliases: hbs,mustache]
-
-haskell: The Haskell programming language (haskell.org) [aliases: hs]
-
-html: HTML, the markup language of the web
-
-http: http requests and responses
-
-ini: the INI configuration format                                                                                             [95/287]
-
-io: The IO programming language (http://iolanguage.com)
-
-java: The Java programming language (java.com)
-
-javascript: JavaScript, the browser scripting language [aliases: js]
-
-jinja: Django/Jinja template engine (jinja.pocoo.org) [aliases: django]
-
-json: JavaScript Object Notation (json.org)
-
-json-doc: JavaScript Object Notation with extenstions for documentation
-
-jsonnet: An elegant, formally-specified config language for JSON
-
-julia: The Julia programming language [aliases: jl]
-
-kotlin: Kotlin &amp;lt;http://kotlinlang.org&amp;gt;
-
-liquid: Liquid is a templating engine for Ruby (liquidmarkup.org)
-
-literate_coffeescript: Literate coffeescript [aliases: litcoffee]
-
-literate_haskell: Literate haskell [aliases: lithaskell,lhaskell,lhs]
-
-llvm: The LLVM Compiler Infrastructure (http://llvm.org/)
-
-lua: Lua (http://www.lua.org)
-
-make: Makefile syntax [aliases: makefile,mf,gnumake,bsdmake]
-
-markdown: Markdown, a light-weight markup language for authors [aliases: md,mkd]
-
-matlab: Matlab [aliases: m]
-
-moonscript: Moonscript (http://www.moonscript.org) [aliases: moon]                                                            [59/287]
-
-nasm: Netwide Assembler
-
-nginx: configuration files for the nginx web server (nginx.org)
-
-nim: The Nim programming language (http://nim-lang.org/) [aliases: nimrod]
-
-objective_c: an extension of C commonly used to write Apple software [aliases: objc]
-
-ocaml: Objective CAML (ocaml.org)
-
-pascal: a procedural programming language commonly used as a teaching language.
-
-perl: The Perl scripting language (perl.org) [aliases: pl]
-
-php: The PHP scripting language (php.net) [aliases: php,php3,php4,php5]
-
-plaintext: A boring lexer that doesn't highlight anything [aliases: text]
-
-powershell: powershell [aliases: posh]
-
-praat: The Praat scripting language (praat.org)
-
-prolog: The Prolog programming language (http://en.wikipedia.org/wiki/Prolog) [aliases: prolog]
-
-properties: .properties config files for Java
-
-protobuf: Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data [aliases: proto]
-
-puppet: The Puppet configuration management language (puppetlabs.org) [aliases: pp]
-
-python: The Python programming language (python.org) [aliases: py]
-
-qml: QML, a UI markup language [aliases: qml]
-
-r: The R statistics language (r-project.org) [aliases: r,R,s,S]                                                               [23/287]
-
-racket: Racket is a Lisp descended from Scheme (racket-lang.org)
-
-ruby: The Ruby programming language (ruby-lang.org) [aliases: rb]
-
-rust: The Rust programming language (rust-lang.org) [aliases: rs]
-
-sass: The Sass stylesheet language language (sass-lang.com)
-
-scala: The Scala programming language (scala-lang.org) [aliases: scala]
-
-scheme: The Scheme variant of Lisp
-
-scss: SCSS stylesheets (sass-lang.com)
-
-sed: sed, the ultimate stream editor
-
-shell: Various shell languages, including sh and bash [aliases: bash,zsh,ksh,sh]
-
-shell_session: A generic lexer for shell session and command line [aliases: terminal,console]
-
-slim: The Slim template language
-
-smalltalk: The Smalltalk programming language [aliases: st,squeak]
-
-smarty: Smarty Template Engine [aliases: smarty]
-
-sml: Standard ML [aliases: ml]
-
-sql: Structured Query Language, for relational databases
-
-swift: Multi paradigm, compiled programming language developed by Apple for iOS and OS X development. (developer.apple.com/swift)
-
-tap: Test Anything Protocol [aliases: tap]
-
-tcl: The Tool Command Language (tcl.tk)
-
-tex: The TeX typesetting system [aliases: TeX,LaTeX,latex]
-
-toml: the TOML configuration format (https://github.com/mojombo/toml)
-
-tulip: The tulip programming language http://github.com/jneen/tulip [aliases: tlp]
-
-twig: Twig template engine (twig.sensiolabs.org)
-
-typescript: TypeScript, a superset of JavaScript [aliases: ts]
-
-vb: Visual Basic [aliases: visualbasic]
-
-verilog: The System Verilog hardware description language
-
-viml: VimL, the scripting language for the Vim editor (vim.org) [aliases: vim,vimscript,ex]
-
-xml: &lt;desc for=&quot;this-lexer&quot;&gt;XML&lt;/desc&gt;
-
-yaml: Yaml Ain't Markup Language (yaml.org) [aliases: yml]
-
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;The list is also available as a wiki page online
-at
-&lt;a href=&quot;https://github.com/jneen/rouge/wiki/List-of-supported-languages-and-lexers&quot;&gt;Rouge wiki&lt;/a&gt;,
-this won’t be always up to date but will cover most of the languages
-you will ever need.&lt;/p&gt;
-
-&lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;
-
-&lt;p&gt;To use any of the above languages, you need to enclose the code
-snippets with three or more tilde characters &lt;code class=&quot;highlighter-rouge&quot;&gt;~~~&lt;/code&gt; and specify the
-language or an alias appending it to the end of the starting line, for
-example, to highlight a python snippet the
-&lt;a href=&quot;https://kramdown.gettalong.org/syntax.html#fenced-code-blocks&quot;&gt;kramdown markdown parser&lt;/a&gt;
-we use &lt;strong&gt;fenced code blocks&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~~~ python
-# a comment
-import datetime
-
-def get_or_create_user(session, model, **kwargs):
-    instance = session.query(model).filter_by(twitter_user_id=kwargs[&quot;twitter_user_id&quot;]).first()
-	return instance
-~~~
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;or using the alias &lt;code class=&quot;highlighter-rouge&quot;&gt;py&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~~~ py
-# ...
-~~~
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Then when rendered it will look like:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# a comment&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;datetime&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_or_create_user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter_by&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;twitter_user_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;twitter_user_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://jekyllrb.com/docs/templates/&quot;&gt;https://jekyllrb.com/docs/templates/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/jneen/rouge&quot;&gt;https://github.com/jneen/rouge&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://kramdown.gettalong.org/syntax.html&quot;&gt;https://kramdown.gettalong.org/syntax.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Wed, 25 Jan 2017 00:00:00 +0000</pubDate>
-        <link>https://simpleit.rocks/what-are-the-supported-language-highlighters-in-jekyll/</link>
-        <guid isPermaLink="true">https://simpleit.rocks/what-are-the-supported-language-highlighters-in-jekyll/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>ruby</category>
-        
-        <category>jekyll</category>
         
       </item>
     
