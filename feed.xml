@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 09 May 2017 16:50:19 +0000</pubDate>
-    <lastBuildDate>Tue, 09 May 2017 16:50:19 +0000</lastBuildDate>
+    <pubDate>Wed, 17 May 2017 17:29:53 +0000</pubDate>
+    <lastBuildDate>Wed, 17 May 2017 17:29:53 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -1334,7 +1334,9 @@ and &lt;a href=&quot;https://dev.twitter.com/cards/&quot;&gt;Twitter cards&lt;/a
 &lt;h4 id=&quot;submit-urls&quot;&gt;Submit URLs&lt;/h4&gt;
 
 &lt;ul&gt;
+  &lt;li&gt;Google: &lt;a href=&quot;https://www.google.com/webmasters/tools/submit-url&quot;&gt;https://www.google.com/webmasters/tools/submit-url&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Bing: &lt;a href=&quot;https://www.bing.com/toolbox/submit-site-url&quot;&gt;https://www.bing.com/toolbox/submit-site-url&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Yandex: &lt;a href=&quot;https://webmaster.yandex.com/site/indexing/reindex/&quot;&gt;https://webmaster.yandex.com/site/indexing/reindex/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;sitemaps&quot;&gt;Sitemaps&lt;/h2&gt;
@@ -2197,6 +2199,7 @@ data shows that improving site speed also reduces operating costs.&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;http://webmasters.googleblog.com&quot;&gt;http://webmasters.googleblog.com&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://support.google.com&quot;&gt;http://support.google.com&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://developers.google.com&quot;&gt;http://developers.google.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://yandex.com/support/webmaster/&quot;&gt;https://yandex.com/support/webmaster/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 26 Jan 2017 00:00:00 +0000</pubDate>
