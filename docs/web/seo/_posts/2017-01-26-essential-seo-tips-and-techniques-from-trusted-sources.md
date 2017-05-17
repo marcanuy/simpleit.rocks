@@ -259,3 +259,4 @@ are good to:
 - <http://webmasters.googleblog.com>
 - <http://support.google.com>
 - <http://developers.google.com>
+- <https://yandex.com/support/webmaster/>

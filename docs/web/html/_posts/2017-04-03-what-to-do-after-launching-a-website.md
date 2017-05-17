@@ -61,7 +61,9 @@ optimizations, analytics, etc.
 
 #### Submit URLs
 
+- Google: <https://www.google.com/webmasters/tools/submit-url>
 - Bing: <https://www.bing.com/toolbox/submit-site-url>
+- Yandex: <https://webmaster.yandex.com/site/indexing/reindex/>
 
 
 ## Sitemaps
