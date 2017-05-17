@@ -194,7 +194,7 @@ The key's randomart image is:
 ### Add deploy key to GitHub keys
 
 Add the generated **public key**: `deploy_key.pub` to your repository at
-https://github.com/<your name>/<your repo>/settings/keys.
+`https://github.com/<your name>/<your repo>/settings/keys`.
 
 You can copy easily with `xclip` and then paste it in the keys textbox:
 
