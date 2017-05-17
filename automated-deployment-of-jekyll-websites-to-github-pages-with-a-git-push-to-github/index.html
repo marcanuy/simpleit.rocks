@@ -341,6 +341,7 @@
 <li class="toc-entry toc-h3"><a href="#edit-travisyml-with-encryption-ids">Edit .travis.yml with encryption ids</a></li>
 <li class="toc-entry toc-h3"><a href="#add-deploy-key-to-gitignore">Add deploy key to gitignore:</a></li>
 <li class="toc-entry toc-h3"><a href="#adding-the-travis-button-to-github-readme">Adding the travis button to github readme</a></li>
+<li class="toc-entry toc-h2"><a href="#conclusion">Conclusion</a></li>
 <li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
       </div>
@@ -648,7 +649,11 @@ Commit all changes to your .travis.yml.
 
 <p>The previous step added the before_install section with the proper
 command to decrypt the <code class="highlighter-rouge">deploy_key</code>, now we have to detect the
-encription id and add an environment variable like: ` ENCRYPTION_LABEL: “&lt;…. encryption label from previous step ….&gt;”`</p>
+encription id and add an environment variable like:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ENCRYPTION_LABEL: "&lt;.... encryption label from previous step ....&gt;"
+</code></pre>
+</div>
 
 <p>The encription id is the string between <code class="highlighter-rouge">$encrypted_</code> and <code class="highlighter-rouge">_key</code> in
 the automatically added <code class="highlighter-rouge">before_install</code> line:</p>
@@ -710,6 +715,12 @@ the current status of the building, adding a similar code:</p>
 </div>
 
 <p>You can find your project button url following <a href="https://docs.travis-ci.com/user/status-images/">this guide</a>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Now every time you make a <code class="highlighter-rouge">git push</code> to Github, Travis will
+automatically generate the site and push it back to the <code class="highlighter-rouge">gh-pages</code>
+branch, so your site should be always live with the latest changes.</p>
 
 <h2 id="references">References</h2>
 
