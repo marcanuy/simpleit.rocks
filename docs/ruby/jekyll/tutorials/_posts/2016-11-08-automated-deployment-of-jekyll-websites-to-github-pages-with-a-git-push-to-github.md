@@ -228,7 +228,9 @@ Commit all changes to your .travis.yml.
 
 The previous step added the before_install section with the proper
 command to decrypt the `deploy_key`, now we have to detect the
-encription id and add an environment variable like: ` ENCRYPTION_LABEL: "<.... encryption label from previous step ....>"`
+encription id and add an environment variable like:
+
+    ENCRYPTION_LABEL: "<.... encryption label from previous step ....>"
 
 The encription id is the string between `$encrypted_` and `_key` in
 the automatically added `before_install` line: 
@@ -290,6 +292,12 @@ the current status of the building, adding a similar code:
 ~~~
 
 You can find your project button url following [this guide](https://docs.travis-ci.com/user/status-images/).
+
+## Conclusion
+
+Now every time you make a `git push` to Github, Travis will
+automatically generate the site and push it back to the `gh-pages`
+branch, so your site should be always live with the latest changes.
 
 ## References
 
