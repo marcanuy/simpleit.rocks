@@ -313,7 +313,9 @@ Related articles:
 - <http://awestruct.org/auto-deploy-to-github-pages/>
 - <https://jekyllrb.com/docs/deployment-methods/>
 - <https://jekyllrb.com/docs/continuous-integration/>
-
+- Script based in 
+  [Auto-deploying built products to gh-pages with Travis](https://gist.github.com/domenic/ec8b0fc8ab45f39403dd).
+  
 *[HTML]: HyperTextMarkupLanguage
 
 [Github Pages]: https://pages.github.com
