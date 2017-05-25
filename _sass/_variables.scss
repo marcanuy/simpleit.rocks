@@ -1,0 +1,48 @@
+// Start with assigning color names to specific hex values.
+$white:  #fff;
+$black:  #000;
+$red:    adjust-hue(darken(#d9534f, 10%), 25deg);
+$orange: adjust-hue(darken(#f0ad4e, 10%), 25deg);
+$yellow: adjust-hue(darken(#ffd500, 10%), 25deg);
+$green:  adjust-hue(darken(#5cb85c, 10%), 25deg);
+$blue:   adjust-hue(darken(#0275d8, 10%), 25deg);
+$teal:   adjust-hue(darken(#5bc0de, 10%), 25deg);
+$pink:   adjust-hue(darken(#ff5b77, 10%), 25deg);
+$purple: adjust-hue(darken(#613d7c, 10%), 25deg);
+
+// Create grayscale
+$gray-dark:                 adjust-hue(darken(#292b2c, 10%), 25deg);
+$gray:                      adjust-hue(darken(#464a4c, 10%), 25deg);
+$gray-light:                adjust-hue(darken(#636c72, 10%), 25deg);
+$gray-lighter:              adjust-hue(darken(#eceeef, 10%), 25deg);
+$gray-lightest:             adjust-hue(darken(#f7f7f9, 10%), 25deg);
+
+// Reassign color vars to semantic color scheme
+$brand-primary:             $blue;
+$brand-success:             $green;
+$brand-info:                $teal;
+$brand-warning:             $orange;
+$brand-danger:              $red;
+$brand-inverse:             $gray-dark;
+
+// Fonts
+$font-family-serif:      Georgia, "Times New Roman", Times, serif;
+$font-family-base:       $font-family-serif;
+
+$font-size-base: 1.1rem;
+$font-size-lg:   1.35rem;
+$font-size-sm:   .890rem;
+$font-size-xs:   .85rem;
+
+// Global options
+
+$spacer:                    2rem;
+$enable-rounded:            true;
+$enable-shadows:            true;
+$enable-gradients:          true;
+$enable-transitions:        true;
+$enable-hover-media-query:  false;
+$enable-grid-classes:       true;
+$enable-print-styles:       true;
+
+@import "../bower_components/bootstrap/scss/variables";

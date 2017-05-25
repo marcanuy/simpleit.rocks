@@ -1,35 +1,34 @@
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  {% comment %}
-  OVERWRITTEN BY JEKYLL-SEO-TAG-PLUGIN
-  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-  {% endcomment %}
+    {% comment %}
+    OVERWRITTEN BY JEKYLL-SEO-TAG-PLUGIN
+    <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    {% endcomment %}
 
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | absolute_url }}">
 
-  <!-- jQuery -->
-  <script src="{{ site.baseurl }}/bower_components/jquery/dist/jquery.min.js"></script>
+    <meta name="msvalidate.01" content="453BB779294406F41BD202E3E24FFE55" />
 
-  <!-- Fontawesome -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="{{ '/bower_components/font-awesome/css/font-awesome.min.css' | prepend: site.baseurl }}" type="text/css" media="screen" />
 
-  <!-- Mermaid -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/bower_components/mermaid/dist/mermaid.forest.css" type="text/css" media="screen" />
+    
+    {% if page.content contains "mermaid" or page.layout == "tutorial" %}
+    <!-- Mermaid -->
+    <link rel="stylesheet" href="{{ '/bower_components/mermaid/dist/mermaid.forest.css' | prepend: site.baseurl }}" type="text/css" media="screen" />
+    {% endif %}
+    
+    <!-- Custom css -->
+    <link rel="stylesheet" href="{{ '/css/main.css' | prepend: site.baseurl }}">
 
-  <!-- Bootstrap -->
-  <!--link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/bower_components/bootstrap/dist/css/bootstrap.css"-->
-  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/bootstrap-flex.css">
-  <script src="{{ site.baseurl }}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    {% include favicons.html %}
 
-  <!-- Custom css -->
-  <link rel="stylesheet" href="{{ '/css/main.css' | prepend: site.baseurl }}">
-
-  {% comment %} jekyll-seo-tag {% endcomment %}
+    {% comment %} jekyll-seo-tag {% endcomment %}
   {% seo %}
 
   {% include adsense_pagelevel.html %}

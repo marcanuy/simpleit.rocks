@@ -6,10 +6,10 @@
 {% endif %}
 
 <li itemprop="itemListElement" itemscope
-    itemtype="http://schema.org/ListItem"
+    itemtype="https://schema.org/ListItem"
     class="{{li_class}}">
   {% if include.url %}
-  <a itemscope itemtype="http://schema.org/Thing"
+  <a itemscope itemtype="https://schema.org/Thing"
      itemprop="item" href="{{include.url}}">
     {% if include.fa %}
     <i class="fa {{include.fa}}" aria-hidden="true"></i>
@@ -18,7 +18,7 @@
     {{include.title}}
   </a>
   {% else %}
-  <span itemscope itemtype="http://schema.org/Thing"
+  <span itemscope itemtype="https://schema.org/Thing"
        itemprop="item">
     {% if include.fa %}
     <i class="fa {{include.fa}}" aria-hidden="true"></i>

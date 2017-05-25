@@ -13,7 +13,13 @@ layout: base_post
     <div class="card-deck">
 	{% for book in site.books %}
 	<div class="card">
-	    <img class="card-img-top img-fluid" alt="{{ book.title}}" src="/assets/books/{{ book.image }}">
+	    {% assign image_url = "" %}
+	    {% if book.image contains "http" %}
+	    {% assign image_url = book.image %}
+	    {% else %}
+	    {% assign image_url = "/assets/books/" | append: book.image %}
+	    {% endif %}
+	    <img class="card-img-top img-fluid" alt="{{ book.title }}" src="{{image_url}}">
 	    <div class="card-block">
 		<h4 class="card-title">{{ book.title }}</h4>
 		<p class="card-text">

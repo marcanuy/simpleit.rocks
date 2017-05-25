@@ -45,7 +45,9 @@ developing the site which can lead to an account ban.
 > don't require that you contact us every time you click on your ads. Rest
 > assured that your account is being properly credited for all clicks and
 > impressions we consider to be valid.
-{: cite="https://support.google.com/adsense/answer/1348754?hl=en#q1"}
+> 
+> <footer class="blockquote-footer"> <cite>How to keep your account in good standing <a href="https://support.google.com/adsense/answer/1348754">Clicks and impressions</a></cite></footer>
+{: class="blockquote" cite="https://support.google.com/adsense/answer/1348754?hl=en#q1"}
 
 - __speed__. Testing the site locally without waiting for each ad request 
 to resolve, avoiding any javascript external request.
@@ -67,18 +69,23 @@ generate any revenue**.
 
 > To use this code you must have an AdSense account
 > with active permission to use AdSense Custom Search Ads.
-{: cite="https://developers.google.com/custom-search-ads/docs/reference"}
+> 
+> <footer class="blockquote-footer"> <cite>AdSense Custom Search Ads <a href="https://developers.google.com/custom-search-ads/docs/reference">Reference</a></cite></footer>
+{: class="blockquote" cite="https://developers.google.com/custom-search-ads/docs/reference"}
 
-The parameter is `'adtest' : 'on'` and it is defined:
+The parameter is `'adtest' : 'on'` and it is defined like:
 
 > The adtest parameter is used to indicate that a request for ads is a test. 
 > When the adtest parameter has a value of on, Google treats the request as
-> a test and does not count the ad impressions or track the clickthrough results.
-{: cite="https://developers.google.com/custom-search-ads/docs/reference#page-level-parameter-descriptions"}
+> a test and does not count the ad impressions or track the
+> clickthrough results.
+>
+> <footer class="blockquote-footer"> <cite>AdSense Custom Search Ads <a href="https://developers.google.com/custom-search-ads/docs/reference#page-level-parameter-descriptions">Reference</a></cite></footer>
+{: class="blockquote" cite="https://developers.google.com/custom-search-ads/docs/reference#page-level-parameter-descriptions"}
 
 An _easier_ and _safer_ alternative is to avoid the ad request at all.
 
-## Alternative 2: Stop showing adsense ads
+## Alternative 2: Avoid showing adsense ads locally
 
 Jekyll templates can access the value of an environment variable passed
 at build time to avoid any external javascript request. Based on this
@@ -91,16 +98,20 @@ possible to hide the ads in liquid templates
 
 To build a production ready jekyll site it can be specified like this:
 
-~~~ bash
-$ JEKYLL_ENV=production jekyll build
-~~~
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>JEKYLL_ENV=production jekyll build</kbd>
 
-When using a [Bundler command]
-it should be used like:
+</samp>
+</pre>
 
-~~~ bash
-$ JEKYLL_ENV=production bundle exec jekyll build
-~~~
+When using **bundler** it should be used like:
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>JEKYLL_ENV=production bundle exec jekyll build</kbd>
+</samp>
+</pre>
 
 ## Environment in Jekyll liquid template
 

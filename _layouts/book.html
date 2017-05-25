@@ -21,7 +21,7 @@ layout: post
 </div>
 
 <div class="row">
-  <div class="col-xs-8">
+  <div class="col-8">
     <h2>Articles</h2>
     <p>This book is being referenced in:</p>
     <div class="list-group">
@@ -34,11 +34,17 @@ layout: post
       {% endfor %}
     </div>
   </div>
-  <div class="col-xs-4">
-    <div class="text-xs-center">
+  <div class="col-4">
+    <div class="text-center">
       <figure class="figure">
 	<a href="{{ page.shops.amazon }}">
-	  <img src="/assets/books/{{page.image}}" alt="{{ page.title }}" class="img-fluid img-rounded"/>
+	    {% assign image_url = "" %}
+	    {% if page.image contains "http" %}
+	    {% assign image_url = page.image %}
+	    {% else %}
+	    {% assign image_url = "/assets/books/" | append: page.image %}
+	    {% endif %}
+	    <img src="{{image_url}}" alt="{{ page.title }}" class="img-fluid img-rounded"/>
 	</a>
 	<figcaption class="figure-caption">{{ page.title }} cover</figcaption>
       </figure>

@@ -1,5 +1,5 @@
 ---
-description: Best Practices For Django.
+description: Learn Ruby on Rails development with this tutorial.
 authors:
   - Michael Hartl
 layout: book

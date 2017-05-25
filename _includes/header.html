@@ -1,18 +1,20 @@
 <header class="site-header">
 
-  <!-- mermaid -->
-  <script src="{{ site.baseurl }}/bower_components/mermaid/dist/mermaid.min.js"></script>
-  <script>mermaid.initialize({startOnLoad:true});</script>
-  <!-- endmermaid -->
+    {% if page.content contains "mermaid" or page.layout == "tutorial" %}
+    <!-- mermaid -->
+    <script src="{{ site.baseurl }}/bower_components/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <!-- endmermaid -->
+    {% endif %}
 
-  <div class="text-xs-center mb-2">
+    <div class="mb-2 text-center">
 
-    <a class="display-1" href="{{ site.baseurl }}/" style="text-decoration: none">{{ site.title }}</a>
+	<a class="display-1" href="{{ site.baseurl }}/" style="text-decoration: none">{{ site.title }}</a>
 
-  </div>
+    </div>
 
-  {% if page.title %}
-  {% include header_slogan.html title=page.title subtitle=page.subtitle %}
-  {% endif %}
+    {% if page.title %}
+    {% include header_slogan.html title=page.title subtitle=page.subtitle %}
+    {% endif %}
 
 </header>

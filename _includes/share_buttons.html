@@ -1,8 +1,8 @@
-<div class="site-share">
+<div class="site-share pb-2">
   {% if jekyll.environment == site.production_env %}
-  <ul class="share-buttons list-inline mb-1 text-xs-center">
+  <ul class="share-buttons list-inline mb-1 text-center">
     <li class="list-inline-item">
-      {% include share_twitter_big.html url=page.url text=page.description %}
+      {% include share_twitter_big.html url=page.url text=page.title %}
     </li>
     <li class="list-inline-item">
       {% include share_google_big.html %}

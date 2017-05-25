@@ -1,4 +1,5 @@
 ---
+title: How to change all files permissions to 644 and directories to 755 
 description: How to chmod 755 all directories but no files and how to chmod only files but no directories.
 layout: post
 ---
