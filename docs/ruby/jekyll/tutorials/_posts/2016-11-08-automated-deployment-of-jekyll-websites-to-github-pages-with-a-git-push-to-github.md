@@ -137,7 +137,7 @@ git push $SSH_REPO $TARGET_BRANCH
 
 The script basically performs the following actions:
 
-1. Create the _gh-pages_ branch `git checkout --orphan gh-pages`
+1. Create the _gh-pages_ branch
 
 > Updates files in the working tree to match the version in the index
 > or the specified tree. If no paths are given, git checkout will also
@@ -282,7 +282,17 @@ deploy_key
 deploy_key.pub
 ~~~
 
-### Adding the travis button to github readme
+### Select gh-pages branch in Github
+
+Go to the settings page of your repo in Github
+`https://github.com/<your name>/<your repo>/settings/` and locate tht
+section **Github Pages**. In the **Source** option select from the
+dropdown menu: `gh-pages branch`.
+
+Now the content of the above branch will be the one served by Github
+pages.
+
+### Adding the travis button to github readme (optional)
 
 In your project `README` file you can add the fancy Travis button with
 the current status of the building, adding a similar code:
@@ -295,9 +305,10 @@ You can find your project button url following [this guide](https://docs.travis-
 
 ## Conclusion
 
-Now every time you make a `git push` to Github, Travis will
-automatically generate the site and push it back to the `gh-pages`
-branch, so your site should be always live with the latest changes.
+Now every time you make a `git push` to the `master` branch of the
+Github repo, Travis will automatically generate the site and push it
+back to the `gh-pages` branch, so your site should be always live with
+the latest changes.
 
 ## References
 
