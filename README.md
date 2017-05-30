@@ -64,7 +64,7 @@ The
 [deploy.sh](https://github.com/marcanuy/simpleit.rocks/blob/master/deploy.sh) script
 is based
 in
-[Auto-deploying built products to gh-pages with Travis](https://gist.github.com/domenic/ec8b0fc8ab45f39403dd).
+[Automated Deployment Of Jekyll Websites To Github Pages With A Git Push To Github](https://simpleit.rocks/automated-deployment-of-jekyll-websites-to-github-pages-with-a-git-push-to-github/).
 
 Each time the website is pushed to Github master branch, Travis
 automatically checks for broken links executing `html-proofer` in the
