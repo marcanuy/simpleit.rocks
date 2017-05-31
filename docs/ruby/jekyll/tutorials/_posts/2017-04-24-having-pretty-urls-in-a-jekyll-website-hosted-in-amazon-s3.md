@@ -1,5 +1,6 @@
 ---
-description: Deploy a Jekyll website to Amazon S3 having its URLs without extensions (.html)
+title: Host a Jekyll Website With Pretty Urls In Amazon S3
+description: How to host and deploy a Jekyll website to AWS S3 having its URLs without extensions (.html)
 ---
 
 ## Overview
@@ -153,10 +154,28 @@ Copy local files to the S3 bucket.
 aws s3 cp _site/ s3://cachedpage.co/ --content-type text/html --recursive --exclude "*.*"
 ~~~
 
+or synchronize the directory with the S3 bucket **checking file
+difference by size** not timestamps.
+
+~~~ bash
+aws s3 sync _site/ $s3_bucket --size-only --exclude "*" --include "*.*"
+~~~
+
+As every time the website is built, Jekyll regenerates all the files,
+so *timestamps* would always be different, checking file sizes would
+only copy files if they are different.
+{: .alert .alert-info }
+
 ### Copy the rest of the files
 
 ~~~ bash
 aws s3 cp _site/ s3://cachedpage.co/ --recursive --exclude "*" --include "*.*"
+~~~
+
+or with <kbd>aws sync</kbd>:
+
+~~~ bash
+aws s3 sync _site/ $s3_bucket --size-only --content-type text/html --exclude "*.*"
 ~~~
 
 > Note that, by default, all files are included. This means that
@@ -168,7 +187,6 @@ aws s3 cp _site/ s3://cachedpage.co/ --recursive --exclude "*" --include "*.*"
 > 
 > <footer class="blockquote-footer"> <cite><a href="http://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters">Use of Exclude and Include Filters</a></cite></footer>
 {: class="blockquote" cite="http://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters"}
-
 
 ## Final script
 
@@ -196,10 +214,10 @@ echo "Removing .html extension"
 find _site/ -type f ! -iname 'index.html' -iname '*.html' -print0 | while read -d $'\0' f; do mv "$f" "${f%.html}"; done
 
 echo "Copying files to server"
-aws s3 cp _site/ s3://cachedpage.co/ --recursive --exclude "*" --include "*.*"
+aws s3 sync _site/ $s3_bucket --size-only --exclude "*" --include "*.*"
 
 echo "Copying files with content type..."
-aws s3 cp _site/ $s3_bucket --content-type text/html --recursive --exclude "*.*"
+aws s3 sync _site/ $s3_bucket --size-only --content-type text/html --exclude "*.*"
 ~~~
 
 ## Conclusion
