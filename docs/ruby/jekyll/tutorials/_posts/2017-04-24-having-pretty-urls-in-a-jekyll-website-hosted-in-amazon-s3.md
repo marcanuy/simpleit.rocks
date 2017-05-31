@@ -158,7 +158,7 @@ or synchronize the directory with the S3 bucket **checking file
 difference by size** not timestamps.
 
 ~~~ bash
-aws s3 sync _site/ $s3_bucket --size-only --exclude "*" --include "*.*"
+aws s3 sync _site/ $s3_bucket --size-only --exclude "*" --include "*.*" --delete
 ~~~
 
 As every time the website is built, Jekyll regenerates all the files,
@@ -175,7 +175,7 @@ aws s3 cp _site/ s3://cachedpage.co/ --recursive --exclude "*" --include "*.*"
 or with <kbd>aws sync</kbd>:
 
 ~~~ bash
-aws s3 sync _site/ $s3_bucket --size-only --content-type text/html --exclude "*.*"
+aws s3 sync _site/ $s3_bucket --size-only --content-type text/html --exclude "*.*" --delete
 ~~~
 
 > Note that, by default, all files are included. This means that
@@ -214,10 +214,10 @@ echo "Removing .html extension"
 find _site/ -type f ! -iname 'index.html' -iname '*.html' -print0 | while read -d $'\0' f; do mv "$f" "${f%.html}"; done
 
 echo "Copying files to server"
-aws s3 sync _site/ $s3_bucket --size-only --exclude "*" --include "*.*"
+aws s3 sync _site/ $s3_bucket --size-only --exclude "*" --include "*.*" --delete
 
 echo "Copying files with content type..."
-aws s3 sync _site/ $s3_bucket --size-only --content-type text/html --exclude "*.*"
+aws s3 sync _site/ $s3_bucket --size-only --content-type text/html --exclude "*.*" --delete
 ~~~
 
 ## Conclusion
