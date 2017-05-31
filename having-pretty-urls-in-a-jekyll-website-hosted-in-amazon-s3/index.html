@@ -573,7 +573,7 @@ files, leaving that task to the server.</p>
 <p>or synchronize the directory with the S3 bucket <strong>checking file
 difference by size</strong> not timestamps.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>aws s3 sync _site/ <span class="nv">$s3_bucket</span> --size-only --exclude <span class="s2">"*"</span> --include <span class="s2">"*.*"</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>aws s3 sync _site/ <span class="nv">$s3_bucket</span> --size-only --exclude <span class="s2">"*"</span> --include <span class="s2">"*.*"</span> --delete
 </code></pre>
 </div>
 
@@ -589,7 +589,7 @@ only copy files if they are different.</p>
 
 <p>or with <kbd>aws sync</kbd>:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>aws s3 sync _site/ <span class="nv">$s3_bucket</span> --size-only --content-type text/html --exclude <span class="s2">"*.*"</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>aws s3 sync _site/ <span class="nv">$s3_bucket</span> --size-only --content-type text/html --exclude <span class="s2">"*.*"</span> --delete
 </code></pre>
 </div>
 
@@ -629,10 +629,10 @@ then re-include the files with the particular extension.</p>
 find _site/ -type f ! -iname <span class="s1">'index.html'</span> -iname <span class="s1">'*.html'</span> -print0 | <span class="k">while </span><span class="nb">read</span> -d <span class="nv">$'</span><span class="se">\0</span><span class="s1">' f; do mv "$f" "${f%.html}"; done
 
 echo "Copying files to server"
-aws s3 sync _site/ $s3_bucket --size-only --exclude "*" --include "*.*"
+aws s3 sync _site/ $s3_bucket --size-only --exclude "*" --include "*.*" --delete
 
 echo "Copying files with content type..."
-aws s3 sync _site/ $s3_bucket --size-only --content-type text/html --exclude "*.*"
+aws s3 sync _site/ $s3_bucket --size-only --content-type text/html --exclude "*.*" --delete
 </span></code></pre>
 </div>
 

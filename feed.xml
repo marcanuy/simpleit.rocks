@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 31 May 2017 09:57:49 +0000</pubDate>
-    <lastBuildDate>Wed, 31 May 2017 09:57:49 +0000</lastBuildDate>
+    <pubDate>Wed, 31 May 2017 13:34:41 +0000</pubDate>
+    <lastBuildDate>Wed, 31 May 2017 13:34:41 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -577,7 +577,7 @@ files, leaving that task to the server.&lt;/p&gt;
 &lt;p&gt;or synchronize the directory with the S3 bucket &lt;strong&gt;checking file
 difference by size&lt;/strong&gt; not timestamps.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws s3 sync _site/ &lt;span class=&quot;nv&quot;&gt;$s3_bucket&lt;/span&gt; --size-only --exclude &lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt; --include &lt;span class=&quot;s2&quot;&gt;&quot;*.*&quot;&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws s3 sync _site/ &lt;span class=&quot;nv&quot;&gt;$s3_bucket&lt;/span&gt; --size-only --exclude &lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt; --include &lt;span class=&quot;s2&quot;&gt;&quot;*.*&quot;&lt;/span&gt; --delete
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -593,7 +593,7 @@ only copy files if they are different.&lt;/p&gt;
 
 &lt;p&gt;or with &lt;kbd&gt;aws sync&lt;/kbd&gt;:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws s3 sync _site/ &lt;span class=&quot;nv&quot;&gt;$s3_bucket&lt;/span&gt; --size-only --content-type text/html --exclude &lt;span class=&quot;s2&quot;&gt;&quot;*.*&quot;&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws s3 sync _site/ &lt;span class=&quot;nv&quot;&gt;$s3_bucket&lt;/span&gt; --size-only --content-type text/html --exclude &lt;span class=&quot;s2&quot;&gt;&quot;*.*&quot;&lt;/span&gt; --delete
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -633,10 +633,10 @@ then re-include the files with the particular extension.&lt;/p&gt;
 find _site/ -type f ! -iname &lt;span class=&quot;s1&quot;&gt;'index.html'&lt;/span&gt; -iname &lt;span class=&quot;s1&quot;&gt;'*.html'&lt;/span&gt; -print0 | &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt; -d &lt;span class=&quot;nv&quot;&gt;$'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\0&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;' f; do mv &quot;$f&quot; &quot;${f%.html}&quot;; done
 
 echo &quot;Copying files to server&quot;
-aws s3 sync _site/ $s3_bucket --size-only --exclude &quot;*&quot; --include &quot;*.*&quot;
+aws s3 sync _site/ $s3_bucket --size-only --exclude &quot;*&quot; --include &quot;*.*&quot; --delete
 
 echo &quot;Copying files with content type...&quot;
-aws s3 sync _site/ $s3_bucket --size-only --content-type text/html --exclude &quot;*.*&quot;
+aws s3 sync _site/ $s3_bucket --size-only --content-type text/html --exclude &quot;*.*&quot; --delete
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
