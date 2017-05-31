@@ -46,10 +46,10 @@
 
     
   <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Having Pretty Urls In A Jekyll Website Hosted In Amazon S3 - Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Having Pretty Urls In A Jekyll Website Hosted In Amazon S3" />
-<meta name="description" content="Deploy a Jekyll website to Amazon S3 having its URLs without extensions (.html)" />
-<meta property="og:description" content="Deploy a Jekyll website to Amazon S3 having its URLs without extensions (.html)" />
+<title>Host a Jekyll Website With Pretty Urls In Amazon S3 - Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Host a Jekyll Website With Pretty Urls In Amazon S3" />
+<meta name="description" content="How to host and deploy a Jekyll website to AWS S3 having its URLs without extensions (.html)" />
+<meta property="og:description" content="How to host and deploy a Jekyll website to AWS S3 having its URLs without extensions (.html)" />
 <link rel="canonical" href="https://simpleit.rocks/having-pretty-urls-in-a-jekyll-website-hosted-in-amazon-s3/" />
 <meta property="og:url" content="https://simpleit.rocks/having-pretty-urls-in-a-jekyll-website-hosted-in-amazon-s3/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
@@ -62,9 +62,9 @@
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
-"headline": "Having Pretty Urls In A Jekyll Website Hosted In Amazon S3",
+"headline": "Host a Jekyll Website With Pretty Urls In Amazon S3",
 "datePublished": "2017-04-24T00:00:00+00:00",
-"description": "Deploy a Jekyll website to Amazon S3 having its URLs without extensions (.html)",
+"description": "How to host and deploy a Jekyll website to AWS S3 having its URLs without extensions (.html)",
 "url": "https://simpleit.rocks/having-pretty-urls-in-a-jekyll-website-hosted-in-amazon-s3/"}</script>
 <!-- End Jekyll SEO tag -->
 
@@ -119,7 +119,7 @@
     
     
     
-    <h1 class="title">Having Pretty Urls In A Jekyll Website Hosted In Amazon S3 </h1>
+    <h1 class="title">Host A Jekyll Website With Pretty Urls In Amazon S3 </h1>
     
     
   </div>
@@ -275,7 +275,7 @@
        itemprop="item">
     
 
-    <span itemprop="name">Having Pretty Urls In A Jekyll Website Hosted In Amazon S3</span>
+    <span itemprop="name">Host a Jekyll Website With Pretty Urls In Amazon S3</span>
   </span>
   
   <meta itemprop="position" content="6" />
@@ -337,7 +337,7 @@
        href="https://twitter.com/share"
        data-url="https://simpleit.rocks/having-pretty-urls-in-a-jekyll-website-hosted-in-amazon-s3/"
        data-via=""
-       data-text="Having Pretty Urls In A Jekyll Website Hosted In Amazon S3"
+       data-text="Host a Jekyll Website With Pretty Urls In Amazon S3"
        data-related="marcanuy,{"username"=>"simpleitrocks"}"
        data-count="vertical">
 	Tweet
@@ -386,7 +386,7 @@
 
     
 	<p class="lead">
-	  Deploy a Jekyll website to Amazon S3 having its URLs without extensions (.html)
+	  How to host and deploy a Jekyll website to AWS S3 having its URLs without extensions (.html)
 	</p>
     
 
@@ -570,9 +570,26 @@ files, leaving that task to the server.</p>
 </code></pre>
 </div>
 
+<p>or synchronize the directory with the S3 bucket <strong>checking file
+difference by size</strong> not timestamps.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>aws s3 sync _site/ <span class="nv">$s3_bucket</span> --size-only --exclude <span class="s2">"*"</span> --include <span class="s2">"*.*"</span>
+</code></pre>
+</div>
+
+<p class="alert alert-info">As every time the website is built, Jekyll regenerates all the files,
+so <em>timestamps</em> would always be different, checking file sizes would
+only copy files if they are different.</p>
+
 <h3 id="copy-the-rest-of-the-files">Copy the rest of the files</h3>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>aws s3 cp _site/ s3://cachedpage.co/ --recursive --exclude <span class="s2">"*"</span> --include <span class="s2">"*.*"</span>
+</code></pre>
+</div>
+
+<p>or with <kbd>aws sync</kbd>:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>aws s3 sync _site/ <span class="nv">$s3_bucket</span> --size-only --content-type text/html --exclude <span class="s2">"*.*"</span>
 </code></pre>
 </div>
 
@@ -612,10 +629,10 @@ then re-include the files with the particular extension.</p>
 find _site/ -type f ! -iname <span class="s1">'index.html'</span> -iname <span class="s1">'*.html'</span> -print0 | <span class="k">while </span><span class="nb">read</span> -d <span class="nv">$'</span><span class="se">\0</span><span class="s1">' f; do mv "$f" "${f%.html}"; done
 
 echo "Copying files to server"
-aws s3 cp _site/ s3://cachedpage.co/ --recursive --exclude "*" --include "*.*"
+aws s3 sync _site/ $s3_bucket --size-only --exclude "*" --include "*.*"
 
 echo "Copying files with content type..."
-aws s3 cp _site/ $s3_bucket --content-type text/html --recursive --exclude "*.*"
+aws s3 sync _site/ $s3_bucket --size-only --content-type text/html --exclude "*.*"
 </span></code></pre>
 </div>
 
@@ -1157,7 +1174,7 @@ manner.</p>
     
     
       <a class="list-group-item list-group-item-action active" href="/having-pretty-urls-in-a-jekyll-website-hosted-in-amazon-s3/">
-      Having Pretty Urls In A Jekyll Website Hosted In Amazon S3
+      Host a Jekyll Website With Pretty Urls In Amazon S3
     </a>
     
     

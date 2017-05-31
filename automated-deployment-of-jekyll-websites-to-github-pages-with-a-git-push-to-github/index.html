@@ -340,7 +340,8 @@
 <li class="toc-entry toc-h3"><a href="#encrypt-the-generated-deploy-key-with-the-travis-client">Encrypt the generated deploy key with the Travis client</a></li>
 <li class="toc-entry toc-h3"><a href="#edit-travisyml-with-encryption-ids">Edit .travis.yml with encryption ids</a></li>
 <li class="toc-entry toc-h3"><a href="#add-deploy-key-to-gitignore">Add deploy key to gitignore:</a></li>
-<li class="toc-entry toc-h3"><a href="#adding-the-travis-button-to-github-readme">Adding the travis button to github readme</a></li>
+<li class="toc-entry toc-h3"><a href="#select-gh-pages-branch-in-github">Select gh-pages branch in Github</a></li>
+<li class="toc-entry toc-h3"><a href="#adding-the-travis-button-to-github-readme-optional">Adding the travis button to github readme (optional)</a></li>
 <li class="toc-entry toc-h2"><a href="#conclusion">Conclusion</a></li>
 <li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
@@ -554,7 +555,7 @@ git push <span class="nv">$SSH_REPO</span> <span class="nv">$TARGET_BRANCH</span
 <p>The script basically performs the following actions:</p>
 
 <ol>
-  <li>Create the <em>gh-pages</em> branch <code class="highlighter-rouge">git checkout --orphan gh-pages</code></li>
+  <li>Create the <em>gh-pages</em> branch</li>
 </ol>
 
 <blockquote class="blockquote" cite="https://git-scm.com/docs/git-checkout">
@@ -705,7 +706,17 @@ deploy_key.pub
 </code></pre>
 </div>
 
-<h3 id="adding-the-travis-button-to-github-readme">Adding the travis button to github readme</h3>
+<h3 id="select-gh-pages-branch-in-github">Select gh-pages branch in Github</h3>
+
+<p>Go to the settings page of your repo in Github
+<code class="highlighter-rouge">https://github.com/&lt;your name&gt;/&lt;your repo&gt;/settings/</code> and locate tht
+section <strong>Github Pages</strong>. In the <strong>Source</strong> option select from the
+dropdown menu: <code class="highlighter-rouge">gh-pages branch</code>.</p>
+
+<p>Now the content of the above branch will be the one served by Github
+pages.</p>
+
+<h3 id="adding-the-travis-button-to-github-readme-optional">Adding the travis button to github readme (optional)</h3>
 
 <p>In your project <code class="highlighter-rouge">README</code> file you can add the fancy Travis button with
 the current status of the building, adding a similar code:</p>
@@ -718,9 +729,10 @@ the current status of the building, adding a similar code:</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>Now every time you make a <code class="highlighter-rouge">git push</code> to Github, Travis will
-automatically generate the site and push it back to the <code class="highlighter-rouge">gh-pages</code>
-branch, so your site should be always live with the latest changes.</p>
+<p>Now every time you make a <code class="highlighter-rouge">git push</code> to the <code class="highlighter-rouge">master</code> branch of the
+Github repo, Travis will automatically generate the site and push it
+back to the <code class="highlighter-rouge">gh-pages</code> branch, so your site should be always live with
+the latest changes.</p>
 
 <h2 id="references">References</h2>
 
@@ -1233,7 +1245,7 @@ branch, so your site should be always live with the latest changes.</p>
     
     
       <a class="list-group-item list-group-item-action " href="/having-pretty-urls-in-a-jekyll-website-hosted-in-amazon-s3/">
-      Having Pretty Urls In A Jekyll Website Hosted In Amazon S3
+      Host a Jekyll Website With Pretty Urls In Amazon S3
     </a>
     
     
