@@ -75,9 +75,9 @@ Information about 85628 packages was updated.
 
 <dl class="row">
 <dt class="col-sm-3">apt-cache dumpavail</dt>
-<dd class="col-sm-9"><blockquote>dumpavail prints out an available list to stdout. This is suitable for use with dpkg(1) and is used by the dselect method.<blockquote></dd>
+<dd class="col-sm-9"><blockquote>dumpavail prints out an available list to stdout. This is suitable for use with dpkg(1) and is used by the dselect method.</blockquote></dd>
 <dt class="col-sm-3">dpkg --merge-avail</dt>
-<dd class="col-sm-9"><blockquote>Update dpkg's and dselect's idea of which packages are available. With action --merge-avail, old information is combined with information from Packages-file. dpkg keeps its record of available packages in /var/lib/dpkg/available.<blockquote></dd>
+<dd class="col-sm-9"><blockquote>Update dpkg's and dselect's idea of which packages are available. With action --merge-avail, old information is combined with information from Packages-file. dpkg keeps its record of available packages in /var/lib/dpkg/available.</blockquote></dd>
 </dl>
 
 ### Set selection state
