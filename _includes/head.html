@@ -20,7 +20,7 @@
     
     {% if page.content contains "mermaid" or page.layout == "tutorial" %}
     <!-- Mermaid -->
-    <link rel="stylesheet" href="{{ '/bower_components/mermaid/dist/mermaid.forest.css' | prepend: site.baseurl }}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ '/bower_components/mermaid/dist/mermaid.forest.css' | absolute_url }}" type="text/css" media="screen" />
     {% endif %}
     
     <!-- Custom css -->
