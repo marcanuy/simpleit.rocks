@@ -45,9 +45,11 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Replicate Installed Package Selections From One Ubuntu System To Another - Simple IT 🤘 Rocks</title>
+  <!-- Begin Jekyll SEO tag v2.2.3 -->
+<title>Replicate Installed Package Selections From One Ubuntu System To Another | Simple IT 🤘 Rocks</title>
 <meta property="og:title" content="Replicate Installed Package Selections From One Ubuntu System To Another" />
+<meta name="author" content="marcanuy" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="How to get a list of all installed packages on an Ubuntu server and install them in another machine." />
 <meta property="og:description" content="How to get a list of all installed packages on an Ubuntu server and install them in another machine." />
 <link rel="canonical" href="https://simpleit.rocks/replicate-installed-package-selections-from-one-Ubuntu-system-to-another/" />
@@ -60,12 +62,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "Replicate Installed Package Selections From One Ubuntu System To Another",
-"datePublished": "2017-04-24T00:00:00+00:00",
-"description": "How to get a list of all installed packages on an Ubuntu server and install them in another machine.",
-"url": "https://simpleit.rocks/replicate-installed-package-selections-from-one-Ubuntu-system-to-another/"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Replicate Installed Package Selections From One Ubuntu System To Another","author":{"@type":"Person","name":"marcanuy"},"datePublished":"2017-04-24T00:00:00+00:00","dateModified":"2017-04-24T00:00:00+00:00","description":"How to get a list of all installed packages on an Ubuntu server and install them in another machine.","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/replicate-installed-package-selections-from-one-Ubuntu-system-to-another/"},"url":"https://simpleit.rocks/replicate-installed-package-selections-from-one-Ubuntu-system-to-another/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -272,6 +269,11 @@
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
 <li class="toc-entry toc-h2"><a href="#using-dpkg">Using dpkg</a></li>
 <li class="toc-entry toc-h3"><a href="#update-available-file">Update available file</a></li>
+<li class="toc-entry toc-h3"><a href="#set-selection-state">Set selection state</a></li>
+<li class="toc-entry toc-h3"><a href="#download-and-install">Download and install</a></li>
+<li class="toc-entry toc-h2"><a href="#using-apt-mark">Using apt-mark</a></li>
+<li class="toc-entry toc-h2"><a href="#conclusions">Conclusions</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
       </div>
       <div>
@@ -429,14 +431,14 @@ Information about 85628 packages was updated.
 
 <dl class="row">
 <dt class="col-sm-3">apt-cache dumpavail</dt>
-<dd class="col-sm-9"><blockquote>dumpavail prints out an available list to stdout. This is suitable for use with dpkg(1) and is used by the dselect method.<blockquote>&lt;/dd&gt;
+<dd class="col-sm-9"><blockquote>dumpavail prints out an available list to stdout. This is suitable for use with dpkg(1) and is used by the dselect method.</blockquote></dd>
 <dt class="col-sm-3">dpkg --merge-avail</dt>
-<dd class="col-sm-9"><blockquote>Update dpkg's and dselect's idea of which packages are available. With action --merge-avail, old information is combined with information from Packages-file. dpkg keeps its record of available packages in /var/lib/dpkg/available.<blockquote>&lt;/dd&gt;
-&lt;/dl&gt;
+<dd class="col-sm-9"><blockquote>Update dpkg's and dselect's idea of which packages are available. With action --merge-avail, old information is combined with information from Packages-file. dpkg keeps its record of available packages in /var/lib/dpkg/available.</blockquote></dd>
+</dl>
 
-### Set selection state
+<h3 id="set-selection-state">Set selection state</h3>
 
-Set the selection state on the requested packages with `dpkg`:
+<p>Set the selection state on the requested packages with <code class="highlighter-rouge">dpkg</code>:</p>
 
 <pre class="shell">
 <samp>
@@ -450,11 +452,11 @@ Set the selection state on the requested packages with `dpkg`:
 <dd class="col-sm-9">Set package selections using file read from stdin.</dd>
 </dl>
 
-### Download and install
+<h3 id="download-and-install">Download and install</h3>
 
-Packages are not installed yet, to download and install the requested
-packages. Execute `apt-get` to perform the installation of the packages
-specified previously in our file.
+<p>Packages are not installed yet, to download and install the requested
+packages. Execute <code class="highlighter-rouge">apt-get</code> to perform the installation of the packages
+specified previously in our file.</p>
 
 <pre class="shell">
 <samp>
@@ -472,13 +474,15 @@ Reading state information... Done
 </dd>
 </dl>
 
-## Using apt-mark
+<h2 id="using-apt-mark">Using apt-mark</h2>
 
-<kbd>apt-mark</kbd> handles various settings for packages. We can
-separate our backup files in two files:
+<p><kbd>apt-mark</kbd> handles various settings for packages. We can
+separate our backup files in two files:</p>
 
-1. One will hold the packages installed automatically
-2. Other file will hold the packages we install manually
+<ol>
+  <li>One will hold the packages installed automatically</li>
+  <li>Other file will hold the packages we install manually</li>
+</ol>
 
 <dl class="row">
 <dt class="col-sm-3">apt-mark showauto</dt>
@@ -489,7 +493,7 @@ separate our backup files in two files:
 </dd>
 </dl>
 
-So we create these two files:
+<p>So we create these two files:</p>
 
 <pre class="shell">
 <samp>
@@ -498,7 +502,7 @@ So we create these two files:
 </samp>
 </pre>
 
-Then we restore the files in the target machine:
+<p>Then we restore the files in the target machine:</p>
 
 <pre class="shell">
 <samp>
@@ -517,24 +521,25 @@ being automatically installed, which will cause the package to be removed when n
 </dd>
 </dl>
 
-## Conclusions
+<h2 id="conclusions">Conclusions</h2>
 
-The problem with the first method is that package dependencies get
-lost, so each package don't know what other packages are related to
+<p>The problem with the first method is that package dependencies get
+lost, so each package don’t know what other packages are related to
 them, which makes something like <kbd>apt-get --purge remove ...</kbd>
-problematic. 
+problematic.</p>
 
-On the other side, the second method is safer and keeps all the
+<p>On the other side, the second method is safer and keeps all the
 dependencies, and even know if they were installed automatically or
-manually which makes it more suitable for this task.
+manually which makes it more suitable for this task.</p>
 
-## References
+<h2 id="references">References</h2>
 
-- dpkg Ubuntu docs &lt;https://help.ubuntu.com/lts/serverguide/dpkg.html&gt;
-- Advanced Packaging
-  Tool &lt;https://en.wikipedia.org/wiki/Advanced_Packaging_Tool&gt;
-- [htorque](https://askubuntu.com/users/3037/htorque) answer in [Restoring all data and dependencies from dpkg --set-selections '*'](https://askubuntu.com/a/108760/43253)
-</blockquote></blockquote></dd></blockquote></blockquote></dd></dl>
+<ul>
+  <li>dpkg Ubuntu docs <a href="https://help.ubuntu.com/lts/serverguide/dpkg.html">https://help.ubuntu.com/lts/serverguide/dpkg.html</a></li>
+  <li>Advanced Packaging
+Tool <a href="https://en.wikipedia.org/wiki/Advanced_Packaging_Tool">https://en.wikipedia.org/wiki/Advanced_Packaging_Tool</a></li>
+  <li><a href="https://askubuntu.com/users/3037/htorque">htorque</a> answer in <a href="https://askubuntu.com/a/108760/43253">Restoring all data and dependencies from dpkg –set-selections ‘*’</a></li>
+</ul>
 
 
     

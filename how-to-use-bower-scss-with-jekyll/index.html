@@ -18,7 +18,7 @@
     
     
     <!-- Mermaid -->
-    <link rel="stylesheet" href="/bower_components/mermaid/dist/mermaid.forest.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="https://simpleit.rocks/bower_components/mermaid/dist/mermaid.forest.css" type="text/css" media="screen" />
     
     
     <!-- Custom css -->
@@ -48,9 +48,11 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>How To Use Bower Scss With Jekyll - Simple IT 🤘 Rocks</title>
+  <!-- Begin Jekyll SEO tag v2.2.3 -->
+<title>How To Use Bower Scss With Jekyll | Simple IT 🤘 Rocks</title>
 <meta property="og:title" content="How To Use Bower Scss With Jekyll" />
+<meta name="author" content="marcanuy" />
+<meta property="og:locale" content="en_US" />
 <meta name="description" content="Automatically converting SCSS files into CSS in each Jekyll build." />
 <meta property="og:description" content="Automatically converting SCSS files into CSS in each Jekyll build." />
 <link rel="canonical" href="https://simpleit.rocks/how-to-use-bower-scss-with-jekyll/" />
@@ -63,12 +65,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "How To Use Bower Scss With Jekyll",
-"datePublished": "2016-06-18T00:00:00+00:00",
-"description": "Automatically converting SCSS files into CSS in each Jekyll build.",
-"url": "https://simpleit.rocks/how-to-use-bower-scss-with-jekyll/"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"How To Use Bower Scss With Jekyll","author":{"@type":"Person","name":"marcanuy"},"datePublished":"2016-06-18T00:00:00+00:00","dateModified":"2016-06-18T00:00:00+00:00","description":"Automatically converting SCSS files into CSS in each Jekyll build.","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/how-to-use-bower-scss-with-jekyll/"},"url":"https://simpleit.rocks/how-to-use-bower-scss-with-jekyll/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -108,7 +105,7 @@
 
     
     <!-- mermaid -->
-    <script src="/bower_components/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://simpleit.rocks/bower_components/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <!-- endmermaid -->
     
@@ -469,10 +466,16 @@ assets, and utilities used in web development.</p>
 <p>This tutorial shows how to use both of them togheter, using Bootstrap-flex 4
 as the example package.</p>
 
+<p class="alert alert-danger">This solution was based in creating symbolics links, now I prefer a
+newer, cleaner way to deal with this extending the directories that
+Jekyll uses to process SASS files in this
+tutorial: 
+<a href="/how-to-add-bootstrap-4-to-jekyll-the-right-way/">How to add Bootstrap 4 to Jekyll extending SASS directories</a>.</p>
+
 <h2 id="setup">Setup</h2>
 
-<p>The default usage of <a href="https://bower.io/">Bower</a> consists in having the packages downloaded to
-<code class="highlighter-rouge">/bower_components</code> directory.</p>
+<p><a href="https://bower.io/">Bower</a> by default will download its packages to a directory named
+<code class="highlighter-rouge">/bower_components</code> at root level.</p>
 
 <p>The problem is that Jekyll uses, by default, <code class="highlighter-rouge">/_sass</code> directory to put custom
 <code class="highlighter-rouge">.scss</code> files, that are then processed into some file located at <code class="highlighter-rouge">/css</code> directory.</p>
@@ -1072,7 +1075,7 @@ them manually with the <code class="highlighter-rouge">scss</code> command.</p>
     
     
       <a class="list-group-item list-group-item-action " href="/having-pretty-urls-in-a-jekyll-website-hosted-in-amazon-s3/">
-      Host a Jekyll Website With Pretty Urls In Amazon S3
+      Host a Jekyll Website With Pretty Urls In Amazon S3 and Cloudfront
     </a>
     
     

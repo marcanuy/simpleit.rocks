@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 31 May 2017 13:34:41 +0000</pubDate>
-    <lastBuildDate>Wed, 31 May 2017 13:34:41 +0000</lastBuildDate>
+    <pubDate>Fri, 02 Jun 2017 22:24:28 +0000</pubDate>
+    <lastBuildDate>Fri, 02 Jun 2017 22:24:28 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -411,7 +411,7 @@ correctly.&lt;/p&gt;
       </item>
     
       <item>
-        <title>Host a Jekyll Website With Pretty Urls In Amazon S3</title>
+        <title>Host a Jekyll Website With Pretty Urls In Amazon S3 and Cloudfront</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
 &lt;p&gt;One of the problems in having pretty URLs when hosting a Jekyll site
@@ -608,9 +608,98 @@ then re-include the files with the particular extension.&lt;/p&gt;
   &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;http://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters&quot;&gt;Use of Exclude and Include Filters&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
 &lt;/blockquote&gt;
 
+&lt;h2 id=&quot;invalidate-uploaded-files-in-cloudfront&quot;&gt;Invalidate uploaded files in Cloudfront&lt;/h2&gt;
+
+&lt;p&gt;If we are using a Content Delivery Network, chances are that your
+files has been cached and you need to refresh them. To remove an
+object from CloudFront edge caches before it expires we need to
+&lt;em&gt;invalidate&lt;/em&gt; them.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html&quot;&gt;
+  &lt;p&gt;The next time a viewer requests the object, CloudFront returns to
+the origin to fetch the latest version of the object.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;http://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters&quot;&gt;Invalidating Objects (Web Distributions Only)&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For this we copy the modified file names to a temporal file, and then
+create a new &lt;strong&gt;invalidation&lt;/strong&gt; with these names as they are access in
+our website.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://docs.aws.amazon.com/cli/latest/reference/cloudfront/create-invalidation.html&quot;&gt;
+  &lt;p&gt;AWS CLI support for this service is only available in a preview
+stage. You can enable this service by running: &lt;code class=&quot;highlighter-rouge&quot;&gt;aws configure set
+preview.cloudfront true&lt;/code&gt;&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;http://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters&quot;&gt;create-invalidation&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;tempfile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;mktemp&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;distribution_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASDFHDFSAF45234
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Copying files to server...&quot;&lt;/span&gt;
+aws s3 sync _site/ &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;s3_bucket&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; --size-only --exclude &lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt; --include &lt;span class=&quot;s2&quot;&gt;&quot;*.*&quot;&lt;/span&gt; --delete | tee -a &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;tempfile&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Copying files with content type...&quot;&lt;/span&gt;
+aws s3 sync _site/ &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;s3_bucket&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; --size-only --content-type text/html --exclude &lt;span class=&quot;s2&quot;&gt;&quot;*.*&quot;&lt;/span&gt; --delete | tee -a &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;tempfile&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#invalidate only modified files&lt;/span&gt;
+grep &lt;span class=&quot;s2&quot;&gt;&quot;upload&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\|&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;deleted&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;tempfile&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; | sed -e &lt;span class=&quot;s2&quot;&gt;&quot;s|.*upload.*to &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;s3_bucket&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;|/|&quot;&lt;/span&gt; | sed -e &lt;span class=&quot;s2&quot;&gt;&quot;s|.*delete: &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;s3_bucket&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;|/|&quot;&lt;/span&gt; | sed -e &lt;span class=&quot;s1&quot;&gt;'s/index.html//'&lt;/span&gt; | sed -e &lt;span class=&quot;s1&quot;&gt;'s/\(.*\).html/\1/'&lt;/span&gt; | tr &lt;span class=&quot;s1&quot;&gt;'\n'&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;' '&lt;/span&gt; | xargs aws cloudfront create-invalidation --distribution-id &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;distribution_id&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; --paths
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;script-explanation&quot;&gt;Script explanation:&lt;/h3&gt;
+
+&lt;p&gt;First we create the temporal file that will hold modified files with
+&lt;code class=&quot;highlighter-rouge&quot;&gt;tempfile=$(mktemp)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Then we synchronize the local directory with the remote one in S3,
+redirecting the output to standard output and to the temporal file
+with:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws s3 sync _site/ $(s3_bucket) --size-only --exclude &quot;*&quot; --include &quot;*.*&quot; --delete | tee -a $(tempfile)
+aws s3 sync _site/ $(s3_bucket) --size-only --content-type text/html --exclude &quot;*.*&quot; --delete | tee -a $(tempfile)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;After that we process the file names that were uploaded or deleted by
+the &lt;code class=&quot;highlighter-rouge&quot;&gt;aws&lt;/code&gt; command:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;grep &quot;upload\|deleted&quot; $(tempfile) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then discard the string between &lt;code class=&quot;highlighter-rouge&quot;&gt;upload&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;delete&lt;/code&gt; and the name of
+the bucket:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sed -e &quot;s|.*upload.*to $(s3_bucket)|/|&quot; | sed -e &quot;s|.*delete:
+$(s3_bucket)|/|&quot; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As our URLs are accessed only with the URLs like &lt;code class=&quot;highlighter-rouge&quot;&gt;/&lt;/code&gt; instead of
+&lt;code class=&quot;highlighter-rouge&quot;&gt;/index.html&lt;/code&gt; we remove them&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sed -e 's/index.html//' 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Our URLs doesn’t have the &lt;code class=&quot;highlighter-rouge&quot;&gt;.html&lt;/code&gt; extension also:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sed -e 's/\(.*\).html/\1/' 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Lastly we put all the URLs like names in a single line separated with 
+a space to comply with the &lt;code class=&quot;highlighter-rouge&quot;&gt;aws cloudfront create-invalidation
+--paths&lt;/code&gt; command:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tr '\n' ' ' | xargs aws cloudfront create-invalidation --distribution-id $(distribution_id) --paths
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;h2 id=&quot;final-script&quot;&gt;Final script&lt;/h2&gt;
 
-&lt;p&gt;The complete process is reflected in the following &lt;code class=&quot;highlighter-rouge&quot;&gt;deploy.sh&lt;/code&gt; script:&lt;/p&gt;
+&lt;p&gt;The complete process is reflected in the following &lt;code class=&quot;highlighter-rouge&quot;&gt;deploy.sh&lt;/code&gt; script,
+you probably want to adapt it to a &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Grunt&lt;/code&gt; or some other
+program but I will leave it as a &lt;code class=&quot;highlighter-rouge&quot;&gt;bash&lt;/code&gt; script to reflect its usage:&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
@@ -621,10 +710,13 @@ then re-include the files with the particular extension.&lt;/p&gt;
 &lt;span class=&quot;c&quot;&gt;# Custom vars&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;s3_bucket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;s3://example.com/&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;distribution_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASDFHDFSAF45234
 &lt;span class=&quot;c&quot;&gt;####################################&lt;/span&gt;
 
 &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -e &lt;span class=&quot;c&quot;&gt;# halt script on error&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -v &lt;span class=&quot;c&quot;&gt;# echo on&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;tempfile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;mktemp&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
 
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Building site...&quot;&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;JEKYLL_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build
@@ -632,11 +724,12 @@ then re-include the files with the particular extension.&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Removing .html extension&quot;&lt;/span&gt;
 find _site/ -type f ! -iname &lt;span class=&quot;s1&quot;&gt;'index.html'&lt;/span&gt; -iname &lt;span class=&quot;s1&quot;&gt;'*.html'&lt;/span&gt; -print0 | &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt; -d &lt;span class=&quot;nv&quot;&gt;$'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\0&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;' f; do mv &quot;$f&quot; &quot;${f%.html}&quot;; done
 
-echo &quot;Copying files to server&quot;
-aws s3 sync _site/ $s3_bucket --size-only --exclude &quot;*&quot; --include &quot;*.*&quot; --delete
-
+echo &quot;Copying files to server...&quot;
+aws s3 sync _site/ $(s3_bucket) --size-only --exclude &quot;*&quot; --include &quot;*.*&quot; --delete | tee -a $(tempfile)
 echo &quot;Copying files with content type...&quot;
-aws s3 sync _site/ $s3_bucket --size-only --content-type text/html --exclude &quot;*.*&quot; --delete
+aws s3 sync _site/ $(s3_bucket) --size-only --content-type text/html --exclude &quot;*.*&quot; --delete | tee -a $(tempfile)
+#invalidate only modified files
+grep &quot;upload\|deleted&quot; $(tempfile) | sed -e &quot;s|.*upload.*to $(s3_bucket)|/|&quot; | sed -e &quot;s|.*delete: $(s3_bucket)|/|&quot; | sed -e '&lt;/span&gt;s/index.html//&lt;span class=&quot;s1&quot;&gt;' | sed -e '&lt;/span&gt;s/&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;.&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\)&lt;/span&gt;.html/&lt;span class=&quot;se&quot;&gt;\1&lt;/span&gt;/&lt;span class=&quot;s1&quot;&gt;' | tr '&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;' '&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;' | xargs aws cloudfront create-invalidation --distribution-id $(distribution_id) --paths
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -778,14 +871,14 @@ Information about 85628 packages was updated.
 
 &lt;dl class=&quot;row&quot;&gt;
 &lt;dt class=&quot;col-sm-3&quot;&gt;apt-cache dumpavail&lt;/dt&gt;
-&lt;dd class=&quot;col-sm-9&quot;&gt;&lt;blockquote&gt;dumpavail prints out an available list to stdout. This is suitable for use with dpkg(1) and is used by the dselect method.&lt;blockquote&gt;&amp;lt;/dd&amp;gt;
+&lt;dd class=&quot;col-sm-9&quot;&gt;&lt;blockquote&gt;dumpavail prints out an available list to stdout. This is suitable for use with dpkg(1) and is used by the dselect method.&lt;/blockquote&gt;&lt;/dd&gt;
 &lt;dt class=&quot;col-sm-3&quot;&gt;dpkg --merge-avail&lt;/dt&gt;
-&lt;dd class=&quot;col-sm-9&quot;&gt;&lt;blockquote&gt;Update dpkg's and dselect's idea of which packages are available. With action --merge-avail, old information is combined with information from Packages-file. dpkg keeps its record of available packages in /var/lib/dpkg/available.&lt;blockquote&gt;&amp;lt;/dd&amp;gt;
-&amp;lt;/dl&amp;gt;
+&lt;dd class=&quot;col-sm-9&quot;&gt;&lt;blockquote&gt;Update dpkg's and dselect's idea of which packages are available. With action --merge-avail, old information is combined with information from Packages-file. dpkg keeps its record of available packages in /var/lib/dpkg/available.&lt;/blockquote&gt;&lt;/dd&gt;
+&lt;/dl&gt;
 
-### Set selection state
+&lt;h3 id=&quot;set-selection-state&quot;&gt;Set selection state&lt;/h3&gt;
 
-Set the selection state on the requested packages with `dpkg`:
+&lt;p&gt;Set the selection state on the requested packages with &lt;code class=&quot;highlighter-rouge&quot;&gt;dpkg&lt;/code&gt;:&lt;/p&gt;
 
 &lt;pre class=&quot;shell&quot;&gt;
 &lt;samp&gt;
@@ -799,11 +892,11 @@ Set the selection state on the requested packages with `dpkg`:
 &lt;dd class=&quot;col-sm-9&quot;&gt;Set package selections using file read from stdin.&lt;/dd&gt;
 &lt;/dl&gt;
 
-### Download and install
+&lt;h3 id=&quot;download-and-install&quot;&gt;Download and install&lt;/h3&gt;
 
-Packages are not installed yet, to download and install the requested
-packages. Execute `apt-get` to perform the installation of the packages
-specified previously in our file.
+&lt;p&gt;Packages are not installed yet, to download and install the requested
+packages. Execute &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt; to perform the installation of the packages
+specified previously in our file.&lt;/p&gt;
 
 &lt;pre class=&quot;shell&quot;&gt;
 &lt;samp&gt;
@@ -821,13 +914,15 @@ Reading state information... Done
 &lt;/dd&gt;
 &lt;/dl&gt;
 
-## Using apt-mark
+&lt;h2 id=&quot;using-apt-mark&quot;&gt;Using apt-mark&lt;/h2&gt;
 
-&lt;kbd&gt;apt-mark&lt;/kbd&gt; handles various settings for packages. We can
-separate our backup files in two files:
+&lt;p&gt;&lt;kbd&gt;apt-mark&lt;/kbd&gt; handles various settings for packages. We can
+separate our backup files in two files:&lt;/p&gt;
 
-1. One will hold the packages installed automatically
-2. Other file will hold the packages we install manually
+&lt;ol&gt;
+  &lt;li&gt;One will hold the packages installed automatically&lt;/li&gt;
+  &lt;li&gt;Other file will hold the packages we install manually&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;dl class=&quot;row&quot;&gt;
 &lt;dt class=&quot;col-sm-3&quot;&gt;apt-mark showauto&lt;/dt&gt;
@@ -838,7 +933,7 @@ separate our backup files in two files:
 &lt;/dd&gt;
 &lt;/dl&gt;
 
-So we create these two files:
+&lt;p&gt;So we create these two files:&lt;/p&gt;
 
 &lt;pre class=&quot;shell&quot;&gt;
 &lt;samp&gt;
@@ -847,7 +942,7 @@ So we create these two files:
 &lt;/samp&gt;
 &lt;/pre&gt;
 
-Then we restore the files in the target machine:
+&lt;p&gt;Then we restore the files in the target machine:&lt;/p&gt;
 
 &lt;pre class=&quot;shell&quot;&gt;
 &lt;samp&gt;
@@ -866,24 +961,25 @@ being automatically installed, which will cause the package to be removed when n
 &lt;/dd&gt;
 &lt;/dl&gt;
 
-## Conclusions
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
 
-The problem with the first method is that package dependencies get
-lost, so each package don't know what other packages are related to
+&lt;p&gt;The problem with the first method is that package dependencies get
+lost, so each package don’t know what other packages are related to
 them, which makes something like &lt;kbd&gt;apt-get --purge remove ...&lt;/kbd&gt;
-problematic. 
+problematic.&lt;/p&gt;
 
-On the other side, the second method is safer and keeps all the
+&lt;p&gt;On the other side, the second method is safer and keeps all the
 dependencies, and even know if they were installed automatically or
-manually which makes it more suitable for this task.
+manually which makes it more suitable for this task.&lt;/p&gt;
 
-## References
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
-- dpkg Ubuntu docs &amp;lt;https://help.ubuntu.com/lts/serverguide/dpkg.html&amp;gt;
-- Advanced Packaging
-  Tool &amp;lt;https://en.wikipedia.org/wiki/Advanced_Packaging_Tool&amp;gt;
-- [htorque](https://askubuntu.com/users/3037/htorque) answer in [Restoring all data and dependencies from dpkg --set-selections '*'](https://askubuntu.com/a/108760/43253)
-&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;/dd&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;/dd&gt;&lt;/dl&gt;
+&lt;ul&gt;
+  &lt;li&gt;dpkg Ubuntu docs &lt;a href=&quot;https://help.ubuntu.com/lts/serverguide/dpkg.html&quot;&gt;https://help.ubuntu.com/lts/serverguide/dpkg.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Advanced Packaging
+Tool &lt;a href=&quot;https://en.wikipedia.org/wiki/Advanced_Packaging_Tool&quot;&gt;https://en.wikipedia.org/wiki/Advanced_Packaging_Tool&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://askubuntu.com/users/3037/htorque&quot;&gt;htorque&lt;/a&gt; answer in &lt;a href=&quot;https://askubuntu.com/a/108760/43253&quot;&gt;Restoring all data and dependencies from dpkg –set-selections ‘*’&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         <pubDate>Mon, 24 Apr 2017 00:00:00 +0000</pubDate>
         <link>https://simpleit.rocks/replicate-installed-package-selections-from-one-Ubuntu-system-to-another/</link>
@@ -1621,6 +1717,90 @@ the following step by step video:&lt;/p&gt;
 
 &lt;p&gt;It is also part of a Jekyll starter
 site &lt;a href=&quot;https://github.com/marcanuy/jekyll-skeleton&quot;&gt;jekyll-skeleton&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;optional-keep-bower_components-out-of-_site&quot;&gt;OPTIONAL: Keep bower_components out of _site&lt;/h2&gt;
+
+&lt;p&gt;You probably don’t want to expose all the package files in your
+website, nor do I, so let’s see how to serve just only the needed
+files.&lt;/p&gt;
+
+&lt;p&gt;To make this we will copy the files that we are including directly
+from the &lt;code class=&quot;highlighter-rouge&quot;&gt;bower_components&lt;/code&gt; directory to a new one containing just
+these files in each build, that means, we have to set up a script
+replacement for &lt;kbd&gt;jekyll build&lt;/kbd&gt; and &lt;kbd&gt;jekyll serve&lt;/kbd&gt;.&lt;/p&gt;
+
+&lt;p&gt;In this case I will be using the
+classic &lt;a href=&quot;https://www.gnu.org/software/make/manual/make.html&quot;&gt;make&lt;/a&gt;
+program.&lt;/p&gt;
+
+&lt;p&gt;Create a file called &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile&lt;/code&gt; at root level with this content:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SHELL :&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; /bin/bash &lt;span class=&quot;c&quot;&gt;# needed for prettyurls&lt;/span&gt;
+BUNDLE :&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; bundle
+BOWER :&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; bower
+VENDOR_DIR &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; assets/vendor/
+JEKYLL :&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;BUNDLE&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll
+
+PROJECT_DEPS :&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Gemfile bower.json
+
+.PHONY: all clean install update
+
+all : serve
+
+check:
+	&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;JEKYLL&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; doctor
+	&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;HTMLPROOF&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; --check-html &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+		--http-status-ignore 999 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+		--internal-domains localhost:4000 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+		--assume-extension &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+		_site
+
+install: &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;PROJECT_DEPS&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;BUNDLE&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; install --path vendor/bundler
+	&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;BOWER&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; install
+
+update: &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;PROJECT_DEPS&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;BUNDLE&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; update
+	&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;BOWER&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; update
+
+include-bower-deps:
+	mkdir -p &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;VENDOR_DIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+	cp bower_components/font-awesome/css/font-awesome.min.css &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;VENDOR_DIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+	cp -r bower_components/font-awesome/fonts &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;VENDOR_DIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+	cp bower_components/jquery/dist/jquery.min.js &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;VENDOR_DIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+	cp bower_components/tether/dist/js/tether.min.js &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;VENDOR_DIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+	cp bower_components/bootstrap/dist/js/bootstrap.min.js &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;VENDOR_DIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+
+build: install include-bower-deps
+	&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;JEKYLL&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; build
+
+serve: install include-bower-deps
+	&lt;span class=&quot;nv&quot;&gt;JEKYLL_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;JEKYLL&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; serve
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p class=&quot;alert alert-danger&quot;&gt;Remember that those spaces are &lt;kbd&gt;TAB's&lt;/kbd&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt; will fail.&lt;/p&gt;
+
+&lt;p&gt;Now we will use &lt;code class=&quot;highlighter-rouge&quot;&gt;make build&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;make serve&lt;/code&gt; to work with Jekyll.&lt;/p&gt;
+
+&lt;p&gt;It just remain to update our paths in the layout, in &lt;code class=&quot;highlighter-rouge&quot;&gt;default.html&lt;/code&gt;
+use them as:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://simpleit.rocks/assets/vendor/jquery.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://simpleit.rocks/assets/vendor/tether.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://simpleit.rocks/assets/vendor/bootstrap.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And fontawesome, replace the old path &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;link rel=&quot;stylesheet&quot;
+href=&quot;https://simpleit.rocks/bower_components/font-awesome/css/font-awesome.min.css&quot;&amp;gt;&lt;/code&gt; with:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://simpleit.rocks/assets/vendor/font-awesome.min.css&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now we are just including in our website the files we chose from the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;bower_components&lt;/code&gt; folder, placing them in &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/vendor&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
