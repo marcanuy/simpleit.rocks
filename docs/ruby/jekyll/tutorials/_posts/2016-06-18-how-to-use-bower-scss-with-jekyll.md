@@ -35,10 +35,17 @@ Jekyll automatically generates __css__ files from __scss__.
 This tutorial shows how to use both of them togheter, using Bootstrap-flex 4
 as the example package.
 
+This solution was based in creating symbolics links, now I prefer a
+newer, cleaner way to deal with this extending the directories that
+Jekyll uses to process SASS files in this
+tutorial: 
+[How to add Bootstrap 4 to Jekyll extending SASS directories]({% link docs/ruby/jekyll/tutorials/_posts/2017-02-27-how-to-add-bootstrap-4-to-jekyll-the-right-way.md %}).
+{: .alert .alert-danger}
+
 ## Setup
 
-The default usage of [Bower] consists in having the packages downloaded to
-`/bower_components` directory.
+[Bower] by default will download its packages to a directory named
+`/bower_components` at root level.
 
 The problem is that Jekyll uses, by default, `/_sass` directory to put custom
 `.scss` files, that are then processed into some file located at `/css` directory.

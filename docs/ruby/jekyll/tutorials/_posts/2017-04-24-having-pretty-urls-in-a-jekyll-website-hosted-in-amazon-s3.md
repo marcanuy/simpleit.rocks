@@ -1,5 +1,5 @@
 ---
-title: Host a Jekyll Website With Pretty Urls In Amazon S3
+title: Host a Jekyll Website With Pretty Urls In Amazon S3 and Cloudfront
 description: How to host and deploy a Jekyll website to AWS S3 having its URLs without extensions (.html)
 ---
 
@@ -188,9 +188,84 @@ aws s3 sync _site/ $s3_bucket --size-only --content-type text/html --exclude "*.
 > <footer class="blockquote-footer"> <cite><a href="http://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters">Use of Exclude and Include Filters</a></cite></footer>
 {: class="blockquote" cite="http://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters"}
 
+## Invalidate uploaded files in Cloudfront
+
+If we are using a Content Delivery Network, chances are that your
+files has been cached and you need to refresh them. To remove an
+object from CloudFront edge caches before it expires we need to
+*invalidate* them.
+
+> The next time a viewer requests the object, CloudFront returns to
+> the origin to fetch the latest version of the object. 
+> 
+> <footer class="blockquote-footer"> <cite><a href="http://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters">Invalidating Objects (Web Distributions Only)</a></cite></footer>
+{: class="blockquote" cite="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html"}
+
+For this we copy the modified file names to a temporal file, and then
+create a new **invalidation** with these names as they are access in
+our website.
+
+> AWS CLI support for this service is only available in a preview
+> stage. You can enable this service by running: `aws configure set
+> preview.cloudfront true`
+> 
+> <footer class="blockquote-footer"> <cite><a href="http://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters">create-invalidation</a></cite></footer>
+{: class="blockquote" cite="http://docs.aws.amazon.com/cli/latest/reference/cloudfront/create-invalidation.html"}
+
+~~~ bash
+tempfile=$(mktemp)
+distribution_id=ASDFHDFSAF45234
+echo "Copying files to server..."
+aws s3 sync _site/ $(s3_bucket) --size-only --exclude "*" --include "*.*" --delete | tee -a $(tempfile)
+echo "Copying files with content type..."
+aws s3 sync _site/ $(s3_bucket) --size-only --content-type text/html --exclude "*.*" --delete | tee -a $(tempfile)
+#invalidate only modified files
+grep "upload\|deleted" $(tempfile) | sed -e "s|.*upload.*to $(s3_bucket)|/|" | sed -e "s|.*delete: $(s3_bucket)|/|" | sed -e 's/index.html//' | sed -e 's/\(.*\).html/\1/' | tr '\n' ' ' | xargs aws cloudfront create-invalidation --distribution-id $(distribution_id) --paths
+~~~
+
+### Script explanation:
+
+First we create the temporal file that will hold modified files with
+`tempfile=$(mktemp)`.
+
+Then we synchronize the local directory with the remote one in S3,
+redirecting the output to standard output and to the temporal file
+with:
+
+    aws s3 sync _site/ $(s3_bucket) --size-only --exclude "*" --include "*.*" --delete | tee -a $(tempfile)
+	aws s3 sync _site/ $(s3_bucket) --size-only --content-type text/html --exclude "*.*" --delete | tee -a $(tempfile)
+
+After that we process the file names that were uploaded or deleted by
+the `aws` command: 
+
+	grep "upload\|deleted" $(tempfile) 
+
+Then discard the string between `upload` or `delete` and the name of
+the bucket:
+
+    sed -e "s|.*upload.*to $(s3_bucket)|/|" | sed -e "s|.*delete:
+	$(s3_bucket)|/|" 
+
+As our URLs are accessed only with the URLs like `/` instead of
+`/index.html` we remove them
+
+    sed -e 's/index.html//' 
+	
+Our URLs doesn't have the `.html` extension also:
+
+	sed -e 's/\(.*\).html/\1/' 
+	
+Lastly we put all the URLs like names in a single line separated with 
+a space to comply with the `aws cloudfront create-invalidation
+--paths` command:
+
+	tr '\n' ' ' | xargs aws cloudfront create-invalidation --distribution-id $(distribution_id) --paths
+
 ## Final script
 
-The complete process is reflected in the following `deploy.sh` script:
+The complete process is reflected in the following `deploy.sh` script,
+you probably want to adapt it to a `Makefile`, `Grunt` or some other
+program but I will leave it as a `bash` script to reflect its usage:
 
 ~~~ bash
 #!/usr/bin/env bash
@@ -202,10 +277,13 @@ The complete process is reflected in the following `deploy.sh` script:
 # Custom vars
 #
 s3_bucket="s3://example.com/"
+distribution_id=ASDFHDFSAF45234
 ####################################
 
 set -e # halt script on error
 set -v # echo on
+
+tempfile=$(mktemp)
 
 echo "Building site..."
 JEKYLL_ENV=production bundle exec jekyll build
@@ -213,11 +291,12 @@ JEKYLL_ENV=production bundle exec jekyll build
 echo "Removing .html extension"
 find _site/ -type f ! -iname 'index.html' -iname '*.html' -print0 | while read -d $'\0' f; do mv "$f" "${f%.html}"; done
 
-echo "Copying files to server"
-aws s3 sync _site/ $s3_bucket --size-only --exclude "*" --include "*.*" --delete
-
+echo "Copying files to server..."
+aws s3 sync _site/ $(s3_bucket) --size-only --exclude "*" --include "*.*" --delete | tee -a $(tempfile)
 echo "Copying files with content type..."
-aws s3 sync _site/ $s3_bucket --size-only --content-type text/html --exclude "*.*" --delete
+aws s3 sync _site/ $(s3_bucket) --size-only --content-type text/html --exclude "*.*" --delete | tee -a $(tempfile)
+#invalidate only modified files
+grep "upload\|deleted" $(tempfile) | sed -e "s|.*upload.*to $(s3_bucket)|/|" | sed -e "s|.*delete: $(s3_bucket)|/|" | sed -e 's/index.html//' | sed -e 's/\(.*\).html/\1/' | tr '\n' ' ' | xargs aws cloudfront create-invalidation --distribution-id $(distribution_id) --paths
 ~~~
 
 ## Conclusion

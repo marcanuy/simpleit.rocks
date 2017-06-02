@@ -222,6 +222,92 @@ the following step by step video:
 It is also part of a Jekyll starter
 site [jekyll-skeleton](https://github.com/marcanuy/jekyll-skeleton).
 
+## OPTIONAL: Keep bower_components out of _site
+
+You probably don't want to expose all the package files in your
+website, nor do I, so let's see how to serve just only the needed
+files.
+
+To make this we will copy the files that we are including directly
+from the `bower_components` directory to a new one containing just
+these files in each build, that means, we have to set up a script
+replacement for <kbd>jekyll build</kbd> and <kbd>jekyll serve</kbd>.
+
+In this case I will be using the
+classic [make](https://www.gnu.org/software/make/manual/make.html)
+program.
+
+Create a file called `Makefile` at root level with this content:
+
+~~~ bash
+SHELL := /bin/bash # needed for prettyurls
+BUNDLE := bundle
+BOWER := bower
+VENDOR_DIR = assets/vendor/
+JEKYLL := $(BUNDLE) exec jekyll
+
+PROJECT_DEPS := Gemfile bower.json
+
+.PHONY: all clean install update
+
+all : serve
+
+check:
+	$(JEKYLL) doctor
+	$(HTMLPROOF) --check-html \
+		--http-status-ignore 999 \
+		--internal-domains localhost:4000 \
+		--assume-extension \
+		_site
+
+install: $(PROJECT_DEPS)
+	$(BUNDLE) install --path vendor/bundler
+	$(BOWER) install
+
+update: $(PROJECT_DEPS)
+	$(BUNDLE) update
+	$(BOWER) update
+
+include-bower-deps:
+	mkdir -p $(VENDOR_DIR)
+	cp bower_components/font-awesome/css/font-awesome.min.css $(VENDOR_DIR)
+	cp -r bower_components/font-awesome/fonts $(VENDOR_DIR)
+	cp bower_components/jquery/dist/jquery.min.js $(VENDOR_DIR)
+	cp bower_components/tether/dist/js/tether.min.js $(VENDOR_DIR)
+	cp bower_components/bootstrap/dist/js/bootstrap.min.js $(VENDOR_DIR)
+
+build: install include-bower-deps
+	$(JEKYLL) build
+
+serve: install include-bower-deps
+	JEKYLL_ENV=production $(JEKYLL) serve
+~~~
+
+Remember that those spaces are <kbd>TAB's</kbd> or `make` will fail.
+{: .alert .alert-danger}
+
+Now we will use `make build` and `make serve` to work with Jekyll.
+
+It just remain to update our paths in the layout, in `default.html`
+use them as:
+
+~~~ html
+<script src="{{'/assets/vendor/jquery.min.js' | absolute_url}}"></script>
+<script src="{{'/assets/vendor/tether.min.js' | absolute_url}}"></script>
+<script src="{{'/assets/vendor/bootstrap.min.js' | absolute_url}}"></script>
+~~~
+
+And fontawesome, replace the old path `<link rel="stylesheet"
+href="{{'/bower_components/font-awesome/css/font-awesome.min.css' |
+absolute_url}}">` with:
+
+~~~ html
+<link rel="stylesheet" href="{{'/assets/vendor/font-awesome.min.css' | absolute_url}}">
+~~~
+
+Now we are just including in our website the files we chose from the
+`bower_components` folder, placing them in `assets/vendor`.
+
 ## Conclusion
 
 When we build our site, Jekyll will process the `.scss` files with our
