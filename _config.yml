@@ -72,9 +72,16 @@ collections:
 
 # Travis bundles all gems in the vendor directory on its build
 # servers, which Jekyll will mistakenly read and explode on.
-exclude: [vendor]
+exclude:
+  - vendor
+  - node_modules
+  - Makefile
+  - Gemfile
+  - Gemfile.lock
+  - yarn.lock
+  - packages.json
 
 sass:
     load_paths:
         - _sass
-        - bower_components
+        - node_modules

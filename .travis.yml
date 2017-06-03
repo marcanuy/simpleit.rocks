@@ -2,8 +2,8 @@ language: ruby
 rvm:
 - 2.3.1
 before_script:
-- npm install -g bower
-- bower install
+- npm install --global yarn
+- yarn install
 - chmod +x ./scripts/cibuild.sh
 script: bash ./scripts/cibuild.sh
 after_success: bash ./deploy.sh
