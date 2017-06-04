@@ -25,6 +25,6 @@ install:
 before_script:
   - make build-production
   - make check
-script:
-  - bash ./deploy.sh
-#after_success: bash ./deploy.sh
+#script:
+#  - bash ./deploy.sh
+after_success: bash ./deploy.sh
