@@ -28,7 +28,7 @@ check:
 		--http-status-ignore 999 \
 		--internal-domains $(DOMAIN),localhost:4000 \
 		--assume-extension \
-                --disable-external \
+		--disable-external \
 		_site
 
 ########################
