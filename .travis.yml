@@ -7,12 +7,10 @@ env:
   - COMMIT_AUTHOR_EMAIL: me@marcanuy.com
   - ENCRYPTION_LABEL: 9f3844c952a5
 sudo: required
-
 cache:
   yarn: true
 before_install:
   - openssl aes-256-cbc -K $encrypted_9f3844c952a5_key -iv $encrypted_9f3844c952a5_iv -in deploy_key.enc -out deploy_key -d
-install:
   - . $HOME/.nvm/nvm.sh
   - nvm install stable
   - nvm use stable
@@ -25,6 +23,6 @@ install:
 before_script:
   - make build-production
   - make check
-#script:
-#  - bash ./deploy.sh
-after_success: bash ./deploy.sh
+script:
+  - bash ./deploy.sh
+#after_success: bash ./deploy.sh
