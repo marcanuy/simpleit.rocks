@@ -1,0 +1,14 @@
+{
+  "name": "simpleit.rocks",
+  "version": "1.0.0",
+  "description": "SimpleIt.Rocks",
+  "main": "index.js",
+  "repository": "git@github.com:marcanuy/simpleit.rocks.git",
+  "author": "Marcelo Canina <me@marcanuy.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "4.0.0-alpha.6",
+    "font-awesome": "^4.7.0",
+    "mermaid": "^7.0.3"
+  }
+}

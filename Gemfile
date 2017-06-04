@@ -1,7 +1,0 @@
-source 'https://rubygems.org'
-gem 'jekyll', '~> 3.3'
-gem 'jekyll-seo-tag'
-gem 'jekyll-sitemap'
-gem 'jekyll-toc'
-gem 'html-proofer'
-gem 'jekyll-gist'
