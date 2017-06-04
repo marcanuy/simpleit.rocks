@@ -80,6 +80,12 @@ exclude:
   - Gemfile.lock
   - yarn.lock
   - packages.json
+  - deploy_key
+  - deploy_key.enc
+  - deploy_key.pub
+  - deploy-manual-simpleit.sh
+  - deploy.sh
+  - package.json
 
 sass:
     load_paths:
