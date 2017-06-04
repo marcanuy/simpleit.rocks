@@ -68,13 +68,12 @@ in
 
 Each time the website is pushed to Github master branch, Travis
 automatically checks for broken links executing `html-proofer` in the
-generated static files with `scripts/cibuild.sh`, then if everything
+generated static files with `make check`, then if everything
 is fine, the deployment is done to the `gh-pages` branch with
 `deploy.sh`, so Github Pages publish the website.
 
 To serve the website locally first
-install [Bower](https://bower.io/#install-bower) and then `$ bundle
-exec jekyll serve`.
+install [Yarn](https://github.com/yarnpkg/yarn) and then `$ make serve`.
 
 <hr />
 
