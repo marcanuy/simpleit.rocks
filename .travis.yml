@@ -19,6 +19,7 @@ before_script: # if "install" is overridden
   - sudo apt-get install -y -qq yarn
   - node --version
   - yarn install
+  - gem install bundler
   - chmod +x ./scripts/cibuild.sh
 cache:
   yarn: true
