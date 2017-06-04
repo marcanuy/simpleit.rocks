@@ -2,7 +2,7 @@
 
     {% if page.content contains "mermaid" or page.layout == "tutorial" %}
     <!-- mermaid -->
-    <script src="{{ '/bower_components/mermaid/dist/mermaid.min.js' | absolute_url }}"></script>
+    <script src="{{ '/node_modules/mermaid/dist/mermaid.min.js' | absolute_url }}"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <!-- endmermaid -->
     {% endif %}

@@ -20,7 +20,6 @@ before_script: # if "install" is overridden
   - node --version
   - yarn install
   - bundle install
-  - gem install bundler
   - chmod +x ./scripts/cibuild.sh
 cache:
   yarn: true
