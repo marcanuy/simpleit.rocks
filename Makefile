@@ -13,8 +13,8 @@ YARN := yarn
 JEKYLL := $(BUNDLE) exec jekyll
 HTMLPROOF := $(BUNDLE) exec htmlproofer
 DOMAIN = simpleit.rocks
-VENDOR_DIR = assets/vendor/
-CSS_DIR = assets/css
+ASSETS_DIR = assets
+VENDOR_DIR = $(ASSETS_DIR)/vendor/
 
 TEMPFILE := $(shell mktemp)
 
@@ -54,7 +54,7 @@ include-yarn-deps:
 	cp node_modules/mermaid/dist/mermaid.forest.css $(VENDOR_DIR)
 	cp node_modules/mermaid/dist/mermaid.min.js $(VENDOR_DIR)
 	cp node_modules/font-awesome/css/font-awesome.min.css $(VENDOR_DIR)
-	cp -r node_modules/font-awesome/fonts $(CSS_DIR)
+	cp -r node_modules/font-awesome/fonts $(ASSETS_DIR)
 	cp node_modules/jquery/dist/jquery.min.js $(VENDOR_DIR)
 	cp node_modules/tether/dist/js/tether.min.js $(VENDOR_DIR)
 	cp node_modules/bootstrap/dist/js/bootstrap.min.js $(VENDOR_DIR)
@@ -71,4 +71,5 @@ deploy: build-production check
 clean :
 	rm -fr _site/
 	rm -fr $(VENDOR_DIR)
+	rm -fr $(ASSETS_DIR)/fonts # fontawesome
 	rm -fr .sass_cache

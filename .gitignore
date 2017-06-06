@@ -6,5 +6,5 @@ deploy_key
 deploy_key.pub
 node_modules/
 vendor/
-assets/css/fonts
+assets/fonts
 .bundle/
