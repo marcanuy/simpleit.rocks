@@ -40,17 +40,17 @@ The *breadcrumbs* code should be placed at `/_includes/breadcrumbs.html`:
 
 {% raw %}
 ~~~ liquid
-    {% assign categories = ""%}
-    {% if include.path contains "posts" %}
-    {% comment %} posts are like /docs/python/_posts/2016-06-06-foobar.md {% endcomment %}
-    {% assign categories = include.path | split:"/" | pop %}
-    {% else %}
-    {% comment %} pages are like /docs/python/index.md {% endcomment %}
-    {% assign categories = include.path | split:"/" | pop  %}
-    {% endif %}
-    {% assign route="" %}
-	
-    <a href="/">Home</a>
+	{% assign categories = include.path | split:"/" %}
+	{% assign filename_without_extension = categories | last | split:"." | first %}
+	{% if categories contains "_posts" or filename_without_extension == "index" %}
+	{% comment %} posts are like /docs/python/_posts/2016-06-06-foobar.md {% endcomment %}
+	{% comment %} OR pages are index.* i.e.: like /docs/python/index.md or index.html {% endcomment %}
+	{% assign categories = categories | pop %}
+	{% endif %}
+
+	{% assign route="" %}
+
+	<a href="/">Home</a>
 	{% for category in categories %}
 	<span class="prompt">>></span>
 	{% assign route = route | append: '/' | append: category %}
@@ -89,9 +89,14 @@ The previous scheme would generate the following _breadcrumb_ for each case.
 | /                       | home                             | index.html                                 |
 | /docs                   | home > docs                      | docs/index.md                              |
 | /docs/science           | home > docs > science            | docs/science/index.md                      |
+| /docs/about             | home > about                     | docs/about.md                              |
 | /docs/science/my_title *| home > docs > science > my title | docs/science/_posts/2016-06-08-my_title.md |
 |-------------------------+----------------------------------+--------------------------------------------|
 {: class="table"}
 
 (*) Using _titles_ without _dates_ in `_config.yml` with `permalink: /:title/`
 {: class="alert alert-warning" role="alert"}
+
+If page does not have a *title* variable in front matter, then its
+filename will be displayed in breadcrumbs.
+{: .alert .alert-info}
