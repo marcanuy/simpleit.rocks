@@ -441,17 +441,17 @@ generate a link to each path of the structure</p>
 
 <p>The <em>breadcrumbs</em> code should be placed at <code class="highlighter-rouge">/_includes/breadcrumbs.html</code>:</p>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>    <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">categories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">path</span><span class="w"> </span><span class="ow">contains</span><span class="w"> </span><span class="s2">"posts"</span><span class="w"> </span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="nt">comment</span><span class="w"> </span><span class="p">%}</span><span class="c"> posts are like /docs/python/_posts/2016-06-06-foobar.md </span><span class="p">{%</span><span class="w"> </span><span class="nt">endcomment</span><span class="w"> </span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">categories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">path</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">split</span><span class="p">:</span><span class="s2">"/"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">pop</span><span class="w"> </span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="nt">comment</span><span class="w"> </span><span class="p">%}</span><span class="c"> pages are like /docs/python/index.md </span><span class="p">{%</span><span class="w"> </span><span class="nt">endcomment</span><span class="w"> </span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">categories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">path</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">split</span><span class="p">:</span><span class="s2">"/"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">pop</span><span class="w">  </span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">route</span><span class="o">=</span><span class="s2">""</span><span class="w"> </span><span class="p">%}</span>
-	
-    &lt;a href="/"&gt;Home&lt;/a&gt;
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>	<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">categories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">path</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">split</span><span class="p">:</span><span class="s2">"/"</span><span class="w"> </span><span class="p">%}</span>
+	<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">filename_without_extension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">categories</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">last</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">split</span><span class="p">:</span><span class="s2">"."</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">first</span><span class="w"> </span><span class="p">%}</span>
+	<span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">categories</span><span class="w"> </span><span class="ow">contains</span><span class="w"> </span><span class="s2">"_posts"</span><span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="nv">filename_without_extension</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"index"</span><span class="w"> </span><span class="p">%}</span>
+	<span class="p">{%</span><span class="w"> </span><span class="nt">comment</span><span class="w"> </span><span class="p">%}</span><span class="c"> posts are like /docs/python/_posts/2016-06-06-foobar.md </span><span class="p">{%</span><span class="w"> </span><span class="nt">endcomment</span><span class="w"> </span><span class="p">%}</span>
+	<span class="p">{%</span><span class="w"> </span><span class="nt">comment</span><span class="w"> </span><span class="p">%}</span><span class="c"> OR pages are index.* i.e.: like /docs/python/index.md or index.html </span><span class="p">{%</span><span class="w"> </span><span class="nt">endcomment</span><span class="w"> </span><span class="p">%}</span>
+	<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">categories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">categories</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">pop</span><span class="w"> </span><span class="p">%}</span>
+	<span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
+
+	<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">route</span><span class="o">=</span><span class="s2">""</span><span class="w"> </span><span class="p">%}</span>
+
+	&lt;a href="/"&gt;Home&lt;/a&gt;
 	<span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>category<span class="w"> </span>in<span class="w"> </span>categories<span class="w"> </span><span class="p">%}</span>
 	&lt;span class="prompt"&gt;&gt;&gt;&lt;/span&gt;
 	<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">route</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">route</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">append</span><span class="p">:</span><span class="w"> </span><span class="s1">'/'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">append</span><span class="p">:</span><span class="w"> </span>category<span class="w"> </span><span class="p">%}</span>
@@ -507,6 +507,11 @@ parameters.</p>
       <td style="text-align: left">docs/science/index.md</td>
     </tr>
     <tr>
+      <td>/docs/about</td>
+      <td style="text-align: left">home &gt; about</td>
+      <td style="text-align: left">docs/about.md</td>
+    </tr>
+    <tr>
       <td>/docs/science/my_title *</td>
       <td style="text-align: left">home &gt; docs &gt; science &gt; my title</td>
       <td style="text-align: left">docs/science/_posts/2016-06-08-my_title.md</td>
@@ -515,6 +520,9 @@ parameters.</p>
 </table>
 
 <p class="alert alert-warning" role="alert">(*) Using <em>titles</em> without <em>dates</em> in <code class="highlighter-rouge">_config.yml</code> with <code class="highlighter-rouge">permalink: /:title/</code></p>
+
+<p class="alert alert-info">If page does not have a <em>title</em> variable in front matter, then its
+filename will be displayed in breadcrumbs.</p>
 
 
     
