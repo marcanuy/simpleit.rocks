@@ -51,17 +51,15 @@ The *breadcrumbs* code should be placed at `/_includes/breadcrumbs.html`:
     {% assign route="" %}
 	
     <a href="/">Home</a>
-    {% for category in categories %}
-    <span class="prompt">>></span>
-    {% assign route = route | append: '/' | append: category %}
-    {% if forloop.last and category == "_posts" %}
-    {{ include.title }}
-    {% elsif forloop.last %}
-    {{ category }}
-    {% else %}
-    <a href="{{ route }}">{{ category }}</a> 
-    {% endif %}
-    {% endfor %}
+	{% for category in categories %}
+	<span class="prompt">>></span>
+	{% assign route = route | append: '/' | append: category %}
+	{% if forloop.last %}
+	{% if include.title %}{{include.title}}{% else %}{{ category }}{% endif %}
+	{% else %}
+	<a href="{{ route }}">{{ category }}</a> 
+	{% endif %}
+	{% endfor %}
 ~~~
 {% endraw %}
 
