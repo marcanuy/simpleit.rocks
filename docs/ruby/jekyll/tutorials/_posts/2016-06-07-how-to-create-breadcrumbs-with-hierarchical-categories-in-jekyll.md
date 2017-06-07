@@ -100,3 +100,7 @@ The previous scheme would generate the following _breadcrumb_ for each case.
 If page does not have a *title* variable in front matter, then its
 filename will be displayed in breadcrumbs.
 {: .alert .alert-info}
+
+You can see this in action in
+the [jekyll-skeleton](https://github.com/marcanuy/jekyll-skeleton)
+example website.
