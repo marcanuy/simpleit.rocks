@@ -11,7 +11,7 @@ with daily new blog posts.
 
 This method is specially useful for websites that has been built with
 static site generators, like [Jekyll]({% link docs/ruby/jekyll/index.md %}) for example, where they
-automatically publish a RSS feed with new content in each build.
+automatically publish a RSS feed with its new posts in each build.
 
 Based in this information, you can set up a script in another server
 that will check the above feed, and if it detects new posts it will
@@ -82,109 +82,79 @@ You will need the following items from this page:
 
 ### Set up application
 
-We will use the [feedr](https://github.com/housed/feedr) script to
-publish tweets, so we have to clone the repo:
+We will use the [publishfeed](https://github.com/marcanuy/publishfeed) script to
+publish tweets, so following its instructions, we clone the repo:
 
 <pre class="shell">
 <samp>
-<span class="shell-prompt">(twitter_bot)$</span> <kbd>git clone https://github.com/housed/feedr.git</kbd>
-Cloning into 'feedr'...
-remote: Counting objects: 65, done.
-remote: Total 65 (delta 0), reused 0 (delta 0), pack-reused 65
-Unpacking objects: 100% (65/65), done.
-Checking connectivity... done.
-<span class="shell-prompt">(twitter_bot)$</span> <kbd>cd feedr</kbd>
-<span class="shell-prompt">(twitter_bot) feedr$</span>
+<span class="shell-prompt">(twitter_bot)$</span> <kbd>git clone https://github.com/marcanuy/publishfeed</kbd>
+Cloning into 'publishfeed'...
+remote: Counting objects: 41, done.
+remote: Compressing objects: 100% (27/27), done.
+remote: Total 41 (delta 13), reused 34 (delta 9), pack-reused 0
+Unpacking objects: 100% (41/41), done.
+<span class="shell-prompt">(twitter_bot)$</span> <kbd>cd publishfeed</kbd>
+<span class="shell-prompt">(twitter_bot) publishfeed$</span>
 </samp>
 </pre>
 
-Edit ` src/main.py` and add the previous generated Twitter consumer
-keys and replace the feed with your website.
+### Set up feeds
 
-~~~ python
-# Initialize the list of desired feeds
-# Feed(Name, XML, Media, Hashtags)
-FEEDS = [ Feed('SimpleIt.Rocks', 'http://simpleit.rocks/feed', '', '')]
+Copy `feeds.yml.skel` to `feeds.yml` and edit your feeds information:
 
-# Twitter Account Keys 
-CONSUMER_KEY = 'consumer_key'
-CONSUMER_SECRET = 'consumer_secret'
-ACCESS_KEY = 'access_key'
-ACCESS_SECRET = 'access_secret'
+<pre class="shell">
+<samp>
+<span class="shell-prompt">(twitter_bot) publishfeed$</span> <kbd>cd publishfeed</kbd>
+<span class="shell-prompt">(twitter_bot) publishfeed$</span> <kbd>cp feeds.yml.skel feeds.yml</kbd>
 
-~~~
+</samp>
+</pre>
 
 ### Install dependencies
 
-_Feedr_ relies on
-[BeautifulSoup4](http://www.crummy.com/software/BeautifulSoup/),
-[FeedParser](https://pypi.python.org/pypi/feedparser)
-and [Tweepy](http://www.tweepy.org/). 
+Dependencies are handled by *pip*:
 
 <pre class="shell">
 <samp>
-<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>pip install bs4</kbd>
-Downloading/unpacking bs4
-  Downloading bs4-0.0.1.tar.gz
-  Running setup.py (path:/home/user/.virtualenvs/twitter_bot/build/bs4/setup.py) egg_info for package bs4
-    
-Downloading/unpacking beautifulsoup4 (from bs4)
-  Downloading beautifulsoup4-4.5.1-py2-none-any.whl (83kB): 83kB downloaded
-Installing collected packages: bs4, beautifulsoup4
-  Running setup.py install for bs4
-    
-Successfully installed bs4 beautifulsoup4
-Cleaning up...
+<span class="shell-prompt">$</span> <kbd>make install</kbd>
+pip install -r requirements.txt
+Collecting beautifulsoup4==4.6.0 (from -r requirements.txt (line 1))
+  Using cached beautifulsoup4-4.6.0-py3-none-any.whl
+Collecting certifi==2017.4.17 (from -r requirements.txt (line 2))
+  Using cached certifi-2017.4.17-py2.py3-none-any.whl
+Collecting chardet==3.0.3 (from -r requirements.txt (line 3))
+  Using cached chardet-3.0.3-py2.py3-none-any.whl
+Collecting feedparser==5.2.1 (from -r requirements.txt (line 4))
+Collecting idna==2.5 (from -r requirements.txt (line 5))
+  Using cached idna-2.5-py2.py3-none-any.whl
+Collecting munch==2.1.1 (from -r requirements.txt (line 6))
+Collecting oauthlib==2.0.2 (from -r requirements.txt (line 7))
+Collecting PyYAML==3.12 (from -r requirements.txt (line 8))
+Collecting requests==2.17.3 (from -r requirements.txt (line 9))
+  Using cached requests-2.17.3-py2.py3-none-any.whl
+Collecting requests-oauthlib==0.8.0 (from -r requirements.txt (line 10))
+  Using cached requests_oauthlib-0.8.0-py2.py3-none-any.whl
+Collecting six==1.10.0 (from -r requirements.txt (line 11))
+  Using cached six-1.10.0-py2.py3-none-any.whl
+Collecting SQLAlchemy==1.1.10 (from -r requirements.txt (line 12))
+Collecting tweepy==3.5.0 (from -r requirements.txt (line 13))
+  Using cached tweepy-3.5.0-py2.py3-none-any.whl
+Collecting urllib3==1.21.1 (from -r requirements.txt (line 14))
+  Using cached urllib3-1.21.1-py2.py3-none-any.whl
+Installing collected packages: beautifulsoup4, certifi, chardet, feedparser, idna, six, munch, oauthlib, PyYAML, urllib3, requests, requests-oauthlib, SQLAlchemy, tweepy
+Successfully installed PyYAML-3.12 SQLAlchemy-1.1.10 beautifulsoup4-4.6.0 certifi-2017.4.17 chardet-3.0.3 feedparser-5.2.1 idna-2.5 munch-2.1.1 oauthlib-2.0.2 requests-2.17.3 requests-oauthlib-0.8.0 six-1.10.0 tweepy-3.5.0 urllib3-1.21.1
 </samp>
 </pre>
 
-<pre class="shell">
-<samp>
-<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>pip install feedparser</kbd>
-Downloading/unpacking feedparser
-  Downloading feedparser-5.2.1.zip (1.2MB): 1.2MB downloaded
-  Running setup.py (path:/home/user/.virtualenvs/twitter_bot/build/feedparser/setup.py) egg_info for package feedparser
-    
-Installing collected packages: feedparser
-  Running setup.py install for feedparser
-    
-Successfully installed feedparser
-Cleaning up...
-</samp>
-</pre>
+### Download feeds
+
+After setting up credentials you can execute <kbd>python main.py <twitterhandler> --getfeeds</kbd>
+And then tweet each post: <kbd>python main.py <twitterhandler> --tweet</kbd>
 
 <pre class="shell">
 <samp>
-<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>pip install tweepy</kbd>
-Downloading/unpacking tweepy
-  Downloading tweepy-3.5.0-py2.py3-none-any.whl
-Downloading/unpacking requests>=2.4.3 (from tweepy)
-  Downloading requests-2.11.1-py2.py3-none-any.whl (514kB): 514kB downloaded
-Downloading/unpacking six>=1.7.3 (from tweepy)
-  Downloading six-1.10.0-py2.py3-none-any.whl
-Downloading/unpacking requests-oauthlib>=0.4.1 (from tweepy)
-  Downloading requests_oauthlib-0.7.0-py2.py3-none-any.whl
-Downloading/unpacking oauthlib>=0.6.2 (from requests-oauthlib>=0.4.1->tweepy)
-  Downloading oauthlib-2.0.0.tar.gz (122kB): 122kB downloaded
-  Running setup.py (path:/home/user/.virtualenvs/twitter_bot/build/oauthlib/setup.py) egg_info for package oauthlib
-    
-Installing collected packages: tweepy, requests, six, requests-oauthlib, oauthlib
-  Running setup.py install for oauthlib
-    
-Successfully installed tweepy requests six requests-oauthlib oauthlib
-Cleaning up...
-
-</samp>
-</pre>
-
-### Execute Twitter feeder
-
-After setting up credentials you can execute `feedr/src/main.py`
-
-<pre class="shell">
-<samp>
-<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>cd src</kbd>
-<span class="shell-prompt">(twitter_bot) feedr/src$</span> <kbd>python2.7 main.py</kbd>
+<span class="shell-prompt">(twitter_bot) feedr$</span> <kbd>python main.py <twitterhandler> --getfeeds</kbd>
+<span class="shell-prompt">(twitter_bot) feedr/src$</span> <kbd>python main.py <twitterhandler> --tweet</kbd>
 
 </samp>
 </pre>
@@ -193,8 +163,10 @@ After setting up credentials you can execute `feedr/src/main.py`
 
 ### Schedule posts
 
-We set up a cron job to check for new posts every a certain amount of
-time, in this case every hour. We enter the crontab editor:
+We set up two cron jobs, one to download new posts in each feed, in
+this case every hour, and another one that will tweet one of each post
+when we execute it, so it can be good to set it up with for example,
+15 minutes between each run. We enter the crontab editor:
 
 <pre class="shell">
 <samp>
@@ -203,14 +175,25 @@ time, in this case every hour. We enter the crontab editor:
 </pre>
 
 And then we add the following line (adjust the path of your
-installation, in this case I have used `/opt/feedr`)
+installation, in this case I have used `/opt/publishfeed`)
 
 ~~~
-0 * * * * cd /opt/feedr/src; flock -n /tmp/twbot.lock ~/.virtualenvs/twitter_bot/bin/python2.7 main.py
+# download feeds hourly
+0 * * * * cd /opt/publishfeed/publishfeed/; flock -n /tmp/twsimpleitp.lock ~/.virtualenvs/publishfeed/bin/python main.py simpleitrocks -g
+# publish tweets every 15 minutes
+*/15 * * * * cd /opt/publishfeed/publishfeed/; flock -n /tmp/twsimpleitp.lock ~/.virtualenvs/publishfeed/bin/python main.py simpleitrocks -t
+
 ~~~
 
 We use the `flock` command to
 [prevent duplicate cron job executions]({% link docs/linux/shell/_posts/2016-12-08-prevent-running-of-duplicate-cron-jobs.md %}). 
+
+## Conclusion
+
+Every time the cron job detects new content present in a website feed
+it will tweet in the account you have selected. This is a great way to
+have your blog posts automatically tweeted and your content always
+present in social media.
 
 ## Reference
 
