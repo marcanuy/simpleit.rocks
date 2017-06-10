@@ -43,7 +43,7 @@ Emacs server so we will be able to `start`, `stop`, `restart`,
 To turn Emacs into a *systemd* service that can be started automatically
 during system startup we will create a service to start the daemon.
 
-*systemd* can manage manage services under the user's control with a
+*systemd* can manage services under the user's control with a
 per-user *systemd* instance, enabling users to handle their own units.
 
 User services like this one, should be placed in
