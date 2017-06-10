@@ -64,7 +64,7 @@ for `python-mode`:
     ))
 ~~~
 
-## Check grammar after saving a text file
+## Check grammar after saving a text file with LanguageTools
 
 To check a text buffer and light up errors with `langtool` we use the
 `langtool-check` function each time we save the buffer using
@@ -76,11 +76,20 @@ To check a text buffer and light up errors with `langtool` we use the
              (add-hook 'after-save-hook 'langtool-check nil 'make-it-local)))
 ~~~
 
+
 ## Conclusion
 
 In Emacs is easy to forget to check for errors manually, enabling them
 automatically is a great way to minimize errors that can be avoided
 easily and improving our documents legibility.
+
+## References
+
+- *flyspell-mode*: <https://www.emacswiki.org/emacs/FlySpell>
+- *langtool*: <https://github.com/mhayashi1120/Emacs-langtool>
+- *LanguageTool*: <http://languagetool.org/>
+- [Trey Jackson](https://stackoverflow.com/users/6148/trey-jackson)
+  answer to [How to add a hook to only run in a particular mode?](https://stackoverflow.com/a/6141681/1165509)
 
 [flyspell-mode]: https://www.emacswiki.org/emacs/FlySpell
 [langtool]: https://github.com/mhayashi1120/Emacs-langtool
