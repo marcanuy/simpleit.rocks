@@ -4,13 +4,13 @@ description: Guide to add Bootstrap 4 to Jekyll with focus on having also a CSS 
 
 ## Overview
 
-The real power of Bootstrap is to use and redefine its variables in
-our custom designs, that means, we should not simply add Bootstrap's
-javascript and CSS stylesheets to use its components, we need to
-change them and not making all the web look boringly the same.
+One of the keys to use Bootstrap successfully is to be able to use and
+redefine its variables in our custom designs. We should not simply add
+Bootstrap's javascript and CSS stylesheets to use its components, we
+need to change them and not making all the web look boringly the same.
 
 This is a guide to make it easy to use Bootstrap 4 with a Jekyll
-website and make it easy to customize it using its variables and
+website and be able to use and customize its variables as well as
 defining new ones.
 
 ## Background
@@ -43,33 +43,40 @@ used with Bootstrap 3.
 
 ## Installing Bootstrap 4
 
-We will be using the package manager [Bower] to install Bootstrap. At
-our Jekyll website root folder we use the <kbd>bower install</kbd>
-command. In this case I will be using `bootstrap#v4.0.0-alpha.6` but
-you can find the latest one
-at
-<https://v4-alpha.getbootstrap.com/getting-started/download/#bower>.
+We will be using the package manager [Yarn] to install Bootstrap. At
+our Jekyll website root folder we run <kbd>yarn install</kbd>. In this
+case I will be using `bootstrap#v4.0.0-alpha.6` but you can find the
+latest one
+at <https://v4-alpha.getbootstrap.com/getting-started/download/>.
+
+Previously I used [Bower] in this tutorial but as it won't be
+maintained anymore, [Yarn] is a better, more robust solution.
+{: .alert .alert-info}
 
 <pre class="shell">
 <samp>
-<span class="shell-prompt">$</span> <kbd>bower install bootstrap#v4.0.0-alpha.6</kbd>
-bower bootstrap#v4.0.0-alpha.6  cached https://github.com/twbs/bootstrap.git#4.0.0-alpha.6
-bower bootstrap#v4.0.0-alpha.6         validate 4.0.0-alpha.6 against https://github.com/twbs/bootstrap.git#v4.0.0-alpha.6
-bower jquery#>=1.9.1                     cached https://github.com/jquery/jquery-dist.git#3.1.1
-bower jquery#>=1.9.1                   validate 3.1.1 against https://github.com/jquery/jquery-dist.git#>=1.9.1
-bower tether#^1.4.0                      cached https://github.com/HubSpot/tether.git#1.4.0
-bower tether#^1.4.0                    validate 1.4.0 against https://github.com/HubSpot/tether.git#^1.4.0
-bower bootstrap#v4.0.0-alpha.6          install bootstrap#4.0.0-alpha.6
-bower jquery#>=1.9.1                    install jquery#3.1.1
-bower tether#^1.4.0                     install tether#1.4.0
+<span class="shell-prompt">$</span> <kbd>yarn install</kbd>
+yarn install v0.24.6
+info No lockfile found.
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+success Saved lockfile.
+Done in 0.38s.
 
-bootstrap#4.0.0-alpha.6 bower_components/bootstrap
-├── jquery#3.1.1
-└── tether#1.4.0
-
-jquery#3.1.1 bower_components/jquery
-
-tether#1.4.0 bower_components/tether
+<span class="shell-prompt">$</span> <kbd>yarn add bootstrap@4.0.0-alpha.6</kbd>
+yarn add v0.24.6
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+success Saved lockfile.
+success Saved 3 new dependencies.
+├─ bootstrap@4.0.0-alpha.6
+├─ jquery@3.2.1
+└─ tether@1.4.0
+Done in 3.23s.
 </samp>
 </pre>
 
@@ -95,7 +102,7 @@ we use the `load-paths`[^load-paths] key in `_config.yml` to add more paths:
 sass:
     load_paths:
         - _sass
-        - bower_components
+        - node_modules
 ~~~
 
 `load_paths` only works when **not** in safe mode[^safe-mode]
@@ -103,8 +110,7 @@ sass:
 
 ## Add javascript
 
-Add Bootstrap core JavaScript, JQuery and Tether[^tether] (already installed when
-installing Bootstrap) at the end of the document so the pages load
+Add Bootstrap JavaScript at the end of the document so the pages load
 faster, just before the `</body>` HTML tag.
 
 We add them in the default layout at `_layouts/default.html` or in
@@ -114,9 +120,10 @@ We add them in the default layout at `_layouts/default.html` or in
 <html>
 <body>
 ...
-<script src="{% raw %}{{'/bower_components/jquery/dist/jquery.min.js' | prepend: site.baseurl}}{% endraw %}"></script>
-<script src="{% raw %}{{'/bower_components/tether/dist/js/tether.min.js' | prepend: site.baseurl}}{% endraw %}"></script>
-<script src="{% raw %}{{'/bower_components/bootstrap/dist/js/bootstrap.min.js' | prepend: site.baseurl}}{% endraw %}"></script>
+	<script src="{{'/node_modules/jquery/dist/jquery.min.js' | prepend: site.baseurl}}"></script>
+	<script src="{{'/node_modules/tether/dist/js/tether.min.js' |
+	prepend: site.baseurl}}"></script>
+	<script src="{% raw %}{{'/node_modules/bootstrap/dist/js/bootstrap.min.js' | prepend: site.baseurl}}{% endraw %}"></script>
 </body>
 </html>
 ~~~
@@ -130,7 +137,7 @@ Bootstrap, we create a new partial Sass file `_sass/_variables.scss`.
 
 1. We define our variables
 2. "Overwrite" the ones we want from Bootstrap
-`bower_components/bootstrap/scss/_variables.scss` before loading them
+`node_modules/bootstrap/scss/_variables.scss` before loading them
 and then 
 3. we import the Bootstrap variables.
 
@@ -147,7 +154,7 @@ In `_sass/_variables.scss`:
 
 ~~~ scss
 $custom-font-size: 20px;
-@import "../bower_components/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables";
 ~~~
 
 ### Import variables from main Sass file
@@ -202,8 +209,8 @@ graph TB
         partials--> |"import variables"|VARS
         partials--> |"import bootstrap/scss/bootstrap"|BS_SCSS
         VARS["/_sass/_variables.scss"]-->BS_VARIABLES
-        BS_VARIABLES["@import '../bower_components/bootstrap/scss/variables';"]-->STYLESCSS
-        BS_SCSS["/bower_components/bootstrap/scss/bootstrap.scss"]-->STYLESCSS
+        BS_VARIABLES["@import '../node_modules/bootstrap/scss/variables';"]-->STYLESCSS
+        BS_SCSS["/node_modules/bootstrap/scss/bootstrap.scss"]-->STYLESCSS
         STYLESCSS["Generates /assets/main.css"]
 </div>
 
@@ -212,8 +219,10 @@ graph TB
 You’ll find
 a
 [minimal example of a site](https://github.com/marcanuy/jekyll-bootstrap4) in
-Jekyll hosted on GitHub, based on this article and ready to use, and
-the following step by step video:
+Jekyll hosted on GitHub based on this article ready to use. 
+
+There is also a step by step video using the previous package manager
+Bower instead of Yarn:
 
 <div class="embed-responsive embed-responsive-16by9">
   <iframe class="embed-responsive-item" src="//www.youtube.com/embed/0EI1V_Whgto" allowfullscreen></iframe>
@@ -222,14 +231,14 @@ the following step by step video:
 It is also part of a Jekyll starter
 site [jekyll-skeleton](https://github.com/marcanuy/jekyll-skeleton).
 
-## OPTIONAL: Keep bower_components out of _site
+## OPTIONAL: Keep node_modules out of _site
 
 You probably don't want to expose all the package files in your
 website, nor do I, so let's see how to serve just only the needed
 files.
 
 To make this we will copy the files that we are including directly
-from the `bower_components` directory to a new one containing just
+from the `node_modules` directory to a new one containing just
 these files in each build, that means, we have to set up a script
 replacement for <kbd>jekyll build</kbd> and <kbd>jekyll serve</kbd>.
 
@@ -242,11 +251,11 @@ Create a file called `Makefile` at root level with this content:
 ~~~ bash
 SHELL := /bin/bash # needed for prettyurls
 BUNDLE := bundle
-BOWER := bower
+YARN := yarn
 VENDOR_DIR = assets/vendor/
 JEKYLL := $(BUNDLE) exec jekyll
 
-PROJECT_DEPS := Gemfile bower.json
+PROJECT_DEPS := Gemfile packages.json
 
 .PHONY: all clean install update
 
@@ -262,24 +271,22 @@ check:
 
 install: $(PROJECT_DEPS)
 	$(BUNDLE) install --path vendor/bundler
-	$(BOWER) install
+	$(YARN) install
 
 update: $(PROJECT_DEPS)
 	$(BUNDLE) update
-	$(BOWER) update
+	$(YARN) upgrade
 
-include-bower-deps:
+include-yarn-deps:
 	mkdir -p $(VENDOR_DIR)
-	cp bower_components/font-awesome/css/font-awesome.min.css $(VENDOR_DIR)
-	cp -r bower_components/font-awesome/fonts $(VENDOR_DIR)
-	cp bower_components/jquery/dist/jquery.min.js $(VENDOR_DIR)
-	cp bower_components/tether/dist/js/tether.min.js $(VENDOR_DIR)
-	cp bower_components/bootstrap/dist/js/bootstrap.min.js $(VENDOR_DIR)
+	cp node_modules/jquery/dist/jquery.min.js $(VENDOR_DIR)
+	cp node_modules/tether/dist/js/tether.min.js $(VENDOR_DIR)
+	cp node_modules/bootstrap/dist/js/bootstrap.min.js $(VENDOR_DIR)
 
-build: install include-bower-deps
+build: install include-yarn-deps
 	$(JEKYLL) build
 
-serve: install include-bower-deps
+serve: install include-yarn-deps
 	JEKYLL_ENV=production $(JEKYLL) serve
 ~~~
 
@@ -297,16 +304,8 @@ use them as:
 <script src="{{'/assets/vendor/bootstrap.min.js' | absolute_url}}"></script>
 ~~~
 
-And fontawesome, replace the old path `<link rel="stylesheet"
-href="{{'/bower_components/font-awesome/css/font-awesome.min.css' |
-absolute_url}}">` with:
-
-~~~ html
-<link rel="stylesheet" href="{{'/assets/vendor/font-awesome.min.css' | absolute_url}}">
-~~~
-
 Now we are just including in our website the files we chose from the
-`bower_components` folder, placing them in `assets/vendor`.
+`node_modules` folder, placing them in `assets/vendor`.
 
 ## Conclusion
 
@@ -344,6 +343,7 @@ html {
 - Bootstrap 4 customization <http://v4-alpha.getbootstrap.com/getting-started/options/>
 
 [Sass]: http://sass-lang.com/
+[Yarn]: https://yarnpkg.com/lang/en/docs/install
 [Bower]: https://bower.io
 [^load-paths]: [Issue](https://github.com/jekyll/jekyll/issues/3366) referring the code at <https://github.com/jekyll/jekyll-sass-converter/blob/master/lib/jekyll/converters/scss.rb#L77>
 [^tether]:
