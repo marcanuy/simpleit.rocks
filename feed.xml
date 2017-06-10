@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 10 Jun 2017 19:03:02 +0000</pubDate>
-    <lastBuildDate>Sat, 10 Jun 2017 19:03:02 +0000</lastBuildDate>
+    <pubDate>Sat, 10 Jun 2017 19:08:09 +0000</pubDate>
+    <lastBuildDate>Sat, 10 Jun 2017 19:08:09 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -51,7 +51,7 @@ Emacs server so we will be able to &lt;code class=&quot;highlighter-rouge&quot;&
 &lt;p&gt;To turn Emacs into a &lt;em&gt;systemd&lt;/em&gt; service that can be started automatically
 during system startup we will create a service to start the daemon.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;systemd&lt;/em&gt; can manage manage services under the user’s control with a
+&lt;p&gt;&lt;em&gt;systemd&lt;/em&gt; can manage services under the user’s control with a
 per-user &lt;em&gt;systemd&lt;/em&gt; instance, enabling users to handle their own units.&lt;/p&gt;
 
 &lt;p&gt;User services like this one, should be placed in
