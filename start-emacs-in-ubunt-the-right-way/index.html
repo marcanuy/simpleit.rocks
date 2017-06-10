@@ -46,23 +46,23 @@
 
     
   <!-- Begin Jekyll SEO tag v2.2.3 -->
-<title>Add Infolinks Script To An Existing Website From Console With Sed Command | Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Add Infolinks Script To An Existing Website From Console With Sed Command" />
+<title>Start Emacs in Ubuntu The Right Way | Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Start Emacs in Ubuntu The Right Way" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="How to integrate infolinks on your website with a simple shell command. Add the infolinks script to all webpages with SED." />
-<meta property="og:description" content="How to integrate infolinks on your website with a simple shell command. Add the infolinks script to all webpages with SED." />
-<link rel="canonical" href="https://simpleit.rocks/add-infolinks-script-to-an-existing-website-from-console-with-sed-command/" />
-<meta property="og:url" content="https://simpleit.rocks/add-infolinks-script-to-an-existing-website-from-console-with-sed-command/" />
+<meta name="description" content="We explore how to have Emacs in Ubuntu running as a serviced unit and define some useful aliases and environment variables." />
+<meta property="og:description" content="We explore how to have Emacs in Ubuntu running as a serviced unit and define some useful aliases and environment variables." />
+<link rel="canonical" href="https://simpleit.rocks/start-emacs-in-ubunt-the-right-way/" />
+<meta property="og:url" content="https://simpleit.rocks/start-emacs-in-ubunt-the-right-way/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-04-04T00:00:00+00:00" />
+<meta property="article:published_time" content="2017-06-10T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@simpleitrocks" />
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Add Infolinks Script To An Existing Website From Console With Sed Command","author":{"@type":"Person","name":"marcanuy"},"datePublished":"2017-04-04T00:00:00+00:00","dateModified":"2017-04-04T00:00:00+00:00","description":"How to integrate infolinks on your website with a simple shell command. Add the infolinks script to all webpages with SED.","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/add-infolinks-script-to-an-existing-website-from-console-with-sed-command/"},"url":"https://simpleit.rocks/add-infolinks-script-to-an-existing-website-from-console-with-sed-command/"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Start Emacs in Ubuntu The Right Way","author":{"@type":"Person","name":"marcanuy"},"datePublished":"2017-06-10T00:00:00+00:00","dateModified":"2017-06-10T00:00:00+00:00","description":"We explore how to have Emacs in Ubuntu running as a serviced unit and define some useful aliases and environment variables.","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/start-emacs-in-ubunt-the-right-way/"},"url":"https://simpleit.rocks/start-emacs-in-ubunt-the-right-way/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -116,7 +116,7 @@
     
     
     
-    <h1 class="title">Add Infolinks Script To An Existing Website From Console With Sed Command </h1>
+    <h1 class="title">Start Emacs In Ubuntu The Right Way </h1>
     
     
   </div>
@@ -221,10 +221,10 @@
     class="breadcrumb-item">
   
   <a itemscope itemtype="https://schema.org/Thing"
-     itemprop="item" href="/docs/linux/shell">
+     itemprop="item" href="/docs/linux/ubuntu">
     
 
-    shell
+    ubuntu
   </a>
   
   <meta itemprop="position" content="4" />
@@ -248,7 +248,7 @@
        itemprop="item">
     
 
-    <span itemprop="name">Add Infolinks Script To An Existing Website From Console With Sed Command</span>
+    <span itemprop="name">Start Emacs in Ubuntu The Right Way</span>
   </span>
   
   <meta itemprop="position" content="5" />
@@ -291,12 +291,12 @@
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#how-infolinks-work">How infolinks work</a></li>
-<li class="toc-entry toc-h2"><a href="#the-command">The command</a></li>
-<li class="toc-entry toc-h3"><a href="#put-script-in-a-file">Put script in a file</a></li>
-<li class="toc-entry toc-h3"><a href="#transform-all-files">Transform all files</a></li>
+<li class="toc-entry toc-h2"><a href="#systemd-unit">systemd Unit</a></li>
+<li class="toc-entry toc-h2"><a href="#final-tweaks">Final tweaks</a></li>
+<li class="toc-entry toc-h3"><a href="#command-aliases">Command aliases</a></li>
+<li class="toc-entry toc-h3"><a href="#default-editor">Default editor</a></li>
 <li class="toc-entry toc-h2"><a href="#conclusion">Conclusion</a></li>
-<li class="toc-entry toc-h2"><a href="#references">References</a></li>
+<li class="toc-entry toc-h2"><a href="#reference">Reference</a></li>
 </ul>
       </div>
       <div>
@@ -307,9 +307,9 @@
       <div>
     <a class="twitter-share-button"
        href="https://twitter.com/share"
-       data-url="https://simpleit.rocks/add-infolinks-script-to-an-existing-website-from-console-with-sed-command/"
+       data-url="https://simpleit.rocks/start-emacs-in-ubunt-the-right-way/"
        data-via=""
-       data-text="Add Infolinks Script To An Existing Website From Console With Sed Command"
+       data-text="Start Emacs in Ubuntu The Right Way"
        data-related="marcanuy,simpleitrocks"
        data-count="vertical">
 	Tweet
@@ -341,7 +341,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="https://simpleit.rocks/add-infolinks-script-to-an-existing-website-from-console-with-sed-command/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="https://simpleit.rocks/start-emacs-in-ubunt-the-right-way/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -358,7 +358,7 @@
 
     
 	<p class="lead">
-	  How to integrate infolinks on your website with a simple shell command. Add the infolinks script to all webpages with SED.
+	  We explore how to have Emacs in Ubuntu running as a serviced unit and define some useful aliases and environment variables.
 	</p>
     
 
@@ -382,109 +382,189 @@
 
     <h2 id="overview">Overview</h2>
 
-<p>An easy way to monetize your blog content is to add the <a href="http://www.infolinks.com/join-us?aid=2980966">Infolinks</a>
-script to the website. This is a simple guide to add this script with
-a shell command to all the web pages of a static site.</p>
+<p>Emacs can
+be
+<a href="http://www.geekherocomic.com/2009/02/02/emacs-vs-vim/">slow to start up</a>,
+if you use it constantly this can be a problem.</p>
 
-<h2 id="how-infolinks-work">How infolinks work</h2>
-
-<p>To integrate <a href="http://www.infolinks.com/join-us?aid=2980966">Infolinks</a> in your website, you need to add a script to
-each web page and it will convert some of the posts words into links
-to monetize them through automated affiliate links.</p>
-
-<h2 id="the-command">The command</h2>
-
-<p>After <a href="http://www.infolinks.com/join-us?aid=2980966">registering</a> the
-script can be obtained
-at <a href="https://publishers.infolinks.com/members/1-minute-integration">https://publishers.infolinks.com/members/1-minute-integration</a>.</p>
-
-<p><img class="img-fluid" alt="infolinks script" src="https://s3.amazonaws.com/simpleitrocksbucket/images/infolinksscript.png" /></p>
-
-<p>The script should be placed in each webpage before the closing
-<code class="highlighter-rouge">&lt;/body&gt;</code> HTML tag.</p>
-
-<p>For this we will use the <strong>sed</strong> command, its name stands for
-<strong>S</strong>tream <strong>Ed</strong>itor and is used to perform basic text
-transformations on files.</p>
-
-<h3 id="put-script-in-a-file">Put script in a file</h3>
-
-<p>Create a file named <code class="highlighter-rouge">changes.sed</code> with the basic changes for the <em>sed</em>
-command:</p>
-
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># insert the closing div tag *before* the closing body tag</span>
-/&lt;<span class="se">\/</span>body&gt;/i<span class="se">\</span>
-</code></pre>
-</div>
-
-<p>Then copy the infolinks script in the same file adding a backslash <code class="highlighter-rouge">\</code>
-after each line, so <code class="highlighter-rouge">changes.sed</code> will look like:</p>
-
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># insert the closing div tag *before* the closing body tag</span>
-/&lt;<span class="se">\/</span>body&gt;/i<span class="se">\</span>
-&lt;script <span class="nb">type</span><span class="o">=</span><span class="s2">"text/javascript"</span>&gt;<span class="se">\</span>
-var infolinks_pid <span class="o">=</span> 2980966;<span class="se">\</span>
-var infolinks_wsid <span class="o">=</span> 0;<span class="se">\</span>
-&lt;/script&gt;<span class="se">\</span>
-&lt;script <span class="nb">type</span><span class="o">=</span><span class="s2">"text/javascript"</span> <span class="nv">src</span><span class="o">=</span><span class="s2">"//resources.infolinks.com/js/infolinks_main.js"</span>&gt;&lt;/script&gt;
-</code></pre>
-</div>
-
-<p>This will tell <em>sed</em> to insert the javascript code before the
-<code class="highlighter-rouge">&lt;/body&gt;</code> HTML tag.</p>
-
-<p>We will use this file as the script to be inserted by <em>sed</em> with the
-parameter <code class="highlighter-rouge">-f</code>:</p>
+<p>Fortunately, there is a <code class="highlighter-rouge">daemon</code> version of Emacs that you can start
+once per session, loading the initialization file, and then connect to
+the running process with <kbd>emacsclient</kbd> fast.</p>
 
 <blockquote class="blockquote">
-  <p>-f script-file
-–file=script-file</p>
+  <p>–daemon
+	 Start  Emacs  as  a daemon, enabling the Emacs server and disconnecting from the terminal.  You can then use
+	 the emacsclient command to connect to the server (see emacsclient(1)).</p>
 
-  <p>Add the commands contained in the file script-file to the set of
-commands to be run while processing the input.</p>
-
-  <footer class="blockquote-footer"> <cite>sed linux manual</cite></footer>
+  <footer class="blockquote-footer"> <cite>Emacs man page</cite></footer>
 </blockquote>
 
-<h3 id="transform-all-files">Transform all files</h3>
+<p>From Ubuntu 15.04, <a href="https://www.freedesktop.org/wiki/Software/systemd">systemd</a> has become the default init system.</p>
 
-<p>Go to the directory you have all the web pages and test the command
-with one page:</p>
+<blockquote class="blockquote" cite="https://www.freedesktop.org/wiki/Software/systemd/">
+  <p>systemd is a suite of basic building blocks for a Linux system. It
+provides a system and service manager that runs as PID 1 and starts
+the rest of the system.</p>
+
+  <footer class="blockquote-footer"> <cite><a href="https://www.freedesktop.org/wiki/Software/systemd/">systemd System and Service Manager</a></cite></footer>
+</blockquote>
+<p>sdfsdf</p>
+
+<p>In this tutorial we will create a new <em>systemd</em> service to handle the
+Emacs server so we will be able to <code class="highlighter-rouge">start</code>, <code class="highlighter-rouge">stop</code>, <code class="highlighter-rouge">restart</code>,
+<code class="highlighter-rouge">enable</code> and <code class="highlighter-rouge">diable</code> the service as any other Linux service.</p>
+
+<h2 id="systemd-unit">systemd Unit</h2>
+
+<p>To turn Emacs into a <em>systemd</em> service that can be started automatically
+during system startup we will create a service to start the daemon.</p>
+
+<p><em>systemd</em> can manage manage services under the user’s control with a
+per-user <em>systemd</em> instance, enabling users to handle their own units.</p>
+
+<p>User services like this one, should be placed in
+<code class="highlighter-rouge">~/.config/systemd/user/</code> so then we will be able to run them with
+<kbd>systemctl --user enable *service*</kbd>.</p>
+
+<blockquote class="blockquote" cite="https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup">
+  <p>–user
+   Talk to the service manager of the calling user, rather than the service manager of the system.</p>
+
+  <footer class="blockquote-footer"> <cite><a href="https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup">systemctl --help</a></cite></footer>
+</blockquote>
+
+<p>The resources that <em>systemd</em> knows how to manage are called <em>units</em>.</p>
+
+<blockquote class="blockquote" cite="https://www.freedesktop.org/software/systemd/man/systemd.service.html">
+  <p>A unit configuration file whose name ends in <code class="highlighter-rouge">.service</code> encodes
+information about a process controlled and supervised by systemd.</p>
+
+  <footer class="blockquote-footer"> <cite><a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html">systemd.service — Service unit configuration</a></cite></footer>
+</blockquote>
+
+<p class="alert alert-danger"><em>systemd</em> –user instance is a per-user process, and not per-session.</p>
+
+<p>In <code class="highlighter-rouge">~/.config/systemd/user/emacs.service</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[Unit]
+Description=Emacs Daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/emacs --daemon
+ExecStop=/usr/bin/emacsclient --eval "(progn (setq kill-emacs-hook 'nil) (kill-emacs))"
+Restart=always
+
+[Install]
+WantedBy=default.target
+</code></pre>
+</div>
+
+<p>emacsclient</p>
+
+<p>Now we enable the <em>unit</em> to be started at login with <kbd>systemctl
+--user enable emacs.service</kbd> and start the service for the
+current session <kbd>systemctl --user start emacs.service</kbd>:</p>
 
 <pre class="shell">
 <samp>
-<span class="shell-prompt">$</span> <kbd>sed -f changes.sed &lt; webpage.html | less</kbd>
+<span class="shell-prompt">$</span> <kbd>systemctl --user enable emacs.service</kbd>
+Created symlink ~/.config/systemd/user/default.target.wants/emacs.service → ~/.config/systemd/user/emacs.service.
+<span class="shell-prompt">$</span> <kbd>tree .config/systemd/user/</kbd>
+.config/systemd/user/
+├── default.target.wants
+│   └── emacs.service -&gt; ~/.config/systemd/user/emacs.service
+└── emacs.service
+
+1 directory, 2 files
+<span class="shell-prompt">$</span> <kbd>systemctl --user list-unit-files|grep emacs</kbd>
+emacs.service                           enabled
+<span class="shell-prompt">$</span> <kbd>systemctl --user status emacs.service</kbd>
+● emacs.service - Emacs Daemon
+   Loaded: loaded (~/.config/systemd/user/emacs.service; enabled; vendor preset: enabled)
+   Active: inactive (dead)
+<span class="shell-prompt">$</span> <kbd>systemctl --user start emacs.service</kbd>
+<span class="shell-prompt">$</span> <kbd>systemctl --user status emacs.service</kbd>
+   Loaded: loaded (~/.config/systemd/user/emacs.service; enabled; vendor preset: enabled)
+   Active: active (running) since Sat 2017-06-10 15:13:33 -03; 1min 23s ago
+  Process: 22639 ExecStop=/usr/bin/emacsclient --eval (progn (setq kill-emacs-hook 'nil) (kill-emacs)) (code=exited, status=0/SUCCESS)
+  Process: 22782 ExecStart=/usr/bin/emacs --daemon (code=exited, status=0/SUCCESS)
+ Main PID: 22783 (emacs)
+   CGroup: /user.slice/user-1000.slice/user@1000.service/emacs.service
+           └─22783 /usr/bin/emacs --daemon
+
+jun 10 15:13:30 scarone emacs[22782]: ad-handle-definition: ‘moccur-mode’ got redefined
+jun 10 15:13:30 scarone emacs[22782]: ad-handle-definition: ‘moccur-grep-mode’ got redefined
+jun 10 15:13:30 scarone emacs[22782]: Loading ~/.emacs.d/.mc-lists.el (source)...
+jun 10 15:13:30 scarone emacs[22782]: Loading ~/.emacs.d/.mc-lists.el (source)...done
+jun 10 15:13:31 scarone emacs[22782]: [yas] Prepared just-in-time loading of snippets successfully.
+jun 10 15:13:32 scarone emacs[22782]: [yas] Prepared just-in-time loading of snippets successfully.
+jun 10 15:13:32 scarone emacs[22782]: Turning on magit-auto-revert-mode...
+jun 10 15:13:32 scarone emacs[22782]: Turning on magit-auto-revert-mode...done
+jun 10 15:13:33 scarone emacs[22782]: Starting Emacs daemon.
+jun 10 15:13:33 scarone systemd[1858]: Started Emacs Daemon.
+
 </samp>
 </pre>
 
-<p>Then apply the changes to each file <strong>replacing the original
-content</strong>.</p>
+<h2 id="final-tweaks">Final tweaks</h2>
 
-<p class="alert alert-danger">Having a backup of the site before applying the changes is always a
-good practice.</p>
+<h3 id="command-aliases">Command aliases</h3>
 
-<pre class="shell">
-<samp>
-<span class="shell-prompt">$</span> <kbd>find . -type f -exec sed -i -f changes.sed {} \;</kbd>
-</samp>
-</pre>
+<p>I’ve <a href="https://www.emacswiki.org/emacs/EmacsAsDaemon">found</a> these
+aliases helpful to have at hand:</p>
 
-<p>The <code class="highlighter-rouge">-i</code> <em>sed</em> parameter stands for <strong>in place</strong> so it will replace each file contents.</p>
+<dl>
+  <dt>emacsclient -t</dt>
+  <dd>open a new Emacs frame on the current terminal (similar to <code class="highlighter-rouge">emacs -nw</code>)</dd>
+  <dt>emacsclient -c -a emacs</dt>
+  <dd><strong>-c</strong> create a new frame instead of trying to use the current Emacs frame</dd>
+  <dd><strong>-a</strong> –alternate-editor=EDITOR, if  the  Emacs  server  is not running, run the specified editor instead.</dd>
+</dl>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">alias </span><span class="nv">emax</span><span class="o">=</span><span class="s2">"emacsclient -t"</span>
+<span class="nb">alias </span><span class="nv">semac</span><span class="o">=</span><span class="s2">"sudo emacsclient -t"</span>
+<span class="nb">alias </span><span class="nv">emacsc</span><span class="o">=</span><span class="s2">"emacsclient -c -a emacs"</span>           <span class="c"># new - opens the GUI with alternate non-daemon</span>
+</code></pre>
+</div>
+
+<h3 id="default-editor">Default editor</h3>
+
+<p>Finally, set the <code class="highlighter-rouge">EDITOR</code> and <code class="highlighter-rouge">VISUAL</code> environment variables so
+<code class="highlighter-rouge">emacs</code> is your default editor:</p>
+
+<dl>
+  <dt>EDITOR</dt>
+  <dd>The name of the lightweight text editor</dd>
+  <dt>VISUAL</dt>
+  <dd>command to run the full-fledged editor</dd>
+</dl>
+
+<p>In <code class="highlighter-rouge">.bashrc</code>:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">export </span><span class="nv">ALTERNATE_EDITOR</span><span class="o">=</span><span class="s2">""</span>
+<span class="c"># $EDITOR should open in terminal</span>
+<span class="nb">export </span><span class="nv">EDITOR</span><span class="o">=</span><span class="s2">"emacsclient -t"</span>
+<span class="c"># $VISUAL opens in GUI with non-daemon as alternate</span>
+<span class="nb">export </span><span class="nv">VISUAL</span><span class="o">=</span><span class="s2">"emacsclient -c -a emacs"</span>
+</code></pre>
+</div>
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>This is a simple way for monetizing web content without having to deal
-with complex configurations or having to alter web content in any
-way. It integrates seamlessly into each web page and starts making a
-revenue from it.</p>
+<p>We created a script to run like a native Ubuntu service, then added
+some aliases and defined environment variables. Now we have a better
+experience in Ubuntu using Emacs with faster loading times and more
+integrated to the OS.</p>
 
-<h2 id="references">References</h2>
+<h2 id="reference">Reference</h2>
 
 <ul>
-  <li><em>sed</em> manual at
-<em>gnu</em> <a href="https://www.gnu.org/software/sed/manual/sed.html">https://www.gnu.org/software/sed/manual/sed.html</a></li>
+  <li>systemd/User <a href="https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup">https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup</a></li>
+  <li>EmacsAsDaemon <a href="https://www.emacswiki.org/emacs/EmacsAsDaemon">https://www.emacswiki.org/emacs/EmacsAsDaemon</a></li>
+  <li><a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html">https://www.freedesktop.org/software/systemd/man/systemd.service.html</a></li>
+  <li><a href="https://taingram.org/2017/05/09/using-emacsclient-to-speed-up-editing/">Using emacsclient to Speed up Editing</a></li>
 </ul>
-
 
 
     
@@ -537,7 +617,7 @@ revenue from it.</p>
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/add-infolinks-script-to-an-existing-website-from-console-with-sed-command/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/start-emacs-in-ubunt-the-right-way/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -565,435 +645,6 @@ revenue from it.</p>
 
 
 
-
-<div class="post-same-category">
-  <h4>Articles in this category</h4>
-  <div class="list-group">
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/lightweight-solution-to-start-mysql-daemon-if-not-running/">
-      Bash Script to Find Out If MySQL Is Running Or Not
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/delete-all-backup-files-recursively-in-bash/">
-      Delete All Backup Files Recursively In Bash
-    </a>
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/prevent-running-of-duplicate-cron-jobs/">
-      Prevent Running Of Duplicate Cron Jobs
-    </a>
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/shell-redirect-output-and-errors-to-the-null-device-in-bash/">
-      Shell Redirect Output And Errors To The Null Device In Bash
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/change-all-files-permissions-to-644-and-directories-to-755-commands/">
-      How to change all files permissions to 644 and directories to 755
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action active" href="/add-infolinks-script-to-an-existing-website-from-console-with-sed-command/">
-      Add Infolinks Script To An Existing Website From Console With Sed Command
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  </div>
-</div>
 
 
 	

@@ -6,9 +6,210 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 08 Jun 2017 20:59:36 +0000</pubDate>
-    <lastBuildDate>Thu, 08 Jun 2017 20:59:36 +0000</lastBuildDate>
+    <pubDate>Sat, 10 Jun 2017 19:03:02 +0000</pubDate>
+    <lastBuildDate>Sat, 10 Jun 2017 19:03:02 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Start Emacs in Ubuntu The Right Way</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Emacs can
+be
+&lt;a href=&quot;http://www.geekherocomic.com/2009/02/02/emacs-vs-vim/&quot;&gt;slow to start up&lt;/a&gt;,
+if you use it constantly this can be a problem.&lt;/p&gt;
+
+&lt;p&gt;Fortunately, there is a &lt;code class=&quot;highlighter-rouge&quot;&gt;daemon&lt;/code&gt; version of Emacs that you can start
+once per session, loading the initialization file, and then connect to
+the running process with &lt;kbd&gt;emacsclient&lt;/kbd&gt; fast.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot;&gt;
+  &lt;p&gt;–daemon
+	 Start  Emacs  as  a daemon, enabling the Emacs server and disconnecting from the terminal.  You can then use
+	 the emacsclient command to connect to the server (see emacsclient(1)).&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Emacs man page&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;From Ubuntu 15.04, &lt;a href=&quot;https://www.freedesktop.org/wiki/Software/systemd&quot;&gt;systemd&lt;/a&gt; has become the default init system.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://www.freedesktop.org/wiki/Software/systemd/&quot;&gt;
+  &lt;p&gt;systemd is a suite of basic building blocks for a Linux system. It
+provides a system and service manager that runs as PID 1 and starts
+the rest of the system.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://www.freedesktop.org/wiki/Software/systemd/&quot;&gt;systemd System and Service Manager&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;sdfsdf&lt;/p&gt;
+
+&lt;p&gt;In this tutorial we will create a new &lt;em&gt;systemd&lt;/em&gt; service to handle the
+Emacs server so we will be able to &lt;code class=&quot;highlighter-rouge&quot;&gt;start&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;stop&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;restart&lt;/code&gt;,
+&lt;code class=&quot;highlighter-rouge&quot;&gt;enable&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;diable&lt;/code&gt; the service as any other Linux service.&lt;/p&gt;
+
+&lt;h2 id=&quot;systemd-unit&quot;&gt;systemd Unit&lt;/h2&gt;
+
+&lt;p&gt;To turn Emacs into a &lt;em&gt;systemd&lt;/em&gt; service that can be started automatically
+during system startup we will create a service to start the daemon.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;systemd&lt;/em&gt; can manage manage services under the user’s control with a
+per-user &lt;em&gt;systemd&lt;/em&gt; instance, enabling users to handle their own units.&lt;/p&gt;
+
+&lt;p&gt;User services like this one, should be placed in
+&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.config/systemd/user/&lt;/code&gt; so then we will be able to run them with
+&lt;kbd&gt;systemctl --user enable *service*&lt;/kbd&gt;.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup&quot;&gt;
+  &lt;p&gt;–user
+   Talk to the service manager of the calling user, rather than the service manager of the system.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup&quot;&gt;systemctl --help&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The resources that &lt;em&gt;systemd&lt;/em&gt; knows how to manage are called &lt;em&gt;units&lt;/em&gt;.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://www.freedesktop.org/software/systemd/man/systemd.service.html&quot;&gt;
+  &lt;p&gt;A unit configuration file whose name ends in &lt;code class=&quot;highlighter-rouge&quot;&gt;.service&lt;/code&gt; encodes
+information about a process controlled and supervised by systemd.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://www.freedesktop.org/software/systemd/man/systemd.service.html&quot;&gt;systemd.service — Service unit configuration&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p class=&quot;alert alert-danger&quot;&gt;&lt;em&gt;systemd&lt;/em&gt; –user instance is a per-user process, and not per-session.&lt;/p&gt;
+
+&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.config/systemd/user/emacs.service&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[Unit]
+Description=Emacs Daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/emacs --daemon
+ExecStop=/usr/bin/emacsclient --eval &quot;(progn (setq kill-emacs-hook 'nil) (kill-emacs))&quot;
+Restart=always
+
+[Install]
+WantedBy=default.target
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;emacsclient&lt;/p&gt;
+
+&lt;p&gt;Now we enable the &lt;em&gt;unit&lt;/em&gt; to be started at login with &lt;kbd&gt;systemctl
+--user enable emacs.service&lt;/kbd&gt; and start the service for the
+current session &lt;kbd&gt;systemctl --user start emacs.service&lt;/kbd&gt;:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl --user enable emacs.service&lt;/kbd&gt;
+Created symlink ~/.config/systemd/user/default.target.wants/emacs.service → ~/.config/systemd/user/emacs.service.
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;tree .config/systemd/user/&lt;/kbd&gt;
+.config/systemd/user/
+├── default.target.wants
+│   └── emacs.service -&amp;gt; ~/.config/systemd/user/emacs.service
+└── emacs.service
+
+1 directory, 2 files
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl --user list-unit-files|grep emacs&lt;/kbd&gt;
+emacs.service                           enabled
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl --user status emacs.service&lt;/kbd&gt;
+● emacs.service - Emacs Daemon
+   Loaded: loaded (~/.config/systemd/user/emacs.service; enabled; vendor preset: enabled)
+   Active: inactive (dead)
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl --user start emacs.service&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl --user status emacs.service&lt;/kbd&gt;
+   Loaded: loaded (~/.config/systemd/user/emacs.service; enabled; vendor preset: enabled)
+   Active: active (running) since Sat 2017-06-10 15:13:33 -03; 1min 23s ago
+  Process: 22639 ExecStop=/usr/bin/emacsclient --eval (progn (setq kill-emacs-hook 'nil) (kill-emacs)) (code=exited, status=0/SUCCESS)
+  Process: 22782 ExecStart=/usr/bin/emacs --daemon (code=exited, status=0/SUCCESS)
+ Main PID: 22783 (emacs)
+   CGroup: /user.slice/user-1000.slice/user@1000.service/emacs.service
+           └─22783 /usr/bin/emacs --daemon
+
+jun 10 15:13:30 scarone emacs[22782]: ad-handle-definition: ‘moccur-mode’ got redefined
+jun 10 15:13:30 scarone emacs[22782]: ad-handle-definition: ‘moccur-grep-mode’ got redefined
+jun 10 15:13:30 scarone emacs[22782]: Loading ~/.emacs.d/.mc-lists.el (source)...
+jun 10 15:13:30 scarone emacs[22782]: Loading ~/.emacs.d/.mc-lists.el (source)...done
+jun 10 15:13:31 scarone emacs[22782]: [yas] Prepared just-in-time loading of snippets successfully.
+jun 10 15:13:32 scarone emacs[22782]: [yas] Prepared just-in-time loading of snippets successfully.
+jun 10 15:13:32 scarone emacs[22782]: Turning on magit-auto-revert-mode...
+jun 10 15:13:32 scarone emacs[22782]: Turning on magit-auto-revert-mode...done
+jun 10 15:13:33 scarone emacs[22782]: Starting Emacs daemon.
+jun 10 15:13:33 scarone systemd[1858]: Started Emacs Daemon.
+
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;final-tweaks&quot;&gt;Final tweaks&lt;/h2&gt;
+
+&lt;h3 id=&quot;command-aliases&quot;&gt;Command aliases&lt;/h3&gt;
+
+&lt;p&gt;I’ve &lt;a href=&quot;https://www.emacswiki.org/emacs/EmacsAsDaemon&quot;&gt;found&lt;/a&gt; these
+aliases helpful to have at hand:&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;emacsclient -t&lt;/dt&gt;
+  &lt;dd&gt;open a new Emacs frame on the current terminal (similar to &lt;code class=&quot;highlighter-rouge&quot;&gt;emacs -nw&lt;/code&gt;)&lt;/dd&gt;
+  &lt;dt&gt;emacsclient -c -a emacs&lt;/dt&gt;
+  &lt;dd&gt;&lt;strong&gt;-c&lt;/strong&gt; create a new frame instead of trying to use the current Emacs frame&lt;/dd&gt;
+  &lt;dd&gt;&lt;strong&gt;-a&lt;/strong&gt; –alternate-editor=EDITOR, if  the  Emacs  server  is not running, run the specified editor instead.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;emax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;emacsclient -t&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;semac&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sudo emacsclient -t&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;emacsc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;emacsclient -c -a emacs&quot;&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;# new - opens the GUI with alternate non-daemon&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;default-editor&quot;&gt;Default editor&lt;/h3&gt;
+
+&lt;p&gt;Finally, set the &lt;code class=&quot;highlighter-rouge&quot;&gt;EDITOR&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;VISUAL&lt;/code&gt; environment variables so
+&lt;code class=&quot;highlighter-rouge&quot;&gt;emacs&lt;/code&gt; is your default editor:&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;EDITOR&lt;/dt&gt;
+  &lt;dd&gt;The name of the lightweight text editor&lt;/dd&gt;
+  &lt;dt&gt;VISUAL&lt;/dt&gt;
+  &lt;dd&gt;command to run the full-fledged editor&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ALTERNATE_EDITOR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# $EDITOR should open in terminal&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;EDITOR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;emacsclient -t&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# $VISUAL opens in GUI with non-daemon as alternate&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;VISUAL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;emacsclient -c -a emacs&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;We created a script to run like a native Ubuntu service, then added
+some aliases and defined environment variables. Now we have a better
+experience in Ubuntu using Emacs with faster loading times and more
+integrated to the OS.&lt;/p&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;systemd/User &lt;a href=&quot;https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup&quot;&gt;https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;EmacsAsDaemon &lt;a href=&quot;https://www.emacswiki.org/emacs/EmacsAsDaemon&quot;&gt;https://www.emacswiki.org/emacs/EmacsAsDaemon&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.freedesktop.org/software/systemd/man/systemd.service.html&quot;&gt;https://www.freedesktop.org/software/systemd/man/systemd.service.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://taingram.org/2017/05/09/using-emacsclient-to-speed-up-editing/&quot;&gt;Using emacsclient to Speed up Editing&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sat, 10 Jun 2017 00:00:00 +0000</pubDate>
+        <link>https://simpleit.rocks/start-emacs-in-ubunt-the-right-way/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/start-emacs-in-ubunt-the-right-way/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>linux</category>
+        
+        <category>ubuntu</category>
+        
+      </item>
     
       <item>
         <title>How To Search Packages Using Yarn</title>
@@ -1579,13 +1780,13 @@ Console &lt;a href=&quot;https://www.google.com/webmasters/tools/sitemap-list&qu
         <title>How To Add Bootstrap 4 To Jekyll The Right Way</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
-&lt;p&gt;The real power of Bootstrap is to use and redefine its variables in
-our custom designs, that means, we should not simply add Bootstrap’s
-javascript and &lt;abbr title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/abbr&gt; stylesheets to use its components, we need to
-change them and not making all the web look boringly the same.&lt;/p&gt;
+&lt;p&gt;One of the keys to use Bootstrap successfully is to be able to use and
+redefine its variables in our custom designs. We should not simply add
+Bootstrap’s javascript and &lt;abbr title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/abbr&gt; stylesheets to use its components, we
+need to change them and not making all the web look boringly the same.&lt;/p&gt;
 
 &lt;p&gt;This is a guide to make it easy to use Bootstrap 4 with a Jekyll
-website and make it easy to customize it using its variables and
+website and be able to use and customize its variables as well as
 defining new ones.&lt;/p&gt;
 
 &lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
@@ -1625,33 +1826,39 @@ used with Bootstrap 3.&lt;/p&gt;
 
 &lt;h2 id=&quot;installing-bootstrap-4&quot;&gt;Installing Bootstrap 4&lt;/h2&gt;
 
-&lt;p&gt;We will be using the package manager &lt;a href=&quot;https://bower.io&quot;&gt;Bower&lt;/a&gt; to install Bootstrap. At
-our Jekyll website root folder we use the &lt;kbd&gt;bower install&lt;/kbd&gt;
-command. In this case I will be using &lt;code class=&quot;highlighter-rouge&quot;&gt;bootstrap#v4.0.0-alpha.6&lt;/code&gt; but
-you can find the latest one
-at
-&lt;a href=&quot;https://v4-alpha.getbootstrap.com/getting-started/download/#bower&quot;&gt;https://v4-alpha.getbootstrap.com/getting-started/download/#bower&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We will be using the package manager &lt;a href=&quot;https://yarnpkg.com/lang/en/docs/install&quot;&gt;Yarn&lt;/a&gt; to install Bootstrap. At
+our Jekyll website root folder we run &lt;kbd&gt;yarn install&lt;/kbd&gt;. In this
+case I will be using &lt;code class=&quot;highlighter-rouge&quot;&gt;bootstrap#v4.0.0-alpha.6&lt;/code&gt; but you can find the
+latest one
+at &lt;a href=&quot;https://v4-alpha.getbootstrap.com/getting-started/download/&quot;&gt;https://v4-alpha.getbootstrap.com/getting-started/download/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p class=&quot;alert alert-info&quot;&gt;Previously I used &lt;a href=&quot;https://bower.io&quot;&gt;Bower&lt;/a&gt; in this tutorial but as it won’t be
+maintained anymore, &lt;a href=&quot;https://yarnpkg.com/lang/en/docs/install&quot;&gt;Yarn&lt;/a&gt; is a better, more robust solution.&lt;/p&gt;
 
 &lt;pre class=&quot;shell&quot;&gt;
 &lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;bower install bootstrap#v4.0.0-alpha.6&lt;/kbd&gt;
-bower bootstrap#v4.0.0-alpha.6  cached https://github.com/twbs/bootstrap.git#4.0.0-alpha.6
-bower bootstrap#v4.0.0-alpha.6         validate 4.0.0-alpha.6 against https://github.com/twbs/bootstrap.git#v4.0.0-alpha.6
-bower jquery#&amp;gt;=1.9.1                     cached https://github.com/jquery/jquery-dist.git#3.1.1
-bower jquery#&amp;gt;=1.9.1                   validate 3.1.1 against https://github.com/jquery/jquery-dist.git#&amp;gt;=1.9.1
-bower tether#^1.4.0                      cached https://github.com/HubSpot/tether.git#1.4.0
-bower tether#^1.4.0                    validate 1.4.0 against https://github.com/HubSpot/tether.git#^1.4.0
-bower bootstrap#v4.0.0-alpha.6          install bootstrap#4.0.0-alpha.6
-bower jquery#&amp;gt;=1.9.1                    install jquery#3.1.1
-bower tether#^1.4.0                     install tether#1.4.0
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;yarn install&lt;/kbd&gt;
+yarn install v0.24.6
+info No lockfile found.
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+success Saved lockfile.
+Done in 0.38s.
 
-bootstrap#4.0.0-alpha.6 bower_components/bootstrap
-├── jquery#3.1.1
-└── tether#1.4.0
-
-jquery#3.1.1 bower_components/jquery
-
-tether#1.4.0 bower_components/tether
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;yarn add bootstrap@4.0.0-alpha.6&lt;/kbd&gt;
+yarn add v0.24.6
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+success Saved lockfile.
+success Saved 3 new dependencies.
+├─ bootstrap@4.0.0-alpha.6
+├─ jquery@3.2.1
+└─ tether@1.4.0
+Done in 3.23s.
 &lt;/samp&gt;
 &lt;/pre&gt;
 
@@ -1676,7 +1883,7 @@ it, so it will process other folders too.&lt;/p&gt;
 &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;sass&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;s&quot;&gt;load_paths&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
         &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;_sass&lt;/span&gt;
-        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bower_components&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;node_modules&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -1684,8 +1891,7 @@ it, so it will process other folders too.&lt;/p&gt;
 
 &lt;h2 id=&quot;add-javascript&quot;&gt;Add javascript&lt;/h2&gt;
 
-&lt;p&gt;Add Bootstrap core JavaScript, JQuery and Tether&lt;sup id=&quot;fnref:tether&quot;&gt;&lt;a href=&quot;#fn:tether&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; (already installed when
-installing Bootstrap) at the end of the document so the pages load
+&lt;p&gt;Add Bootstrap JavaScript at the end of the document so the pages load
 faster, just before the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;/body&amp;gt;&lt;/code&gt; HTML tag.&lt;/p&gt;
 
 &lt;p&gt;We add them in the default layout at &lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts/default.html&lt;/code&gt; or in
@@ -1694,9 +1900,9 @@ faster, just before the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;
 &lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;html&amp;gt;
 &amp;lt;body&amp;gt;
 ...
-&amp;lt;script src=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/bower_components/jquery/dist/jquery.min.js'&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;prepend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.baseurl&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;script src=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/bower_components/tether/dist/js/tether.min.js'&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;prepend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.baseurl&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;script src=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/bower_components/bootstrap/dist/js/bootstrap.min.js'&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;prepend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.baseurl&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;&amp;lt;/script&amp;gt;
+	&amp;lt;script src=&quot;/node_modules/jquery/dist/jquery.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+	&amp;lt;script src=&quot;/node_modules/tether/dist/js/tether.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+	&amp;lt;script src=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/node_modules/bootstrap/dist/js/bootstrap.min.js'&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;prepend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.baseurl&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;&amp;lt;/script&amp;gt;
 &amp;lt;/body&amp;gt;
 &amp;lt;/html&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -1712,12 +1918,12 @@ Bootstrap, we create a new partial Sass file &lt;code class=&quot;highlighter-ro
 &lt;ol&gt;
   &lt;li&gt;We define our variables&lt;/li&gt;
   &lt;li&gt;“Overwrite” the ones we want from Bootstrap
-&lt;code class=&quot;highlighter-rouge&quot;&gt;bower_components/bootstrap/scss/_variables.scss&lt;/code&gt; before loading them
+&lt;code class=&quot;highlighter-rouge&quot;&gt;node_modules/bootstrap/scss/_variables.scss&lt;/code&gt; before loading them
 and then&lt;/li&gt;
   &lt;li&gt;we import the Bootstrap variables.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p class=&quot;alert alert-danger&quot;&gt;All the variables defined in Bootstrap 4 have the &lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;!default&lt;/code&gt;&lt;/strong&gt;&lt;sup id=&quot;fnref:scss_default&quot;&gt;&lt;a href=&quot;#fn:scss_default&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;
+&lt;p class=&quot;alert alert-danger&quot;&gt;All the variables defined in Bootstrap 4 have the &lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;!default&lt;/code&gt;&lt;/strong&gt;&lt;sup id=&quot;fnref:scss_default&quot;&gt;&lt;a href=&quot;#fn:scss_default&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;
 property at the end.
 When Jekyll process each Scss file, &lt;strong&gt;it only defines the variables that do not
 have been assigned any value yet&lt;/strong&gt;, so we can define Bootstrap’s
@@ -1728,7 +1934,7 @@ depending on each other to calculate &lt;abbr title=&quot;Cascading Style Sheets
 &lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;_sass/_variables.scss&lt;/code&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;language-scss highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$custom-font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;../bower_components/bootstrap/scss/variables&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;../node_modules/bootstrap/scss/variables&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -1783,8 +1989,8 @@ graph TB
         partials--&amp;gt; |&quot;import variables&quot;|VARS
         partials--&amp;gt; |&quot;import bootstrap/scss/bootstrap&quot;|BS_SCSS
         VARS[&quot;/_sass/_variables.scss&quot;]--&amp;gt;BS_VARIABLES
-        BS_VARIABLES[&quot;@import '../bower_components/bootstrap/scss/variables';&quot;]--&amp;gt;STYLESCSS
-        BS_SCSS[&quot;/bower_components/bootstrap/scss/bootstrap.scss&quot;]--&amp;gt;STYLESCSS
+        BS_VARIABLES[&quot;@import '../node_modules/bootstrap/scss/variables';&quot;]--&amp;gt;STYLESCSS
+        BS_SCSS[&quot;/node_modules/bootstrap/scss/bootstrap.scss&quot;]--&amp;gt;STYLESCSS
         STYLESCSS[&quot;Generates /assets/main.css&quot;]
 &lt;/div&gt;
 
@@ -1793,8 +1999,10 @@ graph TB
 &lt;p&gt;You’ll find
 a
 &lt;a href=&quot;https://github.com/marcanuy/jekyll-bootstrap4&quot;&gt;minimal example of a site&lt;/a&gt; in
-Jekyll hosted on GitHub, based on this article and ready to use, and
-the following step by step video:&lt;/p&gt;
+Jekyll hosted on GitHub based on this article ready to use.&lt;/p&gt;
+
+&lt;p&gt;There is also a step by step video using the previous package manager
+Bower instead of Yarn:&lt;/p&gt;
 
 &lt;div class=&quot;embed-responsive embed-responsive-16by9&quot;&gt;
   &lt;iframe class=&quot;embed-responsive-item&quot; src=&quot;//www.youtube.com/embed/0EI1V_Whgto&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
@@ -1803,14 +2011,14 @@ the following step by step video:&lt;/p&gt;
 &lt;p&gt;It is also part of a Jekyll starter
 site &lt;a href=&quot;https://github.com/marcanuy/jekyll-skeleton&quot;&gt;jekyll-skeleton&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&quot;optional-keep-bower_components-out-of-_site&quot;&gt;OPTIONAL: Keep bower_components out of _site&lt;/h2&gt;
+&lt;h2 id=&quot;optional-keep-node_modules-out-of-_site&quot;&gt;OPTIONAL: Keep node_modules out of _site&lt;/h2&gt;
 
 &lt;p&gt;You probably don’t want to expose all the package files in your
 website, nor do I, so let’s see how to serve just only the needed
 files.&lt;/p&gt;
 
 &lt;p&gt;To make this we will copy the files that we are including directly
-from the &lt;code class=&quot;highlighter-rouge&quot;&gt;bower_components&lt;/code&gt; directory to a new one containing just
+from the &lt;code class=&quot;highlighter-rouge&quot;&gt;node_modules&lt;/code&gt; directory to a new one containing just
 these files in each build, that means, we have to set up a script
 replacement for &lt;kbd&gt;jekyll build&lt;/kbd&gt; and &lt;kbd&gt;jekyll serve&lt;/kbd&gt;.&lt;/p&gt;
 
@@ -1822,11 +2030,11 @@ program.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SHELL :&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; /bin/bash &lt;span class=&quot;c&quot;&gt;# needed for prettyurls&lt;/span&gt;
 BUNDLE :&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; bundle
-BOWER :&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; bower
+YARN :&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; yarn
 VENDOR_DIR &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; assets/vendor/
 JEKYLL :&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;BUNDLE&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll
 
-PROJECT_DEPS :&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Gemfile bower.json
+PROJECT_DEPS :&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Gemfile packages.json
 
 .PHONY: all clean install update
 
@@ -1842,24 +2050,22 @@ check:
 
 install: &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;PROJECT_DEPS&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
 	&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;BUNDLE&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; install --path vendor/bundler
-	&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;BOWER&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; install
+	&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;YARN&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; install
 
 update: &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;PROJECT_DEPS&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
 	&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;BUNDLE&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; update
-	&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;BOWER&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; update
+	&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;YARN&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; upgrade
 
-include-bower-deps:
+include-yarn-deps:
 	mkdir -p &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;VENDOR_DIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-	cp bower_components/font-awesome/css/font-awesome.min.css &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;VENDOR_DIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-	cp -r bower_components/font-awesome/fonts &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;VENDOR_DIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-	cp bower_components/jquery/dist/jquery.min.js &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;VENDOR_DIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-	cp bower_components/tether/dist/js/tether.min.js &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;VENDOR_DIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-	cp bower_components/bootstrap/dist/js/bootstrap.min.js &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;VENDOR_DIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+	cp node_modules/jquery/dist/jquery.min.js &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;VENDOR_DIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+	cp node_modules/tether/dist/js/tether.min.js &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;VENDOR_DIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+	cp node_modules/bootstrap/dist/js/bootstrap.min.js &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;VENDOR_DIR&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
 
-build: install include-bower-deps
+build: install include-yarn-deps
 	&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;JEKYLL&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; build
 
-serve: install include-bower-deps
+serve: install include-yarn-deps
 	&lt;span class=&quot;nv&quot;&gt;JEKYLL_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;JEKYLL&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; serve
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1877,15 +2083,8 @@ use them as:&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;And fontawesome, replace the old path &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;link rel=&quot;stylesheet&quot;
-href=&quot;https://simpleit.rocks/bower_components/font-awesome/css/font-awesome.min.css&quot;&amp;gt;&lt;/code&gt; with:&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://simpleit.rocks/assets/vendor/font-awesome.min.css&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
 &lt;p&gt;Now we are just including in our website the files we chose from the
-&lt;code class=&quot;highlighter-rouge&quot;&gt;bower_components&lt;/code&gt; folder, placing them in &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/vendor&lt;/code&gt;.&lt;/p&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;node_modules&lt;/code&gt; folder, placing them in &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/vendor&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
@@ -1951,13 +2150,6 @@ because of a fundamental inability to trust non-user content.&lt;/p&gt;
         &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;parkr comment in &lt;a href=&quot;https://github.com/jekyll/jekyll-sass-converter/issues/44#issuecomment-169858494&quot;&gt;Allow multiple load_paths in safe mode&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
       &lt;/blockquote&gt;
       &lt;p&gt;&lt;a href=&quot;#fnref:safe-mode&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:tether&quot;&gt;
-
-      &lt;p&gt;&lt;a href=&quot;http://github.hubspot.com/tether/&quot;&gt;Tether&lt;/a&gt; is a small,
-focused JavaScript library for defining and managing the position of
-user interface (UI) elements in relation to one another on a web page
-used by Bootstrap&amp;nbsp;&lt;a href=&quot;#fnref:tether&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:scss_default&quot;&gt;
 
@@ -2202,302 +2394,6 @@ containing the &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_verifier&lt
         <category>apis</category>
         
         <category>twitter</category>
-        
-      </item>
-    
-      <item>
-        <title>Essential Seo Tips And Techniques From Trusted Sources</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;This article is a curated list of Search Engine Optimization
-techniques from top Search Engines and trusted sources to improve your
-search engine presence and design better websites.&lt;/p&gt;
-
-&lt;p&gt;It mainly consists of special clues given in Google blog posts.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2016/09/penguin-is-now-part-of-our-core.html&quot;&gt;
-  &lt;p&gt;Google’s algorithms rely on more than 200 unique signals or “clues”
-that make it possible to surface what you might be looking
-for. These signals include things like the specific words that
-appear on websites, the freshness of content, your region and
-PageRank.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;facts&quot;&gt;Facts&lt;/h2&gt;
-
-&lt;h3 id=&quot;android&quot;&gt;Android&lt;/h3&gt;
-
-&lt;p&gt;Apps are favored on search results made from Android devices.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2015/04/drive-app-installs-through-app-indexing.html&quot;&gt;
-  &lt;p&gt;App Indexing, when indexed content from your app is relevant to a
-search done on Google on Android devices, people may start to see app
-install buttons for your app in search results. we are starting to use
-App Indexing as a ranking signal for all users on Android, regardless
-of whether they have your app installed or not.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Lawrence Chang, Product Manager &lt;a href=&quot;https://webmasters.googleblog.com/2015/04/drive-app-installs-through-app-indexing.html&quot;&gt;2015-04-16&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Signed-in users would likely see content from apps they have
-installed. (&lt;a href=&quot;https://support.google.com/googleplay/android-developer/answer/6041489?hl=en&quot;&gt;App Indexing&lt;/a&gt; allows
-Google to surface this information in search results)&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2015/02/finding-more-mobile-friendly-search.html&quot;&gt;
-  &lt;p&gt;Starting today, we will begin to use information from indexed apps
-as a factor in ranking for signed-in users who have the app
-installed. As a result, we may now surface content from indexed apps
-more prominently in search. To find out how to implement App
-Indexing, which allows us to surface this information in search
-results&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Takaki Makino, Chaesang Jung, and Doantam Phan in Finding more mobile-friendly search results &lt;a href=&quot;https://webmasters.googleblog.com/2015/02/finding-more-mobile-friendly-search.html&quot;&gt;2015-02-26&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;crawling&quot;&gt;Crawling&lt;/h3&gt;
-
-&lt;p&gt;Crawling rate is not a ranking signal.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2017/01/what-crawl-budget-means-for-googlebot.html&quot;&gt;
-  &lt;p&gt;Google uses hundreds of signals to rank the results, and while
-crawling is necessary for being in the results, it’s not a ranking
-signal.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Gary Illyes: Crawling and Indexing teams at What Crawl Budget Means for Googlebot &lt;a href=&quot;https://webmasters.googleblog.com/2017/01/what-crawl-budget-means-for-googlebot.html&quot;&gt;2017-01-16&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;https&quot;&gt;HTTPS&lt;/h3&gt;
-
-&lt;p&gt;HTTPS is a ranking signal and is better than HTTP.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2014/08/https-as-ranking-signal.html&quot;&gt;
-  &lt;p&gt;over the past few months we’ve been running tests taking into
-account whether sites use secure, encrypted connections as a signal in
-our search ranking algorithms. We’ve seen positive results, so
-we’re starting to use HTTPS as a ranking signal. For now it’s only a
-very lightweight signal — affecting fewer than 1% of global queries,
-and carrying less weight than other signals such as high-quality
-content — while we give webmasters time to switch to HTTPS. But over
-time, we may decide to strengthen it, because we’d like to encourage
-all website owners to switch from HTTP to HTTPS to keep everyone
-safe on the web.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;HTTPS as a ranking signal &lt;a href=&quot;https://webmasters.googleblog.com/2014/08/https-as-ranking-signal.html&quot;&gt;2014-08-06&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2015/12/indexing-https-pages-by-default.html&quot;&gt;
-  &lt;p&gt;we also started giving a slight ranking boost to HTTPS&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt; Indexing HTTPS pages by default - Zineb Ait Bahajji, WTA, and the Google Security and Indexing teams &lt;a href=&quot;https://webmasters.googleblog.com/2015/12/indexing-https-pages-by-default.html&quot;&gt;2015-12-17&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;images&quot;&gt;Images&lt;/h3&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://www.youtube.com/watch?time_continue=1&amp;amp;v=GMf6FmRus2M&quot;&gt;
-  &lt;p&gt;Google potentially use EXIF data from pictures as a ranking factor&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Matt Cutts video &lt;a href=&quot;https://www.youtube.com/watch?time_continue=1&amp;amp;v=GMf6FmRus2M&quot;&gt;2014-02-14&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;inbound-links&quot;&gt;Inbound Links&lt;/h3&gt;
-
-&lt;p&gt;Links from other websites should be gained through:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;merit-based and&lt;/li&gt;
-  &lt;li&gt;freely-volunteered&lt;/li&gt;
-  &lt;li&gt;relevant to geographic location&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2008/10/good-times-with-inbound-links.html&quot;&gt;
-  &lt;p&gt;Inbound links are links from pages on external sites linking back to
-your site. Inbound links can bring new users to your site, and when
-the links are merit-based and freely-volunteered as an editorial
-choice, they’re also one of the positive signals to Google about
-your site’s importance. Other signals include things like our
-analysis of your site’s content, its relevance to a geographic
-location, etc&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Maile Ohye, Developer Programs Tech Lead &lt;a href=&quot;https://webmasters.googleblog.com/2008/10/good-times-with-inbound-links.html&quot;&gt;2008-10-09&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;search-query&quot;&gt;Search Query&lt;/h3&gt;
-
-&lt;p&gt;Search query intent is favored over a mobile friendly site, i.e.: a
-non mobile-friendly site with better content than a mobile friendly
-one with less relevant content will be preferred.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2016/03/continuing-to-make-web-more-mobile.html&quot;&gt;
-  &lt;p&gt;the intent of the search query is still a very strong signal — so
-even if a page with high quality content is not mobile-friendly, it
-could still rank well if it has great, relevant content.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Continuing to make web more mobile &lt;a href=&quot;https://webmasters.googleblog.com/2016/03/continuing-to-make-web-more-mobile.html&quot;&gt;2016-03-16&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;high-quality-content&quot;&gt;High Quality Content&lt;/h3&gt;
-
-&lt;p&gt;According to &lt;a href=&quot;https://webmasters.googleblog.com/2011/05/more-guidance-on-building-high-quality.html&quot;&gt;this guide from Google High Quality Content is&lt;/a&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;Articles with truthful information&lt;/li&gt;
-    &lt;li&gt;Articles written by an expert or enthusiast who knows the topic well&lt;/li&gt;
-    &lt;li&gt;Avoid having duplicate, overlapping, or redundant articles on the
-same or similar topics with slightly different keyword variations&lt;/li&gt;
-    &lt;li&gt;Secure enough to give credit card information to the site&lt;/li&gt;
-    &lt;li&gt;Avoid spelling, stylistic, or factual errors&lt;/li&gt;
-    &lt;li&gt;Topics driven by genuine interests of readers of the site, avoid to
-generate content by attempting to guess what might rank well in
-search engines&lt;/li&gt;
-    &lt;li&gt;Provide articles with original content or information, original reporting, original research, and/or original analysis&lt;/li&gt;
-    &lt;li&gt;Provide pages with substantial value when compared to other pages in search results&lt;/li&gt;
-    &lt;li&gt;Perform quality control on content&lt;/li&gt;
-    &lt;li&gt;Have articles describing both sides of a story&lt;/li&gt;
-    &lt;li&gt;Be a recognized authority on articles topics&lt;/li&gt;
-    &lt;li&gt;Avoid mass-produced articles to a large number of creators, or
-spread across a large network of sites, so that individual pages or
-sites don’t get as much attention or care&lt;/li&gt;
-    &lt;li&gt;For a health related query, this site should be trusted by users&lt;/li&gt;
-    &lt;li&gt;The site should be recognized as an authoritative source when mentioned by name&lt;/li&gt;
-    &lt;li&gt;Articles should provide a complete or comprehensive description of the topic&lt;/li&gt;
-    &lt;li&gt;Articles should contain insightful analysis or interesting information that is beyond obvious&lt;/li&gt;
-    &lt;li&gt;Is this the sort of page you’d want to bookmark, share with a friend, or recommend?&lt;/li&gt;
-    &lt;li&gt;Avoid including an excessive amount of ads that distract from or
- interfere with the main content of the article&lt;/li&gt;
-    &lt;li&gt;Articles should have the quality to be included in a printed magazine, encyclopedia or book&lt;/li&gt;
-    &lt;li&gt;Avoid writing articles that are short, unsubstantial, or otherwise lacking in helpful specifics&lt;/li&gt;
-    &lt;li&gt;Produce pages with great care and attention to detail&lt;/li&gt;
-    &lt;li&gt;Make users happy from reading your articles&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;metadata&quot;&gt;Metadata&lt;/h3&gt;
-
-&lt;p&gt;Google does not use the keywords meta tag in web ranking&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2009/09/google-does-not-use-keywords-meta-tag.html&quot;&gt;
-  &lt;p&gt;At least for Google’s web search results currently (September 2009),
-the answer is no. Google doesn’t use the “keywords” meta tag in our
-web search ranking.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Matt Cutts, Search Quality Team &lt;a href=&quot;https://webmasters.googleblog.com/2009/09/google-does-not-use-keywords-meta-tag.html&quot;&gt;2009-09-21&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;mobile&quot;&gt;Mobile&lt;/h3&gt;
-
-&lt;p&gt;Mobile friendly contribute to a positive ranking.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2016/08/helping-users-easily-access-content-on.html&quot;&gt;
-  &lt;p&gt;To keep search results uncluttered, we’ll be removing the label,
-although the mobile-friendly criteria will continue to be a ranking
-signal.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Helping users easily access content on mobile &lt;a href=&quot;https://webmasters.googleblog.com/2016/08/helping-users-easily-access-content-on.html&quot;&gt;2016-08-23&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Mobile friendly websites are boosted on mobile search results.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2015/04/rolling-out-mobile-friendly-update.html&quot;&gt;
-  &lt;p&gt;As we noted earlier this year, today’s the day we begin globally
-rolling out our mobile-friendly update. We’re boosting the ranking
-of mobile-friendly pages on mobile search results. Now searchers can
-more easily find high-quality and relevant results where text is
-readable without tapping or zooming, tap targets are spaced
-appropriately, and the page avoids unplayable content or horizontal
-scrolling.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Rolling out the mobile-friendly update by Takaki Makino and Doantam Phan &lt;a href=&quot;https://webmasters.googleblog.com/2015/04/rolling-out-mobile-friendly-update.html&quot;&gt;2015-04-15&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2016/03/continuing-to-make-web-more-mobile.html&quot;&gt;
-  &lt;p&gt;Last year, we started using mobile-friendliness as a ranking signal
-on mobile searches. Today we’re announcing that beginning in May,
-we’ll start rolling out an update to mobile search results that
-increases the effect of the ranking signal to help our users find
-even more pages that are relevant and mobile-friendly.&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Klemen Kloboves, Software Engineer  &lt;a href=&quot;https://webmasters.googleblog.com/2016/03/continuing-to-make-web-more-mobile.html&quot;&gt;2016-03-16&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Mobile-friendly websites are more likely to appear in search results
-over other non-mobile friendly sites with similar content.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2015/02/finding-more-mobile-friendly-search.html&quot;&gt;
-  &lt;p&gt;Starting April 21, we will be expanding our use of
-mobile-friendliness as a ranking signal. This change will affect
-mobile searches in all languages worldwide and will have a
-significant impact in our search results. Consequently, users will
-find it easier to get relevant, high quality search results that are
-optimized for their devices.&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Takaki Makino, Chaesang Jung, and Doantam Phan in Finding more mobile-friendly search results &lt;a href=&quot;https://webmasters.googleblog.com/2015/02/finding-more-mobile-friendly-search.html&quot;&gt;2015-02-26&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;social&quot;&gt;Social&lt;/h3&gt;
-
-&lt;p&gt;Google +1 button amount of shares may increase web pages ranking.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2011/03/introducing-1-button.html&quot;&gt;
-  &lt;p&gt;We’ll add +1 buttons to search results and ads on Google.com. We’ll
-also start to look at +1’s as one of the many signals we use to
-determine a page’s relevance and ranking, including social signals
-from other services. For +1’s, as with any new ranking signal, we’ll
-be starting carefully and learning how those signals affect search
-quality over time.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;David Byttow, Software Engineer, +1 Button &lt;a href=&quot;https://webmasters.googleblog.com/2011/03/introducing-1-button.html&quot;&gt;2011-03-08&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;speed&quot;&gt;Speed&lt;/h3&gt;
-
-&lt;p&gt;Site speed is a ranking signal, fast loading websites are preferred.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2010/04/using-site-speed-in-web-search-ranking.html&quot;&gt;
-  &lt;p&gt;You may have heard that here at Google we’re obsessed with speed, in
-our products and on the web. As part of that effort, today we’re
-including a new signal in our search ranking algorithms: site
-speed. Site speed reflects how quickly a website responds to web
-requests.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Amit Singhal, Google Fellow and Matt Cutts, Principal Engineer, Google Search Quality Team &lt;a href=&quot;https://webmasters.googleblog.com/2010/04/using-site-speed-in-web-search-ranking.html&quot;&gt;2010-04-09&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Why is speed important to Google? Websites with fast loading times
-are good to:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;internet users, improving user experience while browsing&lt;/li&gt;
-  &lt;li&gt;reduces operating costs&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://webmasters.googleblog.com/2010/04/using-site-speed-in-web-search-ranking.html&quot;&gt;
-  &lt;p&gt;Faster sites create happy users and we’ve seen in our internal
-studies that when a site responds slowly, visitors spend less time
-there. But faster sites don’t just improve user experience; recent
-data shows that improving site speed also reduces operating costs.&lt;/p&gt;
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Amit Singhal, Google Fellow and Matt Cutts, Principal Engineer, Google Search Quality Team &lt;a href=&quot;https://webmasters.googleblog.com/2010/04/using-site-speed-in-web-search-ranking.html&quot;&gt;2010-04-09&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://webmasters.googleblog.com&quot;&gt;http://webmasters.googleblog.com&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://support.google.com&quot;&gt;http://support.google.com&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://developers.google.com&quot;&gt;http://developers.google.com&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://yandex.com/support/webmaster/&quot;&gt;https://yandex.com/support/webmaster/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Thu, 26 Jan 2017 00:00:00 +0000</pubDate>
-        <link>https://simpleit.rocks/essential-seo-tips-and-techniques-from-trusted-sources/</link>
-        <guid isPermaLink="true">https://simpleit.rocks/essential-seo-tips-and-techniques-from-trusted-sources/</guid>
-        
-        <category>ranking,</category>
-        
-        <category>seo</category>
-        
-        
-        <category>docs</category>
-        
-        <category>web</category>
-        
-        <category>seo</category>
         
       </item>
     

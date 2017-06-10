@@ -333,7 +333,7 @@
 <li class="toc-entry toc-h2"><a href="#add-css-to-layout">Add css to layout</a></li>
 <li class="toc-entry toc-h2"><a href="#all-together">All together</a></li>
 <li class="toc-entry toc-h2"><a href="#other">Other</a></li>
-<li class="toc-entry toc-h2"><a href="#optional-keep-bower_components-out-of-_site">OPTIONAL: Keep bower_components out of _site</a></li>
+<li class="toc-entry toc-h2"><a href="#optional-keep-node_modules-out-of-_site">OPTIONAL: Keep node_modules out of _site</a></li>
 <li class="toc-entry toc-h2"><a href="#conclusion">Conclusion</a></li>
 <li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
@@ -421,13 +421,13 @@
 
     <h2 id="overview">Overview</h2>
 
-<p>The real power of Bootstrap is to use and redefine its variables in
-our custom designs, that means, we should not simply add Bootstrap’s
-javascript and <abbr title="Cascading Style Sheets">CSS</abbr> stylesheets to use its components, we need to
-change them and not making all the web look boringly the same.</p>
+<p>One of the keys to use Bootstrap successfully is to be able to use and
+redefine its variables in our custom designs. We should not simply add
+Bootstrap’s javascript and <abbr title="Cascading Style Sheets">CSS</abbr> stylesheets to use its components, we
+need to change them and not making all the web look boringly the same.</p>
 
 <p>This is a guide to make it easy to use Bootstrap 4 with a Jekyll
-website and make it easy to customize it using its variables and
+website and be able to use and customize its variables as well as
 defining new ones.</p>
 
 <h2 id="background">Background</h2>
@@ -467,33 +467,39 @@ used with Bootstrap 3.</p>
 
 <h2 id="installing-bootstrap-4">Installing Bootstrap 4</h2>
 
-<p>We will be using the package manager <a href="https://bower.io">Bower</a> to install Bootstrap. At
-our Jekyll website root folder we use the <kbd>bower install</kbd>
-command. In this case I will be using <code class="highlighter-rouge">bootstrap#v4.0.0-alpha.6</code> but
-you can find the latest one
-at
-<a href="https://v4-alpha.getbootstrap.com/getting-started/download/#bower">https://v4-alpha.getbootstrap.com/getting-started/download/#bower</a>.</p>
+<p>We will be using the package manager <a href="https://yarnpkg.com/lang/en/docs/install">Yarn</a> to install Bootstrap. At
+our Jekyll website root folder we run <kbd>yarn install</kbd>. In this
+case I will be using <code class="highlighter-rouge">bootstrap#v4.0.0-alpha.6</code> but you can find the
+latest one
+at <a href="https://v4-alpha.getbootstrap.com/getting-started/download/">https://v4-alpha.getbootstrap.com/getting-started/download/</a>.</p>
+
+<p class="alert alert-info">Previously I used <a href="https://bower.io">Bower</a> in this tutorial but as it won’t be
+maintained anymore, <a href="https://yarnpkg.com/lang/en/docs/install">Yarn</a> is a better, more robust solution.</p>
 
 <pre class="shell">
 <samp>
-<span class="shell-prompt">$</span> <kbd>bower install bootstrap#v4.0.0-alpha.6</kbd>
-bower bootstrap#v4.0.0-alpha.6  cached https://github.com/twbs/bootstrap.git#4.0.0-alpha.6
-bower bootstrap#v4.0.0-alpha.6         validate 4.0.0-alpha.6 against https://github.com/twbs/bootstrap.git#v4.0.0-alpha.6
-bower jquery#&gt;=1.9.1                     cached https://github.com/jquery/jquery-dist.git#3.1.1
-bower jquery#&gt;=1.9.1                   validate 3.1.1 against https://github.com/jquery/jquery-dist.git#&gt;=1.9.1
-bower tether#^1.4.0                      cached https://github.com/HubSpot/tether.git#1.4.0
-bower tether#^1.4.0                    validate 1.4.0 against https://github.com/HubSpot/tether.git#^1.4.0
-bower bootstrap#v4.0.0-alpha.6          install bootstrap#4.0.0-alpha.6
-bower jquery#&gt;=1.9.1                    install jquery#3.1.1
-bower tether#^1.4.0                     install tether#1.4.0
+<span class="shell-prompt">$</span> <kbd>yarn install</kbd>
+yarn install v0.24.6
+info No lockfile found.
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+success Saved lockfile.
+Done in 0.38s.
 
-bootstrap#4.0.0-alpha.6 bower_components/bootstrap
-├── jquery#3.1.1
-└── tether#1.4.0
-
-jquery#3.1.1 bower_components/jquery
-
-tether#1.4.0 bower_components/tether
+<span class="shell-prompt">$</span> <kbd>yarn add bootstrap@4.0.0-alpha.6</kbd>
+yarn add v0.24.6
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+success Saved lockfile.
+success Saved 3 new dependencies.
+├─ bootstrap@4.0.0-alpha.6
+├─ jquery@3.2.1
+└─ tether@1.4.0
+Done in 3.23s.
 </samp>
 </pre>
 
@@ -518,7 +524,7 @@ it, so it will process other folders too.</p>
 <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">sass</span><span class="pi">:</span>
     <span class="s">load_paths</span><span class="pi">:</span>
         <span class="pi">-</span> <span class="s">_sass</span>
-        <span class="pi">-</span> <span class="s">bower_components</span>
+        <span class="pi">-</span> <span class="s">node_modules</span>
 </code></pre>
 </div>
 
@@ -526,8 +532,7 @@ it, so it will process other folders too.</p>
 
 <h2 id="add-javascript">Add javascript</h2>
 
-<p>Add Bootstrap core JavaScript, JQuery and Tether<sup id="fnref:tether"><a href="#fn:tether" class="footnote">4</a></sup> (already installed when
-installing Bootstrap) at the end of the document so the pages load
+<p>Add Bootstrap JavaScript at the end of the document so the pages load
 faster, just before the <code class="highlighter-rouge">&lt;/body&gt;</code> HTML tag.</p>
 
 <p>We add them in the default layout at <code class="highlighter-rouge">_layouts/default.html</code> or in
@@ -536,9 +541,9 @@ faster, just before the <code class="highlighter-rouge">&lt;/body&gt;</code> HTM
 <div class="language-liquid highlighter-rouge"><pre class="highlight"><code>&lt;html&gt;
 &lt;body&gt;
 ...
-&lt;script src="<span class="p">{{</span><span class="s1">'/bower_components/jquery/dist/jquery.min.js'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">prepend</span><span class="p">:</span><span class="w"> </span>site.baseurl<span class="p">}}</span>"&gt;&lt;/script&gt;
-&lt;script src="<span class="p">{{</span><span class="s1">'/bower_components/tether/dist/js/tether.min.js'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">prepend</span><span class="p">:</span><span class="w"> </span>site.baseurl<span class="p">}}</span>"&gt;&lt;/script&gt;
-&lt;script src="<span class="p">{{</span><span class="s1">'/bower_components/bootstrap/dist/js/bootstrap.min.js'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">prepend</span><span class="p">:</span><span class="w"> </span>site.baseurl<span class="p">}}</span>"&gt;&lt;/script&gt;
+	&lt;script src="/node_modules/jquery/dist/jquery.min.js"&gt;&lt;/script&gt;
+	&lt;script src="/node_modules/tether/dist/js/tether.min.js"&gt;&lt;/script&gt;
+	&lt;script src="<span class="p">{{</span><span class="s1">'/node_modules/bootstrap/dist/js/bootstrap.min.js'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">prepend</span><span class="p">:</span><span class="w"> </span>site.baseurl<span class="p">}}</span>"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
@@ -554,12 +559,12 @@ Bootstrap, we create a new partial Sass file <code class="highlighter-rouge">_sa
 <ol>
   <li>We define our variables</li>
   <li>“Overwrite” the ones we want from Bootstrap
-<code class="highlighter-rouge">bower_components/bootstrap/scss/_variables.scss</code> before loading them
+<code class="highlighter-rouge">node_modules/bootstrap/scss/_variables.scss</code> before loading them
 and then</li>
   <li>we import the Bootstrap variables.</li>
 </ol>
 
-<p class="alert alert-danger">All the variables defined in Bootstrap 4 have the <strong><code class="highlighter-rouge">!default</code></strong><sup id="fnref:scss_default"><a href="#fn:scss_default" class="footnote">5</a></sup>
+<p class="alert alert-danger">All the variables defined in Bootstrap 4 have the <strong><code class="highlighter-rouge">!default</code></strong><sup id="fnref:scss_default"><a href="#fn:scss_default" class="footnote">4</a></sup>
 property at the end.
 When Jekyll process each Scss file, <strong>it only defines the variables that do not
 have been assigned any value yet</strong>, so we can define Bootstrap’s
@@ -570,7 +575,7 @@ depending on each other to calculate <abbr title="Cascading Style Sheets">CSS</a
 <p>In <code class="highlighter-rouge">_sass/_variables.scss</code>:</p>
 
 <div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="nv">$custom-font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
-<span class="k">@import</span> <span class="s2">"../bower_components/bootstrap/scss/variables"</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">"../node_modules/bootstrap/scss/variables"</span><span class="p">;</span>
 </code></pre>
 </div>
 
@@ -625,8 +630,8 @@ graph TB
         partials--&gt; |"import variables"|VARS
         partials--&gt; |"import bootstrap/scss/bootstrap"|BS_SCSS
         VARS["/_sass/_variables.scss"]--&gt;BS_VARIABLES
-        BS_VARIABLES["@import '../bower_components/bootstrap/scss/variables';"]--&gt;STYLESCSS
-        BS_SCSS["/bower_components/bootstrap/scss/bootstrap.scss"]--&gt;STYLESCSS
+        BS_VARIABLES["@import '../node_modules/bootstrap/scss/variables';"]--&gt;STYLESCSS
+        BS_SCSS["/node_modules/bootstrap/scss/bootstrap.scss"]--&gt;STYLESCSS
         STYLESCSS["Generates /assets/main.css"]
 </div>
 
@@ -635,8 +640,10 @@ graph TB
 <p>You’ll find
 a
 <a href="https://github.com/marcanuy/jekyll-bootstrap4">minimal example of a site</a> in
-Jekyll hosted on GitHub, based on this article and ready to use, and
-the following step by step video:</p>
+Jekyll hosted on GitHub based on this article ready to use.</p>
+
+<p>There is also a step by step video using the previous package manager
+Bower instead of Yarn:</p>
 
 <div class="embed-responsive embed-responsive-16by9">
   <iframe class="embed-responsive-item" src="//www.youtube.com/embed/0EI1V_Whgto" allowfullscreen=""></iframe>
@@ -645,14 +652,14 @@ the following step by step video:</p>
 <p>It is also part of a Jekyll starter
 site <a href="https://github.com/marcanuy/jekyll-skeleton">jekyll-skeleton</a>.</p>
 
-<h2 id="optional-keep-bower_components-out-of-_site">OPTIONAL: Keep bower_components out of _site</h2>
+<h2 id="optional-keep-node_modules-out-of-_site">OPTIONAL: Keep node_modules out of _site</h2>
 
 <p>You probably don’t want to expose all the package files in your
 website, nor do I, so let’s see how to serve just only the needed
 files.</p>
 
 <p>To make this we will copy the files that we are including directly
-from the <code class="highlighter-rouge">bower_components</code> directory to a new one containing just
+from the <code class="highlighter-rouge">node_modules</code> directory to a new one containing just
 these files in each build, that means, we have to set up a script
 replacement for <kbd>jekyll build</kbd> and <kbd>jekyll serve</kbd>.</p>
 
@@ -664,11 +671,11 @@ program.</p>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>SHELL :<span class="o">=</span> /bin/bash <span class="c"># needed for prettyurls</span>
 BUNDLE :<span class="o">=</span> bundle
-BOWER :<span class="o">=</span> bower
+YARN :<span class="o">=</span> yarn
 VENDOR_DIR <span class="o">=</span> assets/vendor/
 JEKYLL :<span class="o">=</span> <span class="k">$(</span>BUNDLE<span class="k">)</span> <span class="nb">exec </span>jekyll
 
-PROJECT_DEPS :<span class="o">=</span> Gemfile bower.json
+PROJECT_DEPS :<span class="o">=</span> Gemfile packages.json
 
 .PHONY: all clean install update
 
@@ -684,24 +691,22 @@ check:
 
 install: <span class="k">$(</span>PROJECT_DEPS<span class="k">)</span>
 	<span class="k">$(</span>BUNDLE<span class="k">)</span> install --path vendor/bundler
-	<span class="k">$(</span>BOWER<span class="k">)</span> install
+	<span class="k">$(</span>YARN<span class="k">)</span> install
 
 update: <span class="k">$(</span>PROJECT_DEPS<span class="k">)</span>
 	<span class="k">$(</span>BUNDLE<span class="k">)</span> update
-	<span class="k">$(</span>BOWER<span class="k">)</span> update
+	<span class="k">$(</span>YARN<span class="k">)</span> upgrade
 
-include-bower-deps:
+include-yarn-deps:
 	mkdir -p <span class="k">$(</span>VENDOR_DIR<span class="k">)</span>
-	cp bower_components/font-awesome/css/font-awesome.min.css <span class="k">$(</span>VENDOR_DIR<span class="k">)</span>
-	cp -r bower_components/font-awesome/fonts <span class="k">$(</span>VENDOR_DIR<span class="k">)</span>
-	cp bower_components/jquery/dist/jquery.min.js <span class="k">$(</span>VENDOR_DIR<span class="k">)</span>
-	cp bower_components/tether/dist/js/tether.min.js <span class="k">$(</span>VENDOR_DIR<span class="k">)</span>
-	cp bower_components/bootstrap/dist/js/bootstrap.min.js <span class="k">$(</span>VENDOR_DIR<span class="k">)</span>
+	cp node_modules/jquery/dist/jquery.min.js <span class="k">$(</span>VENDOR_DIR<span class="k">)</span>
+	cp node_modules/tether/dist/js/tether.min.js <span class="k">$(</span>VENDOR_DIR<span class="k">)</span>
+	cp node_modules/bootstrap/dist/js/bootstrap.min.js <span class="k">$(</span>VENDOR_DIR<span class="k">)</span>
 
-build: install include-bower-deps
+build: install include-yarn-deps
 	<span class="k">$(</span>JEKYLL<span class="k">)</span> build
 
-serve: install include-bower-deps
+serve: install include-yarn-deps
 	<span class="nv">JEKYLL_ENV</span><span class="o">=</span>production <span class="k">$(</span>JEKYLL<span class="k">)</span> serve
 </code></pre>
 </div>
@@ -719,15 +724,8 @@ use them as:</p>
 </code></pre>
 </div>
 
-<p>And fontawesome, replace the old path <code class="highlighter-rouge">&lt;link rel="stylesheet"
-href="https://simpleit.rocks/bower_components/font-awesome/css/font-awesome.min.css"&gt;</code> with:</p>
-
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://simpleit.rocks/assets/vendor/font-awesome.min.css"</span><span class="nt">&gt;</span>
-</code></pre>
-</div>
-
 <p>Now we are just including in our website the files we chose from the
-<code class="highlighter-rouge">bower_components</code> folder, placing them in <code class="highlighter-rouge">assets/vendor</code>.</p>
+<code class="highlighter-rouge">node_modules</code> folder, placing them in <code class="highlighter-rouge">assets/vendor</code>.</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
@@ -793,13 +791,6 @@ because of a fundamental inability to trust non-user content.</p>
         <footer class="blockquote-footer"> <cite>parkr comment in <a href="https://github.com/jekyll/jekyll-sass-converter/issues/44#issuecomment-169858494">Allow multiple load_paths in safe mode</a></cite></footer>
       </blockquote>
       <p><a href="#fnref:safe-mode" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:tether">
-
-      <p><a href="http://github.hubspot.com/tether/">Tether</a> is a small,
-focused JavaScript library for defining and managing the position of
-user interface (UI) elements in relation to one another on a web page
-used by Bootstrap&nbsp;<a href="#fnref:tether" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:scss_default">
 
@@ -1347,6 +1338,11 @@ used by Bootstrap&nbsp;<a href="#fnref:tether" class="reversefootnote">&#8617;</
     
     
     
+    
+    
+    
+    
+    
   </div>
 </div>
 
@@ -1358,6 +1354,8 @@ used by Bootstrap&nbsp;<a href="#fnref:tether" class="reversefootnote">&#8617;</
 <h2>Articles</h2>
 <p>This article is being referenced in:</p>
 <div class="list-group">
+  
+  
   
   
   
