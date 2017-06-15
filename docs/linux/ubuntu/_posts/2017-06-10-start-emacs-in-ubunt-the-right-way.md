@@ -29,8 +29,6 @@ From Ubuntu 15.04, [systemd] has become the default init system.
 > 
 > <footer class="blockquote-footer"> <cite><a href="https://www.freedesktop.org/wiki/Software/systemd/">systemd System and Service Manager</a></cite></footer>
 {: class="blockquote" cite="https://www.freedesktop.org/wiki/Software/systemd/"}
-sdfsdf
-
 
 In this tutorial we will create a new *systemd* service to handle the
 Emacs server so we will be able to `start`, `stop`, `restart`,
