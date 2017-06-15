@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 10 Jun 2017 21:57:45 +0000</pubDate>
-    <lastBuildDate>Sat, 10 Jun 2017 21:57:45 +0000</lastBuildDate>
+    <pubDate>Thu, 15 Jun 2017 17:08:16 +0000</pubDate>
+    <lastBuildDate>Thu, 15 Jun 2017 17:08:16 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -147,7 +147,6 @@ the rest of the system.&lt;/p&gt;
 
   &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://www.freedesktop.org/wiki/Software/systemd/&quot;&gt;systemd System and Service Manager&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;sdfsdf&lt;/p&gt;
 
 &lt;p&gt;In this tutorial we will create a new &lt;em&gt;systemd&lt;/em&gt; service to handle the
 Emacs server so we will be able to &lt;code class=&quot;highlighter-rouge&quot;&gt;start&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;stop&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;restart&lt;/code&gt;,
