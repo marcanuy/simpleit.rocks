@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 15 Jun 2017 17:08:16 +0000</pubDate>
-    <lastBuildDate>Thu, 15 Jun 2017 17:08:16 +0000</lastBuildDate>
+    <pubDate>Thu, 15 Jun 2017 17:36:25 +0000</pubDate>
+    <lastBuildDate>Thu, 15 Jun 2017 17:36:25 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -114,206 +114,6 @@ answer to &lt;a href=&quot;https://stackoverflow.com/a/6141681/1165509&quot;&gt;
         <category>lisp</category>
         
         <category>emacs</category>
-        
-      </item>
-    
-      <item>
-        <title>Start Emacs in Ubuntu The Right Way</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Emacs can
-be
-&lt;a href=&quot;http://www.geekherocomic.com/2009/02/02/emacs-vs-vim/&quot;&gt;slow to start up&lt;/a&gt;,
-if you use it constantly this can be a problem.&lt;/p&gt;
-
-&lt;p&gt;Fortunately, there is a &lt;code class=&quot;highlighter-rouge&quot;&gt;daemon&lt;/code&gt; version of Emacs that you can start
-once per session, loading the initialization file, and then connect to
-the running process with &lt;kbd&gt;emacsclient&lt;/kbd&gt; fast.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-  &lt;p&gt;–daemon
-	 Start  Emacs  as  a daemon, enabling the Emacs server and disconnecting from the terminal.  You can then use
-	 the emacsclient command to connect to the server (see emacsclient(1)).&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Emacs man page&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;From Ubuntu 15.04, &lt;a href=&quot;https://www.freedesktop.org/wiki/Software/systemd&quot;&gt;systemd&lt;/a&gt; has become the default init system.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://www.freedesktop.org/wiki/Software/systemd/&quot;&gt;
-  &lt;p&gt;systemd is a suite of basic building blocks for a Linux system. It
-provides a system and service manager that runs as PID 1 and starts
-the rest of the system.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://www.freedesktop.org/wiki/Software/systemd/&quot;&gt;systemd System and Service Manager&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;In this tutorial we will create a new &lt;em&gt;systemd&lt;/em&gt; service to handle the
-Emacs server so we will be able to &lt;code class=&quot;highlighter-rouge&quot;&gt;start&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;stop&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;restart&lt;/code&gt;,
-&lt;code class=&quot;highlighter-rouge&quot;&gt;enable&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;diable&lt;/code&gt; the service as any other Linux service.&lt;/p&gt;
-
-&lt;h2 id=&quot;systemd-unit&quot;&gt;systemd Unit&lt;/h2&gt;
-
-&lt;p&gt;To turn Emacs into a &lt;em&gt;systemd&lt;/em&gt; service that can be started automatically
-during system startup we will create a service to start the daemon.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;systemd&lt;/em&gt; can manage services under the user’s control with a
-per-user &lt;em&gt;systemd&lt;/em&gt; instance, enabling users to handle their own units.&lt;/p&gt;
-
-&lt;p&gt;User services like this one, should be placed in
-&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.config/systemd/user/&lt;/code&gt; so then we will be able to run them with
-&lt;kbd&gt;systemctl --user enable *service*&lt;/kbd&gt;.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup&quot;&gt;
-  &lt;p&gt;–user
-   Talk to the service manager of the calling user, rather than the service manager of the system.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup&quot;&gt;systemctl --help&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The resources that &lt;em&gt;systemd&lt;/em&gt; knows how to manage are called &lt;em&gt;units&lt;/em&gt;.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://www.freedesktop.org/software/systemd/man/systemd.service.html&quot;&gt;
-  &lt;p&gt;A unit configuration file whose name ends in &lt;code class=&quot;highlighter-rouge&quot;&gt;.service&lt;/code&gt; encodes
-information about a process controlled and supervised by systemd.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://www.freedesktop.org/software/systemd/man/systemd.service.html&quot;&gt;systemd.service — Service unit configuration&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p class=&quot;alert alert-danger&quot;&gt;&lt;em&gt;systemd&lt;/em&gt; –user instance is a per-user process, and not per-session.&lt;/p&gt;
-
-&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.config/systemd/user/emacs.service&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[Unit]
-Description=Emacs Daemon
-
-[Service]
-Type=forking
-ExecStart=/usr/bin/emacs --daemon
-ExecStop=/usr/bin/emacsclient --eval &quot;(progn (setq kill-emacs-hook 'nil) (kill-emacs))&quot;
-Restart=always
-
-[Install]
-WantedBy=default.target
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;emacsclient&lt;/p&gt;
-
-&lt;p&gt;Now we enable the &lt;em&gt;unit&lt;/em&gt; to be started at login with &lt;kbd&gt;systemctl
---user enable emacs.service&lt;/kbd&gt; and start the service for the
-current session &lt;kbd&gt;systemctl --user start emacs.service&lt;/kbd&gt;:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl --user enable emacs.service&lt;/kbd&gt;
-Created symlink ~/.config/systemd/user/default.target.wants/emacs.service → ~/.config/systemd/user/emacs.service.
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;tree .config/systemd/user/&lt;/kbd&gt;
-.config/systemd/user/
-├── default.target.wants
-│   └── emacs.service -&amp;gt; ~/.config/systemd/user/emacs.service
-└── emacs.service
-
-1 directory, 2 files
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl --user list-unit-files|grep emacs&lt;/kbd&gt;
-emacs.service                           enabled
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl --user status emacs.service&lt;/kbd&gt;
-● emacs.service - Emacs Daemon
-   Loaded: loaded (~/.config/systemd/user/emacs.service; enabled; vendor preset: enabled)
-   Active: inactive (dead)
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl --user start emacs.service&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl --user status emacs.service&lt;/kbd&gt;
-   Loaded: loaded (~/.config/systemd/user/emacs.service; enabled; vendor preset: enabled)
-   Active: active (running) since Sat 2017-06-10 15:13:33 -03; 1min 23s ago
-  Process: 22639 ExecStop=/usr/bin/emacsclient --eval (progn (setq kill-emacs-hook 'nil) (kill-emacs)) (code=exited, status=0/SUCCESS)
-  Process: 22782 ExecStart=/usr/bin/emacs --daemon (code=exited, status=0/SUCCESS)
- Main PID: 22783 (emacs)
-   CGroup: /user.slice/user-1000.slice/user@1000.service/emacs.service
-           └─22783 /usr/bin/emacs --daemon
-
-jun 10 15:13:30 scarone emacs[22782]: ad-handle-definition: ‘moccur-mode’ got redefined
-jun 10 15:13:30 scarone emacs[22782]: ad-handle-definition: ‘moccur-grep-mode’ got redefined
-jun 10 15:13:30 scarone emacs[22782]: Loading ~/.emacs.d/.mc-lists.el (source)...
-jun 10 15:13:30 scarone emacs[22782]: Loading ~/.emacs.d/.mc-lists.el (source)...done
-jun 10 15:13:31 scarone emacs[22782]: [yas] Prepared just-in-time loading of snippets successfully.
-jun 10 15:13:32 scarone emacs[22782]: [yas] Prepared just-in-time loading of snippets successfully.
-jun 10 15:13:32 scarone emacs[22782]: Turning on magit-auto-revert-mode...
-jun 10 15:13:32 scarone emacs[22782]: Turning on magit-auto-revert-mode...done
-jun 10 15:13:33 scarone emacs[22782]: Starting Emacs daemon.
-jun 10 15:13:33 scarone systemd[1858]: Started Emacs Daemon.
-
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;final-tweaks&quot;&gt;Final tweaks&lt;/h2&gt;
-
-&lt;h3 id=&quot;command-aliases&quot;&gt;Command aliases&lt;/h3&gt;
-
-&lt;p&gt;I’ve &lt;a href=&quot;https://www.emacswiki.org/emacs/EmacsAsDaemon&quot;&gt;found&lt;/a&gt; these
-aliases helpful to have at hand:&lt;/p&gt;
-
-&lt;dl&gt;
-  &lt;dt&gt;emacsclient -t&lt;/dt&gt;
-  &lt;dd&gt;open a new Emacs frame on the current terminal (similar to &lt;code class=&quot;highlighter-rouge&quot;&gt;emacs -nw&lt;/code&gt;)&lt;/dd&gt;
-  &lt;dt&gt;emacsclient -c -a emacs&lt;/dt&gt;
-  &lt;dd&gt;&lt;strong&gt;-c&lt;/strong&gt; create a new frame instead of trying to use the current Emacs frame&lt;/dd&gt;
-  &lt;dd&gt;&lt;strong&gt;-a&lt;/strong&gt; –alternate-editor=EDITOR, if  the  Emacs  server  is not running, run the specified editor instead.&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;emax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;emacsclient -t&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;semac&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sudo emacsclient -t&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;emacsc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;emacsclient -c -a emacs&quot;&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;# new - opens the GUI with alternate non-daemon&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;default-editor&quot;&gt;Default editor&lt;/h3&gt;
-
-&lt;p&gt;Finally, set the &lt;code class=&quot;highlighter-rouge&quot;&gt;EDITOR&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;VISUAL&lt;/code&gt; environment variables so
-&lt;code class=&quot;highlighter-rouge&quot;&gt;emacs&lt;/code&gt; is your default editor:&lt;/p&gt;
-
-&lt;dl&gt;
-  &lt;dt&gt;EDITOR&lt;/dt&gt;
-  &lt;dd&gt;The name of the lightweight text editor&lt;/dd&gt;
-  &lt;dt&gt;VISUAL&lt;/dt&gt;
-  &lt;dd&gt;command to run the full-fledged editor&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ALTERNATE_EDITOR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# $EDITOR should open in terminal&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;EDITOR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;emacsclient -t&quot;&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# $VISUAL opens in GUI with non-daemon as alternate&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;VISUAL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;emacsclient -c -a emacs&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;We created a script to run like a native Ubuntu service, then added
-some aliases and defined environment variables. Now we have a better
-experience in Ubuntu using Emacs with faster loading times and more
-integrated to the OS.&lt;/p&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;systemd/User &lt;a href=&quot;https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup&quot;&gt;https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;EmacsAsDaemon &lt;a href=&quot;https://www.emacswiki.org/emacs/EmacsAsDaemon&quot;&gt;https://www.emacswiki.org/emacs/EmacsAsDaemon&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.freedesktop.org/software/systemd/man/systemd.service.html&quot;&gt;https://www.freedesktop.org/software/systemd/man/systemd.service.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://taingram.org/2017/05/09/using-emacsclient-to-speed-up-editing/&quot;&gt;Using emacsclient to Speed up Editing&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sat, 10 Jun 2017 00:00:00 +0000</pubDate>
-        <link>https://simpleit.rocks/start-emacs-in-ubunt-the-right-way/</link>
-        <guid isPermaLink="true">https://simpleit.rocks/start-emacs-in-ubunt-the-right-way/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>linux</category>
-        
-        <category>ubuntu</category>
         
       </item>
     
@@ -2306,6 +2106,200 @@ because of a fundamental inability to trust non-user content.&lt;/p&gt;
         <category>jekyll</category>
         
         <category>tutorials</category>
+        
+      </item>
+    
+      <item>
+        <title>Adding A Twitter Sign In Button To A Website Flow Summary</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Twitter uses &lt;a href=&quot;https://oauth.net/&quot;&gt;OAuth&lt;/a&gt;, an open protocol to allow secure authorization in
+a standard method from applications, to provide authorized access to its API.&lt;/p&gt;
+
+&lt;p&gt;This is a summary of the process described in &lt;a href=&quot;https://dev.twitter.com/oauth&quot;&gt;https://dev.twitter.com/oauth&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;twitter-oauth&quot;&gt;Twitter oauth&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://dev.twitter.com/oauth&quot;&gt;Twitter&lt;/a&gt;
+uses &lt;a href=&quot;https://oauth.net/&quot;&gt;OAuth&lt;/a&gt; 1.0A so users are not required to
+share their passwords with third party applications.&lt;/p&gt;
+
+&lt;p&gt;In OAuth 1.0A there are two forms of authentication:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;User authentication
+    &lt;ul&gt;
+      &lt;li&gt;is a form of authentication where your application makes API requests on end-users behalf&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Application-only authentication
+    &lt;ul&gt;
+      &lt;li&gt;is a form of authentication where your application makes API requests on its own behalf&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;To make authorized calls to Twitter’s APIs, your application must
+first obtain an OAuth access token on behalf of a Twitter user (or,
+you could issue Application-only authenticated requests, when user
+context is not required).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;To have a &lt;a href=&quot;https://dev.twitter.com/web/sign-in/implementing&quot;&gt;sign-in button&lt;/a&gt; tokens are obtained like this:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Obtain a &lt;strong&gt;request token&lt;/strong&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token_secret&lt;/code&gt;)
+also sending an &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_callback&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;obtain a &lt;strong&gt;request token&lt;/strong&gt; by sending a signed message
+to
+&lt;a href=&quot;https://api.twitter.com/oauth/request_token&quot;&gt;https://api.twitter.com/oauth/request_token&lt;/a&gt; with
+an &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_callback&lt;/code&gt; parameter indicating where the user will be
+redirected in &lt;em&gt;Step 2&lt;/em&gt;.&lt;/li&gt;
+      &lt;li&gt;Check that the HTTP status of the response is 200 (success)&lt;/li&gt;
+      &lt;li&gt;parameters returned:
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token&lt;/code&gt; (store for next step)&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token_secret&lt;/code&gt; (store for next step)&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_callback_confirmed&lt;/code&gt; (verify it is true)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Redirect the user to Twitter including the &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token&lt;/code&gt;.
+    &lt;ul&gt;
+      &lt;li&gt;We need to direct the user to Twitter to complete sign in.&lt;/li&gt;
+      &lt;li&gt;Redirect user with a GET
+to
+&lt;a href=&quot;https://dev.twitter.com/oauth/reference/get/oauth/authenticate&quot;&gt;https://api.twitter.com/oauth/authenticate&lt;/a&gt;
+including the &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token&lt;/code&gt; parameter from &lt;em&gt;Step 1&lt;/em&gt;. (Probably
+an HTTP 302 redirect)
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GET oauth Authenticate&lt;/code&gt; method differs from &lt;code class=&quot;highlighter-rouge&quot;&gt;GET oauth / authorize&lt;/code&gt;
+in that if the user has already granted the application
+permission, the redirect will occur without the user having to
+re-approve the application.
+            &lt;ul&gt;
+              &lt;li&gt;&lt;strong&gt;To realize this behavior, you must enable the Use Sign in
+with Twitter setting on your application record.&lt;/strong&gt;
+                &lt;ul&gt;
+                  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Allow this application to be used to Sign in with Twitter&lt;/code&gt;
+checkbox&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;The sign in endpoint can behave in three different ways
+depending on this status:
+            &lt;ul&gt;
+              &lt;li&gt;&lt;strong&gt;Signed in and approved&lt;/strong&gt;
+                &lt;ul&gt;
+                  &lt;li&gt;If the user:
+                    &lt;ul&gt;
+                      &lt;li&gt;is signed in on twitter.com and&lt;/li&gt;
+                      &lt;li&gt;has already approved the calling application&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/li&gt;
+                  &lt;li&gt;then they will be immediately authenticated and returned to
+the callback URL with a valid OAuth &lt;em&gt;request token&lt;/em&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;strong&gt;Signed in but not approved&lt;/strong&gt;
+                &lt;ul&gt;
+                  &lt;li&gt;If the user:
+                    &lt;ul&gt;
+                      &lt;li&gt;is signed in to twitter.com &lt;strong&gt;but&lt;/strong&gt;&lt;/li&gt;
+                      &lt;li&gt;has not approved the calling application&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/li&gt;
+                  &lt;li&gt;then:
+                    &lt;ul&gt;
+                      &lt;li&gt;a request to share access with the calling application
+will be shown&lt;/li&gt;
+                      &lt;li&gt;After accepting the authorization request
+                        &lt;ul&gt;
+                          &lt;li&gt;the user will be redirected to the callback URL with a
+valid OAuth &lt;em&gt;request token&lt;/em&gt;&lt;/li&gt;
+                        &lt;/ul&gt;
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;strong&gt;Not signed in&lt;/strong&gt;
+                &lt;ul&gt;
+                  &lt;li&gt;If the user is not signed in on twitter.com&lt;/li&gt;
+                  &lt;li&gt;then they will be prompted
+                    &lt;ul&gt;
+                      &lt;li&gt;to enter their credentials and&lt;/li&gt;
+                      &lt;li&gt;grant access for the application to access their
+information on the same screen.&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/li&gt;
+                  &lt;li&gt;Once signed in,
+                    &lt;ul&gt;
+                      &lt;li&gt;the user will be returned to the callback URL with a
+valid OAuth &lt;em&gt;request token&lt;/em&gt;.&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;Upon a successful authentication, your &lt;strong&gt;callback_url&lt;/strong&gt; would
+receive a request containing
+            &lt;ul&gt;
+              &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token&lt;/code&gt; and&lt;/li&gt;
+              &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_verifier &lt;/code&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Convert the request token to an access token (Upgrade request token)
+    &lt;ul&gt;
+      &lt;li&gt;To render the &lt;strong&gt;request token&lt;/strong&gt; into a usable &lt;strong&gt;access token&lt;/strong&gt;:
+        &lt;ul&gt;
+          &lt;li&gt;your application must make a request to the &lt;code class=&quot;highlighter-rouge&quot;&gt;POST oauth /
+access_token&lt;/code&gt;
+endpoint
+&lt;a href=&quot;https://dev.twitter.com/oauth/reference/post/oauth/access_token&quot;&gt;https://api.twitter.com/oauth/access_token&lt;/a&gt;,
+containing the &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_verifier&lt;/code&gt; value obtained in step 2&lt;/li&gt;
+          &lt;li&gt;Twitter generates the &lt;strong&gt;access token&lt;/strong&gt;&lt;/li&gt;
+          &lt;li&gt;Twitter response with
+            &lt;ul&gt;
+              &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token&lt;/code&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token_secret&lt;/code&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;screen_name&lt;/code&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;token&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;token secret&lt;/code&gt; should be stored and used for future authenticated requests to the Twitter API.&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://oauth.net/&quot;&gt;https://oauth.net/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dev.twitter.com/oauth/overview/faq&quot;&gt;https://dev.twitter.com/oauth/overview/faq&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 06 Feb 2017 00:00:00 +0000</pubDate>
+        <link>https://simpleit.rocks/adding-a-twitter-sign-in-button-to-a-website-flow-summary/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/adding-a-twitter-sign-in-button-to-a-website-flow-summary/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>apis</category>
+        
+        <category>twitter</category>
         
       </item>
     
