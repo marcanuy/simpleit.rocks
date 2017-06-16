@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 16 Jun 2017 02:33:55 +0000</pubDate>
-    <lastBuildDate>Fri, 16 Jun 2017 02:33:55 +0000</lastBuildDate>
+    <pubDate>Fri, 16 Jun 2017 02:34:51 +0000</pubDate>
+    <lastBuildDate>Fri, 16 Jun 2017 02:34:51 +0000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -199,6 +199,102 @@ package&amp;gt;&lt;/code&gt;:&lt;/p&gt;
         <category>javascript</category>
         
         <category>yarn</category>
+        
+      </item>
+    
+      <item>
+        <title>How To Uninstall Old Versions Of Ruby Gems</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Chances are that if you have been using Ruby for a while, your system
+will be full of &lt;a href=&quot;https://rubygems.org/&quot;&gt;gems&lt;/a&gt; and more specifically,
+&lt;strong&gt;outdated gems&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Every time you perform an update with &lt;kbd&gt;$ gem update&lt;/kbd&gt; the
+default behaviour is to install a new gem version &lt;strong&gt;maintaining&lt;/strong&gt; the
+older one.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot;&gt;
+  &lt;p&gt;The update command does not remove the previous version.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Gem update command Help&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;removing-old-unused-gems&quot;&gt;Removing old unused gems&lt;/h2&gt;
+
+&lt;p&gt;To remove older gems we use the &lt;code class=&quot;highlighter-rouge&quot;&gt;clean&lt;/code&gt; command:&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot;&gt;
+  &lt;p&gt;The cleanup command removes old versions of gems from GEM_HOME that
+are not required to meet a dependency.  If a gem is installed
+elsewhere in GEM_PATH the cleanup command won’t delete it.&lt;/p&gt;
+
+  &lt;p&gt;If no gems are named all gems in GEM_HOME are cleaned.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Gem cleanup command Help&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;We can choose to specify a gem to remove its older versions or remove
+every old gem:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;gem cleanup&lt;/kbd&gt;
+Cleaning up installed gems...
+Attempting to uninstall test-unit-3.1.7
+Unable to uninstall test-unit-3.1.7:
+        Gem::InstallError: test-unit is not installed in GEM_HOME, try:
+        gem uninstall -i /usr/share/rubygems-integration/all test-unit
+Attempting to uninstall public_suffix-2.0.4
+Successfully uninstalled public_suffix-2.0.4
+Attempting to uninstall power_assert-0.2.7
+Unable to uninstall power_assert-0.2.7:
+        Gem::InstallError: power_assert is not installed in GEM_HOME, try:
+        gem uninstall -i /usr/share/rubygems-integration/all power_assert
+Attempting to uninstall nokogiri-1.6.8.1
+Successfully uninstalled nokogiri-1.6.8.1
+Attempting to uninstall minitest-5.9.0
+Unable to uninstall minitest-5.9.0:
+        Gem::InstallError: minitest is not installed in GEM_HOME, try:
+        gem uninstall -i /usr/share/rubygems-integration/all minitest
+Attempting to uninstall rb-inotify-0.9.7
+Successfully uninstalled rb-inotify-0.9.7
+Attempting to uninstall kramdown-1.12.0
+Successfully uninstalled kramdown-1.12.0
+Attempting to uninstall jekyll-seo-tag-2.0.0
+Successfully uninstalled jekyll-seo-tag-2.0.0
+Attempting to uninstall jekyll-3.3.0
+Successfully uninstalled jekyll-3.3.0
+Attempting to uninstall jekyll-sass-converter-1.4.0
+Successfully uninstalled jekyll-sass-converter-1.4.0
+Attempting to uninstall sass-3.4.22
+Successfully uninstalled sass-3.4.22
+Attempting to uninstall kramdown-1.13.1
+Successfully uninstalled kramdown-1.13.1
+Attempting to uninstall html-proofer-3.3.1
+Successfully uninstalled html-proofer-3.3.1
+Attempting to uninstall parallel-1.9.0
+Successfully uninstalled parallel-1.9.0
+Attempting to uninstall nokogiri-1.7.0
+Successfully uninstalled nokogiri-1.7.0
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/q/27933683/1165509&quot;&gt;Removing old versions of gems&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Thu, 25 May 2017 00:00:00 +0000</pubDate>
+        <link>https://simpleit.rocks/how-to-uninstall-old-versions-of-ruby-gems/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/how-to-uninstall-old-versions-of-ruby-gems/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>ruby</category>
         
       </item>
     
@@ -2106,200 +2202,6 @@ because of a fundamental inability to trust non-user content.&lt;/p&gt;
         <category>jekyll</category>
         
         <category>tutorials</category>
-        
-      </item>
-    
-      <item>
-        <title>Adding A Twitter Sign In Button To A Website Flow Summary</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Twitter uses &lt;a href=&quot;https://oauth.net/&quot;&gt;OAuth&lt;/a&gt;, an open protocol to allow secure authorization in
-a standard method from applications, to provide authorized access to its API.&lt;/p&gt;
-
-&lt;p&gt;This is a summary of the process described in &lt;a href=&quot;https://dev.twitter.com/oauth&quot;&gt;https://dev.twitter.com/oauth&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;twitter-oauth&quot;&gt;Twitter oauth&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://dev.twitter.com/oauth&quot;&gt;Twitter&lt;/a&gt;
-uses &lt;a href=&quot;https://oauth.net/&quot;&gt;OAuth&lt;/a&gt; 1.0A so users are not required to
-share their passwords with third party applications.&lt;/p&gt;
-
-&lt;p&gt;In OAuth 1.0A there are two forms of authentication:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;User authentication
-    &lt;ul&gt;
-      &lt;li&gt;is a form of authentication where your application makes API requests on end-users behalf&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Application-only authentication
-    &lt;ul&gt;
-      &lt;li&gt;is a form of authentication where your application makes API requests on its own behalf&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;To make authorized calls to Twitter’s APIs, your application must
-first obtain an OAuth access token on behalf of a Twitter user (or,
-you could issue Application-only authenticated requests, when user
-context is not required).&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;To have a &lt;a href=&quot;https://dev.twitter.com/web/sign-in/implementing&quot;&gt;sign-in button&lt;/a&gt; tokens are obtained like this:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Obtain a &lt;strong&gt;request token&lt;/strong&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token_secret&lt;/code&gt;)
-also sending an &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_callback&lt;/code&gt;
-    &lt;ul&gt;
-      &lt;li&gt;obtain a &lt;strong&gt;request token&lt;/strong&gt; by sending a signed message
-to
-&lt;a href=&quot;https://api.twitter.com/oauth/request_token&quot;&gt;https://api.twitter.com/oauth/request_token&lt;/a&gt; with
-an &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_callback&lt;/code&gt; parameter indicating where the user will be
-redirected in &lt;em&gt;Step 2&lt;/em&gt;.&lt;/li&gt;
-      &lt;li&gt;Check that the HTTP status of the response is 200 (success)&lt;/li&gt;
-      &lt;li&gt;parameters returned:
-        &lt;ul&gt;
-          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token&lt;/code&gt; (store for next step)&lt;/li&gt;
-          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token_secret&lt;/code&gt; (store for next step)&lt;/li&gt;
-          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_callback_confirmed&lt;/code&gt; (verify it is true)&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Redirect the user to Twitter including the &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token&lt;/code&gt;.
-    &lt;ul&gt;
-      &lt;li&gt;We need to direct the user to Twitter to complete sign in.&lt;/li&gt;
-      &lt;li&gt;Redirect user with a GET
-to
-&lt;a href=&quot;https://dev.twitter.com/oauth/reference/get/oauth/authenticate&quot;&gt;https://api.twitter.com/oauth/authenticate&lt;/a&gt;
-including the &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token&lt;/code&gt; parameter from &lt;em&gt;Step 1&lt;/em&gt;. (Probably
-an HTTP 302 redirect)
-        &lt;ul&gt;
-          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GET oauth Authenticate&lt;/code&gt; method differs from &lt;code class=&quot;highlighter-rouge&quot;&gt;GET oauth / authorize&lt;/code&gt;
-in that if the user has already granted the application
-permission, the redirect will occur without the user having to
-re-approve the application.
-            &lt;ul&gt;
-              &lt;li&gt;&lt;strong&gt;To realize this behavior, you must enable the Use Sign in
-with Twitter setting on your application record.&lt;/strong&gt;
-                &lt;ul&gt;
-                  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Allow this application to be used to Sign in with Twitter&lt;/code&gt;
-checkbox&lt;/li&gt;
-                &lt;/ul&gt;
-              &lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-          &lt;li&gt;The sign in endpoint can behave in three different ways
-depending on this status:
-            &lt;ul&gt;
-              &lt;li&gt;&lt;strong&gt;Signed in and approved&lt;/strong&gt;
-                &lt;ul&gt;
-                  &lt;li&gt;If the user:
-                    &lt;ul&gt;
-                      &lt;li&gt;is signed in on twitter.com and&lt;/li&gt;
-                      &lt;li&gt;has already approved the calling application&lt;/li&gt;
-                    &lt;/ul&gt;
-                  &lt;/li&gt;
-                  &lt;li&gt;then they will be immediately authenticated and returned to
-the callback URL with a valid OAuth &lt;em&gt;request token&lt;/em&gt;&lt;/li&gt;
-                &lt;/ul&gt;
-              &lt;/li&gt;
-              &lt;li&gt;&lt;strong&gt;Signed in but not approved&lt;/strong&gt;
-                &lt;ul&gt;
-                  &lt;li&gt;If the user:
-                    &lt;ul&gt;
-                      &lt;li&gt;is signed in to twitter.com &lt;strong&gt;but&lt;/strong&gt;&lt;/li&gt;
-                      &lt;li&gt;has not approved the calling application&lt;/li&gt;
-                    &lt;/ul&gt;
-                  &lt;/li&gt;
-                  &lt;li&gt;then:
-                    &lt;ul&gt;
-                      &lt;li&gt;a request to share access with the calling application
-will be shown&lt;/li&gt;
-                      &lt;li&gt;After accepting the authorization request
-                        &lt;ul&gt;
-                          &lt;li&gt;the user will be redirected to the callback URL with a
-valid OAuth &lt;em&gt;request token&lt;/em&gt;&lt;/li&gt;
-                        &lt;/ul&gt;
-                      &lt;/li&gt;
-                    &lt;/ul&gt;
-                  &lt;/li&gt;
-                &lt;/ul&gt;
-              &lt;/li&gt;
-              &lt;li&gt;&lt;strong&gt;Not signed in&lt;/strong&gt;
-                &lt;ul&gt;
-                  &lt;li&gt;If the user is not signed in on twitter.com&lt;/li&gt;
-                  &lt;li&gt;then they will be prompted
-                    &lt;ul&gt;
-                      &lt;li&gt;to enter their credentials and&lt;/li&gt;
-                      &lt;li&gt;grant access for the application to access their
-information on the same screen.&lt;/li&gt;
-                    &lt;/ul&gt;
-                  &lt;/li&gt;
-                  &lt;li&gt;Once signed in,
-                    &lt;ul&gt;
-                      &lt;li&gt;the user will be returned to the callback URL with a
-valid OAuth &lt;em&gt;request token&lt;/em&gt;.&lt;/li&gt;
-                    &lt;/ul&gt;
-                  &lt;/li&gt;
-                &lt;/ul&gt;
-              &lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-          &lt;li&gt;Upon a successful authentication, your &lt;strong&gt;callback_url&lt;/strong&gt; would
-receive a request containing
-            &lt;ul&gt;
-              &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token&lt;/code&gt; and&lt;/li&gt;
-              &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_verifier &lt;/code&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Convert the request token to an access token (Upgrade request token)
-    &lt;ul&gt;
-      &lt;li&gt;To render the &lt;strong&gt;request token&lt;/strong&gt; into a usable &lt;strong&gt;access token&lt;/strong&gt;:
-        &lt;ul&gt;
-          &lt;li&gt;your application must make a request to the &lt;code class=&quot;highlighter-rouge&quot;&gt;POST oauth /
-access_token&lt;/code&gt;
-endpoint
-&lt;a href=&quot;https://dev.twitter.com/oauth/reference/post/oauth/access_token&quot;&gt;https://api.twitter.com/oauth/access_token&lt;/a&gt;,
-containing the &lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_verifier&lt;/code&gt; value obtained in step 2&lt;/li&gt;
-          &lt;li&gt;Twitter generates the &lt;strong&gt;access token&lt;/strong&gt;&lt;/li&gt;
-          &lt;li&gt;Twitter response with
-            &lt;ul&gt;
-              &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token&lt;/code&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oauth_token_secret&lt;/code&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;screen_name&lt;/code&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;token&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;token secret&lt;/code&gt; should be stored and used for future authenticated requests to the Twitter API.&lt;/strong&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://oauth.net/&quot;&gt;https://oauth.net/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dev.twitter.com/oauth/overview/faq&quot;&gt;https://dev.twitter.com/oauth/overview/faq&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 06 Feb 2017 00:00:00 +0000</pubDate>
-        <link>https://simpleit.rocks/adding-a-twitter-sign-in-button-to-a-website-flow-summary/</link>
-        <guid isPermaLink="true">https://simpleit.rocks/adding-a-twitter-sign-in-button-to-a-website-flow-summary/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>apis</category>
-        
-        <category>twitter</category>
         
       </item>
     
