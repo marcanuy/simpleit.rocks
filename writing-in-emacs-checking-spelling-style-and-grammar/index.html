@@ -419,7 +419,7 @@ can choose what works better for you. In this case I will activate it
 for <code class="highlighter-rouge">text-mode</code>.</p>
 
 <p>To load <code class="highlighter-rouge">flyspell-mode</code> when loading a file in any of the recognized
-<code class="highlighter-rouge">text-mode</code>’s, we load them with:</p>
+<code class="highlighter-rouge">text-mode</code>’s, we load it with:</p>
 
 <pre><code class="language-lisp">(dolist (hook '(text-mode-hook))
     (add-hook hook (lambda () (flyspell-mode 1))))
