@@ -46,23 +46,23 @@
 
     
   <!-- Begin Jekyll SEO tag v2.2.3 -->
-<title>How to Type Spanish Characters, Accents and Symbols in Linux | Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="How to Type Spanish Characters, Accents and Symbols in Linux" />
+<title>Start Emacs in Ubuntu The Right Way | Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Start Emacs in Ubuntu The Right Way" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Writing in Spanish in Linux. How to type Spanish special characters." />
-<meta property="og:description" content="Writing in Spanish in Linux. How to type Spanish special characters." />
-<link rel="canonical" href="https://simpleit.rocks/writing-spanish-in-linux/" />
-<meta property="og:url" content="https://simpleit.rocks/writing-spanish-in-linux/" />
+<meta name="description" content="We explore how to have Emacs in Ubuntu running as a serviced unit and define some useful aliases and environment variables." />
+<meta property="og:description" content="We explore how to have Emacs in Ubuntu running as a serviced unit and define some useful aliases and environment variables." />
+<link rel="canonical" href="https://simpleit.rocks/start-emacs-in-ubuntu-the-right-way/" />
+<meta property="og:url" content="https://simpleit.rocks/start-emacs-in-ubuntu-the-right-way/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-06-06T00:00:00+00:00" />
+<meta property="article:published_time" content="2017-06-10T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@simpleitrocks" />
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"How to Type Spanish Characters, Accents and Symbols in Linux","author":{"@type":"Person","name":"marcanuy"},"datePublished":"2016-06-06T00:00:00+00:00","dateModified":"2016-06-06T00:00:00+00:00","description":"Writing in Spanish in Linux. How to type Spanish special characters.","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/writing-spanish-in-linux/"},"url":"https://simpleit.rocks/writing-spanish-in-linux/"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Start Emacs in Ubuntu The Right Way","author":{"@type":"Person","name":"marcanuy"},"datePublished":"2017-06-10T00:00:00+00:00","dateModified":"2017-06-10T00:00:00+00:00","description":"We explore how to have Emacs in Ubuntu running as a serviced unit and define some useful aliases and environment variables.","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/start-emacs-in-ubuntu-the-right-way/"},"url":"https://simpleit.rocks/start-emacs-in-ubuntu-the-right-way/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -116,20 +116,8 @@
     
     
     
-    <h1 class="title">How To Type Spanish Characters, Accents And Symbols In Linux </h1>
+    <h1 class="title">Start Emacs In Ubuntu The Right Way </h1>
     
-    
-    <p class="lead">
-	<small class="text-muted subtitle">Environment independent</small>
-	
-	<br />
-	<small class="text-muted subtitle">
-
-	    <i class="fa fa-calendar text-muted" aria-hidden="true"></i>
-	    <time class="text-muted" datetime="2016-06-06T00:00:00+00:00" itemprop="datePublished">Jun 6, 2016</time>
-	</small>
-	
-    </p>
     
   </div>
 </div>
@@ -230,16 +218,40 @@
 
 <li itemprop="itemListElement" itemscope
     itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="https://schema.org/Thing"
+     itemprop="item" href="/docs/linux/ubuntu">
+    
+
+    ubuntu
+  </a>
+  
+  <meta itemprop="position" content="4" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
     class="breadcrumb-item active">
   
   <span itemscope itemtype="https://schema.org/Thing"
        itemprop="item">
     
 
-    <span itemprop="name">How to Type Spanish Characters, Accents and Symbols in Linux</span>
+    <span itemprop="name">Start Emacs in Ubuntu The Right Way</span>
   </span>
   
-  <meta itemprop="position" content="4" />
+  <meta itemprop="position" content="5" />
 </li>
 
     
@@ -279,7 +291,13 @@
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#spanish-unicode-characters-table">Spanish Unicode Characters Table</a></li>
+<li class="toc-entry toc-h2"><a href="#systemd-unit">systemd Unit</a></li>
+<li class="toc-entry toc-h2"><a href="#start-server">Start server</a></li>
+<li class="toc-entry toc-h2"><a href="#final-tweaks">Final tweaks</a></li>
+<li class="toc-entry toc-h3"><a href="#command-aliases">Command aliases</a></li>
+<li class="toc-entry toc-h3"><a href="#default-editor">Default editor</a></li>
+<li class="toc-entry toc-h2"><a href="#conclusion">Conclusion</a></li>
+<li class="toc-entry toc-h2"><a href="#reference">Reference</a></li>
 </ul>
       </div>
       <div>
@@ -290,9 +308,9 @@
       <div>
     <a class="twitter-share-button"
        href="https://twitter.com/share"
-       data-url="https://simpleit.rocks/writing-spanish-in-linux/"
+       data-url="https://simpleit.rocks/start-emacs-in-ubuntu-the-right-way/"
        data-via=""
-       data-text="How to Type Spanish Characters, Accents and Symbols in Linux"
+       data-text="Start Emacs in Ubuntu The Right Way"
        data-related="marcanuy,simpleitrocks"
        data-count="vertical">
 	Tweet
@@ -324,7 +342,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="https://simpleit.rocks/writing-spanish-in-linux/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="https://simpleit.rocks/start-emacs-in-ubuntu-the-right-way/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -341,7 +359,7 @@
 
     
 	<p class="lead">
-	  Writing in Spanish in Linux. How to type Spanish special characters.
+	  We explore how to have Emacs in Ubuntu running as a serviced unit and define some useful aliases and environment variables.
 	</p>
     
 
@@ -365,113 +383,188 @@
 
     <h2 id="overview">Overview</h2>
 
-<p>Special characters in Linux can be always entered by typing Unicode characters.</p>
+<p>Emacs can
+be
+<a href="http://www.geekherocomic.com/2009/02/02/emacs-vs-vim/">slow to start up</a>,
+if you use it constantly this can be a problem.</p>
 
-<p><strong>This method is independent from the keyboard layout</strong> and
-<strong>the language of the environment</strong>, so it is always an option.</p>
+<p>Fortunately, there is a <code class="highlighter-rouge">daemon</code> version of Emacs that you can start
+once per session, loading the initialization file, and then connect to
+the running process with <kbd>emacsclient</kbd> fast.</p>
 
-<blockquote cite="http://www.unicode.org/standard/standard.html">
-  <p>The Unicode Standard is a character coding system designed to support the worldwide interchange, processing, and display of the written texts of the diverse languages and technical disciplines of the modern world.</p>
+<blockquote class="blockquote">
+  <p>–daemon
+	 Start  Emacs  as  a daemon, enabling the Emacs server and disconnecting from the terminal.  You can then use
+	 the emacsclient command to connect to the server (see emacsclient(1)).</p>
+
+  <footer class="blockquote-footer"> <cite>Emacs man page</cite></footer>
 </blockquote>
 
-<h2 id="spanish-unicode-characters-table">Spanish Unicode Characters Table</h2>
+<p>From Ubuntu 15.04, <a href="https://www.freedesktop.org/wiki/Software/systemd">systemd</a> has become the default init system.</p>
 
-<p>To type this kind of characters, especially those used in Spanish language,
-the code point in hexadecimal form has to be entered pressing simulatenously
-<kbd><kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>U</kbd></kbd> and then 
-entering the <kbd>Character Hex Value</kbd></p>
+<blockquote class="blockquote" cite="https://www.freedesktop.org/wiki/Software/systemd/">
+  <p>systemd is a suite of basic building blocks for a Linux system. It
+provides a system and service manager that runs as PID 1 and starts
+the rest of the system.</p>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th style="text-align: center">Spanish letter</th>
-      <th style="text-align: center">Hex value</th>
-      <th style="text-align: center">Key combination</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><strong>á</strong></td>
-      <td style="text-align: center">00e1</td>
-      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00e1</kbd></kbd></td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong>Á</strong></td>
-      <td style="text-align: center">00c1</td>
-      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00c1</kbd></kbd></td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong>é</strong></td>
-      <td style="text-align: center">00e9</td>
-      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00e9</kbd></kbd></td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong>É</strong></td>
-      <td style="text-align: center">00c9</td>
-      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00c9</kbd></kbd></td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong>í</strong></td>
-      <td style="text-align: center">00ed</td>
-      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00ed</kbd></kbd></td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong>Í</strong></td>
-      <td style="text-align: center">00cd</td>
-      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00cd</kbd></kbd></td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong>ó</strong></td>
-      <td style="text-align: center">00f3</td>
-      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00f3</kbd></kbd></td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong>Ó</strong></td>
-      <td style="text-align: center">00d3</td>
-      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00d3</kbd></kbd></td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong>ú</strong></td>
-      <td style="text-align: center">00fa</td>
-      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00fa</kbd></kbd></td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong>Ú</strong></td>
-      <td style="text-align: center">00da</td>
-      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00da</kbd></kbd></td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong>ñ</strong></td>
-      <td style="text-align: center">00f1</td>
-      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00f1</kbd></kbd></td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong>Ñ</strong></td>
-      <td style="text-align: center">00d1</td>
-      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00d1</kbd></kbd></td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong>ü</strong></td>
-      <td style="text-align: center">00fc</td>
-      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00fc</kbd></kbd></td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong>Ü</strong></td>
-      <td style="text-align: center">00dc</td>
-      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00dc</kbd></kbd></td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong>¡</strong></td>
-      <td style="text-align: center">00a1</td>
-      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00a1</kbd></kbd></td>
-    </tr>
-    <tr>
-      <td style="text-align: center"><strong>¿</strong></td>
-      <td style="text-align: center">00bf</td>
-      <td style="text-align: center"><kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd> <kbd>00bf</kbd></kbd></td>
-    </tr>
-  </tbody>
-</table>
+  <footer class="blockquote-footer"> <cite><a href="https://www.freedesktop.org/wiki/Software/systemd/">systemd System and Service Manager</a></cite></footer>
+</blockquote>
+
+<p>In this tutorial we will create a new <em>systemd</em> service to handle the
+Emacs server so we will be able to <code class="highlighter-rouge">start</code>, <code class="highlighter-rouge">stop</code>, <code class="highlighter-rouge">restart</code>,
+<code class="highlighter-rouge">enable</code> and <code class="highlighter-rouge">disable</code> the service as any other Linux service.</p>
+
+<h2 id="systemd-unit">systemd Unit</h2>
+
+<p>To turn Emacs into a <em>systemd</em> service that can be started automatically
+during system startup we will create a service to start the daemon.</p>
+
+<p><em>systemd</em> can manage services under the user’s control with a
+per-user <em>systemd</em> instance, enabling users to handle their own units.</p>
+
+<p>User services like this one, should be placed in
+<code class="highlighter-rouge">~/.config/systemd/user/</code> so then we will be able to run them with
+<kbd>systemctl --user enable *service*</kbd>.</p>
+
+<blockquote class="blockquote" cite="https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup">
+  <p>–user
+   Talk to the service manager of the calling user, rather than the service manager of the system.</p>
+
+  <footer class="blockquote-footer"> <cite><a href="https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup">systemctl --help</a></cite></footer>
+</blockquote>
+
+<p>The resources that <em>systemd</em> knows how to manage are called <em>units</em>.</p>
+
+<blockquote class="blockquote" cite="https://www.freedesktop.org/software/systemd/man/systemd.service.html">
+  <p>A unit configuration file whose name ends in <code class="highlighter-rouge">.service</code> encodes
+information about a process controlled and supervised by systemd.</p>
+
+  <footer class="blockquote-footer"> <cite><a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html">systemd.service — Service unit configuration</a></cite></footer>
+</blockquote>
+
+<p class="alert alert-danger"><em>systemd</em> –user instance is a per-user process, and not per-session.</p>
+
+<p>In <code class="highlighter-rouge">~/.config/systemd/user/emacs.service</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[Unit]
+Description=Emacs Daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/emacs --daemon
+ExecStop=/usr/bin/emacsclient --eval "(progn (setq kill-emacs-hook 'nil) (kill-emacs))"
+Restart=always
+
+[Install]
+WantedBy=default.target
+</code></pre>
+</div>
+
+<h2 id="start-server">Start server</h2>
+
+<p>Now we enable the <em>unit</em> to be started at login with <kbd>systemctl
+--user enable emacs.service</kbd> and start the service for the
+current session <kbd>systemctl --user start emacs.service</kbd>:</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>systemctl --user enable emacs.service</kbd>
+Created symlink ~/.config/systemd/user/default.target.wants/emacs.service → ~/.config/systemd/user/emacs.service.
+<span class="shell-prompt">$</span> <kbd>tree .config/systemd/user/</kbd>
+.config/systemd/user/
+├── default.target.wants
+│   └── emacs.service -&gt; ~/.config/systemd/user/emacs.service
+└── emacs.service
+
+1 directory, 2 files
+<span class="shell-prompt">$</span> <kbd>systemctl --user list-unit-files|grep emacs</kbd>
+emacs.service                           enabled
+<span class="shell-prompt">$</span> <kbd>systemctl --user status emacs.service</kbd>
+● emacs.service - Emacs Daemon
+   Loaded: loaded (~/.config/systemd/user/emacs.service; enabled; vendor preset: enabled)
+   Active: inactive (dead)
+<span class="shell-prompt">$</span> <kbd>systemctl --user start emacs.service</kbd>
+<span class="shell-prompt">$</span> <kbd>systemctl --user status emacs.service</kbd>
+   Loaded: loaded (~/.config/systemd/user/emacs.service; enabled; vendor preset: enabled)
+   Active: active (running) since Sat 2017-06-10 15:13:33 -03; 1min 23s ago
+  Process: 22639 ExecStop=/usr/bin/emacsclient --eval (progn (setq kill-emacs-hook 'nil) (kill-emacs)) (code=exited, status=0/SUCCESS)
+  Process: 22782 ExecStart=/usr/bin/emacs --daemon (code=exited, status=0/SUCCESS)
+ Main PID: 22783 (emacs)
+   CGroup: /user.slice/user-1000.slice/user@1000.service/emacs.service
+           └─22783 /usr/bin/emacs --daemon
+
+jun 10 15:13:30 scarone emacs[22782]: ad-handle-definition: ‘moccur-mode’ got redefined
+jun 10 15:13:30 scarone emacs[22782]: ad-handle-definition: ‘moccur-grep-mode’ got redefined
+jun 10 15:13:30 scarone emacs[22782]: Loading ~/.emacs.d/.mc-lists.el (source)...
+jun 10 15:13:30 scarone emacs[22782]: Loading ~/.emacs.d/.mc-lists.el (source)...done
+jun 10 15:13:31 scarone emacs[22782]: [yas] Prepared just-in-time loading of snippets successfully.
+jun 10 15:13:32 scarone emacs[22782]: [yas] Prepared just-in-time loading of snippets successfully.
+jun 10 15:13:32 scarone emacs[22782]: Turning on magit-auto-revert-mode...
+jun 10 15:13:32 scarone emacs[22782]: Turning on magit-auto-revert-mode...done
+jun 10 15:13:33 scarone emacs[22782]: Starting Emacs daemon.
+jun 10 15:13:33 scarone systemd[1858]: Started Emacs Daemon.
+
+</samp>
+</pre>
+
+<h2 id="final-tweaks">Final tweaks</h2>
+
+<h3 id="command-aliases">Command aliases</h3>
+
+<p>I’ve <a href="https://www.emacswiki.org/emacs/EmacsAsDaemon">found</a> these
+aliases helpful to have at hand:</p>
+
+<dl>
+  <dt>emacsclient -t</dt>
+  <dd>open a new Emacs frame on the current terminal (similar to <code class="highlighter-rouge">emacs -nw</code>)</dd>
+  <dt>emacsclient -c -a emacs</dt>
+  <dd><strong>-c</strong> create a new frame instead of trying to use the current Emacs frame</dd>
+  <dd><strong>-a</strong> –alternate-editor=EDITOR, if  the  Emacs  server  is not running, run the specified editor instead.</dd>
+</dl>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">alias </span><span class="nv">emax</span><span class="o">=</span><span class="s2">"emacsclient -t"</span>
+<span class="nb">alias </span><span class="nv">semac</span><span class="o">=</span><span class="s2">"sudo emacsclient -t"</span>
+<span class="nb">alias </span><span class="nv">emacsc</span><span class="o">=</span><span class="s2">"emacsclient -c -a emacs"</span>           <span class="c"># new - opens the GUI with alternate non-daemon</span>
+</code></pre>
+</div>
+
+<h3 id="default-editor">Default editor</h3>
+
+<p>Finally, set the <code class="highlighter-rouge">EDITOR</code> and <code class="highlighter-rouge">VISUAL</code> environment variables so
+<code class="highlighter-rouge">emacs</code> is your default editor:</p>
+
+<dl>
+  <dt>EDITOR</dt>
+  <dd>The name of the lightweight text editor</dd>
+  <dt>VISUAL</dt>
+  <dd>command to run the full-fledged editor</dd>
+</dl>
+
+<p>In <code class="highlighter-rouge">.bashrc</code>:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">export </span><span class="nv">ALTERNATE_EDITOR</span><span class="o">=</span><span class="s2">""</span>
+<span class="c"># $EDITOR should open in terminal</span>
+<span class="nb">export </span><span class="nv">EDITOR</span><span class="o">=</span><span class="s2">"emacsclient -t"</span>
+<span class="c"># $VISUAL opens in GUI with non-daemon as alternate</span>
+<span class="nb">export </span><span class="nv">VISUAL</span><span class="o">=</span><span class="s2">"emacsclient -c -a emacs"</span>
+</code></pre>
+</div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>We created a script to run like a native Ubuntu service, then added
+some aliases and defined environment variables. Now we have a better
+experience in Ubuntu using Emacs with faster loading times and more
+integrated to the OS.</p>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+  <li>systemd/User <a href="https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup">https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup</a></li>
+  <li>EmacsAsDaemon <a href="https://www.emacswiki.org/emacs/EmacsAsDaemon">https://www.emacswiki.org/emacs/EmacsAsDaemon</a></li>
+  <li><a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html">https://www.freedesktop.org/software/systemd/man/systemd.service.html</a></li>
+  <li><a href="https://taingram.org/2017/05/09/using-emacsclient-to-speed-up-editing/">Using emacsclient to Speed up Editing</a></li>
+</ul>
 
 
     
@@ -524,7 +617,7 @@ entering the <kbd>Character Hex Value</kbd></p>
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/writing-spanish-in-linux/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/start-emacs-in-ubuntu-the-right-way/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -552,442 +645,6 @@ entering the <kbd>Character Hex Value</kbd></p>
 
 
 
-
-<div class="post-same-category">
-  <h4>Articles in this category</h4>
-  <div class="list-group">
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action active" href="/writing-spanish-in-linux/">
-      How to Type Spanish Characters, Accents and Symbols in Linux
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/setting-up-a-fresh-linux-server/">
-      Setting Up A Fresh Linux Server
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/using-clamav-antivirus-in-ubuntu/">
-      Using Clamav Antivirus In Ubuntu
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/replicate-installed-package-selections-from-one-Ubuntu-system-to-another/">
-      Replicate Installed Package Selections From One Ubuntu System To Another
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  </div>
-</div>
 
 
 	
