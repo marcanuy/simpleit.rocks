@@ -114,7 +114,7 @@ before the letter, e.g.:
 
 ## Conclusion
 
-After executing <kbd>set-input-method</kdb> and selecting
+After executing <kbd>set-input-method</kbd> and selecting
 **spanish-prefix**, writing in each language is as easy as switching
 them with <kbd>C-\</kbd> *(toggle-input-method)* and have a pretty close experience as using a
 Spanish keyboard in an English keyboard layout.
