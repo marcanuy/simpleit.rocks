@@ -38,7 +38,7 @@ can choose what works better for you. In this case I will activate it
 for `text-mode`.
 
 To load `flyspell-mode` when loading a file in any of the recognized
-`text-mode`'s, we load them with:
+`text-mode`'s, we load it with:
 
 ~~~ lisp
 (dolist (hook '(text-mode-hook))
