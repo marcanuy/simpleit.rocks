@@ -43,7 +43,7 @@ install: $(PROJECT_DEPS)
 
 update: $(PROJECT_DEPS)
 	$(BUNDLE) update
-	$(YARN) update
+	$(YARN) upgrade
 
 #########
 # SERVE #

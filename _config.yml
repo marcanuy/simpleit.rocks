@@ -37,7 +37,7 @@ defaults:
 
 disqus_id: "simpleitrocks"
 
-gems:
+plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-toc
