@@ -1,4 +1,5 @@
 ---
+title: How to Contribute To A Github Repository in 6 Steps
 description: A detailed guide to contribute to a project in Github
 layout: post
 ---

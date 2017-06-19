@@ -136,9 +136,9 @@ tags
 
  Other common .gitignore configurations are also available in
  Github's [gist](https://gist.github.com/octocat/9257657) that may
- worth adding them to the global gitignore file:
+ worth adding them to the global gitignore file.
  
- {% gist octocat/9257657 %}
+{%comment%} {% gist octocat/9257657 %} {%endcomment%}
 
 ## Conclusion
 
