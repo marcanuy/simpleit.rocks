@@ -88,7 +88,7 @@ PLATFORMS
 
 DEPENDENCIES
   html-proofer
-  jekyll (~> 3.3)
+  jekyll
   jekyll-gist
   jekyll-seo-tag
   jekyll-sitemap

@@ -42,7 +42,8 @@ layout: base_post
     <article>
       <h2>{{ page.title }} articles</h2>
       <div class="list-group">
-	{% assign posts_by_path = (site.posts | sort: 'path') %}
+	{% assign posts_by_path = site.posts | sort: "path" %}
+	  
 	{% for post in posts_by_path %}
 	{% assign dir_without_first_slash = page.dir | replace_first: '/', '' %}
 	{% if post.path contains dir_without_first_slash %}
@@ -58,7 +59,7 @@ layout: base_post
     {% for post in site.categories[current_category] %}
     {% comment %} Filter posts from other categories with the same name {% endcomment %}
     {% if post.categories == ancestors_and_self %}
-    {% assign posts_in_category = posts_in_category + 1 %}
+    {% assign posts_in_category = posts_in_category | plus: 1 %}
     {% endif %}{% endfor %}
     {% if posts_in_category > 1 %}
     <h2>Articles in {{ current_category }} category</h2>
