@@ -138,7 +138,7 @@ tags
  Github's [gist](https://gist.github.com/octocat/9257657) that may
  worth adding them to the global gitignore file.
  
-{%comment%} {% gist octocat/9257657 %} {%endcomment%}
+{% gist octocat/9257657 %}
 
 ## Conclusion
 
