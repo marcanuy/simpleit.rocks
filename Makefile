@@ -64,6 +64,9 @@ build-production: clean install include-yarn-deps
 	JEKYLL_ENV=production $(JEKYLL) build
 serve: clean install include-yarn-deps
 	$(JEKYLL) serve
+serve-limit: clean install include-yarn-deps
+	$(JEKYLL) serve --limit_posts 1
+
 serve-production: clean install include-yarn-deps
 	JEKYLL_ENV=production $(JEKYLL) serve
 deploy: build-production check
