@@ -6,9 +6,184 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 27 Jun 2017 21:04:48 +0000</pubDate>
-    <lastBuildDate>Tue, 27 Jun 2017 21:04:48 +0000</lastBuildDate>
+    <pubDate>Fri, 30 Jun 2017 23:01:28 +0000</pubDate>
+    <lastBuildDate>Fri, 30 Jun 2017 23:01:28 +0000</lastBuildDate>
     <generator>Jekyll v3.5.0</generator>
+    
+      <item>
+        <title>How To Download A Website With Wget The Right Way</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;To download an entire website from Linux it is often recommended to
+use &lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/code&gt;, however, it must be done using the right parameters or the
+downloaded website won’t be similar to the original one, with probably
+relative broken links. This tutorial explores the right combination to
+download a website:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;converting relative links to full paths so they can be browsed
+offline.&lt;/li&gt;
+  &lt;li&gt;preventing requesting too many web pages too fast, overloading the server
+and possibly being blocked from requesting more.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;wget-summary&quot;&gt;Wget summary&lt;/h2&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://www.gnu.org/software/wget/manual/html_node/Overview.html#Overview&quot;&gt;
+  &lt;p&gt;GNU Wget is a free utility for non-interactive download of files
+from the Web&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://www.gnu.org/software/wget/manual/html_node/Overview.html#Overview&quot;&gt;wget
+manual Overview&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/code&gt; command is very popular in Linux and present in most
+distributions.&lt;/p&gt;
+
+&lt;p&gt;To download an entire website we use the following parameters:&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--wait=2&lt;/code&gt;&lt;/dt&gt;
+  &lt;dd&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Wait the specified number of seconds between the retrievals. In
+this case 2 seconds.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/dd&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--limit-rate=20K&lt;/code&gt;&lt;/dt&gt;
+  &lt;dd&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Limit the download speed to amount bytes per second.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/dd&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--recursive&lt;/code&gt;&lt;/dt&gt;
+  &lt;dd&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Turn on recursive retrieving. The default maximum depth is 5.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/dd&gt;
+  &lt;dd&gt;If the website has more levels than 5, then you can specify it with &lt;code class=&quot;highlighter-rouge&quot;&gt;--level=depth&lt;/code&gt;&lt;/dd&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--page-requisites&lt;/code&gt;&lt;/dt&gt;
+  &lt;dd&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;download all the files that are necessary to properly display a
+given HTML page.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/dd&gt;
+  &lt;dd&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;This includes such things as inlined images, sounds, and
+referenced stylesheets.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/dd&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--user-agent=Mozilla&lt;/code&gt;`&lt;/dt&gt;
+  &lt;dd&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Identify as Mozilla to the HTTP server.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/dd&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--no-parent&lt;/code&gt;&lt;/dt&gt;
+  &lt;dd&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Do not ever ascend to the parent directory when retrieving
+recursively.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/dd&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--convert-links&lt;/code&gt;&lt;/dt&gt;
+  &lt;dd&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;After the download is complete, convert the links in the document
+to make them suitable for local viewing.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/dd&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--adjust-extension&lt;/code&gt;&lt;/dt&gt;
+  &lt;dd&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;If a file of type application/xhtml+xml or text/html is downloaded
+and the URL does not end with the regexp &lt;code class=&quot;highlighter-rouge&quot;&gt;\.[Hh][Tt][Mm][Ll]?&lt;/code&gt;, this
+option will cause the suffix .html to be appended to the local
+filename.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;Summarizing, these are the needed parameters:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget --wait&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+	 --limit-rate&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;20K &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+	 --recursive
+	 --page-requisites &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+	 --user-agent&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;Mozilla &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+	 --no-parent &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+	 --convert-links &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+	 --adjust-extension &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+	 https://example.com
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Or in one line:&lt;/p&gt;
+
+&lt;p&gt;&lt;kbd&gt;wget --wait=2 --limit-rate=20K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension https://example.com&lt;/kbd&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;Let’s try to download the &lt;a href=&quot;https://example.com&quot;&gt;https://example.com&lt;/a&gt; website (single page)
+to see how verbose is &lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/code&gt; and how it behaves.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;wget --wait=2 --limit-rate=20K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension https://example.com&lt;/kbd&gt;
+--2017-06-30 19:48:46--  https://example.com/
+Resolving example.com (example.com)... 93.184.216.34
+Connecting to example.com (example.com)|93.184.216.34|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1270 (1,2K) [text/html]
+Saving to: ‘example.com/index.html’
+
+example.com/index.html            100%[===========================================================&amp;gt;]   1,24K  --.-KB/s    in 0,003s
+
+2017-06-30 19:48:46 (371 KB/s) - ‘example.com/index.html’ saved [1270/1270]
+
+FINISHED --2017-06-30 19:48:46--
+Total wall clock time: 0,6s
+Downloaded: 1 files, 1,2K in 0,003s (371 KB/s)
+Converting links in example.com/index.html... nothing to do.
+Converted links in 1 files in 0 seconds.
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;tree example.com/&lt;/kbd&gt;
+example.com/
+└── index.html
+
+0 directories, 1 file
+
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/code&gt; is a fantastic command line tool, it has everything you will
+ever need without having to use any other GUI tool, just be sure to
+browse its manual for the right parameters you want.&lt;/p&gt;
+
+&lt;p&gt;The above parameters combination will make you have a browseable
+website locally.&lt;/p&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/code&gt; manual &lt;a href=&quot;https://www.gnu.org/software/wget/&quot;&gt;https://www.gnu.org/software/wget/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Fri, 30 Jun 2017 00:00:00 +0000</pubDate>
+        <link>https://simpleit.rocks/how-to-download-a-website-with-wget-the-right-way/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/how-to-download-a-website-with-wget-the-right-way/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>linux</category>
+        
+      </item>
     
       <item>
         <title>Writing Alternating Between English And Spanish In Emacs</title>
@@ -1889,127 +2064,6 @@ Server: AmazonS3
         <category>web</category>
         
         <category>hostings</category>
-        
-      </item>
-    
-      <item>
-        <title>Add Infolinks Script To An Existing Website From Console With Sed Command</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;An easy way to monetize your blog content is to add the &lt;a href=&quot;http://www.infolinks.com/join-us?aid=2980966&quot;&gt;Infolinks&lt;/a&gt;
-script to the website. This is a simple guide to add this script with
-a shell command to all the web pages of a static site.&lt;/p&gt;
-
-&lt;h2 id=&quot;how-infolinks-work&quot;&gt;How infolinks work&lt;/h2&gt;
-
-&lt;p&gt;To integrate &lt;a href=&quot;http://www.infolinks.com/join-us?aid=2980966&quot;&gt;Infolinks&lt;/a&gt; in your website, you need to add a script to
-each web page and it will convert some of the posts words into links
-to monetize them through automated affiliate links.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-command&quot;&gt;The command&lt;/h2&gt;
-
-&lt;p&gt;After &lt;a href=&quot;http://www.infolinks.com/join-us?aid=2980966&quot;&gt;registering&lt;/a&gt; the
-script can be obtained
-at &lt;a href=&quot;https://publishers.infolinks.com/members/1-minute-integration&quot;&gt;https://publishers.infolinks.com/members/1-minute-integration&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&quot;img-fluid&quot; alt=&quot;infolinks script&quot; src=&quot;https://s3.amazonaws.com/simpleitrocksbucket/images/infolinksscript.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The script should be placed in each webpage before the closing
-&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;/body&amp;gt;&lt;/code&gt; HTML tag.&lt;/p&gt;
-
-&lt;p&gt;For this we will use the &lt;strong&gt;sed&lt;/strong&gt; command, its name stands for
-&lt;strong&gt;S&lt;/strong&gt;tream &lt;strong&gt;Ed&lt;/strong&gt;itor and is used to perform basic text
-transformations on files.&lt;/p&gt;
-
-&lt;h3 id=&quot;put-script-in-a-file&quot;&gt;Put script in a file&lt;/h3&gt;
-
-&lt;p&gt;Create a file named &lt;code class=&quot;highlighter-rouge&quot;&gt;changes.sed&lt;/code&gt; with the basic changes for the &lt;em&gt;sed&lt;/em&gt;
-command:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# insert the closing div tag *before* the closing body tag&lt;/span&gt;
-/&amp;lt;&lt;span class=&quot;se&quot;&gt;\/&lt;/span&gt;body&amp;gt;/i&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Then copy the infolinks script in the same file adding a backslash &lt;code class=&quot;highlighter-rouge&quot;&gt;\&lt;/code&gt;
-after each line, so &lt;code class=&quot;highlighter-rouge&quot;&gt;changes.sed&lt;/code&gt; will look like:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# insert the closing div tag *before* the closing body tag&lt;/span&gt;
-/&amp;lt;&lt;span class=&quot;se&quot;&gt;\/&lt;/span&gt;body&amp;gt;/i&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-&amp;lt;script &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&amp;gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-var infolinks_pid &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 2980966;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-var infolinks_wsid &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-&amp;lt;/script&amp;gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-&amp;lt;script &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;//resources.infolinks.com/js/infolinks_main.js&quot;&lt;/span&gt;&amp;gt;&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;This will tell &lt;em&gt;sed&lt;/em&gt; to insert the javascript code before the
-&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;/body&amp;gt;&lt;/code&gt; HTML tag.&lt;/p&gt;
-
-&lt;p&gt;We will use this file as the script to be inserted by &lt;em&gt;sed&lt;/em&gt; with the
-parameter &lt;code class=&quot;highlighter-rouge&quot;&gt;-f&lt;/code&gt;:&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-  &lt;p&gt;-f script-file
-–file=script-file&lt;/p&gt;
-
-  &lt;p&gt;Add the commands contained in the file script-file to the set of
-commands to be run while processing the input.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;sed linux manual&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;transform-all-files&quot;&gt;Transform all files&lt;/h3&gt;
-
-&lt;p&gt;Go to the directory you have all the web pages and test the command
-with one page:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;sed -f changes.sed &amp;lt; webpage.html | less&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;Then apply the changes to each file &lt;strong&gt;replacing the original
-content&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p class=&quot;alert alert-danger&quot;&gt;Having a backup of the site before applying the changes is always a
-good practice.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find . -type f -exec sed -i -f changes.sed {} \;&lt;/kbd&gt;
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;-i&lt;/code&gt; &lt;em&gt;sed&lt;/em&gt; parameter stands for &lt;strong&gt;in place&lt;/strong&gt; so it will replace each file contents.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;This is a simple way for monetizing web content without having to deal
-with complex configurations or having to alter web content in any
-way. It integrates seamlessly into each web page and starts making a
-revenue from it.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;em&gt;sed&lt;/em&gt; manual at
-&lt;em&gt;gnu&lt;/em&gt; &lt;a href=&quot;https://www.gnu.org/software/sed/manual/sed.html&quot;&gt;https://www.gnu.org/software/sed/manual/sed.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Tue, 04 Apr 2017 00:00:00 +0000</pubDate>
-        <link>https://simpleit.rocks/add-infolinks-script-to-an-existing-website-from-console-with-sed-command/</link>
-        <guid isPermaLink="true">https://simpleit.rocks/add-infolinks-script-to-an-existing-website-from-console-with-sed-command/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>linux</category>
-        
-        <category>shell</category>
         
       </item>
     
