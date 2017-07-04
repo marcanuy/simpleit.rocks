@@ -46,23 +46,23 @@
 
     
   <!-- Begin Jekyll SEO tag v2.2.3 -->
-<title>What To Do After Launching A Website | Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="What To Do After Launching A Website" />
+<title>Set Up Ubuntu To Serve A Django Website Step By Step | Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Set Up Ubuntu To Serve A Django Website Step By Step" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A list of common tasks to do after publishing a Website." />
-<meta property="og:description" content="A list of common tasks to do after publishing a Website." />
-<link rel="canonical" href="https://simpleit.rocks/what-to-do-after-launching-a-website/" />
-<meta property="og:url" content="https://simpleit.rocks/what-to-do-after-launching-a-website/" />
+<meta name="description" content="Overview" />
+<meta property="og:description" content="Overview" />
+<link rel="canonical" href="https://simpleit.rocks/set-up-ubuntu-to-serve-a-django-website-step-by-step/" />
+<meta property="og:url" content="https://simpleit.rocks/set-up-ubuntu-to-serve-a-django-website-step-by-step/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-04-03T00:00:00+00:00" />
+<meta property="article:published_time" content="2017-07-03T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@simpleitrocks" />
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"What To Do After Launching A Website","author":{"@type":"Person","name":"marcanuy"},"datePublished":"2017-04-03T00:00:00+00:00","dateModified":"2017-04-03T00:00:00+00:00","description":"A list of common tasks to do after publishing a Website.","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/what-to-do-after-launching-a-website/"},"url":"https://simpleit.rocks/what-to-do-after-launching-a-website/"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Set Up Ubuntu To Serve A Django Website Step By Step","author":{"@type":"Person","name":"marcanuy"},"datePublished":"2017-07-03T00:00:00+00:00","dateModified":"2017-07-03T00:00:00+00:00","description":"Overview","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/set-up-ubuntu-to-serve-a-django-website-step-by-step/"},"url":"https://simpleit.rocks/set-up-ubuntu-to-serve-a-django-website-step-by-step/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -116,7 +116,7 @@
     
     
     
-    <h1 class="title">What To Do After Launching A Website </h1>
+    <h1 class="title">Set Up Ubuntu To Serve A Django Website Step By Step </h1>
     
     
   </div>
@@ -197,10 +197,10 @@
     class="breadcrumb-item">
   
   <a itemscope itemtype="https://schema.org/Thing"
-     itemprop="item" href="/docs/web">
+     itemprop="item" href="/docs/python">
     
 
-    web
+    python
   </a>
   
   <meta itemprop="position" content="3" />
@@ -221,10 +221,10 @@
     class="breadcrumb-item">
   
   <a itemscope itemtype="https://schema.org/Thing"
-     itemprop="item" href="/docs/web/html">
+     itemprop="item" href="/docs/python/django">
     
 
-    html
+    django
   </a>
   
   <meta itemprop="position" content="4" />
@@ -248,7 +248,7 @@
        itemprop="item">
     
 
-    <span itemprop="name">What To Do After Launching A Website</span>
+    <span itemprop="name">Set Up Ubuntu To Serve A Django Website Step By Step</span>
   </span>
   
   <meta itemprop="position" content="5" />
@@ -291,13 +291,19 @@
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#statistics">Statistics</a></li>
-<li class="toc-entry toc-h2"><a href="#performance">Performance</a></li>
-<li class="toc-entry toc-h2"><a href="#seo">SEO</a></li>
-<li class="toc-entry toc-h3"><a href="#search-engines">Search Engines</a></li>
-<li class="toc-entry toc-h4"><a href="#submit-urls">Submit URLs</a></li>
-<li class="toc-entry toc-h2"><a href="#sitemaps">Sitemaps</a></li>
-<li class="toc-entry toc-h2"><a href="#html">HTML</a></li>
+<li class="toc-entry toc-h2"><a href="#configuring-systemd-services">Configuring Systemd services</a></li>
+<li class="toc-entry toc-h3"><a href="#socket">Socket</a></li>
+<li class="toc-entry toc-h3"><a href="#service">Service</a></li>
+<li class="toc-entry toc-h3"><a href="#temporal-file">Temporal file</a></li>
+<li class="toc-entry toc-h2"><a href="#web-proxy">Web proxy</a></li>
+<li class="toc-entry toc-h2"><a href="#commands">Commands</a></li>
+<li class="toc-entry toc-h3"><a href="#enabling-services">Enabling services</a></li>
+<li class="toc-entry toc-h3"><a href="#activate-services">Activate services</a></li>
+<li class="toc-entry toc-h3"><a href="#testing">Testing</a></li>
+<li class="toc-entry toc-h3"><a href="#status">Status</a></li>
+<li class="toc-entry toc-h3"><a href="#debugging">Debugging</a></li>
+<li class="toc-entry toc-h2"><a href="#repo">Repo</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
       </div>
       <div>
@@ -308,9 +314,9 @@
       <div>
     <a class="twitter-share-button"
        href="https://twitter.com/share"
-       data-url="https://simpleit.rocks/what-to-do-after-launching-a-website/"
+       data-url="https://simpleit.rocks/set-up-ubuntu-to-serve-a-django-website-step-by-step/"
        data-via=""
-       data-text="What To Do After Launching A Website"
+       data-text="Set Up Ubuntu To Serve A Django Website Step By Step"
        data-related="marcanuy,simpleitrocks"
        data-count="vertical">
 	Tweet
@@ -342,7 +348,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="https://simpleit.rocks/what-to-do-after-launching-a-website/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="https://simpleit.rocks/set-up-ubuntu-to-serve-a-django-website-step-by-step/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -357,10 +363,6 @@
 
   <div class="col-md-8 site-content">
 
-    
-	<p class="lead">
-	  A list of common tasks to do after publishing a Website.
-	</p>
     
 
     <div class="si-ad m-3 mx-auto">
@@ -383,110 +385,241 @@
 
     <h2 id="overview">Overview</h2>
 
-<p>I’ve created an amazing
-website, <a href="http://www.namecheap.com/?aff=35306">buyed a domain</a> and
-purchased a <a href="https://m.do.co/c/b54bbc9a3125">web hosting service</a>,
-what’s next?</p>
+<p>This is a guide to have a website in an Ubuntu server using <strong>nginx</strong>
+and <strong>systemd</strong>.</p>
 
-<p>This is a check list of common resources I find useful to check to see
-if they fit my website needs, like setting up a CDN, cache, several
-optimizations, analytics, etc.</p>
-
-<h2 id="statistics">Statistics</h2>
+<p>Ubuntu uses <em>systemd</em> to manage system and service daemons and
+processes, we will create configuration files to:</p>
 
 <ul>
-  <li>Set up Google Analytics <a href="http://www.google.com/analytics/">http://www.google.com/analytics/</a></li>
+  <li>create temporary files</li>
+  <li>manage gunicorn system service</li>
+  <li>manage gunicorn system socket</li>
 </ul>
 
-<h2 id="performance">Performance</h2>
+<p>And lastly configuring <em>nginx</em> to handle requests.</p>
+
+<p>We assume the following configuration to set up the server, this is a
+basic configuration example to follow the tutorial and be easier to
+customize with your own data:</p>
 
 <ul>
-  <li>Set up Google Search Console (former Webmaster Tools)
+  <li>website domain: <code class="highlighter-rouge">example.com</code></li>
+  <li>Django source code located in <code class="highlighter-rouge">/home/chengue/sites/example</code></li>
+  <li>environment variable pointing to production settings:
+<code class="highlighter-rouge">DJANGO_SETTINGS_MODULE=example.settings.production</code>`</li>
+  <li>Python virtual environment for the <code class="highlighter-rouge">example</code> project at:
+<code class="highlighter-rouge">/home/chengue/.virtualenvs/example</code></li>
+  <li>Ubuntu User: chengue</li>
+</ul>
+
+<p>At the end of the tutorial we will have:</p>
+
+<ul>
+  <li>nginx handling requests to <code class="highlighter-rouge">example.com</code></li>
+  <li>traffic gets redirected from <em>non-www</em> to <em>www</em></li>
+</ul>
+
+<h2 id="configuring-systemd-services">Configuring Systemd services</h2>
+
+<h3 id="socket">Socket</h3>
+
+<p>To handle incoming Gunicorn requests we create a unix socket
+controlled by <em>systemd</em>. As the configuration filename should end in
+<code class="highlighter-rouge">.socket</code> we create the following file:
+<code class="highlighter-rouge">/etc/systemd/system/gunicorn.socket</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[Unit]
+Description=gunicorn socket
+
+[Socket]
+ListenStream=/run/gunicorn/socket
+
+[Install]
+WantedBy=sockets.target
+</code></pre>
+</div>
+
+<p cite="http://docs.gunicorn.org/en/stable/deploy.html#systemd"><em>systemd</em> will listen on this socket and start <strong>Gunicorn</strong>
+automatically in response to traffic.</p>
+
+<p>This sockets will be used by Gunicorn service using the parameter
+<code class="highlighter-rouge">--bind unix:/run/gunicorn/socket</code> in the service file.</p>
+
+<h3 id="service">Service</h3>
+
+<p>Then the service that use the above socket, In
+<code class="highlighter-rouge">/etc/systemd/system/gunicorn.service</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+PIDFile=/run/gunicorn/pid
+User=chengue
+Group=www-data
+RuntimeDirectory=gunicorn
+WorkingDirectory=/home/chengue/sites/example/example
+ExecStart=/home/chengue/.virtualenvs/example/bin/gunicorn \
+          --access-logfile /home/chengue/sites/logs/example.access.log \
+          --error-logfile /home/chengue/sites/logs/example.error.log \
+          --pid /run/gunicorn/pid   \
+          --env DJANGO_SETTINGS_MODULE=example.settings.production \
+          --bind unix:/run/gunicorn/socket example.wsgi
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+</div>
+
+<p class="alert alert-info">Be sure to adjust <code class="highlighter-rouge">WorkingDirectory</code> to your application root.</p>
+
+<h3 id="temporal-file">Temporal file</h3>
+
+<p>Temporal files handled by <em>systemd</em> are located in <code class="highlighter-rouge">/etc/tmpfiles.d/</code>,
+we create <code class="highlighter-rouge">/etc/tmpfiles.d/gunicorn.conf</code> with the following content:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>d /run/gunicorn 0755 chengue www-data -
+</code></pre>
+</div>
+
+<p class="alert alert-info"><code class="highlighter-rouge">www-data</code> is the Linux group of <code class="highlighter-rouge">nginx</code>.</p>
+
+<h2 id="web-proxy">Web proxy</h2>
+
+<p>Lastly, configure the web proxy to send traffic to the <em>Gunicorn</em>
+socket. Create a virtual site in <code class="highlighter-rouge">/etc/nginx/sites-available/example.com</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>server {
+	# redirect www to non-www
+    server_name www.example.com;
+    return 301 $scheme://example.com$request_uri;
+}
+
+server {
+	server_name example.com;
+
+	#location /static {
+	#    alias /home/chengue/sites/example/static;
+	#}
+
+	#location /media {
+	#    alias /home/chengue/sites/example/media;
+	#}
+
+	location / {
+		proxy_set_header Host $host;
+		proxy_pass http://unix:/run/gunicorn/socket;
+	}
+}
+</code></pre>
+</div>
+
+<p>Now that we have our <code class="highlighter-rouge">example.com</code> configuration as an available
+website in nginx, we should enable it creating a symbolic link in
+<code class="highlighter-rouge">/etc/nginx/sites-enabled/example.com</code> pointing to the above file:</p>
+
+<p><kbd>sudo ln -s /etc/nginx/sites-available/example.com \
+    /etc/nginx/sites-enabled/example.com</kbd></p>
+
+<h2 id="commands">Commands</h2>
+
+<h3 id="enabling-services">Enabling services</h3>
+
+<p>Enable services to autostart at boot:</p>
+
+<p><kbd>systemctl enable gunicorn.socket</kbd>
+<kbd>systemctl enable nginx.service</kbd></p>
+
+<h3 id="activate-services">Activate services</h3>
+
+<p>Manually activating services:</p>
+
+<p><kbd>systemctl start gunicorn.socket</kbd>
+<kbd>systemctl start nginx</kbd></p>
+
+<h3 id="testing">Testing</h3>
+
+<p>To test if Gunicorn works <kbd>curl --unix-socket /run/gunicorn/socket
+http</kbd> should retrieve an HTML from the server.</p>
+
+<h3 id="status">Status</h3>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>systemctl status gunicorn.socket</kbd>
+● gunicorn.socket - gunicorn socket
+   Loaded: loaded (/etc/systemd/system/gunicorn.socket; enabled; vendor preset: enabled)
+   Active: active (running) since Mon 2017-07-03 18:52:15 EDT; 2h 58min ago
+   Listen: /run/gunicorn/socket (Stream)
+
+Jul 03 18:52:15  systemd[1]: Closed gunicorn socket.
+Jul 03 18:52:15  systemd[1]: Stopping gunicorn socket.
+Jul 03 18:52:15  systemd[1]: Listening on gunicorn socket.
+<span class="shell-prompt">$</span> <kbd>systemctl status gunicorn.service</kbd>
+   Loaded: loaded (/etc/systemd/system/gunicorn.service; disabled; vendor preset: enabled)
+   Active: active (running) since Mon 2017-07-03 18:52:15 EDT; 2h 59min ago
+ Main PID: 14216 (gunicorn)
+    Tasks: 2 (limit: 4915)
+   Memory: 41.8M
+      CPU: 5.544s
+   CGroup: /system.slice/gunicorn.service
+           ├─14216 /home/chengue/.virtualenvs/example/bin/python3.6 /home/chengue/.virtualenvs/example/bin/gunicorn --access
+           └─14252 /home/chengue/.virtualenvs/pullgravity/bin/python3.6 /home/chengue/.virtualenvs/example/bin/gunicorn --access
+
+Jul 03 18:52:15  systemd[1]: Started gunicorn daemon.
+<span class="shell-prompt">$</span> <kbd>systemctl status nginx.service</kbd>
+   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+  Drop-In: /etc/systemd/system/nginx.service.d
+           └─override.conf
+   Active: active (running) since Mon 2017-07-03 18:52:21 EDT; 3h 1min ago
+     Docs: man:nginx(8)
+ Main PID: 14353 (nginx)
+    Tasks: 2 (limit: 4915)
+   Memory: 2.8M
+      CPU: 205ms
+   CGroup: /system.slice/nginx.service
+           ├─14353 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+           └─14357 nginx: worker process
+
+Jul 03 18:52:21  systemd[1]: Starting A high performance web server and a reverse proxy server...
+Jul 03 18:52:21  systemd[1]: Started A high performance web server and a reverse proxy server.
+</samp>
+</pre>
+
+<h3 id="debugging">Debugging</h3>
+
+<p>An useful command to see <em>systemd</em> logs filtered by service is
+<kbd>journalctl</kbd>, it query the <em>systemd</em> journal and with the
+<code class="highlighter-rouge">-u</code> parameter show messages for the specified systemd unit.</p>
+
+<p>Using our services:</p>
+
+<p><kbd>journalctl -u nginx.service</kbd>
+<kbd>journalctl -u gunicorn.service</kbd>
+<kbd>journalctl -u gunicorn.socket</kbd></p>
+
+<h2 id="repo">Repo</h2>
+
+<p>The files created in this tutorial are available in this Github repository: <a href="https://github.com/marcanuy/django-deploy-guide">https://github.com/marcanuy/django-deploy-guide</a>.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>Official page <a href="https://www.freedesktop.org/wiki/Software/systemd/">https://www.freedesktop.org/wiki/Software/systemd/</a></li>
+  <li>Gunicorn systemd section <a href="http://docs.gunicorn.org/en/stable/deploy.html#systemd">http://docs.gunicorn.org/en/stable/deploy.html#systemd</a></li>
+  <li>Linux manual pages:
     <ul>
-      <li>Add HTTPS, WWW and non-WWW versions and select the preferred one</li>
-      <li>Submit Sitemap.xml to Search Console</li>
+      <li><kbd>man systemd.socket</kbd></li>
+      <li><kbd>man systemd.service</kbd></li>
+      <li><kbd>man tmpfiles.d</kbd></li>
     </ul>
   </li>
-  <li>Monitor website’s uptime
-    <ul>
-      <li>It can be set up with a custom monitoring tool like a
-free <a href="https://github.com/phpservermon/phpservermon">https://github.com/phpservermon/phpservermon</a></li>
-      <li>or using some tools provided by services like Cloudflare</li>
-    </ul>
-  </li>
-  <li>
-    <p>Google’s PageSpeed
-Insights <a href="https://developers.google.com/speed/docs/insights/">https://developers.google.com/speed/docs/insights/</a></p>
-
-    <blockquote class="blockquote" cite="https://developers.google.com/speed/docs/insights/">
-      <p>Page Speed Insights measures the performance of a page for mobile
-devices and desktop devices. It fetches the url twice, once with a
-mobile user-agent, and once with a desktop-user agent.</p>
-
-      <footer class="blockquote-footer"> <cite><a href="https://developers.google.com/speed/docs/insights/">About PageSpeed Insights</a></cite></footer>
-    </blockquote>
-  </li>
-  <li>Set up Cloudflare <a href="https://www.cloudflare.com">https://www.cloudflare.com</a>
-    <ul>
-      <li>CDN</li>
-      <li>Enable HTTPS Page Rules</li>
-      <li>Static files compression and minification (especially CSS and JS)</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="seo">SEO</h2>
-
-<ul>
-  <li>Add your site’s name, logo, and social links
-    <ul>
-      <li><a href="https://developers.google.com/search/docs/data-types/sitename">https://developers.google.com/search/docs/data-types/sitename</a></li>
-      <li><a href="https://developers.google.com/search/docs/data-types/logo">https://developers.google.com/search/docs/data-types/logo</a></li>
-      <li><a href="https://developers.google.com/search/docs/data-types/social-profile-links">https://developers.google.com/search/docs/data-types/social-profile-links</a></li>
-    </ul>
-  </li>
-  <li>Enable breadcrumbs <a href="https://developers.google.com/search/docs/data-types/breadcrumbs">https://developers.google.com/search/docs/data-types/breadcrumbs</a></li>
-  <li>Add a sitelinks searchbox <a href="https://developers.google.com/search/docs/data-types/sitelinks-searchbox">https://developers.google.com/search/docs/data-types/sitelinks-searchbox</a></li>
-  <li>Check for missing <code class="highlighter-rouge">description</code> meta tag in HTML <code class="highlighter-rouge">&lt;head&gt;</code> pages section.</li>
-  <li>Validate HTML: <a href="https://validator.w3.org/">https://validator.w3.org/</a></li>
-  <li>Add <a href="http://ogp.me/">OpenGraph</a>
-and <a href="https://dev.twitter.com/cards/">Twitter cards</a></li>
-  <li>Generate an <a href="https://www.ampproject.org/docs/guides">AMP</a> version of the website</li>
-</ul>
-
-<h3 id="search-engines">Search Engines</h3>
-
-<h4 id="submit-urls">Submit URLs</h4>
-
-<ul>
-  <li>Google: <a href="https://www.google.com/webmasters/tools/submit-url">https://www.google.com/webmasters/tools/submit-url</a></li>
-  <li>Bing: <a href="https://www.bing.com/toolbox/submit-site-url">https://www.bing.com/toolbox/submit-site-url</a></li>
-  <li>Yandex: <a href="https://webmaster.yandex.com/site/indexing/reindex/">https://webmaster.yandex.com/site/indexing/reindex/</a></li>
-</ul>
-
-<h2 id="sitemaps">Sitemaps</h2>
-
-<ul>
-  <li>Include sitemaps in <a href="https://developers.google.com/webmasters/control-crawl-index/docs/robots_txt">robots.txt</a> file using a <code class="highlighter-rouge">sitemap: [absoluteURL]</code> directive.</li>
-</ul>
-
-<p class="alert alert-info">Supported by Google, Ask, Bing, Yahoo; defined on <a href="http://sitemaps.org">http://sitemaps.org</a>.</p>
-
-<ul>
-  <li>Submit a <a href="http://sitemaps.org/">sitemap</a> to
-    <ul>
-      <li>Google Search
-Console <a href="https://www.google.com/webmasters/tools/sitemap-list">https://www.google.com/webmasters/tools/sitemap-list</a></li>
-      <li>Bing (and Yahoo!) &lt;&gt;</li>
-      <li>Yandex <a href="https://webmaster.yandex.com/site/*/indexing/sitemap/">https://webmaster.yandex.com/site/*/indexing/sitemap/</a></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="html">HTML</h2>
-
-<ul>
-  <li>Add <a href="https://en.wikipedia.org/wiki/Favicon">Favicons</a> for different platforms.</li>
 </ul>
 
 
@@ -540,7 +673,7 @@ Console <a href="https://www.google.com/webmasters/tools/sitemap-list">https://w
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/what-to-do-after-launching-a-website/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/set-up-ubuntu-to-serve-a-django-website-step-by-step/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -595,6 +728,9 @@ Console <a href="https://www.google.com/webmasters/tools/sitemap-list">https://w
     
     
     
+      <a class="list-group-item list-group-item-action " href="/django-overview/">
+      Django Overview
+    </a>
     
     
     
@@ -626,6 +762,9 @@ Console <a href="https://www.google.com/webmasters/tools/sitemap-list">https://w
     
     
     
+      <a class="list-group-item list-group-item-action " href="/custom-django-configurations-for-different-servers/">
+      Django Configuration and environment isolation
+    </a>
     
     
     
@@ -707,11 +846,8 @@ Console <a href="https://www.google.com/webmasters/tools/sitemap-list">https://w
     
     
     
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/html-tags-for-software-development-blogs/">
-      Appropriate HTML5 tags to show source code, commands and software related tasks on blogs
+      <a class="list-group-item list-group-item-action " href="/django-project-directory-structure/">
+      Django Project Directory Structure
     </a>
     
     
@@ -799,213 +935,214 @@ Console <a href="https://www.google.com/webmasters/tools/sitemap-list">https://w
     
     
     
-      <a class="list-group-item list-group-item-action " href="/how-to-check-local-websites-for-broken-links/">
-      How To Check Local Websites For Broken Links
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action active" href="/set-up-ubuntu-to-serve-a-django-website-step-by-step/">
+      Set Up Ubuntu To Serve A Django Website Step By Step
     </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action active" href="/what-to-do-after-launching-a-website/">
-      What To Do After Launching A Website
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
   </div>

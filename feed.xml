@@ -6,9 +6,263 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 30 Jun 2017 23:01:28 +0000</pubDate>
-    <lastBuildDate>Fri, 30 Jun 2017 23:01:28 +0000</lastBuildDate>
+    <pubDate>Tue, 04 Jul 2017 02:15:37 +0000</pubDate>
+    <lastBuildDate>Tue, 04 Jul 2017 02:15:37 +0000</lastBuildDate>
     <generator>Jekyll v3.5.0</generator>
+    
+      <item>
+        <title>Set Up Ubuntu To Serve A Django Website Step By Step</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;This is a guide to have a website in an Ubuntu server using &lt;strong&gt;nginx&lt;/strong&gt;
+and &lt;strong&gt;systemd&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ubuntu uses &lt;em&gt;systemd&lt;/em&gt; to manage system and service daemons and
+processes, we will create configuration files to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;create temporary files&lt;/li&gt;
+  &lt;li&gt;manage gunicorn system service&lt;/li&gt;
+  &lt;li&gt;manage gunicorn system socket&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And lastly configuring &lt;em&gt;nginx&lt;/em&gt; to handle requests.&lt;/p&gt;
+
+&lt;p&gt;We assume the following configuration to set up the server, this is a
+basic configuration example to follow the tutorial and be easier to
+customize with your own data:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;website domain: &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Django source code located in &lt;code class=&quot;highlighter-rouge&quot;&gt;/home/chengue/sites/example&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;environment variable pointing to production settings:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;DJANGO_SETTINGS_MODULE=example.settings.production&lt;/code&gt;`&lt;/li&gt;
+  &lt;li&gt;Python virtual environment for the &lt;code class=&quot;highlighter-rouge&quot;&gt;example&lt;/code&gt; project at:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;/home/chengue/.virtualenvs/example&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Ubuntu User: chengue&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;At the end of the tutorial we will have:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;nginx handling requests to &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;traffic gets redirected from &lt;em&gt;non-www&lt;/em&gt; to &lt;em&gt;www&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;configuring-systemd-services&quot;&gt;Configuring Systemd services&lt;/h2&gt;
+
+&lt;h3 id=&quot;socket&quot;&gt;Socket&lt;/h3&gt;
+
+&lt;p&gt;To handle incoming Gunicorn requests we create a unix socket
+controlled by &lt;em&gt;systemd&lt;/em&gt;. As the configuration filename should end in
+&lt;code class=&quot;highlighter-rouge&quot;&gt;.socket&lt;/code&gt; we create the following file:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/systemd/system/gunicorn.socket&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[Unit]
+Description=gunicorn socket
+
+[Socket]
+ListenStream=/run/gunicorn/socket
+
+[Install]
+WantedBy=sockets.target
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p cite=&quot;http://docs.gunicorn.org/en/stable/deploy.html#systemd&quot;&gt;&lt;em&gt;systemd&lt;/em&gt; will listen on this socket and start &lt;strong&gt;Gunicorn&lt;/strong&gt;
+automatically in response to traffic.&lt;/p&gt;
+
+&lt;p&gt;This sockets will be used by Gunicorn service using the parameter
+&lt;code class=&quot;highlighter-rouge&quot;&gt;--bind unix:/run/gunicorn/socket&lt;/code&gt; in the service file.&lt;/p&gt;
+
+&lt;h3 id=&quot;service&quot;&gt;Service&lt;/h3&gt;
+
+&lt;p&gt;Then the service that use the above socket, In
+&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/systemd/system/gunicorn.service&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+PIDFile=/run/gunicorn/pid
+User=chengue
+Group=www-data
+RuntimeDirectory=gunicorn
+WorkingDirectory=/home/chengue/sites/example/example
+ExecStart=/home/chengue/.virtualenvs/example/bin/gunicorn \
+          --access-logfile /home/chengue/sites/logs/example.access.log \
+          --error-logfile /home/chengue/sites/logs/example.error.log \
+          --pid /run/gunicorn/pid   \
+          --env DJANGO_SETTINGS_MODULE=example.settings.production \
+          --bind unix:/run/gunicorn/socket example.wsgi
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p class=&quot;alert alert-info&quot;&gt;Be sure to adjust &lt;code class=&quot;highlighter-rouge&quot;&gt;WorkingDirectory&lt;/code&gt; to your application root.&lt;/p&gt;
+
+&lt;h3 id=&quot;temporal-file&quot;&gt;Temporal file&lt;/h3&gt;
+
+&lt;p&gt;Temporal files handled by &lt;em&gt;systemd&lt;/em&gt; are located in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/tmpfiles.d/&lt;/code&gt;,
+we create &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/tmpfiles.d/gunicorn.conf&lt;/code&gt; with the following content:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;d /run/gunicorn 0755 chengue www-data -
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p class=&quot;alert alert-info&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;www-data&lt;/code&gt; is the Linux group of &lt;code class=&quot;highlighter-rouge&quot;&gt;nginx&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;web-proxy&quot;&gt;Web proxy&lt;/h2&gt;
+
+&lt;p&gt;Lastly, configure the web proxy to send traffic to the &lt;em&gt;Gunicorn&lt;/em&gt;
+socket. Create a virtual site in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/nginx/sites-available/example.com&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;server {
+	# redirect www to non-www
+    server_name www.example.com;
+    return 301 $scheme://example.com$request_uri;
+}
+
+server {
+	server_name example.com;
+
+	#location /static {
+	#    alias /home/chengue/sites/example/static;
+	#}
+
+	#location /media {
+	#    alias /home/chengue/sites/example/media;
+	#}
+
+	location / {
+		proxy_set_header Host $host;
+		proxy_pass http://unix:/run/gunicorn/socket;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now that we have our &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com&lt;/code&gt; configuration as an available
+website in nginx, we should enable it creating a symbolic link in
+&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/nginx/sites-enabled/example.com&lt;/code&gt; pointing to the above file:&lt;/p&gt;
+
+&lt;p&gt;&lt;kbd&gt;sudo ln -s /etc/nginx/sites-available/example.com \
+    /etc/nginx/sites-enabled/example.com&lt;/kbd&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;commands&quot;&gt;Commands&lt;/h2&gt;
+
+&lt;h3 id=&quot;enabling-services&quot;&gt;Enabling services&lt;/h3&gt;
+
+&lt;p&gt;Enable services to autostart at boot:&lt;/p&gt;
+
+&lt;p&gt;&lt;kbd&gt;systemctl enable gunicorn.socket&lt;/kbd&gt;
+&lt;kbd&gt;systemctl enable nginx.service&lt;/kbd&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;activate-services&quot;&gt;Activate services&lt;/h3&gt;
+
+&lt;p&gt;Manually activating services:&lt;/p&gt;
+
+&lt;p&gt;&lt;kbd&gt;systemctl start gunicorn.socket&lt;/kbd&gt;
+&lt;kbd&gt;systemctl start nginx&lt;/kbd&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;testing&quot;&gt;Testing&lt;/h3&gt;
+
+&lt;p&gt;To test if Gunicorn works &lt;kbd&gt;curl --unix-socket /run/gunicorn/socket
+http&lt;/kbd&gt; should retrieve an HTML from the server.&lt;/p&gt;
+
+&lt;h3 id=&quot;status&quot;&gt;Status&lt;/h3&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl status gunicorn.socket&lt;/kbd&gt;
+● gunicorn.socket - gunicorn socket
+   Loaded: loaded (/etc/systemd/system/gunicorn.socket; enabled; vendor preset: enabled)
+   Active: active (running) since Mon 2017-07-03 18:52:15 EDT; 2h 58min ago
+   Listen: /run/gunicorn/socket (Stream)
+
+Jul 03 18:52:15  systemd[1]: Closed gunicorn socket.
+Jul 03 18:52:15  systemd[1]: Stopping gunicorn socket.
+Jul 03 18:52:15  systemd[1]: Listening on gunicorn socket.
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl status gunicorn.service&lt;/kbd&gt;
+   Loaded: loaded (/etc/systemd/system/gunicorn.service; disabled; vendor preset: enabled)
+   Active: active (running) since Mon 2017-07-03 18:52:15 EDT; 2h 59min ago
+ Main PID: 14216 (gunicorn)
+    Tasks: 2 (limit: 4915)
+   Memory: 41.8M
+      CPU: 5.544s
+   CGroup: /system.slice/gunicorn.service
+           ├─14216 /home/chengue/.virtualenvs/example/bin/python3.6 /home/chengue/.virtualenvs/example/bin/gunicorn --access
+           └─14252 /home/chengue/.virtualenvs/pullgravity/bin/python3.6 /home/chengue/.virtualenvs/example/bin/gunicorn --access
+
+Jul 03 18:52:15  systemd[1]: Started gunicorn daemon.
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl status nginx.service&lt;/kbd&gt;
+   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+  Drop-In: /etc/systemd/system/nginx.service.d
+           └─override.conf
+   Active: active (running) since Mon 2017-07-03 18:52:21 EDT; 3h 1min ago
+     Docs: man:nginx(8)
+ Main PID: 14353 (nginx)
+    Tasks: 2 (limit: 4915)
+   Memory: 2.8M
+      CPU: 205ms
+   CGroup: /system.slice/nginx.service
+           ├─14353 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+           └─14357 nginx: worker process
+
+Jul 03 18:52:21  systemd[1]: Starting A high performance web server and a reverse proxy server...
+Jul 03 18:52:21  systemd[1]: Started A high performance web server and a reverse proxy server.
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h3 id=&quot;debugging&quot;&gt;Debugging&lt;/h3&gt;
+
+&lt;p&gt;An useful command to see &lt;em&gt;systemd&lt;/em&gt; logs filtered by service is
+&lt;kbd&gt;journalctl&lt;/kbd&gt;, it query the &lt;em&gt;systemd&lt;/em&gt; journal and with the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;-u&lt;/code&gt; parameter show messages for the specified systemd unit.&lt;/p&gt;
+
+&lt;p&gt;Using our services:&lt;/p&gt;
+
+&lt;p&gt;&lt;kbd&gt;journalctl -u nginx.service&lt;/kbd&gt;
+&lt;kbd&gt;journalctl -u gunicorn.service&lt;/kbd&gt;
+&lt;kbd&gt;journalctl -u gunicorn.socket&lt;/kbd&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;repo&quot;&gt;Repo&lt;/h2&gt;
+
+&lt;p&gt;The files created in this tutorial are available in this Github repository: &lt;a href=&quot;https://github.com/marcanuy/django-deploy-guide&quot;&gt;https://github.com/marcanuy/django-deploy-guide&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Official page &lt;a href=&quot;https://www.freedesktop.org/wiki/Software/systemd/&quot;&gt;https://www.freedesktop.org/wiki/Software/systemd/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Gunicorn systemd section &lt;a href=&quot;http://docs.gunicorn.org/en/stable/deploy.html#systemd&quot;&gt;http://docs.gunicorn.org/en/stable/deploy.html#systemd&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Linux manual pages:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;kbd&gt;man systemd.socket&lt;/kbd&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;kbd&gt;man systemd.service&lt;/kbd&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;kbd&gt;man tmpfiles.d&lt;/kbd&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 03 Jul 2017 00:00:00 +0000</pubDate>
+        <link>https://simpleit.rocks/set-up-ubuntu-to-serve-a-django-website-step-by-step/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/set-up-ubuntu-to-serve-a-django-website-step-by-step/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>python</category>
+        
+        <category>django</category>
+        
+      </item>
     
       <item>
         <title>How To Download A Website With Wget The Right Way</title>
@@ -1810,260 +2064,6 @@ Tool &lt;a href=&quot;https://en.wikipedia.org/wiki/Advanced_Packaging_Tool&quot
         <category>docs</category>
         
         <category>linux</category>
-        
-      </item>
-    
-      <item>
-        <title>Redirect HTTP to HTTPS and WWW to non-WWW with AWS S3, Cloudfront and Route 53 with a custom domain</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;This guide explains how to have a custom domain with a secure
-connections, using Amazon services only.&lt;/p&gt;
-
-&lt;p&gt;After finishing the guide you will have the following:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;a static website hosted in Amazon &lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;abbr title=&quot;Hypertext Transfer Protocol (HTTP) within a connection encrypted by Transport Layer Security&quot;&gt;HTTPS&lt;/abbr&gt; enabled&lt;/li&gt;
-  &lt;li&gt;all your requests redirects to the non-WWW version
-&lt;code class=&quot;highlighter-rouge&quot;&gt;https://example.com&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;using Cloudfront &lt;abbr title=&quot;Amazon CloudFront – Content Delivery Network (CDN)&quot;&gt;CDN&lt;/abbr&gt;.&lt;/li&gt;
-  &lt;li&gt;using &lt;abbr title=&quot;Managed Cloud DNS - Domain Name System - Amazon Route 53 | AWS&quot;&gt;Route 53&lt;/abbr&gt;, Amazon’s domain name server manager&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;set-up-s3&quot;&gt;Set up &lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt;&lt;/h2&gt;
-
-&lt;p&gt;&lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt; allows you to store and retrieve any amount of data, in particular
-it makes it easy to set up static websites. The data hosted in &lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt; is
-saved as &lt;em&gt;objects&lt;/em&gt; and each object can have its custom permissions.&lt;/p&gt;
-
-&lt;h3 id=&quot;set-up-buckets&quot;&gt;Set up buckets&lt;/h3&gt;
-
-&lt;p&gt;To have our website hosted in &lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt;, we need to configure two buckets
-in &lt;a href=&quot;https://console.aws.amazon.com/s3/buckets/&quot;&gt;https://console.aws.amazon.com/s3/buckets/&lt;/a&gt;:&lt;/p&gt;
-
-&lt;h4 id=&quot;non-www-bucket&quot;&gt;non-WWW bucket&lt;/h4&gt;
-
-&lt;p&gt;One bucket for the naked domain called: &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com&lt;/code&gt;. This bucket will hold
-our static website files.&lt;/p&gt;
-
-&lt;p&gt;Turn on the Static Website Hosting for &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Adjust permissions to allow reading your objects, go to the bucket
-&lt;code class=&quot;highlighter-rouge&quot;&gt;Permissions&lt;/code&gt; tab, and then &lt;code class=&quot;highlighter-rouge&quot;&gt;Bucket Policy&lt;/code&gt;. We need to configure the
-&lt;em&gt;Action&lt;/em&gt;: &lt;strong&gt;s3:GetObject&lt;/strong&gt;, then if you don’t use the generator, it
-will look something like:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2012-10-17&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Policy1492008478664&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Statement&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Sid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Stmt1492008213599&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Effect&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Allow&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Principal&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Action&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;s3:GetObject&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Resource&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;arn:aws:s3:::example.com/*&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;www-bucket&quot;&gt;WWW bucket&lt;/h4&gt;
-
-&lt;p&gt;Another bucket for the www-version domain called: &lt;code class=&quot;highlighter-rouge&quot;&gt;www.example.com&lt;/code&gt;. This
-bucket will redirect all the requests that start with &lt;strong&gt;&lt;em&gt;WWW&lt;/em&gt;&lt;/strong&gt; to the
-non WWW version.&lt;/p&gt;
-
-&lt;p&gt;Turn on the Static Website Hosting for &lt;code class=&quot;highlighter-rouge&quot;&gt;www.example.com&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Go to &lt;code class=&quot;highlighter-rouge&quot;&gt;Properties&lt;/code&gt; tabs, &lt;code class=&quot;highlighter-rouge&quot;&gt;Static Website Hosting&lt;/code&gt; and select
-&lt;strong&gt;Redirect requests&lt;/strong&gt; with the following values:&lt;/p&gt;
-
-&lt;dl&gt;
-  &lt;dt&gt;Target bucket or domain&lt;/dt&gt;
-  &lt;dd&gt;example.com&lt;/dd&gt;
-  &lt;dt&gt;Protocol&lt;/dt&gt;
-  &lt;dd&gt;https&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;h3 id=&quot;set-up-cdn&quot;&gt;Set up &lt;abbr title=&quot;Amazon CloudFront – Content Delivery Network (CDN)&quot;&gt;CDN&lt;/abbr&gt;&lt;/h3&gt;
-
-&lt;p&gt;We need a CloudFront Distribution for each &lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt; bucket, so each website
-will have its own &lt;abbr title=&quot;Amazon CloudFront – Content Delivery Network (CDN)&quot;&gt;CDN&lt;/abbr&gt;.&lt;/p&gt;
-
-&lt;p&gt;Go to &lt;a href=&quot;https://console.aws.amazon.com/cloudfront/&quot;&gt;https://console.aws.amazon.com/cloudfront/&lt;/a&gt; and create two
-&lt;strong&gt;distributions&lt;/strong&gt; with just the default settings but with small
-changes.&lt;/p&gt;
-
-&lt;h4 id=&quot;cdn-for-examplecom&quot;&gt;&lt;abbr title=&quot;Amazon CloudFront – Content Delivery Network (CDN)&quot;&gt;CDN&lt;/abbr&gt; for example.com&lt;/h4&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;origin&lt;/code&gt; setting should contain the custom URL endpoint of our &lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt;
-website, &lt;strong&gt;avoid selecting the one that the dropdown list suggests for
-us&lt;/strong&gt; (REST endpoint) as we need the &lt;em&gt;web site endpoint&lt;/em&gt;, not the
-bucket, it should have the following form:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;bucket-name&amp;gt;.s3-website-&amp;lt;region&amp;gt;.amazonaws.com&lt;/code&gt;, in this case:&lt;/p&gt;
-
-&lt;dl&gt;
-  &lt;dt&gt;Origin&lt;/dt&gt;
-  &lt;dd&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;example.com.s3-website-us-east-1.amazonaws.com&lt;/code&gt;&lt;/dd&gt;
-  &lt;dt&gt;Default Cache Behavior Settings / Viewer Protocol Policy&lt;/dt&gt;
-  &lt;dd&gt;Redirect HTTP to &lt;abbr title=&quot;Hypertext Transfer Protocol (HTTP) within a connection encrypted by Transport Layer Security&quot;&gt;HTTPS&lt;/abbr&gt;&lt;/dd&gt;
-  &lt;dt&gt;Distribution Settings / Alternate Domain Names (CNAMEs)&lt;/dt&gt;
-  &lt;dd&gt;example.com&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;p class=&quot;alert alert-info&quot;&gt;Do &lt;strong&gt;not&lt;/strong&gt; set the &lt;code class=&quot;highlighter-rouge&quot;&gt;Default Root Object&lt;/code&gt; property.&lt;/p&gt;
-
-&lt;dl&gt;
-  &lt;dt&gt;Distribution Settings / SSL Certificate:&lt;/dt&gt;
-  &lt;dd&gt;Custom SSL Certificate (example.com)&lt;/dd&gt;
-  &lt;dd&gt;Request or Import a Certificate with ACM&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;p&gt;When you create the Certificate &lt;strong&gt;include both domains&lt;/strong&gt; as we are
-going to use this in the other distribution also:&lt;/p&gt;
-
-&lt;dl&gt;
-  &lt;dt&gt;Add domain names&lt;/dt&gt;
-  &lt;dd&gt;example.com&lt;/dd&gt;
-  &lt;dd&gt;www.example.com&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;p&gt;And follow the instructions to validate the certificate, then make
-sure it is selected in the &lt;em&gt;Distribution&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Leave all other setting with their default value.&lt;/p&gt;
-
-&lt;h4 id=&quot;cdn-for-wwwexamplecom&quot;&gt;&lt;abbr title=&quot;Amazon CloudFront – Content Delivery Network (CDN)&quot;&gt;CDN&lt;/abbr&gt; for www.example.com&lt;/h4&gt;
-
-&lt;p&gt;Create another distribution for the &lt;code class=&quot;highlighter-rouge&quot;&gt;www.example.com&lt;/code&gt; domain with
-these values:&lt;/p&gt;
-
-&lt;dl&gt;
-  &lt;dt&gt;Origin&lt;/dt&gt;
-  &lt;dd&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;www.example.com.s3-website-us-east-1.amazonaws.com&lt;/code&gt;&lt;/dd&gt;
-  &lt;dt&gt;Default Cache Behavior Settings / Viewer Protocol Policy&lt;/dt&gt;
-  &lt;dd&gt;Redirect HTTP to &lt;abbr title=&quot;Hypertext Transfer Protocol (HTTP) within a connection encrypted by Transport Layer Security&quot;&gt;HTTPS&lt;/abbr&gt;&lt;/dd&gt;
-  &lt;dt&gt;Distribution Settings / Alternate Domain Names (CNAMEs)&lt;/dt&gt;
-  &lt;dd&gt;www.example.com&lt;/dd&gt;
-  &lt;dt&gt;Distribution Settings / SSL Certificate:&lt;/dt&gt;
-  &lt;dd&gt;Custom SSL Certificate (example.com)&lt;/dd&gt;
-  &lt;dd&gt;Select our previously created certificate that includes this domain&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;h3 id=&quot;set-up-domains&quot;&gt;Set up domains&lt;/h3&gt;
-
-&lt;p&gt;We are almost there, now it is time to configure the DNS registry
-with &lt;a href=&quot;https://console.aws.amazon.com/route53/home&quot;&gt;&lt;abbr title=&quot;Managed Cloud DNS - Domain Name System - Amazon Route 53 | AWS&quot;&gt;Route 53&lt;/abbr&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Go to &lt;strong&gt;DNS management&lt;/strong&gt; / &lt;strong&gt;Hosted Zones&lt;/strong&gt; and create a hosted zone
-&lt;code class=&quot;highlighter-rouge&quot;&gt;example.com.&lt;/code&gt;:&lt;/p&gt;
-
-&lt;dl class=&quot;row&quot;&gt;
-  &lt;dt class=&quot;col-sm-3&quot;&gt;Domain Name:&lt;/dt&gt;
-  &lt;dd class=&quot;col-sm-9&quot;&gt;example.com.&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;p&gt;In this hosted zone, create a &lt;strong&gt;Record Set&lt;/strong&gt; with these values:&lt;/p&gt;
-
-&lt;dl class=&quot;row&quot;&gt;
-  &lt;dt class=&quot;col-sm-3&quot;&gt;Name:&lt;/dt&gt;
-  &lt;dd class=&quot;col-sm-9&quot;&gt;(leave it empty)&lt;/dd&gt;
-  
-  &lt;dt class=&quot;col-sm-3&quot;&gt;Type:&lt;/dt&gt;
-  &lt;dd class=&quot;col-sm-9&quot;&gt;Alias: Yes&lt;/dd&gt;
-  &lt;dd class=&quot;col-sm-9 offset-sm-3&quot;&gt;Select the CloudFront distribution corresponding to &lt;strong&gt;example.com&lt;/strong&gt;&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;p&gt;Then create another &lt;strong&gt;Record Set&lt;/strong&gt; for &lt;code class=&quot;highlighter-rouge&quot;&gt;www.example.com&lt;/code&gt;:&lt;/p&gt;
-
-&lt;dl class=&quot;row&quot;&gt;
-  &lt;dt class=&quot;col-sm-3&quot;&gt;Name:&lt;/dt&gt;
-  &lt;dd class=&quot;col-sm-9&quot;&gt;www&lt;/dd&gt;
-  
-  &lt;dt class=&quot;col-sm-3&quot;&gt;Type:&lt;/dt&gt;
-  &lt;dd class=&quot;col-sm-9&quot;&gt;Alias: Yes&lt;/dd&gt;
-  &lt;dd class=&quot;col-sm-9 offset-sm-3&quot;&gt;Select the CloudFront distribution corresponding to &lt;strong&gt;www.example.com&lt;/strong&gt;&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;h2 id=&quot;verification&quot;&gt;Verification&lt;/h2&gt;
-
-&lt;p&gt;All DNS changes and &lt;abbr title=&quot;Amazon CloudFront – Content Delivery Network (CDN)&quot;&gt;CDN&lt;/abbr&gt; setup take time to propagate, you will have to
-wait for propagation, then verify it is all working as expected for
-HTTP, &lt;abbr title=&quot;Hypertext Transfer Protocol (HTTP) within a connection encrypted by Transport Layer Security&quot;&gt;HTTPS&lt;/abbr&gt; and WWW, non-WWW URLs:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;curl -sI http://example.com | grep -E '(301|Server|Location|X-Cache|HTTP)'&lt;/kbd&gt;
-HTTP/1.1 301 Moved Permanently
-Server: CloudFront
-Location: https://example.com/
-X-Cache: Redirect from cloudfront
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;curl -sI https://example.com | grep -E '(X-Cache|HTTP)'&lt;/kbd&gt;
-HTTP/1.1 200 OK
-X-Cache: Hit from cloudfront
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;curl -sI http://www.example.com | grep -E '(301|Server|Location|X-Cache|HTTP)'&lt;/kbd&gt;
-HTTP/1.1 301 Moved Permanently
-Server: CloudFront
-Location: https://www.example.com/
-X-Cache: Redirect from cloudfront
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;curl -sI https://www.example.com | grep -E '(301|Server|Location|HTTP)'&lt;/kbd&gt;
-HTTP/1.1 301 Moved Permanently
-Location: https://example.com/
-Server: AmazonS3
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;Explanation of commands:&lt;/p&gt;
-
-&lt;dl class=&quot;row&quot;&gt;
-  &lt;dt class=&quot;col-sm-3&quot;&gt;&lt;kbd&gt;curl&lt;/kbd&gt;&lt;/dt&gt;
-  &lt;dd class=&quot;col-sm-9&quot;&gt;&lt;blockquote&gt;curl - transfer a URL&lt;/blockquote&gt;&lt;/dd&gt;
-
-  &lt;dt class=&quot;col-sm-3&quot;&gt;&lt;kbd&gt;curl -s&lt;/kbd&gt;&lt;/dt&gt;
-  &lt;dd class=&quot;col-sm-9&quot;&gt;Silent  or  quiet mode. Don't show progress meter or error messages.&lt;/dd&gt;
-
-  &lt;dt class=&quot;col-sm-3&quot;&gt;&lt;kbd&gt;curl -I&lt;/kbd&gt;&lt;/dt&gt;
-  &lt;dd class=&quot;col-sm-9&quot;&gt;(HTTP/FTP/FILE) Fetch the HTTP-header only&lt;/dd&gt;
-
-  &lt;dt class=&quot;col-sm-3&quot;&gt;&lt;kbd&gt;grep&lt;/kbd&gt;&lt;/dt&gt;
-  &lt;dd class=&quot;col-sm-9&quot;&gt;&lt;blockquote&gt;print lines matching a pattern&lt;/blockquote&gt;&lt;/dd&gt;
-
-  &lt;dt class=&quot;col-sm-3&quot;&gt;&lt;kbd&gt;grep -E, --extended-regexp&lt;/kbd&gt;&lt;/dt&gt;
-  &lt;dd class=&quot;col-sm-9&quot;&gt;Interpret PATTERN as an extended regular expression.&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;Now all the requests to &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com&lt;/code&gt; will be served by
-&lt;code class=&quot;highlighter-rouge&quot;&gt;https://example.com&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt; docs &lt;a href=&quot;https://aws.amazon.com/s3/&quot;&gt;https://aws.amazon.com/s3/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Cloudfront docs &lt;a href=&quot;https://aws.amazon.com/cloudfront/&quot;&gt;https://aws.amazon.com/cloudfront/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;abbr title=&quot;Managed Cloud DNS - Domain Name System - Amazon Route 53 | AWS&quot;&gt;Route 53&lt;/abbr&gt; &lt;a href=&quot;https://aws.amazon.com/route53/&quot;&gt;https://aws.amazon.com/route53/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/users/796468/rki&quot;&gt;RKI&lt;/a&gt; answer in &lt;a href=&quot;http://stackoverflow.com/a/42869783/1165509&quot;&gt;Cloudfront redirect www to naked domain with ssl&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt; Website features can be used in conjunction with Amazon CloudFront. However, &lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt; Website uses a different domain name than regular &lt;abbr title=&quot;Amazon Simple Storage Service&quot;&gt;S3&lt;/abbr&gt; buckets. In this case, you’ll need to set the Origin Domain Name of your CloudFront distribution’s origin configuration to new.rdegges.com.s3 website us east 1.amazonaws.com.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-</description>
-        <pubDate>Sat, 22 Apr 2017 00:00:00 +0000</pubDate>
-        <link>https://simpleit.rocks/redirect-http-to-https-and-www-to-non-www-with-aws-s3-bucket-cloudfront-route-53-and-a-custom-domain/</link>
-        <guid isPermaLink="true">https://simpleit.rocks/redirect-http-to-https-and-www-to-non-www-with-aws-s3-bucket-cloudfront-route-53-and-a-custom-domain/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>web</category>
-        
-        <category>hostings</category>
         
       </item>
     
