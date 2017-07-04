@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 04 Jul 2017 02:15:37 +0000</pubDate>
-    <lastBuildDate>Tue, 04 Jul 2017 02:15:37 +0000</lastBuildDate>
+    <pubDate>Tue, 04 Jul 2017 02:38:45 +0000</pubDate>
+    <lastBuildDate>Tue, 04 Jul 2017 02:38:45 +0000</lastBuildDate>
     <generator>Jekyll v3.5.0</generator>
     
       <item>
@@ -249,6 +249,8 @@ Jul 03 18:52:21  systemd[1]: Started A high performance web server and a reverse
       &lt;li&gt;&lt;kbd&gt;man tmpfiles.d&lt;/kbd&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;Unix socket &lt;a href=&quot;https://en.wikipedia.org/wiki/Unix_domain_socket&quot;&gt;https://en.wikipedia.org/wiki/Unix_domain_socket&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;nginx proxy &lt;a href=&quot;http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass&quot;&gt;http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 03 Jul 2017 00:00:00 +0000</pubDate>
