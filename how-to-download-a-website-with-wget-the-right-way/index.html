@@ -367,6 +367,7 @@ download a website:</p>
 offline.</li>
   <li>preventing requesting too many web pages too fast, overloading the server
 and possibly being blocked from requesting more.</li>
+  <li>avoid overwriting or creating duplicates of already downloaded files.</li>
 </ul>
 
 <h2 id="wget-summary">Wget summary</h2>
@@ -447,6 +448,15 @@ option will cause the suffix .html to be appended to the local
 filename.</p>
     </blockquote>
   </dd>
+  <dt><code class="highlighter-rouge">--no-clobber</code></dt>
+  <dd>
+    <blockquote>
+      <p>When running Wget with -r, re-downloading a file will result in
+the new copy simply overwriting the old.  Adding -nc will prevent
+this behavior, instead causing the original version to be preserved
+and any newer copies on the server to be ignored.</p>
+    </blockquote>
+  </dd>
 </dl>
 
 <p>Summarizing, these are the needed parameters:</p>
@@ -459,13 +469,14 @@ filename.</p>
 	 --no-parent <span class="se">\</span>
 	 --convert-links <span class="se">\</span>
 	 --adjust-extension <span class="se">\</span>
+	 --no-clobber <span class="se">\</span>
 	 https://example.com
 </code></pre>
 </div>
 
 <p>Or in one line:</p>
 
-<p><kbd>wget --wait=2 --limit-rate=20K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension https://example.com</kbd></p>
+<p><kbd>wget --wait=2 --limit-rate=20K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension --no-clobber https://example.com</kbd></p>
 
 <h2 id="example">Example</h2>
 
@@ -474,7 +485,9 @@ to see how verbose is <code class="highlighter-rouge">wget</code> and how it beh
 
 <pre class="shell">
 <samp>
-<span class="shell-prompt">$</span> <kbd>wget --wait=2 --limit-rate=20K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension https://example.com</kbd>
+<span class="shell-prompt">$</span> <kbd>wget --wait=2
+--limit-rate=20K --recursive --page-requisites --user-agent=Mozilla
+--no-parent --convert-links --adjust-extension --no-clobber  https://example.com</kbd>
 --2017-06-30 19:48:46--  https://example.com/
 Resolving example.com (example.com)... 93.184.216.34
 Connecting to example.com (example.com)|93.184.216.34|:443... connected.

@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 04 Jul 2017 02:38:45 +0000</pubDate>
-    <lastBuildDate>Tue, 04 Jul 2017 02:38:45 +0000</lastBuildDate>
+    <pubDate>Tue, 04 Jul 2017 14:09:14 +0000</pubDate>
+    <lastBuildDate>Tue, 04 Jul 2017 14:09:14 +0000</lastBuildDate>
     <generator>Jekyll v3.5.0</generator>
     
       <item>
@@ -281,6 +281,7 @@ download a website:&lt;/p&gt;
 offline.&lt;/li&gt;
   &lt;li&gt;preventing requesting too many web pages too fast, overloading the server
 and possibly being blocked from requesting more.&lt;/li&gt;
+  &lt;li&gt;avoid overwriting or creating duplicates of already downloaded files.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;wget-summary&quot;&gt;Wget summary&lt;/h2&gt;
@@ -361,6 +362,15 @@ option will cause the suffix .html to be appended to the local
 filename.&lt;/p&gt;
     &lt;/blockquote&gt;
   &lt;/dd&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--no-clobber&lt;/code&gt;&lt;/dt&gt;
+  &lt;dd&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;When running Wget with -r, re-downloading a file will result in
+the new copy simply overwriting the old.  Adding -nc will prevent
+this behavior, instead causing the original version to be preserved
+and any newer copies on the server to be ignored.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/dd&gt;
 &lt;/dl&gt;
 
 &lt;p&gt;Summarizing, these are the needed parameters:&lt;/p&gt;
@@ -373,13 +383,14 @@ filename.&lt;/p&gt;
 	 --no-parent &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 	 --convert-links &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 	 --adjust-extension &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+	 --no-clobber &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 	 https://example.com
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;p&gt;Or in one line:&lt;/p&gt;
 
-&lt;p&gt;&lt;kbd&gt;wget --wait=2 --limit-rate=20K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension https://example.com&lt;/kbd&gt;&lt;/p&gt;
+&lt;p&gt;&lt;kbd&gt;wget --wait=2 --limit-rate=20K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension --no-clobber https://example.com&lt;/kbd&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
 
@@ -388,7 +399,9 @@ to see how verbose is &lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/c
 
 &lt;pre class=&quot;shell&quot;&gt;
 &lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;wget --wait=2 --limit-rate=20K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension https://example.com&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;wget --wait=2
+--limit-rate=20K --recursive --page-requisites --user-agent=Mozilla
+--no-parent --convert-links --adjust-extension --no-clobber  https://example.com&lt;/kbd&gt;
 --2017-06-30 19:48:46--  https://example.com/
 Resolving example.com (example.com)... 93.184.216.34
 Connecting to example.com (example.com)|93.184.216.34|:443... connected.
