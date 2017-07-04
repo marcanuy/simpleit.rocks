@@ -15,6 +15,7 @@ download a website:
   offline.
 - preventing requesting too many web pages too fast, overloading the server
   and possibly being blocked from requesting more.
+- avoid overwriting or creating duplicates of already downloaded files.
   
 ## Wget summary
 
@@ -65,6 +66,12 @@ given HTML page.
   option will cause the suffix .html to be appended to the local
   filename.
 
+`--no-clobber`
+: > When running Wget with -r, re-downloading a file will result in
+  the new copy simply overwriting the old.  Adding -nc will prevent
+  this behavior, instead causing the original version to be preserved
+  and any newer copies on the server to be ignored.
+
 Summarizing, these are the needed parameters:
 
 ~~~ bash
@@ -76,12 +83,13 @@ wget --wait=2 \
 	 --no-parent \
 	 --convert-links \
 	 --adjust-extension \
+	 --no-clobber \
 	 https://example.com
 ~~~
 
 Or in one line:
 
-<kbd>wget --wait=2 --limit-rate=20K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension https://example.com</kbd>
+<kbd>wget --wait=2 --limit-rate=20K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension --no-clobber https://example.com</kbd>
 
 ## Example
 
@@ -90,7 +98,9 @@ to see how verbose is `wget` and how it behaves.
 
 <pre class="shell">
 <samp>
-<span class="shell-prompt">$</span> <kbd>wget --wait=2 --limit-rate=20K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension https://example.com</kbd>
+<span class="shell-prompt">$</span> <kbd>wget --wait=2
+--limit-rate=20K --recursive --page-requisites --user-agent=Mozilla
+--no-parent --convert-links --adjust-extension --no-clobber  https://example.com</kbd>
 --2017-06-30 19:48:46--  https://example.com/
 Resolving example.com (example.com)... 93.184.216.34
 Connecting to example.com (example.com)|93.184.216.34|:443... connected.
