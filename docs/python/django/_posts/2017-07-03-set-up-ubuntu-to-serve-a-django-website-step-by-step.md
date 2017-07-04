@@ -220,6 +220,10 @@ Using our services:
 <kbd>journalctl -u gunicorn.service</kbd>
 <kbd>journalctl -u gunicorn.socket</kbd>
 
+## Repo
+
+The files created in this tutorial are available in this Github repository: <https://github.com/marcanuy/django-deploy-guide>.
+
 ## References
 
 - Official page <https://www.freedesktop.org/wiki/Software/systemd/>
