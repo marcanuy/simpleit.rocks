@@ -1,5 +1,5 @@
 ---
-description: 
+description: How to set up Ubuntu to serve a Django website using systemd and Gunicorn.
 ---
 
 ## Overview
@@ -232,3 +232,5 @@ The files created in this tutorial are available in this Github repository: <htt
   - <kbd>man systemd.socket</kbd>
   - <kbd>man systemd.service</kbd>
   - <kbd>man tmpfiles.d</kbd>
+- Unix socket <https://en.wikipedia.org/wiki/Unix_domain_socket>
+- nginx proxy <http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass>
