@@ -6,9 +6,9 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 04 Jul 2017 14:09:14 +0000</pubDate>
-    <lastBuildDate>Tue, 04 Jul 2017 14:09:14 +0000</lastBuildDate>
-    <generator>Jekyll v3.5.0</generator>
+    <pubDate>Mon, 17 Jul 2017 17:50:22 +0000</pubDate>
+    <lastBuildDate>Mon, 17 Jul 2017 17:50:22 +0000</lastBuildDate>
+    <generator>Jekyll v3.5.1</generator>
     
       <item>
         <title>Set Up Ubuntu To Serve A Django Website Step By Step</title>
