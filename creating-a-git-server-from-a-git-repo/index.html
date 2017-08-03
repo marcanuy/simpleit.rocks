@@ -304,6 +304,7 @@
 <li class="toc-entry toc-h2"><a href="#copy-repo-to-remote-server">Copy repo to remote server</a></li>
 <li class="toc-entry toc-h2"><a href="#add-server-repo-as-a-remote-in-local-repo">Add server repo as a remote in local repo</a></li>
 <li class="toc-entry toc-h3"><a href="#verify-new-remote">Verify new remote</a></li>
+<li class="toc-entry toc-h2"><a href="#alternative">Alternative</a></li>
 <li class="toc-entry toc-h2"><a href="#conclusions">Conclusions</a></li>
 <li class="toc-entry toc-h2"><a href="#references">References</a></li>
 <li class="toc-entry toc-h2"><a href="#summary">Summary</a></li>
@@ -523,6 +524,39 @@ origin  user@gitserver.com:/srv/git/my_project.git (push)
 </samp>
 </pre>
 
+<h2 id="alternative">Alternative</h2>
+
+<p>An alternative workflow that does not involve cloning the repo locally
+would be:</p>
+
+<ol>
+  <li>Log in to the remote server <code class="highlighter-rouge">ssh user@gitserver.com</code></li>
+  <li>
+    <p>Create an empty bare repo:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> mkdir /srv/git/my_project.git
+ cd /srv/git/my_project.git`
+ git --bare init
+ CTRL-d
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Back in local host, add the remote:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> git remote add origin user@gitserver.com:/srv/git/my_project.git
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Push changes:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> git push origin master
+</code></pre>
+    </div>
+  </li>
+</ol>
+
 <h2 id="conclusions">Conclusions</h2>
 
 <p>This is a simple way of enabling other users to contribute to your
@@ -532,12 +566,16 @@ goes.</p>
 <p>Now every other user that wants to contribute should <code class="highlighter-rouge">clone</code> the
 server repo and keep that up to date.</p>
 
+<p>A bash script based in this tutorial is available
+at <a href="https://github.com/marcanuy/centralize-git-repo">https://github.com/marcanuy/centralize-git-repo</a>.</p>
+
 <h2 id="references">References</h2>
 
 <ul>
   <li><a href="https://git-scm.com/docs/git-clone">https://git-scm.com/docs/git-clone</a></li>
   <li><a href="https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server">https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server</a></li>
   <li><a href="https://git-scm.com/book/ch4-1.html">https://git-scm.com/book/ch4-1.html</a></li>
+  <li><a href="https://codereview.stackexchange.com/q/171928/73837">Code Review</a></li>
 </ul>
 
 
