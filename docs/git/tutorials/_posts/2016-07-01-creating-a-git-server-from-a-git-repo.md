@@ -129,6 +129,27 @@ origin  user@gitserver.com:/srv/git/my_project.git (push)
 </samp>
 </pre>
 
+## Alternative
+
+An alternative workflow that does not involve cloning the repo locally
+would be:
+
+1. Log in to the remote server `ssh user@gitserver.com`
+2. Create an empty bare repo:
+
+        mkdir /srv/git/my_project.git
+		cd /srv/git/my_project.git`
+        git --bare init
+        CTRL-d
+
+3. Back in local host, add the remote:
+
+        git remote add origin user@gitserver.com:/srv/git/my_project.git
+
+4. Push changes:
+
+        git push origin master
+
 ## Conclusions
 
 This is a simple way of enabling other users to contribute to your
@@ -138,8 +159,12 @@ goes.
 Now every other user that wants to contribute should `clone` the
 server repo and keep that up to date.
 
+A bash script based in this tutorial is available
+at <https://github.com/marcanuy/centralize-git-repo>.
+
 ## References 
 
 - <https://git-scm.com/docs/git-clone>
 - <https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server>
 - <https://git-scm.com/book/ch4-1.html>
+- [Code Review](https://codereview.stackexchange.com/q/171928/73837)
