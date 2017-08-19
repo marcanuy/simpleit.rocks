@@ -336,7 +336,14 @@
 <li class="toc-entry toc-h2"><a href="#add-css-to-layout">Add css to layout</a></li>
 <li class="toc-entry toc-h2"><a href="#all-together">All together</a></li>
 <li class="toc-entry toc-h2"><a href="#other">Other</a></li>
-<li class="toc-entry toc-h2"><a href="#optional-keep-node_modules-out-of-_site">OPTIONAL: Keep node_modules out of _site</a></li>
+<li class="toc-entry toc-h2"><a href="#optional-keep-node_modules-out-of-_site">OPTIONAL: Keep node_modules out of _site</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#script">Script</a></li>
+<li class="toc-entry toc-h3"><a href="#using-new-paths">Using new paths</a></li>
+<li class="toc-entry toc-h3"><a href="#exclude-unwanted-directories">Exclude unwanted directories</a></li>
+<li class="toc-entry toc-h3"><a href="#final">Final</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h2"><a href="#conclusion">Conclusion</a></li>
 <li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
@@ -671,6 +678,8 @@ classic <a href="https://www.gnu.org/software/make/manual/make.html">make</a>
 program, each task is pretty self explanatory and can also be ported
 easily to <a href="https://gruntjs.com">Grunt</a> or any other task automation solution.</p>
 
+<h3 id="script">Script</h3>
+
 <p>Create a file called <code class="highlighter-rouge">Makefile</code> at root level with this content (if
 using Bundler):</p>
 
@@ -733,6 +742,8 @@ the above script in two flavours:</p>
 
 <p>Now we will use <code class="highlighter-rouge">make build</code> and <code class="highlighter-rouge">make serve</code> to work with Jekyll.</p>
 
+<h3 id="using-new-paths">Using new paths</h3>
+
 <p>It just remain to update our paths in the layout, in <code class="highlighter-rouge">default.html</code>
 use them as:</p>
 
@@ -741,6 +752,18 @@ use them as:</p>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://simpleit.rocks/assets/vendor/bootstrap.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre>
 </div>
+
+<h3 id="exclude-unwanted-directories">Exclude unwanted directories</h3>
+
+<p>Tell Jekyll to not include the <code class="highlighter-rouge">node_modules</code> directory in the final
+site, in <code class="highlighter-rouge">_config.yml</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>exclude:
+ - node_modules
+</code></pre>
+</div>
+
+<h3 id="final">Final</h3>
 
 <p>Now we are just including in our website the files we chose from the
 <code class="highlighter-rouge">node_modules</code> folder, placing them in <code class="highlighter-rouge">assets/vendor</code> and avoiding to
