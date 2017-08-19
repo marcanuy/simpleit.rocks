@@ -648,7 +648,7 @@ Jekyll hosted on GitHub based on this article ready to use.</p>
 <p>There is also a step by step video using the previous package manager
 Bower instead of Yarn:</p>
 
-<div class="embed-responsive embed-responsive-16by9">
+<div class="embed-responsive embed-responsive-16by9 m-1">
   <iframe class="embed-responsive-item" src="//www.youtube.com/embed/0EI1V_Whgto" allowfullscreen=""></iframe>
 </div>
 
@@ -668,53 +668,68 @@ replacement for <kbd>jekyll build</kbd> and <kbd>jekyll serve</kbd>.</p>
 
 <p>In this case I will be using the
 classic <a href="https://www.gnu.org/software/make/manual/make.html">make</a>
-program.</p>
+program, each task is pretty self explanatory and can also be ported
+easily to <a href="https://gruntjs.com">Grunt</a> or any other task automation solution.</p>
 
-<p>Create a file called <code class="highlighter-rouge">Makefile</code> at root level with this content:</p>
+<p>Create a file called <code class="highlighter-rouge">Makefile</code> at root level with this content (if
+using Bundler):</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>SHELL :<span class="o">=</span> /bin/bash <span class="c"># needed for prettyurls</span>
-BUNDLE :<span class="o">=</span> bundle
-YARN :<span class="o">=</span> yarn
-VENDOR_DIR <span class="o">=</span> assets/vendor/
-JEKYLL :<span class="o">=</span> <span class="k">$(</span>BUNDLE<span class="k">)</span> <span class="nb">exec </span>jekyll
+<div class="language-make highlighter-rouge"><pre class="highlight"><code><span class="nv">SHELL</span> <span class="o">:=</span> /bin/bash
+<span class="nv">BUNDLE</span> <span class="o">:=</span> bundle
+<span class="nv">YARN</span> <span class="o">:=</span> yarn
+<span class="nv">VENDOR_DIR</span> <span class="o">=</span> assets/vendor/
+<span class="nv">JEKYLL</span> <span class="o">:=</span> <span class="nv">$(BUNDLE)</span> <span class="nb">exec </span>jekyll
 
-PROJECT_DEPS :<span class="o">=</span> Gemfile packages.json
+<span class="nv">PROJECT_DEPS</span> <span class="o">:=</span> Gemfile package.json
 
-.PHONY: all clean install update
+<span class="nl">.PHONY</span><span class="o">:</span> <span class="nf">all clean install update</span>
 
-all : serve
+<span class="nl">all </span><span class="o">:</span> <span class="nf">serve</span>
 
-check:
-	<span class="k">$(</span>JEKYLL<span class="k">)</span> doctor
-	<span class="k">$(</span>HTMLPROOF<span class="k">)</span> --check-html <span class="se">\</span>
+<span class="nl">check</span><span class="o">:</span>
+	<span class="nv">$(JEKYLL)</span> doctor
+	<span class="nv">$(HTMLPROOF)</span> --check-html <span class="se">\</span>
 		--http-status-ignore 999 <span class="se">\</span>
 		--internal-domains localhost:4000 <span class="se">\</span>
 		--assume-extension <span class="se">\</span>
 		_site
 
-install: <span class="k">$(</span>PROJECT_DEPS<span class="k">)</span>
-	<span class="k">$(</span>BUNDLE<span class="k">)</span> install --path vendor/bundler
-	<span class="k">$(</span>YARN<span class="k">)</span> install
+<span class="nl">install</span><span class="o">:</span> <span class="nf">$(PROJECT_DEPS)</span>
+	<span class="nv">$(BUNDLE)</span> install --path vendor/bundler
+	<span class="nv">$(YARN)</span> install
 
-update: <span class="k">$(</span>PROJECT_DEPS<span class="k">)</span>
-	<span class="k">$(</span>BUNDLE<span class="k">)</span> update
-	<span class="k">$(</span>YARN<span class="k">)</span> upgrade
+<span class="nl">update</span><span class="o">:</span> <span class="nf">$(PROJECT_DEPS)</span>
+	<span class="nv">$(BUNDLE)</span> update
+	<span class="nv">$(YARN)</span> upgrade
 
-include-yarn-deps:
-	mkdir -p <span class="k">$(</span>VENDOR_DIR<span class="k">)</span>
-	cp node_modules/jquery/dist/jquery.min.js <span class="k">$(</span>VENDOR_DIR<span class="k">)</span>
-	cp node_modules/tether/dist/js/tether.min.js <span class="k">$(</span>VENDOR_DIR<span class="k">)</span>
-	cp node_modules/bootstrap/dist/js/bootstrap.min.js <span class="k">$(</span>VENDOR_DIR<span class="k">)</span>
+<span class="nl">include-yarn-deps</span><span class="o">:</span>
+	mkdir -p <span class="nv">$(VENDOR_DIR)</span>
+	cp node_modules/jquery/dist/jquery.min.js <span class="nv">$(VENDOR_DIR)</span>
+	cp node_modules/tether/dist/js/tether.min.js <span class="nv">$(VENDOR_DIR)</span>
+	cp node_modules/bootstrap/dist/js/bootstrap.min.js <span class="nv">$(VENDOR_DIR)</span>
 
-build: install include-yarn-deps
-	<span class="k">$(</span>JEKYLL<span class="k">)</span> build
+<span class="nl">build</span><span class="o">:</span> <span class="nf">install include-yarn-deps</span>
+	<span class="nv">$(JEKYLL)</span> build
 
-serve: install include-yarn-deps
-	<span class="nv">JEKYLL_ENV</span><span class="o">=</span>production <span class="k">$(</span>JEKYLL<span class="k">)</span> serve
+<span class="nl">serve</span><span class="o">:</span> <span class="nf">install include-yarn-deps</span>
+	<span class="nv">JEKYLL_ENV</span><span class="o">=</span>production <span class="nv">$(JEKYLL)</span> serve
 </code></pre>
 </div>
 
+<p>It is just a wrapper of Jekyll build and install commands handling
+dependencies.</p>
+
 <p class="alert alert-danger">Remember that those spaces are <kbd>TAB's</kbd> or <code class="highlighter-rouge">make</code> will fail.</p>
+
+<p>To make it easier, I’ve created
+a
+<a href="https://gist.github.com/marcanuy/fefafbd617201aee2892666ee2d28761">gist</a> with
+the above script in two flavours:</p>
+
+<ul>
+  <li><a href="https://gist.githubusercontent.com/marcanuy/fefafbd617201aee2892666ee2d28761/raw/ba2cb05399c25dde3e3f8c3c2a7f86e64ed1f2bb/Makefile">Makefile</a> without a <code class="highlighter-rouge">Gemfile</code> (not using Bundler).</li>
+  <li><a href="https://gist.githubusercontent.com/marcanuy/fefafbd617201aee2892666ee2d28761/raw/ba2cb05399c25dde3e3f8c3c2a7f86e64ed1f2bb/Makefile-with-bundler">Makefile</a> using Bundler.</li>
+</ul>
 
 <p>Now we will use <code class="highlighter-rouge">make build</code> and <code class="highlighter-rouge">make serve</code> to work with Jekyll.</p>
 
@@ -728,7 +743,8 @@ use them as:</p>
 </div>
 
 <p>Now we are just including in our website the files we chose from the
-<code class="highlighter-rouge">node_modules</code> folder, placing them in <code class="highlighter-rouge">assets/vendor</code>.</p>
+<code class="highlighter-rouge">node_modules</code> folder, placing them in <code class="highlighter-rouge">assets/vendor</code> and avoiding to
+have any other unnecessary files in the final website.</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
