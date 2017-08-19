@@ -248,6 +248,8 @@ classic [make](https://www.gnu.org/software/make/manual/make.html)
 program, each task is pretty self explanatory and can also be ported
 easily to [Grunt](https://gruntjs.com) or any other task automation solution.
 
+### Script
+
 Create a file called `Makefile` at root level with this content (if
 using Bundler):
 
@@ -309,6 +311,8 @@ the above script in two flavours:
 
 Now we will use `make build` and `make serve` to work with Jekyll.
 
+### Using new paths
+
 It just remain to update our paths in the layout, in `default.html`
 use them as:
 
@@ -317,6 +321,18 @@ use them as:
 <script src="{{'/assets/vendor/tether.min.js' | absolute_url}}"></script>
 <script src="{{'/assets/vendor/bootstrap.min.js' | absolute_url}}"></script>
 ~~~
+
+### Exclude unwanted directories
+
+Tell Jekyll to not include the `node_modules` directory in the final
+site, in `_config.yml`:
+
+~~~ 
+exclude:
+ - node_modules
+~~~
+
+### Final
 
 Now we are just including in our website the files we chose from the
 `node_modules` folder, placing them in `assets/vendor` and avoiding to
