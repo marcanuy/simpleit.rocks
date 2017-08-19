@@ -225,7 +225,7 @@ Jekyll hosted on GitHub based on this article ready to use.
 There is also a step by step video using the previous package manager
 Bower instead of Yarn:
 
-<div class="embed-responsive embed-responsive-16by9">
+<div class="embed-responsive embed-responsive-16by9 m-1">
   <iframe class="embed-responsive-item" src="//www.youtube.com/embed/0EI1V_Whgto" allowfullscreen></iframe>
 </div>
 
@@ -245,18 +245,20 @@ replacement for <kbd>jekyll build</kbd> and <kbd>jekyll serve</kbd>.
 
 In this case I will be using the
 classic [make](https://www.gnu.org/software/make/manual/make.html)
-program.
+program, each task is pretty self explanatory and can also be ported
+easily to [Grunt](https://gruntjs.com) or any other task automation solution.
 
-Create a file called `Makefile` at root level with this content:
+Create a file called `Makefile` at root level with this content (if
+using Bundler):
 
-~~~ bash
-SHELL := /bin/bash # needed for prettyurls
+~~~ make
+SHELL := /bin/bash
 BUNDLE := bundle
 YARN := yarn
 VENDOR_DIR = assets/vendor/
 JEKYLL := $(BUNDLE) exec jekyll
 
-PROJECT_DEPS := Gemfile packages.json
+PROJECT_DEPS := Gemfile package.json
 
 .PHONY: all clean install update
 
@@ -291,8 +293,19 @@ serve: install include-yarn-deps
 	JEKYLL_ENV=production $(JEKYLL) serve
 ~~~
 
+It is just a wrapper of Jekyll build and install commands handling
+dependencies.
+
 Remember that those spaces are <kbd>TAB's</kbd> or `make` will fail.
 {: .alert .alert-danger}
+
+To make it easier, I've created
+a
+[gist](https://gist.github.com/marcanuy/fefafbd617201aee2892666ee2d28761) with
+the above script in two flavours:
+
+- [Makefile](https://gist.githubusercontent.com/marcanuy/fefafbd617201aee2892666ee2d28761/raw/ba2cb05399c25dde3e3f8c3c2a7f86e64ed1f2bb/Makefile) without a `Gemfile` (not using Bundler).
+- [Makefile](https://gist.githubusercontent.com/marcanuy/fefafbd617201aee2892666ee2d28761/raw/ba2cb05399c25dde3e3f8c3c2a7f86e64ed1f2bb/Makefile-with-bundler) using Bundler.
 
 Now we will use `make build` and `make serve` to work with Jekyll.
 
@@ -306,7 +319,8 @@ use them as:
 ~~~
 
 Now we are just including in our website the files we chose from the
-`node_modules` folder, placing them in `assets/vendor`.
+`node_modules` folder, placing them in `assets/vendor` and avoiding to
+have any other unnecessary files in the final website.
 
 ## Conclusion
 
