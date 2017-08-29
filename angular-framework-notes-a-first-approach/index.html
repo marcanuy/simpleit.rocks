@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <link rel="alternate" type="application/rss+xml" title="Simple IT 🤘 Rocks" href="https://simpleit.rocks/feed.xml">
+
+    <meta name="msvalidate.01" content="453BB779294406F41BD202E3E24FFE55" />
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="/assets/vendor/font-awesome.min.css" type="text/css" media="screen" />
+
+    
+    
+    
+    <!-- Custom css -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-128.png" sizes="128x128" />
+<meta name="application-name" content="Simple IT ROCKS"/>
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="https://simpleit.rocks/assets/favicons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="https://simpleit.rocks/assets/favicons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="https://simpleit.rocks/assets/favicons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="https://simpleit.rocks/assets/favicons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="https://simpleit.rocks/assets/favicons/mstile-310x310.png" />
+<meta name="msapplication-notification" content="frequency=30;polling-uri=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=1;polling-uri2=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=2;polling-uri3=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=3;polling-uri4=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=4;polling-uri5=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=5;cycle=1" />
+
+
+    
+  <!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>Angular Framework Notes A First Approach | Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Angular Framework Notes A First Approach" />
+<meta name="author" content="marcanuy" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An overview of the javascript Angular framework basic concepts to get started." />
+<meta property="og:description" content="An overview of the javascript Angular framework basic concepts to get started." />
+<link rel="canonical" href="https://simpleit.rocks/angular-framework-notes-a-first-approach/" />
+<meta property="og:url" content="https://simpleit.rocks/angular-framework-notes-a-first-approach/" />
+<meta property="og:site_name" content="Simple IT 🤘 Rocks" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-08-26T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@simpleitrocks" />
+<meta name="twitter:creator" content="@marcanuy" />
+<meta property="fb:app_id" content="1822851531277021" />
+<script type="application/ld+json">
+{"name":null,"description":"An overview of the javascript Angular framework basic concepts to get started.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/angular-framework-notes-a-first-approach/","publisher":null,"image":null,"headline":"Angular Framework Notes A First Approach","dateModified":"2017-08-26T00:00:00+00:00","datePublished":"2017-08-26T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/angular-framework-notes-a-first-approach/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1912030305535489",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+
+</head>
+
+
+  <body>
+
+    
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28572639-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <header class="site-header">
+
+    
+
+    <div class="mb-2 text-center">
+
+	<a class="display-1" href="/" style="text-decoration: none">Simple IT 🤘 Rocks</a>
+
+    </div>
+
+    
+    <div class="jumbotron jumbotron-fluid bg-inverse">
+  <div class="container">
+    
+    
+    
+    
+    
+    <h1 class="title">Angular Framework Notes A First Approach </h1>
+    
+    
+  </div>
+</div>
+
+    
+
+</header>
+
+
+    <div class="container-fluid">
+      <header class="post-header">
+  <div>
+    <div class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList" class="list-/inline breadcrumb">
+
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="https://schema.org/Thing"
+     itemprop="item" href="/">
+    
+    <i class="fa fa-home" aria-hidden="true"></i>
+    
+
+    Home
+  </a>
+  
+  <meta itemprop="position" content="1" />
+</li>
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="https://schema.org/Thing"
+     itemprop="item" href="/docs">
+    
+
+    docs
+  </a>
+  
+  <meta itemprop="position" content="2" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="https://schema.org/Thing"
+     itemprop="item" href="/docs/javascript">
+    
+
+    javascript
+  </a>
+  
+  <meta itemprop="position" content="3" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item active">
+  
+  <span itemscope itemtype="https://schema.org/Thing"
+       itemprop="item">
+    
+
+    <span itemprop="name">Angular Framework Notes A First Approach</span>
+  </span>
+  
+  <meta itemprop="position" content="4" />
+</li>
+
+    
+
+    
+    
+  </ol>
+</div>
+
+  </div>
+</header>
+
+<div class="post-content" itemprop="articleBody">
+  <div class="row">
+
+  <div class="col-md-3 site-sidebar">
+    <div class="si-ad m-1 mx-auto">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_side_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5882730780"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
+  
+</div>
+
+    
+    <div class="sticky" style="position:sticky; top:10px">
+      <div>
+	<h4>Table of Contents</h4>
+	<ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#basic-concepts">Basic Concepts</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#javascript-classes">Javascript classes</a></li>
+<li class="toc-entry toc-h3"><a href="#javascript-modules">Javascript modules</a></li>
+<li class="toc-entry toc-h3"><a href="#dependency-injection">Dependency injection</a></li>
+<li class="toc-entry toc-h3"><a href="#metadata">Metadata</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#project-structure">Project Structure</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#tree">Tree</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#files">Files</a></li>
+<li class="toc-entry toc-h2"><a href="#components">Components</a></li>
+<li class="toc-entry toc-h2"><a href="#modules">Modules</a></li>
+<li class="toc-entry toc-h2"><a href="#useful-commands">Useful commands</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
+</ul>
+      </div>
+      <div>
+	<div class="site-share pb-2">
+  
+  <ul class="share-buttons list-inline mb-1 text-center">
+    <li class="list-inline-item">
+      <div>
+    <a class="twitter-share-button"
+       href="https://twitter.com/share"
+       data-url="https://simpleit.rocks/angular-framework-notes-a-first-approach/"
+       data-via=""
+       data-text="Angular Framework Notes A First Approach"
+       data-related="marcanuy,simpleitrocks"
+       data-count="vertical">
+	Tweet
+    </a>
+    <script>
+     window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+    </script>
+</div>
+
+    </li>
+    <li class="list-inline-item">
+      <div>
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!-- Place this tag where you want the +1 button to render. -->
+  <div class="g-plusone" data-size="tall"></div>
+</div>
+
+    </li>
+    <li class="list-inline-item">
+      <div>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) return;
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));</script>
+
+  <div class="fb-like" data-href="https://simpleit.rocks/angular-framework-notes-a-first-approach/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+</div>
+
+    </li>
+  </ul>
+  
+</div>
+
+      </div>
+    </div>
+    
+  </div> <!-- end col -->
+
+  <div class="col-md-8 site-content">
+
+    
+	<p class="lead">
+	  An overview of the javascript Angular framework basic concepts to get started.
+	</p>
+    
+
+    <div class="si-ad m-3 mx-auto">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_before_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="2929264389"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+
+    <p>This is a guide to understand Angular core concepts.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>Angular is a Javascript framework to build <em>web</em> and <em>mobile</em>
+applications.</p>
+
+<p>It has a command line utility to facilitate tasks <kbd>ng</kbd>
+installed with <code class="highlighter-rouge">npm install -g @angular/cli</code>.</p>
+
+<h2 id="basic-concepts">Basic Concepts</h2>
+
+<p>Angular is based in these concepts:</p>
+
+<ul>
+  <li>Javascript classes</li>
+  <li>Javascript modules</li>
+  <li><strong>Dependency injection</strong> defined by <strong>TypeScript types</strong>.</li>
+  <li><strong>Metadata</strong> defined by <strong>decorators</strong>.</li>
+</ul>
+
+<p class="alert alert-info"><em>Typescript</em> is a superset of JavaScript that compiles to plain
+Javascript, with the ability to add optional static typing to the
+language.</p>
+
+<h3 id="javascript-classes">Javascript classes</h3>
+
+<p>Javascript
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">classes</a> are
+used to</p>
+
+<ol>
+  <li>
+    <p>create objects</p>
+
+    <p>To define a class we can use one of two methods, both using
+ prototype-based inheritance.</p>
+
+    <p>A <strong>class expression</strong>:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> var MyClass = class [className] [extends] {
+   // class body
+ };
+</code></pre>
+    </div>
+
+    <p>Or we can use a <strong>class declaration</strong>.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> class name [extends] {
+   // class body
+ }
+</code></pre>
+    </div>
+
+    <p>The difference between them is that <em>class declaration</em> doesn’t
+ allow an existing class to be re-declared.</p>
+
+    <p>Technically speaking, it is said that</p>
+
+    <blockquote class="blockquote">
+      <p>function declarations
+are
+<a href="https://developer.mozilla.org/en-US/docs/Glossary/Hoisting">hoisted</a> and
+class declarations are not</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>deal with inheritance</p>
+
+    <p>Inheritance makes it possible to extend existing classes to create
+ new ones.</p>
+
+    <p>The <code class="highlighter-rouge">extends</code> keyword is used to create a subclass.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> class Cat extends Animal {
+ }
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<h3 id="javascript-modules">Javascript modules</h3>
+
+<p>Each module is a piece of code (variable and function declarations,
+objects, etc) that is executed once it is loaded. Some of them can be marked to
+be exported so other modules can import and use them.</p>
+
+<p>To import them we use the <code class="highlighter-rouge">import</code> keyword and to expose them to other
+modules the <code class="highlighter-rouge">export</code> keyword.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="nx">defaultMember</span> <span class="k">from</span> <span class="s2">"module-name"</span><span class="p">;</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">name</span> <span class="k">from</span> <span class="s2">"module-name"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">member</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"module-name"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">member</span> <span class="k">as</span> <span class="nx">alias</span> <span class="p">}</span> <span class="k">from</span>   <span class="s2">"module-name"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">member1</span> <span class="p">,</span> <span class="nx">member2</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"module-name"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">member1</span> <span class="p">,</span> <span class="nx">member2</span> <span class="k">as</span> <span class="nx">alias2</span> <span class="p">,</span> <span class="p">[...]</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"module-name"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">defaultMember</span><span class="p">,</span> <span class="p">{</span> <span class="nx">member</span> <span class="p">[</span> <span class="p">,</span> <span class="p">[...]</span> <span class="p">]</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"module-name"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">defaultMember</span><span class="p">,</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">name</span> <span class="k">from</span> <span class="s2">"module-name"</span><span class="p">;</span>
+<span class="k">import</span> <span class="s2">"module-name"</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<blockquote class="blockquote" cite="https://angular.io/guide/architecture">
+  <p>Angular apps are modular and Angular has its own modularity system
+called NgModules</p>
+
+  <p>Every Angular app has at least one NgModule class, the root module,
+conventionally named AppModule.</p>
+
+  <p>JavaScript also has its own module system for managing collections
+of JavaScript objects. It’s completely different and unrelated to
+the NgModule system.</p>
+
+  <footer class="blockquote-footer"> <cite><a href="https://angular.io/guide/architecture">ngModules docs</a></cite></footer>
+</blockquote>
+
+<h3 id="dependency-injection">Dependency injection</h3>
+
+<p>Dependency injection (DI) is an application design pattern. In this
+coding pattern the class receives its dependencies from external
+sources rather than creating them itself.</p>
+
+<p>Angular comes with a <strong>dependency injection framework</strong> called
+<strong>injector</strong> where
+you
+<a href="https://angular.io/guide/dependency-injection#injectable">register classes</a>,
+and it figures out how to create them.</p>
+
+<p>Every time you need a class instance, instead of using a Factory, you
+ask the injector to get it for you.</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">car</span> <span class="o">=</span> <span class="nx">injector</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">Car</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h3 id="metadata">Metadata</h3>
+
+<p>Decorators support annotating or modifying a class declaration,
+method, accessor, property, or parameter. They can be used in Angular
+with TypeScript.</p>
+
+<blockquote class="blockquote" cite="https://angular.io/guide/architecture">
+  <p>Angular has many decorators that attach metadata to classes so that it
+knows what those classes mean and how they should work.</p>
+
+  <footer class="blockquote-footer"> <cite><a href="https://angular.io/guide/architecture">Modules notes</a></cite></footer>
+</blockquote>
+
+<blockquote>
+  <p>Decorators use the form <code class="highlighter-rouge">@expression</code>, where <em>expression</em> must
+evaluate to a function that will be called at runtime with
+information about the decorated declaration.</p>
+</blockquote>
+
+<p><a href="https://angular.io/api/core/NgModule">NgModule</a> is a decorator
+function that takes a single metadata object whose properties describe
+the module.</p>
+
+<h2 id="project-structure">Project Structure</h2>
+
+<p>To analyze a typical Angular project structure we create a new one
+with the command line app <code class="highlighter-rouge">ng</code>:</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>ng new --help</kbd>
+ng new &lt; options... &gt;
+  Creates a new directory and a new Angular app eg. "ng new [name]".
+  aliases: n
+  --dry-run (Boolean) (Default: false) Run through without making any changes. Will list all files that would have been created when running "ng new".
+    aliases: -d, --dryRun
+  --verbose (Boolean) (Default: false) Adds more details to output logging.
+    aliases: -v, --verbose
+  --skip-install (Boolean) (Default: false) Skip installing packages.
+    aliases: -si, --skipInstall
+  --skip-git (Boolean) (Default: false) Skip initializing a git repository.
+    aliases: -sg, --skipGit
+  --skip-tests (Boolean) (Default: false) Skip creating spec files.
+    aliases: -st, --skipTests
+  --skip-commit (Boolean) (Default: false) Skip committing the first commit to git.
+    aliases: -sc, --skipCommit
+  --directory (String) The directory name to create the app in.
+    aliases: -dir &lt; value &gt;, --directory &lt; value &gt;
+  --source-dir (String) (Default: src) The name of the source directory. You can later change the value in ".angular-cli.json" (apps[0].root).
+    aliases: -sd &lt; value &gt;, --sourceDir &lt; value &gt;
+  --style (String) (Default: css) The style file default extension. Possible values: css, scss, less, sass, styl(stylus). You can later change the value in ".angular-cli.json" (defaults.styleExt).
+    aliases: --style &lt; value &gt;
+  --prefix (String) (Default: app) The prefix to use for all component selectors. You can later change the value in ".angular-cli.json" (apps[0].prefix).
+    aliases: -p &lt; value &gt;, --prefix &lt; value &gt;
+  --routing (Boolean) (Default: false) Generate a routing module.
+    aliases: --routing
+  --inline-style (Boolean) (Default: false) Should have an inline style.
+    aliases: -is, --inlineStyle
+  --inline-template (Boolean) (Default: false) Should have an inline template.
+    aliases: -it, --inlineTemplate
+  --minimal (Boolean) (Default: false) Should create a minimal app.
+    aliases: --minimal
+</samp>
+</pre>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>ng new my-app</kbd>
+installing ng
+  create .editorconfig
+  create README.md
+  create src/app/app.component.css
+  create src/app/app.component.html
+  create src/app/app.component.spec.ts
+  create src/app/app.component.ts
+  create src/app/app.module.ts
+  create src/assets/.gitkeep
+  create src/environments/environment.prod.ts
+  create src/environments/environment.ts
+  create src/favicon.ico
+  create src/index.html
+  create src/main.ts
+  create src/polyfills.ts
+  create src/styles.css
+  create src/test.ts
+  create src/tsconfig.app.json
+  create src/tsconfig.spec.json
+  create src/typings.d.ts
+  create .angular-cli.json
+  create e2e/app.e2e-spec.ts
+  create e2e/app.po.ts
+  create e2e/tsconfig.e2e.json
+  create .gitignore
+  create karma.conf.js
+  create package.json
+  create protractor.conf.js
+  create tsconfig.json
+  create tslint.json
+You can `ng set --global packageManager=yarn`.
+Installing packages for tooling via npm.
+        Installed packages for tooling via npm.
+Successfully initialized git.
+Project 'my-app' successfully created.
+
+</samp>
+</pre>
+
+<h3 id="tree">Tree</h3>
+
+<p>The project is arranged in the following way:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>.
+└── my-app
+    ├── e2e                            # end-to-end tests
+    │   ├── app.e2e-spec.ts
+    │   ├── app.po.ts
+    │   └── tsconfig.e2e.json
+    ├── karma.conf.js                  # https://karma-runner.github.io/
+    ├── .editorconfig                  # http://editorconfig.org
+    ├── .angular-cli.json              # Configuration for Angular CLI
+    ├── package.json                   # npm - third party packages
+    ├── protractor.conf.js             # http://www.protractortest.org/#/
+    ├── README.md
+    ├── src
+    │   ├── app
+    │   │   ├── app.component.css
+    │   │   ├── app.component.html
+    │   │   ├── app.component.spec.ts
+    │   │   ├── app.component.ts       # Defines AppComponent
+    │   │   └── app.module.ts          # Defines AppModule
+    │   ├── assets                     # Static files copied at build time
+    │   ├── environments               # Configurations for each env
+    │   │   ├── environment.prod.ts
+    │   │   └── environment.ts
+    │   ├── favicon.ico
+    │   ├── index.html                 # Page served
+    │   ├── main.ts                    # Main entry point of the app 
+    │   ├── polyfills.ts
+    │   ├── styles.css                 # Styles that affect all of your app
+    │   ├── test.ts                    # Main entry point for unit tests
+    │   ├── tsconfig.app.json          # TypeScript compiler config for app
+    │   ├── tsconfig.spec.json         # TypeScript compiler config	for tests
+    │   └── typings.d.ts
+    ├── tsconfig.json
+    └── tslint.json
+</code></pre>
+</div>
+
+<h2 id="files">Files</h2>
+
+<p>As we see in this particular project structure, the project is full of
+HTML and Typescript files (<code class="highlighter-rouge">.ts</code> extension).</p>
+
+<p>Most relevant files goes inside <code class="highlighter-rouge">src</code> directory, while files outside
+<code class="highlighter-rouge">src</code> folder are just meant to support building the app.</p>
+
+<h2 id="components">Components</h2>
+
+<p>The typescript file located at <code class="highlighter-rouge">./src/app/app.component.ts</code> is a
+special one called <strong>root component</strong> and its noted <code class="highlighter-rouge">app-root</code>.</p>
+
+<p><strong>Components</strong> control a section of the screen called <strong>view</strong>. They
+can be a navigation bar, a list of items, etc.</p>
+
+<p>Each component can have associated files to define its CSS styling and
+HTML template.</p>
+
+<p>A component contains the <code class="highlighter-rouge">AppComponent</code> class definition, like:</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">AppComponent</span> <span class="p">{</span>
+  <span class="nx">name</span> <span class="o">=</span> <span class="s1">'This is my component'</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>and a decorator with for example, data bindings to properties defined
+in the class:</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'my-app'</span><span class="p">,</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="na">Name</span><span class="p">:</span> <span class="o">&lt;</span><span class="sr">/h1&gt;`</span><span class="err">,
+</span><span class="p">})</span>
+</code></pre>
+</div>
+
+<p>Double curly braces are the interpolation binding syntax used by
+Angular.</p>
+
+<p>Instead of a literal string as a property value in the Component, a
+class can be used:</p>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">Description</span> <span class="p">{</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">AppComponent</span>  <span class="p">{</span>
+    <span class="nl">description</span> <span class="p">:</span> <span class="nx">Description</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="na">name</span><span class="p">:</span> <span class="s1">'Some desc'</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'my-app'</span><span class="p">,</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">`</span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="na">Name</span><span class="p">:</span> <span class="o">&lt;</span><span class="sr">/h1&gt;`</span><span class="err">,
+</span><span class="p">})</span>
+</code></pre>
+</div>
+
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code></code></pre>
+</div>
+
+<h2 id="modules">Modules</h2>
+
+<p>There is also a special file called <strong>root module</strong>. It tells
+Angular
+<a href="https://angular.io/guide/bootstrapping">how to assemble the application</a> and
+is located at ` app/app.module.ts`.</p>
+
+<h2 id="useful-commands">Useful commands</h2>
+
+<p>Commands to work with and without the <code class="highlighter-rouge">ng</code> command line tool.</p>
+
+<ul>
+  <li>Create a new project based on the QuickStart: <kbd>git clone https://github.com/angular/quickstart.git my-app</kbd></li>
+  <li>Install npm packages:  <kbd>npm install</kbd></li>
+  <li>Compile and serve: <kbd>npm start</kbd></li>
+  <li>Run the TypeScript compiler once: <kbd>npm run build</kbd></li>
+  <li>Run the TypeScript compiler in watch mode: <kbd>npm run
+build:w</kbd></li>
+  <li>Run a light-weight, static file server <a href="https://www.npmjs.com/package/lite-server">lite-server</a> <kbd>npm run serve</kbd></li>
+  <li>Karma unit tests (compiles the application, simultaneously re-compiles and runs the karma test-runner): <kbd>npm test</kbd></li>
+  <li>Protractor e2e tests (compiles, starts the lite-server and launches Protractor): <kbd>npm run e2e</kbd></li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://angular.io/guide/quickstart">https://angular.io/guide/quickstart</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/TypeScript">https://en.wikipedia.org/wiki/TypeScript</a></li>
+  <li><a href="https://www.typescriptlang.org/">https://www.typescriptlang.org/</a></li>
+  <li><a href="https://angular.io/guide/bootstrapping">https://angular.io/guide/bootstrapping</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import</a></li>
+  <li><a href="https://www.typescriptlang.org/docs/handbook/classes.html">https://www.typescriptlang.org/docs/handbook/classes.html</a></li>
+  <li><a href="https://www.typescriptlang.org/docs/handbook/decorators.html">https://www.typescriptlang.org/docs/handbook/decorators.html</a></li>
+</ul>
+
+
+
+    
+
+
+
+<footer class="author-footer">
+    <div class="media" itemtype="https://schema.org/Person">
+	<span itemprop="locationCreated contentLocation spatialCoverage" itemscope="itemscope" itemtype="https://schema.org/City" style="display:none"><span itemprop="name">Uruguay</span>
+	</span>
+	<link href="https://plus.google.com/118415138433063920612/posts" rel="author"/>
+	<meta content="https://www.facebook.com/unix.root" property="article:author"/>
+	<meta content="@marcanuy" name="twitter:creator"/>
+	<meta content="https://plus.google.com/118415138433063920612/posts" name="DC.creator"/>
+	<meta content="Marcelo Canina" name="author"/>
+	
+	<a class="media-left mx-2" href="https://marcanuy.com" itemprop="url" rel="author">
+	    <img class="media-object rounded" alt="Marcelo Canina - Simple IT 🤘 Rocks" itemprop="image" src="https://www.gravatar.com/avatar/2ebdffd5ddb4a98b0cc77117503d2711?s=80"/>
+	</a>
+	<div class="media-body">
+	    <h5 class="media-heading">
+		<address class="author-info clear" id="author-info" itemprop="author creator" itemscope="" itemtype="https://schema.org/Person">
+		    <span class="author-name" itemprop="name">Marcelo Canina</span>
+		    <a class="a-social a-tw" href="https://twitter.com/marcanuy" itemprop="sameAs" target="_blank"><i class="fa fa-twitter-square"></i></a>
+		    <a class="a-social a-gp" href="https://plus.google.com/118415138433063920612?rel=author" itemprop="url sameAs" rel="author" target="_blank"><i class="fa fa-google-plus-square"></i></a>
+		    <a class="a-social a-ln" href="https://www.linkedin.com/in/marcelocanina" itemprop="sameAs" target="_blank"><i class="fa fa-linkedin-square"></i></a>
+		    <a class="a-social a-email" href="mailto:me@marcanuy.com" itemprop="email sameAs" target="_blank"><i class="fa fa-envelope-o"></i></a>
+		    <a class="a-social a-github" href="https://github.com/marcanuy" itemprop="github sameAs" target="_blank"><i class="fa fa-github"></i></a>
+		    <a class="a-social a-stackexchange" href="https://stackexchange.com/users/1193189?tab=accounts" itemprop="stackexchange sameAs" target="_blank"><i class="fa fa-stack-exchange"></i></a>
+		</address>
+	    </h5>
+	    <div class="text-muted">
+		I'm Marcelo Canina, a developer from Uruguay. I build websites and web-based applications from the ground up and share what I learn here.
+	    </div>
+	</div>
+    </div>
+</footer>
+
+
+
+
+    <div class="post-comments">
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '/angular-framework-notes-a-first-approach/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    
+    s.src = '//simpleitrocks.disqus.com/embed.js';
+    
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  
+  
+  
+</div>
+
+
+    <div class="row">
+      <div class="col-md-6">
+	
+
+
+
+
+
+
+
+	
+
+
+
+
+      </div>
+      <div class="col-md-5">
+	
+	
+	<div class="si-ad m-1 mx-auto">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_after_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5104001581"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+	
+      </div>
+    </div>
+  </div> <!-- end col -->
+</div>
+
+
+</div>
+
+    </div>
+
+    <footer class="container-fluid site-footer py-3">
+    <div class="container">
+	<div class="row justify-content-between align-items-center">
+	    <div class="col-4">
+		<h2 class="footer-heading text-muted">Simple IT 🤘 Rocks</h2>
+		<ul class="footer-nav px-0">
+		    <li>
+			<i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by <a href="https://marcanuy.com" rel="author">Marcelo Canina</a>
+		    </li>
+		    
+		    <li>
+			<i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/simpleitrocks"><span class="username">simpleitrocks</span></a>
+
+		    </li>
+		    
+		    <li>
+			<i class="fa fa-user" aria-hidden="true"></i><a href="/about">About</a>
+		    </li>
+		    <li>
+			<i class="fa fa-search" aria-hidden="true"></i><a href="/search">Search</a>
+		    </li>
+		</ul>
+	    </div>
+	    <div class="col-4">
+		<div class="text-muted">
+		    <p>Clutter-free software concepts. Written on the go.
+</p>
+		</div>
+	    </div>
+	</div>
+    </div>
+</footer>
+<div class="si-license bg-inverse">
+  <div class="text-muted text-sm-center">
+    <small>
+      Except as otherwise noted, the content of this page is licensed under
+      <a rel="license" class="text-info" href="https://creativecommons.org/licenses/by-nc/4.0/">
+	<i class="fa fa-creative-commons" aria-hidden="true"></i> BY-NC 4.0
+      </a>
+    </small>
+  </div>
+</div>
+
+<script src="/assets/vendor/jquery.min.js"></script>
+<script src="/assets/vendor/tether.min.js"></script>
+<script src="/assets/vendor/bootstrap.min.js"></script>
+
+
+  </body>
+
+</html>
