@@ -67,7 +67,7 @@ respect to their props. [^1]
 > variables out of its scope. Concretely, that means a pure function
 > always returns the same result given same parameters.
 > 
-> <footer class="blockquote-footer"> <cite><a href="www.nicoespeon.com/en/2015/01/pure-functions-javascript/">Pure functions in JavaScript</a></cite></footer>
+> <footer class="blockquote-footer"> <cite><a href="http://www.nicoespeon.com/en/2015/01/pure-functions-javascript/">Pure functions in JavaScript</a></cite></footer>
 {: class="blockquote" cite="www.nicoespeon.com/en/2015/01/pure-functions-javascript/"}
 
 > React components can have state by setting `this.state` in the
