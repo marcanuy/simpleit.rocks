@@ -6,9 +6,258 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 29 Aug 2017 01:05:05 +0000</pubDate>
-    <lastBuildDate>Tue, 29 Aug 2017 01:05:05 +0000</lastBuildDate>
+    <pubDate>Wed, 30 Aug 2017 22:10:14 +0000</pubDate>
+    <lastBuildDate>Wed, 30 Aug 2017 22:10:14 +0000</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>Exploring React Framework Notes And Core Concepts</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;This is a guide to understand React framework to build web
+applications. It explores its main concepts and common project
+structure.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;React is a declarative JavaScript library for building user
+interfaces.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://en.wikipedia.org/wiki/Declarative_programming&quot;&gt;
+  &lt;p&gt;&lt;strong&gt;declarative programming&lt;/strong&gt; is a programming paradigm—a style of
+building the structure and elements of computer programs—that
+expresses the logic of a computation without describing its control
+flow. (Opposite: imperative programming)&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Declarative_programming&quot;&gt;Wikipedia
+Declarative Programming page&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;concepts&quot;&gt;Concepts&lt;/h2&gt;
+
+&lt;h3 id=&quot;components&quot;&gt;Components&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;React&lt;/em&gt; is based around a &lt;strong&gt;React Components class&lt;/strong&gt;. Everything in
+React is a &lt;em&gt;Component&lt;/em&gt;, it is said that its architecture is
+&lt;em&gt;Component-based&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Each component&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;takes in parameters, called &lt;strong&gt;props&lt;/strong&gt; to customize it
+when creating them, and&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;returns a hierarchy of &lt;strong&gt;views&lt;/strong&gt; to display via the &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt;
+method, which returns a &lt;strong&gt;React element&lt;/strong&gt; (a lightweight
+description of what to render)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;elements&quot;&gt;Elements&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;React Elements&lt;/strong&gt; is what a &lt;strong&gt;React Component&lt;/strong&gt; returns, describing what
+should appear on the screen.&lt;/p&gt;
+
+&lt;h4 id=&quot;props&quot;&gt;Props&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Props&lt;/strong&gt; are arbitrary inputs passed to &lt;strong&gt;React Components&lt;/strong&gt;. 
+They can be seen as object arguments that customize &lt;em&gt;components&lt;/em&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;this.props
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;state&quot;&gt;State&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;State&lt;/strong&gt; allows &lt;strong&gt;React components&lt;/strong&gt; to change their output over time
+in response to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;user actions,&lt;/li&gt;
+  &lt;li&gt;network responses, and&lt;/li&gt;
+  &lt;li&gt;anything else&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;without preventing &lt;strong&gt;components&lt;/strong&gt; acting like &lt;strong&gt;pure functions&lt;/strong&gt; with
+respect to their props. &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;www.nicoespeon.com/en/2015/01/pure-functions-javascript/&quot;&gt;
+  &lt;p&gt;A pure function doesn’t depend on and doesn’t modify the states of
+variables out of its scope. Concretely, that means a pure function
+always returns the same result given same parameters.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;http://www.nicoespeon.com/en/2015/01/pure-functions-javascript/&quot;&gt;Pure functions in JavaScript&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;React components can have state by setting &lt;code class=&quot;highlighter-rouge&quot;&gt;this.state&lt;/code&gt; in the
+constructor.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;jsx&quot;&gt;JSX&lt;/h3&gt;
+
+&lt;p class=&quot;alert alert-info&quot;&gt;JSX produces React “elements”.&lt;/p&gt;
+
+&lt;p&gt;JSX adds XML syntax to JavaScript, so it can be thought that its name
+is a mix of &lt;strong&gt;Javascript&lt;/strong&gt;+&lt;strong&gt;XML&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;To make the rendering definition easier, we use JSX that allows us to
+use react components in an XML-syntax style, e.g.:&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div /&amp;gt;&lt;/code&gt; syntax is transformed at build time to
+&lt;code class=&quot;highlighter-rouge&quot;&gt;React.createElement('div')&lt;/code&gt;, so writing the above tag is the same as
+writing using &lt;a href=&quot;https://facebook.github.io/react/docs/react-api.html#createelement&quot;&gt;React.createElement&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;return React.createElement('div', {className: '...'},
+  React.createElement('h1', ...),
+  React.createElement('ul', ...)
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://facebook.github.io/react/tutorial/tutorial.html&quot;&gt;
+  &lt;p&gt;You can put any JavaScript expression within braces inside JSX. Each
+React element is a real JavaScript object that you can store in a
+variable or pass around your program.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://facebook.github.io/react/tutorial/tutorial.html&quot;&gt;React tutorial&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;recipes&quot;&gt;Recipes&lt;/h2&gt;
+
+&lt;h3 id=&quot;passing-data-through-components&quot;&gt;Passing data through Components&lt;/h3&gt;
+
+&lt;p&gt;Using &lt;strong&gt;props&lt;/strong&gt; when instantiating a component like &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;MyComponent
+value=somevalue /&amp;gt;&lt;/code&gt; then we can use it in another component accessing
+&lt;code class=&quot;highlighter-rouge&quot;&gt;this.props&lt;/code&gt; in &lt;em&gt;MyComponent&lt;/em&gt;, e.g.:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;class Board extends React.Component {
+  render() {
+    return &amp;lt;Square value={i} /&amp;gt;;
+  }
+}
+
+class Square extends React.Component {
+  ...
+  render() {
+    return (
+      &amp;lt;button className=&quot;square&quot;&amp;gt;
+        {this.props.value}
+      &amp;lt;/button&amp;gt;
+    );
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;aggregation-of-many-components&quot;&gt;Aggregation of many components&lt;/h4&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://facebook.github.io/react/tutorial/tutorial.html#passing-data-through-props&quot;&gt;
+  &lt;p&gt;When you want to aggregate data from multiple children or to have
+two child components communicate with each other, move the state
+upwards so that it lives in the parent component. The parent can
+then pass the state back down to the children via props, so that the
+child components are always in sync with each other and with the
+parent.&lt;/p&gt;
+
+  &lt;p&gt;Pulling state upwards like this is common when refactoring React components.&lt;/p&gt;
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://facebook.github.io/react/tutorial/tutorial.html#passing-data-through-props&quot;&gt;Passing
+data through props&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;inmutability&quot;&gt;Inmutability&lt;/h3&gt;
+
+&lt;p&gt;There are two ways of changing data:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;mutation&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;replace with new copy&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In React it is better to create new versions of data instead of
+directly modifying it, like instead of directly modifying an array
+value, make a copy of it.&lt;/p&gt;
+
+&lt;p&gt;This has several advantages:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;better performance.&lt;/li&gt;
+  &lt;li&gt;easier to implement complex features (keeping older versions we can
+switch to them as needed).&lt;/li&gt;
+  &lt;li&gt;tracking changes is difficult, determining an immutable object
+change is trivial, this helps to determine when a component requires
+being re-rendered.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;More at: &lt;a href=&quot;https://facebook.github.io/react/tutorial/tutorial.html#why-immutability-is-important&quot;&gt;https://facebook.github.io/react/tutorial/tutorial.html#why-immutability-is-important&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;interactive-components&quot;&gt;Interactive Components&lt;/h3&gt;
+
+&lt;h3 id=&quot;functional-components&quot;&gt;Functional Components&lt;/h3&gt;
+
+&lt;p&gt;Functional Components is a simpler syntax for component types &lt;strong&gt;that only consist of a render method&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Rather than defining a class extending &lt;code class=&quot;highlighter-rouge&quot;&gt;React.Component&lt;/code&gt;, have a
+function that takes &lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt; and returns what should be rendered.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;function Mycomponent(props) {
+  return (
+    &amp;lt;button className=&quot;foobar&quot;&amp;gt;
+      {props.value}
+    &amp;lt;/button&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p class=&quot;alert alert-danger&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; won’t be available, so &lt;code class=&quot;highlighter-rouge&quot;&gt;this.props&lt;/code&gt; become &lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;history&quot;&gt;History&lt;/h3&gt;
+
+&lt;h2 id=&quot;useful-commands&quot;&gt;Useful commands&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Installation of &lt;code class=&quot;highlighter-rouge&quot;&gt;create-react&lt;/code&gt; command line utility:&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   npm install -g create-react-app
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;create-react-app&quot;&gt;Create react app&lt;/h3&gt;
+
+&lt;p&gt;This tool creates a fronted build pipeline without backend logic or
+databases &lt;kbd&gt;create-react-app my-app&lt;/kbd&gt;.&lt;/p&gt;
+
+&lt;p&gt;It makes available the commands &lt;code class=&quot;highlighter-rouge&quot;&gt;start&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;build&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;test&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;eject&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;To start the app &lt;kbd&gt;npm start&lt;/kbd&gt;, which will run &lt;code class=&quot;highlighter-rouge&quot;&gt;react-scripts start&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;To deploy, first create an optimized build in the &lt;code class=&quot;highlighter-rouge&quot;&gt;build&lt;/code&gt; folder with &lt;kbd&gt;npm run build&lt;/kbd&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://facebook.github.io/react/docs/installation.html&quot;&gt;https://facebook.github.io/react/docs/installation.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;https://facebook.github.io/react/docs/&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sun, 27 Aug 2017 00:00:00 +0000</pubDate>
+        <link>https://simpleit.rocks/exploring-react-framework-notes-and-core-concepts/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/exploring-react-framework-notes-and-core-concepts/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>javascript</category>
+        
+      </item>
     
       <item>
         <title>Angular Framework Notes A First Approach</title>
@@ -1886,391 +2135,6 @@ correctly.&lt;/p&gt;
         <pubDate>Mon, 08 May 2017 00:00:00 +0000</pubDate>
         <link>https://simpleit.rocks/multilingual-jekyll-without-plugins/</link>
         <guid isPermaLink="true">https://simpleit.rocks/multilingual-jekyll-without-plugins/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>ruby</category>
-        
-        <category>jekyll</category>
-        
-        <category>tutorials</category>
-        
-      </item>
-    
-      <item>
-        <title>Host a Jekyll Website With Pretty Urls In Amazon S3 and Cloudfront</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;One of the problems in having pretty URLs when hosting a Jekyll site
-in Amazon S3, is that even we set &lt;code class=&quot;highlighter-rouge&quot;&gt;permalinks&lt;/code&gt; URLs without &lt;code class=&quot;highlighter-rouge&quot;&gt;.html&lt;/code&gt;
-extensions, the files generated by Jekyll include this extension.&lt;/p&gt;
-
-&lt;p&gt;It relies on the server configuration to be able to detect its
-content-type&lt;sup id=&quot;fnref:contenttype&quot;&gt;&lt;a href=&quot;#fn:contenttype&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; so it can handle URLs that does not include the &lt;code class=&quot;highlighter-rouge&quot;&gt;.html&lt;/code&gt;
-extension, and serve the corresponding file.&lt;/p&gt;
-
-&lt;p&gt;Amazon S3 isn’t able to make this translation, so it leaves us with
-two options to have URLs without ending in &lt;code class=&quot;highlighter-rouge&quot;&gt;.html&lt;/code&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Create each post in Jekyll as a &lt;code class=&quot;highlighter-rouge&quot;&gt;(directory)/index.html&lt;/code&gt; file, so it
-will serve each &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt;. E.g.:&lt;/p&gt;
-
-    &lt;p&gt;We try to access &lt;code class=&quot;highlighter-rouge&quot;&gt;https://example.com/my-cool-page&lt;/code&gt;, then Amazon S3
-  server will be able to respond to this request if it finds one of
-  these files:&lt;/p&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  /my-cool-page/index.html
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Or&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Generate HTML files without the extension:&lt;/p&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  /my-cool-page
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Also, the &lt;strong&gt;Content-type&lt;/strong&gt; header of extension-less files should be
-set to &lt;code class=&quot;highlighter-rouge&quot;&gt;text/html&lt;/code&gt; after renaming them.&lt;/p&gt;
-
-&lt;h2 id=&quot;remove-extension-from-files-before-deploying&quot;&gt;Remove extension from files before deploying&lt;/h2&gt;
-
-&lt;p&gt;If configuring Jekyll to generate posts/pages in subdirectories is not
-an option, then we can remove the &lt;code class=&quot;highlighter-rouge&quot;&gt;.html&lt;/code&gt; extension to all the files,
-&lt;strong&gt;except&lt;/strong&gt; those named &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt;, just before deploying them
-to the server.&lt;/p&gt;
-
-&lt;p&gt;An easy way to do it is to have a shell script that removes them after
-building the site.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find _site/ -type f ! -iname &lt;span class=&quot;s1&quot;&gt;'index.html'&lt;/span&gt; -iname &lt;span class=&quot;s1&quot;&gt;'*.html'&lt;/span&gt; -print0 | &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt; -d &lt;span class=&quot;nv&quot;&gt;$'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\0&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;' f; do mv &quot;$f&quot; &quot;${f%.html}&quot;; done
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Command explanation:&lt;/p&gt;
-
-&lt;dl class=&quot;row&quot;&gt; 
-&lt;dt class=&quot;col-sm-3&quot;&gt;-type f&lt;/dt&gt; 
-&lt;dd class=&quot;col-sm-9&quot;&gt;
-File is of type &quot;regular file&quot;
-&lt;/dd&gt; 
-&lt;dt class=&quot;col-sm-3&quot;&gt;! -iname 'index.html'&lt;/dt&gt; 
-&lt;dd class=&quot;col-sm-9&quot;&gt;
-Avoid matching index.html files.
-&lt;/dd&gt; 
-&lt;dt class=&quot;col-sm-3&quot;&gt;-iname pattern&lt;/dt&gt; 
-&lt;dd class=&quot;col-sm-9&quot;&gt;
-&lt;blockquote&gt;Base of file name (the path with the leading directories
-removed) matches shell pattern pattern.&lt;/blockquote&gt; Case insensitive
-&lt;/dd&gt; 
-&lt;dt class=&quot;col-sm-3&quot;&gt;-print0&lt;/dt&gt; 
-&lt;dd class=&quot;col-sm-9&quot;&gt;
-&lt;blockquote&gt;True;  print the full file name on the standard output, followed by a
-null character (instead of the newline character that -print uses).
-This allows file names that contain newlines or other types of white
-space to be correctly interpreted by programs that process the find
-output. This option corresponds to the -0 option of xargs.&lt;/blockquote&gt;
-&lt;/dd&gt; 
-&lt;dt class=&quot;col-sm-3&quot;&gt;read -d delimiter&lt;/dt&gt; 
-&lt;dd class=&quot;col-sm-9&quot;&gt;
-&lt;blockquote&gt;The first character of DELIM is used to terminate the input line, rather than newline.&lt;/blockquote&gt;
-&lt;/dd&gt; 
-&lt;/dl&gt;
-
-&lt;p&gt;Example:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;jekyll build&lt;/kbd&gt;
-Configuration file: /tmp/j/_config.yml
-            Source: /tmp/j
-       Destination: /tmp/j/_site
- Incremental build: disabled. Enable with --incremental
-      Generating... 
-                    done in 1.433 seconds.
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;tree _site/&lt;/kbd&gt;
-_site/
-|-- about
-|   `-- index.html
-|-- assets
-|   `-- main.css
-|-- feed.xml
-|-- index.html
-`-- jekyll
-    `-- update
-        `-- 2017
-            `-- 04
-                `-- 24
-                    `-- welcome-to-jekyll.html
-
-7 directories, 5 files
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;find _site/ -type f ! -iname 'index.html' -iname '*.html' -print0 | while read -d $'\0' f; do mv &quot;$f&quot; &quot;${f%.html}&quot;; done&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;tree _site/&lt;/kbd&gt;
-_site/
-├── about
-│   └── index.html
-├── assets
-│   └── main.css
-├── feed.xml
-├── index.html
-└── jekyll
-    └── update
-        └── 2017
-            └── 04
-                └── 26
-                    └── welcome-to-jekyll
-
-7 directories, 5 files
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;upload-files&quot;&gt;Upload files&lt;/h2&gt;
-
-&lt;p&gt;When uploading the files to the server we must set the correct MIME
-type to &lt;code class=&quot;highlighter-rouge&quot;&gt;Content-Type: text/html&lt;/code&gt; to the files that does not have
-&lt;code class=&quot;highlighter-rouge&quot;&gt;.html&lt;/code&gt; extension, if we don’t set them, then the server will
-interpret them as &lt;code class=&quot;highlighter-rouge&quot;&gt;Content-Type: binary/octet-stream&lt;/code&gt;. Other files
-will get the correct &lt;em&gt;Content-Type&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;The
-&lt;a href=&quot;http://docs.aws.amazon.com/cli/latest/reference/s3/&quot;&gt;Amazon S3 Command Line Interface&lt;/a&gt; has
-a special parameter to set the correct &lt;em&gt;Content-Type&lt;/em&gt; for each file
-when
-&lt;a href=&quot;http://docs.aws.amazon.com/cli/latest/reference/s3/cp.html&quot;&gt;copying&lt;/a&gt;
-them: &lt;kbd&gt;aws s3 cp local_directory bucket-name --content-type
-text/html&lt;/kbd&gt;&lt;/p&gt;
-
-&lt;p&gt;In this approach, we are going to copy the files without extension,
-setting the right &lt;em&gt;Content-Type&lt;/em&gt;, and then just copy the rest of the
-files, leaving that task to the server.&lt;/p&gt;
-
-&lt;h3 id=&quot;copy-files-without-extension&quot;&gt;Copy files without extension&lt;/h3&gt;
-
-&lt;p&gt;Copy local files to the S3 bucket.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws s3 cp _site/ s3://cachedpage.co/ --content-type text/html --recursive --exclude &lt;span class=&quot;s2&quot;&gt;&quot;*.*&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;or synchronize the directory with the S3 bucket &lt;strong&gt;checking file
-difference by size&lt;/strong&gt; not timestamps.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws s3 sync _site/ &lt;span class=&quot;nv&quot;&gt;$s3_bucket&lt;/span&gt; --size-only --exclude &lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt; --include &lt;span class=&quot;s2&quot;&gt;&quot;*.*&quot;&lt;/span&gt; --delete
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p class=&quot;alert alert-info&quot;&gt;As every time the website is built, Jekyll regenerates all the files,
-so &lt;em&gt;timestamps&lt;/em&gt; would always be different, checking file sizes would
-only copy files if they are different.&lt;/p&gt;
-
-&lt;h3 id=&quot;copy-the-rest-of-the-files&quot;&gt;Copy the rest of the files&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws s3 cp _site/ s3://cachedpage.co/ --recursive --exclude &lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt; --include &lt;span class=&quot;s2&quot;&gt;&quot;*.*&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;or with &lt;kbd&gt;aws sync&lt;/kbd&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws s3 sync _site/ &lt;span class=&quot;nv&quot;&gt;$s3_bucket&lt;/span&gt; --size-only --content-type text/html --exclude &lt;span class=&quot;s2&quot;&gt;&quot;*.*&quot;&lt;/span&gt; --delete
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters&quot;&gt;
-  &lt;p&gt;Note that, by default, all files are included. This means that
-providing only an –include filter will not change what files are
-transferred. –include will only re-include files that have been
-excluded from an –exclude filter. If you only want to upload files
-with a particular extension, you need to first exclude all files,
-then re-include the files with the particular extension.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;http://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters&quot;&gt;Use of Exclude and Include Filters&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;invalidate-uploaded-files-in-cloudfront&quot;&gt;Invalidate uploaded files in Cloudfront&lt;/h2&gt;
-
-&lt;p&gt;If we are using a Content Delivery Network, chances are that your
-files has been cached and you need to refresh them. To remove an
-object from CloudFront edge caches before it expires we need to
-&lt;em&gt;invalidate&lt;/em&gt; them.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html&quot;&gt;
-  &lt;p&gt;The next time a viewer requests the object, CloudFront returns to
-the origin to fetch the latest version of the object.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;http://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters&quot;&gt;Invalidating Objects (Web Distributions Only)&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;For this we copy the modified file names to a temporal file, and then
-create a new &lt;strong&gt;invalidation&lt;/strong&gt; with these names as they are access in
-our website.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://docs.aws.amazon.com/cli/latest/reference/cloudfront/create-invalidation.html&quot;&gt;
-  &lt;p&gt;AWS CLI support for this service is only available in a preview
-stage. You can enable this service by running: &lt;code class=&quot;highlighter-rouge&quot;&gt;aws configure set
-preview.cloudfront true&lt;/code&gt;&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;http://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters&quot;&gt;create-invalidation&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;tempfile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;mktemp&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;distribution_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASDFHDFSAF45234
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Copying files to server...&quot;&lt;/span&gt;
-aws s3 sync _site/ &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;s3_bucket&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; --size-only --exclude &lt;span class=&quot;s2&quot;&gt;&quot;*&quot;&lt;/span&gt; --include &lt;span class=&quot;s2&quot;&gt;&quot;*.*&quot;&lt;/span&gt; --delete | tee -a &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;tempfile&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Copying files with content type...&quot;&lt;/span&gt;
-aws s3 sync _site/ &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;s3_bucket&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; --size-only --content-type text/html --exclude &lt;span class=&quot;s2&quot;&gt;&quot;*.*&quot;&lt;/span&gt; --delete | tee -a &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;tempfile&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#invalidate only modified files&lt;/span&gt;
-grep &lt;span class=&quot;s2&quot;&gt;&quot;upload&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\|&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;deleted&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;tempfile&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; | sed -e &lt;span class=&quot;s2&quot;&gt;&quot;s|.*upload.*to &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;s3_bucket&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;|/|&quot;&lt;/span&gt; | sed -e &lt;span class=&quot;s2&quot;&gt;&quot;s|.*delete: &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;s3_bucket&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;|/|&quot;&lt;/span&gt; | sed -e &lt;span class=&quot;s1&quot;&gt;'s/index.html//'&lt;/span&gt; | sed -e &lt;span class=&quot;s1&quot;&gt;'s/\(.*\).html/\1/'&lt;/span&gt; | tr &lt;span class=&quot;s1&quot;&gt;'\n'&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;' '&lt;/span&gt; | xargs aws cloudfront create-invalidation --distribution-id &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;distribution_id&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; --paths
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;script-explanation&quot;&gt;Script explanation:&lt;/h3&gt;
-
-&lt;p&gt;First we create the temporal file that will hold modified files with
-&lt;code class=&quot;highlighter-rouge&quot;&gt;tempfile=$(mktemp)&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Then we synchronize the local directory with the remote one in S3,
-redirecting the output to standard output and to the temporal file
-with:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws s3 sync _site/ $(s3_bucket) --size-only --exclude &quot;*&quot; --include &quot;*.*&quot; --delete | tee -a $(tempfile)
-aws s3 sync _site/ $(s3_bucket) --size-only --content-type text/html --exclude &quot;*.*&quot; --delete | tee -a $(tempfile)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;After that we process the file names that were uploaded or deleted by
-the &lt;code class=&quot;highlighter-rouge&quot;&gt;aws&lt;/code&gt; command:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;grep &quot;upload\|deleted&quot; $(tempfile) 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Then discard the string between &lt;code class=&quot;highlighter-rouge&quot;&gt;upload&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;delete&lt;/code&gt; and the name of
-the bucket:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sed -e &quot;s|.*upload.*to $(s3_bucket)|/|&quot; | sed -e &quot;s|.*delete:
-$(s3_bucket)|/|&quot; 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;As our URLs are accessed only with the URLs like &lt;code class=&quot;highlighter-rouge&quot;&gt;/&lt;/code&gt; instead of
-&lt;code class=&quot;highlighter-rouge&quot;&gt;/index.html&lt;/code&gt; we remove them&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sed -e 's/index.html//' 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Our URLs doesn’t have the &lt;code class=&quot;highlighter-rouge&quot;&gt;.html&lt;/code&gt; extension also:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sed -e 's/\(.*\).html/\1/' 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Lastly we put all the URLs like names in a single line separated with 
-a space to comply with the &lt;code class=&quot;highlighter-rouge&quot;&gt;aws cloudfront create-invalidation
---paths&lt;/code&gt; command:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tr '\n' ' ' | xargs aws cloudfront create-invalidation --distribution-id $(distribution_id) --paths
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;final-script&quot;&gt;Final script&lt;/h2&gt;
-
-&lt;p&gt;The complete process is reflected in the following &lt;code class=&quot;highlighter-rouge&quot;&gt;deploy.sh&lt;/code&gt; script,
-you probably want to adapt it to a &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Grunt&lt;/code&gt; or some other
-program but I will leave it as a &lt;code class=&quot;highlighter-rouge&quot;&gt;bash&lt;/code&gt; script to reflect its usage:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Copy Jekyll site to S3 bucket&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;####################################&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Custom vars&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;s3_bucket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;s3://example.com/&quot;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;distribution_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASDFHDFSAF45234
-&lt;span class=&quot;c&quot;&gt;####################################&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -e &lt;span class=&quot;c&quot;&gt;# halt script on error&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -v &lt;span class=&quot;c&quot;&gt;# echo on&lt;/span&gt;
-
-&lt;span class=&quot;nv&quot;&gt;tempfile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;mktemp&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Building site...&quot;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;JEKYLL_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build
-
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Removing .html extension&quot;&lt;/span&gt;
-find _site/ -type f ! -iname &lt;span class=&quot;s1&quot;&gt;'index.html'&lt;/span&gt; -iname &lt;span class=&quot;s1&quot;&gt;'*.html'&lt;/span&gt; -print0 | &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt; -d &lt;span class=&quot;nv&quot;&gt;$'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\0&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;' f; do mv &quot;$f&quot; &quot;${f%.html}&quot;; done
-
-echo &quot;Copying files to server...&quot;
-aws s3 sync _site/ $(s3_bucket) --size-only --exclude &quot;*&quot; --include &quot;*.*&quot; --delete | tee -a $(tempfile)
-echo &quot;Copying files with content type...&quot;
-aws s3 sync _site/ $(s3_bucket) --size-only --content-type text/html --exclude &quot;*.*&quot; --delete | tee -a $(tempfile)
-#invalidate only modified files
-grep &quot;upload\|deleted&quot; $(tempfile) | sed -e &quot;s|.*upload.*to $(s3_bucket)|/|&quot; | sed -e &quot;s|.*delete: $(s3_bucket)|/|&quot; | sed -e '&lt;/span&gt;s/index.html//&lt;span class=&quot;s1&quot;&gt;' | sed -e '&lt;/span&gt;s/&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;.&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\)&lt;/span&gt;.html/&lt;span class=&quot;se&quot;&gt;\1&lt;/span&gt;/&lt;span class=&quot;s1&quot;&gt;' | tr '&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;' '&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;' | xargs aws cloudfront create-invalidation --distribution-id $(distribution_id) --paths
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;This approach will work in most situations, you have to be careful if
-you have any other files without extension to avoid setting the wrong
-media type.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Index documents in
-S3
-&lt;a href=&quot;http://docs.aws.amazon.com/AmazonS3/latest/dev/IndexDocumentSupport.html&quot;&gt;http://docs.aws.amazon.com/AmazonS3/latest/dev/IndexDocumentSupport.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Caching user input in bash &lt;a href=&quot;http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_08_02.html&quot;&gt;http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_08_02.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/users/507519/thkala&quot;&gt;thkala&lt;/a&gt; answer in &lt;a href=&quot;http://stackoverflow.com/a/4509530/1165509&quot;&gt;Linux: remove file extensions for multiple files&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;S3 cli docs &lt;a href=&quot;http://docs.aws.amazon.com/cli/latest/reference/s3/&quot;&gt;http://docs.aws.amazon.com/cli/latest/reference/s3/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;S3 Exclude and include
-filters
-&lt;a href=&quot;http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#use-of-exclude-and-include-filters&quot;&gt;http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#use-of-exclude-and-include-filters&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Complete list of MIME
-types
-&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types&quot;&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Content Type Header field &lt;a href=&quot;https://www.w3.org/Protocols/rfc1341/4_Content-Type.html&quot;&gt;https://www.w3.org/Protocols/rfc1341/4_Content-Type.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;MIME media type name : Text &lt;a href=&quot;https://www.iana.org/assignments/media-types/text/html&quot;&gt;https://www.iana.org/assignments/media-types/text/html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:contenttype&quot;&gt;
-
-      &lt;p&gt;The Content-Type entity header is used to indicate the media type
-of the resource, a string sent in the headers of a file to
-indicate its type&lt;/p&gt;
-
-      &lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://www.w3.org/Protocols/rfc1341/4_Content-Type.html&quot;&gt;
-        &lt;p&gt;The purpose of the Content-Type field is to describe the data
-contained in the body fully enough that the receiving user agent
-can pick an appropriate agent or mechanism to present the data
-to the user, or otherwise deal with the data in an appropriate
-manner.&lt;/p&gt;
-
-        &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://www.w3.org/Protocols/rfc1341/4_Content-Type.html&quot;&gt;The content type header field&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-      &lt;/blockquote&gt;
-      &lt;p&gt;&lt;a href=&quot;#fnref:contenttype&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Mon, 24 Apr 2017 00:00:00 +0000</pubDate>
-        <link>https://simpleit.rocks/having-pretty-urls-in-a-jekyll-website-hosted-in-amazon-s3/</link>
-        <guid isPermaLink="true">https://simpleit.rocks/having-pretty-urls-in-a-jekyll-website-hosted-in-amazon-s3/</guid>
         
         
         <category>docs</category>
