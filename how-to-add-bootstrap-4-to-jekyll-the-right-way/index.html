@@ -325,7 +325,11 @@
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
 <li class="toc-entry toc-h2"><a href="#background">Background</a></li>
 <li class="toc-entry toc-h2"><a href="#installing-bootstrap-4">Installing Bootstrap 4</a></li>
-<li class="toc-entry toc-h2"><a href="#adding-new-sass-load-paths">Adding new Sass load paths</a></li>
+<li class="toc-entry toc-h2"><a href="#adding-new-sass-load-paths">Adding new Sass load paths</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#whitelist-node_modules">Whitelist node_modules</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h2"><a href="#add-javascript">Add javascript</a></li>
 <li class="toc-entry toc-h2"><a href="#import-bootstrap-and-use-sass-variables">Import Bootstrap and use Sass variables</a>
 <ul>
@@ -335,7 +339,13 @@
 </li>
 <li class="toc-entry toc-h2"><a href="#add-css-to-layout">Add css to layout</a></li>
 <li class="toc-entry toc-h2"><a href="#all-together">All together</a></li>
-<li class="toc-entry toc-h2"><a href="#other">Other</a></li>
+<li class="toc-entry toc-h2"><a href="#other">Other</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#site">Site</a></li>
+<li class="toc-entry toc-h3"><a href="#video">Video</a></li>
+<li class="toc-entry toc-h3"><a href="#skel">Skel</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h2"><a href="#optional-keep-node_modules-out-of-_site">OPTIONAL: Keep node_modules out of _site</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#script">Script</a></li>
@@ -473,15 +483,15 @@ contents with two lines of triple dashes.</p>
 
 <p>As Bootstrap switched from <code class="highlighter-rouge">Less</code> to <code class="highlighter-rouge">Sass</code><sup id="fnref:bs-blog"><a href="#fn:bs-blog" class="footnote">1</a></sup> now we can use
 it directly without relying in parallel projects like <a href="https://github.com/twbs/bootstrap-sass">bootstrap-sass</a>
-used with Bootstrap 3.</p>
+needed for Bootstrap 3.</p>
 
 <h2 id="installing-bootstrap-4">Installing Bootstrap 4</h2>
 
 <p>We will be using the package manager <a href="https://yarnpkg.com/lang/en/docs/install">Yarn</a> to install Bootstrap. At
 our Jekyll website root folder we run <kbd>yarn install</kbd>. In this
-case I will be using <code class="highlighter-rouge">bootstrap#v4.0.0-alpha.6</code> but you can find the
+case I will be using <em>**</em>Bootstrap  v4.0.0-beta.2 ** but you can find the
 latest one
-at <a href="https://v4-alpha.getbootstrap.com/getting-started/download/">https://v4-alpha.getbootstrap.com/getting-started/download/</a>.</p>
+at <a href="https://getbootstrap.com/docs/4.0/getting-started/download/">https://getbootstrap.com/docs/4.0/getting-started/download/</a>.</p>
 
 <p class="alert alert-info">Previously I used <a href="https://bower.io">Bower</a> in this tutorial but as it won’t be
 maintained anymore, <a href="https://yarnpkg.com/lang/en/docs/install">Yarn</a> is a better, more robust solution.</p>
@@ -489,27 +499,57 @@ maintained anymore, <a href="https://yarnpkg.com/lang/en/docs/install">Yarn</a> 
 <pre class="shell">
 <samp>
 <span class="shell-prompt">$</span> <kbd>yarn install</kbd>
-yarn install v0.24.6
+yarn install v1.3.2
 info No lockfile found.
 [1/4] Resolving packages...
 [2/4] Fetching packages...
 [3/4] Linking dependencies...
 [4/4] Building fresh packages...
-success Saved lockfile.
-Done in 0.38s.
+info Lockfile not saved, no dependencies.
+Done in 0.22s.
 
-<span class="shell-prompt">$</span> <kbd>yarn add bootstrap@4.0.0-alpha.6</kbd>
-yarn add v0.24.6
+<span class="shell-prompt">$</span> <kbd>yarn add bootstrap@4.0.0-beta.2</kbd>
+yarn add v1.3.2
+info No lockfile found.
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+warning " &gt; bootstrap@4.0.0-beta.2" has unmet peer dependency "jquery@1.9.1 - 3".
+warning " &gt; bootstrap@4.0.0-beta.2" has unmet peer dependency "popper.js@^1.12.3".
+[4/4] Building fresh packages...
+success Saved lockfile.
+success Saved 1 new dependency.
+└─ bootstrap@4.0.0-beta.2
+Done in 2.46s.
+
+<span class="shell-prompt">$</span> <kbd>yarn add jquery@&gt;=3.0.0</kbd>
+yarn add v1.3.2
+warning package.json: No license field
+warning No license field
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+warning " &gt; bootstrap@4.0.0-beta.2" has unmet peer dependency "popper.js@^1.12.3".
+[4/4] Building fresh packages...
+success Saved lockfile.
+success Saved 1 new dependency.
+└─ jquery@3.0.0
+warning No license field
+Done in 4.33s.
+
+<span class="shell-prompt">$</span> <kbd>yarn add popper.js@^1.12.3</kbd>
+yarn add v1.3.2
+warning package.json: No license field
+warning No license field
 [1/4] Resolving packages...
 [2/4] Fetching packages...
 [3/4] Linking dependencies...
 [4/4] Building fresh packages...
 success Saved lockfile.
-success Saved 3 new dependencies.
-├─ bootstrap@4.0.0-alpha.6
-├─ jquery@3.2.1
-└─ tether@1.4.0
-Done in 3.23s.
+success Saved 1 new dependency.
+└─ popper.js@1.12.6
+warning No license field
+Done in 1.55s.
 </samp>
 </pre>
 
@@ -540,6 +580,16 @@ it, so it will process other folders too.</p>
 
 <p class="alert alert-danger"><code class="highlighter-rouge">load_paths</code> only works when <strong>not</strong> in safe mode<sup id="fnref:safe-mode"><a href="#fn:safe-mode" class="footnote">3</a></sup></p>
 
+<h3 id="whitelist-node_modules">Whitelist node_modules</h3>
+
+<p>Jekyll 3.3 started excluding the <code class="highlighter-rouge">node_modules</code> directory <a href="https://github.com/jekyll/jekyll/pull/5210">by default</a>,
+so we have to make sure it is included in the final site to be able to
+use its files:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>exclude: []
+</code></pre>
+</div>
+
 <h2 id="add-javascript">Add javascript</h2>
 
 <p>Add Bootstrap JavaScript at the end of the document so the pages load
@@ -551,9 +601,9 @@ faster, just before the <code class="highlighter-rouge">&lt;/body&gt;</code> HTM
 <div class="language-liquid highlighter-rouge"><pre class="highlight"><code>&lt;html&gt;
 &lt;body&gt;
 ...
-	&lt;script src="/node_modules/jquery/dist/jquery.min.js"&gt;&lt;/script&gt;
-	&lt;script src="/node_modules/tether/dist/js/tether.min.js"&gt;&lt;/script&gt;
-	&lt;script src="<span class="p">{{</span><span class="s1">'/node_modules/bootstrap/dist/js/bootstrap.min.js'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">prepend</span><span class="p">:</span><span class="w"> </span>site.baseurl<span class="p">}}</span>"&gt;&lt;/script&gt;
+	&lt;script src="<span class="p">{{</span><span class="s1">'/node_modules/jquery/dist/jquery.min.js'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">prepend</span><span class="p">:</span><span class="w"> </span>site.baseurl<span class="p">}}</span>"&gt;&lt;/script&gt;
+	&lt;script src="<span class="p">{{</span><span class="s1">'/node_modules/popper.js/dist/popper.min.js | prepend: site.baseurl}}"&gt;&lt;/script&gt;
+	&lt;script src="{{'</span><span class="err">/</span><span class="nv">node_modules</span><span class="err">/</span><span class="nv">bootstrap</span><span class="err">/</span><span class="nv">dist</span><span class="err">/</span><span class="nv">js</span><span class="err">/</span><span class="nv">bootstrap</span><span class="p">.</span><span class="nv">min</span><span class="p">.</span><span class="nv">js</span><span class="err">'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">prepend</span><span class="p">:</span><span class="w"> </span>site.baseurl<span class="p">}}</span>"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
@@ -585,6 +635,7 @@ depending on each other to calculate <abbr title="Cascading Style Sheets">CSS</a
 <p>In <code class="highlighter-rouge">_sass/_variables.scss</code>:</p>
 
 <div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="nv">$custom-font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">"../node_modules/bootstrap/scss/functions"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"../node_modules/bootstrap/scss/variables"</span><span class="p">;</span>
 </code></pre>
 </div>
@@ -647,17 +698,24 @@ graph TB
 
 <h2 id="other">Other</h2>
 
+<h3 id="site">Site</h3>
+
 <p>You’ll find
-a
-<a href="https://github.com/marcanuy/jekyll-bootstrap4">minimal example of a site</a> in
-Jekyll hosted on GitHub based on this article ready to use.</p>
+a <strong>**minimal example site</strong>* hosted on Github showing the result of
+following this tutorial at <a href="https://github.com/marcanuy/jekyll-bootstrap4">https://github.com/marcanuy/jekyll-bootstrap4</a>).</p>
+
+<h3 id="video">Video</h3>
 
 <p>There is also a step by step video using the previous package manager
-Bower instead of Yarn:</p>
+used here <strong>Bower</strong> instead of <strong>Yarn</strong> and a previous version of
+Bootstrap, so you can get a general idea of how this works but it
+won’t reflect the current status of the tutorial:</p>
 
 <div class="embed-responsive embed-responsive-16by9 m-1">
   <iframe class="embed-responsive-item" src="//www.youtube.com/embed/0EI1V_Whgto" allowfullscreen=""></iframe>
 </div>
+
+<h3 id="skel">Skel</h3>
 
 <p>It is also part of a Jekyll starter
 site <a href="https://github.com/marcanuy/jekyll-skeleton">jekyll-skeleton</a>.</p>
@@ -714,7 +772,7 @@ using Bundler):</p>
 <span class="nl">include-yarn-deps</span><span class="o">:</span>
 	mkdir -p <span class="nv">$(VENDOR_DIR)</span>
 	cp node_modules/jquery/dist/jquery.min.js <span class="nv">$(VENDOR_DIR)</span>
-	cp node_modules/tether/dist/js/tether.min.js <span class="nv">$(VENDOR_DIR)</span>
+	cp node_modules/popper.js/dist/popper.min.js <span class="nv">$(VENDOR_DIR)</span>
 	cp node_modules/bootstrap/dist/js/bootstrap.min.js <span class="nv">$(VENDOR_DIR)</span>
 
 <span class="nl">build</span><span class="o">:</span> <span class="nf">install include-yarn-deps</span>
@@ -736,20 +794,24 @@ a
 the above script in two flavours:</p>
 
 <ul>
-  <li><a href="https://gist.githubusercontent.com/marcanuy/fefafbd617201aee2892666ee2d28761/raw/ba2cb05399c25dde3e3f8c3c2a7f86e64ed1f2bb/Makefile">Makefile</a> without a <code class="highlighter-rouge">Gemfile</code> (not using Bundler).</li>
-  <li><a href="https://gist.githubusercontent.com/marcanuy/fefafbd617201aee2892666ee2d28761/raw/ba2cb05399c25dde3e3f8c3c2a7f86e64ed1f2bb/Makefile-with-bundler">Makefile</a> using Bundler.</li>
+  <li>Makefile a <code class="highlighter-rouge">Gemfile</code> (not using Bundler).</li>
+  <li>Makefile using Bundler.</li>
 </ul>
 
-<p>Now we will use <code class="highlighter-rouge">make build</code> and <code class="highlighter-rouge">make serve</code> to work with Jekyll.</p>
+<p>Now we will use <code class="highlighter-rouge">make build</code> and <code class="highlighter-rouge">make serve</code> to work with Jekyll as
+wrappers of <code class="highlighter-rouge">jekyll build</code> and <code class="highlighter-rouge">jekyll serve</code> respectively.</p>
+
+<p class="alert alert-danger">Remember that Makefile content uses <strong>TABS</strong> to indent recipes instead
+of <em>spaces</em>.</p>
 
 <h3 id="using-new-paths">Using new paths</h3>
 
 <p>It just remain to update our paths in the layout, in <code class="highlighter-rouge">default.html</code>
 use them as:</p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://simpleit.rocks/assets/vendor/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://simpleit.rocks/assets/vendor/tether.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://simpleit.rocks/assets/vendor/bootstrap.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{'/assets/vendor/jquery.min.js' | absolute_url}}"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{'/assets/vendor/popper.min.js' | absolute_url}}"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{'/assets/vendor/bootstrap.min.js' | absolute_url}}"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre>
 </div>
 
@@ -762,6 +824,8 @@ site, in <code class="highlighter-rouge">_config.yml</code>:</p>
  - node_modules
 </code></pre>
 </div>
+
+<p class="alert alert-info">This is the default behaviour from Jekyll 3.3</p>
 
 <h3 id="final">Final</h3>
 
