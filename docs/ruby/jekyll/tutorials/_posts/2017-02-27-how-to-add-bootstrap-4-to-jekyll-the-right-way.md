@@ -40,15 +40,15 @@ A file named `assets/main.scss` will be rendered like `assets/main.css`.
 
 As Bootstrap switched from `Less` to `Sass`[^bs-blog] now we can use
 it directly without relying in parallel projects like [bootstrap-sass](https://github.com/twbs/bootstrap-sass)
-used with Bootstrap 3.
+needed for Bootstrap 3.
 
 ## Installing Bootstrap 4
 
 We will be using the package manager [Yarn] to install Bootstrap. At
 our Jekyll website root folder we run <kbd>yarn install</kbd>. In this
-case I will be using `bootstrap#v4.0.0-alpha.6` but you can find the
+case I will be using ****Bootstrap  v4.0.0-beta.2 ** but you can find the
 latest one
-at <https://v4-alpha.getbootstrap.com/getting-started/download/>.
+at <https://getbootstrap.com/docs/4.0/getting-started/download/>.
 
 Previously I used [Bower] in this tutorial but as it won't be
 maintained anymore, [Yarn] is a better, more robust solution.
@@ -57,27 +57,57 @@ maintained anymore, [Yarn] is a better, more robust solution.
 <pre class="shell">
 <samp>
 <span class="shell-prompt">$</span> <kbd>yarn install</kbd>
-yarn install v0.24.6
+yarn install v1.3.2
 info No lockfile found.
 [1/4] Resolving packages...
 [2/4] Fetching packages...
 [3/4] Linking dependencies...
 [4/4] Building fresh packages...
-success Saved lockfile.
-Done in 0.38s.
+info Lockfile not saved, no dependencies.
+Done in 0.22s.
 
-<span class="shell-prompt">$</span> <kbd>yarn add bootstrap@4.0.0-alpha.6</kbd>
-yarn add v0.24.6
+<span class="shell-prompt">$</span> <kbd>yarn add bootstrap@4.0.0-beta.2</kbd>
+yarn add v1.3.2
+info No lockfile found.
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+warning " > bootstrap@4.0.0-beta.2" has unmet peer dependency "jquery@1.9.1 - 3".
+warning " > bootstrap@4.0.0-beta.2" has unmet peer dependency "popper.js@^1.12.3".
+[4/4] Building fresh packages...
+success Saved lockfile.
+success Saved 1 new dependency.
+└─ bootstrap@4.0.0-beta.2
+Done in 2.46s.
+
+<span class="shell-prompt">$</span> <kbd>yarn add jquery@>=3.0.0</kbd>
+yarn add v1.3.2
+warning package.json: No license field
+warning No license field
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+warning " > bootstrap@4.0.0-beta.2" has unmet peer dependency "popper.js@^1.12.3".
+[4/4] Building fresh packages...
+success Saved lockfile.
+success Saved 1 new dependency.
+└─ jquery@3.0.0
+warning No license field
+Done in 4.33s.
+
+<span class="shell-prompt">$</span> <kbd>yarn add popper.js@^1.12.3</kbd>
+yarn add v1.3.2
+warning package.json: No license field
+warning No license field
 [1/4] Resolving packages...
 [2/4] Fetching packages...
 [3/4] Linking dependencies...
 [4/4] Building fresh packages...
 success Saved lockfile.
-success Saved 3 new dependencies.
-├─ bootstrap@4.0.0-alpha.6
-├─ jquery@3.2.1
-└─ tether@1.4.0
-Done in 3.23s.
+success Saved 1 new dependency.
+└─ popper.js@1.12.6
+warning No license field
+Done in 1.55s.
 </samp>
 </pre>
 
@@ -109,6 +139,16 @@ sass:
 `load_paths` only works when **not** in safe mode[^safe-mode]
 {: .alert .alert-danger}
 
+### Whitelist node_modules
+
+Jekyll 3.3 started excluding the `node_modules` directory [by default](https://github.com/jekyll/jekyll/pull/5210),
+so we have to make sure it is included in the final site to be able to
+use its files:
+
+~~~
+exclude: []
+~~~
+
 ## Add javascript
 
 Add Bootstrap JavaScript at the end of the document so the pages load
@@ -121,13 +161,14 @@ We add them in the default layout at `_layouts/default.html` or in
 <html>
 <body>
 ...
-	<script src="{{'/node_modules/jquery/dist/jquery.min.js' | prepend: site.baseurl}}"></script>
-	<script src="{{'/node_modules/tether/dist/js/tether.min.js' |
-	prepend: site.baseurl}}"></script>
+	<script src="{% raw %}{{'/node_modules/jquery/dist/jquery.min.js' | prepend: site.baseurl}}"{% endraw %}></script>
+	<script src="{% raw %}{{'/node_modules/popper.js/dist/popper.min.js | prepend: site.baseurl}}{% endraw %}"></script>
 	<script src="{% raw %}{{'/node_modules/bootstrap/dist/js/bootstrap.min.js' | prepend: site.baseurl}}{% endraw %}"></script>
 </body>
 </html>
 ~~~
+
+
 
 ## Import Bootstrap and use Sass variables
 
@@ -155,6 +196,7 @@ In `_sass/_variables.scss`:
 
 ~~~ scss
 $custom-font-size: 20px;
+@import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
 ~~~
 
@@ -217,17 +259,24 @@ graph TB
 
 ## Other
 
+### Site
+
 You’ll find
-a
-[minimal example of a site](https://github.com/marcanuy/jekyll-bootstrap4) in
-Jekyll hosted on GitHub based on this article ready to use. 
+a ****minimal example site*** hosted on Github showing the result of
+following this tutorial at <https://github.com/marcanuy/jekyll-bootstrap4>).
+
+### Video
 
 There is also a step by step video using the previous package manager
-Bower instead of Yarn:
+used here **Bower** instead of **Yarn** and a previous version of
+Bootstrap, so you can get a general idea of how this works but it
+won't reflect the current status of the tutorial:
 
 <div class="embed-responsive embed-responsive-16by9 m-1">
   <iframe class="embed-responsive-item" src="//www.youtube.com/embed/0EI1V_Whgto" allowfullscreen></iframe>
 </div>
+
+### Skel
 
 It is also part of a Jekyll starter
 site [jekyll-skeleton](https://github.com/marcanuy/jekyll-skeleton).
@@ -285,7 +334,7 @@ update: $(PROJECT_DEPS)
 include-yarn-deps:
 	mkdir -p $(VENDOR_DIR)
 	cp node_modules/jquery/dist/jquery.min.js $(VENDOR_DIR)
-	cp node_modules/tether/dist/js/tether.min.js $(VENDOR_DIR)
+	cp node_modules/popper.js/dist/popper.min.js $(VENDOR_DIR)
 	cp node_modules/bootstrap/dist/js/bootstrap.min.js $(VENDOR_DIR)
 
 build: install include-yarn-deps
@@ -306,10 +355,15 @@ a
 [gist](https://gist.github.com/marcanuy/fefafbd617201aee2892666ee2d28761) with
 the above script in two flavours:
 
-- [Makefile](https://gist.githubusercontent.com/marcanuy/fefafbd617201aee2892666ee2d28761/raw/ba2cb05399c25dde3e3f8c3c2a7f86e64ed1f2bb/Makefile) without a `Gemfile` (not using Bundler).
-- [Makefile](https://gist.githubusercontent.com/marcanuy/fefafbd617201aee2892666ee2d28761/raw/ba2cb05399c25dde3e3f8c3c2a7f86e64ed1f2bb/Makefile-with-bundler) using Bundler.
+- Makefile a `Gemfile` (not using Bundler).
+- Makefile using Bundler.
 
-Now we will use `make build` and `make serve` to work with Jekyll.
+Now we will use `make build` and `make serve` to work with Jekyll as
+wrappers of `jekyll build` and `jekyll serve` respectively.
+
+Remember that Makefile content uses **TABS** to indent recipes instead
+of *spaces*.
+{: .alert .alert-danger}
 
 ### Using new paths
 
@@ -317,9 +371,9 @@ It just remain to update our paths in the layout, in `default.html`
 use them as:
 
 ~~~ html
-<script src="{{'/assets/vendor/jquery.min.js' | absolute_url}}"></script>
-<script src="{{'/assets/vendor/tether.min.js' | absolute_url}}"></script>
-<script src="{{'/assets/vendor/bootstrap.min.js' | absolute_url}}"></script>
+<script src="{%raw%}{{'/assets/vendor/jquery.min.js' | absolute_url}}{%endraw%}"></script>
+<script src="{%raw%}{{'/assets/vendor/popper.min.js' | absolute_url}}{%endraw%}"></script>
+<script src="{%raw%}{{'/assets/vendor/bootstrap.min.js' | absolute_url}}{%endraw%}"></script>
 ~~~
 
 ### Exclude unwanted directories
@@ -331,6 +385,9 @@ site, in `_config.yml`:
 exclude:
  - node_modules
 ~~~
+
+This is the default behaviour from Jekyll 3.3
+{: .alert .alert-info}
 
 ### Final
 
