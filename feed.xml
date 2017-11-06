@@ -6,9 +6,616 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 06 Nov 2017 20:54:59 +0000</pubDate>
-    <lastBuildDate>Mon, 06 Nov 2017 20:54:59 +0000</lastBuildDate>
+    <pubDate>Mon, 06 Nov 2017 21:49:34 +0000</pubDate>
+    <lastBuildDate>Mon, 06 Nov 2017 21:49:34 +0000</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>Introduction To Hugo For Jekyll Users</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;After building many websites with Jekyll for a while, I’ve decided to
+try &lt;strong&gt;Hugo&lt;/strong&gt; and was greatly impressed by its capabilities.&lt;/p&gt;
+
+&lt;p&gt;This article shows the main differences between Jekyll and Hugo
+philosophies.&lt;/p&gt;
+
+&lt;h2 id=&quot;includes&quot;&gt;includes&lt;/h2&gt;
+
+&lt;p&gt;Jekyll includes have their equivalent in Hugo as
+&lt;strong&gt;&lt;a href=&quot;https://gohugo.io/content-management/shortcodes/&quot;&gt;shortcodes&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A shortcode is a simple snippet inside a content file that Hugo will
+render using a predefined template.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Shortcodes&lt;/em&gt; can be used to include code in posts, but in contrast to
+Jekyll, to include content in templates you need to use &lt;strong&gt;partial
+templates&lt;/strong&gt; instead.&lt;/p&gt;
+
+&lt;h2 id=&quot;wysiwyg-structure&quot;&gt;WYSIWYG structure&lt;/h2&gt;
+
+&lt;p&gt;The site structure is reflected in the website structure by default.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Hugo believes that you organize your content with a purpose. The
+same structure that works to organize your source content is used to
+organize the rendered site.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The only thing that can be changed through front matter is the &lt;code class=&quot;highlighter-rouge&quot;&gt;slug&lt;/code&gt;,
+then the path will be the same as where it is located under the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;contents&lt;/code&gt; folder.&lt;/p&gt;
+
+&lt;p&gt;For example: &lt;code class=&quot;highlighter-rouge&quot;&gt;content/posts/my-post.md&lt;/code&gt; becomes
+&lt;code class=&quot;highlighter-rouge&quot;&gt;example.com/posts/my-post/&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The above statement reflects the original design that Hugo used to
+have, now you can tweak some of that behaviour with front matter
+variables or other configurations, for example to completely change
+the destination path, the &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt; variable can also be set as in Jekyll.&lt;/p&gt;
+
+&lt;h3 id=&quot;sections&quot;&gt;Sections&lt;/h3&gt;
+
+&lt;p&gt;Articles and posts goes into &lt;code class=&quot;highlighter-rouge&quot;&gt;/content&lt;/code&gt;, each directory at
+&lt;code class=&quot;highlighter-rouge&quot;&gt;content/&amp;lt;DIRECTORIES&amp;gt;&lt;/code&gt; are special in Hugo and are called &lt;strong&gt;Content
+Sections&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Each &lt;em&gt;section&lt;/em&gt; can have nested directories, but all the content inside
+them, will have the same base &lt;strong&gt;section&lt;/strong&gt;, (i.e. the first directory
+under &lt;code class=&quot;highlighter-rouge&quot;&gt;/content&lt;/code&gt;).&lt;/p&gt;
+
+&lt;h2 id=&quot;inspect-equivalent&quot;&gt;Inspect equivalent&lt;/h2&gt;
+
+&lt;p&gt;There is a helpful &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;lt;var&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;inspect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt; filter tag in Jekyll that
+allows to print any variable in a template. The closest equivalent in
+Hugo is the usage of ``. &lt;sup id=&quot;fnref:printvars&quot;&gt;&lt;a href=&quot;#fn:printvars&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;To print the current &lt;em&gt;Page&lt;/em&gt; data &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;%#v&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}}&lt;/span&gt;&lt;/code&gt; will print:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the top level object and&lt;/li&gt;
+  &lt;li&gt;object fields&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;E.g.: for a &lt;strong&gt;Section&lt;/strong&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;/content/communication&lt;/code&gt; it will print something
+like:&lt;/p&gt;
+
+&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hugolib&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PageOutput&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Page&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hugolib&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0xc4210f2a00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;paginator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hugolib&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pager&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;paginatorInit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sync&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Once&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sync&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Mutex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sema&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0x0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0x0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;targetPathDescriptor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hugolib&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;targetPathDescriptor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PathSpec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;helpers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PathSpec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0xc4200ca240&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HTML&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MediaType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;media&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MainType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SubType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;html&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Suffix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;html&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Delimiter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BaseName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;index&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Rel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;canonical&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Protocol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsPlainText&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsHTML&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NoUgly&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NotAlternative&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;section&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sections&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;communication&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BaseName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;_index&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;communication/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LangPrefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/communication/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Addends&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ExpandedPermalink&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UglyURLs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outputFormat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HTML&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MediaType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;media&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MainType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SubType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;html&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Suffix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;html&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Delimiter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BaseName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;index&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Rel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;canonical&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Protocol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsPlainText&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsHTML&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NoUgly&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NotAlternative&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:printvars&quot;&gt;
+      &lt;p&gt;https://discourse.gohugo.io/t/how-to-debug-a-template/1027&amp;nbsp;&lt;a href=&quot;#fnref:printvars&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sat, 14 Oct 2017 00:00:00 +0000</pubDate>
+        <link>https://simpleit.rocks/introduction-to-hugo-for-jekyll-users/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/introduction-to-hugo-for-jekyll-users/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>golang</category>
+        
+        <category>hugo</category>
+        
+      </item>
+    
+      <item>
+        <title>Hugo overview and basic concepts</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Hugo is a static site generators based in Google’s
+&lt;a href=&quot;https://golang.org&quot;&gt;Go&lt;/a&gt; language.&lt;/p&gt;
+
+&lt;p&gt;This is a guide based in the official &lt;em&gt;quickstart&lt;/em&gt; guide explaining
+its concepts.&lt;/p&gt;
+
+&lt;h2 id=&quot;command-line&quot;&gt;Command line&lt;/h2&gt;
+
+&lt;p&gt;As with all modern frameworks, it comes with a command line utility
+&lt;kbd&gt;hugo&lt;/kbd&gt;.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://gohugo.io/getting-started/directory-structure/&quot;&gt;
+  &lt;p&gt;Hugo’s CLI scaffolds a project directory structure and then takes
+that single directory and uses it as the input to create a complete
+website.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://gohugo.io/getting-started/directory-structure/&quot;&gt;Hugo Directory Structure&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;quickstart$&lt;/span&gt; &lt;kbd&gt;hugo --help&lt;/kbd&gt;
+hugo is the main command, used to build your Hugo site.
+
+Hugo is a Fast and Flexible Static Site Generator
+built with love by spf13 and friends in Go.
+
+Complete documentation is available at http://gohugo.io/.
+
+Usage:
+  hugo [flags]
+  hugo [command]
+
+Available Commands:
+  server      A high performance webserver
+  version     Print the version number of Hugo
+  env         Print Hugo version and environment info
+  config      Print the site configuration
+  benchmark   Benchmark Hugo by building a site a number of times.
+  convert     Convert your content to different formats
+  new         Create new content for your site
+  list        Listing out various types of content
+  undraft     Undraft changes the content's draft status from 'True' to 'False'
+  import      Import your site from others.
+  gen         A collection of several useful generators.
+
+Flags:
+  -b, --baseURL string          hostname (and path) to the root, e.g. http://spf13.com/
+  -D, --buildDrafts             include content marked as draft
+  -E, --buildExpired            include expired content
+  -F, --buildFuture             include content with publishdate in the future
+      --cacheDir string         filesystem path to cache directory. Defaults: $TMPDIR/hugo_cache/
+      --canonifyURLs            if true, all relative URLs will be canonicalized using baseURL
+      --cleanDestinationDir     Remove files from destination not found in static directories
+      --config string           config file (default is path/config.yaml|json|toml)
+  -c, --contentDir string       filesystem path to content directory
+  -d, --destination string      filesystem path to write files to
+      --disable404              Do not render 404 page
+      --disableRSS              Do not build RSS files
+      --disableSitemap          Do not build Sitemap file
+      --enableGitInfo           Add Git revision, date and author info to the pages
+      --forceSyncStatic         Copy all files when static is changed.
+      --i18n-warnings           Print missing translations
+      --ignoreCache             Ignores the cache directory
+  -l, --layoutDir string        filesystem path to layout directory
+      --log                     Enable Logging
+      --logFile string          Log File path (if set, logging enabled automatically)
+      --noChmod                 Don't sync permission mode of files
+      --noTimes                 Don't sync modification time of files
+      --pluralizeListTitles     Pluralize titles in lists using inflect (default true)
+      --preserveTaxonomyNames   Preserve taxonomy names as written (&quot;Gérard Depardieu&quot; vs &quot;gerard-depardieu&quot;)
+      --quiet                   build in quiet mode
+      --renderToMemory          render to memory (only useful for benchmark testing)
+  -s, --source string           filesystem path to read files relative from
+      --stepAnalysis            display memory and timing of different steps of the program
+  -t, --theme string            theme to use (located in /themes/THEMENAME/)
+      --uglyURLs                if true, use /filename.html instead of /filename/
+  -v, --verbose                 verbose output
+      --verboseLog              verbose logging
+  -w, --watch                   watch filesystem for changes and recreate as needed
+
+Additional help topics:
+  hugo check     Contains some verification checks
+
+Use &quot;hugo [command] --help&quot; for more information about a command.
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;create-a-site&quot;&gt;Create a site&lt;/h2&gt;
+
+&lt;p&gt;To create a new site &lt;kbd&gt;hugo new site&lt;/kbd&gt;.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;hugo new site --help&lt;/kbd&gt;
+Create a new site in the provided directory.
+The new site will have the correct structure, but no content or theme yet.
+Use `hugo new [contentPath]` to create new content.
+
+Usage:
+  hugo new site [path] [flags]
+
+Flags:
+	  --force           Init inside non-empty directory
+  -f, --format string   config &amp;amp; frontmatter format (default &quot;toml&quot;)
+
+Global Flags:
+	  --config string    config file (default is path/config.yaml|json|toml)
+	  --log              Enable Logging
+	  --logFile string   Log File path (if set, logging enabled automatically)
+	  --quiet            build in quiet mode
+  -s, --source string    filesystem path to read files relative from
+  -v, --verbose          verbose output
+      --verboseLog       verbose logging
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Then we will create a &lt;em&gt;quickstart&lt;/em&gt; project:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;hugo new site quickstart&lt;/kbd&gt;
+Congratulations! Your new Hugo site is created in /tmp/quickstart.
+
+Just a few more steps and you're ready to go:
+
+1. Download a theme into the same-named folder.
+   Choose a theme from https://themes.gohugo.io/, or
+   create your own with the &quot;hugo new theme &amp;lt; THEMENAME &amp;gt;&quot; command.
+2. Perhaps you want to add some content. You can add single files
+   with &quot;hugo new &amp;lt; SECTIONNAME &amp;gt;/&amp;lt; FILENAME &amp;gt;.&amp;lt; FORMAT &amp;gt;&quot;.
+3. Start the built-in live server via &quot;hugo server&quot;.
+
+Visit https://gohugo.io/ for quickstart guide and full documentation.
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;That will create the basic Hugo site structure:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;tree quickstart/&lt;/kbd&gt;
+quickstart/
+├── archetypes
+├── config.toml
+├── content
+├── data
+├── layouts
+├── static
+└── themes
+ 
+6 directories, 1 file
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h3 id=&quot;structure&quot;&gt;Structure&lt;/h3&gt;
+
+&lt;p&gt;Structure explanation:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;archetypes&lt;/strong&gt;:
+&lt;a href=&quot;https://gohugo.io/content-management/archetypes/&quot;&gt;archetypes&lt;/a&gt; are
+pre-configured front matter post data to add when using &lt;kbd&gt;hugo
+new&lt;/kbd&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;config.toml&lt;/strong&gt;: hugo
+&lt;a href=&quot;https://gohugo.io/getting-started/configuration/#all-variables-yaml&quot;&gt;configuration&lt;/a&gt;.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Hugo will look for &lt;code class=&quot;highlighter-rouge&quot;&gt;./config.toml&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;./config.yaml&lt;/code&gt; and
+&lt;code class=&quot;highlighter-rouge&quot;&gt;./config.json&lt;/code&gt;, in that order.&lt;/li&gt;
+      &lt;li&gt;Defines:
+        &lt;ul&gt;
+          &lt;li&gt;how to render the website&lt;/li&gt;
+          &lt;li&gt;menus&lt;/li&gt;
+          &lt;li&gt;site-wide parameters&lt;/li&gt;
+          &lt;li&gt;values under &lt;code class=&quot;highlighter-rouge&quot;&gt;params&lt;/code&gt; key can be used with
+&lt;a href=&quot;https://gohugo.io/variables/site/&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.Site.Params&lt;/code&gt;&lt;/a&gt; variable in
+templates.&lt;/li&gt;
+          &lt;li&gt;all Hugo’s config values can be seen with the command &lt;code class=&quot;highlighter-rouge&quot;&gt;hugo
+config&lt;/code&gt;.&lt;/li&gt;
+          &lt;li&gt;
+            &lt;p&gt;all keys can be set with environmental variables in uppercase
+and &lt;code class=&quot;highlighter-rouge&quot;&gt;HUGO_&lt;/code&gt; prefix, for example, to set the site title and build
+the site:&lt;/p&gt;
+
+            &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ env HUGO_TITLE=&quot;New Title&quot; hugo
+&lt;/code&gt;&lt;/pre&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;content&lt;/strong&gt;:
+&lt;a href=&quot;https://gohugo.io/content-management/organization/&quot;&gt;content&lt;/a&gt; that can
+include &lt;code class=&quot;highlighter-rouge&quot;&gt;/posts&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;/blog&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;/articles&lt;/code&gt;, sections with
+&lt;a href=&quot;https://gohugo.io/content-management/types/&quot;&gt;content-types&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;data&lt;/strong&gt;: data holds configuration files, and &lt;a href=&quot;https://gohugo.io/templates/data-templates/&quot;&gt;data
+templates&lt;/a&gt; pulling data
+from dynamic content.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;templates&lt;/strong&gt;: &lt;a href=&quot;https://gohugo.io/templates/&quot;&gt;templates&lt;/a&gt; specify how content is rendered.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;static&lt;/strong&gt;: assets directory.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;themes&quot;&gt;Themes&lt;/h2&gt;
+
+&lt;p&gt;Hugo &lt;a href=&quot;https://gohugo.io/themes/&quot;&gt;themes&lt;/a&gt; are powered by Go’s template
+libraries (&lt;a href=&quot;https://golang.org/pkg/text/template/&quot;&gt;text&lt;/a&gt; and
+&lt;a href=&quot;https://golang.org/pkg/html/template/&quot;&gt;html&lt;/a&gt; libraries).&lt;/p&gt;
+
+&lt;p&gt;Themes are designed to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;reduce code duplication&lt;/li&gt;
+  &lt;li&gt;easy to both customize and&lt;/li&gt;
+  &lt;li&gt;keep in synch with the upstream theme.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A repository of themes are available at &lt;a href=&quot;https://themes.gohugo.io&quot;&gt;https://themes.gohugo.io&lt;/a&gt;,
+from there we have to select one, and locate it in &lt;code class=&quot;highlighter-rouge&quot;&gt;/themes&lt;/code&gt;
+directory.&lt;/p&gt;
+
+&lt;h3 id=&quot;add&quot;&gt;Add&lt;/h3&gt;
+
+&lt;p&gt;Themes can be added as git submodules, so it is possible to use
+another project from within the main site, or cloned directly into the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;themes&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;cd quickstart&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;git init&lt;/kbd&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;quickstart$&lt;/span&gt; &lt;kbd&gt;git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke;&lt;/kbd&gt;
+Cloning into '/tmp/quickstart/themes/ananke'...
+remote: Counting objects: 850, done.
+remote: Compressing objects: 100% (18/18), done.
+remote: Total 850 (delta 10), reused 21 (delta 9), pack-reused 823
+Ricezione degli oggetti: 100% (850/850), 2.38 MiB | 385.00 KiB/s, done.
+Risoluzione dei delta: 100% (431/431), done.
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h3 id=&quot;choose&quot;&gt;Choose&lt;/h3&gt;
+
+&lt;p&gt;Now we must specify Hugo to use this theme.&lt;/p&gt;
+
+&lt;p&gt;This can be done adding it to the configuration file or specifying
+theme name at run time.&lt;/p&gt;
+
+&lt;h3 id=&quot;customize&quot;&gt;Customize&lt;/h3&gt;
+
+&lt;p&gt;Themes that follows Hugo’s convention for folder structure and naming,
+can be customized without changing original code, just using your
+project’s working directory, overriding specific sections and staying
+current with a theme’s upstream.&lt;/p&gt;
+
+&lt;p&gt;Every time Hugo looks for a theme file, it will look first in &lt;strong&gt;your&lt;/strong&gt;
+project, and if it doesn’t find anything, it will look at &lt;code class=&quot;highlighter-rouge&quot;&gt;/themes/&amp;lt;
+THEME NAME &amp;gt;&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;p&gt;For example, to customize the file&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/themes/&amp;lt; THEME &amp;gt;/layouts/_default/single.html`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;you simply copy the above file to you local instance and edit as you
+wish:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/layouts/_default/single.html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;how-themes-work&quot;&gt;How themes work&lt;/h3&gt;
+
+&lt;p&gt;Generally, website pages consist of page showing a single item or a
+list of items, in Hugo these cases are covered by the &lt;code class=&quot;highlighter-rouge&quot;&gt;_default&lt;/code&gt; theme:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a single piece of content: &lt;code class=&quot;highlighter-rouge&quot;&gt;layouts/_default/single.html&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;a list of content items: &lt;code class=&quot;highlighter-rouge&quot;&gt;layouts/_default/list.html&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After looking for the default layout, Hugo also seeks for content
+types or have layouts that apply to specific sections like a blog or
+another type.&lt;/p&gt;
+
+&lt;p&gt;Static content present in the &lt;code class=&quot;highlighter-rouge&quot;&gt;static&lt;/code&gt; directory, will be copied to
+the final site.&lt;/p&gt;
+
+&lt;h4 id=&quot;in-config&quot;&gt;In Config&lt;/h4&gt;
+
+&lt;p&gt;To add the theme to the configuration file: &lt;code class=&quot;highlighter-rouge&quot;&gt;config.toml&lt;/code&gt; we set the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;theme&lt;/code&gt; property.&lt;/p&gt;
+
+&lt;div class=&quot;language-toml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;py&quot;&gt;languageCode&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;en-us&quot;&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;My New Hugo Site&quot;&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;baseurl&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;http://example.org/&quot;&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;theme&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ananke&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;at-run-time&quot;&gt;at Run time&lt;/h4&gt;
+
+&lt;p&gt;To use a theme specifying the name at command line, &lt;code class=&quot;highlighter-rouge&quot;&gt;hugo&lt;/code&gt; comes with
+the &lt;code class=&quot;highlighter-rouge&quot;&gt;-t&lt;/code&gt; flag, then it can be used as &lt;kbd&gt;hugo -t ananke&lt;/kbd&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;create-content&quot;&gt;Create content&lt;/h2&gt;
+
+&lt;p&gt;Hugo by default uses a markdown processor for Go called
+&lt;a href=&quot;https://github.com/russross/blackfriday&quot;&gt;blackfriday&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A typical post contains a special section containing metadata and then the
+content. The metadata is called frontmatter and is the first part of
+the file between &lt;code class=&quot;highlighter-rouge&quot;&gt;+++&lt;/code&gt; lines, for example a post looks like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-blackfriday&quot;&gt;---
+date: 2017-04-09T10:58:08-04:00
+description: &quot;The Grand Hall&quot;
+featured_image: &quot;/images/Pope-Edouard-de-Beaumont-1844.jpg&quot;
+tags: [&quot;scene&quot;]
+title: &quot;Chapter I: The Grand Hall&quot;
+---
+
+Three hundred and forty-eight years, six months, and nineteen days ago
+to-day, the Parisians awoke to the sound of all the bells in the triple
+circuit of the city, the university, and the town ringing a full peal.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To add new content we use &lt;code class=&quot;highlighter-rouge&quot;&gt;hugo new&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;quickstart$&lt;/span&gt; &lt;kbd&gt;hugo new --help&lt;/kbd&gt;
+Create a new content file and automatically set the date and title.
+It will guess which kind of file to create based on the path provided.
+
+You can also specify the kind with `-k KIND`.
+
+If archetypes are provided in your theme or site, they will be used.
+
+Usage:
+  hugo new [path] [flags]
+  hugo new [command]
+
+Available Commands:
+  site        Create a new site (skeleton)
+  theme       Create a new theme
+
+Flags:
+      --editor string   edit new content with this editor, if provided
+  -f, --format string   frontmatter format (default &quot;toml&quot;)
+  -k, --kind string     Content type to create
+  -s, --source string   filesystem path to read files relative from
+
+Global Flags:
+      --config string    config file (default is path/config.yaml|json|toml)
+      --log              Enable Logging
+      --logFile string   Log File path (if set, logging enabled automatically)
+      --quiet            build in quiet mode
+  -v, --verbose          verbose output
+      --verboseLog       verbose logging
+
+Use &quot;hugo new [command] --help&quot; for more information about a command.
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Hugo has its posts and content in &lt;code class=&quot;highlighter-rouge&quot;&gt;contents/posts&lt;/code&gt; directory, we add a
+post called &lt;code class=&quot;highlighter-rouge&quot;&gt;my-first-post.md&lt;/code&gt; with the basic post structure specified
+in the front-matter with &lt;code class=&quot;highlighter-rouge&quot;&gt;hugo new &amp;lt; post &amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;quickstart$&lt;/span&gt; &lt;kbd&gt;hugo new posts/my-first-post.md&lt;/kbd&gt;
+/tmp/quickstart/content/posts/my-first-post.md created
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;It creates a basic post skeleton, the front-matter needed to build a
+post:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+++
+title = &quot;This is my first post&quot;
+date = &quot;2017-10-10&quot;
+tags = []
+featured_image = &quot;&quot;
+description = &quot;A new post added&quot;
++++
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id tellus dolor. 
+
+Cras vitae consequat risus. Suspendisse quis justo arcu.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;serve-site&quot;&gt;Serve site&lt;/h2&gt;
+
+&lt;p&gt;To serve the site, especially useful when developing locally:
+&lt;kbd&gt;hugo serve&lt;/kbd&gt;.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;hugo serve --help&lt;/kbd&gt;
+Hugo provides its own webserver which builds and serves the site.
+While hugo server is high performance, it is a webserver with limited options.
+Many run it in production, but the standard behavior is for people to use it
+in development and use a more full featured server such as Nginx or Caddy.
+
+'hugo server' will avoid writing the rendered and served content to disk,
+preferring to store it in memory.
+
+By default hugo will also watch your files for any changes you make and
+automatically rebuild the site. It will then live reload any open browser pages
+and push the latest content to them. As most Hugo sites are built in a fraction
+of a second, you will be able to save and see your changes nearly instantly.
+
+Usage:
+  hugo server [flags]
+
+Aliases:
+  server, serve
+
+
+Flags:
+	  --appendPort              append port to baseURL (default true)
+  -b, --baseURL string          hostname (and path) to the root, e.g. http://spf13.com/
+	  --bind string             interface to which the server will bind (default &quot;127.0.0.1&quot;)
+  -D, --buildDrafts             include content marked as draft
+  -E, --buildExpired            include expired content
+  -F, --buildFuture             include content with publishdate in the future
+	  --cacheDir string         filesystem path to cache directory. Defaults: $TMPDIR/hugo_cache/
+	  --canonifyURLs            if true, all relative URLs will be canonicalized using baseURL
+	  --cleanDestinationDir     Remove files from destination not found in static directories
+  -c, --contentDir string       filesystem path to content directory
+  -d, --destination string      filesystem path to write files to
+	  --disable404              Do not render 404 page
+	  --disableLiveReload       watch without enabling live browser reload on rebuild
+	  --disableRSS              Do not build RSS files
+	  --disableSitemap          Do not build Sitemap file
+	  --enableGitInfo           Add Git revision, date and author info to the pages
+	  --forceSyncStatic         Copy all files when static is changed.
+	  --i18n-warnings           Print missing translations
+	  --ignoreCache             Ignores the cache directory
+  -l, --layoutDir string        filesystem path to layout directory
+	  --meminterval string      interval to poll memory usage (requires --memstats), valid time units are &quot;ns&quot;, &quot;us&quot; (or &quot;µs&quot;), &quot;ms&quot;,
+&quot;s&quot;, &quot;m&quot;, &quot;h&quot;. (default &quot;100ms&quot;)
+	  --memstats string         log memory usage to this file
+	  --noChmod                 Don't sync permission mode of files
+	  --noTimes                 Don't sync modification time of files
+	  --pluralizeListTitles     Pluralize titles in lists using inflect (default true)
+  -p, --port int                port on which the server will listen (default 1313)
+	  --preserveTaxonomyNames   Preserve taxonomy names as written (&quot;Gérard Depardieu&quot; vs &quot;gerard-depardieu&quot;)
+	  --renderToDisk            render to Destination path (default is render to memory &amp;amp; serve from there)
+  -s, --source string           filesystem path to read files relative from
+	  --stepAnalysis            display memory and timing of different steps of the program
+  -t, --theme string            theme to use (located in /themes/THEMENAME/)
+	  --uglyURLs                if true, use /filename.html instead of /filename/
+  -w, --watch                   watch filesystem for changes and recreate as needed (default true)
+
+Global Flags:
+	  --config string    config file (default is path/config.yaml|json|toml)
+	  --log              Enable Logging
+	  --logFile string   Log File path (if set, logging enabled automatically)
+	  --quiet            build in quiet mode
+  -v, --verbose          verbose output
+	  --verboseLog       verbose logging
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&quot;generate-files&quot;&gt;Generate files&lt;/h2&gt;
+
+&lt;p&gt;To build the site, just &lt;kbd&gt;hugo&lt;/kbd&gt;.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;hugo&lt;/kbd&gt;
+Started building sites ...
+
+Built site for language en:
+0 draft content
+0 future content
+0 expired content
+1 regular pages created
+8 other pages created
+0 non-page files copied
+1 paginator pages created
+0 tags created
+0 categories created
+total in 50 ms
+&lt;/samp&gt;
+&lt;/pre&gt;
+</description>
+        <pubDate>Tue, 10 Oct 2017 00:00:00 +0000</pubDate>
+        <link>https://simpleit.rocks/hugo-overview-and-basic-concepts/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/hugo-overview-and-basic-concepts/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>golang</category>
+        
+        <category>hugo</category>
+        
+      </item>
     
       <item>
         <title>Exploring React Framework Notes And Core Concepts</title>
@@ -1648,502 +2255,6 @@ package&amp;gt;&lt;/code&gt;:&lt;/p&gt;
         <category>javascript</category>
         
         <category>yarn</category>
-        
-      </item>
-    
-      <item>
-        <title>How To Uninstall Old Versions Of Ruby Gems</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Chances are that if you have been using Ruby for a while, your system
-will be full of &lt;a href=&quot;https://rubygems.org/&quot;&gt;gems&lt;/a&gt; and more specifically,
-&lt;strong&gt;outdated gems&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Every time you perform an update with &lt;kbd&gt;$ gem update&lt;/kbd&gt; the
-default behaviour is to install a new gem version &lt;strong&gt;maintaining&lt;/strong&gt; the
-older one.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-  &lt;p&gt;The update command does not remove the previous version.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Gem update command Help&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;removing-old-unused-gems&quot;&gt;Removing old unused gems&lt;/h2&gt;
-
-&lt;p&gt;To remove older gems we use the &lt;code class=&quot;highlighter-rouge&quot;&gt;clean&lt;/code&gt; command:&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-  &lt;p&gt;The cleanup command removes old versions of gems from GEM_HOME that
-are not required to meet a dependency.  If a gem is installed
-elsewhere in GEM_PATH the cleanup command won’t delete it.&lt;/p&gt;
-
-  &lt;p&gt;If no gems are named all gems in GEM_HOME are cleaned.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Gem cleanup command Help&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;We can choose to specify a gem to remove its older versions or remove
-every old gem:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;gem cleanup&lt;/kbd&gt;
-Cleaning up installed gems...
-Attempting to uninstall test-unit-3.1.7
-Unable to uninstall test-unit-3.1.7:
-        Gem::InstallError: test-unit is not installed in GEM_HOME, try:
-        gem uninstall -i /usr/share/rubygems-integration/all test-unit
-Attempting to uninstall public_suffix-2.0.4
-Successfully uninstalled public_suffix-2.0.4
-Attempting to uninstall power_assert-0.2.7
-Unable to uninstall power_assert-0.2.7:
-        Gem::InstallError: power_assert is not installed in GEM_HOME, try:
-        gem uninstall -i /usr/share/rubygems-integration/all power_assert
-Attempting to uninstall nokogiri-1.6.8.1
-Successfully uninstalled nokogiri-1.6.8.1
-Attempting to uninstall minitest-5.9.0
-Unable to uninstall minitest-5.9.0:
-        Gem::InstallError: minitest is not installed in GEM_HOME, try:
-        gem uninstall -i /usr/share/rubygems-integration/all minitest
-Attempting to uninstall rb-inotify-0.9.7
-Successfully uninstalled rb-inotify-0.9.7
-Attempting to uninstall kramdown-1.12.0
-Successfully uninstalled kramdown-1.12.0
-Attempting to uninstall jekyll-seo-tag-2.0.0
-Successfully uninstalled jekyll-seo-tag-2.0.0
-Attempting to uninstall jekyll-3.3.0
-Successfully uninstalled jekyll-3.3.0
-Attempting to uninstall jekyll-sass-converter-1.4.0
-Successfully uninstalled jekyll-sass-converter-1.4.0
-Attempting to uninstall sass-3.4.22
-Successfully uninstalled sass-3.4.22
-Attempting to uninstall kramdown-1.13.1
-Successfully uninstalled kramdown-1.13.1
-Attempting to uninstall html-proofer-3.3.1
-Successfully uninstalled html-proofer-3.3.1
-Attempting to uninstall parallel-1.9.0
-Successfully uninstalled parallel-1.9.0
-Attempting to uninstall nokogiri-1.7.0
-Successfully uninstalled nokogiri-1.7.0
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/q/27933683/1165509&quot;&gt;Removing old versions of gems&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Thu, 25 May 2017 00:00:00 +0000</pubDate>
-        <link>https://simpleit.rocks/how-to-uninstall-old-versions-of-ruby-gems/</link>
-        <guid isPermaLink="true">https://simpleit.rocks/how-to-uninstall-old-versions-of-ruby-gems/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>ruby</category>
-        
-      </item>
-    
-      <item>
-        <title>Multilingual Jekyll Without Plugins</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;This article shows a solution to have a multi language jekyll website
-based mainly in having a file that groups all the available
-translations for each page.&lt;/p&gt;
-
-&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
-
-&lt;p&gt;A common configuration for a multilanguage site is to use
-subdirectories with Generic top-level domains (gTLDs).&lt;/p&gt;
-
-&lt;p&gt;This way the URLs of your site would look like: &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com/&amp;lt;lang&amp;gt;/&lt;/code&gt;,
-e.g.:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;English &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com/en/&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Spanish &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com/es/&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;German &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com/de/&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This configuration has the benefit that it is easy to configure, can
-use Search Console geotargeting and requires low maintenance as it is
-in the same host.&lt;/p&gt;
-
-&lt;p&gt;To indicate to Search Engines that the German URL is the
-German-language equivalent of the Spanish page, one of three ways can
-be used:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;HTML link element in header&lt;/li&gt;
-  &lt;li&gt;HTTP header&lt;/li&gt;
-  &lt;li&gt;Sitemap&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;In this guide I will be using the first one, adding a &lt;code class=&quot;highlighter-rouge&quot;&gt;link&lt;/code&gt; element
-in the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt; section of each HTML page. Each language page URL
-should identify different language versions, &lt;strong&gt;including itself&lt;/strong&gt;&lt;sup id=&quot;fnref:confirmationlink&quot;&gt;&lt;a href=&quot;#fn:confirmationlink&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-
-&lt;p&gt;So the markup to tell Search Engine’s algorithms to consider all of
-these pages as alternate versions of each other is:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;link rel=&quot;alternate&quot; hreflang=&quot;es&quot; href=&quot;http://example.com/es&quot; /&amp;gt;
-&amp;lt;link rel=&quot;alternate&quot; hreflang=&quot;de&quot; href=&quot;http://example.com/de&quot; /&amp;gt;
-&amp;lt;link rel=&quot;alternate&quot; hreflang=&quot;en&quot; href=&quot;http://example.com/en&quot; /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;To achieve this structure in Jekyll we will use:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;language subdirectories&lt;/li&gt;
-  &lt;li&gt;two data files
-    &lt;ul&gt;
-      &lt;li&gt;one to specify the navigation structure of the website&lt;/li&gt;
-      &lt;li&gt;another one to map posts and pages equivalents based in their full path&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;steps&quot;&gt;Steps&lt;/h2&gt;
-
-&lt;p&gt;I will create a new Jekyll site to show the process:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;jekyll new --blank mysite&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;cd mysite&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;bundle init&lt;/kbd&gt;
-Writing new Gemfile to /mysite/Gemfile
-&lt;span class=&quot;shell-prompt&quot;&gt;mysite$&lt;/span&gt; &lt;kbd&gt;tree&lt;/kbd&gt;
-.
-├── _drafts
-├── Gemfile
-├── index.html
-├── _layouts
-└── _posts
-
-3 directories, 2 file
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;Edit &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; to have the Jekyll gem:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source &quot;https://rubygems.org&quot;
-
-gem &quot;jekyll&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;bundle install&lt;/kbd&gt;
-...
-Bundle complete! 1 Gemfile dependency, 19 gems now installed.
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h3 id=&quot;language-directories&quot;&gt;Language directories&lt;/h3&gt;
-
-&lt;p&gt;For each language we create a new directory that will contain its
-posts, pages and, eventually, some categories as subdirectories.&lt;/p&gt;
-
-&lt;p&gt;In this example, one for English &lt;code class=&quot;highlighter-rouge&quot;&gt;/en&lt;/code&gt;, one for Spanish &lt;code class=&quot;highlighter-rouge&quot;&gt;/es&lt;/code&gt; and one
-for German &lt;code class=&quot;highlighter-rouge&quot;&gt;/de&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;mysite$&lt;/span&gt; &lt;kbd&gt;mkdir -vp {en,es/_posts,de/_posts}&lt;/kbd&gt;
-mkdir: created directory 'en'
-mkdir: created directory 'es'
-mkdir: created directory 'es/_posts'
-mkdir: created directory 'de'
-mkdir: created directory 'de/_posts'
-&lt;span class=&quot;shell-prompt&quot;&gt;mysite$&lt;/span&gt; &lt;kbd&gt;mv _posts/ en/&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;mysite$&lt;/span&gt; &lt;kbd&gt;tree&lt;/kbd&gt;
-├── de
-│   └── _posts
-├── _drafts
-├── en
-│   └── _posts
-├── es
-│   └── _posts
-├── index.html
-└── _layouts
-
-8 directories, 1 file
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;This way our URLs will be generated containing the language at the
-first level.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://example.com/es/...
-http://example.com/de/...
-http://example.com/en/...
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Following this example we create example posts in each language.&lt;/p&gt;
-
-&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;en/_posts/2017-05-08-hello-world.md&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
-title: Hello World
----
-
-A &quot;Hello, World!&quot; program is a computer program that outputs or displays &quot;Hello, World!&quot; to a user. Being a very simple program in most programming languages...
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;es/_posts/2017-05-08-hola-mundo.md&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
-title: Hola Mundo
----
-
-En informática, un programa Hola mundo es el que imprime el texto
-«¡Hola, mundo!» ...
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;de/_posts/2017-05-08-hallo-welt.md&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
-title: Hallo Welt
----
-
-Ein Hallo-Welt-Programm ist ein kleines Computerprogramm, das auf
-möglichst einfache Weise zeigen soll...
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;tree&lt;/kbd&gt;
-.
-├── de
-│   └── _posts
-│       └── 2017-05-08-hallo-welt.md
-├── _drafts
-├── en
-│   └── _posts
-│       └── 2017-05-08-hello-world.md
-├── es
-│   └── _posts
-│       └── 2017-05-08-hola-mundo.md
-├── Gemfile
-├── Gemfile.lock
-├── index.html
-└── _layouts
-
-8 directories, 6 files
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h3 id=&quot;set-post-language&quot;&gt;Set post language&lt;/h3&gt;
-
-&lt;p&gt;Now we automatically set the language of each post depending on the
-above language folder
-using
-&lt;a href=&quot;https://jekyllrb.com/docs/configuration/#front-matter-defaults&quot;&gt;Front Matter Defaults&lt;/a&gt;,
-in &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;defaults&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;#languages&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;s&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;s&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;en&quot;&lt;/span&gt;
-      &lt;span class=&quot;s&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;default&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;s&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;es&quot;&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;s&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;es&quot;&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;s&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;de&quot;&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;s&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;de&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Every post and page located inside each folder, will automatically get
-the right language.&lt;/p&gt;
-
-&lt;p&gt;So each webpage should have the language specified at the opening html
-tag: &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;In the default layout in &lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts/default.html&lt;/code&gt; using English as the
-fallback language:&lt;/p&gt;
-
-&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html lang=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.lang&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'en'&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;
-    &amp;lt;head&amp;gt;
-    &amp;lt;/head&amp;gt;
-    &amp;lt;body&amp;gt;
-	&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
-    &amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;If you don’t put the post/page in one of the language subdirectories,
-then you will need to specify its language in the front matter, i.e.:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
-title: &quot;Prueba&quot;
-lang: es
----
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;map-set&quot;&gt;Map set&lt;/h3&gt;
-
-&lt;p&gt;Each time we add a post or page, the full path of each page should be
-added to a special &lt;code class=&quot;highlighter-rouge&quot;&gt;_data/map.yml&lt;/code&gt; where we specify which files are
-equivalent in the other languages.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-
-  en: en/_posts/2017-05-08-hello-world.md 
-  es: es/_posts/2017-05-08-hola-mundo.md
-  de: de/_posts/2017-05-08-hallo-welt.md
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;navigation-menu&quot;&gt;Navigation menu&lt;/h3&gt;
-
-&lt;p&gt;We create an include that iterates through pages and posts and select
-only the group (located in &lt;code class=&quot;highlighter-rouge&quot;&gt;_data/map.yml&lt;/code&gt;) which one of its items
-equals the current page path. In &lt;code class=&quot;highlighter-rouge&quot;&gt;_includes/lang_nav.html&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;nav&amp;gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;block&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.data.map&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;item&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;block[page.lang]&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;trans&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;block&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;trans_path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;trans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;trans_path&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt; 
-
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;item&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;posts&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &amp;lt;a hreflang=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot; class=&quot;active&quot;&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;locales&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/a&amp;gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &amp;lt;a hreflang=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot; href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;absolute_url}}&quot;&amp;gt;{{site.data.locales[item.lang].title}}&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;{%&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;endif&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pages&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pages&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;trans_path&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;item&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;pages&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &amp;lt;a hreflang=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot; class=&quot;active&quot;&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;locales&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/a&amp;gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &amp;lt;a hreflang=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot; href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;absolute_url}}&quot;&amp;gt;{{site.data.locales[item.lang].title}}&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;{%&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;endif&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-
-&amp;lt;/nav&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;And use it in a layout:&lt;/p&gt;
-
-&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;body&amp;gt;
-...
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;lang_nav&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&amp;lt;/body&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;alternate-links&quot;&gt;Alternate links&lt;/h3&gt;
-
-&lt;p&gt;Finally to create the urls with the &lt;em&gt;alternate&lt;/em&gt; link tags, in
-&lt;code class=&quot;highlighter-rouge&quot;&gt;_includes/alternate.html&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;block&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.data.map&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;item&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;block[page.lang]&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;trans&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;block&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;trans_path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;trans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;trans_path&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt; 
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;item&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;posts&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&amp;lt;link rel=&quot;alternate&quot; hreflang=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot; href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;absolute_url}}&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;/&amp;gt;&lt;span class=&quot;err&quot;&gt;
-&lt;/span&gt;{%&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;endfor&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pages&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pages&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;trans_path&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt; 
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;item&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;pages&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&amp;lt;link rel=&quot;alternate&quot; hreflang=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot; href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;absolute_url}}&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;/&amp;gt;&lt;span class=&quot;err&quot;&gt;
-&lt;/span&gt;{%&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;endfor&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;And use it in the head section of the layout:&lt;/p&gt;
-
-&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;head&amp;gt;
-...
-&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;alternate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&amp;lt;/head&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;repo&quot;&gt;Repo&lt;/h2&gt;
-
-&lt;p&gt;Putting it all together: &lt;a href=&quot;https://github.com/marcanuy/jekyll-multilanguage&quot;&gt;https://github.com/marcanuy/jekyll-multilanguage&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.google.com/webmasters/answer/182192?hl=en#1&quot;&gt;Multi-regional and multilingual sites&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.google.com/webmasters/answer/189077?hl=en&amp;amp;ref_topic=2370587&quot;&gt;Use hreflang for language and regional URLs&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.google.com/webmasters/answer/2620865?hl=en&amp;amp;ref_topic=2370587&quot;&gt;Use a sitemap to indicate alternate language pages&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:confirmationlink&quot;&gt;
-
-      &lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://support.google.com/webmasters/answer/189077?hl=en&amp;amp;ref_topic=2370587&quot;&gt;
-        &lt;p&gt;If page A links to page B, page B must link back to page A. If
-this is not the case for all pages that use hreflang
-annotations, those annotations may be ignored or not interpreted
-correctly.&lt;/p&gt;
-
-        &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Missing confirmation links in &lt;a href=&quot;https://support.google.com/webmasters/answer/189077?hl=en&amp;amp;ref_topic=2370587&quot;&gt;Common Mistakes&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-      &lt;/blockquote&gt;
-      &lt;p&gt;&lt;a href=&quot;#fnref:confirmationlink&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Mon, 08 May 2017 00:00:00 +0000</pubDate>
-        <link>https://simpleit.rocks/multilingual-jekyll-without-plugins/</link>
-        <guid isPermaLink="true">https://simpleit.rocks/multilingual-jekyll-without-plugins/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>ruby</category>
-        
-        <category>jekyll</category>
-        
-        <category>tutorials</category>
         
       </item>
     

@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <link rel="alternate" type="application/rss+xml" title="Simple IT 🤘 Rocks" href="https://simpleit.rocks/feed.xml">
+
+    <meta name="msvalidate.01" content="453BB779294406F41BD202E3E24FFE55" />
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="/assets/vendor/font-awesome.min.css" type="text/css" media="screen" />
+
+    
+    
+    
+    <!-- Custom css -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-128.png" sizes="128x128" />
+<meta name="application-name" content="Simple IT ROCKS"/>
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="https://simpleit.rocks/assets/favicons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="https://simpleit.rocks/assets/favicons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="https://simpleit.rocks/assets/favicons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="https://simpleit.rocks/assets/favicons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="https://simpleit.rocks/assets/favicons/mstile-310x310.png" />
+<meta name="msapplication-notification" content="frequency=30;polling-uri=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=1;polling-uri2=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=2;polling-uri3=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=3;polling-uri4=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=4;polling-uri5=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=5;cycle=1" />
+
+
+    
+  <!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>Hugo overview and basic concepts | Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Hugo overview and basic concepts" />
+<meta name="author" content="marcanuy" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A first approach to Hugo web static generator" />
+<meta property="og:description" content="A first approach to Hugo web static generator" />
+<link rel="canonical" href="https://simpleit.rocks/hugo-overview-and-basic-concepts/" />
+<meta property="og:url" content="https://simpleit.rocks/hugo-overview-and-basic-concepts/" />
+<meta property="og:site_name" content="Simple IT 🤘 Rocks" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-10-10T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@simpleitrocks" />
+<meta name="twitter:creator" content="@marcanuy" />
+<meta property="fb:app_id" content="1822851531277021" />
+<script type="application/ld+json">
+{"name":null,"description":"A first approach to Hugo web static generator","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/hugo-overview-and-basic-concepts/","publisher":null,"image":null,"headline":"Hugo overview and basic concepts","dateModified":"2017-10-10T00:00:00+00:00","datePublished":"2017-10-10T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/hugo-overview-and-basic-concepts/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1912030305535489",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+
+</head>
+
+
+  <body>
+
+    
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28572639-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <header class="site-header">
+
+    
+
+    <div class="mb-2 text-center">
+
+	<a class="display-1" href="/" style="text-decoration: none">Simple IT 🤘 Rocks</a>
+
+    </div>
+
+    
+    <div class="jumbotron jumbotron-fluid bg-inverse">
+  <div class="container">
+    
+    
+    
+    
+    
+    <h1 class="title">Hugo Overview And Basic Concepts </h1>
+    
+    
+  </div>
+</div>
+
+    
+
+</header>
+
+
+    <div class="container-fluid">
+      <header class="post-header">
+  <div>
+    <div class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList" class="list-/inline breadcrumb">
+
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="https://schema.org/Thing"
+     itemprop="item" href="/">
+    
+    <i class="fa fa-home" aria-hidden="true"></i>
+    
+
+    Home
+  </a>
+  
+  <meta itemprop="position" content="1" />
+</li>
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="https://schema.org/Thing"
+     itemprop="item" href="/docs">
+    
+
+    docs
+  </a>
+  
+  <meta itemprop="position" content="2" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="https://schema.org/Thing"
+     itemprop="item" href="/docs/golang">
+    
+
+    golang
+  </a>
+  
+  <meta itemprop="position" content="3" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="https://schema.org/Thing"
+     itemprop="item" href="/docs/golang/hugo">
+    
+
+    hugo
+  </a>
+  
+  <meta itemprop="position" content="4" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item active">
+  
+  <span itemscope itemtype="https://schema.org/Thing"
+       itemprop="item">
+    
+
+    <span itemprop="name">Hugo overview and basic concepts</span>
+  </span>
+  
+  <meta itemprop="position" content="5" />
+</li>
+
+    
+
+    
+    
+  </ol>
+</div>
+
+  </div>
+</header>
+
+<div class="post-content" itemprop="articleBody">
+  <div class="row">
+
+  <div class="col-md-3 site-sidebar">
+    <div class="si-ad m-1 mx-auto">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_side_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5882730780"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
+  
+</div>
+
+    
+    <div class="sticky" style="position:sticky; top:10px">
+      <div>
+	<h4>Table of Contents</h4>
+	<ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#command-line">Command line</a></li>
+<li class="toc-entry toc-h2"><a href="#create-a-site">Create a site</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#structure">Structure</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#themes">Themes</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#add">Add</a></li>
+<li class="toc-entry toc-h3"><a href="#choose">Choose</a></li>
+<li class="toc-entry toc-h3"><a href="#customize">Customize</a></li>
+<li class="toc-entry toc-h3"><a href="#how-themes-work">How themes work</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#in-config">In Config</a></li>
+<li class="toc-entry toc-h4"><a href="#at-run-time">at Run time</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#create-content">Create content</a></li>
+<li class="toc-entry toc-h2"><a href="#serve-site">Serve site</a></li>
+<li class="toc-entry toc-h2"><a href="#generate-files">Generate files</a></li>
+</ul>
+      </div>
+      <div>
+	<div class="site-share pb-2">
+  
+  <ul class="share-buttons list-inline mb-1 text-center">
+    <li class="list-inline-item">
+      <div>
+    <a class="twitter-share-button"
+       href="https://twitter.com/share"
+       data-url="https://simpleit.rocks/hugo-overview-and-basic-concepts/"
+       data-via=""
+       data-text="Hugo overview and basic concepts"
+       data-related="marcanuy,simpleitrocks"
+       data-count="vertical">
+	Tweet
+    </a>
+    <script>
+     window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+    </script>
+</div>
+
+    </li>
+    <li class="list-inline-item">
+      <div>
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!-- Place this tag where you want the +1 button to render. -->
+  <div class="g-plusone" data-size="tall"></div>
+</div>
+
+    </li>
+    <li class="list-inline-item">
+      <div>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) return;
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));</script>
+
+  <div class="fb-like" data-href="https://simpleit.rocks/hugo-overview-and-basic-concepts/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+</div>
+
+    </li>
+  </ul>
+  
+</div>
+
+      </div>
+    </div>
+    
+  </div> <!-- end col -->
+
+  <div class="col-md-8 site-content">
+
+    
+	<p class="lead">
+	  A first approach to Hugo web static generator
+	</p>
+    
+
+    <div class="si-ad m-3 mx-auto">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_before_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="2929264389"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+
+    <h2 id="overview">Overview</h2>
+
+<p>Hugo is a static site generators based in Google’s
+<a href="https://golang.org">Go</a> language.</p>
+
+<p>This is a guide based in the official <em>quickstart</em> guide explaining
+its concepts.</p>
+
+<h2 id="command-line">Command line</h2>
+
+<p>As with all modern frameworks, it comes with a command line utility
+<kbd>hugo</kbd>.</p>
+
+<blockquote class="blockquote" cite="https://gohugo.io/getting-started/directory-structure/">
+  <p>Hugo’s CLI scaffolds a project directory structure and then takes
+that single directory and uses it as the input to create a complete
+website.</p>
+
+  <footer class="blockquote-footer"> <cite><a href="https://gohugo.io/getting-started/directory-structure/">Hugo Directory Structure</a></cite></footer>
+</blockquote>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">quickstart$</span> <kbd>hugo --help</kbd>
+hugo is the main command, used to build your Hugo site.
+
+Hugo is a Fast and Flexible Static Site Generator
+built with love by spf13 and friends in Go.
+
+Complete documentation is available at http://gohugo.io/.
+
+Usage:
+  hugo [flags]
+  hugo [command]
+
+Available Commands:
+  server      A high performance webserver
+  version     Print the version number of Hugo
+  env         Print Hugo version and environment info
+  config      Print the site configuration
+  benchmark   Benchmark Hugo by building a site a number of times.
+  convert     Convert your content to different formats
+  new         Create new content for your site
+  list        Listing out various types of content
+  undraft     Undraft changes the content's draft status from 'True' to 'False'
+  import      Import your site from others.
+  gen         A collection of several useful generators.
+
+Flags:
+  -b, --baseURL string          hostname (and path) to the root, e.g. http://spf13.com/
+  -D, --buildDrafts             include content marked as draft
+  -E, --buildExpired            include expired content
+  -F, --buildFuture             include content with publishdate in the future
+      --cacheDir string         filesystem path to cache directory. Defaults: $TMPDIR/hugo_cache/
+      --canonifyURLs            if true, all relative URLs will be canonicalized using baseURL
+      --cleanDestinationDir     Remove files from destination not found in static directories
+      --config string           config file (default is path/config.yaml|json|toml)
+  -c, --contentDir string       filesystem path to content directory
+  -d, --destination string      filesystem path to write files to
+      --disable404              Do not render 404 page
+      --disableRSS              Do not build RSS files
+      --disableSitemap          Do not build Sitemap file
+      --enableGitInfo           Add Git revision, date and author info to the pages
+      --forceSyncStatic         Copy all files when static is changed.
+      --i18n-warnings           Print missing translations
+      --ignoreCache             Ignores the cache directory
+  -l, --layoutDir string        filesystem path to layout directory
+      --log                     Enable Logging
+      --logFile string          Log File path (if set, logging enabled automatically)
+      --noChmod                 Don't sync permission mode of files
+      --noTimes                 Don't sync modification time of files
+      --pluralizeListTitles     Pluralize titles in lists using inflect (default true)
+      --preserveTaxonomyNames   Preserve taxonomy names as written ("Gérard Depardieu" vs "gerard-depardieu")
+      --quiet                   build in quiet mode
+      --renderToMemory          render to memory (only useful for benchmark testing)
+  -s, --source string           filesystem path to read files relative from
+      --stepAnalysis            display memory and timing of different steps of the program
+  -t, --theme string            theme to use (located in /themes/THEMENAME/)
+      --uglyURLs                if true, use /filename.html instead of /filename/
+  -v, --verbose                 verbose output
+      --verboseLog              verbose logging
+  -w, --watch                   watch filesystem for changes and recreate as needed
+
+Additional help topics:
+  hugo check     Contains some verification checks
+
+Use "hugo [command] --help" for more information about a command.
+</samp>
+</pre>
+
+<h2 id="create-a-site">Create a site</h2>
+
+<p>To create a new site <kbd>hugo new site</kbd>.</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>hugo new site --help</kbd>
+Create a new site in the provided directory.
+The new site will have the correct structure, but no content or theme yet.
+Use `hugo new [contentPath]` to create new content.
+
+Usage:
+  hugo new site [path] [flags]
+
+Flags:
+	  --force           Init inside non-empty directory
+  -f, --format string   config &amp; frontmatter format (default "toml")
+
+Global Flags:
+	  --config string    config file (default is path/config.yaml|json|toml)
+	  --log              Enable Logging
+	  --logFile string   Log File path (if set, logging enabled automatically)
+	  --quiet            build in quiet mode
+  -s, --source string    filesystem path to read files relative from
+  -v, --verbose          verbose output
+      --verboseLog       verbose logging
+</samp>
+</pre>
+
+<p>Then we will create a <em>quickstart</em> project:</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>hugo new site quickstart</kbd>
+Congratulations! Your new Hugo site is created in /tmp/quickstart.
+
+Just a few more steps and you're ready to go:
+
+1. Download a theme into the same-named folder.
+   Choose a theme from https://themes.gohugo.io/, or
+   create your own with the "hugo new theme &lt; THEMENAME &gt;" command.
+2. Perhaps you want to add some content. You can add single files
+   with "hugo new &lt; SECTIONNAME &gt;/&lt; FILENAME &gt;.&lt; FORMAT &gt;".
+3. Start the built-in live server via "hugo server".
+
+Visit https://gohugo.io/ for quickstart guide and full documentation.
+</samp>
+</pre>
+
+<p>That will create the basic Hugo site structure:</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>tree quickstart/</kbd>
+quickstart/
+├── archetypes
+├── config.toml
+├── content
+├── data
+├── layouts
+├── static
+└── themes
+ 
+6 directories, 1 file
+</samp>
+</pre>
+
+<h3 id="structure">Structure</h3>
+
+<p>Structure explanation:</p>
+
+<ul>
+  <li><strong>archetypes</strong>:
+<a href="https://gohugo.io/content-management/archetypes/">archetypes</a> are
+pre-configured front matter post data to add when using <kbd>hugo
+new</kbd></li>
+  <li>
+    <p><strong>config.toml</strong>: hugo
+<a href="https://gohugo.io/getting-started/configuration/#all-variables-yaml">configuration</a>.</p>
+
+    <ul>
+      <li>Hugo will look for <code class="highlighter-rouge">./config.toml</code>, <code class="highlighter-rouge">./config.yaml</code> and
+<code class="highlighter-rouge">./config.json</code>, in that order.</li>
+      <li>Defines:
+        <ul>
+          <li>how to render the website</li>
+          <li>menus</li>
+          <li>site-wide parameters</li>
+          <li>values under <code class="highlighter-rouge">params</code> key can be used with
+<a href="https://gohugo.io/variables/site/"><code class="highlighter-rouge">.Site.Params</code></a> variable in
+templates.</li>
+          <li>all Hugo’s config values can be seen with the command <code class="highlighter-rouge">hugo
+config</code>.</li>
+          <li>
+            <p>all keys can be set with environmental variables in uppercase
+and <code class="highlighter-rouge">HUGO_</code> prefix, for example, to set the site title and build
+the site:</p>
+
+            <div class="highlighter-rouge"><pre class="highlight"><code>$ env HUGO_TITLE="New Title" hugo
+</code></pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>content</strong>:
+<a href="https://gohugo.io/content-management/organization/">content</a> that can
+include <code class="highlighter-rouge">/posts</code>, <code class="highlighter-rouge">/blog</code> and <code class="highlighter-rouge">/articles</code>, sections with
+<a href="https://gohugo.io/content-management/types/">content-types</a></li>
+  <li><strong>data</strong>: data holds configuration files, and <a href="https://gohugo.io/templates/data-templates/">data
+templates</a> pulling data
+from dynamic content.</li>
+  <li><strong>templates</strong>: <a href="https://gohugo.io/templates/">templates</a> specify how content is rendered.</li>
+  <li><strong>static</strong>: assets directory.</li>
+</ul>
+
+<h2 id="themes">Themes</h2>
+
+<p>Hugo <a href="https://gohugo.io/themes/">themes</a> are powered by Go’s template
+libraries (<a href="https://golang.org/pkg/text/template/">text</a> and
+<a href="https://golang.org/pkg/html/template/">html</a> libraries).</p>
+
+<p>Themes are designed to:</p>
+
+<ul>
+  <li>reduce code duplication</li>
+  <li>easy to both customize and</li>
+  <li>keep in synch with the upstream theme.</li>
+</ul>
+
+<p>A repository of themes are available at <a href="https://themes.gohugo.io">https://themes.gohugo.io</a>,
+from there we have to select one, and locate it in <code class="highlighter-rouge">/themes</code>
+directory.</p>
+
+<h3 id="add">Add</h3>
+
+<p>Themes can be added as git submodules, so it is possible to use
+another project from within the main site, or cloned directly into the
+<code class="highlighter-rouge">themes</code> directory.</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>cd quickstart</kbd>
+<span class="shell-prompt">$</span> <kbd>git init</kbd>
+<span class="shell-prompt">quickstart$</span> <kbd>git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke;</kbd>
+Cloning into '/tmp/quickstart/themes/ananke'...
+remote: Counting objects: 850, done.
+remote: Compressing objects: 100% (18/18), done.
+remote: Total 850 (delta 10), reused 21 (delta 9), pack-reused 823
+Ricezione degli oggetti: 100% (850/850), 2.38 MiB | 385.00 KiB/s, done.
+Risoluzione dei delta: 100% (431/431), done.
+</samp>
+</pre>
+
+<h3 id="choose">Choose</h3>
+
+<p>Now we must specify Hugo to use this theme.</p>
+
+<p>This can be done adding it to the configuration file or specifying
+theme name at run time.</p>
+
+<h3 id="customize">Customize</h3>
+
+<p>Themes that follows Hugo’s convention for folder structure and naming,
+can be customized without changing original code, just using your
+project’s working directory, overriding specific sections and staying
+current with a theme’s upstream.</p>
+
+<p>Every time Hugo looks for a theme file, it will look first in <strong>your</strong>
+project, and if it doesn’t find anything, it will look at <code class="highlighter-rouge">/themes/&lt;
+THEME NAME &gt;</code> directory.</p>
+
+<p>For example, to customize the file</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/themes/&lt; THEME &gt;/layouts/_default/single.html`
+</code></pre>
+</div>
+
+<p>you simply copy the above file to you local instance and edit as you
+wish:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/layouts/_default/single.html
+</code></pre>
+</div>
+
+<h3 id="how-themes-work">How themes work</h3>
+
+<p>Generally, website pages consist of page showing a single item or a
+list of items, in Hugo these cases are covered by the <code class="highlighter-rouge">_default</code> theme:</p>
+
+<ul>
+  <li>a single piece of content: <code class="highlighter-rouge">layouts/_default/single.html</code></li>
+  <li>a list of content items: <code class="highlighter-rouge">layouts/_default/list.html</code>.</li>
+</ul>
+
+<p>After looking for the default layout, Hugo also seeks for content
+types or have layouts that apply to specific sections like a blog or
+another type.</p>
+
+<p>Static content present in the <code class="highlighter-rouge">static</code> directory, will be copied to
+the final site.</p>
+
+<h4 id="in-config">In Config</h4>
+
+<p>To add the theme to the configuration file: <code class="highlighter-rouge">config.toml</code> we set the
+<code class="highlighter-rouge">theme</code> property.</p>
+
+<div class="language-toml highlighter-rouge"><pre class="highlight"><code><span class="py">languageCode</span> <span class="p">=</span> <span class="s">"en-us"</span>
+<span class="py">title</span> <span class="p">=</span> <span class="s">"My New Hugo Site"</span>
+<span class="py">baseurl</span> <span class="p">=</span> <span class="s">"http://example.org/"</span>
+<span class="py">theme</span> <span class="p">=</span> <span class="s">"ananke"</span>
+</code></pre>
+</div>
+
+<h4 id="at-run-time">at Run time</h4>
+
+<p>To use a theme specifying the name at command line, <code class="highlighter-rouge">hugo</code> comes with
+the <code class="highlighter-rouge">-t</code> flag, then it can be used as <kbd>hugo -t ananke</kbd></p>
+
+<h2 id="create-content">Create content</h2>
+
+<p>Hugo by default uses a markdown processor for Go called
+<a href="https://github.com/russross/blackfriday">blackfriday</a>.</p>
+
+<p>A typical post contains a special section containing metadata and then the
+content. The metadata is called frontmatter and is the first part of
+the file between <code class="highlighter-rouge">+++</code> lines, for example a post looks like:</p>
+
+<pre><code class="language-blackfriday">---
+date: 2017-04-09T10:58:08-04:00
+description: "The Grand Hall"
+featured_image: "/images/Pope-Edouard-de-Beaumont-1844.jpg"
+tags: ["scene"]
+title: "Chapter I: The Grand Hall"
+---
+
+Three hundred and forty-eight years, six months, and nineteen days ago
+to-day, the Parisians awoke to the sound of all the bells in the triple
+circuit of the city, the university, and the town ringing a full peal.
+</code></pre>
+
+<p>To add new content we use <code class="highlighter-rouge">hugo new</code>.</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">quickstart$</span> <kbd>hugo new --help</kbd>
+Create a new content file and automatically set the date and title.
+It will guess which kind of file to create based on the path provided.
+
+You can also specify the kind with `-k KIND`.
+
+If archetypes are provided in your theme or site, they will be used.
+
+Usage:
+  hugo new [path] [flags]
+  hugo new [command]
+
+Available Commands:
+  site        Create a new site (skeleton)
+  theme       Create a new theme
+
+Flags:
+      --editor string   edit new content with this editor, if provided
+  -f, --format string   frontmatter format (default "toml")
+  -k, --kind string     Content type to create
+  -s, --source string   filesystem path to read files relative from
+
+Global Flags:
+      --config string    config file (default is path/config.yaml|json|toml)
+      --log              Enable Logging
+      --logFile string   Log File path (if set, logging enabled automatically)
+      --quiet            build in quiet mode
+  -v, --verbose          verbose output
+      --verboseLog       verbose logging
+
+Use "hugo new [command] --help" for more information about a command.
+</samp>
+</pre>
+
+<p>Hugo has its posts and content in <code class="highlighter-rouge">contents/posts</code> directory, we add a
+post called <code class="highlighter-rouge">my-first-post.md</code> with the basic post structure specified
+in the front-matter with <code class="highlighter-rouge">hugo new &lt; post &gt;</code>.</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">quickstart$</span> <kbd>hugo new posts/my-first-post.md</kbd>
+/tmp/quickstart/content/posts/my-first-post.md created
+</samp>
+</pre>
+
+<p>It creates a basic post skeleton, the front-matter needed to build a
+post:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>+++
+title = "This is my first post"
+date = "2017-10-10"
+tags = []
+featured_image = ""
+description = "A new post added"
++++
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id tellus dolor. 
+
+Cras vitae consequat risus. Suspendisse quis justo arcu.
+</code></pre>
+</div>
+
+<h2 id="serve-site">Serve site</h2>
+
+<p>To serve the site, especially useful when developing locally:
+<kbd>hugo serve</kbd>.</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>hugo serve --help</kbd>
+Hugo provides its own webserver which builds and serves the site.
+While hugo server is high performance, it is a webserver with limited options.
+Many run it in production, but the standard behavior is for people to use it
+in development and use a more full featured server such as Nginx or Caddy.
+
+'hugo server' will avoid writing the rendered and served content to disk,
+preferring to store it in memory.
+
+By default hugo will also watch your files for any changes you make and
+automatically rebuild the site. It will then live reload any open browser pages
+and push the latest content to them. As most Hugo sites are built in a fraction
+of a second, you will be able to save and see your changes nearly instantly.
+
+Usage:
+  hugo server [flags]
+
+Aliases:
+  server, serve
+
+
+Flags:
+	  --appendPort              append port to baseURL (default true)
+  -b, --baseURL string          hostname (and path) to the root, e.g. http://spf13.com/
+	  --bind string             interface to which the server will bind (default "127.0.0.1")
+  -D, --buildDrafts             include content marked as draft
+  -E, --buildExpired            include expired content
+  -F, --buildFuture             include content with publishdate in the future
+	  --cacheDir string         filesystem path to cache directory. Defaults: $TMPDIR/hugo_cache/
+	  --canonifyURLs            if true, all relative URLs will be canonicalized using baseURL
+	  --cleanDestinationDir     Remove files from destination not found in static directories
+  -c, --contentDir string       filesystem path to content directory
+  -d, --destination string      filesystem path to write files to
+	  --disable404              Do not render 404 page
+	  --disableLiveReload       watch without enabling live browser reload on rebuild
+	  --disableRSS              Do not build RSS files
+	  --disableSitemap          Do not build Sitemap file
+	  --enableGitInfo           Add Git revision, date and author info to the pages
+	  --forceSyncStatic         Copy all files when static is changed.
+	  --i18n-warnings           Print missing translations
+	  --ignoreCache             Ignores the cache directory
+  -l, --layoutDir string        filesystem path to layout directory
+	  --meminterval string      interval to poll memory usage (requires --memstats), valid time units are "ns", "us" (or "µs"), "ms",
+"s", "m", "h". (default "100ms")
+	  --memstats string         log memory usage to this file
+	  --noChmod                 Don't sync permission mode of files
+	  --noTimes                 Don't sync modification time of files
+	  --pluralizeListTitles     Pluralize titles in lists using inflect (default true)
+  -p, --port int                port on which the server will listen (default 1313)
+	  --preserveTaxonomyNames   Preserve taxonomy names as written ("Gérard Depardieu" vs "gerard-depardieu")
+	  --renderToDisk            render to Destination path (default is render to memory &amp; serve from there)
+  -s, --source string           filesystem path to read files relative from
+	  --stepAnalysis            display memory and timing of different steps of the program
+  -t, --theme string            theme to use (located in /themes/THEMENAME/)
+	  --uglyURLs                if true, use /filename.html instead of /filename/
+  -w, --watch                   watch filesystem for changes and recreate as needed (default true)
+
+Global Flags:
+	  --config string    config file (default is path/config.yaml|json|toml)
+	  --log              Enable Logging
+	  --logFile string   Log File path (if set, logging enabled automatically)
+	  --quiet            build in quiet mode
+  -v, --verbose          verbose output
+	  --verboseLog       verbose logging
+</samp>
+</pre>
+
+<h2 id="generate-files">Generate files</h2>
+
+<p>To build the site, just <kbd>hugo</kbd>.</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>hugo</kbd>
+Started building sites ...
+
+Built site for language en:
+0 draft content
+0 future content
+0 expired content
+1 regular pages created
+8 other pages created
+0 non-page files copied
+1 paginator pages created
+0 tags created
+0 categories created
+total in 50 ms
+</samp>
+</pre>
+
+
+    
+
+
+
+<footer class="author-footer">
+    <div class="media" itemtype="https://schema.org/Person">
+	<span itemprop="locationCreated contentLocation spatialCoverage" itemscope="itemscope" itemtype="https://schema.org/City" style="display:none"><span itemprop="name">Uruguay</span>
+	</span>
+	<link href="https://plus.google.com/118415138433063920612/posts" rel="author"/>
+	<meta content="https://marcanuy.com" property="article:author"/>
+	<meta content="@marcanuy" name="twitter:creator"/>
+	<meta content="https://plus.google.com/118415138433063920612/posts" name="DC.creator"/>
+	<meta content="Marcelo Canina" name="author"/>
+	
+	<a class="media-left mx-2" href="https://marcanuy.com" itemprop="url" rel="author">
+	    <img class="media-object rounded" alt="Marcelo Canina - Simple IT 🤘 Rocks" itemprop="image" src="https://www.gravatar.com/avatar/2ebdffd5ddb4a98b0cc77117503d2711?s=80"/>
+	</a>
+	<div class="media-body">
+	    <h5 class="media-heading">
+		<address class="author-info clear" id="author-info" itemprop="author creator" itemscope="" itemtype="https://schema.org/Person">
+		    <span class="author-name" itemprop="name">Marcelo Canina</span>
+		    <a class="a-social a-tw" href="https://twitter.com/marcanuy" itemprop="sameAs" target="_blank"><i class="fa fa-twitter-square"></i></a>
+		    <a class="a-social a-gp" href="https://plus.google.com/118415138433063920612?rel=author" itemprop="url sameAs" rel="author" target="_blank"><i class="fa fa-google-plus-square"></i></a>
+		    <a class="a-social a-ln" href="https://www.linkedin.com/in/marcelocanina" itemprop="sameAs" target="_blank"><i class="fa fa-linkedin-square"></i></a>
+		    <a class="a-social a-email" href="mailto:me@marcanuy.com" itemprop="email sameAs" target="_blank"><i class="fa fa-envelope-o"></i></a>
+		    <a class="a-social a-github" href="https://github.com/marcanuy" itemprop="github sameAs" target="_blank"><i class="fa fa-github"></i></a>
+		    <a class="a-social a-stackexchange" href="https://stackexchange.com/users/1193189?tab=accounts" itemprop="stackexchange sameAs" target="_blank"><i class="fa fa-stack-exchange"></i></a>
+		</address>
+	    </h5>
+	    <div class="text-muted">
+		I'm Marcelo Canina, a developer from Uruguay. I build websites and web-based applications from the ground up and share what I learn here.
+	    </div>
+	</div>
+    </div>
+</footer>
+
+
+
+
+    <div class="post-comments">
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '/hugo-overview-and-basic-concepts/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    
+    s.src = '//simpleitrocks.disqus.com/embed.js';
+    
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  
+  
+  
+</div>
+
+
+    <div class="row">
+      <div class="col-md-6">
+	
+
+
+
+
+
+
+<div class="post-same-category">
+  <h4>Articles in this category</h4>
+  <div class="list-group">
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action active" href="/hugo-overview-and-basic-concepts/">
+      Hugo overview and basic concepts
+    </a>
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action " href="/introduction-to-hugo-for-jekyll-users/">
+      Introduction To Hugo For Jekyll Users
+    </a>
+    
+    
+  </div>
+</div>
+
+
+	
+
+
+
+
+      </div>
+      <div class="col-md-5">
+	
+	
+	<div class="si-ad m-1 mx-auto">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_after_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5104001581"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+	
+      </div>
+    </div>
+  </div> <!-- end col -->
+</div>
+
+
+</div>
+
+    </div>
+
+    <footer class="container-fluid site-footer py-3">
+    <div class="container">
+	<div class="row justify-content-between align-items-center">
+	    <div class="col-4">
+		<h2 class="footer-heading text-muted">Simple IT 🤘 Rocks</h2>
+		<ul class="footer-nav px-0">
+		    <li>
+			<i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by <a href="https://marcanuy.com" rel="author">Marcelo Canina</a>
+		    </li>
+		    
+		    <li>
+			<i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/simpleitrocks"><span class="username">simpleitrocks</span></a>
+
+		    </li>
+		    
+		    <li>
+			<i class="fa fa-user" aria-hidden="true"></i><a href="/about">About</a>
+		    </li>
+		    <li>
+			<i class="fa fa-search" aria-hidden="true"></i><a href="/search">Search</a>
+		    </li>
+		</ul>
+	    </div>
+	    <div class="col-4">
+		<div class="text-muted">
+		    <p>Clutter-free software concepts. Written on the go.
+</p>
+		</div>
+	    </div>
+	</div>
+    </div>
+</footer>
+<div class="si-license bg-inverse">
+  <div class="text-muted text-sm-center">
+    <small>
+      Except as otherwise noted, the content of this page is licensed under
+      <a rel="license" class="text-info" href="https://creativecommons.org/licenses/by-nc/4.0/">
+	<i class="fa fa-creative-commons" aria-hidden="true"></i> BY-NC 4.0
+      </a>
+    </small>
+  </div>
+</div>
+
+<script src="/assets/vendor/jquery.min.js"></script>
+<script src="/assets/vendor/tether.min.js"></script>
+<script src="/assets/vendor/bootstrap.min.js"></script>
+
+
+  </body>
+
+</html>
