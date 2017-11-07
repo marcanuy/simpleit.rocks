@@ -6,9 +6,144 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 06 Nov 2017 21:49:34 +0000</pubDate>
-    <lastBuildDate>Mon, 06 Nov 2017 21:49:34 +0000</lastBuildDate>
+    <pubDate>Tue, 07 Nov 2017 19:04:11 +0000</pubDate>
+    <lastBuildDate>Tue, 07 Nov 2017 19:04:11 +0000</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>Python Tools To Write Better Code</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Python community maintains a set of tools that are helpful in every
+project. They provide quick feedback of your code health and how much
+it sticks to standards and better practices.&lt;/p&gt;
+
+&lt;p&gt;These tools are:&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;pep8&lt;/dt&gt;
+  &lt;dd&gt;style checker&lt;/dd&gt;
+  &lt;dt&gt;pyflakes&lt;/dt&gt;
+  &lt;dd&gt;checks source code for errors&lt;/dd&gt;
+  &lt;dt&gt;mccabe&lt;/dt&gt;
+  &lt;dd&gt;complexity checker&lt;/dd&gt;
+  &lt;dt&gt;flake8&lt;/dt&gt;
+  &lt;dd&gt;code checker (pep8, pyflakes, mccabe, and third-party plugins to
+check the style and quality of some python code)&lt;/dd&gt;
+  &lt;dt&gt;Pylint&lt;/dt&gt;
+  &lt;dd&gt;Checks for coding standards, errors and duplicated code.&lt;/dd&gt;
+  &lt;dt&gt;Coverage&lt;/dt&gt;
+  &lt;dd&gt;measure effectiveness of tests&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&quot;tools&quot;&gt;Tools&lt;/h2&gt;
+
+&lt;h3 id=&quot;python-code-style-pep8&quot;&gt;Python code style (Pep8)&lt;/h3&gt;
+
+&lt;p&gt;It was formerly called &lt;strong&gt;pep8&lt;/strong&gt; and it checks Python coding style
+conventions defined in PEP8.&lt;/p&gt;
+
+&lt;p&gt;Project homepage: &lt;a href=&quot;https://github.com/PyCQA/pycodestyle&quot;&gt;https://github.com/PyCQA/pycodestyle&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It is based in PEP8 style conventions
+(&lt;a href=&quot;http://www.python.org/dev/peps/pep-0008/&quot;&gt;http://www.python.org/dev/peps/pep-0008/&lt;/a&gt;).&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://www.python.org/dev/peps/pep-0008/&quot;&gt;
+  &lt;p&gt;The guidelines provided here are intended to improve the readability
+of code and make it consistent across the wide spectrum of Python
+code. As PEP 20 says, “Readability counts”. A style guide is about
+consistency. Consistency with this style guide is
+important. Consistency within a project is more important. Consistency
+within one module or function is the most important.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://www.python.org/dev/peps/pep-0008/&quot;&gt;PEP8&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;mccabe&quot;&gt;McCabe&lt;/h3&gt;
+
+&lt;p&gt;McCabe is a &lt;strong&gt;complexity checker for Python&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Project homepage: &lt;a href=&quot;https://github.com/PyCQA/mccabe&quot;&gt;https://github.com/PyCQA/mccabe&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It is based in the &lt;strong&gt;Cyclomatic complexity&lt;/strong&gt; concept.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://en.wikipedia.org/wiki/Cyclomatic_complexity&quot;&gt;
+  &lt;p&gt;Cyclomatic complexity is a software metric (measurement), used to
+indicate the complexity of a program. It is a quantitative measure
+of the number of linearly independent paths through a program’s
+source code. It was developed by Thomas J. McCabe, Sr. in 1976.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Wikipedia page for &lt;a href=&quot;https://en.wikipedia.org/wiki/Cyclomatic_complexity&quot;&gt;Cyclomatic complexity&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It is useful for:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Measuring how much a program is structured&lt;/li&gt;
+  &lt;li&gt;Determining the number of test cases that are necessary to achieve
+thorough test coverage of a particular module&lt;/li&gt;
+  &lt;li&gt;Limiting complexity during development
+    &lt;ul&gt;
+      &lt;li&gt;Functions and methods that have the highest complexity tend to also
+contain the most defects.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Measure modules cohesion through the analysis of its complexity.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;error-checks-pyflakes&quot;&gt;Error checks: Pyflakes&lt;/h3&gt;
+
+&lt;p&gt;It checks Python source files for errors by parsing source code.&lt;/p&gt;
+
+&lt;p&gt;Project homepage: &lt;a href=&quot;https://github.com/PyCQA/pyflakes&quot;&gt;https://github.com/PyCQA/pyflakes&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;all-together-flake8&quot;&gt;All together: Flake8&lt;/h3&gt;
+
+&lt;p&gt;Project Homepage: &lt;a href=&quot;https://gitlab.com/pycqa/flake8&quot;&gt;https://gitlab.com/pycqa/flake8&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Flake8 runs all the above tools with the &lt;code class=&quot;highlighter-rouge&quot;&gt;flake8&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;h4 id=&quot;pylint&quot;&gt;Pylint&lt;/h4&gt;
+
+&lt;p&gt;Project Homepage: &lt;a href=&quot;https://www.pylint.org/&quot;&gt;https://www.pylint.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;code-coverage&quot;&gt;Code Coverage&lt;/h3&gt;
+
+&lt;p&gt;It measures code coverage of Python projects.&lt;/p&gt;
+
+&lt;p&gt;Project Homepage: &lt;a href=&quot;http://coverage.readthedocs.io/en/latest/&quot;&gt;http://coverage.readthedocs.io/en/latest/&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;http://coverage.readthedocs.io/en/latest/&quot;&gt;
+  &lt;p&gt;It monitors your program, noting which parts of the code have been
+executed, then analyzes the source to identify code that could have
+been executed but was not.&lt;/p&gt;
+
+  &lt;p&gt;Coverage measurement is typically used to gauge the effectiveness of
+tests. It can show which parts of your code are being exercised by
+tests, and which are not.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;http://coverage.readthedocs.io/en/latest/&quot;&gt;Coverage.py project&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://mail.python.org/mailman/listinfo/code-quality/&quot;&gt;https://mail.python.org/mailman/listinfo/code-quality/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Cyclomatic_complexity&quot;&gt;https://en.wikipedia.org/wiki/Cyclomatic_complexity&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
+        <link>https://simpleit.rocks/python-tools-to-write-better-code/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/python-tools-to-write-better-code/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>python</category>
+        
+        <category>language</category>
+        
+      </item>
     
       <item>
         <title>Introduction To Hugo For Jekyll Users</title>
@@ -2170,91 +2305,6 @@ integrated to the OS.&lt;/p&gt;
         <category>linux</category>
         
         <category>ubuntu</category>
-        
-      </item>
-    
-      <item>
-        <title>How To Search Packages Using Yarn</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;How to have the &lt;em&gt;search&lt;/em&gt; functionailty like &lt;code class=&quot;highlighter-rouge&quot;&gt;npm search&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;bower
-search&lt;/code&gt; in Yarn, or simply look for packages in a browser.&lt;/p&gt;
-
-&lt;h2 id=&quot;options&quot;&gt;Options&lt;/h2&gt;
-
-&lt;h3 id=&quot;cli-search&quot;&gt;CLI search&lt;/h3&gt;
-
-&lt;p&gt;Search yarn packages in command line using &lt;a href=&quot;https://github.com/npms-io/npms-cli&quot;&gt;npms-cli&lt;/a&gt;:&lt;/p&gt;
-
-&lt;p&gt;Install &lt;code class=&quot;highlighter-rouge&quot;&gt;npms-cli&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yarn global add npms-cli
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;yarn global add npms-cli&lt;/kbd&gt;
-yarn global v0.24.5
-[1/4] Resolving packages...
-[2/4] Fetching packages...
-[3/4] Linking dependencies...
-[4/4] Building fresh packages...
-success Installed &quot;npms-cli@1.6.0&quot; with binaries:
-      - npms
-Done in 14.05s.
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;Then you will have available &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/bin/npms&lt;/code&gt; and can search like:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;npms search &amp;lt;desired package&amp;gt;&lt;/code&gt;, for example for the package &lt;code class=&quot;highlighter-rouge&quot;&gt;font-awesome&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;npms search font-awesome&lt;/kbd&gt;
-┌─────────────────────────────────────────────────────────────────────────────┬─────────┬────────────┬─────────────┬───────┐
-│ Package                                                                     │ Quality │ Popularity │ Maintenance │ Score │
-├─────────────────────────────────────────────────────────────────────────────┼─────────┼────────────┼─────────────┼───────┤
-│ font-awesome • https://github.com/FortAwesome/Font-Awesome                  │         │            │             │       │
-│ The iconic font and CSS framework                                           │   83    │     71     │     38      │  63   │
-│ updated 7 months ago by juliankrispel                                       │         │            │             │       │
-├─────────────────────────────────────────────────────────────────────────────┼─────────┼────────────┼─────────────┼───────┤
-│ ember-font-awesome • https://github.com/martndemus/ember-font-awesome       │         │            │             │       │
-│ An ember-cli addon for using Font Awesome icons in Ember applications.      │   89    │     22     │     100     │  70   │
-│ updated 2 months ago by martndemus                                          │         │            │             │       │
-├─────────────────────────────────────────────────────────────────────────────┼─────────┼────────────┼─────────────┼───────┤
-│ font-awesome-filetypes • https://github.com/spatie/font-awesome-filetypes   │         │            │             │       │
-│ Helper to retrieve the Font Awesome icon for a specific file extension      │   95    │     9      │     100     │  67   │
-│ updated 2 years ago by sebastiandedeyne                                     │         │            │             │       │
-├─────────────────────────────────────────────────────────────────────────────┼─────────┼────────────┼─────────────┼───────┤
-....
-└─────────────────────────────────────────────────────────────────────────────┴─────────┴────────────┴─────────────┴───────┘
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h3 id=&quot;search-with-browser&quot;&gt;Search with browser&lt;/h3&gt;
-
-&lt;p&gt;You can also search them using &lt;code class=&quot;highlighter-rouge&quot;&gt;https://npms.io/search?q=&amp;lt;desired
-package&amp;gt;&lt;/code&gt;:&lt;/p&gt;
-
-&lt;form action=&quot;https://npms.io/search&quot; method=&quot;get&quot; target=&quot;_blank&quot;&gt;
-  &lt;div class=&quot;form-group&quot;&gt;
-    &lt;label for=&quot;packageSearch&quot;&gt;Package Search&lt;/label&gt;
-    &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;q&quot; aria-describedby=&quot;packageSearch&quot; placeholder=&quot;Enter package name&quot; name=&quot;q&quot; /&gt;
-  &lt;/div&gt;
-  &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Search&lt;/button&gt;
-&lt;/form&gt;
-</description>
-        <pubDate>Sat, 03 Jun 2017 00:00:00 +0000</pubDate>
-        <link>https://simpleit.rocks/how-to-search-packages-using-yarn/</link>
-        <guid isPermaLink="true">https://simpleit.rocks/how-to-search-packages-using-yarn/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>javascript</category>
-        
-        <category>yarn</category>
         
       </item>
     

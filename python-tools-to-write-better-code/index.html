@@ -46,23 +46,23 @@
 
     
   <!-- Begin Jekyll SEO tag v2.3.0 -->
-<title>Setting Up A Fresh Linux Server | Simple IT 🤘 Rocks</title>
-<meta property="og:title" content="Setting Up A Fresh Linux Server" />
+<title>Python Tools To Write Better Code | Simple IT 🤘 Rocks</title>
+<meta property="og:title" content="Python Tools To Write Better Code" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A list of common tasks to perform after installing a new Linux instance" />
-<meta property="og:description" content="A list of common tasks to perform after installing a new Linux instance" />
-<link rel="canonical" href="https://simpleit.rocks/setting-up-a-fresh-linux-server/" />
-<meta property="og:url" content="https://simpleit.rocks/setting-up-a-fresh-linux-server/" />
+<meta name="description" content="Python tools that helps in writing high quality code." />
+<meta property="og:description" content="Python tools that helps in writing high quality code." />
+<link rel="canonical" href="https://simpleit.rocks/python-tools-to-write-better-code/" />
+<meta property="og:url" content="https://simpleit.rocks/python-tools-to-write-better-code/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-01-09T00:00:00+00:00" />
+<meta property="article:published_time" content="2017-11-07T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@simpleitrocks" />
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"A list of common tasks to perform after installing a new Linux instance","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/setting-up-a-fresh-linux-server/","publisher":null,"image":null,"headline":"Setting Up A Fresh Linux Server","dateModified":"2017-01-09T00:00:00+00:00","datePublished":"2017-01-09T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/setting-up-a-fresh-linux-server/"},"@context":"http://schema.org"}</script>
+{"name":null,"description":"Python tools that helps in writing high quality code.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/python-tools-to-write-better-code/","publisher":null,"image":null,"headline":"Python Tools To Write Better Code","dateModified":"2017-11-07T00:00:00+00:00","datePublished":"2017-11-07T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/python-tools-to-write-better-code/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -116,7 +116,7 @@
     
     
     
-    <h1 class="title">Setting Up A Fresh Linux Server </h1>
+    <h1 class="title">Python Tools To Write Better Code </h1>
     
     
   </div>
@@ -197,13 +197,37 @@
     class="breadcrumb-item">
   
   <a itemscope itemtype="https://schema.org/Thing"
-     itemprop="item" href="/docs/linux">
+     itemprop="item" href="/docs/python">
     
 
-    linux
+    python
   </a>
   
   <meta itemprop="position" content="3" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="https://schema.org/Thing"
+     itemprop="item" href="/docs/python/language">
+    
+
+    language
+  </a>
+  
+  <meta itemprop="position" content="4" />
 </li>
 
     
@@ -224,10 +248,10 @@
        itemprop="item">
     
 
-    <span itemprop="name">Setting Up A Fresh Linux Server</span>
+    <span itemprop="name">Python Tools To Write Better Code</span>
   </span>
   
-  <meta itemprop="position" content="4" />
+  <meta itemprop="position" content="5" />
 </li>
 
     
@@ -267,11 +291,20 @@
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#checklist">Checklist</a>
+<li class="toc-entry toc-h2"><a href="#tools">Tools</a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#git">Git</a></li>
+<li class="toc-entry toc-h3"><a href="#python-code-style-pep8">Python code style (Pep8)</a></li>
+<li class="toc-entry toc-h3"><a href="#mccabe">McCabe</a></li>
+<li class="toc-entry toc-h3"><a href="#error-checks-pyflakes">Error checks: Pyflakes</a></li>
+<li class="toc-entry toc-h3"><a href="#all-together-flake8">All together: Flake8</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#pylint">Pylint</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h3"><a href="#code-coverage">Code Coverage</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
       </div>
       <div>
@@ -282,9 +315,9 @@
       <div>
     <a class="twitter-share-button"
        href="https://twitter.com/share"
-       data-url="https://simpleit.rocks/setting-up-a-fresh-linux-server/"
+       data-url="https://simpleit.rocks/python-tools-to-write-better-code/"
        data-via=""
-       data-text="Setting Up A Fresh Linux Server"
+       data-text="Python Tools To Write Better Code"
        data-related="marcanuy,simpleitrocks"
        data-count="vertical">
 	Tweet
@@ -316,7 +349,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="https://simpleit.rocks/setting-up-a-fresh-linux-server/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="https://simpleit.rocks/python-tools-to-write-better-code/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -333,7 +366,7 @@
 
     
 	<p class="lead">
-	  A list of common tasks to perform after installing a new Linux instance
+	  Python tools that helps in writing high quality code.
 	</p>
     
 
@@ -357,21 +390,123 @@
 
     <h2 id="overview">Overview</h2>
 
-<p>This is a checklist to have in mind all the tasks I find useful to
-make after installing Linux in a computer.</p>
+<p>Python community maintains a set of tools that are helpful in every
+project. They provide quick feedback of your code health and how much
+it sticks to standards and better practices.</p>
 
-<p>What steps to take after installing a fresh Linux server, mainly
-oriented to a developer user.</p>
+<p>These tools are:</p>
 
-<h2 id="checklist">Checklist</h2>
+<dl>
+  <dt>pep8</dt>
+  <dd>style checker</dd>
+  <dt>pyflakes</dt>
+  <dd>checks source code for errors</dd>
+  <dt>mccabe</dt>
+  <dd>complexity checker</dd>
+  <dt>flake8</dt>
+  <dd>code checker (pep8, pyflakes, mccabe, and third-party plugins to
+check the style and quality of some python code)</dd>
+  <dt>Pylint</dt>
+  <dd>Checks for coding standards, errors and duplicated code.</dd>
+  <dt>Coverage</dt>
+  <dd>measure effectiveness of tests</dd>
+</dl>
 
-<h3 id="git">Git</h3>
+<h2 id="tools">Tools</h2>
+
+<h3 id="python-code-style-pep8">Python code style (Pep8)</h3>
+
+<p>It was formerly called <strong>pep8</strong> and it checks Python coding style
+conventions defined in PEP8.</p>
+
+<p>Project homepage: <a href="https://github.com/PyCQA/pycodestyle">https://github.com/PyCQA/pycodestyle</a></p>
+
+<p>It is based in PEP8 style conventions
+(<a href="http://www.python.org/dev/peps/pep-0008/">http://www.python.org/dev/peps/pep-0008/</a>).</p>
+
+<blockquote class="blockquote" cite="https://www.python.org/dev/peps/pep-0008/">
+  <p>The guidelines provided here are intended to improve the readability
+of code and make it consistent across the wide spectrum of Python
+code. As PEP 20 says, “Readability counts”. A style guide is about
+consistency. Consistency with this style guide is
+important. Consistency within a project is more important. Consistency
+within one module or function is the most important.</p>
+
+  <footer class="blockquote-footer"> <cite><a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a></cite></footer>
+</blockquote>
+
+<h3 id="mccabe">McCabe</h3>
+
+<p>McCabe is a <strong>complexity checker for Python</strong>.</p>
+
+<p>Project homepage: <a href="https://github.com/PyCQA/mccabe">https://github.com/PyCQA/mccabe</a></p>
+
+<p>It is based in the <strong>Cyclomatic complexity</strong> concept.</p>
+
+<blockquote class="blockquote" cite="https://en.wikipedia.org/wiki/Cyclomatic_complexity">
+  <p>Cyclomatic complexity is a software metric (measurement), used to
+indicate the complexity of a program. It is a quantitative measure
+of the number of linearly independent paths through a program’s
+source code. It was developed by Thomas J. McCabe, Sr. in 1976.</p>
+
+  <footer class="blockquote-footer"> <cite>Wikipedia page for <a href="https://en.wikipedia.org/wiki/Cyclomatic_complexity">Cyclomatic complexity</a></cite></footer>
+</blockquote>
+
+<p>It is useful for:</p>
 
 <ul>
-  <li><a href="/showing-untracked-files-in-status-after-creating-new-directories-in-git/">Show untracked files In Git Status After Creating New Directories In Git</a></li>
-  <li><a href="/make-git-ignore-temporary-files-produced-by-emacs-and-vim-in-all-directories-globally/">Ignore emacs and vim backup files in git with gitignore globally</a></li>
+  <li>Measuring how much a program is structured</li>
+  <li>Determining the number of test cases that are necessary to achieve
+thorough test coverage of a particular module</li>
+  <li>Limiting complexity during development
+    <ul>
+      <li>Functions and methods that have the highest complexity tend to also
+contain the most defects.</li>
+    </ul>
+  </li>
+  <li>Measure modules cohesion through the analysis of its complexity.</li>
 </ul>
 
+<h3 id="error-checks-pyflakes">Error checks: Pyflakes</h3>
+
+<p>It checks Python source files for errors by parsing source code.</p>
+
+<p>Project homepage: <a href="https://github.com/PyCQA/pyflakes">https://github.com/PyCQA/pyflakes</a></p>
+
+<h3 id="all-together-flake8">All together: Flake8</h3>
+
+<p>Project Homepage: <a href="https://gitlab.com/pycqa/flake8">https://gitlab.com/pycqa/flake8</a></p>
+
+<p>Flake8 runs all the above tools with the <code class="highlighter-rouge">flake8</code> command.</p>
+
+<h4 id="pylint">Pylint</h4>
+
+<p>Project Homepage: <a href="https://www.pylint.org/">https://www.pylint.org/</a></p>
+
+<h3 id="code-coverage">Code Coverage</h3>
+
+<p>It measures code coverage of Python projects.</p>
+
+<p>Project Homepage: <a href="http://coverage.readthedocs.io/en/latest/">http://coverage.readthedocs.io/en/latest/</a></p>
+
+<blockquote class="blockquote" cite="http://coverage.readthedocs.io/en/latest/">
+  <p>It monitors your program, noting which parts of the code have been
+executed, then analyzes the source to identify code that could have
+been executed but was not.</p>
+
+  <p>Coverage measurement is typically used to gauge the effectiveness of
+tests. It can show which parts of your code are being exercised by
+tests, and which are not.</p>
+
+  <footer class="blockquote-footer"> <cite><a href="http://coverage.readthedocs.io/en/latest/">Coverage.py project</a></cite></footer>
+</blockquote>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://mail.python.org/mailman/listinfo/code-quality/">https://mail.python.org/mailman/listinfo/code-quality/</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Cyclomatic_complexity">https://en.wikipedia.org/wiki/Cyclomatic_complexity</a></li>
+</ul>
 
 
     
@@ -424,7 +559,7 @@ oriented to a developer user.</p>
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/setting-up-a-fresh-linux-server/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/python-tools-to-write-better-code/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -474,23 +609,8 @@ oriented to a developer user.</p>
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/writing-spanish-in-linux/">
-      How to Type Spanish Characters, Accents and Symbols in Linux
+      <a class="list-group-item list-group-item-action " href="/python/">
+      Python notes
     </a>
     
     
@@ -758,171 +878,174 @@ oriented to a developer user.</p>
     
     
     
-      <a class="list-group-item list-group-item-action active" href="/setting-up-a-fresh-linux-server/">
-      Setting Up A Fresh Linux Server
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action active" href="/python-tools-to-write-better-code/">
+      Python Tools To Write Better Code
     </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/using-clamav-antivirus-in-ubuntu/">
-      Using Clamav Antivirus In Ubuntu
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/replicate-installed-package-selections-from-one-Ubuntu-system-to-another/">
-      Replicate Installed Package Selections From One Ubuntu System To Another
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/how-to-download-a-website-with-wget-the-right-way/">
-      How To Download A Website With Wget The Right Way
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
   </div>
