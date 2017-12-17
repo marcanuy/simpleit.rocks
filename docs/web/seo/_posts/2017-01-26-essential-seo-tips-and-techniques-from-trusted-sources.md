@@ -50,14 +50,14 @@ content in levels would make a difference in usability.
 
 > having relevant keywords in the URL is very helpful
 > <footer class="blockquote-footer"> <cite>Matt Cutts answer at Is it better to have keywords in the URL path or filename?? <a href="https://www.youtube.com/watch?v=971qGsTPs8M">2010-05-25</a></cite></footer>
-> {: class="blockquote" cite="https://www.youtube.com/watch?v=971qGsTPs8M"}
+{: class="blockquote" cite="https://www.youtube.com/watch?v=971qGsTPs8M"}
 
 > keywords in path (between slashes) or keywords all together in the
 > filename (separated by dashses)?  It doesn't make that much
 > difference. Think about it like a user: users may not click if you
 > have deep path nor really long path names.
 > <footer class="blockquote-footer"> <cite>Matt Cutts answer at Is it better to have keywords in the URL path or filename?? <a href="https://www.youtube.com/watch?v=971qGsTPs8M">2010-05-25</a></cite></footer>
-> {: class="blockquote" cite="https://www.youtube.com/watch?v=971qGsTPs8M"}
+{: class="blockquote" cite="https://www.youtube.com/watch?v=971qGsTPs8M"}
 
 ### Android
 
