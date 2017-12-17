@@ -20,6 +20,45 @@ It mainly consists of special clues given in Google blog posts.
 
 ## Facts
 
+### Lengths
+
+In Search Engine Result Pages Googles shows (for desktop):
+
+- Title: 69 chararcters.
+- Meta Description: 324 characters.
+- URLs: 84 characters.
+
+### URL Structure
+
+Number of levels in the URL doesn't affect page's ranking. Thinking in
+terms of pagerank, if a page is linked from root it will get more
+pagerank, no matter how many levels is that page in. But structuring
+content in levels would make a difference in usability.
+
+> But saying there is one or two extra directories therefor your
+> rankings get lower I wouldn't worry about that at all, that is
+> really not a major factor in Google search engine ranking.
+> <footer class="blockquote-footer"> <cite>Matt Cutts answer at Does the number of subdirectories in a URL affect its ranking? <a href="https://www.youtube.com/watch?v=l_A1iRY6XTM">2010-09-28</a></cite></footer>
+{: class="blockquote" cite="https://www.youtube.com/watch?v=l_A1iRY6XTM"}
+
+> Google historically doesn't worry so much about how deep a set of
+> directories is. **If you have your root page, and you link directly to a
+> very deep page that page would still get the page rank from root
+> page**. I would go with the path just for user experience.
+> <footer class="blockquote-footer"> <cite>Matt Cutts answer at How does URL structure affect PageRank? <a href="https://www.youtube.com/watch?v=UbimY0exQIA">2010-04-06</a></cite></footer>
+{: class="blockquote" cite="https://www.youtube.com/watch?v=UbimY0exQIA"}
+
+> having relevant keywords in the URL is very helpful
+> <footer class="blockquote-footer"> <cite>Matt Cutts answer at Is it better to have keywords in the URL path or filename?? <a href="https://www.youtube.com/watch?v=971qGsTPs8M">2010-05-25</a></cite></footer>
+> {: class="blockquote" cite="https://www.youtube.com/watch?v=971qGsTPs8M"}
+
+> keywords in path (between slashes) or keywords all together in the
+> filename (separated by dashses)?  It doesn't make that much
+> difference. Think about it like a user: users may not click if you
+> have deep path nor really long path names.
+> <footer class="blockquote-footer"> <cite>Matt Cutts answer at Is it better to have keywords in the URL path or filename?? <a href="https://www.youtube.com/watch?v=971qGsTPs8M">2010-05-25</a></cite></footer>
+> {: class="blockquote" cite="https://www.youtube.com/watch?v=971qGsTPs8M"}
+
 ### Android
 
 Apps are favored on search results made from Android devices.
@@ -86,7 +125,7 @@ HTTPS is a ranking signal and is better than HTTP.
 ### Images
 
 > Google potentially use EXIF data from pictures as a ranking factor
-> <footer class="blockquote-footer"> <cite>Matt Cutts video <a href="https://www.youtube.com/watch?time_continue=1&v=GMf6FmRus2M">2014-02-14</a></cite></footer>
+> <footer class="blockquote-footer"> <cite>Matt Cutts answer to Does Google use EXIF data from pictures as a ranking factor? <a href="https://www.youtube.com/watch?time_continue=1&v=GMf6FmRus2M">2014-02-14</a></cite></footer>
 {: class="blockquote" cite="https://www.youtube.com/watch?time_continue=1&v=GMf6FmRus2M"}
 
 ### Inbound Links
