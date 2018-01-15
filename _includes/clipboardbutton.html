@@ -1,0 +1,24 @@
+<code id="ja">hola estoy aca</code>
+<button class="btn" data-clipboard-target="#ja"><img src="assets/clippy.svg" alt="Copy to clipboard"></button>
+
+<script>
+ // get all <code> elements
+ var allCodeBlocksElements = $( "code" );
+
+ allCodeBlocksElements.each(function(i) {
+     // add different id for each code block
+     $(this).attr('id', "codeblock" + (i + 1));
+
+     // target	
+     var currentId = "codeblock" + (i + 1);
+     $(this).attr('id', currentId);
+     
+     //trigger
+     var clipButton = '<button class="btn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+     $(this).after(clipButton);
+ });
+ 
+ new Clipboard('.btn');
+ console.log(Clipboard.isSupported());
+</script>
+

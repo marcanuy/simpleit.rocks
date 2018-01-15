@@ -38,7 +38,7 @@ check:
 PROJECT_DEPS := Gemfile package.json
 
 install: $(PROJECT_DEPS)
-	$(BUNDLE) install --path vendor/bundler
+	$(BUNDLE) install
 	$(YARN) install
 
 update: $(PROJECT_DEPS)
@@ -58,6 +58,7 @@ include-yarn-deps:
 	cp node_modules/jquery/dist/jquery.min.js $(VENDOR_DIR)
 	cp node_modules/tether/dist/js/tether.min.js $(VENDOR_DIR)
 	cp node_modules/bootstrap/dist/js/bootstrap.min.js $(VENDOR_DIR)
+	cp node_modules/clipboard/dist/clipboard.min.js $(VENDOR_DIR)
 build: clean install include-yarn-deps
 	$(JEKYLL) build
 build-production: clean install include-yarn-deps
@@ -65,7 +66,7 @@ build-production: clean install include-yarn-deps
 serve: clean install include-yarn-deps
 	$(JEKYLL) serve --drafts
 serve-limit: clean install include-yarn-deps
-	$(JEKYLL) serve --limit_posts 1
+	$(JEKYLL) serve --limit_posts 5
 
 serve-production: clean install include-yarn-deps
 	JEKYLL_ENV=production $(JEKYLL) serve
