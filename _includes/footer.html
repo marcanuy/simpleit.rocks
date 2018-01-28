@@ -35,8 +35,8 @@
 
 {% if page.content contains "code" %}
 <!-- clipboard.js -->
-<script src="{{'/assets/vendor/clipboard.min.js' | absolute_url}}"></script>
+{%comment%}<script src="{{'/assets/vendor/clipboard.min.js' | absolute_url}}"></script>{%endcomment%}
 
-    {% include clipboardbutton.html %}
+{%comment%}{% include clipboardbutton.html %}{%endcomment%}
 
 {% endif %}
