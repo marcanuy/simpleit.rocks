@@ -57,7 +57,7 @@ under `/content`).
 
 There is a helpful `{%raw%}{{ <var> | inspect}}{%endraw%}` filter tag in Jekyll that
 allows to print any variable in a template. The closest equivalent in
-Hugo is the usage of `{{ print "%#v" <var> }}`. [^printvars]
+Hugo is the usage of `{%raw%}{{ print "%#v" <var> }}{%endraw%}`. [^printvars]
 
 To print the current *Page* data `{%raw%}{{ printf "%#v" . }}{%endraw%}` will print:
 
