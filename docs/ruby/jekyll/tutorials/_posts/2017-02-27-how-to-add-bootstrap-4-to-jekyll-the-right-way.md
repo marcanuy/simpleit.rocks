@@ -162,7 +162,7 @@ We add them in the default layout at `_layouts/default.html` or in
 <body>
 ...
 	<script src="{% raw %}{{'/node_modules/jquery/dist/jquery.min.js' | prepend: site.baseurl}}"{% endraw %}></script>
-	<script src="{% raw %}{{'/node_modules/popper.js/dist/popper.min.js | prepend: site.baseurl}}{% endraw %}"></script>
+	<script src="{% raw %}{{'/node_modules/popper.js/dist/popper.min.js' | prepend: site.baseurl}}{% endraw %}"></script>
 	<script src="{% raw %}{{'/node_modules/bootstrap/dist/js/bootstrap.min.js' | prepend: site.baseurl}}{% endraw %}"></script>
 </body>
 </html>
