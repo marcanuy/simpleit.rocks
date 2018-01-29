@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>An Overview Of Flask Main Concepts And How It Works | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="An Overview Of Flask Main Concepts And How It Works" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Flask Python Web framework overview","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/flask-overview-notes/","publisher":null,"image":null,"headline":"An Overview Of Flask Main Concepts And How It Works","dateModified":"2016-12-31T00:00:00+00:00","datePublished":"2016-12-31T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/flask-overview-notes/"},"@context":"http://schema.org"}</script>
+{"description":"Flask Python Web framework overview","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/flask-overview-notes/","headline":"An Overview Of Flask Main Concepts And How It Works","dateModified":"2016-12-31T00:00:00+00:00","datePublished":"2016-12-31T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/flask-overview-notes/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -471,10 +472,9 @@ simple app, you will end up having a single file.</p>
 <p>To create a Flask app, we instantiate <code class="highlighter-rouge">flask.Flask</code> in our main module
 or in the <code class="highlighter-rouge">__init__.py</code> file of the package like:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The first parameter tells Flask what belongs to this app, if you are
 using a single module, then <code class="highlighter-rouge">__name__</code> is enough, but if not then you
@@ -483,7 +483,7 @@ Flask to find resources, improve debugging information, etc.</p>
 
 <p>This is what a typical Flask app skeleton looks like:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># -*- coding: utf-8 -*-</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># -*- coding: utf-8 -*-</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 
 <span class="c"># create application</span>
@@ -502,8 +502,7 @@ Flask to find resources, improve debugging information, etc.</p>
 <span class="c"># local server running</span>
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
 	<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="configuration">Configuration</h3>
 
@@ -530,11 +529,10 @@ from the <code class="highlighter-rouge">yourapplication.default_settings</code>
 the values with the contents of the file the
 <code class="highlighter-rouge">YOURAPPLICATION_SETTINGS</code> environment variable points to:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="s">'yourapplication.default_settings'</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_envvar</span><span class="p">(</span><span class="s">'YOURAPPLICATION_SETTINGS'</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>And then setup the environment variable with <kbd>$ export
 YOURAPPLICATION_SETTINGS=/path/to/settings.cfg</kbd>.</p>
@@ -545,32 +543,29 @@ YOURAPPLICATION_SETTINGS=/path/to/settings.cfg</kbd>.</p>
 
 <p>Defining or updating new configurations like a normal dicttionary</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>  <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">'SQLALCHEMY_TRACK_MODIFICATIONS'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">'SQLALCHEMY_TRACK_MODIFICATIONS'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
   <span class="c"># many keys at once</span>
   <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
     <span class="n">DEBUG</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
     <span class="n">SECRET_KEY</span><span class="o">=</span><span class="s">'...'</span>
   <span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="files">Files</h4>
 
 <p>Configuration can be stored in Python files with values in
 <em>uppercase</em>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>DEBUG = False
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DEBUG = False
 SECRET_KEY = '?\xbf,\xb4\x8d\xa3"&lt;\x9c\xb0@\x0f5\xab,w\xee\x8d$0\x13\x8b83'
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="python-files">Python files</h4>
 
 <p>Creating a configuration in a Python file and loading it:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>  <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_pyfile</span><span class="p">(</span><span class="s">'yourconfig.cfg'</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_pyfile</span><span class="p">(</span><span class="s">'yourconfig.cfg'</span><span class="p">)</span>
+</code></pre></div></div>
 
 <ul>
   <li>
@@ -584,9 +579,8 @@ SECRET_KEY = '?\xbf,\xb4\x8d\xa3"&lt;\x9c\xb0@\x0f5\xab,w\xee\x8d$0\x13\x8b83'
 
     <p>Then in your code, load it using <code class="highlighter-rouge">config.Config.from_envvar</code>:</p>
 
-    <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_envvar</span><span class="p">(</span><span class="s">'YOURAPPLICATION_SETTINGS'</span><span class="p">)</span>
-</code></pre>
-    </div>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_envvar</span><span class="p">(</span><span class="s">'YOURAPPLICATION_SETTINGS'</span><span class="p">)</span>
+</code></pre></div>    </div>
 
     <p class="alert alert-info">This is the same of doing
 <code class="highlighter-rouge">app.config.from_pyfile(os.environ['YOURAPPLICATION_SETTINGS'])</code>
@@ -599,11 +593,10 @@ with a nicer error message</p>
 <p>Define configuration variables and add them with the <code class="highlighter-rouge">from_object</code>
   method, updating the vales of each variable:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>  <span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">True</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">True</span>
   <span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="s">'development key'</span>
   <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="others">Others</h4>
 
@@ -670,11 +663,10 @@ decorator.</p>
 
 <p>For example, the URL <code class="highlighter-rouge">/hello-world</code> would run the <code class="highlighter-rouge">hello()</code> function:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="nd">@app.route</span><span class="p">(</span><span class="s">'/hello-world'</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@app.route</span><span class="p">(</span><span class="s">'/hello-world'</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
     <span class="k">return</span> <span class="s">'Hello World'</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="dynamic-urls">Dynamic URLs</h3>
 
@@ -682,12 +674,11 @@ decorator.</p>
 <code class="highlighter-rouge">&lt;variable_name&gt;</code> or more precisely using <em>converters</em>
 <code class="highlighter-rouge">&lt;converter:variable_name&gt;</code> like <code class="highlighter-rouge">'/post/&lt;int:post_id&gt;'</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>@app.route('/user/&lt;username&gt;')
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@app.route('/user/&lt;username&gt;')
 def show_user_profile(username):
     # show the user profile for that user
     return 'User %s' % username
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="reverse-urls">Reverse URLs</h3>
 
@@ -718,22 +709,21 @@ Type "help", "copyright", "credits" or "license" for more information.
 tells Flask to behave like handling a request, even though
 we are using a Python shell.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">url_for</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">url_for</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nd">@app.route</span><span class="p">(</span><span class="s">'/login'</span><span class="p">)</span>
 <span class="o">...</span> <span class="k">def</span> <span class="nf">login</span><span class="p">():</span> <span class="k">pass</span>
 <span class="o">...</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">test_request_context</span><span class="p">():</span>
 <span class="o">...</span>  <span class="k">print</span> <span class="n">url_for</span><span class="p">(</span><span class="s">'login'</span><span class="p">,</span> <span class="nb">next</span><span class="o">=</span><span class="s">'/'</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="basic-project-structure">Basic project structure</h2>
 
 <p>Flask applications are recommended to be installed and run as Python
 packages.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/myproject
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/myproject
     /myproject
 		__init__.py  ## make the project a package
 		myproject.py ## application module
@@ -744,8 +734,7 @@ packages.</p>
         test_myproject.py
     setup.py     ## Setuptools packaging
     MANIFEST.in
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="references">References</h2>
 

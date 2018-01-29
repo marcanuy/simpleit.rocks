@@ -18,7 +18,7 @@
     
     
     <!-- Mermaid -->
-    <link rel="stylesheet" href="https://simpleit.rocks/assets/vendor/mermaid.forest.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="https://simpleit.rocks/assets/vendor/mermaid.css" type="text/css" media="screen" />
     
     
     <!-- Custom css -->
@@ -48,8 +48,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Understanding How Collections Work | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Understanding How Collections Work" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -65,7 +66,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Jekyll Collections usage and examples.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/understanding-how-collections-work/","publisher":null,"image":null,"headline":"Understanding How Collections Work","dateModified":"2016-06-11T00:00:00+00:00","datePublished":"2016-06-11T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/understanding-how-collections-work/"},"@context":"http://schema.org"}</script>
+{"description":"Jekyll Collections usage and examples.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/understanding-how-collections-work/","headline":"Understanding How Collections Work","dateModified":"2016-06-11T00:00:00+00:00","datePublished":"2016-06-11T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/understanding-how-collections-work/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -433,12 +434,11 @@ that makes them more appropiate in certain circumstances.</p>
 
 <p>Each <strong>collection</strong> can have many <strong>document</strong> files.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
 └──_my_collection
     ├── a_document.html
     └── another_document.md
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="variables-of-a-collection-and-documents-collections">Variables of a Collection and Documents Collections</h3>
 
@@ -506,7 +506,7 @@ graph TB;
 
 <p>All Jekyll Collections can be accessed with the global variable <em>site</em> using <code class="highlighter-rouge">site.collections</code>:</p>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>collection<span class="w"> </span>in<span class="w"> </span>site.collections<span class="p">%}</span>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>collection<span class="w"> </span>in<span class="w"> </span>site.collections<span class="p">%}</span>
  Collection name: <span class="p">{{</span><span class="nv">collection</span><span class="p">.</span><span class="nv">label</span><span class="p">}}</span> 
  Relative path to the collection's source directory: <span class="p">{{</span><span class="nv">collection</span><span class="p">.</span><span class="nv">relative_directory</span><span class="w"> </span><span class="p">}}</span>
  Full path to the collection's directory: <span class="p">{{</span><span class="nv">collection</span><span class="p">.</span><span class="nv">directory</span><span class="p">}}</span>
@@ -516,12 +516,11 @@ graph TB;
   <span class="p">{{</span><span class="nv">doc</span><span class="p">.</span><span class="nv">slug</span><span class="p">}}</span>
  <span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
 <span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>And variables of each Document of a Collection can be accessed with:</p>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>collection<span class="w"> </span>in<span class="w"> </span>site.collections<span class="w"> </span><span class="p">%}</span>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>collection<span class="w"> </span>in<span class="w"> </span>site.collections<span class="w"> </span><span class="p">%}</span>
 
 &lt;h4&gt;Collection <span class="p">{{</span><span class="nv">forloop</span><span class="p">.</span><span class="nv">index</span><span class="p">}}</span>&lt;/h4&gt;
 
@@ -535,8 +534,7 @@ graph TB;
 &lt;/dl&gt;
 &lt;hr&gt;
 <span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 
 

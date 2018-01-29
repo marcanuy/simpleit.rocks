@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Add Infolinks Script To An Existing Website From Console With Sed Command | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Add Infolinks Script To An Existing Website From Console With Sed Command" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"How to integrate infolinks on your website with a simple shell command. Add the infolinks script to all webpages with SED.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/add-infolinks-script-to-an-existing-website-from-console-with-sed-command/","publisher":null,"image":null,"headline":"Add Infolinks Script To An Existing Website From Console With Sed Command","dateModified":"2017-04-04T00:00:00+00:00","datePublished":"2017-04-04T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/add-infolinks-script-to-an-existing-website-from-console-with-sed-command/"},"@context":"http://schema.org"}</script>
+{"description":"How to integrate infolinks on your website with a simple shell command. Add the infolinks script to all webpages with SED.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/add-infolinks-script-to-an-existing-website-from-console-with-sed-command/","headline":"Add Infolinks Script To An Existing Website From Console With Sed Command","dateModified":"2017-04-04T00:00:00+00:00","datePublished":"2017-04-04T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/add-infolinks-script-to-an-existing-website-from-console-with-sed-command/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -415,23 +416,21 @@ transformations on files.</p>
 <p>Create a file named <code class="highlighter-rouge">changes.sed</code> with the basic changes for the <em>sed</em>
 command:</p>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># insert the closing div tag *before* the closing body tag</span>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># insert the closing div tag *before* the closing body tag</span>
 /&lt;<span class="se">\/</span>body&gt;/i<span class="se">\</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Then copy the infolinks script in the same file adding a backslash <code class="highlighter-rouge">\</code>
 after each line, so <code class="highlighter-rouge">changes.sed</code> will look like:</p>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># insert the closing div tag *before* the closing body tag</span>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># insert the closing div tag *before* the closing body tag</span>
 /&lt;<span class="se">\/</span>body&gt;/i<span class="se">\</span>
-&lt;script <span class="nb">type</span><span class="o">=</span><span class="s2">"text/javascript"</span>&gt;<span class="se">\</span>
-var infolinks_pid <span class="o">=</span> 2980966;<span class="se">\</span>
-var infolinks_wsid <span class="o">=</span> 0;<span class="se">\</span>
+&lt;script <span class="nb">type</span><span class="o">=</span><span class="s2">"text/javascript"</span><span class="o">&gt;</span><span class="se">\</span>
+var infolinks_pid <span class="o">=</span> 2980966<span class="p">;</span><span class="se">\</span>
+var infolinks_wsid <span class="o">=</span> 0<span class="p">;</span><span class="se">\</span>
 &lt;/script&gt;<span class="se">\</span>
-&lt;script <span class="nb">type</span><span class="o">=</span><span class="s2">"text/javascript"</span> <span class="nv">src</span><span class="o">=</span><span class="s2">"//resources.infolinks.com/js/infolinks_main.js"</span>&gt;&lt;/script&gt;
-</code></pre>
-</div>
+&lt;script <span class="nb">type</span><span class="o">=</span><span class="s2">"text/javascript"</span> <span class="nv">src</span><span class="o">=</span><span class="s2">"//resources.infolinks.com/js/infolinks_main.js"</span><span class="o">&gt;</span>&lt;/script&gt;
+</code></pre></div></div>
 
 <p>This will tell <em>sed</em> to insert the javascript code before the
 <code class="highlighter-rouge">&lt;/body&gt;</code> HTML tag.</p>

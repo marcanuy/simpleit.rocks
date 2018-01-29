@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Showing Untracked Files In Status After Creating New Directories In Git | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Showing Untracked Files In Status After Creating New Directories In Git" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"How to list all files in a new directory when checking the git status instead of just seeing the directory name","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/showing-untracked-files-in-status-after-creating-new-directories-in-git/","publisher":null,"image":null,"headline":"Showing Untracked Files In Status After Creating New Directories In Git","dateModified":"2016-01-02T00:00:00+00:00","datePublished":"2016-01-02T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/showing-untracked-files-in-status-after-creating-new-directories-in-git/"},"@context":"http://schema.org"}</script>
+{"description":"How to list all files in a new directory when checking the git status instead of just seeing the directory name","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/showing-untracked-files-in-status-after-creating-new-directories-in-git/","headline":"Showing Untracked Files In Status After Creating New Directories In Git","dateModified":"2016-01-02T00:00:00+00:00","datePublished":"2016-01-02T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/showing-untracked-files-in-status-after-creating-new-directories-in-git/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -397,13 +398,12 @@ files to see each time we execute <code class="highlighter-rouge">git status</co
 
   <p>The possible options are:</p>
 
-  <div class="highlighter-rouge"><pre class="highlight"><code>no - Show no untracked files.
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>no - Show no untracked files.
 
 normal - Shows untracked files and directories.
 
 all - Also shows individual files in untracked directories.
-</code></pre>
-  </div>
+</code></pre></div>  </div>
 
   <footer class="blockquote-footer"> <cite>git-status <a href="https://git-scm.com/docs/git-status">documentation</a></cite></footer>
 </blockquote>
@@ -461,10 +461,9 @@ nothing added to commit but untracked files present (use "git add" to track)
 status.showuntrackedfiles all</code> so it will add the following to git
 configuration in <code class="highlighter-rouge">~/.config</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[status]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[status]
 	showuntrackedfiles = all
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Or we can just add the above code manually to <code class="highlighter-rouge">~/.config</code>.</p>
 

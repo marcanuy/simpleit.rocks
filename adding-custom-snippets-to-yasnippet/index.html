@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Adding Custom Snippets To Yasnippet | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Adding Custom Snippets To Yasnippet" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Overview","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/adding-custom-snippets-to-yasnippet/","publisher":null,"image":null,"headline":"Adding Custom Snippets To Yasnippet","dateModified":"2016-11-01T00:00:00+00:00","datePublished":"2016-11-01T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/adding-custom-snippets-to-yasnippet/"},"@context":"http://schema.org"}</script>
+{"description":"Overview","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/adding-custom-snippets-to-yasnippet/","headline":"Adding Custom Snippets To Yasnippet","dateModified":"2016-11-01T00:00:00+00:00","datePublished":"2016-11-01T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/adding-custom-snippets-to-yasnippet/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -411,27 +412,25 @@ yasnippets internally expands the <code class="highlighter-rouge">snippet-writin
 <p>A new buffer will open with the base model to define the new snippet
 in the <strong>snippet-mode</strong> major mode.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># -*- mode: snippet -*-
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># -*- mode: snippet -*-
 # name: 
 # key: 
 # --
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="example">Example</h4>
 
 <p>The following is an example of the current <code class="highlighter-rouge">for</code> statement in
 <em>Python</em>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># name: for ... in ... : ...
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># name: for ... in ... : ...
 # key: for
 # group : control structure
 # --
 for ${var} in ${collection}:
     $0
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p class="alert alert-info">More details of the customizations can be found in
 the

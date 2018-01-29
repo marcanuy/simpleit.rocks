@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Host a Jekyll Website With Pretty Urls In Amazon S3 and Cloudfront | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Host a Jekyll Website With Pretty Urls In Amazon S3 and Cloudfront" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"How to host and deploy a Jekyll website to AWS S3 having its URLs without extensions (.html)","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/having-pretty-urls-in-a-jekyll-website-hosted-in-amazon-s3/","publisher":null,"image":null,"headline":"Host a Jekyll Website With Pretty Urls In Amazon S3 and Cloudfront","dateModified":"2017-04-24T00:00:00+00:00","datePublished":"2017-04-24T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/having-pretty-urls-in-a-jekyll-website-hosted-in-amazon-s3/"},"@context":"http://schema.org"}</script>
+{"description":"How to host and deploy a Jekyll website to AWS S3 having its URLs without extensions (.html)","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/having-pretty-urls-in-a-jekyll-website-hosted-in-amazon-s3/","headline":"Host a Jekyll Website With Pretty Urls In Amazon S3 and Cloudfront","dateModified":"2017-04-24T00:00:00+00:00","datePublished":"2017-04-24T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/having-pretty-urls-in-a-jekyll-website-hosted-in-amazon-s3/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -435,9 +436,8 @@ will serve each <code class="highlighter-rouge">index.html</code>. E.g.:</p>
   server will be able to respond to this request if it finds one of
   these files:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>  /my-cool-page/index.html
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  /my-cool-page/index.html
+</code></pre></div>    </div>
   </li>
 </ul>
 
@@ -447,9 +447,8 @@ will serve each <code class="highlighter-rouge">index.html</code>. E.g.:</p>
   <li>
     <p>Generate HTML files without the extension:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>  /my-cool-page
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  /my-cool-page
+</code></pre></div>    </div>
   </li>
 </ul>
 
@@ -466,9 +465,8 @@ to the server.</p>
 <p>An easy way to do it is to have a shell script that removes them after
 building the site.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>find _site/ -type f ! -iname <span class="s1">'index.html'</span> -iname <span class="s1">'*.html'</span> -print0 | <span class="k">while </span><span class="nb">read</span> -d <span class="nv">$'</span><span class="se">\0</span><span class="s1">' f; do mv "$f" "${f%.html}"; done
-</span></code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find _site/ <span class="nt">-type</span> f <span class="o">!</span> <span class="nt">-iname</span> <span class="s1">'index.html'</span> <span class="nt">-iname</span> <span class="s1">'*.html'</span> <span class="nt">-print0</span> | <span class="k">while </span><span class="nb">read</span> <span class="nt">-d</span> <span class="s1">$'</span><span class="se">\0</span><span class="s1">'</span> f<span class="p">;</span> <span class="k">do </span><span class="nb">mv</span> <span class="s2">"</span><span class="nv">$f</span><span class="s2">"</span> <span class="s2">"</span><span class="k">${</span><span class="nv">f</span><span class="p">%.html</span><span class="k">}</span><span class="s2">"</span><span class="p">;</span> <span class="k">done</span>
+</code></pre></div></div>
 
 <p>Command explanation:</p>
 
@@ -571,16 +569,14 @@ files, leaving that task to the server.</p>
 
 <p>Copy local files to the S3 bucket.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>aws s3 cp _site/ s3://cachedpage.co/ --content-type text/html --recursive --exclude <span class="s2">"*.*"</span>
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aws s3 <span class="nb">cp </span>_site/ s3://cachedpage.co/ <span class="nt">--content-type</span> text/html <span class="nt">--recursive</span> <span class="nt">--exclude</span> <span class="s2">"*.*"</span>
+</code></pre></div></div>
 
 <p>or synchronize the directory with the S3 bucket <strong>checking file
 difference by size</strong> not timestamps.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>aws s3 sync _site/ <span class="nv">$s3_bucket</span> --size-only --exclude <span class="s2">"*"</span> --include <span class="s2">"*.*"</span> --delete
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aws s3 <span class="nb">sync </span>_site/ <span class="nv">$s3_bucket</span> <span class="nt">--size-only</span> <span class="nt">--exclude</span> <span class="s2">"*"</span> <span class="nt">--include</span> <span class="s2">"*.*"</span> <span class="nt">--delete</span>
+</code></pre></div></div>
 
 <p class="alert alert-info">As every time the website is built, Jekyll regenerates all the files,
 so <em>timestamps</em> would always be different, checking file sizes would
@@ -588,15 +584,13 @@ only copy files if they are different.</p>
 
 <h3 id="copy-the-rest-of-the-files">Copy the rest of the files</h3>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>aws s3 cp _site/ s3://cachedpage.co/ --recursive --exclude <span class="s2">"*"</span> --include <span class="s2">"*.*"</span>
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aws s3 <span class="nb">cp </span>_site/ s3://cachedpage.co/ <span class="nt">--recursive</span> <span class="nt">--exclude</span> <span class="s2">"*"</span> <span class="nt">--include</span> <span class="s2">"*.*"</span>
+</code></pre></div></div>
 
 <p>or with <kbd>aws sync</kbd>:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>aws s3 sync _site/ <span class="nv">$s3_bucket</span> --size-only --content-type text/html --exclude <span class="s2">"*.*"</span> --delete
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aws s3 <span class="nb">sync </span>_site/ <span class="nv">$s3_bucket</span> <span class="nt">--size-only</span> <span class="nt">--content-type</span> text/html <span class="nt">--exclude</span> <span class="s2">"*.*"</span> <span class="nt">--delete</span>
+</code></pre></div></div>
 
 <blockquote class="blockquote" cite="http://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters">
   <p>Note that, by default, all files are included. This means that
@@ -635,16 +629,15 @@ preview.cloudfront true</code></p>
   <footer class="blockquote-footer"> <cite><a href="http://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters">create-invalidation</a></cite></footer>
 </blockquote>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nv">tempfile</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="k">)</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">tempfile</span><span class="o">=</span><span class="k">$(</span><span class="nb">mktemp</span><span class="k">)</span>
 <span class="nv">distribution_id</span><span class="o">=</span>ASDFHDFSAF45234
 <span class="nb">echo</span> <span class="s2">"Copying files to server..."</span>
-aws s3 sync _site/ <span class="k">$(</span>s3_bucket<span class="k">)</span> --size-only --exclude <span class="s2">"*"</span> --include <span class="s2">"*.*"</span> --delete | tee -a <span class="k">$(</span>tempfile<span class="k">)</span>
+aws s3 <span class="nb">sync </span>_site/ <span class="k">$(</span>s3_bucket<span class="k">)</span> <span class="nt">--size-only</span> <span class="nt">--exclude</span> <span class="s2">"*"</span> <span class="nt">--include</span> <span class="s2">"*.*"</span> <span class="nt">--delete</span> | <span class="nb">tee</span> <span class="nt">-a</span> <span class="k">$(</span>tempfile<span class="k">)</span>
 <span class="nb">echo</span> <span class="s2">"Copying files with content type..."</span>
-aws s3 sync _site/ <span class="k">$(</span>s3_bucket<span class="k">)</span> --size-only --content-type text/html --exclude <span class="s2">"*.*"</span> --delete | tee -a <span class="k">$(</span>tempfile<span class="k">)</span>
+aws s3 <span class="nb">sync </span>_site/ <span class="k">$(</span>s3_bucket<span class="k">)</span> <span class="nt">--size-only</span> <span class="nt">--content-type</span> text/html <span class="nt">--exclude</span> <span class="s2">"*.*"</span> <span class="nt">--delete</span> | <span class="nb">tee</span> <span class="nt">-a</span> <span class="k">$(</span>tempfile<span class="k">)</span>
 <span class="c">#invalidate only modified files</span>
-grep <span class="s2">"upload</span><span class="se">\|</span><span class="s2">deleted"</span> <span class="k">$(</span>tempfile<span class="k">)</span> | sed -e <span class="s2">"s|.*upload.*to </span><span class="k">$(</span>s3_bucket<span class="k">)</span><span class="s2">|/|"</span> | sed -e <span class="s2">"s|.*delete: </span><span class="k">$(</span>s3_bucket<span class="k">)</span><span class="s2">|/|"</span> | sed -e <span class="s1">'s/index.html//'</span> | sed -e <span class="s1">'s/\(.*\).html/\1/'</span> | tr <span class="s1">'\n'</span> <span class="s1">' '</span> | xargs aws cloudfront create-invalidation --distribution-id <span class="k">$(</span>distribution_id<span class="k">)</span> --paths
-</code></pre>
-</div>
+<span class="nb">grep</span> <span class="s2">"upload</span><span class="se">\|</span><span class="s2">deleted"</span> <span class="k">$(</span>tempfile<span class="k">)</span> | <span class="nb">sed</span> <span class="nt">-e</span> <span class="s2">"s|.*upload.*to </span><span class="k">$(</span>s3_bucket<span class="k">)</span><span class="s2">|/|"</span> | <span class="nb">sed</span> <span class="nt">-e</span> <span class="s2">"s|.*delete: </span><span class="k">$(</span>s3_bucket<span class="k">)</span><span class="s2">|/|"</span> | <span class="nb">sed</span> <span class="nt">-e</span> <span class="s1">'s/index.html//'</span> | <span class="nb">sed</span> <span class="nt">-e</span> <span class="s1">'s/\(.*\).html/\1/'</span> | <span class="nb">tr</span> <span class="s1">'\n'</span> <span class="s1">' '</span> | xargs aws cloudfront create-invalidation <span class="nt">--distribution-id</span> <span class="k">$(</span>distribution_id<span class="k">)</span> <span class="nt">--paths</span>
+</code></pre></div></div>
 
 <h3 id="script-explanation">Script explanation:</h3>
 
@@ -655,46 +648,40 @@ grep <span class="s2">"upload</span><span class="se">\|</span><span class="s2">d
 redirecting the output to standard output and to the temporal file
 with:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>aws s3 sync _site/ $(s3_bucket) --size-only --exclude "*" --include "*.*" --delete | tee -a $(tempfile)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aws s3 sync _site/ $(s3_bucket) --size-only --exclude "*" --include "*.*" --delete | tee -a $(tempfile)
 aws s3 sync _site/ $(s3_bucket) --size-only --content-type text/html --exclude "*.*" --delete | tee -a $(tempfile)
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>After that we process the file names that were uploaded or deleted by
 the <code class="highlighter-rouge">aws</code> command:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>grep "upload\|deleted" $(tempfile) 
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grep "upload\|deleted" $(tempfile) 
+</code></pre></div></div>
 
 <p>Then discard the string between <code class="highlighter-rouge">upload</code> or <code class="highlighter-rouge">delete</code> and the name of
 the bucket:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sed -e "s|.*upload.*to $(s3_bucket)|/|" | sed -e "s|.*delete:
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sed -e "s|.*upload.*to $(s3_bucket)|/|" | sed -e "s|.*delete:
 $(s3_bucket)|/|" 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>As our URLs are accessed only with the URLs like <code class="highlighter-rouge">/</code> instead of
 <code class="highlighter-rouge">/index.html</code> we remove them</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sed -e 's/index.html//' 
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sed -e 's/index.html//' 
+</code></pre></div></div>
 
 <p>Our URLs doesn’t have the <code class="highlighter-rouge">.html</code> extension also:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sed -e 's/\(.*\).html/\1/' 
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sed -e 's/\(.*\).html/\1/' 
+</code></pre></div></div>
 
 <p>Lastly we put all the URLs like names in a single line separated with 
 a space to comply with the <code class="highlighter-rouge">aws cloudfront create-invalidation
 --paths</code> command:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>tr '\n' ' ' | xargs aws cloudfront create-invalidation --distribution-id $(distribution_id) --paths
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tr '\n' ' ' | xargs aws cloudfront create-invalidation --distribution-id $(distribution_id) --paths
+</code></pre></div></div>
 
 <h2 id="final-script">Final script</h2>
 
@@ -702,7 +689,7 @@ a space to comply with the <code class="highlighter-rouge">aws cloudfront create
 you probably want to adapt it to a <code class="highlighter-rouge">Makefile</code>, <code class="highlighter-rouge">Grunt</code> or some other
 program but I will leave it as a <code class="highlighter-rouge">bash</code> script to reflect its usage:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/usr/bin/env bash</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env bash</span>
 <span class="c">#</span>
 <span class="c"># Copy Jekyll site to S3 bucket</span>
 <span class="c">#</span>
@@ -714,25 +701,24 @@ program but I will leave it as a <code class="highlighter-rouge">bash</code> scr
 <span class="nv">distribution_id</span><span class="o">=</span>ASDFHDFSAF45234
 <span class="c">####################################</span>
 
-<span class="nb">set</span> -e <span class="c"># halt script on error</span>
-<span class="nb">set</span> -v <span class="c"># echo on</span>
+<span class="nb">set</span> <span class="nt">-e</span> <span class="c"># halt script on error</span>
+<span class="nb">set</span> <span class="nt">-v</span> <span class="c"># echo on</span>
 
-<span class="nv">tempfile</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="k">)</span>
+<span class="nv">tempfile</span><span class="o">=</span><span class="k">$(</span><span class="nb">mktemp</span><span class="k">)</span>
 
 <span class="nb">echo</span> <span class="s2">"Building site..."</span>
 <span class="nv">JEKYLL_ENV</span><span class="o">=</span>production bundle <span class="nb">exec </span>jekyll build
 
 <span class="nb">echo</span> <span class="s2">"Removing .html extension"</span>
-find _site/ -type f ! -iname <span class="s1">'index.html'</span> -iname <span class="s1">'*.html'</span> -print0 | <span class="k">while </span><span class="nb">read</span> -d <span class="nv">$'</span><span class="se">\0</span><span class="s1">' f; do mv "$f" "${f%.html}"; done
+find _site/ <span class="nt">-type</span> f <span class="o">!</span> <span class="nt">-iname</span> <span class="s1">'index.html'</span> <span class="nt">-iname</span> <span class="s1">'*.html'</span> <span class="nt">-print0</span> | <span class="k">while </span><span class="nb">read</span> <span class="nt">-d</span> <span class="s1">$'</span><span class="se">\0</span><span class="s1">'</span> f<span class="p">;</span> <span class="k">do </span><span class="nb">mv</span> <span class="s2">"</span><span class="nv">$f</span><span class="s2">"</span> <span class="s2">"</span><span class="k">${</span><span class="nv">f</span><span class="p">%.html</span><span class="k">}</span><span class="s2">"</span><span class="p">;</span> <span class="k">done
 
-echo "Copying files to server..."
-aws s3 sync _site/ $(s3_bucket) --size-only --exclude "*" --include "*.*" --delete | tee -a $(tempfile)
-echo "Copying files with content type..."
-aws s3 sync _site/ $(s3_bucket) --size-only --content-type text/html --exclude "*.*" --delete | tee -a $(tempfile)
-#invalidate only modified files
-grep "upload\|deleted" $(tempfile) | sed -e "s|.*upload.*to $(s3_bucket)|/|" | sed -e "s|.*delete: $(s3_bucket)|/|" | sed -e '</span>s/index.html//<span class="s1">' | sed -e '</span>s/<span class="se">\(</span>.<span class="k">*</span><span class="se">\)</span>.html/<span class="se">\1</span>/<span class="s1">' | tr '</span><span class="se">\n</span><span class="s1">' '</span> <span class="s1">' | xargs aws cloudfront create-invalidation --distribution-id $(distribution_id) --paths
-</span></code></pre>
-</div>
+</span><span class="nb">echo</span> <span class="s2">"Copying files to server..."</span>
+aws s3 <span class="nb">sync </span>_site/ <span class="k">$(</span>s3_bucket<span class="k">)</span> <span class="nt">--size-only</span> <span class="nt">--exclude</span> <span class="s2">"*"</span> <span class="nt">--include</span> <span class="s2">"*.*"</span> <span class="nt">--delete</span> | <span class="nb">tee</span> <span class="nt">-a</span> <span class="k">$(</span>tempfile<span class="k">)</span>
+<span class="nb">echo</span> <span class="s2">"Copying files with content type..."</span>
+aws s3 <span class="nb">sync </span>_site/ <span class="k">$(</span>s3_bucket<span class="k">)</span> <span class="nt">--size-only</span> <span class="nt">--content-type</span> text/html <span class="nt">--exclude</span> <span class="s2">"*.*"</span> <span class="nt">--delete</span> | <span class="nb">tee</span> <span class="nt">-a</span> <span class="k">$(</span>tempfile<span class="k">)</span>
+<span class="c">#invalidate only modified files</span>
+<span class="nb">grep</span> <span class="s2">"upload</span><span class="se">\|</span><span class="s2">deleted"</span> <span class="k">$(</span>tempfile<span class="k">)</span> | <span class="nb">sed</span> <span class="nt">-e</span> <span class="s2">"s|.*upload.*to </span><span class="k">$(</span>s3_bucket<span class="k">)</span><span class="s2">|/|"</span> | <span class="nb">sed</span> <span class="nt">-e</span> <span class="s2">"s|.*delete: </span><span class="k">$(</span>s3_bucket<span class="k">)</span><span class="s2">|/|"</span> | <span class="nb">sed</span> <span class="nt">-e</span> <span class="s1">'s/index.html//'</span> | <span class="nb">sed</span> <span class="nt">-e</span> <span class="s1">'s/\(.*\).html/\1/'</span> | <span class="nb">tr</span> <span class="s1">'\n'</span> <span class="s1">' '</span> | xargs aws cloudfront create-invalidation <span class="nt">--distribution-id</span> <span class="k">$(</span>distribution_id<span class="k">)</span> <span class="nt">--paths</span>
+</code></pre></div></div>
 
 <h2 id="conclusion">Conclusion</h2>
 

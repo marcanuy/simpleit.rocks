@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Angular Framework Notes A First Approach | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Angular Framework Notes A First Approach" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"An overview of the javascript Angular framework basic concepts to get started.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/angular-framework-notes-a-first-approach/","publisher":null,"image":null,"headline":"Angular Framework Notes A First Approach","dateModified":"2017-08-26T00:00:00+00:00","datePublished":"2017-08-26T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/angular-framework-notes-a-first-approach/"},"@context":"http://schema.org"}</script>
+{"description":"An overview of the javascript Angular framework basic concepts to get started.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/angular-framework-notes-a-first-approach/","headline":"Angular Framework Notes A First Approach","dateModified":"2017-08-26T00:00:00+00:00","datePublished":"2017-08-26T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/angular-framework-notes-a-first-approach/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -408,19 +409,17 @@ used to</p>
 
     <p>A <strong>class expression</strong>:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code> var MyClass = class [className] [extends] {
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> var MyClass = class [className] [extends] {
    // class body
  };
-</code></pre>
-    </div>
+</code></pre></div>    </div>
 
     <p>Or we can use a <strong>class declaration</strong>.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code> class name [extends] {
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> class name [extends] {
    // class body
  }
-</code></pre>
-    </div>
+</code></pre></div>    </div>
 
     <p>The difference between them is that <em>class declaration</em> doesn’t
  allow an existing class to be re-declared.</p>
@@ -442,10 +441,9 @@ class declarations are not</p>
 
     <p>The <code class="highlighter-rouge">extends</code> keyword is used to create a subclass.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code> class Cat extends Animal {
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> class Cat extends Animal {
  }
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
 </ol>
 
@@ -458,7 +456,7 @@ be exported so other modules can import and use them.</p>
 <p>To import them we use the <code class="highlighter-rouge">import</code> keyword and to expose them to other
 modules the <code class="highlighter-rouge">export</code> keyword.</p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="nx">defaultMember</span> <span class="k">from</span> <span class="s2">"module-name"</span><span class="p">;</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">defaultMember</span> <span class="k">from</span> <span class="s2">"module-name"</span><span class="p">;</span>
 <span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">name</span> <span class="k">from</span> <span class="s2">"module-name"</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">member</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"module-name"</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">member</span> <span class="k">as</span> <span class="nx">alias</span> <span class="p">}</span> <span class="k">from</span>   <span class="s2">"module-name"</span><span class="p">;</span>
@@ -467,8 +465,7 @@ modules the <code class="highlighter-rouge">export</code> keyword.</p>
 <span class="k">import</span> <span class="nx">defaultMember</span><span class="p">,</span> <span class="p">{</span> <span class="nx">member</span> <span class="p">[</span> <span class="p">,</span> <span class="p">[...]</span> <span class="p">]</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"module-name"</span><span class="p">;</span>
 <span class="k">import</span> <span class="nx">defaultMember</span><span class="p">,</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">name</span> <span class="k">from</span> <span class="s2">"module-name"</span><span class="p">;</span>
 <span class="k">import</span> <span class="s2">"module-name"</span><span class="p">;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <blockquote class="blockquote" cite="https://angular.io/guide/architecture">
   <p>Angular apps are modular and Angular has its own modularity system
@@ -499,9 +496,8 @@ and it figures out how to create them.</p>
 <p>Every time you need a class instance, instead of using a Factory, you
 ask the injector to get it for you.</p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">car</span> <span class="o">=</span> <span class="nx">injector</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">Car</span><span class="p">);</span>
-</code></pre>
-</div>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">car</span> <span class="o">=</span> <span class="nx">injector</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">Car</span><span class="p">);</span>
+</code></pre></div></div>
 
 <h3 id="metadata">Metadata</h3>
 
@@ -614,7 +610,7 @@ Project 'my-app' successfully created.
 
 <p>The project is arranged in the following way:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
 └── my-app
     ├── e2e                            # end-to-end tests
     │   ├── app.e2e-spec.ts
@@ -648,8 +644,7 @@ Project 'my-app' successfully created.
     │   └── typings.d.ts
     ├── tsconfig.json
     └── tslint.json
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="files">Files</h2>
 
@@ -672,21 +667,19 @@ HTML template.</p>
 
 <p>A component contains the <code class="highlighter-rouge">AppComponent</code> class definition, like:</p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">AppComponent</span> <span class="p">{</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">AppComponent</span> <span class="p">{</span>
   <span class="nx">name</span> <span class="o">=</span> <span class="s1">'This is my component'</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>and a decorator with for example, data bindings to properties defined
 in the class:</p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Component</span><span class="p">({</span>
   <span class="na">selector</span><span class="p">:</span> <span class="s1">'my-app'</span><span class="p">,</span>
-  <span class="na">template</span><span class="p">:</span> <span class="err">`</span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="na">Name</span><span class="p">:</span> <span class="o">&lt;</span><span class="sr">/h1&gt;`</span><span class="err">,
-</span><span class="p">})</span>
-</code></pre>
-</div>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;h1&gt;Name: &lt;/h1&gt;`</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div></div>
 
 <p>Double curly braces are the interpolation binding syntax used by
 Angular.</p>
@@ -694,27 +687,24 @@ Angular.</p>
 <p>Instead of a literal string as a property value in the Component, a
 class can be used:</p>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">export</span> <span class="kr">class</span> <span class="nx">Description</span> <span class="p">{</span>
-  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">Description</span> <span class="p">{</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">export</span> <span class="kr">class</span> <span class="nx">AppComponent</span>  <span class="p">{</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">AppComponent</span>  <span class="p">{</span>
     <span class="nl">description</span> <span class="p">:</span> <span class="nx">Description</span> <span class="o">=</span> <span class="p">{</span>
 		<span class="na">name</span><span class="p">:</span> <span class="s1">'Some desc'</span>
     <span class="p">};</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Component</span><span class="p">({</span>
   <span class="na">selector</span><span class="p">:</span> <span class="s1">'my-app'</span><span class="p">,</span>
-  <span class="na">template</span><span class="p">:</span> <span class="err">`</span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="na">Name</span><span class="p">:</span> <span class="o">&lt;</span><span class="sr">/h1&gt;`</span><span class="err">,
-</span><span class="p">})</span>
-</code></pre>
-</div>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;h1&gt;Name: &lt;/h1&gt;`</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div></div>
 
-<div class="language-typescript highlighter-rouge"><pre class="highlight"><code></code></pre>
-</div>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div></div>
 
 <h2 id="modules">Modules</h2>
 

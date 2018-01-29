@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Appropriate HTML5 tags to show source code, commands and software related tasks on blogs | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Appropriate HTML5 tags to show source code, commands and software related tasks on blogs" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Set of HTML5 tags recommended to show code and commands in a webpage.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/html-tags-for-software-development-blogs/","publisher":null,"image":null,"headline":"Appropriate HTML5 tags to show source code, commands and software related tasks on blogs","dateModified":"2016-07-22T00:00:00+00:00","datePublished":"2016-07-22T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/html-tags-for-software-development-blogs/"},"@context":"http://schema.org"}</script>
+{"description":"Set of HTML5 tags recommended to show code and commands in a webpage.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/html-tags-for-software-development-blogs/","headline":"Appropriate HTML5 tags to show source code, commands and software related tasks on blogs","dateModified":"2016-07-22T00:00:00+00:00","datePublished":"2016-07-22T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/html-tags-for-software-development-blogs/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -452,15 +453,14 @@ that needs to preserve whitespaces like ASCII art or directory trees:</p>
 
 <p>The following text using <code class="highlighter-rouge">&lt;pre&gt;</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;pre&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre&gt;
 .
 ├── config.yml
 └── drafts
     ├── begin-with-the-crazy-ideas.textile
     └── on-simplicity-in-technology.markdown
 &lt;/pre&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>produces:</p>
 
@@ -501,7 +501,7 @@ useful to represent source code from languages like <em>python</em>.</p>
 
 <p>The following source using <code class="highlighter-rouge">&lt;pre&gt;</code> and <code class="highlighter-rouge">&lt;code&gt;</code>:</p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;pre&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;pre&gt;</span>
 <span class="nt">&lt;code&gt;</span>
  if foo:
      if bar:
@@ -510,8 +510,7 @@ useful to represent source code from languages like <em>python</em>.</p>
    print(foo)
 <span class="nt">&lt;/code&gt;</span>
 <span class="nt">&lt;/pre&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Will be displayed as:</p>
 
@@ -546,11 +545,10 @@ a function parameter, or just be a term used as a placeholder in prose.</p>
 
 <p>Example: The letter “n” is being used as a variable in prose:</p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>If there are <span class="nt">&lt;var&gt;</span>n<span class="nt">&lt;/var&gt;</span> pipes leading to the ice
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>If there are <span class="nt">&lt;var&gt;</span>n<span class="nt">&lt;/var&gt;</span> pipes leading to the ice
 cream factory then I expect at <span class="nt">&lt;em&gt;</span>least<span class="nt">&lt;/em&gt;</span> <span class="nt">&lt;var&gt;</span>n<span class="nt">&lt;/var&gt;</span>
 flavors of ice cream to be available for purchase!<span class="nt">&lt;/p&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Outputs:</p>
 
@@ -573,7 +571,7 @@ flavors of ice cream to be available for purchase!
 <p>A sequence of commands introduced in a termianl can be represented with <code class="highlighter-rouge">samp</code>, 
 for example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;pre class="shell"&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="shell"&gt;
 &lt;samp&gt;
 &lt;span class="shell-prompt"&gt;john@server:~$&lt;/span&gt; &lt;kbd&gt;ssh nasa.com&lt;/kbd&gt;
 Last login: Tue Apr 5 07:11:05 2010 from mars.com on pts/1
@@ -583,8 +581,7 @@ Linux nasa 2.6.11-grsec-v6.189 #1 SMP Tue Feb 1 12:21:05 PST 2010 i586
 &lt;span class="shell-prompt"&gt;john@nasa:~$&lt;/span&gt; &lt;span class="shell-cursor"&gt;_&lt;/span&gt;
 &lt;/samp&gt;
 &lt;/pre&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Outputs (with proper <em>CSS</em>):</p>
 
@@ -629,7 +626,7 @@ Linux nasa 2.6.11-grsec-v6.189 #1 SMP Tue Feb 1 12:21:05 PST 2010 i586
 
 <p>Example: The following code</p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>
 	To save it, select
 	<span class="nt">&lt;kbd&gt;</span>
 	  <span class="nt">&lt;kbd&gt;</span>
@@ -641,8 +638,7 @@ Linux nasa 2.6.11-grsec-v6.189 #1 SMP Tue Feb 1 12:21:05 PST 2010 i586
 	  <span class="nt">&lt;/kbd&gt;</span>
 	<span class="nt">&lt;/kbd&gt;</span>
 <span class="nt">&lt;/p&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Outputs:</p>
 

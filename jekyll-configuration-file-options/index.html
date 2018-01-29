@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Jekyll Configuration File Options | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Jekyll Configuration File Options" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Clutter-free software concepts. Written on the go.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/jekyll-configuration-file-options/","publisher":null,"image":null,"headline":"Jekyll Configuration File Options","dateModified":"2016-06-12T00:00:00+00:00","datePublished":"2016-06-12T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/jekyll-configuration-file-options/"},"@context":"http://schema.org"}</script>
+{"description":"Clutter-free software concepts. Written on the go.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/jekyll-configuration-file-options/","headline":"Jekyll Configuration File Options","dateModified":"2016-06-12T00:00:00+00:00","datePublished":"2016-06-12T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/jekyll-configuration-file-options/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -385,82 +386,81 @@
 
 <h2 id="full-list-of-all-the-default-configuration-options">Full list of all the default configuration options</h2>
 
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Where things are</span>
-<span class="s">source</span><span class="pi">:</span>                      <span class="c1"># Current-dir</span>
-<span class="s">destination</span><span class="pi">:</span>                 <span class="c1"># Current-dir/_site</span>
-<span class="s">plugins_dir</span><span class="pi">:</span>    <span class="s1">'</span><span class="s">_plugins'</span>
-<span class="s">layouts_dir</span><span class="pi">:</span>    <span class="s1">'</span><span class="s">_layouts'</span>
-<span class="s">data_dir</span><span class="pi">:</span>       <span class="s1">'</span><span class="s">_data'</span>
-<span class="s">includes_dir</span><span class="pi">:</span>   <span class="s1">'</span><span class="s">_includes'</span>
-<span class="s">collections</span><span class="pi">:</span>    <span class="s">null</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Where things are</span>
+<span class="na">source</span><span class="pi">:</span>                      <span class="c1"># Current-dir</span>
+<span class="na">destination</span><span class="pi">:</span>                 <span class="c1"># Current-dir/_site</span>
+<span class="na">plugins_dir</span><span class="pi">:</span>    <span class="s1">'</span><span class="s">_plugins'</span>
+<span class="na">layouts_dir</span><span class="pi">:</span>    <span class="s1">'</span><span class="s">_layouts'</span>
+<span class="na">data_dir</span><span class="pi">:</span>       <span class="s1">'</span><span class="s">_data'</span>
+<span class="na">includes_dir</span><span class="pi">:</span>   <span class="s1">'</span><span class="s">_includes'</span>
+<span class="na">collections</span><span class="pi">:</span>    <span class="no">null</span>
 <span class="c1">#  my_collection:</span>
 <span class="c1">#    output: true</span>
 <span class="c1">#    permalink: /awesome/:path/</span>
 
 <span class="c1"># Handling Reading</span>
-<span class="s">safe</span><span class="pi">:</span>           <span class="s">false</span>
-<span class="s">include</span><span class="pi">:</span>        <span class="pi">[</span><span class="s1">'</span><span class="s">.htaccess'</span><span class="pi">]</span>
-<span class="s">exclude</span><span class="pi">:</span>        <span class="pi">[]</span>
-<span class="s">keep_files</span><span class="pi">:</span>     <span class="pi">[</span><span class="s1">'</span><span class="s">.git'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">.svn'</span><span class="pi">]</span>
-<span class="s">encoding</span><span class="pi">:</span>       <span class="s1">'</span><span class="s">utf-8'</span>
-<span class="s">markdown_ext</span><span class="pi">:</span>   <span class="s1">'</span><span class="s">markdown,mkdown,mkdn,mkd,md'</span>
+<span class="na">safe</span><span class="pi">:</span>           <span class="no">false</span>
+<span class="na">include</span><span class="pi">:</span>        <span class="pi">[</span><span class="s1">'</span><span class="s">.htaccess'</span><span class="pi">]</span>
+<span class="na">exclude</span><span class="pi">:</span>        <span class="pi">[]</span>
+<span class="na">keep_files</span><span class="pi">:</span>     <span class="pi">[</span><span class="s1">'</span><span class="s">.git'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">.svn'</span><span class="pi">]</span>
+<span class="na">encoding</span><span class="pi">:</span>       <span class="s1">'</span><span class="s">utf-8'</span>
+<span class="na">markdown_ext</span><span class="pi">:</span>   <span class="s1">'</span><span class="s">markdown,mkdown,mkdn,mkd,md'</span>
 
 <span class="c1"># Filtering Content</span>
-<span class="s">show_drafts</span><span class="pi">:</span>    <span class="s">null</span>
-<span class="s">limit_posts</span><span class="pi">:</span>    <span class="s">0</span>
-<span class="s">future</span><span class="pi">:</span>         <span class="s">false</span>
-<span class="s">unpublished</span><span class="pi">:</span>    <span class="s">false</span>
+<span class="na">show_drafts</span><span class="pi">:</span>    <span class="no">null</span>
+<span class="na">limit_posts</span><span class="pi">:</span>    <span class="s">0</span>
+<span class="na">future</span><span class="pi">:</span>         <span class="no">false</span>
+<span class="na">unpublished</span><span class="pi">:</span>    <span class="no">false</span>
 
 <span class="c1"># Plugins</span>
-<span class="s">whitelist</span><span class="pi">:</span>      <span class="pi">[]</span>
-<span class="s">gems</span><span class="pi">:</span>           <span class="pi">[]</span>
+<span class="na">whitelist</span><span class="pi">:</span>      <span class="pi">[]</span>
+<span class="na">gems</span><span class="pi">:</span>           <span class="pi">[]</span>
 
 <span class="c1"># Conversion</span>
-<span class="s">markdown</span><span class="pi">:</span>       <span class="s1">'</span><span class="s">kramdown'</span>
-<span class="s">highlighter</span><span class="pi">:</span>    <span class="s1">'</span><span class="s">rouge'</span>
-<span class="s">lsi</span><span class="pi">:</span>            <span class="s">false</span>
-<span class="s">excerpt_separator</span><span class="pi">:</span>  <span class="s2">"</span><span class="se">\n\n</span><span class="s">"</span>
-<span class="s">incremental</span><span class="pi">:</span>    <span class="s">false</span>
+<span class="na">markdown</span><span class="pi">:</span>       <span class="s1">'</span><span class="s">kramdown'</span>
+<span class="na">highlighter</span><span class="pi">:</span>    <span class="s1">'</span><span class="s">rouge'</span>
+<span class="na">lsi</span><span class="pi">:</span>            <span class="no">false</span>
+<span class="na">excerpt_separator</span><span class="pi">:</span>  <span class="s2">"</span><span class="se">\n\n</span><span class="s">"</span>
+<span class="na">incremental</span><span class="pi">:</span>    <span class="no">false</span>
 
 <span class="c1"># Serving</span>
-<span class="s">detach</span><span class="pi">:</span>         <span class="s">false</span>          <span class="c1"># default to not detaching the serve</span>
-<span class="s">port</span><span class="pi">:</span>           <span class="s1">'</span><span class="s">4000'</span>
-<span class="s">host</span><span class="pi">:</span>           <span class="s1">'</span><span class="s">127.0.0.1'</span>
-<span class="s">baseurl</span><span class="pi">:</span>        <span class="s1">'</span><span class="s">'</span>
-<span class="s">show_dir_listing</span><span class="pi">:</span>  <span class="s">false</span>
+<span class="na">detach</span><span class="pi">:</span>         <span class="no">false</span>          <span class="c1"># default to not detaching the serve</span>
+<span class="na">port</span><span class="pi">:</span>           <span class="s1">'</span><span class="s">4000'</span>
+<span class="na">host</span><span class="pi">:</span>           <span class="s1">'</span><span class="s">127.0.0.1'</span>
+<span class="na">baseurl</span><span class="pi">:</span>        <span class="s1">'</span><span class="s">'</span>
+<span class="na">show_dir_listing</span><span class="pi">:</span>  <span class="no">false</span>
 
 <span class="c1"># Output Configuration</span>
-<span class="s">permalink</span><span class="pi">:</span>      <span class="s1">'</span><span class="s">date'</span>
-<span class="s">paginate_path</span><span class="pi">:</span>  <span class="s1">'</span><span class="s">/page:num'</span>
-<span class="s">timezone</span><span class="pi">:</span>       <span class="s">null</span>           <span class="c1"># use local timezone</span>
+<span class="na">permalink</span><span class="pi">:</span>      <span class="s1">'</span><span class="s">date'</span>
+<span class="na">paginate_path</span><span class="pi">:</span>  <span class="s1">'</span><span class="s">/page:num'</span>
+<span class="na">timezone</span><span class="pi">:</span>       <span class="no">null</span>           <span class="c1"># use local timezone</span>
 
-<span class="s">quiet</span><span class="pi">:</span>          <span class="s">false</span>
-<span class="s">verbose</span><span class="pi">:</span>        <span class="s">false</span>
-<span class="s">defaults</span><span class="pi">:</span>       
+<span class="na">quiet</span><span class="pi">:</span>          <span class="no">false</span>
+<span class="na">verbose</span><span class="pi">:</span>        <span class="no">false</span>
+<span class="na">defaults</span><span class="pi">:</span>       
 <span class="c1">#  - scope:</span>
 <span class="c1">#      path: ""</span>
 <span class="c1">#      type: my_collection</span>
 <span class="c1">#    values:</span>
 <span class="c1">#      layout: page</span>
 
-<span class="s">rdiscount</span><span class="pi">:</span>
-  <span class="s">extensions</span><span class="pi">:</span>   <span class="pi">[]</span>
+<span class="na">rdiscount</span><span class="pi">:</span>
+  <span class="na">extensions</span><span class="pi">:</span>   <span class="pi">[]</span>
 
 
-<span class="s">redcarpet</span><span class="pi">:</span>
-  <span class="s">extensions</span><span class="pi">:</span>   <span class="pi">[]</span>
+<span class="na">redcarpet</span><span class="pi">:</span>
+  <span class="na">extensions</span><span class="pi">:</span>   <span class="pi">[]</span>
 
-<span class="s">kramdown</span><span class="pi">:</span>
-  <span class="s">auto_ids</span><span class="pi">:</span>        <span class="s">true</span>
-  <span class="s">toc_levels</span><span class="pi">:</span>      <span class="s1">'</span><span class="s">1..6'</span>
-  <span class="s">entity_output</span><span class="pi">:</span>   <span class="s1">'</span><span class="s">as_char'</span>
-  <span class="s">smart_quotes</span><span class="pi">:</span>    <span class="s1">'</span><span class="s">lsquo,rsquo,ldquo,rdquo'</span>
-  <span class="s">input</span><span class="pi">:</span>           <span class="s2">"</span><span class="s">GFM"</span>
-  <span class="s">hard_wrap</span><span class="pi">:</span>       <span class="s">false</span>
-  <span class="s">footnote_nr</span><span class="pi">:</span>     <span class="s">1</span>
+<span class="na">kramdown</span><span class="pi">:</span>
+  <span class="na">auto_ids</span><span class="pi">:</span>        <span class="no">true</span>
+  <span class="na">toc_levels</span><span class="pi">:</span>      <span class="s1">'</span><span class="s">1..6'</span>
+  <span class="na">entity_output</span><span class="pi">:</span>   <span class="s1">'</span><span class="s">as_char'</span>
+  <span class="na">smart_quotes</span><span class="pi">:</span>    <span class="s1">'</span><span class="s">lsquo,rsquo,ldquo,rdquo'</span>
+  <span class="na">input</span><span class="pi">:</span>           <span class="s2">"</span><span class="s">GFM"</span>
+  <span class="na">hard_wrap</span><span class="pi">:</span>       <span class="no">false</span>
+  <span class="na">footnote_nr</span><span class="pi">:</span>     <span class="s">1</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p class="alert alert-warning">Tested with Jekyll version v3.2.0</p>
 

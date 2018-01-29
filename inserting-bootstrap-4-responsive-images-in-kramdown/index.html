@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Inserting Bootstrap 4 Responsive Images In Kramdown | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Inserting Bootstrap 4 Responsive Images In Kramdown" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"How to insert images with the Bootstrap 4 responsive class in kramdown.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/inserting-bootstrap-4-responsive-images-in-kramdown/","publisher":null,"image":null,"headline":"Inserting Bootstrap 4 Responsive Images In Kramdown","dateModified":"2016-08-07T00:00:00+00:00","datePublished":"2016-08-07T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/inserting-bootstrap-4-responsive-images-in-kramdown/"},"@context":"http://schema.org"}</script>
+{"description":"How to insert images with the Bootstrap 4 responsive class in kramdown.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/inserting-bootstrap-4-responsive-images-in-kramdown/","headline":"Inserting Bootstrap 4 Responsive Images In Kramdown","dateModified":"2016-08-07T00:00:00+00:00","datePublished":"2016-08-07T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/inserting-bootstrap-4-responsive-images-in-kramdown/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -376,21 +377,18 @@
 
     <p>The common markup for inserting images in kramdown is:</p>
 
-<div class="language-markdown highlighter-rouge"><pre class="highlight"><code><span class="p">![</span><span class="nv">Homepage screenshot</span><span class="p">](</span><span class="sx">/assets/homescreen.png</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">![</span><span class="nv">Homepage screenshot</span><span class="p">](</span><span class="sx">/assets/homescreen.png</span><span class="p">)</span>
+</code></pre></div></div>
 
-<p>The most used way to add a class to any markup is to use <em>inline annotations</em> <strong>in the line below</strong> of the markup with <code class="highlighter-rouge"><span class="p">{</span><span class="err">:class=</span><span class="nt">"a-class"</span><span class="err">}</span></code> but in this case it should be used in the same line, so this:</p>
+<p>The most used way to add a class to any markup is to use <em>inline annotations</em> <strong>in the line below</strong> of the markup with <code class="highlighter-rouge">{:class="a-class"}</code> but in this case it should be used in the same line, so this:</p>
 
-<div class="language-markdown highlighter-rouge"><pre class="highlight"><code><span class="p">![</span><span class="nv">Homepage screenshot</span><span class="p">](</span><span class="sx">/assets/homescreen.png</span><span class="p">)</span>{:class="img-fluid"}
-</code></pre>
-</div>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">![</span><span class="nv">Homepage screenshot</span><span class="p">](</span><span class="sx">/assets/homescreen.png</span><span class="p">)</span>{:class="img-fluid"}
+</code></pre></div></div>
 
 <p>generates:</p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/rails_first_homescreen.png"</span> <span class="na">alt=</span><span class="s">"Homepage screenshot"</span> <span class="na">class=</span><span class="s">"img-fluid"</span><span class="nt">&gt;</span>
-</code></pre>
-</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/rails_first_homescreen.png"</span> <span class="na">alt=</span><span class="s">"Homepage screenshot"</span> <span class="na">class=</span><span class="s">"img-fluid"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
 
 
     

@@ -18,7 +18,7 @@
     
     
     <!-- Mermaid -->
-    <link rel="stylesheet" href="https://simpleit.rocks/assets/vendor/mermaid.forest.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="https://simpleit.rocks/assets/vendor/mermaid.css" type="text/css" media="screen" />
     
     
     <!-- Custom css -->
@@ -48,8 +48,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Django Configuration and environment isolation | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Django Configuration and environment isolation" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -65,7 +66,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Configure a Django project to handle multiple environments, creating different settings and handling packages for each one.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/custom-django-configurations-for-different-servers/","publisher":null,"image":null,"headline":"Django Configuration and environment isolation","dateModified":"2016-06-10T00:00:00+00:00","datePublished":"2016-06-10T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/custom-django-configurations-for-different-servers/"},"@context":"http://schema.org"}</script>
+{"description":"Configure a Django project to handle multiple environments, creating different settings and handling packages for each one.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/custom-django-configurations-for-different-servers/","headline":"Django Configuration and environment isolation","dateModified":"2016-06-10T00:00:00+00:00","datePublished":"2016-06-10T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/custom-django-configurations-for-different-servers/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -490,11 +491,10 @@
 
 <p>To check that the secret environment key is being loaded, it is possible to check it from a python shell:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">"A_SECRET_KEY"</span><span class="p">]</span>
 <span class="s">"shhh1234"</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Then to get the value for a specific environment, the <em>production config
 file</em> in version control only needs to get this environment variable 
@@ -514,7 +514,7 @@ different environments.</p>
 <code class="highlighter-rouge">base.py</code> config with common configurations accross all of them and 
 create specific config files for each environment:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
 └── REPO-ROOT `git repo`
     ├── .gitignore
     ├── ...
@@ -525,8 +525,7 @@ create specific config files for each environment:</p>
         |   └── local.py
         ├── manage.py
         └── ...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <ol>
   <li>Create the settings directory <code class="highlighter-rouge">$ mkdir &lt;project_name&gt;/settings</code></li>
@@ -610,7 +609,7 @@ or that can be installed in different Operating Systems.</p>
 file with common packages across environments and then adding
 the needed packages for each environment.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
 └── REPO-ROOT `git repo`
     ├── .gitignore
     ├── requirements
@@ -622,39 +621,33 @@ the needed packages for each environment.</p>
     └── PROJECT-ROOT
         ├── manage.py
         └── ...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Using <code class="highlighter-rouge">pip</code> it is possible to specify which file has the list of
 packages you want:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>pip install [options] -r &lt;requirements file&gt; [package-index-options] ...
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install [options] -r &lt;requirements file&gt; [package-index-options] ...
   -r, --requirement &lt;file&gt;    Install from the given requirements file. This option can be used multiple times.
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>So to make it possible for each environment to inherit the packages from the
 <em>base.txt</em> requirement file using <code class="highlighter-rouge">pip</code>, each new file should begin with: <code class="highlighter-rouge">-r base.txt</code></p>
 
-<div class="language-conf highlighter-rouge"><pre class="highlight"><code><span class="c"># /requirements/base.txt
+<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># /requirements/base.txt
 # list of packages present in all environments
-</span></code></pre>
-</div>
+</span></code></pre></div></div>
 
-<div class="language-conf highlighter-rouge"><pre class="highlight"><code><span class="c"># /requirements/local.txt
+<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># /requirements/local.txt
 </span>-<span class="n">r</span> <span class="n">base</span>.<span class="n">txt</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="language-conf highlighter-rouge"><pre class="highlight"><code><span class="c"># /requirements/test.txt
+<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># /requirements/test.txt
 </span>-<span class="n">r</span> <span class="n">base</span>.<span class="n">txt</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="language-conf highlighter-rouge"><pre class="highlight"><code><span class="c"># /requirements/production.txt
+<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># /requirements/production.txt
 </span>-<span class="n">r</span> <span class="n">base</span>.<span class="n">txt</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <ul>
   <li>To generate a requirements file: <a href="https://pip.pypa.io/en/stable/reference/pip_freeze/">$ pip freeze</a> <code class="highlighter-rouge">$ pip freeze --local &gt; requirements/base.txt</code></li>

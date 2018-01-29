@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Bash Script to Find Out If MySQL Is Running Or Not | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Bash Script to Find Out If MySQL Is Running Or Not" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"A simple shell script to check if mysql server is running and start it if it’s not.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/lightweight-solution-to-start-mysql-daemon-if-not-running/","publisher":null,"image":null,"headline":"Bash Script to Find Out If MySQL Is Running Or Not","dateModified":"2016-11-09T00:00:00+00:00","datePublished":"2016-11-09T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/lightweight-solution-to-start-mysql-daemon-if-not-running/"},"@context":"http://schema.org"}</script>
+{"description":"A simple shell script to check if mysql server is running and start it if it’s not.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/lightweight-solution-to-start-mysql-daemon-if-not-running/","headline":"Bash Script to Find Out If MySQL Is Running Or Not","dateModified":"2016-11-09T00:00:00+00:00","datePublished":"2016-11-09T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/lightweight-solution-to-start-mysql-daemon-if-not-running/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -391,7 +392,7 @@ email.</p>
 <p>Create the script <code class="highlighter-rouge">/root/scripts/monitor_mysql.sh</code> with the following
 content:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 
 <span class="c">##########</span>
 <span class="c"># Config #</span>
@@ -399,20 +400,19 @@ content:</p>
 <span class="nv">mysql_daemon</span><span class="o">=</span><span class="s1">'mysqld'</span>
 <span class="nv">pgrep</span><span class="o">=</span><span class="s1">'/usr/bin/pgrep'</span>
 <span class="nv">mysql_start</span><span class="o">=</span><span class="s1">'sudo service mysql start'</span>
-<span class="nv">fail_msg</span><span class="o">=</span><span class="s2">"MySQL is down in </span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">."</span>
+<span class="nv">fail_msg</span><span class="o">=</span><span class="s2">"MySQL is down in </span><span class="k">$(</span><span class="nb">hostname</span><span class="k">)</span><span class="s2">."</span>
 
 <span class="c">##########</span>
 <span class="c"># Script #</span>
 <span class="c">##########</span>
 
 <span class="c">#look up process</span>
-<span class="nv">$pgrep</span> <span class="nv">$mysql_daemon</span> &gt; /dev/null
-<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span>; <span class="k">then
+<span class="nv">$pgrep</span> <span class="nv">$mysql_daemon</span> <span class="o">&gt;</span> /dev/null
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="nt">-ne</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">then
     </span><span class="nb">echo</span> <span class="nv">$fail_msg</span>
     <span class="nv">$mysql_start</span>
 <span class="k">fi</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>And make it executable:</p>
 
@@ -434,10 +434,9 @@ content:</p>
 
 <p>Add the following lines:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>MAILTO=mail@example.com
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MAILTO=mail@example.com
 */10 * * * * /root/scripts/monitor_mysql.sh
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Every time the script starts the daemon, an email will be sent with
 its output.</p>

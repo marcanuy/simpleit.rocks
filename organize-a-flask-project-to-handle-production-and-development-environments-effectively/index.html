@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Organize A Flask Project To Handle Production And Development Environments Effectively | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Organize A Flask Project To Handle Production And Development Environments Effectively" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"How to configure Flask to handle different configuration files based on environment variables. Having specific configuration files for production and development.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/organize-a-flask-project-to-handle-production-and-development-environments-effectively/","publisher":null,"image":null,"headline":"Organize A Flask Project To Handle Production And Development Environments Effectively","dateModified":"2017-01-11T00:00:00+00:00","datePublished":"2017-01-11T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/organize-a-flask-project-to-handle-production-and-development-environments-effectively/"},"@context":"http://schema.org"}</script>
+{"description":"How to configure Flask to handle different configuration files based on environment variables. Having specific configuration files for production and development.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/organize-a-flask-project-to-handle-production-and-development-environments-effectively/","headline":"Organize A Flask Project To Handle Production And Development Environments Effectively","dateModified":"2017-01-11T00:00:00+00:00","datePublished":"2017-01-11T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/organize-a-flask-project-to-handle-production-and-development-environments-effectively/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -399,11 +400,10 @@ for each environment: Production, Staging, Development, etc.</p>
 <p>Having a configuration that loads configuration values from the
 specified <em>config</em> environment <code class="highlighter-rouge">YOURAPPLICATION_SETTINGS</code>:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="s">'yourapplication.default_settings'</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_envvar</span><span class="p">(</span><span class="s">'YOURAPPLICATION_SETTINGS'</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Then we create a separate config.py for each <em>env</em> and export the
 configuration path:</p>
@@ -433,7 +433,7 @@ level of your main file or the package.</p>
 <p>Using this folder and having environment specific configuration files
 in the <code class="highlighter-rouge">config</code> folder we end up having the following directory structure:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>...
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
 config/
   __init__.py
   default.py
@@ -445,8 +445,7 @@ myapp/
   __init__.py
   myapp.py
   ..
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>To have the configurations loaded we have to:</p>
 
@@ -459,14 +458,13 @@ variable</li>
 
 <p>In <code class="highlighter-rouge">myapp/__init__.py</code> we load them:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># myapp/__init__.py</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># myapp/__init__.py</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">,</span> <span class="n">instance_relative_config</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="s">'config.default'</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_pyfile</span><span class="p">(</span><span class="s">'config.py'</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_envvar</span><span class="p">(</span><span class="s">'APP_CONFIG_FILE'</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Then set the environment variable depending on the server we are
 invoking the app:</p>
@@ -479,7 +477,7 @@ invoking the app:</p>
 
 <p>Now your folder structure should look like:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>myapp
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>myapp
 ├── config
 │   ├── __init__.py     # empty
 │   ├── development.py
@@ -490,8 +488,7 @@ invoking the app:</p>
 └── myapp
    ├── __init__.py
    └── myapp.py
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>It can be useful to also add support for <code class="highlighter-rouge">dotenv</code> to <a href="/managing-environment-configuration-variables-in-flask-with-dotenv/">handle sensitive
 variables when deploying to Heroku</a>.</p>

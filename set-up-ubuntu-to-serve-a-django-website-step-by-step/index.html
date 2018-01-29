@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Set Up Ubuntu To Serve A Django Website Step By Step | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Set Up Ubuntu To Serve A Django Website Step By Step" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"How to set up Ubuntu to serve a Django website using systemd and Gunicorn.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/set-up-ubuntu-to-serve-a-django-website-step-by-step/","publisher":null,"image":null,"headline":"Set Up Ubuntu To Serve A Django Website Step By Step","dateModified":"2017-07-03T00:00:00+00:00","datePublished":"2017-07-03T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/set-up-ubuntu-to-serve-a-django-website-step-by-step/"},"@context":"http://schema.org"}</script>
+{"description":"How to set up Ubuntu to serve a Django website using systemd and Gunicorn.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/set-up-ubuntu-to-serve-a-django-website-step-by-step/","headline":"Set Up Ubuntu To Serve A Django Website Step By Step","dateModified":"2017-07-03T00:00:00+00:00","datePublished":"2017-07-03T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/set-up-ubuntu-to-serve-a-django-website-step-by-step/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -439,7 +440,7 @@ controlled by <em>systemd</em>. As the configuration filename should end in
 <code class="highlighter-rouge">.socket</code> we create the following file:
 <code class="highlighter-rouge">/etc/systemd/system/gunicorn.socket</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[Unit]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Unit]
 Description=gunicorn socket
 
 [Socket]
@@ -447,8 +448,7 @@ ListenStream=/run/gunicorn/socket
 
 [Install]
 WantedBy=sockets.target
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p cite="http://docs.gunicorn.org/en/stable/deploy.html#systemd"><em>systemd</em> will listen on this socket and start <strong>Gunicorn</strong>
 automatically in response to traffic.</p>
@@ -461,7 +461,7 @@ automatically in response to traffic.</p>
 <p>Then the service that use the above socket, In
 <code class="highlighter-rouge">/etc/systemd/system/gunicorn.service</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[Unit]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Unit]
 Description=gunicorn daemon
 Requires=gunicorn.socket
 After=network.target
@@ -484,8 +484,7 @@ PrivateTmp=true
 
 [Install]
 WantedBy=multi-user.target
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p class="alert alert-info">Be sure to adjust <code class="highlighter-rouge">WorkingDirectory</code> to your application root.</p>
 
@@ -494,9 +493,8 @@ WantedBy=multi-user.target
 <p>Temporal files handled by <em>systemd</em> are located in <code class="highlighter-rouge">/etc/tmpfiles.d/</code>,
 we create <code class="highlighter-rouge">/etc/tmpfiles.d/gunicorn.conf</code> with the following content:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>d /run/gunicorn 0755 chengue www-data -
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>d /run/gunicorn 0755 chengue www-data -
+</code></pre></div></div>
 
 <p class="alert alert-info"><code class="highlighter-rouge">www-data</code> is the Linux group of <code class="highlighter-rouge">nginx</code>.</p>
 
@@ -505,7 +503,7 @@ we create <code class="highlighter-rouge">/etc/tmpfiles.d/gunicorn.conf</code> w
 <p>Lastly, configure the web proxy to send traffic to the <em>Gunicorn</em>
 socket. Create a virtual site in <code class="highlighter-rouge">/etc/nginx/sites-available/example.com</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>server {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server {
 	# redirect www to non-www
     server_name www.example.com;
     return 301 $scheme://example.com$request_uri;
@@ -527,8 +525,7 @@ server {
 		proxy_pass http://unix:/run/gunicorn/socket;
 	}
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Now that we have our <code class="highlighter-rouge">example.com</code> configuration as an available
 website in nginx, we should enable it creating a symbolic link in

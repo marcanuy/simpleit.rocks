@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Managing Environment Configuration Variables In Flask With Dotenv | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Managing Environment Configuration Variables In Flask With Dotenv" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"How to manage environment variables for a specific app using dotenv.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/managing-environment-configuration-variables-in-flask-with-dotenv/","publisher":null,"image":null,"headline":"Managing Environment Configuration Variables In Flask With Dotenv","dateModified":"2017-01-24T00:00:00+00:00","datePublished":"2017-01-24T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/managing-environment-configuration-variables-in-flask-with-dotenv/"},"@context":"http://schema.org"}</script>
+{"description":"How to manage environment variables for a specific app using dotenv.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/managing-environment-configuration-variables-in-flask-with-dotenv/","headline":"Managing Environment Configuration Variables In Flask With Dotenv","dateModified":"2017-01-24T00:00:00+00:00","datePublished":"2017-01-24T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/managing-environment-configuration-variables-in-flask-with-dotenv/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -464,9 +465,8 @@ variables:</p>
 
 <p>or simply add them manually to <code class="highlighter-rouge">.env</code>, for example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>TWITTER_CONSUMER_KEY=MYINCREDIBLEKEY
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TWITTER_CONSUMER_KEY=MYINCREDIBLEKEY
+</code></pre></div></div>
 
 <h2 id="use-the-new-environment-variables">use the new environment variables</h2>
 
@@ -474,18 +474,17 @@ variables:</p>
 
 <p>Having the following typical structure:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>myapp
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>myapp
 	.env
 	myapp
 		__init__.py
 		myapp.py
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>I like to initialize my app in <code class="highlighter-rouge">/myapp/__init.py__</code>, but it should be
 the same if you add this to <code class="highlighter-rouge">/myapp/myapp.py</code>.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 <span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
 <span class="c">#...</span>
@@ -496,8 +495,7 @@ the same if you add this to <code class="highlighter-rouge">/myapp/myapp.py</cod
 <span class="n">load_dotenv</span><span class="p">(</span><span class="n">dotenv_path</span><span class="p">)</span>
 
 <span class="n">tw_consumer_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">'TWITTER_CONSUMER_KEY'</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="conclusion">Conclusion</h2>
 

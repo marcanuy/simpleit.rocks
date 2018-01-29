@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Jekyll Variables and Liquid template tags cheatsheet | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Jekyll Variables and Liquid template tags cheatsheet" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Jekyll template tags summary.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/jekyll-variables-and-liquid-template-tags-cheatsheet/","publisher":null,"image":null,"headline":"Jekyll Variables and Liquid template tags cheatsheet","dateModified":"2016-07-13T00:00:00+00:00","datePublished":"2016-07-13T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/jekyll-variables-and-liquid-template-tags-cheatsheet/"},"@context":"http://schema.org"}</script>
+{"description":"Jekyll template tags summary.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/jekyll-variables-and-liquid-template-tags-cheatsheet/","headline":"Jekyll Variables and Liquid template tags cheatsheet","dateModified":"2016-07-13T00:00:00+00:00","datePublished":"2016-07-13T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/jekyll-variables-and-liquid-template-tags-cheatsheet/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -435,11 +436,10 @@
 
 <p>Example Output:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Version: 3.5.2 #3.2.0.pre.beta1
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Version: 3.7.2 #3.2.0.pre.beta1
 
 Environment: production # development
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><a href="https://github.com/jekyll/jekyll/blob/v3.2.0.pre.beta1/lib/jekyll/drops/jekyll_drop.rb">Source</a></p>
 
@@ -579,19 +579,18 @@ Environment: production # development
 
 <h3 id="list-of-posts">List of posts</h3>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>&lt;ul&gt;
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ul&gt;
   <span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>post<span class="w"> </span>in<span class="w"> </span>site.posts<span class="w"> </span><span class="p">%}</span>
     &lt;li&gt;
       &lt;a href="<span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">url</span><span class="w"> </span><span class="p">}}</span>"&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="p">}}</span>&lt;/a&gt;
     &lt;/li&gt;
   <span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
 &lt;/ul&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="list-of-collections">List of collections</h3>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>collection<span class="w"> </span>in<span class="w"> </span>site.collections<span class="w"> </span><span class="p">%}</span>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>collection<span class="w"> </span>in<span class="w"> </span>site.collections<span class="w"> </span><span class="p">%}</span>
 
 &lt;h4&gt;Collection <span class="p">{{</span><span class="nv">forloop</span><span class="p">.</span><span class="nv">index</span><span class="p">}}</span>&lt;/h4&gt;
 
@@ -610,12 +609,11 @@ Environment: production # development
 &lt;/dl&gt;
 &lt;hr&gt;
 <span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="example-output">Example Output</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Collection 1
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Collection 1
 
 books
 
@@ -640,12 +638,11 @@ Directory
     /home/marcanuy/Development/simpleit.rocks/_posts
 Output
     true 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="list-of-document-attributes-of-a-collection">List of document attributes of a Collection</h3>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>collection<span class="w"> </span>in<span class="w"> </span>site.collections<span class="w"> </span><span class="p">%}</span>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>collection<span class="w"> </span>in<span class="w"> </span>site.collections<span class="w"> </span><span class="p">%}</span>
 
 &lt;h4&gt;Collection <span class="p">{{</span><span class="nv">forloop</span><span class="p">.</span><span class="nv">index</span><span class="p">}}</span>&lt;/h4&gt;
 
@@ -659,12 +656,11 @@ Output
 &lt;/dl&gt;
 &lt;hr&gt;
 <span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="example-output-1">Example Output</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Path
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Path
     docs/ruby/jekyll/templates/_posts/2016-07-13-jekyll-variables-and-liquid-template-tags-cheatsheet.md
 Relative_path
     docs/ruby/jekyll/templates/_posts/2016-07-13-jekyll-variables-and-liquid-template-tags-cheatsheet.md
@@ -672,8 +668,7 @@ Collection
     posts
 Date
     2016-07-13 00:00:00 -0300
-</code></pre>
-</div>
+</code></pre></div></div>
 
 
     

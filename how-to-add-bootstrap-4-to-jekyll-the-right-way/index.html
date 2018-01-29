@@ -18,7 +18,7 @@
     
     
     <!-- Mermaid -->
-    <link rel="stylesheet" href="https://simpleit.rocks/assets/vendor/mermaid.forest.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="https://simpleit.rocks/assets/vendor/mermaid.css" type="text/css" media="screen" />
     
     
     <!-- Custom css -->
@@ -48,8 +48,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>5 Steps To Add Bootstrap 4 To Jekyll The Right Way | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="5 Steps To Add Bootstrap 4 To Jekyll The Right Way" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -65,7 +66,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Guide to add Bootstrap 4 to Jekyll with focus on having also a CSS stylesheet using its own variables and custom ones.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/how-to-add-bootstrap-4-to-jekyll-the-right-way/","publisher":null,"image":null,"headline":"5 Steps To Add Bootstrap 4 To Jekyll The Right Way","dateModified":"2017-02-27T00:00:00+00:00","datePublished":"2017-02-27T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/how-to-add-bootstrap-4-to-jekyll-the-right-way/"},"@context":"http://schema.org"}</script>
+{"description":"Guide to add Bootstrap 4 to Jekyll with focus on having also a CSS stylesheet using its own variables and custom ones.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/how-to-add-bootstrap-4-to-jekyll-the-right-way/","headline":"5 Steps To Add Bootstrap 4 To Jekyll The Right Way","dateModified":"2017-02-27T00:00:00+00:00","datePublished":"2017-02-27T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/how-to-add-bootstrap-4-to-jekyll-the-right-way/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -564,19 +565,17 @@ it, so it will process other folders too.</p>
 
 <p>Instead of setting a custom sass folder with:</p>
 
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">sass</span><span class="pi">:</span>
-    <span class="s">sass_dir</span><span class="pi">:</span> <span class="s">_sass</span>
-</code></pre>
-</div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">sass</span><span class="pi">:</span>
+    <span class="na">sass_dir</span><span class="pi">:</span> <span class="s">_sass</span>
+</code></pre></div></div>
 
 <p>we use the <code class="highlighter-rouge">load-paths</code><sup id="fnref:load-paths"><a href="#fn:load-paths" class="footnote">2</a></sup> key in <code class="highlighter-rouge">_config.yml</code> to add more paths:</p>
 
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">sass</span><span class="pi">:</span>
-    <span class="s">load_paths</span><span class="pi">:</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">sass</span><span class="pi">:</span>
+    <span class="na">load_paths</span><span class="pi">:</span>
         <span class="pi">-</span> <span class="s">_sass</span>
         <span class="pi">-</span> <span class="s">node_modules</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p class="alert alert-danger"><code class="highlighter-rouge">load_paths</code> only works when <strong>not</strong> in safe mode<sup id="fnref:safe-mode"><a href="#fn:safe-mode" class="footnote">3</a></sup></p>
 
@@ -586,9 +585,8 @@ it, so it will process other folders too.</p>
 so we have to make sure it is included in the final site to be able to
 use its files:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>exclude: []
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exclude: []
+</code></pre></div></div>
 
 <h2 id="add-javascript">Add javascript</h2>
 
@@ -598,7 +596,7 @@ faster, just before the <code class="highlighter-rouge">&lt;/body&gt;</code> HTM
 <p>We add them in the default layout at <code class="highlighter-rouge">_layouts/default.html</code> or in
 <code class="highlighter-rouge">footer.html</code> in the <code class="highlighter-rouge">_includes</code> folder:</p>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>&lt;html&gt;
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;html&gt;
 &lt;body&gt;
 ...
 	&lt;script src="<span class="p">{{</span><span class="s1">'/node_modules/jquery/dist/jquery.min.js'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">prepend</span><span class="p">:</span><span class="w"> </span>site.baseurl<span class="p">}}</span>"&gt;&lt;/script&gt;
@@ -606,8 +604,7 @@ faster, just before the <code class="highlighter-rouge">&lt;/body&gt;</code> HTM
 	&lt;script src="<span class="p">{{</span><span class="s1">'/node_modules/bootstrap/dist/js/bootstrap.min.js'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">prepend</span><span class="p">:</span><span class="w"> </span>site.baseurl<span class="p">}}</span>"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="import-bootstrap-and-use-sass-variables">Import Bootstrap and use Sass variables</h2>
 
@@ -634,11 +631,10 @@ depending on each other to calculate <abbr title="Cascading Style Sheets">CSS</a
 
 <p>In <code class="highlighter-rouge">_sass/_variables.scss</code>:</p>
 
-<div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="nv">$custom-font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$custom-font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"../node_modules/bootstrap/scss/functions"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"../node_modules/bootstrap/scss/variables"</span><span class="p">;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="import-variables-from-main-sass-file">Import variables from main Sass file</h3>
 
@@ -647,7 +643,7 @@ depending on each other to calculate <abbr title="Cascading Style Sheets">CSS</a
 <p>In <code class="highlighter-rouge">assets/main.scss</code> we import them and then work with our styles,
 using the above variables:</p>
 
-<div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="nt">---</span>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">---</span>
 <span class="nt">---</span>
 
 <span class="o">@</span><span class="nt">import</span> <span class="s2">"variables"</span><span class="p">;</span>
@@ -656,8 +652,7 @@ using the above variables:</p>
 <span class="nc">.content</span> <span class="p">{</span>
   <span class="nl">font-size</span><span class="p">:</span> <span class="nv">$custom-font-size</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p class="alert alert-danger">Don’t miss the triple dashes at the beginning of the file to ensure
 Jekyll reads the file to be transformed into <abbr title="Cascading Style Sheets">CSS</abbr> later</p>
@@ -671,14 +666,13 @@ generate the final <abbr title="Cascading Style Sheets">CSS</abbr> file: <code c
 section of <code class="highlighter-rouge">_layouts/default.html</code> we include the css: <code class="highlighter-rouge">&lt;link
 rel="stylesheet" href="/assets/main.css"&gt;</code></p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;</span>
 <span class="c">&lt;!-- site css --&gt;</span>
 <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/assets/main.css"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="all-together">All together</h2>
 
@@ -741,7 +735,7 @@ easily to <a href="https://gruntjs.com">Grunt</a> or any other task automation s
 <p>Create a file called <code class="highlighter-rouge">Makefile</code> at root level with this content (if
 using Bundler):</p>
 
-<div class="language-make highlighter-rouge"><pre class="highlight"><code><span class="nv">SHELL</span> <span class="o">:=</span> /bin/bash
+<div class="language-make highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">SHELL</span> <span class="o">:=</span> /bin/bash
 <span class="nv">BUNDLE</span> <span class="o">:=</span> bundle
 <span class="nv">YARN</span> <span class="o">:=</span> yarn
 <span class="nv">VENDOR_DIR</span> <span class="o">=</span> assets/vendor/
@@ -755,33 +749,32 @@ using Bundler):</p>
 
 <span class="nl">check</span><span class="o">:</span>
 	<span class="nv">$(JEKYLL)</span> doctor
-	<span class="nv">$(HTMLPROOF)</span> --check-html <span class="se">\</span>
-		--http-status-ignore 999 <span class="se">\</span>
-		--internal-domains localhost:4000 <span class="se">\</span>
-		--assume-extension <span class="se">\</span>
+	<span class="nv">$(HTMLPROOF)</span> <span class="nt">--check-html</span> <span class="se">\</span>
+		<span class="nt">--http-status-ignore</span> 999 <span class="se">\</span>
+		<span class="nt">--internal-domains</span> localhost:4000 <span class="se">\</span>
+		<span class="nt">--assume-extension</span> <span class="se">\</span>
 		_site
 
 <span class="nl">install</span><span class="o">:</span> <span class="nf">$(PROJECT_DEPS)</span>
-	<span class="nv">$(BUNDLE)</span> install --path vendor/bundler
-	<span class="nv">$(YARN)</span> install
+	<span class="nv">$(BUNDLE)</span> <span class="nb">install</span> <span class="nt">--path</span> vendor/bundler
+	<span class="nv">$(YARN)</span> <span class="nb">install</span>
 
 <span class="nl">update</span><span class="o">:</span> <span class="nf">$(PROJECT_DEPS)</span>
 	<span class="nv">$(BUNDLE)</span> update
 	<span class="nv">$(YARN)</span> upgrade
 
 <span class="nl">include-yarn-deps</span><span class="o">:</span>
-	mkdir -p <span class="nv">$(VENDOR_DIR)</span>
-	cp node_modules/jquery/dist/jquery.min.js <span class="nv">$(VENDOR_DIR)</span>
-	cp node_modules/popper.js/dist/popper.min.js <span class="nv">$(VENDOR_DIR)</span>
-	cp node_modules/bootstrap/dist/js/bootstrap.min.js <span class="nv">$(VENDOR_DIR)</span>
+	<span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$(VENDOR_DIR)</span>
+	<span class="nb">cp </span>node_modules/jquery/dist/jquery.min.js <span class="nv">$(VENDOR_DIR)</span>
+	<span class="nb">cp </span>node_modules/popper.js/dist/popper.min.js <span class="nv">$(VENDOR_DIR)</span>
+	<span class="nb">cp </span>node_modules/bootstrap/dist/js/bootstrap.min.js <span class="nv">$(VENDOR_DIR)</span>
 
 <span class="nl">build</span><span class="o">:</span> <span class="nf">install include-yarn-deps</span>
 	<span class="nv">$(JEKYLL)</span> build
 
 <span class="nl">serve</span><span class="o">:</span> <span class="nf">install include-yarn-deps</span>
 	<span class="nv">JEKYLL_ENV</span><span class="o">=</span>production <span class="nv">$(JEKYLL)</span> serve
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>It is just a wrapper of Jekyll build and install commands handling
 dependencies.</p>
@@ -809,21 +802,19 @@ of <em>spaces</em>.</p>
 <p>It just remain to update our paths in the layout, in <code class="highlighter-rouge">default.html</code>
 use them as:</p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{'/assets/vendor/jquery.min.js' | absolute_url}}"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{'/assets/vendor/jquery.min.js' | absolute_url}}"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{'/assets/vendor/popper.min.js' | absolute_url}}"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{'/assets/vendor/bootstrap.min.js' | absolute_url}}"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="exclude-unwanted-directories">Exclude unwanted directories</h3>
 
 <p>Tell Jekyll to not include the <code class="highlighter-rouge">node_modules</code> directory in the final
 site, in <code class="highlighter-rouge">_config.yml</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>exclude:
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exclude:
  - node_modules
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p class="alert alert-info">This is the default behaviour from Jekyll 3.3</p>
 
@@ -840,7 +831,7 @@ custom variables and we will have them in our <code class="highlighter-rouge">as
 this example its content starts with the Bootstrap code and ends with
 our custom <code class="highlighter-rouge">_main.scss</code> processed, looking like:</p>
 
-<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="c">/*!
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/*!
  * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors
  * Copyright 2011-2017 Twitter, Inc.
@@ -859,8 +850,7 @@ our custom <code class="highlighter-rouge">_main.scss</code> processed, looking 
   <span class="nl">font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span> 
 <span class="p">}</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="references">References</h2>
 
@@ -884,7 +874,7 @@ Sass developers.</p>
       <p><a href="#fnref:bs-blog" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:load-paths">
-      <p><a href="https://github.com/jekyll/jekyll/issues/3366">Issue</a> referring the code at <a href="https://github.com/jekyll/jekyll-sass-converter/blob/master/lib/jekyll/converters/scss.rb#L77">https://github.com/jekyll/jekyll-sass-converter/blob/master/lib/jekyll/converters/scss.rb#L77</a>&nbsp;<a href="#fnref:load-paths" class="reversefootnote">&#8617;</a></p>
+      <p><a href="https://github.com/jekyll/jekyll/issues/3366">Issue</a> referring the code at <a href="https://github.com/jekyll/jekyll-sass-converter/blob/master/lib/jekyll/converters/scss.rb#L77">https://github.com/jekyll/jekyll-sass-converter/blob/master/lib/jekyll/converters/scss.rb#L77</a> <a href="#fnref:load-paths" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:safe-mode">
 
@@ -910,7 +900,7 @@ because of a fundamental inability to trust non-user content.</p>
         <p>For example:</p>
       </blockquote>
 
-      <div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="nv">$content</span><span class="p">:</span> <span class="s2">"First content"</span><span class="p">;</span>
+      <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$content</span><span class="p">:</span> <span class="s2">"First content"</span><span class="p">;</span>
 <span class="nv">$content</span><span class="p">:</span> <span class="s2">"Second content?"</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
 <span class="nv">$new_content</span><span class="p">:</span> <span class="s2">"First time reference"</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
 
@@ -918,18 +908,16 @@ because of a fundamental inability to trust non-user content.</p>
   <span class="nl">content</span><span class="p">:</span> <span class="nv">$content</span><span class="p">;</span>
   <span class="na">new-content</span><span class="p">:</span> <span class="nv">$new_content</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre>
-      </div>
+</code></pre></div>      </div>
 
       <blockquote>
         <p>is compiled to:</p>
       </blockquote>
 
-      <div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="nf">#main</span> <span class="p">{</span>
+      <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">#main</span> <span class="p">{</span>
   <span class="nl">content</span><span class="p">:</span> <span class="s1">"First content"</span><span class="p">;</span>
   <span class="py">new-content</span><span class="p">:</span> <span class="s1">"First time reference"</span><span class="p">;</span> <span class="p">}</span>
-</code></pre>
-      </div>
+</code></pre></div>      </div>
       <p><a href="#fnref:scss_default" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>

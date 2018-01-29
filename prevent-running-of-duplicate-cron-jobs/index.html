@@ -18,7 +18,7 @@
     
     
     <!-- Mermaid -->
-    <link rel="stylesheet" href="https://simpleit.rocks/assets/vendor/mermaid.forest.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="https://simpleit.rocks/assets/vendor/mermaid.css" type="text/css" media="screen" />
     
     
     <!-- Custom css -->
@@ -48,8 +48,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Prevent Running Of Duplicate Cron Jobs | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Prevent Running Of Duplicate Cron Jobs" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -65,7 +66,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"How to run no more than one unique instance of a script or command. Prevent duplicate cron jobs running.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/prevent-running-of-duplicate-cron-jobs/","publisher":null,"image":null,"headline":"Prevent Running Of Duplicate Cron Jobs","dateModified":"2016-12-08T00:00:00+00:00","datePublished":"2016-12-08T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/prevent-running-of-duplicate-cron-jobs/"},"@context":"http://schema.org"}</script>
+{"description":"How to run no more than one unique instance of a script or command. Prevent duplicate cron jobs running.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/prevent-running-of-duplicate-cron-jobs/","headline":"Prevent Running Of Duplicate Cron Jobs","dateModified":"2016-12-08T00:00:00+00:00","datePublished":"2016-12-08T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/prevent-running-of-duplicate-cron-jobs/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -408,14 +409,13 @@ you can use programs written specifically to handle this situation
 one instance of an example script called <code class="highlighter-rouge">main.sh</code> that simply prints
 “Hello” in an infinite while loop.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
 <span class="k">while </span><span class="nb">true
  </span><span class="k">do
     </span><span class="nb">echo</span> <span class="s2">"Hello"</span>
-    sleep 2
+    <span class="nb">sleep </span>2
  <span class="k">done</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>And make it executable.</p>
 
@@ -449,22 +449,20 @@ script) we use <kbd>pidof</kbd>.</p>
 
 <p>In <code class="highlighter-rouge">caller.sh</code>:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="k">if </span>pidof -o %PPID -x <span class="s2">"main.sh"</span>&gt;/dev/null; <span class="k">then
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span>pidof <span class="nt">-o</span> %PPID <span class="nt">-x</span> <span class="s2">"main.sh"</span><span class="o">&gt;</span>/dev/null<span class="p">;</span> <span class="k">then
     </span><span class="nb">echo</span> <span class="s2">"Process already running"</span>
 	<span class="nb">exit </span>1
 <span class="k">fi</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>-x     Scripts too - this causes the program to also return process id's of shells running the named scripts.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-x     Scripts too - this causes the program to also return process id's of shells running the named scripts.
 -o omitpid
              Tells pidof to omit processes with that process id. The special pid %PPID can be used to name the parent process  of
              the pidof program, in other words the calling shell or shell script.
 EXIT STATUS
 	0      At least one program was found with the requested name.
 	1      No program was found with the requested name.
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Then the first time we run <kbd>caller.sh</kbd> it will launch
 <kbd>main.sh</kbd>, successive calls would exit the script.</p>
@@ -518,9 +516,8 @@ file to use, and to exit if the script is already running with the
 
 <p>For example, editing the <code class="highlighter-rouge">crontab</code> to execute the command every 5 minutes should look like:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>*/5 * * * * /usr/bin/flock -n /tmp/ms.lockfile /usr/local/bin/my_script --some-parameter
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*/5 * * * * /usr/bin/flock -n /tmp/ms.lockfile /usr/local/bin/my_script --some-parameter
+</code></pre></div></div>
 
 <p>Every time the script takes longer than 5 minutes to execute, the
 <code class="highlighter-rouge">cronjob</code> will fail and leave the original script to finish.</p>
@@ -533,9 +530,8 @@ lock automatically.</p>
 
 <p>Example crontab with <code class="highlighter-rouge">run-one</code> for the previous script:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>*/5 * * * *   run-one /usr/local/bin/my_script --some-parameter
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*/5 * * * *   run-one /usr/local/bin/my_script --some-parameter
+</code></pre></div></div>
 
 <h2 id="summary">Summary</h2>
 

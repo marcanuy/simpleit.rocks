@@ -18,7 +18,7 @@
     
     
     <!-- Mermaid -->
-    <link rel="stylesheet" href="https://simpleit.rocks/assets/vendor/mermaid.forest.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="https://simpleit.rocks/assets/vendor/mermaid.css" type="text/css" media="screen" />
     
     
     <!-- Custom css -->
@@ -48,8 +48,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>How To Use Bower Scss With Jekyll | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="How To Use Bower Scss With Jekyll" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -65,7 +66,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Automatically converting SCSS files into CSS in each Jekyll build.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/how-to-use-bower-scss-with-jekyll/","publisher":null,"image":null,"headline":"How To Use Bower Scss With Jekyll","dateModified":"2016-06-18T00:00:00+00:00","datePublished":"2016-06-18T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/how-to-use-bower-scss-with-jekyll/"},"@context":"http://schema.org"}</script>
+{"description":"Automatically converting SCSS files into CSS in each Jekyll build.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/how-to-use-bower-scss-with-jekyll/","headline":"How To Use Bower Scss With Jekyll","dateModified":"2016-06-18T00:00:00+00:00","datePublished":"2016-06-18T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/how-to-use-bower-scss-with-jekyll/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -489,7 +490,7 @@ or <code class="highlighter-rouge">css</code> files.</p>
 
 <p>In this tutorial the Bootstrap 4 bower package is structured as:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>bower_components/bootstrap/
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bower_components/bootstrap/
 ├── dist
 │   ├── css
 │   │   ├── bootstrap.css
@@ -507,8 +508,7 @@ or <code class="highlighter-rouge">css</code> files.</p>
     ├── ...
     └── _variables.scss
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>We want to be able to include <code class="highlighter-rouge">/bower_components/bootstrap/scss/bootstrap-flex.scss</code>
 in our Jekyll website, as it is not currently distributed by default as a <code class="highlighter-rouge">css</code> file
@@ -521,9 +521,8 @@ directory containing the <code class="highlighter-rouge">.scss</code> files.</p>
 
 <p>In the base of the jekyll project:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ln -s bower_components/bootstrap/ _sass/bootstrap
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ln</span> <span class="nt">-s</span> bower_components/bootstrap/ _sass/bootstrap
+</code></pre></div></div>
 
 <p>This creates a symbolic link named <code class="highlighter-rouge">bootstrap</code> inside the <code class="highlighter-rouge">/_sass</code>
 directory to <code class="highlighter-rouge">bower_components/bootstrap/</code>.</p>
@@ -531,16 +530,15 @@ directory to <code class="highlighter-rouge">bower_components/bootstrap/</code>.
 <p>To generate them automatically, Jekyll needs to have the following SCSS file
 in <code class="highlighter-rouge">/css/bootstrap-flex.scss</code>, so it can generate <code class="highlighter-rouge">/css/bootstrap-flex.css</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>---
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
 ---
-@charset "utf-8";
-
+<span class="gu">@charset "utf-8";
+</span>
 // Import partials from `sass_dir` (defaults to `_sass`)
-@import
-        "bootstrap/scss/bootstrap-flex"
+<span class="gu">@import
+</span>        "bootstrap/scss/bootstrap-flex"
 ;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Each time Jekyll builds a site it will create <code class="highlighter-rouge">/css/bootstrap-flex.css</code>.</p>
 
@@ -549,9 +547,8 @@ in <code class="highlighter-rouge">/css/bootstrap-flex.scss</code>, so it can ge
 <p>To make the website use the newly generated CSS file, it should be included
 in a template like:</p>
 
-<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="nt">link</span> <span class="nt">rel</span><span class="o">=</span><span class="s1">"stylesheet"</span> <span class="nt">type</span><span class="o">=</span><span class="s1">"text/css"</span> <span class="nt">href</span><span class="o">=</span><span class="s1">"/css/bootstrap-flex.css"</span><span class="o">&gt;</span>
-</code></pre>
-</div>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nt">link</span> <span class="nt">rel</span><span class="o">=</span><span class="s1">"stylesheet"</span> <span class="nt">type</span><span class="o">=</span><span class="s1">"text/css"</span> <span class="nt">href</span><span class="o">=</span><span class="s1">"/css/bootstrap-flex.css"</span><span class="o">&gt;</span>
+</code></pre></div></div>
 
 <h2 id="review">Review</h2>
 

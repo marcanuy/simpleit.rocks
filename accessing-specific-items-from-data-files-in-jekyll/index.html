@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Accessing Specific Items From Data Files In Jekyll | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Accessing Specific Items From Data Files In Jekyll" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Accessing Specific Data Items from files in Jekyll’s _data directory","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/","publisher":null,"image":null,"headline":"Accessing Specific Items From Data Files In Jekyll","dateModified":"2017-01-24T00:00:00+00:00","datePublished":"2017-01-24T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/"},"@context":"http://schema.org"}</script>
+{"description":"Accessing Specific Data Items from files in Jekyll’s _data directory","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/","headline":"Accessing Specific Items From Data Files In Jekyll","dateModified":"2017-01-24T00:00:00+00:00","datePublished":"2017-01-24T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -290,9 +291,7 @@
       <div>
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
-<ul>
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-</ul>
 <li class="toc-entry toc-h1"><a href="#using-an-index">Using an index</a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#iterating">Iterating</a></li>
@@ -389,15 +388,14 @@ access a specific item.</p>
 
 <p>For the data file <code class="highlighter-rouge">projects.yml</code> located in <code class="highlighter-rouge">/_data/projects.yml</code>:</p>
 
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="pi">-</span> <span class="s">project</span><span class="pi">:</span> <span class="s">funtime</span>
-  <span class="s">url</span><span class="pi">:</span> <span class="s">www.funtime.url</span>
-  <span class="s">description</span><span class="pi">:</span> <span class="s">This is really fun</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">project</span><span class="pi">:</span> <span class="s">funtime</span>
+  <span class="na">url</span><span class="pi">:</span> <span class="s">www.funtime.url</span>
+  <span class="na">description</span><span class="pi">:</span> <span class="s">This is really fun</span>
 
-<span class="pi">-</span> <span class="s">project</span><span class="pi">:</span> <span class="s">supertime</span>
-  <span class="s">url</span><span class="pi">:</span> <span class="s">www.supertime.url</span>
-  <span class="s">description</span><span class="pi">:</span> <span class="s">This is really super</span>
-</code></pre>
-</div>
+<span class="pi">-</span> <span class="na">project</span><span class="pi">:</span> <span class="s">supertime</span>
+  <span class="na">url</span><span class="pi">:</span> <span class="s">www.supertime.url</span>
+  <span class="na">description</span><span class="pi">:</span> <span class="s">This is really super</span>
+</code></pre></div></div>
 
 <p>How can we access the data item whose project name is <code class="highlighter-rouge">funtime</code>?</p>
 
@@ -406,56 +404,49 @@ access a specific item.</p>
 <p>If we know the data item index, we can access them directly, in this
 case it is located in the position “0”:</p>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>
-</code></pre>
-</div>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
 
 <p>Output:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="w">    </span><span class="p">{</span><span class="err">“project”=&gt;”funtime”,</span><span class="w"> </span><span class="err">“url”=&gt;”www.funtime.url”,“description”=&gt;”This</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">really</span><span class="w"> </span><span class="err">fun”</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    {“project”=&gt;”funtime”, “url”=&gt;”www.funtime.url”,“description”=&gt;”This is really fun”}
+</code></pre></div></div>
 
 <h2 id="iterating">Iterating</h2>
 
 <p>Iterating through all the data looking for an attribute</p>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>
-</code></pre>
-</div>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
 
 <p>Outputs:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="err">“project”=&gt;”funtime”,</span><span class="w"> </span><span class="err">“url”=&gt;”www.funtime.url”,</span><span class="w"> </span><span class="err">“description”=&gt;”This</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">really</span><span class="w"> </span><span class="err">fun”</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{“project”=&gt;”funtime”, “url”=&gt;”www.funtime.url”, “description”=&gt;”This is really fun”}
+</code></pre></div></div>
 
 <h2 id="changing-the-data-file">Changing the data file</h2>
 
 <p>The above data file can be optimized to make it more elegant and use
 the project name as their key:</p>
 
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">funtime</span><span class="pi">:</span>
-  <span class="s">url</span><span class="pi">:</span> <span class="s">www.funtime.url</span>
-  <span class="s">description</span><span class="pi">:</span> <span class="s">This is really fun</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">funtime</span><span class="pi">:</span>
+  <span class="na">url</span><span class="pi">:</span> <span class="s">www.funtime.url</span>
+  <span class="na">description</span><span class="pi">:</span> <span class="s">This is really fun</span>
 
-<span class="s">supertime</span><span class="pi">:</span>
-  <span class="s">url</span><span class="pi">:</span> <span class="s">www.supertime.url</span>
-  <span class="s">description</span><span class="pi">:</span> <span class="s">This is really super</span>
-</code></pre>
-</div>
+<span class="na">supertime</span><span class="pi">:</span>
+  <span class="na">url</span><span class="pi">:</span> <span class="s">www.supertime.url</span>
+  <span class="na">description</span><span class="pi">:</span> <span class="s">This is really super</span>
+</code></pre></div></div>
 
 <p>This way we can access each of the items directly:</p>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>
-</code></pre>
-</div>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
 
 <p>So it would output:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="err">“url”=&gt;”www.funtime.url”,</span><span class="w"> </span><span class="err">“description”=&gt;”This</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">really</span><span class="w"> </span><span class="err">fun”</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{“url”=&gt;”www.funtime.url”, “description”=&gt;”This is really fun”}
+</code></pre></div></div>
 
 
     

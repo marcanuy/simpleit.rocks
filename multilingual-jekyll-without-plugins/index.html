@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Multilingual Jekyll Without Plugins | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Multilingual Jekyll Without Plugins" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Building a multilanguage Jekyll site with no plugins.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/multilingual-jekyll-without-plugins/","publisher":null,"image":null,"headline":"Multilingual Jekyll Without Plugins","dateModified":"2017-05-08T00:00:00+00:00","datePublished":"2017-05-08T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/multilingual-jekyll-without-plugins/"},"@context":"http://schema.org"}</script>
+{"description":"Building a multilanguage Jekyll site with no plugins.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/multilingual-jekyll-without-plugins/","headline":"Multilingual Jekyll Without Plugins","dateModified":"2017-05-08T00:00:00+00:00","datePublished":"2017-05-08T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/multilingual-jekyll-without-plugins/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -451,11 +452,10 @@ should identify different language versions, <strong>including itself</strong><s
 <p>So the markup to tell Search Engine’s algorithms to consider all of
 these pages as alternate versions of each other is:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;link rel="alternate" hreflang="es" href="http://example.com/es" /&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;link rel="alternate" hreflang="es" href="http://example.com/es" /&gt;
 &lt;link rel="alternate" hreflang="de" href="http://example.com/de" /&gt;
 &lt;link rel="alternate" hreflang="en" href="http://example.com/en" /&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>To achieve this structure in Jekyll we will use:</p>
 
@@ -493,11 +493,10 @@ Writing new Gemfile to /mysite/Gemfile
 
 <p>Edit <code class="highlighter-rouge">Gemfile</code> to have the Jekyll gem:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>source "https://rubygems.org"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>source "https://rubygems.org"
 
 gem "jekyll"
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <pre class="shell">
 <samp>
@@ -542,45 +541,41 @@ mkdir: created directory 'de/_posts'
 <p>This way our URLs will be generated containing the language at the
 first level.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>http://example.com/es/...
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://example.com/es/...
 http://example.com/de/...
 http://example.com/en/...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Following this example we create example posts in each language.</p>
 
 <p>In <code class="highlighter-rouge">en/_posts/2017-05-08-hello-world.md</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>---
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
 title: Hello World
 ---
 
 A "Hello, World!" program is a computer program that outputs or displays "Hello, World!" to a user. Being a very simple program in most programming languages...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>In <code class="highlighter-rouge">es/_posts/2017-05-08-hola-mundo.md</code>:</p>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>---
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
 title: Hola Mundo
 ---
 
 En informática, un programa Hola mundo es el que imprime el texto
 «¡Hola, mundo!» ...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>In <code class="highlighter-rouge">de/_posts/2017-05-08-hallo-welt.md</code></p>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>---
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
 title: Hallo Welt
 ---
 
 Ein Hallo-Welt-Programm ist ein kleines Computerprogramm, das auf
 möglichst einfache Weise zeigen soll...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <pre class="shell">
 <samp>
@@ -613,26 +608,25 @@ using
 <a href="https://jekyllrb.com/docs/configuration/#front-matter-defaults">Front Matter Defaults</a>,
 in <code class="highlighter-rouge">_config.yml</code>:</p>
 
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">defaults</span><span class="pi">:</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">defaults</span><span class="pi">:</span>
   <span class="c1">#languages</span>
   <span class="pi">-</span>
-    <span class="s">scope</span><span class="pi">:</span>
-      <span class="s">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
-    <span class="s">values</span><span class="pi">:</span>
-      <span class="s">lang</span><span class="pi">:</span> <span class="s2">"</span><span class="s">en"</span>
-      <span class="s">layout</span><span class="pi">:</span> <span class="s">default</span>
+    <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">lang</span><span class="pi">:</span> <span class="s2">"</span><span class="s">en"</span>
+      <span class="na">layout</span><span class="pi">:</span> <span class="s">default</span>
   <span class="pi">-</span>
-    <span class="s">scope</span><span class="pi">:</span>
-      <span class="s">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">es"</span>
-    <span class="s">values</span><span class="pi">:</span>
-      <span class="s">lang</span><span class="pi">:</span> <span class="s2">"</span><span class="s">es"</span>
+    <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">es"</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">lang</span><span class="pi">:</span> <span class="s2">"</span><span class="s">es"</span>
   <span class="pi">-</span>
-    <span class="s">scope</span><span class="pi">:</span>
-      <span class="s">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">de"</span>
-    <span class="s">values</span><span class="pi">:</span>
-      <span class="s">lang</span><span class="pi">:</span> <span class="s2">"</span><span class="s">de"</span>
-</code></pre>
-</div>
+    <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">de"</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">lang</span><span class="pi">:</span> <span class="s2">"</span><span class="s">de"</span>
+</code></pre></div></div>
 
 <p>Every post and page located inside each folder, will automatically get
 the right language.</p>
@@ -643,7 +637,7 @@ tag: <code class="highlighter-rouge"><span class="nt">&lt;html</span> <span clas
 <p>In the default layout in <code class="highlighter-rouge">_layouts/default.html</code> using English as the
 fallback language:</p>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>&lt;!DOCTYPE html&gt;
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="<span class="p">{{</span><span class="w"> </span><span class="nv">page</span><span class="p">.</span><span class="nv">lang</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">default</span><span class="p">:</span><span class="w"> </span>site.lang<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">default</span><span class="p">:</span><span class="w"> </span><span class="s1">'en'</span><span class="w"> </span><span class="p">}}</span>"&gt;
     &lt;head&gt;
     &lt;/head&gt;
@@ -651,18 +645,16 @@ fallback language:</p>
 	<span class="p">{{</span><span class="w"> </span><span class="nv">content</span><span class="w"> </span><span class="p">}}</span>
     &lt;/body&gt;
 &lt;/html&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>If you don’t put the post/page in one of the language subdirectories,
 then you will need to specify its language in the front matter, i.e.:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>---
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
 title: "Prueba"
 lang: es
 ---
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="map-set">Map set</h3>
 
@@ -670,12 +662,11 @@ lang: es
 added to a special <code class="highlighter-rouge">_data/map.yml</code> where we specify which files are
 equivalent in the other languages.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>-
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-
   en: en/_posts/2017-05-08-hello-world.md 
   es: es/_posts/2017-05-08-hola-mundo.md
   de: de/_posts/2017-05-08-hallo-welt.md
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="navigation-menu">Navigation menu</h3>
 
@@ -683,7 +674,7 @@ equivalent in the other languages.</p>
 only the group (located in <code class="highlighter-rouge">_data/map.yml</code>) which one of its items
 equals the current page path. In <code class="highlighter-rouge">_includes/lang_nav.html</code>:</p>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>&lt;nav&gt;
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;nav&gt;
     <span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>block<span class="w"> </span>in<span class="w"> </span>site.data.map<span class="w"> </span><span class="p">%}</span>
     <span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>item<span class="w"> </span>in<span class="w"> </span>block[page.lang]<span class="w"> </span><span class="p">%}</span>
     <span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">item</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">page</span><span class="p">.</span><span class="nv">path</span><span class="w"> </span><span class="p">%}</span>
@@ -715,24 +706,22 @@ equals the current page path. In <code class="highlighter-rouge">_includes/lang_
     <span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
 
 &lt;/nav&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>And use it in a layout:</p>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>&lt;body&gt;
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;body&gt;
 ...
 <span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span><span class="na">lang_nav</span><span class="p">.</span><span class="na">html</span><span class="w"> </span><span class="p">%}</span>
 &lt;/body&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="alternate-links">Alternate links</h3>
 
 <p>Finally to create the urls with the <em>alternate</em> link tags, in
 <code class="highlighter-rouge">_includes/alternate.html</code>:</p>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>block<span class="w"> </span>in<span class="w"> </span>site.data.map<span class="w"> </span><span class="p">%}</span>
 <span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>item<span class="w"> </span>in<span class="w"> </span>block[page.lang]<span class="w"> </span><span class="p">%}</span>
 <span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">item</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">page</span><span class="p">.</span><span class="nv">path</span><span class="w"> </span><span class="p">%}</span>
@@ -752,17 +741,15 @@ equals the current page path. In <code class="highlighter-rouge">_includes/lang_
 <span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
 <span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
 <span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>And use it in the head section of the layout:</p>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>&lt;head&gt;
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;head&gt;
 ...
 <span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span><span class="na">alternate</span><span class="p">.</span><span class="na">html</span><span class="w"> </span><span class="p">%}</span>
 &lt;/head&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="repo">Repo</h2>
 

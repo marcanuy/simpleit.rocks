@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Securing The Images Folder In Joomla | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Securing The Images Folder In Joomla" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"The images folder is one of the major security risks in Joomla, learn how to prevent being hacked through it.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/securing-the-images-folder-in-joomla/","publisher":null,"image":null,"headline":"Securing The Images Folder In Joomla","dateModified":"2017-01-09T00:00:00+00:00","datePublished":"2017-01-09T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/securing-the-images-folder-in-joomla/"},"@context":"http://schema.org"}</script>
+{"description":"The images folder is one of the major security risks in Joomla, learn how to prevent being hacked through it.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/securing-the-images-folder-in-joomla/","headline":"Securing The Images Folder In Joomla","dateModified":"2017-01-09T00:00:00+00:00","datePublished":"2017-01-09T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/securing-the-images-folder-in-joomla/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -411,10 +412,9 @@ a way to make configuration changes on a per-directory basis”.</p>
 <p>By default Joomla images directory is located in the <code class="highlighter-rouge">/images</code> folder,
 in this directory we add <code class="highlighter-rouge">.htaccess</code> with the following content:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>AddHandler cgi-script .php .pl .py .jsp .asp .htm .shtml .sh .cgi
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AddHandler cgi-script .php .pl .py .jsp .asp .htm .shtml .sh .cgi
 Options -ExecCGI
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>We used
 the Apache <a href="http://httpd.apache.org/docs/current/mod/core.html#options">Options Directive</a> and <a href="http://httpd.apache.org/docs/current/mod/mod_mime.html#addhandler">AddHandler Directive</a>:</p>
@@ -435,11 +435,10 @@ in a particular directory.</p>
 <p>We can specify which file types we allow users to upload to the
 <code class="highlighter-rouge">images</code> folder:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;FilesMatch ".+\.(gif|jpe?g|png|pdf)$"&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;FilesMatch ".+\.(gif|jpe?g|png|pdf)$"&gt;
 Allow from all
 &lt;/FilesMatch&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>That will allow the above filenames extensions and <strong>block</strong> every
 other extension from getting into the folder.</p>
@@ -458,11 +457,10 @@ it accepts a regular expression</Files></FilesMatch></p>
 <p>Instead of specifying which files we allow to upload, here we tell
 Apache to deny the upload of files with these extensions:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;FilesMatch "\.(asp|sh|php|php5|pl)$"&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;FilesMatch "\.(asp|sh|php|php5|pl)$"&gt;
 Deny from all
 &lt;/FilesMatch&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="conclusion">Conclusion</h2>
 

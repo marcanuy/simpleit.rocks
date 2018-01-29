@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Automated Deployment Of Jekyll Websites To Github Pages With A Git Push To Github | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Automated Deployment Of Jekyll Websites To Github Pages With A Git Push To Github" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Clutter-free software concepts. Written on the go.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/automated-deployment-of-jekyll-websites-to-github-pages-with-a-git-push-to-github/","publisher":null,"image":null,"headline":"Automated Deployment Of Jekyll Websites To Github Pages With A Git Push To Github","dateModified":"2016-11-08T00:00:00+00:00","datePublished":"2016-11-08T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/automated-deployment-of-jekyll-websites-to-github-pages-with-a-git-push-to-github/"},"@context":"http://schema.org"}</script>
+{"description":"Clutter-free software concepts. Written on the go.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/automated-deployment-of-jekyll-websites-to-github-pages-with-a-git-push-to-github/","headline":"Automated Deployment Of Jekyll Websites To Github Pages With A Git Push To Github","dateModified":"2016-11-08T00:00:00+00:00","datePublished":"2016-11-08T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/automated-deployment-of-jekyll-websites-to-github-pages-with-a-git-push-to-github/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -469,38 +470,37 @@ Travis CI that will do this job for us in each <em>push</em> to Github.</p>
 <p>Travis configuration is stored in <code class="highlighter-rouge">.travis.yml</code>, we will create a new
 one with the following contents (adjust versions to your needs):</p>
 
-<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="s">language</span><span class="pi">:</span> <span class="s">ruby</span>
-<span class="s">rvm</span><span class="pi">:</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">ruby</span>
+<span class="na">rvm</span><span class="pi">:</span>
 <span class="pi">-</span> <span class="s">2.3.1</span>
-<span class="s">before_script</span><span class="pi">:</span>
+<span class="na">before_script</span><span class="pi">:</span>
 <span class="pi">-</span> <span class="s">npm install -g bower</span>
 <span class="pi">-</span> <span class="s">bower install</span>
 <span class="pi">-</span> <span class="s">chmod +x ./deploy.sh</span>
-<span class="s">script</span><span class="pi">:</span> <span class="s">bash ./deploy.sh</span>
-<span class="s">env</span><span class="pi">:</span>
-  <span class="s">global</span><span class="pi">:</span>
+<span class="na">script</span><span class="pi">:</span> <span class="s">bash ./deploy.sh</span>
+<span class="na">env</span><span class="pi">:</span>
+  <span class="na">global</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">NOKOGIRI_USE_SYSTEM_LIBRARIES=true</span>
-  <span class="pi">-</span> <span class="s">COMMIT_AUTHOR_EMAIL</span><span class="pi">:</span> <span class="s">me@marcanuy.com</span>
-<span class="s">sudo</span><span class="pi">:</span> <span class="s">false</span>
-</code></pre>
-</div>
+  <span class="pi">-</span> <span class="na">COMMIT_AUTHOR_EMAIL</span><span class="pi">:</span> <span class="s">me@marcanuy.com</span>
+<span class="na">sudo</span><span class="pi">:</span> <span class="no">false</span>
+</code></pre></div></div>
 
 <h3 id="create-the-deployment-script-deploysh">Create the deployment script deploy.sh</h3>
 
 <p>We will create the following <code class="highlighter-rouge">deploy.sh</code> script:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
-<span class="nb">set</span> -e <span class="c"># Exit with nonzero exit code if anything fails</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="nb">set</span> <span class="nt">-e</span> <span class="c"># Exit with nonzero exit code if anything fails</span>
 
 <span class="nv">SOURCE_BRANCH</span><span class="o">=</span><span class="s2">"master"</span>
 <span class="nv">TARGET_BRANCH</span><span class="o">=</span><span class="s2">"gh-pages"</span>
 
 <span class="k">function </span>doCompile <span class="o">{</span>
-    <span class="nv">JEKYLL_ENV</span><span class="o">=</span>production bundle <span class="nb">exec </span>jekyll build -d out/
+    <span class="nv">JEKYLL_ENV</span><span class="o">=</span>production bundle <span class="nb">exec </span>jekyll build <span class="nt">-d</span> out/
 <span class="o">}</span>
 
 <span class="c"># Pull requests and commits to other branches shouldn't try to deploy, just build to verify</span>
-<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$TRAVIS_PULL_REQUEST</span><span class="s2">"</span> !<span class="o">=</span> <span class="s2">"false"</span> -o <span class="s2">"</span><span class="nv">$TRAVIS_BRANCH</span><span class="s2">"</span> !<span class="o">=</span> <span class="s2">"</span><span class="nv">$SOURCE_BRANCH</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$TRAVIS_PULL_REQUEST</span><span class="s2">"</span> <span class="o">!=</span> <span class="s2">"false"</span> <span class="nt">-o</span> <span class="s2">"</span><span class="nv">$TRAVIS_BRANCH</span><span class="s2">"</span> <span class="o">!=</span> <span class="s2">"</span><span class="nv">$SOURCE_BRANCH</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
     </span><span class="nb">echo</span> <span class="s2">"Skipping deploy; just doing a build."</span>
     doCompile
     <span class="nb">exit </span>0
@@ -509,17 +509,17 @@ one with the following contents (adjust versions to your needs):</p>
 <span class="c"># Save some useful information</span>
 <span class="nv">REPO</span><span class="o">=</span><span class="sb">`</span>git config remote.origin.url<span class="sb">`</span>
 <span class="nv">SSH_REPO</span><span class="o">=</span><span class="k">${</span><span class="nv">REPO</span><span class="p">/https</span>:<span class="p">\/\/github.com\//git@github.com</span>:<span class="k">}</span>
-<span class="nv">SHA</span><span class="o">=</span><span class="sb">`</span>git rev-parse --verify HEAD<span class="sb">`</span>
+<span class="nv">SHA</span><span class="o">=</span><span class="sb">`</span>git rev-parse <span class="nt">--verify</span> HEAD<span class="sb">`</span>
 
 <span class="c"># Clone the existing gh-pages for this repo into out/</span>
 <span class="c"># Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)</span>
 git clone <span class="nv">$REPO</span> out
 <span class="nb">cd </span>out
-git checkout <span class="nv">$TARGET_BRANCH</span> <span class="o">||</span> git checkout --orphan <span class="nv">$TARGET_BRANCH</span>
+git checkout <span class="nv">$TARGET_BRANCH</span> <span class="o">||</span> git checkout <span class="nt">--orphan</span> <span class="nv">$TARGET_BRANCH</span>
 <span class="nb">cd</span> ..
 
 <span class="c"># Clean out existing contents</span>
-rm -rf out/<span class="k">**</span>/<span class="k">*</span> <span class="o">||</span> <span class="nb">exit </span>0
+<span class="nb">rm</span> <span class="nt">-rf</span> out/<span class="k">**</span>/<span class="k">*</span> <span class="o">||</span> <span class="nb">exit </span>0
 
 <span class="c"># Run our compile script</span>
 doCompile
@@ -530,30 +530,29 @@ git config user.name <span class="s2">"Travis CI"</span>
 git config user.email <span class="s2">"</span><span class="nv">$COMMIT_AUTHOR_EMAIL</span><span class="s2">"</span>
 
 <span class="c"># If there are no changes to the compiled out (e.g. this is a README update) then just bail.</span>
-<span class="k">if</span> <span class="o">[</span> -z <span class="sb">`</span>git diff --exit-code<span class="sb">`</span> <span class="o">]</span>; <span class="k">then
+<span class="k">if</span> <span class="o">[</span> <span class="nt">-z</span> <span class="sb">`</span>git diff <span class="nt">--exit-code</span><span class="sb">`</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
     </span><span class="nb">echo</span> <span class="s2">"No changes to the output on this push; exiting."</span>
     <span class="nb">exit </span>0
 <span class="k">fi</span>
 
 <span class="c"># Commit the "changes", i.e. the new version.</span>
 <span class="c"># The delta will show diffs between new and old versions.</span>
-git add .
-git commit -m <span class="s2">"Deploy to GitHub Pages: </span><span class="k">${</span><span class="nv">SHA</span><span class="k">}</span><span class="s2">"</span>
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Deploy to GitHub Pages: </span><span class="k">${</span><span class="nv">SHA</span><span class="k">}</span><span class="s2">"</span>
 
 <span class="c"># Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc</span>
 <span class="nv">ENCRYPTED_KEY_VAR</span><span class="o">=</span><span class="s2">"encrypted_</span><span class="k">${</span><span class="nv">ENCRYPTION_LABEL</span><span class="k">}</span><span class="s2">_key"</span>
 <span class="nv">ENCRYPTED_IV_VAR</span><span class="o">=</span><span class="s2">"encrypted_</span><span class="k">${</span><span class="nv">ENCRYPTION_LABEL</span><span class="k">}</span><span class="s2">_iv"</span>
 <span class="nv">ENCRYPTED_KEY</span><span class="o">=</span><span class="k">${</span><span class="p">!ENCRYPTED_KEY_VAR</span><span class="k">}</span>
 <span class="nv">ENCRYPTED_IV</span><span class="o">=</span><span class="k">${</span><span class="p">!ENCRYPTED_IV_VAR</span><span class="k">}</span>
-openssl aes-256-cbc -K <span class="nv">$ENCRYPTED_KEY</span> -iv <span class="nv">$ENCRYPTED_IV</span> -in deploy_key.enc -out deploy_key -d
-chmod 600 deploy_key
-<span class="nb">eval</span> <span class="sb">`</span>ssh-agent -s<span class="sb">`</span>
+openssl aes-256-cbc <span class="nt">-K</span> <span class="nv">$ENCRYPTED_KEY</span> <span class="nt">-iv</span> <span class="nv">$ENCRYPTED_IV</span> <span class="nt">-in</span> deploy_key.enc <span class="nt">-out</span> deploy_key <span class="nt">-d</span>
+<span class="nb">chmod </span>600 deploy_key
+<span class="nb">eval</span> <span class="sb">`</span>ssh-agent <span class="nt">-s</span><span class="sb">`</span>
 ssh-add deploy_key
 
 <span class="c"># Now that we're all set up, we can push.</span>
 git push <span class="nv">$SSH_REPO</span> <span class="nv">$TARGET_BRANCH</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The script basically performs the following actions:</p>
 
@@ -655,9 +654,8 @@ Commit all changes to your .travis.yml.
 command to decrypt the <code class="highlighter-rouge">deploy_key</code>, now we have to detect the
 encription id and add an environment variable like:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ENCRYPTION_LABEL: "&lt;.... encryption label from previous step ....&gt;"
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ENCRYPTION_LABEL: "&lt;.... encryption label from previous step ....&gt;"
+</code></pre></div></div>
 
 <p>The encription id is the string between <code class="highlighter-rouge">$encrypted_</code> and <code class="highlighter-rouge">_key</code> in
 the automatically added <code class="highlighter-rouge">before_install</code> line:</p>
@@ -669,45 +667,42 @@ openssl aes-256-cbc -K $encrypted_<span style="color:red">0c6d27255ccf</span>_ke
 <p>In the previous case I will have to add the line <code class="highlighter-rouge">- ENCRYPTION_LABEL:
 0c6d27255ccf</code>, the file <code class="highlighter-rouge">.travis.yml</code> will look like:</p>
 
-<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="s">env</span><span class="pi">:</span>
-  <span class="s">global</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">ENCRYPTION_LABEL</span><span class="pi">:</span> <span class="s">0c6d27255ccf</span>
-</code></pre>
-</div>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">env</span><span class="pi">:</span>
+  <span class="na">global</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">ENCRYPTION_LABEL</span><span class="pi">:</span> <span class="s">0c6d27255ccf</span>
+</code></pre></div></div>
 
 <p>So the final <code class="highlighter-rouge">.travis.yml</code> is:</p>
 
-<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="s">language</span><span class="pi">:</span> <span class="s">ruby</span>
-<span class="s">rvm</span><span class="pi">:</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">ruby</span>
+<span class="na">rvm</span><span class="pi">:</span>
 <span class="pi">-</span> <span class="s">2.3.1</span>
-<span class="s">before_script</span><span class="pi">:</span>
+<span class="na">before_script</span><span class="pi">:</span>
 <span class="pi">-</span> <span class="s">npm install -g bower</span>
 <span class="pi">-</span> <span class="s">bower install</span>
 <span class="pi">-</span> <span class="s">chmod +x ./deploy.sh</span>
-<span class="s">script</span><span class="pi">:</span> <span class="s">./deploy.sh</span>
-<span class="s">env</span><span class="pi">:</span>
-  <span class="s">global</span><span class="pi">:</span>
+<span class="na">script</span><span class="pi">:</span> <span class="s">./deploy.sh</span>
+<span class="na">env</span><span class="pi">:</span>
+  <span class="na">global</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">NOKOGIRI_USE_SYSTEM_LIBRARIES=true</span>
-  <span class="pi">-</span> <span class="s">COMMIT_AUTHOR_EMAIL</span><span class="pi">:</span> <span class="s">me@marcanuy.com</span>
-  <span class="pi">-</span> <span class="s">ENCRYPTION_LABEL</span><span class="pi">:</span> <span class="s">0c6d27255ccf</span>
-<span class="s">sudo</span><span class="pi">:</span> <span class="s">false</span>
-<span class="s">before_install</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">COMMIT_AUTHOR_EMAIL</span><span class="pi">:</span> <span class="s">me@marcanuy.com</span>
+  <span class="pi">-</span> <span class="na">ENCRYPTION_LABEL</span><span class="pi">:</span> <span class="s">0c6d27255ccf</span>
+<span class="na">sudo</span><span class="pi">:</span> <span class="no">false</span>
+<span class="na">before_install</span><span class="pi">:</span>
 <span class="pi">-</span> <span class="s">openssl aes-256-cbc -K $encrypted_0c6d27255ccf_key -iv $encrypted_0c6d27255ccf_iv -in deploy_key.enc -out deploy_key -d</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="add-deploy-key-to-gitignore">Add deploy key to gitignore:</h3>
 
 <p>In <code class="highlighter-rouge">.gitignore</code> add <em>deploy_key</em>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>_site
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_site
 .sass-cache
 .jekyll-metadata
 bower_components
 deploy_key
 deploy_key.pub
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="select-gh-pages-branch-in-github">Select gh-pages branch in Github</h3>
 
@@ -724,9 +719,8 @@ pages.</p>
 <p>In your project <code class="highlighter-rouge">README</code> file you can add the fancy Travis button with
 the current status of the building, adding a similar code:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[![Build Status](https://travis-ci.org/marcanuy/emacside.com.svg?branch=master)](https://travis-ci.org/marcanuy/emacside.com)
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[![Build Status](https://travis-ci.org/marcanuy/emacside.com.svg?branch=master)](https://travis-ci.org/marcanuy/emacside.com)
+</code></pre></div></div>
 
 <p>You can find your project button url following <a href="https://docs.travis-ci.com/user/status-images/">this guide</a>.</p>
 

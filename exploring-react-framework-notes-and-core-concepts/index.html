@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Exploring React Framework Notes And Core Concepts | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Exploring React Framework Notes And Core Concepts" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Getting started with React. Notes and main concepts to understand how it works and how to build a website.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/exploring-react-framework-notes-and-core-concepts/","publisher":null,"image":null,"headline":"Exploring React Framework Notes And Core Concepts","dateModified":"2017-08-27T00:00:00+00:00","datePublished":"2017-08-27T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/exploring-react-framework-notes-and-core-concepts/"},"@context":"http://schema.org"}</script>
+{"description":"Getting started with React. Notes and main concepts to understand how it works and how to build a website.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/exploring-react-framework-notes-and-core-concepts/","headline":"Exploring React Framework Notes And Core Concepts","dateModified":"2017-08-27T00:00:00+00:00","datePublished":"2017-08-27T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/exploring-react-framework-notes-and-core-concepts/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -432,8 +433,8 @@ should appear on the screen.</p>
 <p><strong>Props</strong> are arbitrary inputs passed to <strong>React Components</strong>. 
 They can be seen as object arguments that customize <em>components</em>.</p>
 
-<pre><code class="language-jsx">this.props
-</code></pre>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">props</span>
+</code></pre></div></div>
 
 <h4 id="state">State</h4>
 
@@ -476,11 +477,11 @@ use react components in an XML-syntax style, e.g.:</p>
 <code class="highlighter-rouge">React.createElement('div')</code>, so writing the above tag is the same as
 writing using <a href="https://facebook.github.io/react/docs/react-api.html#createelement">React.createElement</a>:</p>
 
-<pre><code class="language-jsx">return React.createElement('div', {className: '...'},
-  React.createElement('h1', ...),
-  React.createElement('ul', ...)
-);
-</code></pre>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'div'</span><span class="p">,</span> <span class="p">{</span><span class="na">className</span><span class="p">:</span> <span class="s1">'...'</span><span class="p">},</span>
+  <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'h1'</span><span class="p">,</span> <span class="p">...),</span>
+  <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'ul'</span><span class="p">,</span> <span class="p">...)</span>
+<span class="p">);</span>
+</code></pre></div></div>
 
 <blockquote class="blockquote" cite="https://facebook.github.io/react/tutorial/tutorial.html">
   <p>You can put any JavaScript expression within braces inside JSX. Each
@@ -498,23 +499,23 @@ variable or pass around your program.</p>
 value=somevalue /&gt;</code> then we can use it in another component accessing
 <code class="highlighter-rouge">this.props</code> in <em>MyComponent</em>, e.g.:</p>
 
-<pre><code class="language-jsx">class Board extends React.Component {
-  render() {
-    return &lt;Square value={i} /&gt;;
-  }
-}
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Board</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">&lt;</span><span class="nc">Square</span> <span class="na">value=</span><span class="si">{</span><span class="nx">i</span><span class="si">}</span> <span class="p">/&gt;;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-class Square extends React.Component {
-  ...
-  render() {
-    return (
-      &lt;button className="square"&gt;
-        {this.props.value}
-      &lt;/button&gt;
-    );
-  }
-}
-</code></pre>
+<span class="kd">class</span> <span class="nx">Square</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">className=</span><span class="s2">"square"</span><span class="p">&gt;</span>
+        <span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">value</span><span class="si">}</span>
+      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
 <h4 id="aggregation-of-many-components">Aggregation of many components</h4>
 
@@ -566,14 +567,14 @@ being re-rendered.</li>
 <p>Rather than defining a class extending <code class="highlighter-rouge">React.Component</code>, have a
 function that takes <code class="highlighter-rouge">props</code> and returns what should be rendered.</p>
 
-<pre><code class="language-jsx">function Mycomponent(props) {
-  return (
-    &lt;button className="foobar"&gt;
-      {props.value}
-    &lt;/button&gt;
-  );
-}
-</code></pre>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Mycomponent</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">className=</span><span class="s2">"foobar"</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">value</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
 <p class="alert alert-danger"><code class="highlighter-rouge">this</code> won’t be available, so <code class="highlighter-rouge">this.props</code> become <code class="highlighter-rouge">props</code></p>
 
@@ -585,9 +586,8 @@ function that takes <code class="highlighter-rouge">props</code> and returns wha
   <li>
     <p>Installation of <code class="highlighter-rouge">create-react</code> command line utility:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>   npm install -g create-react-app
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   npm install -g create-react-app
+</code></pre></div>    </div>
   </li>
 </ul>
 
@@ -612,7 +612,7 @@ databases <kbd>create-react-app my-app</kbd>.</p>
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>https://facebook.github.io/react/docs/&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>https://facebook.github.io/react/docs/ <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

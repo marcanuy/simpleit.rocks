@@ -18,7 +18,7 @@
     
     
     <!-- Mermaid -->
-    <link rel="stylesheet" href="https://simpleit.rocks/assets/vendor/mermaid.forest.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="https://simpleit.rocks/assets/vendor/mermaid.css" type="text/css" media="screen" />
     
     
     <!-- Custom css -->
@@ -48,8 +48,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Jekyll basic concepts | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Jekyll basic concepts" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -65,7 +66,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Jekyll is the most popular static site generator, it has few basic concepts to understand how it works.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/jekyll-basic-concepts/","publisher":null,"image":null,"headline":"Jekyll basic concepts","dateModified":"2016-05-08T00:00:00+00:00","datePublished":"2016-05-08T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/jekyll-basic-concepts/"},"@context":"http://schema.org"}</script>
+{"description":"Jekyll is the most popular static site generator, it has few basic concepts to understand how it works.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/jekyll-basic-concepts/","headline":"Jekyll basic concepts","dateModified":"2016-05-08T00:00:00+00:00","datePublished":"2016-05-08T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/jekyll-basic-concepts/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -310,7 +311,6 @@
       <div>
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
-<ul>
 <li class="toc-entry toc-h2"><a href="#definition">Definition</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#how-jekyll-generates-a-site">How Jekyll generates a site</a></li>
@@ -330,7 +330,6 @@
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#commands">Commands</a></li>
-</ul>
 <li class="toc-entry toc-h1"><a href="#references">References</a></li>
 </ul>
       </div>
@@ -461,12 +460,11 @@ graph TB
 
 <p>e.g.:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>---
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
 layout: post
 title: My cool blog
 ---
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>It has two requirements:</p>
 
@@ -517,7 +515,7 @@ title: My cool blog
 
     <p><a href="https://help.shopify.com/themes/liquid/tags">https://help.shopify.com/themes/liquid/tags</a></p>
 
-    <p>e.g. <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">content</span><span class="w"> </span><span class="err">==</span><span class="w"> </span><span class="err">blank</span><span class="w"> </span><span class="err">%</span><span class="w"> </span><span class="p">}</span></code></p>
+    <p>e.g. <code class="highlighter-rouge">{ % if content == blank % }</code></p>
   </li>
   <li>
     <p><strong>Objects</strong></p>
@@ -526,7 +524,7 @@ title: My cool blog
 
     <p><a href="https://help.shopify.com/themes/liquid/objects">https://help.shopify.com/themes/liquid/objects</a></p>
 
-    <p>e.g. <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">page.slug</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="err">}</span></code></p>
+    <p>e.g. <code class="highlighter-rouge">{ { page.slug } }</code></p>
   </li>
   <li>
     <p><strong>Filters</strong></p>
@@ -535,7 +533,7 @@ title: My cool blog
 
     <p><a href="https://help.shopify.com/themes/liquid/filters">https://help.shopify.com/themes/liquid/filters</a></p>
 
-    <p>e.g. <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">page.url</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">prepend:</span><span class="w"> </span><span class="err">site.baseurl</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="err">}</span></code></p>
+    <p>e.g. <code class="highlighter-rouge">{ { page.url | prepend: site.baseurl } }</code></p>
   </li>
   <li>Liquid reference: <a href="https://help.shopify.com/themes/liquid">https://help.shopify.com/themes/liquid</a></li>
   <li>Liquid cheatsheet: <a href="https://www.shopify.ca/partners/shopify-cheat-sheet">https://www.shopify.ca/partners/shopify-cheat-sheet</a></li>
@@ -560,9 +558,8 @@ title: My cool blog
   <li>Local instance with bundle</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>bundle <span class="nb">exec </span>jekyll serve --watch --drafts
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll serve <span class="nt">--watch</span> <span class="nt">--drafts</span>
+</code></pre></div></div>
 
 <h1 id="references">References</h1>
 

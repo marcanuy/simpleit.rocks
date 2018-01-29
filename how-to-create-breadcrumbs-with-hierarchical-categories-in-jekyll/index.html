@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>How to implement breadcrumbs on a Jekyll site with nested categories | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="How to implement breadcrumbs on a Jekyll site with nested categories" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"How to generate a list with links for each category when using hierarchical categories in Jekyll","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/","publisher":null,"image":null,"headline":"How to implement breadcrumbs on a Jekyll site with nested categories","dateModified":"2016-06-07T00:00:00+00:00","datePublished":"2016-06-07T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/"},"@context":"http://schema.org"}</script>
+{"description":"How to generate a list with links for each category when using hierarchical categories in Jekyll","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/","headline":"How to implement breadcrumbs on a Jekyll site with nested categories","dateModified":"2016-06-07T00:00:00+00:00","datePublished":"2016-06-07T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/how-to-create-breadcrumbs-with-hierarchical-categories-in-jekyll/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -424,15 +425,14 @@ of the <em>post</em>.</p>
 <code class="highlighter-rouge">/docs/science/_posts/2016-06-08-my_title.md</code> automatically gets the 
 categories <code class="highlighter-rouge">docs</code> and <code class="highlighter-rouge">science</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
 └── docs
     ├── index.md
     └── science
         ├── index.md
         └── _posts
             └── 2016-06-08-my_title.md
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Then a <em>breadcrumb</em> included in each post/category layout, can automatically
 generate a link to each path of the structure</p>
@@ -441,7 +441,7 @@ generate a link to each path of the structure</p>
 
 <p>The <em>breadcrumbs</em> code should be placed at <code class="highlighter-rouge">/_includes/breadcrumbs.html</code>:</p>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>	<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">categories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">path</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">split</span><span class="p">:</span><span class="s2">"/"</span><span class="w"> </span><span class="p">%}</span>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">categories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">path</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">split</span><span class="p">:</span><span class="s2">"/"</span><span class="w"> </span><span class="p">%}</span>
 	<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">filename_without_extension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">categories</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">last</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">split</span><span class="p">:</span><span class="s2">"."</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">first</span><span class="w"> </span><span class="p">%}</span>
 	<span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">categories</span><span class="w"> </span><span class="ow">contains</span><span class="w"> </span><span class="s2">"_posts"</span><span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="nv">filename_without_extension</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"index"</span><span class="w"> </span><span class="p">%}</span>
 	<span class="p">{%</span><span class="w"> </span><span class="nt">comment</span><span class="w"> </span><span class="p">%}</span><span class="c"> posts are like /docs/python/_posts/2016-06-06-foobar.md </span><span class="p">{%</span><span class="w"> </span><span class="nt">endcomment</span><span class="w"> </span><span class="p">%}</span>
@@ -461,8 +461,7 @@ generate a link to each path of the structure</p>
 	&lt;a href="<span class="p">{{</span><span class="w"> </span><span class="nv">route</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">absolute_url</span><span class="w"> </span><span class="p">}}</span>"&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">category</span><span class="w"> </span><span class="p">}}</span>&lt;/a&gt; 
 	<span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
 	<span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="posts-layouts">Posts layouts</h2>
 
@@ -472,11 +471,10 @@ parameters.</p>
 
 <p>In <code class="highlighter-rouge">/_layouts/post.html</code>:</p>
 
-<div class="language-liquid highlighter-rouge"><pre class="highlight"><code>..
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>..
 <span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span><span class="na">breadcrumbs</span><span class="p">.</span><span class="na">html</span><span class="w"> </span><span class="na">path</span><span class="o">=</span><span class="nv">page</span><span class="p">.</span><span class="nv">path</span><span class="w"> </span><span class="na">title</span><span class="o">=</span><span class="nv">page</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="p">%}</span>
 ..
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="output">Output</h2>
 

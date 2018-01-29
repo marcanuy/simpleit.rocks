@@ -18,7 +18,7 @@
     
     
     <!-- Mermaid -->
-    <link rel="stylesheet" href="https://simpleit.rocks/assets/vendor/mermaid.forest.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="https://simpleit.rocks/assets/vendor/mermaid.css" type="text/css" media="screen" />
     
     
     <!-- Custom css -->
@@ -48,8 +48,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Understanding Jekyll Posts | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Understanding Jekyll Posts" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -65,7 +66,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Clutter-free software concepts. Written on the go.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/understanding-jekyll-posts/","publisher":null,"image":null,"headline":"Understanding Jekyll Posts","dateModified":"2016-06-12T00:00:00+00:00","datePublished":"2016-06-12T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/understanding-jekyll-posts/"},"@context":"http://schema.org"}</script>
+{"description":"Clutter-free software concepts. Written on the go.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/understanding-jekyll-posts/","headline":"Understanding Jekyll Posts","dateModified":"2016-06-12T00:00:00+00:00","datePublished":"2016-06-12T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/understanding-jekyll-posts/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -411,21 +412,20 @@ to refer to the first section of a book, usually its smallest section.</p>
 
 <p>A common post looks like the following code, where the front matter goes inside <code class="highlighter-rouge">---</code> tag, and then the content of the <em>post</em>:</p>
 
-<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="nn">---</span>
-<span class="s">layout</span><span class="pi">:</span> <span class="s">post</span>
-<span class="s">title</span><span class="pi">:</span> <span class="s">My cool blog</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">My cool blog</span>
 <span class="nn">---</span>
 
 <span class="s">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed</span>
 <span class="s">do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
 <span class="s">Ut enim ad minim veniam, quis nostrud exercitation ullamco</span> 
 <span class="s">laboris nisi ut aliquip ex ea commodo consequat.</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="variables">Variables</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
 ├── one_category
 │   └── second_category
 │      └── _posts
@@ -433,8 +433,7 @@ to refer to the first section of a book, usually its smallest section.</p>
 └── _posts
    ├── a_post.md
    └── another_post.md
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="variables-of-a-post-and-documents-posts">Variables of a Post and Documents Posts</h3>
 

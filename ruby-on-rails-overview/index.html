@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Ruby On Rails Overview | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Ruby On Rails Overview" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"A basic overview of Ruby on Rails main components and how they work together.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/ruby-on-rails-overview/","publisher":null,"image":null,"headline":"Ruby On Rails Overview","dateModified":"2016-08-07T00:00:00+00:00","datePublished":"2016-08-07T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/ruby-on-rails-overview/"},"@context":"http://schema.org"}</script>
+{"description":"A basic overview of Ruby on Rails main components and how they work together.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/ruby-on-rails-overview/","headline":"Ruby On Rails Overview","dateModified":"2016-08-07T00:00:00+00:00","datePublished":"2016-08-07T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/ruby-on-rails-overview/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -468,31 +469,28 @@ in the browser or in the console: <code class="highlighter-rouge">rails routes</
 
 <p>Defining a route in <code class="highlighter-rouge">/config/routes.rb</code> like:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
   <span class="n">get</span> <span class="s1">'contact'</span><span class="p">,</span> <span class="ss">to: </span><span class="s1">'pages#contact'</span>
 <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>makes several <code class="highlighter-rouge">named routes</code> variables available, like <code class="highlighter-rouge">contact_path</code>
 and <code class="highlighter-rouge">contact_url</code> so they can be used in other files, e.g:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code>  <span class="c1">#/test/controllers/pages_test.rb</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">#/test/controllers/pages_test.rb</span>
   <span class="nb">test</span> <span class="s2">"should get contact"</span> <span class="k">do</span>
     <span class="n">get</span> <span class="n">contact_path</span>
     <span class="n">assert_response</span> <span class="ss">:success</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>In this case, these routes are <code class="highlighter-rouge">contact_path</code> and <code class="highlighter-rouge">contact_url</code>, 
 the difference between them is that <code class="highlighter-rouge">_url</code> includes the full URL:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>contact_path -&gt; '/contact'
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>contact_path -&gt; '/contact'
 contact_url  -&gt; 'http://www.example.com/contact'
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p class="alert alert-warning">The common convention is to use the <code class="highlighter-rouge">_path</code> form
 <strong>except when doing redirects</strong>, where <code class="highlighter-rouge">_url</code> form is preferred because the
@@ -501,9 +499,8 @@ HTTP standard requires a <em>full</em> URL after redirects.</p>
 <p>A custom name for a route, instead of the default one,
 can also be specified with the <code class="highlighter-rouge">as</code> keyword:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code>  <span class="n">get</span> <span class="s1">'contact'</span><span class="p">,</span> <span class="ss">to: </span><span class="s1">'pages#contact'</span><span class="sb">`, as: 'other-contact'
-</span></code></pre>
-</div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">get</span> <span class="s1">'contact'</span><span class="p">,</span> <span class="ss">to: </span><span class="s1">'pages#contact'</span><span class="sb">`, as: 'other-contact'
+</span></code></pre></div></div>
 
 <h2 id="web-request-handling">Web Request Handling</h2>
 
@@ -668,17 +665,15 @@ and located in different files for better structuring the app.</p>
   <li>file: <code class="highlighter-rouge">_comment.html</code> gets rendered with:</li>
 </ul>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= render "comment" %&gt;
-</span></code></pre>
-</div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= render "comment" %&gt;
+</span></code></pre></div></div>
 
 <ul>
   <li>file: <code class="highlighter-rouge">app/views/shared/_comment.html.erb</code> with:</li>
 </ul>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= render "shared/comment" %&gt;
-</span></code></pre>
-</div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= render "shared/comment" %&gt;
+</span></code></pre></div></div>
 
 <p><code class="highlighter-rouge">&lt;%= render partial: "product", locals: { product: @product } %&gt;</code> can be 
 called as: <code class="highlighter-rouge">&lt;%= render "product", product: @product %&gt;</code></p>

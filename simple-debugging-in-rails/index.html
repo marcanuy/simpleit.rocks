@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Simple Debugging In Rails | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Simple Debugging In Rails" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Simple methods to debug when developing in rails.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/simple-debugging-in-rails/","publisher":null,"image":null,"headline":"Simple Debugging In Rails","dateModified":"2016-08-12T00:00:00+00:00","datePublished":"2016-08-12T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/simple-debugging-in-rails/"},"@context":"http://schema.org"}</script>
+{"description":"Simple methods to debug when developing in rails.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/simple-debugging-in-rails/","headline":"Simple Debugging In Rails","dateModified":"2016-08-12T00:00:00+00:00","datePublished":"2016-08-12T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/simple-debugging-in-rails/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -391,13 +392,12 @@
 <p>Adding the following line to <code class="highlighter-rouge">/app/views/layouts/application.html.erb</code> to 
 show debugging information in each view <strong>only in the <em>development</em> environment</strong>:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="p">.</span><span class="nf">.</span><span class="p">.</span>
-<span class="nf">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="p">.</span><span class="nf">.</span><span class="p">.</span>
-<span class="nf">&lt;</span><span class="o">%=</span> <span class="n">debug</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="k">if</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">env</span><span class="p">.</span><span class="nf">development?</span> <span class="sx">%&gt;
-&lt;/body&gt;</span>
-</code></pre>
-</div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">...</span>
+<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">...</span>
+<span class="o">&lt;</span><span class="sx">%= debug(params) if Rails.env.development? %&gt;
+&lt;/body&gt;
+</span></code></pre></div></div>
 
 <h2 id="byebug-gem">Byebug gem</h2>
 
@@ -406,7 +406,7 @@ action, makes it possible to interact with the application in the console
 server each time a view is accessed in the browser. Adding <code class="highlighter-rouge">debugger</code> in
 a controller action:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">UsersController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">UsersController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
   <span class="k">def</span> <span class="nf">new</span>
   <span class="k">end</span>
 
@@ -415,8 +415,7 @@ a controller action:</p>
     <span class="n">debugger</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Then accessing a url of the application, the rails server shows 
 the <code class="highlighter-rouge">(byebug) </code> prompt so the developer can inspect current view

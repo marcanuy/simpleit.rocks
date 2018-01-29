@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>kramdown General Concepts | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="kramdown General Concepts" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Clutter-free software concepts. Written on the go.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/kramdown-general-concepts/","publisher":null,"image":null,"headline":"kramdown General Concepts","dateModified":"2016-06-22T00:00:00+00:00","datePublished":"2016-06-22T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/kramdown-general-concepts/"},"@context":"http://schema.org"}</script>
+{"description":"Clutter-free software concepts. Written on the go.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/kramdown-general-concepts/","headline":"kramdown General Concepts","dateModified":"2016-06-22T00:00:00+00:00","datePublished":"2016-06-22T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/kramdown-general-concepts/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -429,49 +430,44 @@
   <li>Adding the <em>cite</em> attribute in <em>blockquote</em> tag:</li>
 </ul>
 
-<div class="language-markdown highlighter-rouge"><pre class="highlight"><code><span class="gt">&gt; The rule of thumb is, don't introduce a new attribute outside of the __init__ method, otherwise you've given the caller an object that isn't fully initialized.</span>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; The rule of thumb is, don't introduce a new attribute outside of the __init__ method, otherwise you've given the caller an object that isn't fully initialized.</span>
 {: cite="https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/"}
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Generates the following HTML:</p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;blockquote</span> <span class="na">cite=</span><span class="s">"https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;blockquote</span> <span class="na">cite=</span><span class="s">"https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;p&gt;</span>The rule of thumb is, don’t introduce a new attribute outside of the <span class="nt">&lt;strong&gt;</span>init<span class="nt">&lt;/strong&gt;</span> method, otherwise you’ve given the caller an object that isn’t fully initialized.
 <span class="nt">&lt;/blockquote&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <ul>
   <li>Adding a <em>cite</em> element inside the <em>blockquote</em></li>
 </ul>
 
-<div class="language-markdown highlighter-rouge"><pre class="highlight"><code><span class="gt">&gt; The secret to creativity is knowing how to hide your sources. </span>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; The secret to creativity is knowing how to hide your sources. </span>
 <span class="gt">&gt; -- &lt;cite&gt;[Albert Einstein][1]&lt;/cite&gt;</span>
 
 <span class="p">[</span><span class="ss">1</span><span class="p">]:</span><span class="sx">http://www.quotedb.com/quotes/2112</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Generates in HTML:</p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;blockquote&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;blockquote&gt;</span>
   <span class="nt">&lt;p&gt;</span>The secret to creativity is knowing how to hide your sources. 
   – <span class="nt">&lt;cite&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://www.quotedb.com/quotes/2112"</span><span class="nt">&gt;</span>Albert Einstein<span class="nt">&lt;/a&gt;&lt;/cite&gt;</span>
   <span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/blockquote&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="generate-bootstrap-4-blockquotes">Generate Bootstrap 4 Blockquotes</h3>
 
 <p>In BS4 blockquotes need to have the <code class="highlighter-rouge">class="blockquote"</code> in the <code class="highlighter-rouge">blockquote</code> element and optionally a <code class="highlighter-rouge">class=blockquote-footer</code> in the <code class="highlighter-rouge">&lt;footer&gt;</code> element at bottom:</p>
 
-<div class="language-markdown highlighter-rouge"><pre class="highlight"><code><span class="gt">&gt; Django handles three distinct parts of the work involved in forms.</span>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; Django handles three distinct parts of the work involved in forms.</span>
 <span class="gt">&gt; &lt;footer class="blockquote-footer"&gt;Djangoproject.com tutorial&lt;/footer&gt;</span>
 {: class="blockquote" cite="https://docs.djangoproject.com/en/1.9/topics/forms/"}
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Generates:</p>
 
@@ -490,24 +486,22 @@
   <li>With tildes</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>~~~ html
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~~~ html
 &lt;p&gt; this is my paragraph&lt;/p&gt;
 ~~~
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <ul>
   <li>Using <abbr title="Inline Attribute List">IAL</abbr></li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>~~~
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~~~
 def myfunction?
   1618
 end
 ~~~
 {: .language-ruby}
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>In Jekyll also works:</p>
 
@@ -515,11 +509,10 @@ end
   <li>Using backticks:</li>
 </ul>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'redcarpet'</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'redcarpet'</span>
 <span class="n">markdown</span> <span class="o">=</span> <span class="no">Redcarpet</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Hello World!"</span><span class="p">)</span>
 <span class="nb">puts</span> <span class="n">markdown</span><span class="p">.</span><span class="nf">to_html</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <ul>
   <li>Or with curly braces:</li>
@@ -542,10 +535,9 @@ end
 
 <p>As by default it generates automatic <em>ids</em> for all the header, there is only needed to add a list and name using <abbr title="Inline Attribute List">IAL</abbr> as the placeholder of the generated <abbr title="Table Of Contents">TOC</abbr>.</p>
 
-<div class="language-markdown highlighter-rouge"><pre class="highlight"><code><span class="p">*</span> TOC
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">*</span> TOC
 {:toc}
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><a href="http://kramdown.gettalong.org/converter/html.html#toc">http://kramdown.gettalong.org/converter/html.html#toc</a></p>
 

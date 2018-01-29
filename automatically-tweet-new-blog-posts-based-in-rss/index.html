@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Script to automatically tweet new blog posts based in a website RSS feed | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Script to automatically tweet new blog posts based in a website RSS feed" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/","publisher":null,"image":null,"headline":"Script to automatically tweet new blog posts based in a website RSS feed","dateModified":"2016-11-10T00:00:00+00:00","datePublished":"2016-11-10T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/"},"@context":"http://schema.org"}</script>
+{"description":"How to tweet new posts of a website, specially useful for websites built with static generators like Jekyll.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/","headline":"Script to automatically tweet new blog posts based in a website RSS feed","dateModified":"2016-11-10T00:00:00+00:00","datePublished":"2016-11-10T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/automatically-tweet-new-blog-posts-based-in-rss/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -537,13 +538,12 @@ when we execute it, so it can be good to set it up with for example,
 <p>And then we add the following line (adjust the path of your
 installation, in this case I have used <code class="highlighter-rouge">/opt/publishfeed</code>)</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># download feeds hourly
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># download feeds hourly
 0 * * * * cd /opt/publishfeed/publishfeed/; flock -n /tmp/twsimpleitp.lock ~/.virtualenvs/publishfeed/bin/python main.py simpleitrocks -g
 # publish tweets every 15 minutes
 */15 * * * * cd /opt/publishfeed/publishfeed/; flock -n /tmp/twsimpleitp.lock ~/.virtualenvs/publishfeed/bin/python main.py simpleitrocks -t
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>We use the <code class="highlighter-rouge">flock</code> command to
 <a href="/prevent-running-of-duplicate-cron-jobs/">prevent duplicate cron job executions</a>.</p>

@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Make Git Ignore Temporary Files Produced By Emacs And Vim In All Directories Globally | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Make Git Ignore Temporary Files Produced By Emacs And Vim In All Directories Globally" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Ignore backup files produced by VIm and Emacs in all your git projects","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/make-git-ignore-temporary-files-produced-by-emacs-and-vim-in-all-directories-globally/","publisher":null,"image":null,"headline":"Make Git Ignore Temporary Files Produced By Emacs And Vim In All Directories Globally","dateModified":"2017-01-09T00:00:00+00:00","datePublished":"2017-01-09T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/make-git-ignore-temporary-files-produced-by-emacs-and-vim-in-all-directories-globally/"},"@context":"http://schema.org"}</script>
+{"description":"Ignore backup files produced by VIm and Emacs in all your git projects","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/make-git-ignore-temporary-files-produced-by-emacs-and-vim-in-all-directories-globally/","headline":"Make Git Ignore Temporary Files Produced By Emacs And Vim In All Directories Globally","dateModified":"2017-01-09T00:00:00+00:00","datePublished":"2017-01-09T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/make-git-ignore-temporary-files-produced-by-emacs-and-vim-in-all-directories-globally/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -391,10 +392,9 @@ ignoring files in every <em>Git</em> repository on the computer.</p>
 <p>This command will automatically set the following configuration in
 your <a href="https://git-scm.com/docs/git-config#git-config-gitconfig"><code class="highlighter-rouge">~/.gitconfig_global</code></a> file.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[core]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[core]
         excludesfile = /home/user/.gitignore_global
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <blockquote class="blockquote" cite="https://git-scm.com/docs/gitignore">
   <p>Patterns which a user wants Git to ignore in all situations (e.g.,
@@ -422,7 +422,7 @@ that will be processed globally.</p>
 
 <p><a href="https://github.com/github/gitignore/blob/master/Global/Emacs.gitignore">Gitignore for Emacs</a> editor:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># -*- mode: gitignore; -*-
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># -*- mode: gitignore; -*-
 *~
 \#*\#
 /.emacs.desktop
@@ -467,14 +467,13 @@ flycheck_*.el
 
 # directory configuration
 .dir-locals.el
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="gitignore-for-vim">gitignore for Vim</h3>
 
 <p><a href="https://github.com/github/gitignore/blob/master/Global/Vim.gitignore">Gitignore for Vim</a> editor:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># swap
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># swap
 [._]*.s[a-v][a-z]
 [._]*.sw[a-p]
 [._]s[a-v][a-z]
@@ -486,8 +485,7 @@ Session.vim
 *~
 # auto-generated tag files
 tags
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="other-global-gitignore-properties">Other global gitignore properties</h2>
 

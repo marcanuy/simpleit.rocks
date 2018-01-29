@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Handling Mysql Credentials From Linux Command Line The Right Way | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Handling Mysql Credentials From Linux Command Line The Right Way" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Guide to use configuration files to handle MySQL user and password information so they are never typed in Linux console.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/handling-mysql-credentials-from-linux-command-line-the-right-way/","publisher":null,"image":null,"headline":"Handling Mysql Credentials From Linux Command Line The Right Way","dateModified":"2016-11-15T00:00:00+00:00","datePublished":"2016-11-15T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/handling-mysql-credentials-from-linux-command-line-the-right-way/"},"@context":"http://schema.org"}</script>
+{"description":"Guide to use configuration files to handle MySQL user and password information so they are never typed in Linux console.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/handling-mysql-credentials-from-linux-command-line-the-right-way/","headline":"Handling Mysql Credentials From Linux Command Line The Right Way","dateModified":"2016-11-15T00:00:00+00:00","datePublished":"2016-11-15T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/handling-mysql-credentials-from-linux-command-line-the-right-way/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -424,12 +425,11 @@ in <a href="http://dev.mysql.com/doc/refman/5.7/en/option-files.html">Using Opti
 
 <p>We create a configuration file <code class="highlighter-rouge">mydb.cnf</code> with the following format.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[client]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[client]
 host=
 user=
 password=
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="using-the-config-file">Using the config file</h2>
 
@@ -460,17 +460,16 @@ a <a href="https://en.wikipedia.org/wiki/Cron">cronjob</a> and automatically
 backup the database regularly using <kbd>mysqldump</kbd>. Edit the
 file <code class="highlighter-rouge">backup.sh</code> with the following content.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 <span class="c"># Backup database from console</span>
 <span class="nv">DATABASE</span><span class="o">=</span>
 <span class="nv">DEFAULTS_FILE</span><span class="o">=</span><span class="nv">$DATABASE</span>.cnf
 <span class="nv">BACKUP_DIR</span><span class="o">=</span>
 <span class="nv">LOGS_DIR</span><span class="o">=</span>
 
-<span class="nv">DB_OUT_FILENAME</span><span class="o">=</span><span class="nv">$DEFAULTS_FILE</span>-<span class="sb">`</span>date +<span class="se">\%</span>Y<span class="se">\%</span>m<span class="se">\%</span>d<span class="sb">`</span>.sql.gz
-mysqldump --defaults-extra-file<span class="o">=</span><span class="nv">$DEFAULTS_FILE</span> <span class="nv">$DATABASE</span> 2&gt;&gt; <span class="nv">$LOGS_DIR</span>/<span class="nv">$DATABASE</span>.log | gzip - &gt; <span class="nv">$BACKUP_DIR</span>/<span class="nv">$DB_OUT_FILENAME</span>
-</code></pre>
-</div>
+<span class="nv">DB_OUT_FILENAME</span><span class="o">=</span><span class="nv">$DEFAULTS_FILE</span>-<span class="sb">`</span><span class="nb">date</span> +<span class="se">\%</span>Y<span class="se">\%</span>m<span class="se">\%</span>d<span class="sb">`</span>.sql.gz
+mysqldump <span class="nt">--defaults-extra-file</span><span class="o">=</span><span class="nv">$DEFAULTS_FILE</span> <span class="nv">$DATABASE</span> 2&gt;&gt; <span class="nv">$LOGS_DIR</span>/<span class="nv">$DATABASE</span>.log | <span class="nb">gzip</span> - <span class="o">&gt;</span> <span class="nv">$BACKUP_DIR</span>/<span class="nv">$DB_OUT_FILENAME</span>
+</code></pre></div></div>
 
 <p>Then make it executable <kbd>chmod +x backup.sh</kbd></p>
 
@@ -484,14 +483,13 @@ mysqldump --defaults-extra-file<span class="o">=</span><span class="nv">$DEFAULT
 <p>We can remove all the content from all the tables of a database
 automatically with the following script <code class="highlighter-rouge">truncate_db.sh</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 <span class="c"># Truncate database tables from console</span>
 <span class="nv">DATABASE</span><span class="o">=</span>
 <span class="nv">DEFAULTS_FILE</span><span class="o">=</span><span class="nv">$DATABASE</span>.cnf
 
-mysql --defaults-extra-file<span class="o">=</span><span class="s2">"</span><span class="nv">$DEFAULTS_FILE</span><span class="s2">"</span> -Nse <span class="s1">'show tables'</span> <span class="nv">$DATABASE</span> | <span class="k">while </span><span class="nb">read </span>table; <span class="k">do </span>mysql --defaults-extra-file<span class="o">=</span><span class="s2">"</span><span class="nv">$DEFAULTS_FILE</span><span class="s2">"</span> -e <span class="s2">"truncate table </span><span class="nv">$table</span><span class="s2">"</span> <span class="nv">$DATABASE</span>; <span class="k">done</span>
-</code></pre>
-</div>
+mysql <span class="nt">--defaults-extra-file</span><span class="o">=</span><span class="s2">"</span><span class="nv">$DEFAULTS_FILE</span><span class="s2">"</span> <span class="nt">-Nse</span> <span class="s1">'show tables'</span> <span class="nv">$DATABASE</span> | <span class="k">while </span><span class="nb">read </span>table<span class="p">;</span> <span class="k">do </span>mysql <span class="nt">--defaults-extra-file</span><span class="o">=</span><span class="s2">"</span><span class="nv">$DEFAULTS_FILE</span><span class="s2">"</span> <span class="nt">-e</span> <span class="s2">"truncate table </span><span class="nv">$table</span><span class="s2">"</span> <span class="nv">$DATABASE</span><span class="p">;</span> <span class="k">done</span>
+</code></pre></div></div>
 
 <p>Then make it executable <kbd>chmod +x truncate_db.sh</kbd>.</p>
 

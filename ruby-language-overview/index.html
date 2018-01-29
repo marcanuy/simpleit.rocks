@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Ruby Language Overview | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Ruby Language Overview" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Ruby programming language basic concepts.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/ruby-language-overview/","publisher":null,"image":null,"headline":"Ruby Language Overview","dateModified":"2016-08-09T00:00:00+00:00","datePublished":"2016-08-09T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/ruby-language-overview/"},"@context":"http://schema.org"}</script>
+{"description":"Ruby programming language basic concepts.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/ruby-language-overview/","headline":"Ruby Language Overview","dateModified":"2016-08-09T00:00:00+00:00","datePublished":"2016-08-09T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/ruby-language-overview/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -302,7 +303,6 @@
       <div>
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
-<ul>
 <li class="toc-entry toc-h2"><a href="#syntax">Syntax</a></li>
 <li class="toc-entry toc-h2"><a href="#assignment">Assignment</a></li>
 <li class="toc-entry toc-h2"><a href="#modules-and-classes">Modules and Classes</a></li>
@@ -328,7 +328,6 @@
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#operator-precedence">Operator precedence</a></li>
-</ul>
 <li class="toc-entry toc-h1"><a href="#references">References</a></li>
 </ul>
       </div>
@@ -443,12 +442,11 @@ and <a href="http://ruby-doc.org/core-2.3.1/String.html">strings</a>, is an
 <em>automagically</em> in frameworks that favours conventions like 
 <em>ruby on rails</em>.</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">module</span> <span class="nn">ApplicationHelper</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">ApplicationHelper</span>
 	<span class="c1"># ....</span>
 <span class="k">end</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="method-definition">Method definition</h2>
 
@@ -467,20 +465,18 @@ and <a href="http://ruby-doc.org/core-2.3.1/String.html">strings</a>, is an
 
 <p>Defining a method with <code class="highlighter-rouge">def</code>:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">message</span><span class="p">(</span><span class="n">str</span> <span class="o">=</span> <span class="s1">''</span><span class="p">)</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">message</span><span class="p">(</span><span class="n">str</span> <span class="o">=</span> <span class="s1">''</span><span class="p">)</span>
   <span class="k">return</span> <span class="s2">"empty string!"</span> <span class="k">if</span> <span class="n">str</span><span class="p">.</span><span class="nf">empty?</span>
   <span class="k">return</span> <span class="s2">"nonempty."</span>
 <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="comments">Comments</h2>
 
 <p>Comments start with the hash mark <code class="highlighter-rouge">#</code> (also called the <em>pound sign</em> and the <em>octothorpe</em>)</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="c1"># This is a comment in ruby</span>
-</code></pre>
-</div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This is a comment in ruby</span>
+</code></pre></div></div>
 
 <h2 id="local-variable-assignment">Local variable assignment</h2>
 
@@ -570,9 +566,8 @@ foobar
   <li><a href="http://ruby-doc.org/core-2.3.1/Array.html">http://ruby-doc.org/core-2.3.1/Array.html</a></li>
 </ul>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"foo"</span><span class="p">,</span> <span class="s2">"bar"</span><span class="p">,</span> <span class="s2">"baz"</span><span class="p">]</span>
-</code></pre>
-</div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"foo"</span><span class="p">,</span> <span class="s2">"bar"</span><span class="p">,</span> <span class="s2">"baz"</span><span class="p">]</span>
+</code></pre></div></div>
 
 <ul>
   <li>Access specific array position

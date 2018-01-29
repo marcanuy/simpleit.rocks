@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Redirect HTTP to HTTPS and WWW to non-WWW with AWS S3, Cloudfront and Route 53 with a custom domain | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Redirect HTTP to HTTPS and WWW to non-WWW with AWS S3, Cloudfront and Route 53 with a custom domain" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Guide to host a website in Amazon S3 bucket using SSL and a custom non-www domain with Cloudfront CDN.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/redirect-http-to-https-and-www-to-non-www-with-aws-s3-bucket-cloudfront-route-53-and-a-custom-domain/","publisher":null,"image":null,"headline":"Redirect HTTP to HTTPS and WWW to non-WWW with AWS S3, Cloudfront and Route 53 with a custom domain","dateModified":"2017-04-22T00:00:00+00:00","datePublished":"2017-04-22T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/redirect-http-to-https-and-www-to-non-www-with-aws-s3-bucket-cloudfront-route-53-and-a-custom-domain/"},"@context":"http://schema.org"}</script>
+{"description":"Guide to host a website in Amazon S3 bucket using SSL and a custom non-www domain with Cloudfront CDN.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/redirect-http-to-https-and-www-to-non-www-with-aws-s3-bucket-cloudfront-route-53-and-a-custom-domain/","headline":"Redirect HTTP to HTTPS and WWW to non-WWW with AWS S3, Cloudfront and Route 53 with a custom domain","dateModified":"2017-04-22T00:00:00+00:00","datePublished":"2017-04-22T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/redirect-http-to-https-and-www-to-non-www-with-aws-s3-bucket-cloudfront-route-53-and-a-custom-domain/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -433,21 +434,20 @@ our static website files.</p>
 <em>Action</em>: <strong>s3:GetObject</strong>, then if you don’t use the generator, it
 will look something like:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"Id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Policy1492008478664"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stmt1492008213599"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:GetObject"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::example.com/*"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "Version": "2012-10-17",
+    "Id": "Policy1492008478664",
+    "Statement": [
+        {
+            "Sid": "Stmt1492008213599",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::example.com/*"
+        }
+    ]
+}
+</code></pre></div></div>
 
 <h4 id="www-bucket">WWW bucket</h4>
 

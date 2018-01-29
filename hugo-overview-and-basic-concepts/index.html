@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Hugo overview and basic concepts | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Hugo overview and basic concepts" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"A first approach to Hugo web static generator","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/hugo-overview-and-basic-concepts/","publisher":null,"image":null,"headline":"Hugo overview and basic concepts","dateModified":"2017-10-10T00:00:00+00:00","datePublished":"2017-10-10T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/hugo-overview-and-basic-concepts/"},"@context":"http://schema.org"}</script>
+{"description":"A first approach to Hugo web static generator","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/hugo-overview-and-basic-concepts/","headline":"Hugo overview and basic concepts","dateModified":"2017-10-10T00:00:00+00:00","datePublished":"2017-10-10T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/hugo-overview-and-basic-concepts/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -584,9 +585,8 @@ config</code>.</li>
 and <code class="highlighter-rouge">HUGO_</code> prefix, for example, to set the site title and build
 the site:</p>
 
-            <div class="highlighter-rouge"><pre class="highlight"><code>$ env HUGO_TITLE="New Title" hugo
-</code></pre>
-            </div>
+            <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ env HUGO_TITLE="New Title" hugo
+</code></pre></div>            </div>
           </li>
         </ul>
       </li>
@@ -661,16 +661,14 @@ THEME NAME &gt;</code> directory.</p>
 
 <p>For example, to customize the file</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/themes/&lt; THEME &gt;/layouts/_default/single.html`
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/themes/&lt; THEME &gt;/layouts/_default/single.html`
+</code></pre></div></div>
 
 <p>you simply copy the above file to you local instance and edit as you
 wish:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/layouts/_default/single.html
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/layouts/_default/single.html
+</code></pre></div></div>
 
 <h3 id="how-themes-work">How themes work</h3>
 
@@ -694,12 +692,11 @@ the final site.</p>
 <p>To add the theme to the configuration file: <code class="highlighter-rouge">config.toml</code> we set the
 <code class="highlighter-rouge">theme</code> property.</p>
 
-<div class="language-toml highlighter-rouge"><pre class="highlight"><code><span class="py">languageCode</span> <span class="p">=</span> <span class="s">"en-us"</span>
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">languageCode</span> <span class="p">=</span> <span class="s">"en-us"</span>
 <span class="py">title</span> <span class="p">=</span> <span class="s">"My New Hugo Site"</span>
 <span class="py">baseurl</span> <span class="p">=</span> <span class="s">"http://example.org/"</span>
 <span class="py">theme</span> <span class="p">=</span> <span class="s">"ananke"</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="at-run-time">at Run time</h4>
 
@@ -780,7 +777,7 @@ in the front-matter with <code class="highlighter-rouge">hugo new &lt; post &gt;
 <p>It creates a basic post skeleton, the front-matter needed to build a
 post:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>+++
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+++
 title = "This is my first post"
 date = "2017-10-10"
 tags = []
@@ -791,8 +788,7 @@ description = "A new post added"
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id tellus dolor. 
 
 Cras vitae consequat risus. Suspendisse quis justo arcu.
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="serve-site">Serve site</h2>
 

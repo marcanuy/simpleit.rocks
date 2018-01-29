@@ -45,8 +45,9 @@
 
 
     
-  <!-- Begin Jekyll SEO tag v2.3.0 -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>How To Download A Website With Wget The Right Way | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="How To Download A Website With Wget The Right Way" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -62,7 +63,7 @@
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"name":null,"description":"Download an entire website to browse offline with wget in Linux.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/how-to-download-a-website-with-wget-the-right-way/","publisher":null,"image":null,"headline":"How To Download A Website With Wget The Right Way","dateModified":"2017-06-30T00:00:00+00:00","datePublished":"2017-06-30T00:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/how-to-download-a-website-with-wget-the-right-way/"},"@context":"http://schema.org"}</script>
+{"description":"Download an entire website to browse offline with wget in Linux.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/how-to-download-a-website-with-wget-the-right-way/","headline":"How To Download A Website With Wget The Right Way","dateModified":"2017-06-30T00:00:00+00:00","datePublished":"2017-06-30T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/how-to-download-a-website-with-wget-the-right-way/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -461,18 +462,17 @@ and any newer copies on the server to be ignored.</p>
 
 <p>Summarizing, these are the needed parameters:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wget --wait<span class="o">=</span>2 <span class="se">\</span>
-	 --limit-rate<span class="o">=</span>20K <span class="se">\</span>
-	 --recursive
-	 --page-requisites <span class="se">\</span>
-	 --user-agent<span class="o">=</span>Mozilla <span class="se">\</span>
-	 --no-parent <span class="se">\</span>
-	 --convert-links <span class="se">\</span>
-	 --adjust-extension <span class="se">\</span>
-	 --no-clobber <span class="se">\</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">--wait</span><span class="o">=</span>2 <span class="se">\</span>
+	 <span class="nt">--limit-rate</span><span class="o">=</span>20K <span class="se">\</span>
+	 <span class="nt">--recursive</span>
+	 <span class="nt">--page-requisites</span> <span class="se">\</span>
+	 <span class="nt">--user-agent</span><span class="o">=</span>Mozilla <span class="se">\</span>
+	 <span class="nt">--no-parent</span> <span class="se">\</span>
+	 <span class="nt">--convert-links</span> <span class="se">\</span>
+	 <span class="nt">--adjust-extension</span> <span class="se">\</span>
+	 <span class="nt">--no-clobber</span> <span class="se">\</span>
 	 https://example.com
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Or in one line:</p>
 
