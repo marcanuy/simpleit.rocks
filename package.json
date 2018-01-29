@@ -10,6 +10,7 @@
     "bootstrap": "4.0.0-alpha.6",
     "clipboard": "^1.7.1",
     "font-awesome": "^4.7.0",
+    "less": "^2.7.3",
     "mermaid": "^7.0.3"
   }
 }

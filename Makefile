@@ -51,7 +51,8 @@ update: $(PROJECT_DEPS)
 
 include-yarn-deps:
 	mkdir -p $(VENDOR_DIR)
-	cp node_modules/mermaid/dist/mermaid.forest.css $(VENDOR_DIR)
+	#cp node_modules/mermaid/dist/mermaid.forest.css $(VENDOR_DIR)
+	./node_modules/less/bin/lessc node_modules/mermaid/src/less/forest/mermaid.less $(VENDOR_DIR)/mermaid.css
 	cp node_modules/mermaid/dist/mermaid.min.js $(VENDOR_DIR)
 	cp node_modules/font-awesome/css/font-awesome.min.css $(VENDOR_DIR)
 	cp -r node_modules/font-awesome/fonts $(ASSETS_DIR)
