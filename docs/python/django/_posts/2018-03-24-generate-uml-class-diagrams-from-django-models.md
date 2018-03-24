@@ -122,7 +122,11 @@ Or grouped by application (`-o`):
 </samp>
 </pre>
 
-![Wagtail models class diagram](/assets/img/wagtail_models_application_grouping.png){:class="img-fluid"}
+![Wagtail models class diagram grouped by app](/assets/img/wagtail_models_application_grouping.png){:class="img-fluid"}
+
+Lastly, let's generate a class diagram for Django (v2.0.3) models:
+
+![Django models class diagram grouped by app](/assets/img/django_models.png){:class="img-fluid"}
 
 ## Conclusion
 
