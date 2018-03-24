@@ -6,9 +6,162 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 29 Jan 2018 02:58:47 +0000</pubDate>
-    <lastBuildDate>Mon, 29 Jan 2018 02:58:47 +0000</lastBuildDate>
+    <pubDate>Sat, 24 Mar 2018 13:08:31 +0000</pubDate>
+    <lastBuildDate>Sat, 24 Mar 2018 13:08:31 +0000</lastBuildDate>
     <generator>Jekyll v3.7.2</generator>
+    
+      <item>
+        <title>Generate UML class diagrams from django models</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;To visualize and better understand a project structure we can create
+&lt;abbr title=&quot;Unified Modeling Language&quot;&gt;UML&lt;/abbr&gt; class diagrams from Django models.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://en.wikipedia.org/wiki/Class_diagram&quot;&gt;
+  &lt;p&gt;a class diagram in the Unified Modeling Language (&lt;abbr title=&quot;Unified Modeling Language&quot;&gt;UML&lt;/abbr&gt;) is a type of
+static structure diagram that describes the structure of a system by
+showing the system’s classes, their attributes, operations (or
+methods), and the relationships among objects.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Class_diagram&quot;&gt;Wikipedia&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;We will use a special command for this task included in the
+&lt;a href=&quot;https://github.com/django-extensions/django-extensions&quot;&gt;django-extensions&lt;/a&gt;
+package called:
+&lt;a href=&quot;https://django-extensions.readthedocs.io/en/latest/graph_models.html&quot;&gt;graph_models&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://django-extensions.readthedocs.io/en/latest/graph_models.html&quot;&gt;
+  &lt;p&gt;Creates a GraphViz dot file for the specified app names based on
+their models.py. You can pass multiple app names and they will all
+be combined into a single model. Output is usually directed to a dot
+file.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://django-extensions.readthedocs.io/en/latest/graph_models.html&quot;&gt;Graph
+models&lt;/a&gt; definition&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;steps&quot;&gt;Steps&lt;/h2&gt;
+
+&lt;h3 id=&quot;install-django-extensions&quot;&gt;Install django extensions&lt;/h3&gt;
+
+&lt;p&gt;Considering you already have Django installed (for this example I will
+use the &lt;a href=&quot;https://github.com/wagtail/wagtail&quot;&gt;Wagtail&lt;/a&gt; project), then
+we install &lt;em&gt;django extensions&lt;/em&gt; with &lt;kbd&gt;pip install
+django-extensions&lt;/kbd&gt;.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;pip install django-extensions&lt;/kbd&gt;
+Collecting django-extensions
+  Using cached django_extensions-2.0.6-py2.py3-none-any.whl
+Collecting six&amp;gt;=1.2 (from django-extensions)
+  Using cached six-1.11.0-py2.py3-none-any.whl
+Installing collected packages: six, django-extensions
+Successfully installed django-extensions-2.0.6 six-1.11.0
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h3 id=&quot;add-to-installed-apps&quot;&gt;Add to installed apps&lt;/h3&gt;
+
+&lt;p&gt;To make your Django project aware of the new package, we add it to
+&lt;code class=&quot;highlighter-rouge&quot;&gt;INSTALLED_APPS&lt;/code&gt; in your configuration file &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;project&amp;gt;/settings.py&lt;/code&gt;,
+in a Wagtail project called &lt;code class=&quot;highlighter-rouge&quot;&gt;mysite&lt;/code&gt; this is at
+&lt;code class=&quot;highlighter-rouge&quot;&gt;mysite/settings/base.py&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;'django_extensions'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;install-diagrams-generators&quot;&gt;Install diagrams generators&lt;/h3&gt;
+
+&lt;p&gt;You have to choose between two diagram generators:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Graphviz or&lt;/li&gt;
+  &lt;li&gt;Dotplus&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;before using the command or you will get:&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;python manage.py graph_models -a -o myapp_models.png&lt;/kbd&gt;
+CommandError: Neither pygraphviz nor pydotplus could be found to generate the image
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;I prefer to use &lt;code class=&quot;highlighter-rouge&quot;&gt;pydotplus&lt;/code&gt; as it easier to install than Graphviz and
+its dependencies so we use &lt;kbd&gt;pip install pydotplus&lt;/kbd&gt;.&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;pip install pydotplus&lt;/kbd&gt;
+Collecting pydotplus
+Collecting pyparsing&amp;gt;=2.0.1 (from pydotplus)
+  Using cached pyparsing-2.2.0-py2.py3-none-any.whl
+Installing collected packages: pyparsing, pydotplus
+Successfully installed pydotplus-2.0.2 pyparsing-2.2.0
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;h3 id=&quot;generate-diagrams&quot;&gt;Generate diagrams&lt;/h3&gt;
+
+&lt;p&gt;Now we have everything installed and ready to generate diagrams using
+the command &lt;kbd&gt;python manage.py graph_models&lt;/kbd&gt;&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;python manage.py graph_models -a -o myapp_models.png&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;This will give use the entire Wagtail class diagram:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/wagtail_models.png&quot; alt=&quot;Wagtail models class diagram&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Or grouped by application (&lt;code class=&quot;highlighter-rouge&quot;&gt;-o&lt;/code&gt;):&lt;/p&gt;
+
+&lt;pre class=&quot;shell&quot;&gt;
+&lt;samp&gt;
+&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;./manage.py graph_models -a -g -o my_project_visualized.png&lt;/kbd&gt;
+&lt;/samp&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/wagtail_models_application_grouping.png&quot; alt=&quot;Wagtail models class diagram&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Besides you probable have done the class diagram before starting the
+project, it can easily get outdated after a while. This is a useful
+technique to keep your diagrams in sync with the current status of the
+project.&lt;/p&gt;
+
+&lt;p&gt;Have a look at
+&lt;a href=&quot;https://django-extensions.readthedocs.io/en/latest/graph_models.html&quot;&gt;https://django-extensions.readthedocs.io/en/latest/graph_models.html&lt;/a&gt;
+for a full description of &lt;code class=&quot;highlighter-rouge&quot;&gt;graph-models&lt;/code&gt; options.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/django-extensions/django-extensions&quot;&gt;https://github.com/django-extensions/django-extensions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sat, 24 Mar 2018 00:00:00 +0000</pubDate>
+        <link>https://simpleit.rocks/generate-uml-class-diagrams-from-django-models/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/generate-uml-class-diagrams-from-django-models/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>python</category>
+        
+        <category>django</category>
+        
+      </item>
     
       <item>
         <title>Python Tools To Write Better Code</title>
@@ -2079,203 +2232,6 @@ answer to &lt;a href=&quot;https://stackoverflow.com/a/6141681/1165509&quot;&gt;
         <category>lisp</category>
         
         <category>emacs</category>
-        
-      </item>
-    
-      <item>
-        <title>Start Emacs in Ubuntu The Right Way</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Emacs can
-be
-&lt;a href=&quot;http://www.geekherocomic.com/2009/02/02/emacs-vs-vim/&quot;&gt;slow to start up&lt;/a&gt;,
-if you use it constantly this can be a problem.&lt;/p&gt;
-
-&lt;p&gt;Fortunately, there is a &lt;code class=&quot;highlighter-rouge&quot;&gt;daemon&lt;/code&gt; version of Emacs that you can start
-once per session, loading the initialization file, and then connect to
-the running process with &lt;kbd&gt;emacsclient&lt;/kbd&gt; fast.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-  &lt;p&gt;–daemon
-	 Start  Emacs  as  a daemon, enabling the Emacs server and disconnecting from the terminal.  You can then use
-	 the emacsclient command to connect to the server (see emacsclient(1)).&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Emacs man page&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;From Ubuntu 15.04, &lt;a href=&quot;https://www.freedesktop.org/wiki/Software/systemd&quot;&gt;systemd&lt;/a&gt; has become the default init system.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://www.freedesktop.org/wiki/Software/systemd/&quot;&gt;
-  &lt;p&gt;systemd is a suite of basic building blocks for a Linux system. It
-provides a system and service manager that runs as PID 1 and starts
-the rest of the system.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://www.freedesktop.org/wiki/Software/systemd/&quot;&gt;systemd System and Service Manager&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;In this tutorial we will create a new &lt;em&gt;systemd&lt;/em&gt; service to handle the
-Emacs server so we will be able to &lt;code class=&quot;highlighter-rouge&quot;&gt;start&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;stop&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;restart&lt;/code&gt;,
-&lt;code class=&quot;highlighter-rouge&quot;&gt;enable&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;disable&lt;/code&gt; the service as any other Linux service.&lt;/p&gt;
-
-&lt;h2 id=&quot;systemd-unit&quot;&gt;systemd Unit&lt;/h2&gt;
-
-&lt;p&gt;To turn Emacs into a &lt;em&gt;systemd&lt;/em&gt; service that can be started automatically
-during system startup we will create a service to start the daemon.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;systemd&lt;/em&gt; can manage services under the user’s control with a
-per-user &lt;em&gt;systemd&lt;/em&gt; instance, enabling users to handle their own units.&lt;/p&gt;
-
-&lt;p&gt;User services like this one, should be placed in
-&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.config/systemd/user/&lt;/code&gt; so then we will be able to run them with
-&lt;kbd&gt;systemctl --user enable *service*&lt;/kbd&gt;.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup&quot;&gt;
-  &lt;p&gt;–user
-   Talk to the service manager of the calling user, rather than the service manager of the system.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup&quot;&gt;systemctl --help&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The resources that &lt;em&gt;systemd&lt;/em&gt; knows how to manage are called &lt;em&gt;units&lt;/em&gt;.&lt;/p&gt;
-
-&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://www.freedesktop.org/software/systemd/man/systemd.service.html&quot;&gt;
-  &lt;p&gt;A unit configuration file whose name ends in &lt;code class=&quot;highlighter-rouge&quot;&gt;.service&lt;/code&gt; encodes
-information about a process controlled and supervised by systemd.&lt;/p&gt;
-
-  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://www.freedesktop.org/software/systemd/man/systemd.service.html&quot;&gt;systemd.service — Service unit configuration&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p class=&quot;alert alert-danger&quot;&gt;&lt;em&gt;systemd&lt;/em&gt; –user instance is a per-user process, and not per-session.&lt;/p&gt;
-
-&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.config/systemd/user/emacs.service&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[Unit]
-Description=Emacs Daemon
-
-[Service]
-Type=forking
-ExecStart=/usr/bin/emacs --daemon
-ExecStop=/usr/bin/emacsclient --eval &quot;(progn (setq kill-emacs-hook 'nil) (kill-emacs))&quot;
-Restart=always
-
-[Install]
-WantedBy=default.target
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;start-server&quot;&gt;Start server&lt;/h2&gt;
-
-&lt;p&gt;Now we enable the &lt;em&gt;unit&lt;/em&gt; to be started at login with &lt;kbd&gt;systemctl
---user enable emacs.service&lt;/kbd&gt; and start the service for the
-current session &lt;kbd&gt;systemctl --user start emacs.service&lt;/kbd&gt;:&lt;/p&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl --user enable emacs.service&lt;/kbd&gt;
-Created symlink ~/.config/systemd/user/default.target.wants/emacs.service → ~/.config/systemd/user/emacs.service.
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;tree .config/systemd/user/&lt;/kbd&gt;
-.config/systemd/user/
-├── default.target.wants
-│   └── emacs.service -&amp;gt; ~/.config/systemd/user/emacs.service
-└── emacs.service
-
-1 directory, 2 files
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl --user list-unit-files|grep emacs&lt;/kbd&gt;
-emacs.service                           enabled
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl --user status emacs.service&lt;/kbd&gt;
-● emacs.service - Emacs Daemon
-   Loaded: loaded (~/.config/systemd/user/emacs.service; enabled; vendor preset: enabled)
-   Active: inactive (dead)
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl --user start emacs.service&lt;/kbd&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl --user status emacs.service&lt;/kbd&gt;
-   Loaded: loaded (~/.config/systemd/user/emacs.service; enabled; vendor preset: enabled)
-   Active: active (running) since Sat 2017-06-10 15:13:33 -03; 1min 23s ago
-  Process: 22639 ExecStop=/usr/bin/emacsclient --eval (progn (setq kill-emacs-hook 'nil) (kill-emacs)) (code=exited, status=0/SUCCESS)
-  Process: 22782 ExecStart=/usr/bin/emacs --daemon (code=exited, status=0/SUCCESS)
- Main PID: 22783 (emacs)
-   CGroup: /user.slice/user-1000.slice/user@1000.service/emacs.service
-           └─22783 /usr/bin/emacs --daemon
-
-jun 10 15:13:30 scarone emacs[22782]: ad-handle-definition: ‘moccur-mode’ got redefined
-jun 10 15:13:30 scarone emacs[22782]: ad-handle-definition: ‘moccur-grep-mode’ got redefined
-jun 10 15:13:30 scarone emacs[22782]: Loading ~/.emacs.d/.mc-lists.el (source)...
-jun 10 15:13:30 scarone emacs[22782]: Loading ~/.emacs.d/.mc-lists.el (source)...done
-jun 10 15:13:31 scarone emacs[22782]: [yas] Prepared just-in-time loading of snippets successfully.
-jun 10 15:13:32 scarone emacs[22782]: [yas] Prepared just-in-time loading of snippets successfully.
-jun 10 15:13:32 scarone emacs[22782]: Turning on magit-auto-revert-mode...
-jun 10 15:13:32 scarone emacs[22782]: Turning on magit-auto-revert-mode...done
-jun 10 15:13:33 scarone emacs[22782]: Starting Emacs daemon.
-jun 10 15:13:33 scarone systemd[1858]: Started Emacs Daemon.
-
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h2 id=&quot;final-tweaks&quot;&gt;Final tweaks&lt;/h2&gt;
-
-&lt;h3 id=&quot;command-aliases&quot;&gt;Command aliases&lt;/h3&gt;
-
-&lt;p&gt;I’ve &lt;a href=&quot;https://www.emacswiki.org/emacs/EmacsAsDaemon&quot;&gt;found&lt;/a&gt; these
-aliases helpful to have at hand:&lt;/p&gt;
-
-&lt;dl&gt;
-  &lt;dt&gt;emacsclient -t&lt;/dt&gt;
-  &lt;dd&gt;open a new Emacs frame on the current terminal (similar to &lt;code class=&quot;highlighter-rouge&quot;&gt;emacs -nw&lt;/code&gt;)&lt;/dd&gt;
-  &lt;dt&gt;emacsclient -c -a emacs&lt;/dt&gt;
-  &lt;dd&gt;&lt;strong&gt;-c&lt;/strong&gt; create a new frame instead of trying to use the current Emacs frame&lt;/dd&gt;
-  &lt;dd&gt;&lt;strong&gt;-a&lt;/strong&gt; –alternate-editor=EDITOR, if  the  Emacs  server  is not running, run the specified editor instead.&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;emax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;emacsclient -t&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;semac&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sudo emacsclient -t&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;emacsc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;emacsclient -c -a emacs&quot;&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;# new - opens the GUI with alternate non-daemon&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;default-editor&quot;&gt;Default editor&lt;/h3&gt;
-
-&lt;p&gt;Finally, set the &lt;code class=&quot;highlighter-rouge&quot;&gt;EDITOR&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;VISUAL&lt;/code&gt; environment variables so
-&lt;code class=&quot;highlighter-rouge&quot;&gt;emacs&lt;/code&gt; is your default editor:&lt;/p&gt;
-
-&lt;dl&gt;
-  &lt;dt&gt;EDITOR&lt;/dt&gt;
-  &lt;dd&gt;The name of the lightweight text editor&lt;/dd&gt;
-  &lt;dt&gt;VISUAL&lt;/dt&gt;
-  &lt;dd&gt;command to run the full-fledged editor&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ALTERNATE_EDITOR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# $EDITOR should open in terminal&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;EDITOR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;emacsclient -t&quot;&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# $VISUAL opens in GUI with non-daemon as alternate&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;VISUAL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;emacsclient -c -a emacs&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;We created a script to run like a native Ubuntu service, then added
-some aliases and defined environment variables. Now we have a better
-experience in Ubuntu using Emacs with faster loading times and more
-integrated to the OS.&lt;/p&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;systemd/User &lt;a href=&quot;https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup&quot;&gt;https://wiki.archlinux.org/index.php/Systemd/User#Basic_setup&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;EmacsAsDaemon &lt;a href=&quot;https://www.emacswiki.org/emacs/EmacsAsDaemon&quot;&gt;https://www.emacswiki.org/emacs/EmacsAsDaemon&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.freedesktop.org/software/systemd/man/systemd.service.html&quot;&gt;https://www.freedesktop.org/software/systemd/man/systemd.service.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://taingram.org/2017/05/09/using-emacsclient-to-speed-up-editing/&quot;&gt;Using emacsclient to Speed up Editing&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sat, 10 Jun 2017 00:00:00 +0000</pubDate>
-        <link>https://simpleit.rocks/start-emacs-in-ubuntu-the-right-way/</link>
-        <guid isPermaLink="true">https://simpleit.rocks/start-emacs-in-ubuntu-the-right-way/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>linux</category>
-        
-        <category>ubuntu</category>
         
       </item>
     
