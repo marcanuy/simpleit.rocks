@@ -17,7 +17,7 @@ download a website:
   and possibly being blocked from requesting more.
 - avoid overwriting or creating duplicates of already downloaded files.
   
-## Wget summary
+## Using Wget
 
 > GNU Wget is a free utility for non-interactive download of files
 > from the Web
@@ -26,6 +26,8 @@ download a website:
 href="https://www.gnu.org/software/wget/manual/html_node/Overview.html#Overview">wget
 manual Overview</a></cite></footer>
 {: class="blockquote" cite="https://www.gnu.org/software/wget/manual/html_node/Overview.html#Overview"}
+
+### Wget needed parameters
 
 The `wget` command is very popular in Linux and present in most
 distributions.
@@ -72,10 +74,20 @@ given HTML page.
   this behavior, instead causing the original version to be preserved
   and any newer copies on the server to be ignored.
 
+`-e robots=off`
+: > turn off the robot exclusion
+
+`--level`
+: > Specify recursion maximum depth level depth. Use `inf` as the
+  value for inifinite.
+
+### Summary 
+
 Summarizing, these are the needed parameters:
 
 ~~~ bash
 wget --wait=2 \
+     --level=inf \
 	 --limit-rate=20K \
 	 --recursive
 	 --page-requisites \
@@ -84,14 +96,15 @@ wget --wait=2 \
 	 --convert-links \
 	 --adjust-extension \
 	 --no-clobber \
+	 -e robots=off \
 	 https://example.com
 ~~~
 
 Or in one line:
 
-<kbd>wget --wait=2 --limit-rate=20K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension --no-clobber https://example.com</kbd>
+<kbd>wget --wait=2 --level=inf --limit-rate=20K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension --no-clobber -e robots=off https://example.com</kbd>
 
-## Example
+### Example
 
 Let's try to download the <https://example.com> website (single page)
 to see how verbose is `wget` and how it behaves.
@@ -126,6 +139,54 @@ example.com/
 </samp>
 </pre>
 
+## Wget mirror
+
+`Wget` already comes with a handy `--mirror` paramater that is the
+same to use `-r -l inf -N`. That is:
+
+- recursive download
+- with infinite depth
+- turn on time-stamping.
+
+## Download all the URLs at website's sitemap
+
+Another approach is to avoid doing a recursive traversal of the
+website and download all the URLs present in `sitemap.xml`.
+
+### Filtering url from sitemap
+
+A sitemap file typically has the form:
+
+~~~ xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://marcanuy.com/en/projects/conversions</loc>
+<lastmod>2014-09-15T00:00:00-03:00</lastmod>
+</url>
+<url>
+<loc>https://marcanuy.com/en/projects/games-for-kids</loc>
+<lastmod>2014-09-15T00:00:00-03:00</lastmod>
+</url>
+</urlset>
+~~~
+
+We need to get all the URLs present in `sitemap.xml`, using `grep`:
+<kbd>grep "<loc>" sitemap.xml</kbd>.
+
+### Removing loc tags
+
+Now to remove the superfluous tags: <kbd>sed -e 's/<[^>]*>//g'`</kbd>
+
+### Putting it all together
+
+After the previous two command we have a list of URLs, and that is the
+parameter read by `wget -i`:
+
+<kbd>wget -i `grep "<loc>" sitemap.xml| sed -e 's/<[^>]*>//g'`</kbd>
+
+And wget will start downloading them sequentially.
+
 ## Conclusion
 
 `wget` is a fantastic command line tool, it has everything you will
@@ -134,6 +195,11 @@ browse its manual for the right parameters you want.
 
 The above parameters combination will make you have a browseable
 website locally.
+
+You should be careful to check that `.html` extensions works for your
+case, sometimes you may want that wget generates them based on the
+Content Type but sometimes you should avoid wget generating them as is
+the case when using *pretty urls*.
 
 ## Reference
 
