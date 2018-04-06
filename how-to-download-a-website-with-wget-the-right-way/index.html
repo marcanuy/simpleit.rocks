@@ -268,8 +268,21 @@
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#wget-summary">Wget summary</a></li>
-<li class="toc-entry toc-h2"><a href="#example">Example</a></li>
+<li class="toc-entry toc-h2"><a href="#using-wget">Using Wget</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#wget-needed-parameters">Wget needed parameters</a></li>
+<li class="toc-entry toc-h3"><a href="#summary">Summary</a></li>
+<li class="toc-entry toc-h3"><a href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#wget-mirror">Wget mirror</a></li>
+<li class="toc-entry toc-h2"><a href="#download-all-the-urls-at-websites-sitemap">Download all the URLs at website’s sitemap</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#filtering-url-from-sitemap">Filtering url from sitemap</a></li>
+<li class="toc-entry toc-h3"><a href="#removing-loc-tags">Removing loc tags</a></li>
+<li class="toc-entry toc-h3"><a href="#putting-it-all-together">Putting it all together</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h2"><a href="#conclusion">Conclusion</a></li>
 <li class="toc-entry toc-h2"><a href="#reference">Reference</a></li>
 </ul>
@@ -371,7 +384,7 @@ and possibly being blocked from requesting more.</li>
   <li>avoid overwriting or creating duplicates of already downloaded files.</li>
 </ul>
 
-<h2 id="wget-summary">Wget summary</h2>
+<h2 id="using-wget">Using Wget</h2>
 
 <blockquote class="blockquote" cite="https://www.gnu.org/software/wget/manual/html_node/Overview.html#Overview">
   <p>GNU Wget is a free utility for non-interactive download of files
@@ -380,6 +393,8 @@ from the Web</p>
   <footer class="blockquote-footer"> <cite><a href="https://www.gnu.org/software/wget/manual/html_node/Overview.html#Overview">wget
 manual Overview</a></cite></footer>
 </blockquote>
+
+<h3 id="wget-needed-parameters">Wget needed parameters</h3>
 
 <p>The <code class="highlighter-rouge">wget</code> command is very popular in Linux and present in most
 distributions.</p>
@@ -458,11 +473,27 @@ this behavior, instead causing the original version to be preserved
 and any newer copies on the server to be ignored.</p>
     </blockquote>
   </dd>
+  <dt><code class="highlighter-rouge">-e robots=off</code></dt>
+  <dd>
+    <blockquote>
+      <p>turn off the robot exclusion</p>
+    </blockquote>
+  </dd>
+  <dt><code class="highlighter-rouge">--level</code></dt>
+  <dd>
+    <blockquote>
+      <p>Specify recursion maximum depth level depth. Use <code class="highlighter-rouge">inf</code> as the
+value for inifinite.</p>
+    </blockquote>
+  </dd>
 </dl>
+
+<h3 id="summary">Summary</h3>
 
 <p>Summarizing, these are the needed parameters:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">--wait</span><span class="o">=</span>2 <span class="se">\</span>
+     <span class="nt">--level</span><span class="o">=</span>inf <span class="se">\</span>
 	 <span class="nt">--limit-rate</span><span class="o">=</span>20K <span class="se">\</span>
 	 <span class="nt">--recursive</span>
 	 <span class="nt">--page-requisites</span> <span class="se">\</span>
@@ -471,14 +502,15 @@ and any newer copies on the server to be ignored.</p>
 	 <span class="nt">--convert-links</span> <span class="se">\</span>
 	 <span class="nt">--adjust-extension</span> <span class="se">\</span>
 	 <span class="nt">--no-clobber</span> <span class="se">\</span>
+	 <span class="nt">-e</span> <span class="nv">robots</span><span class="o">=</span>off <span class="se">\</span>
 	 https://example.com
 </code></pre></div></div>
 
 <p>Or in one line:</p>
 
-<p><kbd>wget --wait=2 --limit-rate=20K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension --no-clobber https://example.com</kbd></p>
+<p><kbd>wget --wait=2 --level=inf --limit-rate=20K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension --no-clobber -e robots=off https://example.com</kbd></p>
 
-<h2 id="example">Example</h2>
+<h3 id="example">Example</h3>
 
 <p>Let’s try to download the <a href="https://example.com">https://example.com</a> website (single page)
 to see how verbose is <code class="highlighter-rouge">wget</code> and how it behaves.</p>
@@ -513,6 +545,55 @@ example.com/
 </samp>
 </pre>
 
+<h2 id="wget-mirror">Wget mirror</h2>
+
+<p><code class="highlighter-rouge">Wget</code> already comes with a handy <code class="highlighter-rouge">--mirror</code> paramater that is the
+same to use <code class="highlighter-rouge">-r -l inf -N</code>. That is:</p>
+
+<ul>
+  <li>recursive download</li>
+  <li>with infinite depth</li>
+  <li>turn on time-stamping.</li>
+</ul>
+
+<h2 id="download-all-the-urls-at-websites-sitemap">Download all the URLs at website’s sitemap</h2>
+
+<p>Another approach is to avoid doing a recursive traversal of the
+website and download all the URLs present in <code class="highlighter-rouge">sitemap.xml</code>.</p>
+
+<h3 id="filtering-url-from-sitemap">Filtering url from sitemap</h3>
+
+<p>A sitemap file typically has the form:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;urlset</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"</span> <span class="na">xmlns=</span><span class="s">"http://www.sitemaps.org/schemas/sitemap/0.9"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;url&gt;</span>
+<span class="nt">&lt;loc&gt;</span>https://marcanuy.com/en/projects/conversions<span class="nt">&lt;/loc&gt;</span>
+<span class="nt">&lt;lastmod&gt;</span>2014-09-15T00:00:00-03:00<span class="nt">&lt;/lastmod&gt;</span>
+<span class="nt">&lt;/url&gt;</span>
+<span class="nt">&lt;url&gt;</span>
+<span class="nt">&lt;loc&gt;</span>https://marcanuy.com/en/projects/games-for-kids<span class="nt">&lt;/loc&gt;</span>
+<span class="nt">&lt;lastmod&gt;</span>2014-09-15T00:00:00-03:00<span class="nt">&lt;/lastmod&gt;</span>
+<span class="nt">&lt;/url&gt;</span>
+<span class="nt">&lt;/urlset&gt;</span>
+</code></pre></div></div>
+
+<p>We need to get all the URLs present in <code class="highlighter-rouge">sitemap.xml</code>, using <code class="highlighter-rouge">grep</code>:
+<kbd>grep "<loc>" sitemap.xml&lt;/kbd&gt;.</loc></kbd></p>
+
+<h3 id="removing-loc-tags">Removing loc tags</h3>
+
+<p>Now to remove the superfluous tags: <kbd>sed -e 's/&lt;[^&gt;]*&gt;//g'`</kbd></p>
+
+<h3 id="putting-it-all-together">Putting it all together</h3>
+
+<p>After the previous two command we have a list of URLs, and that is the
+parameter read by <code class="highlighter-rouge">wget -i</code>:</p>
+
+<p><kbd>wget -i `grep "<loc>" sitemap.xml| sed -e 's/&lt;[^&gt;]*&gt;//g'`&lt;/kbd&gt;</loc></kbd></p>
+
+<p>And wget will start downloading them sequentially.</p>
+
 <h2 id="conclusion">Conclusion</h2>
 
 <p><code class="highlighter-rouge">wget</code> is a fantastic command line tool, it has everything you will
@@ -521,6 +602,11 @@ browse its manual for the right parameters you want.</p>
 
 <p>The above parameters combination will make you have a browseable
 website locally.</p>
+
+<p>You should be careful to check that <code class="highlighter-rouge">.html</code> extensions works for your
+case, sometimes you may want that wget generates them based on the
+Content Type but sometimes you should avoid wget generating them as is
+the case when using <em>pretty urls</em>.</p>
 
 <h2 id="reference">Reference</h2>
 

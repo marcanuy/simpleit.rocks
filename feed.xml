@@ -6,8 +6,8 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 24 Mar 2018 13:17:21 +0000</pubDate>
-    <lastBuildDate>Sat, 24 Mar 2018 13:17:21 +0000</lastBuildDate>
+    <pubDate>Fri, 06 Apr 2018 22:11:01 +0000</pubDate>
+    <lastBuildDate>Fri, 06 Apr 2018 22:11:01 +0000</lastBuildDate>
     <generator>Jekyll v3.7.2</generator>
     
       <item>
@@ -1808,7 +1808,7 @@ and possibly being blocked from requesting more.&lt;/li&gt;
   &lt;li&gt;avoid overwriting or creating duplicates of already downloaded files.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;wget-summary&quot;&gt;Wget summary&lt;/h2&gt;
+&lt;h2 id=&quot;using-wget&quot;&gt;Using Wget&lt;/h2&gt;
 
 &lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://www.gnu.org/software/wget/manual/html_node/Overview.html#Overview&quot;&gt;
   &lt;p&gt;GNU Wget is a free utility for non-interactive download of files
@@ -1817,6 +1817,8 @@ from the Web&lt;/p&gt;
   &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;&lt;a href=&quot;https://www.gnu.org/software/wget/manual/html_node/Overview.html#Overview&quot;&gt;wget
 manual Overview&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
 &lt;/blockquote&gt;
+
+&lt;h3 id=&quot;wget-needed-parameters&quot;&gt;Wget needed parameters&lt;/h3&gt;
 
 &lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/code&gt; command is very popular in Linux and present in most
 distributions.&lt;/p&gt;
@@ -1895,11 +1897,27 @@ this behavior, instead causing the original version to be preserved
 and any newer copies on the server to be ignored.&lt;/p&gt;
     &lt;/blockquote&gt;
   &lt;/dd&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-e robots=off&lt;/code&gt;&lt;/dt&gt;
+  &lt;dd&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;turn off the robot exclusion&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/dd&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--level&lt;/code&gt;&lt;/dt&gt;
+  &lt;dd&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Specify recursion maximum depth level depth. Use &lt;code class=&quot;highlighter-rouge&quot;&gt;inf&lt;/code&gt; as the
+value for inifinite.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/dd&gt;
 &lt;/dl&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
 
 &lt;p&gt;Summarizing, these are the needed parameters:&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget &lt;span class=&quot;nt&quot;&gt;--wait&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+     &lt;span class=&quot;nt&quot;&gt;--level&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;inf &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 	 &lt;span class=&quot;nt&quot;&gt;--limit-rate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;20K &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 	 &lt;span class=&quot;nt&quot;&gt;--recursive&lt;/span&gt;
 	 &lt;span class=&quot;nt&quot;&gt;--page-requisites&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
@@ -1908,14 +1926,15 @@ and any newer copies on the server to be ignored.&lt;/p&gt;
 	 &lt;span class=&quot;nt&quot;&gt;--convert-links&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 	 &lt;span class=&quot;nt&quot;&gt;--adjust-extension&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 	 &lt;span class=&quot;nt&quot;&gt;--no-clobber&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+	 &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;robots&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;off &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 	 https://example.com
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Or in one line:&lt;/p&gt;
 
-&lt;p&gt;&lt;kbd&gt;wget --wait=2 --limit-rate=20K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension --no-clobber https://example.com&lt;/kbd&gt;&lt;/p&gt;
+&lt;p&gt;&lt;kbd&gt;wget --wait=2 --level=inf --limit-rate=20K --recursive --page-requisites --user-agent=Mozilla --no-parent --convert-links --adjust-extension --no-clobber -e robots=off https://example.com&lt;/kbd&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
 
 &lt;p&gt;Let’s try to download the &lt;a href=&quot;https://example.com&quot;&gt;https://example.com&lt;/a&gt; website (single page)
 to see how verbose is &lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/code&gt; and how it behaves.&lt;/p&gt;
@@ -1950,6 +1969,55 @@ example.com/
 &lt;/samp&gt;
 &lt;/pre&gt;
 
+&lt;h2 id=&quot;wget-mirror&quot;&gt;Wget mirror&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Wget&lt;/code&gt; already comes with a handy &lt;code class=&quot;highlighter-rouge&quot;&gt;--mirror&lt;/code&gt; paramater that is the
+same to use &lt;code class=&quot;highlighter-rouge&quot;&gt;-r -l inf -N&lt;/code&gt;. That is:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;recursive download&lt;/li&gt;
+  &lt;li&gt;with infinite depth&lt;/li&gt;
+  &lt;li&gt;turn on time-stamping.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;download-all-the-urls-at-websites-sitemap&quot;&gt;Download all the URLs at website’s sitemap&lt;/h2&gt;
+
+&lt;p&gt;Another approach is to avoid doing a recursive traversal of the
+website and download all the URLs present in &lt;code class=&quot;highlighter-rouge&quot;&gt;sitemap.xml&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;filtering-url-from-sitemap&quot;&gt;Filtering url from sitemap&lt;/h3&gt;
+
+&lt;p&gt;A sitemap file typically has the form:&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;urlset&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:xsi=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xsi:schemaLocation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;url&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;loc&amp;gt;&lt;/span&gt;https://marcanuy.com/en/projects/conversions&lt;span class=&quot;nt&quot;&gt;&amp;lt;/loc&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;lastmod&amp;gt;&lt;/span&gt;2014-09-15T00:00:00-03:00&lt;span class=&quot;nt&quot;&gt;&amp;lt;/lastmod&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/url&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;url&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;loc&amp;gt;&lt;/span&gt;https://marcanuy.com/en/projects/games-for-kids&lt;span class=&quot;nt&quot;&gt;&amp;lt;/loc&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;lastmod&amp;gt;&lt;/span&gt;2014-09-15T00:00:00-03:00&lt;span class=&quot;nt&quot;&gt;&amp;lt;/lastmod&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/url&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/urlset&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We need to get all the URLs present in &lt;code class=&quot;highlighter-rouge&quot;&gt;sitemap.xml&lt;/code&gt;, using &lt;code class=&quot;highlighter-rouge&quot;&gt;grep&lt;/code&gt;:
+&lt;kbd&gt;grep &quot;&lt;loc&gt;&quot; sitemap.xml&amp;lt;/kbd&amp;gt;.&lt;/loc&gt;&lt;/kbd&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;removing-loc-tags&quot;&gt;Removing loc tags&lt;/h3&gt;
+
+&lt;p&gt;Now to remove the superfluous tags: &lt;kbd&gt;sed -e 's/&amp;lt;[^&amp;gt;]*&amp;gt;//g'`&lt;/kbd&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;putting-it-all-together&quot;&gt;Putting it all together&lt;/h3&gt;
+
+&lt;p&gt;After the previous two command we have a list of URLs, and that is the
+parameter read by &lt;code class=&quot;highlighter-rouge&quot;&gt;wget -i&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;kbd&gt;wget -i `grep &quot;&lt;loc&gt;&quot; sitemap.xml| sed -e 's/&amp;lt;[^&amp;gt;]*&amp;gt;//g'`&amp;lt;/kbd&amp;gt;&lt;/loc&gt;&lt;/kbd&gt;&lt;/p&gt;
+
+&lt;p&gt;And wget will start downloading them sequentially.&lt;/p&gt;
+
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/code&gt; is a fantastic command line tool, it has everything you will
@@ -1958,6 +2026,11 @@ browse its manual for the right parameters you want.&lt;/p&gt;
 
 &lt;p&gt;The above parameters combination will make you have a browseable
 website locally.&lt;/p&gt;
+
+&lt;p&gt;You should be careful to check that &lt;code class=&quot;highlighter-rouge&quot;&gt;.html&lt;/code&gt; extensions works for your
+case, sometimes you may want that wget generates them based on the
+Content Type but sometimes you should avoid wget generating them as is
+the case when using &lt;em&gt;pretty urls&lt;/em&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
 
