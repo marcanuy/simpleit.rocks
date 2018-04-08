@@ -57,8 +57,6 @@ project needs to be changed to address two main problems:
 - each environment should have a __specific settings file__
 - each environment should have __its own packages__
 
-## Config files and version control
-
 The configuration file should be tracked in version control, even
 developers local configuration file, all the developers of a project
 should use the same development configuration.
@@ -70,6 +68,19 @@ versioning, like the
 setting (used for [cryptographic signing
 functionalities](https://docs.djangoproject.com/en/2.0/topics/signing/)).
 
+## Settings
+
+There are two main approaches to work with settings in different
+environments:
+
+1. Use environment variables
+2. split `settings.py` file into multiple files and use each one in
+   each different environment
+   
+I prefer the first approach whenever possible because it **leaves
+secret keys outside config files versioning using environment
+variables** as recommended by <http://12factor.net/config>.
+
 ### Splitting settings description
 
 The default _Config file_ that comes shipped with Django should be
@@ -77,13 +88,24 @@ pulled apart into several settings for each environment: _local_,
 _staging_, _test_, _production_. 
 
 This can be done easily inheriting from a _base config file_, changing
-what the specific environment needs and **leaving secret keys outside
-config files versioning using environment
-variables** as recommended by <http://12factor.net/config>.
+what the specific environment needs 
 
 #### Using different settings
 
-You can specify which setting file to use via one of these methods:
+To set `SECRET_KEY` and `DJANGO_DEBUG` variables in each environment
+add this to `settings.py`.
+
+~~~ python
+# Read SECRET_KEY from an environment variable
+import os
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'p@1a;sljfk=$adsk;lhPUO*R*P(@HBBGG)g')
+DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
+
+~~~
+
+This will set a default value for the SECRET_KEY variable at low
+security environments like development and testing, then you will have
+to set `DJANGO_SECRET_EKY` and `DJANGO_DEBUG` variables in production.
 
 Variables can be set with environment variables e.g.: <kbd>export
 A_SECRET_KEY=foobar1234</kbd>
@@ -331,6 +353,7 @@ oneself when reviewing the project in the future.
 - Wikipedia [4-tier architecture]
 - <https://docs.djangoproject.com/en/1.9/topics/settings/>
 - <https://docs.djangoproject.com/en/1.9/ref/settings/>
+- <https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Deployment>
 
 [4-tier architecture]: <https://en.wikipedia.org/wiki/Deployment_environment>
 [python virtual environment]: <{% link docs/python/language/environment/_posts/2016-06-10-python-virtual-environments-using-virtualenv.md %}>
