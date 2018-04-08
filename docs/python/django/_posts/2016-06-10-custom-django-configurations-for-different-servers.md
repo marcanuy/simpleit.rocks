@@ -41,8 +41,6 @@ another with all the security measures for production, and so on.
 In this guide we will split the standard settings file into specific
 settings optimized for each environment.
 
-## Four tier architecture
-
 A common _deployment architecture_ consists of a [4-tier
 architecture], having different settings for one of these _tiers_:
 
@@ -72,7 +70,7 @@ versioning, like the
 setting (used for [cryptographic signing
 functionalities](https://docs.djangoproject.com/en/2.0/topics/signing/)).
 
-## Splitting settings description
+### Splitting settings description
 
 The default _Config file_ that comes shipped with Django should be
 pulled apart into several settings for each environment: _local_,
@@ -83,7 +81,7 @@ what the specific environment needs and **leaving secret keys outside
 config files versioning using environment
 variables** as recommended by <http://12factor.net/config>.
 
-### Using different settings
+#### Using different settings
 
 You can specify which setting file to use via one of these methods:
 
@@ -94,16 +92,12 @@ A_SECRET_KEY=foobar1234</kbd>
 + _.bashrc_ or _.profile_ 
 + _virtualenvwrapper's_ __bin/activate__ hook file
 
-#### Virtualenv post hook
-
 If _virtualenvwrapper_ is being used, the default development settings
 parameter to work with _manage.py_ can be specified in the
 _postactivate_ hook: `echo "export
 DJANGO_SETTINGS_MODULE=settings.local" >>
 $VIRTUAL_ENV/bin/postactivate` 
 {: class="alert alert-warning"}
-
-#### Manage.py parameter
 
 When using _manage.py_ many commands accepts the parameter to specify
 a specific settings file: `python manage.py runserver
@@ -115,7 +109,7 @@ diffsettings` so you can see what you have changed from the original
 settings file so far. 
 {: class="alert alert-info"}
 
-### Checking settings environment variables
+#### Checking settings environment variables
 
 To check that the secret environment key is being loaded, it is possible to check it from a python shell:
 
@@ -140,7 +134,7 @@ In a __production__ environment like [Heroku](https://devcenter.heroku.com/artic
 this can be done with: `$ heroku config:set A_SECRET_KEY=shhh1234`
 {: class="alert alert-info"}
 
-## Creating different settings files
+### Creating different settings files
 
 When building a project, Django automatically creates a configuration
 file in `<project_name>/settings.py`. 
@@ -221,8 +215,6 @@ Configure the current environment to use the appropriate settings file, using [P
   </samp>
   </pre>
 
-### Specify settings as a parameter
-  
 Use the `--settings` parameter with `manage.py` or `django-admin`:
 
 <pre class="shell"> 
@@ -239,7 +231,7 @@ Quit the server with CONTROL-C.
 </samp>
 </pre>
 
-### Differences between manage.py and django-admin
+#### Differences between manage.py and django-admin
 
 Django has two administrative scripts: `django_admin.py` and `manage.py` (in the root of each Django project).
 
@@ -256,18 +248,6 @@ So with the about settings scheme, it is better to use `django-admin` and choose
 > 
 > <footer class="blockquote-footer"> <cite><a href="https://docs.djangoproject.com/en/1.9/ref/django-admin/">Django Docs</a></cite></footer>
 {: class="blockquote" cite="https://docs.djangoproject.com/en/1.9/ref/django-admin/"}
-
-### Summary
-
-We started having a `settings.py` single file and break it up into a new
-directory with specific environment settings:
-
-<div class="mermaid">
-graph LR
-  A["settings.py"]
-  B["settings/<br><br>base.py<br>local.py<br>testing.py<br>staging.py<br>production.py"]
-  A-->B
-</div>
 
 ## Packages for each environment
 
@@ -335,7 +315,10 @@ _base.txt_ requirement file using `pip`, each new file should begin with: `-r ba
   + in a local/development environment: `$ pip install -r requirements/local.txt`
   + in a testing environment: `$ pip install -r requirements/testing.txt`
 
-## After
+## Summary
+
+We started having a `settings.py` single file and break it up into a new
+directory with specific environment settings.
 
 As with any major change to the default installation, after generating
 these directories, it is a good practice to describe them in
