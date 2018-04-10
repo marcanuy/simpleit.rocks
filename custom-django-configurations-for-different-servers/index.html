@@ -313,17 +313,24 @@
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#process">Process</a></li>
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h2"><a href="#setting-environment-variables">Setting environment variables</a></li>
-<li class="toc-entry toc-h2"><a href="#splitting-settings">Splitting settings</a>
+<li class="toc-entry toc-h2"><a href="#settings">Settings</a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#set-environment-variables">Set environment variables</a></li>
-<li class="toc-entry toc-h3"><a href="#specify-settings-in-a-script-parameter">Specify settings in a script parameter</a></li>
-<li class="toc-entry toc-h3"><a href="#differences-between-managepy-and-django-admin">Differences between manage.py and django-admin</a></li>
-<li class="toc-entry toc-h3"><a href="#review">Review</a></li>
+<li class="toc-entry toc-h3"><a href="#splitting-settings-description">Splitting settings description</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#using-different-settings">Using different settings</a></li>
+<li class="toc-entry toc-h4"><a href="#checking-settings-environment-variables">Checking settings environment variables</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#creating-different-settings-files">Creating different settings files</a></li>
+<li class="toc-entry toc-h3"><a href="#set-environment-variables">Set environment variables</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#differences-between-managepy-and-django-admin">Differences between manage.py and django-admin</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#packages-for-each-environment">Packages for each environment</a></li>
-<li class="toc-entry toc-h2"><a href="#after">After</a></li>
+<li class="toc-entry toc-h2"><a href="#conclusion">Conclusion</a></li>
 <li class="toc-entry toc-h2"><a href="#references">References</a></li>
 <li class="toc-entry toc-h2"><a href="#summary">Summary</a></li>
 </ul>
@@ -452,7 +459,16 @@
 
 <h2 id="overview">Overview</h2>
 
-<p>The development process of Django projects can have several environments, a common <em>deployment architecture</em> consists of a <a href="https://en.wikipedia.org/wiki/Deployment_environment">4-tier architecture</a>, consisting of software being deployed to each <em>tier</em> in the following order:</p>
+<p>Django projects should have several environments each with its own
+peculiarities. Each environment is optimized for a specific task,
+e.g.: develop your app, having packages that helps you test it,
+another with all the security measures for production, and so on.</p>
+
+<p>In this guide we will split the standard settings file into specific
+settings optimized for each environment.</p>
+
+<p>A common <em>deployment architecture</em> consists of a <a href="https://en.wikipedia.org/wiki/Deployment_environment">4-tier
+architecture</a>, having different settings for one of these <em>tiers</em>:</p>
 
 <ol>
   <li>development (<strong>DEV</strong>)</li>
@@ -461,40 +477,106 @@
   <li>production (<strong>PROD</strong>)</li>
 </ol>
 
-<p>A default <em>Django app</em> just starts with a single <em>config file</em> located in <code class="highlighter-rouge">DJANGO_PROJECT/settings.py</code>. This approach is fine for small projects but to fit in the above 4-tier architecture, the project needs to be changed to address two main problems:</p>
+<p>A default <em>Django app</em> just starts with a single <em>configuration file</em>
+located in <code class="highlighter-rouge">DJANGO_PROJECT/settings.py</code>. This approach is fine for
+small projects but to fit in the above 4-tier architecture, the
+project needs to be changed to address two main problems:</p>
 
 <ul>
   <li>each environment should have a <strong>specific settings file</strong></li>
   <li>each environment should have <strong>its own packages</strong></li>
 </ul>
 
-<p>The configuration file should be version controlled, even the developers local configuration file, all the developers of a project should use the same development configuration.</p>
+<p class="alert alert-info">The configuration file should be tracked in version control, even
+developers local configuration file, all the developers of a project
+should use the same development configuration.</p>
 
-<p>However there are special config keys that should be left out of versioning, like the <a href="https://docs.djangoproject.com/en/1.9/ref/settings/#std:setting-SECRET_KEY">SECRET_KEY</a> setting (used for <a href="https://docs.djangoproject.com/en/1.9/topics/signing/">cryptographic signing functionalities</a>)</p>
+<p>However there are special config keys that should be left out of
+versioning, like the
+<a href="https://docs.djangoproject.com/en/2.0/ref/settings/#std:setting-SECRET_KEY">SECRET_KEY</a>
+setting (used for <a href="https://docs.djangoproject.com/en/2.0/topics/signing/">cryptographic signing
+functionalities</a>).</p>
 
-<p>The default <em>Config file</em> that comes shipped with Django should be pulled apart into several settings for each environment: <em>local</em>, <em>staging</em>, <em>test</em>, <em>production</em>. This can be done easily inheriting from a <em>base config file</em>, changing what the specific environment needs and <strong><a href="http://12factor.net/config">leaving secret keys outside config files versioning using environment variables</a></strong>.</p>
+<h2 id="settings">Settings</h2>
 
-<p class="alert alert-warning">If <em>virtualenvwrapper</em> is being used, the default development settings parameter to work with <em>manage.py</em> can be specified in the <em>postactivate</em> hook: <code class="highlighter-rouge">echo "export DJANGO_SETTINGS_MODULE=settings.local" &gt;&gt; $VIRTUAL_ENV/bin/postactivate</code></p>
+<p>There are two main approaches to work with settings in different
+environments:</p>
 
-<p>When using <em>manage.py</em> many commands accepts the parameter to specify a specific settings file: <code class="highlighter-rouge">python manage.py runserver --settings=myproject.settings.local</code></p>
+<ol>
+  <li>Use environment variables</li>
+  <li>split <code class="highlighter-rouge">settings.py</code> file into multiple files and use each one in
+each different environment</li>
+</ol>
 
-<p class="alert alert-info">To compare the current settings file with the one that installs Django by default: <code class="highlighter-rouge">$ manage.py diffsettings</code></p>
+<p>I prefer the first approach whenever possible because it <strong>leaves
+secret keys outside config files versioning using environment
+variables</strong> as recommended by <a href="http://12factor.net/config">http://12factor.net/config</a>.</p>
 
-<h2 id="setting-environment-variables">Setting environment variables</h2>
+<h3 id="splitting-settings-description">Splitting settings description</h3>
 
-<p>In a <strong>development</strong> environment, variables can be set with <code class="highlighter-rouge">$ export A_SECRET_KEY=shhh1234</code>, and placed in:</p>
+<p>The default <em>Config file</em> that comes shipped with Django should be
+pulled apart into several settings for each environment: <em>local</em>,
+<em>staging</em>, <em>test</em>, <em>production</em>.</p>
+
+<p>This can be done easily inheriting from a <em>base config file</em>, changing
+what the specific environment needs</p>
+
+<h4 id="using-different-settings">Using different settings</h4>
+
+<p>To set <code class="highlighter-rouge">SECRET_KEY</code> and <code class="highlighter-rouge">DJANGO_DEBUG</code> variables in each environment
+add this to <code class="highlighter-rouge">settings.py</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Read SECRET_KEY from an environment variable</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'DJANGO_SECRET_KEY'</span><span class="p">,</span> <span class="s">'p@1a;sljfk=$adsk;lhPUO*R*P(@HBBGG)g'</span><span class="p">)</span>
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'DJANGO_DEBUG'</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span> <span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>This will set a default value for the SECRET_KEY variable at low
+security environments like development and testing, then you will have
+to set <code class="highlighter-rouge">DJANGO_SECRET_EKY</code> and <code class="highlighter-rouge">DJANGO_DEBUG</code> variables in production.</p>
+
+<p>Variables can be set with environment variables e.g.: <kbd>export
+A_SECRET_KEY=foobar1234</kbd>
+ <code class="highlighter-rouge">$ export A_SECRET_KEY=shhh1234</code>, and placed in:</p>
 
 <ul>
   <li><em>.bashrc</em> or <em>.profile</em></li>
   <li><em>virtualenvwrapper’s</em> <strong>bin/activate</strong> hook file</li>
 </ul>
 
+<p class="alert alert-warning">If <em>virtualenvwrapper</em> is being used, the default development settings
+parameter to work with <em>manage.py</em> can be specified in the
+<em>postactivate</em> hook: <code class="highlighter-rouge">echo "export
+DJANGO_SETTINGS_MODULE=settings.local" &gt;&gt;
+$VIRTUAL_ENV/bin/postactivate</code></p>
+
+<p>When using <em>manage.py</em> many commands accepts the parameter to specify
+a specific settings file: <code class="highlighter-rouge">python manage.py runserver
+--settings=myproject.settings.local</code></p>
+
+<p class="alert alert-info">There is a handy manage.py parameter to compare the current settings
+file with the one that installs Django by default: <code class="highlighter-rouge">$ manage.py
+diffsettings</code> so you can see what you have changed from the original
+settings file so far.</p>
+
+<h4 id="checking-settings-environment-variables">Checking settings environment variables</h4>
+
 <p>To check that the secret environment key is being loaded, it is possible to check it from a python shell:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">"A_SECRET_KEY"</span><span class="p">]</span>
-<span class="s">"shhh1234"</span>
-</code></pre></div></div>
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>./manage.py shell</kbd>
+Python 3.6.4 (default, Feb  5 2018, 16:52:44) 
+[GCC 7.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+<span class="shell-prompt">&gt;&gt;&gt;</span> <kbd>import os</kbd>
+<span class="shell-prompt">&gt;&gt;&gt;</span> <kbd>os.environ["A_SECRET_KEY"]</kbd>
+"shhh1234"
+</samp>
+</pre>
 
 <p>Then to get the value for a specific environment, the <em>production config
 file</em> in version control only needs to get this environment variable 
@@ -503,20 +585,19 @@ value: <code class="highlighter-rouge">A_SECRET_KEY = os.environ["A_SECRET_KEY"]
 <p class="alert alert-info">In a <strong>production</strong> environment like <a href="https://devcenter.heroku.com/articles/config-vars">Heroku</a>, 
 this can be done with: <code class="highlighter-rouge">$ heroku config:set A_SECRET_KEY=shhh1234</code></p>
 
-<h2 id="splitting-settings">Splitting settings</h2>
+<h3 id="creating-different-settings-files">Creating different settings files</h3>
 
-<p>Splitting the default Django’s settings file into several files for
-different environments.</p>
+<p>When building a project, Django automatically creates a configuration
+file in <code class="highlighter-rouge">&lt;project_name&gt;/settings.py</code>.</p>
 
-<p>Django automatically creates a configuration file in
-<code class="highlighter-rouge">&lt;project_name&gt;/settings.py</code>, to break it up into <em>local</em>, <em>testing</em>,
-<em>staging</em> and <em>production</em> config files, the best way is to create a
-<code class="highlighter-rouge">base.py</code> config with common configurations accross all of them and 
-create specific config files for each environment:</p>
+<p>To split this file into multiple settings files (one for each
+environment <em>local</em>, <em>testing</em>, <em>staging</em> and <em>production</em>), the best
+way is to create a <code class="highlighter-rouge">base.py</code> config with common settings across all of
+them and create specific config files for each environment in specific
+files having a structure like:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
 └── REPO-ROOT `git repo`
-    ├── .gitignore
     ├── ...
     └── PROJECT-ROOT
         ├── settings
@@ -527,12 +608,55 @@ create specific config files for each environment:</p>
         └── ...
 </code></pre></div></div>
 
+<p>To build this structure:</p>
+
 <ol>
-  <li>Create the settings directory <code class="highlighter-rouge">$ mkdir &lt;project_name&gt;/settings</code></li>
-  <li>Add <code class="highlighter-rouge">__init__.py</code> file to make Python treat the settings directory as containing packages <code class="highlighter-rouge">$ touch &lt;project_name&gt;/settings/__init__.py</code></li>
-  <li>Move the default settings file into the settings directory and change its name <code class="highlighter-rouge">$ mv &lt;project_name&gt;/settings.py &lt;project_name&gt;/settings/base.py</code></li>
-  <li>Create all the configuration files (<code class="highlighter-rouge">local.py</code>, <code class="highlighter-rouge">testing.py</code>, <code class="highlighter-rouge">staging.py</code>, <code class="highlighter-rouge">production.py</code> ) and specify to inherit <code class="highlighter-rouge">base.py</code> configurations, for example, for the development file: <code class="highlighter-rouge">echo "from .base import *" &gt;&gt; &lt;project_name&gt;/settings/local.py</code></li>
-  <li>Use the new settings file in one of two ways:
+  <li>Create the settings directory</li>
+</ol>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>mkdir PROJECT_NAME/settings</kbd>
+
+</samp>
+</pre>
+
+<ol>
+  <li>Add <code class="highlighter-rouge">__init__.py</code> file to make this directory a Python package</li>
+</ol>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>touch PROJECT_NAME/settings/__init__.py</kbd>
+</samp>
+</pre>
+
+<ol>
+  <li>Move the default settings file into the new settings directory and
+change its name</li>
+</ol>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>mv PROJECT_NAME/settings.py PROJECT_NAME/settings/base.py</kbd>
+
+</samp>
+</pre>
+
+<ol>
+  <li>Create all the configuration files (<code class="highlighter-rouge">local.py</code>, <code class="highlighter-rouge">testing.py</code>,
+<code class="highlighter-rouge">staging.py</code>, <code class="highlighter-rouge">production.py</code> ) and specify to inherit <code class="highlighter-rouge">base.py</code>
+configurations adding <code class="highlighter-rouge">from .base import *</code> to each file:</li>
+</ol>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>for name in local.py testing.py staging.py production.py; do echo "from .base import *" &gt;&gt; PROJECT_NAME/settings/${name} ; done</kbd>
+</samp>
+</pre>
+
+<ol>
+  <li>Use the new settings file in one of previously described ways:
     <ul>
       <li>set an environment variable and call scripts normally</li>
       <li>call scripts specifying a settings file</li>
@@ -553,8 +677,6 @@ create specific config files for each environment:</p>
   </samp>
   </pre>
 
-<h3 id="specify-settings-in-a-script-parameter">Specify settings in a script parameter</h3>
-
 <p>Use the <code class="highlighter-rouge">--settings</code> parameter with <code class="highlighter-rouge">manage.py</code> or <code class="highlighter-rouge">django-admin</code>:</p>
 
 <pre class="shell"> 
@@ -571,7 +693,7 @@ Quit the server with CONTROL-C.
 </samp>
 </pre>
 
-<h3 id="differences-between-managepy-and-django-admin">Differences between manage.py and django-admin</h3>
+<h4 id="differences-between-managepy-and-django-admin">Differences between manage.py and django-admin</h4>
 
 <p>Django has two administrative scripts: <code class="highlighter-rouge">django_admin.py</code> and <code class="highlighter-rouge">manage.py</code> (in the root of each Django project).</p>
 
@@ -579,25 +701,19 @@ Quit the server with CONTROL-C.
 
 <p>So with the about settings scheme, it is better to use <code class="highlighter-rouge">django-admin</code> and choose the proper settings file.</p>
 
-<blockquote cite="https://docs.djangoproject.com/en/1.9/ref/django-admin/">
-  <p>Generally, when working on a single Django project, it’s easier to use manage.py than django-admin. 
-If you need to switch between multiple Django settings files, use django-admin with DJANGO_SETTINGS_MODULE or the –settings command line option.
-– Django Docs</p>
+<blockquote class="blockquote" cite="https://docs.djangoproject.com/en/1.9/ref/django-admin/">
+  <p>Generally, when working on a single Django project, it’s easier to
+use manage.py than django-admin.  If you need to switch between
+multiple Django settings files, use django-admin with
+<strong>DJANGO_SETTINGS_MODULE</strong> or the <strong>–settings</strong> command line
+option.</p>
+
+  <footer class="blockquote-footer"> <cite><a href="https://docs.djangoproject.com/en/1.9/ref/django-admin/">Django Docs</a></cite></footer>
 </blockquote>
 
-<h3 id="review">Review</h3>
-
-<p>We start having a <code class="highlighter-rouge">settings.py</code> single file and break it up into a new
-directory with specific environment settings:</p>
-
-<div class="mermaid">
-graph LR
-  A["settings.py"]
-  B["settings/<br /><br />base.py<br />local.py<br />testing.py<br />staging.py<br />production.py"]
-  A--&gt;B
-</div>
-
 <h2 id="packages-for-each-environment">Packages for each environment</h2>
+
+<p>Now a similar approach for handling package dependencies.</p>
 
 <p>Each environment has to have a set of packages that fits its
 purpose and operating system requirements. We have to 
@@ -631,22 +747,22 @@ packages you want:</p>
 </code></pre></div></div>
 
 <p>So to make it possible for each environment to inherit the packages from the
-<em>base.txt</em> requirement file using <code class="highlighter-rouge">pip</code>, each new file should begin with: <code class="highlighter-rouge">-r base.txt</code></p>
+<em>base.txt</em> requirement file using <code class="highlighter-rouge">pip</code>, each new file should begin with: <code class="highlighter-rouge">-r base.txt</code>:</p>
 
-<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># /requirements/base.txt
-# list of packages present in all environments
+<p><code class="highlighter-rouge">/requirements/base.txt</code>:</p>
+<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># list of packages present in all environments
 </span></code></pre></div></div>
 
-<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># /requirements/local.txt
-</span>-<span class="n">r</span> <span class="n">base</span>.<span class="n">txt</span>
+<p><code class="highlighter-rouge">/requirements/local.txt</code>:</p>
+<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-<span class="n">r</span> <span class="n">base</span>.<span class="n">txt</span>
 </code></pre></div></div>
 
-<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># /requirements/test.txt
-</span>-<span class="n">r</span> <span class="n">base</span>.<span class="n">txt</span>
+<p><code class="highlighter-rouge">/requirements/test.txt</code>:</p>
+<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-<span class="n">r</span> <span class="n">base</span>.<span class="n">txt</span>
 </code></pre></div></div>
 
-<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># /requirements/production.txt
-</span>-<span class="n">r</span> <span class="n">base</span>.<span class="n">txt</span>
+<p><code class="highlighter-rouge">/requirements/production.txt</code>:</p>
+<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-<span class="n">r</span> <span class="n">base</span>.<span class="n">txt</span>
 </code></pre></div></div>
 
 <ul>
@@ -659,11 +775,14 @@ packages you want:</p>
   </li>
 </ul>
 
-<h2 id="after">After</h2>
+<h2 id="conclusion">Conclusion</h2>
+
+<p>We started having a <code class="highlighter-rouge">settings.py</code> single file and break it up into a new
+directory with specific environment settings.</p>
 
 <p>As with any major change to the default installation, after generating
 these directories, it is a good practice to describe them in
-<code class="highlighter-rouge">/docs/architectrure.rst</code> and what are the commands used to get them
+<code class="highlighter-rouge">/docs/architecture.rst</code> and what are the commands used to get them
 running in <code class="highlighter-rouge">/docs/installation.rst</code> for other developers or just for
 oneself when reviewing the project in the future.</p>
 
@@ -673,6 +792,7 @@ oneself when reviewing the project in the future.</p>
   <li>Wikipedia <a href="https://en.wikipedia.org/wiki/Deployment_environment">4-tier architecture</a></li>
   <li><a href="https://docs.djangoproject.com/en/1.9/topics/settings/">https://docs.djangoproject.com/en/1.9/topics/settings/</a></li>
   <li><a href="https://docs.djangoproject.com/en/1.9/ref/settings/">https://docs.djangoproject.com/en/1.9/ref/settings/</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Deployment">https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Deployment</a></li>
 </ul>
 
 
