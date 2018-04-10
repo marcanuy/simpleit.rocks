@@ -337,7 +337,7 @@ _base.txt_ requirement file using `pip`, each new file should begin with: `-r ba
   + in a local/development environment: `$ pip install -r requirements/local.txt`
   + in a testing environment: `$ pip install -r requirements/testing.txt`
 
-## Summary
+## Conclusion
 
 We started having a `settings.py` single file and break it up into a new
 directory with specific environment settings.
