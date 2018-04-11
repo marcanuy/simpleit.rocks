@@ -9,13 +9,15 @@ website, [buyed a domain](http://www.namecheap.com/?aff=35306) and
 purchased a [web hosting service](https://m.do.co/c/b54bbc9a3125),
 what's next?
 
-This is a check list of common resources I find useful to check to see
-if they fit my website needs, like setting up a CDN, cache, several
+This is a check list of common resources I am constantly needing after
+(or before) launching a website, like setting up a CDN, cache, several
 optimizations, analytics, etc.
+
+Check them up to review your website needs.
 
 ## Statistics
 
-- Set up Google Analytics <http://www.google.com/analytics/>
+- Set up Google Analytics <https://analytics.google.com/analytics/web>
 
 ## Performance
 
@@ -59,6 +61,18 @@ optimizations, analytics, etc.
 
 ### Search Engines
 
+#### Webmaster tools
+
+Register each search engine webmaster tool:
+
+- Google: <https://search.google.com/search-console/index>
+  - One for the `www` domain and other for `non-www`, then select
+    preferred one in admin's **Site Settings**.
+- Bing: 
+  - <https://www.bing.com/toolbox/submit-site-url>
+  - <https://www.bing.com/toolbox/webmaster>
+- Yandex: <https://webmaster.yandex.com/sites/add/>
+
 #### Submit URLs
 
 - Google: <https://www.google.com/webmasters/tools/submit-url>
@@ -76,7 +90,7 @@ Supported by Google, Ask, Bing, Yahoo; defined on <http://sitemaps.org>.
 - Submit a [sitemap](http://sitemaps.org/) to 
   - Google Search
     Console <https://www.google.com/webmasters/tools/sitemap-list>
-  - Bing (and Yahoo!) <>
+  - Bing (and Yahoo!) 
   - Yandex <https://webmaster.yandex.com/site/*/indexing/sitemap/>
   
 ## HTML
