@@ -227,7 +227,6 @@ In `_sass/_variables.scss`:
 
 ~~~ scss
 $custom-font-size: 20px;
-@import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
 ~~~
 
@@ -242,6 +241,7 @@ using the above variables:
 ---
 ---
 
+@import "bootstrap/scss/functions";
 @import "variables";
 @import "bootstrap/scss/bootstrap";
 
