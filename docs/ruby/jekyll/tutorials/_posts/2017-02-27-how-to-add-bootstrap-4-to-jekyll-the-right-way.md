@@ -46,7 +46,7 @@ needed for Bootstrap 3.
 
 We will be using the package manager [Yarn] to install Bootstrap. At
 our Jekyll website root folder we run <kbd>yarn install</kbd>. In this
-case I will be using ****Bootstrap  v4.0.0-beta.2 ** but you can find the
+case I will be using **Bootstrap  v4.0.0** but you can find the
 latest one
 at <https://getbootstrap.com/docs/4.0/getting-started/download/>.
 
@@ -57,46 +57,52 @@ maintained anymore, [Yarn] is a better, more robust solution.
 <pre class="shell">
 <samp>
 <span class="shell-prompt">$</span> <kbd>yarn install</kbd>
-yarn install v1.3.2
+yarn install v1.5.1
 info No lockfile found.
 [1/4] Resolving packages...
 [2/4] Fetching packages...
 [3/4] Linking dependencies...
 [4/4] Building fresh packages...
 info Lockfile not saved, no dependencies.
-Done in 0.22s.
+Done in 0.16s.
 
-<span class="shell-prompt">$</span> <kbd>yarn add bootstrap@4.0.0-beta.2</kbd>
-yarn add v1.3.2
+<span class="shell-prompt">$</span> <kbd>yarn add bootstrap@4.0.0</kbd>
+yarn add v1.5.1
 info No lockfile found.
 [1/4] Resolving packages...
 [2/4] Fetching packages...
 [3/4] Linking dependencies...
-warning " > bootstrap@4.0.0-beta.2" has unmet peer dependency "jquery@1.9.1 - 3".
-warning " > bootstrap@4.0.0-beta.2" has unmet peer dependency "popper.js@^1.12.3".
+warning " > bootstrap@4.0.0" has unmet peer dependency "jquery@1.9.1 - 3".
+warning " > bootstrap@4.0.0" has unmet peer dependency "popper.js@^1.12.9".
 [4/4] Building fresh packages...
 success Saved lockfile.
 success Saved 1 new dependency.
-└─ bootstrap@4.0.0-beta.2
-Done in 2.46s.
+info Direct dependencies
+└─ bootstrap@4.0.0
+info All dependencies
+└─ bootstrap@4.0.0
+Done in 1.16s.
 
-<span class="shell-prompt">$</span> <kbd>yarn add jquery@>=3.0.0</kbd>
-yarn add v1.3.2
+<span class="shell-prompt">$</span> <kbd>yarn add jquery</kbd>
+yarn add v1.5.1
 warning package.json: No license field
 warning No license field
 [1/4] Resolving packages...
 [2/4] Fetching packages...
 [3/4] Linking dependencies...
-warning " > bootstrap@4.0.0-beta.2" has unmet peer dependency "popper.js@^1.12.3".
+warning " > bootstrap@4.0.0" has unmet peer dependency "popper.js@^1.12.9".
 [4/4] Building fresh packages...
 success Saved lockfile.
 success Saved 1 new dependency.
-└─ jquery@3.0.0
+info Direct dependencies
+└─ jquery@3.3.1
+info All dependencies
+└─ jquery@3.3.1
 warning No license field
-Done in 4.33s.
+Done in 1.15s.
 
-<span class="shell-prompt">$</span> <kbd>yarn add popper.js@^1.12.3</kbd>
-yarn add v1.3.2
+<span class="shell-prompt">$</span> <kbd>yarn add popper.js</kbd>
+yarn add v1.5.1
 warning package.json: No license field
 warning No license field
 [1/4] Resolving packages...
@@ -105,11 +111,35 @@ warning No license field
 [4/4] Building fresh packages...
 success Saved lockfile.
 success Saved 1 new dependency.
-└─ popper.js@1.12.6
+info Direct dependencies
+└─ popper.js@1.14.3
+info All dependencies
+└─ popper.js@1.14.3
 warning No license field
-Done in 1.55s.
+Done in 1.02s.
+
 </samp>
 </pre>
+
+So far, we have added this structure (excluding jekyll files):
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>tree -L 2</kbd>
+.
+├── node_modules
+│   ├── bootstrap
+│   ├── jquery
+│   └── popper.js
+├── package.json
+└── yarn.lock
+
+4 directories, 2 files
+</samp>
+</pre>
+
+If you aren't working in a Jekyll project, you can add it now to the
+current directory with <kbd>jekyll new . --force</kbd>.
 
 ## Adding new Sass load paths
 
@@ -136,7 +166,8 @@ sass:
         - node_modules
 ~~~
 
-`load_paths` only works when **not** in safe mode[^safe-mode]
+`load_paths` only works when **not** in safe mode[^safe-mode] (i.e. it
+won't work with Github Pages.)
 {: .alert .alert-danger}
 
 ### Whitelist node_modules
@@ -162,7 +193,7 @@ We add them in the default layout at `_layouts/default.html` or in
 <body>
 ...
 	<script src="{% raw %}{{'/node_modules/jquery/dist/jquery.min.js' | prepend: site.baseurl}}"{% endraw %}></script>
-	<script src="{% raw %}{{'/node_modules/popper.js/dist/popper.min.js' | prepend: site.baseurl}}{% endraw %}"></script>
+	<script src="{% raw %}{{'/node_modules/popper.js/dist/umd/popper.min.js' | prepend: site.baseurl}}{% endraw %}"></script>
 	<script src="{% raw %}{{'/node_modules/bootstrap/dist/js/bootstrap.min.js' | prepend: site.baseurl}}{% endraw %}"></script>
 </body>
 </html>
@@ -236,7 +267,7 @@ rel="stylesheet" href="/assets/main.css">`
 <html>
 <head>
 <!-- site css -->
-<link rel="stylesheet" href="/assets/main.css">
+<link rel="stylesheet" href="{{'/assets/main.css' | prepend: site.baseurl}}">
 </head>
 </html>
 ~~~
@@ -334,7 +365,7 @@ update: $(PROJECT_DEPS)
 include-yarn-deps:
 	mkdir -p $(VENDOR_DIR)
 	cp node_modules/jquery/dist/jquery.min.js $(VENDOR_DIR)
-	cp node_modules/popper.js/dist/popper.min.js $(VENDOR_DIR)
+	cp node_modules/popper.js/dist/umd/popper.min.js $(VENDOR_DIR)
 	cp node_modules/bootstrap/dist/js/bootstrap.min.js $(VENDOR_DIR)
 
 build: install include-yarn-deps
@@ -398,30 +429,26 @@ have any other unnecessary files in the final website.
 ## Conclusion
 
 When we build our site, Jekyll will process the `.scss` files with our
-custom variables and we will have them in our `assets/main.css`. In
+custom variables and we will have them in our `_site/assets/main.css`. In
 this example its content starts with the Bootstrap code and ends with
 our custom `_main.scss` processed, looking like:
 
 ~~~ css
 /*!
- * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
- * Copyright 2011-2017 The Bootstrap Authors
- * Copyright 2011-2017 Twitter, Inc.
+ * Bootstrap v4.0.0 (https://getbootstrap.com)
+ * Copyright 2011-2018 The Bootstrap Authors
+ * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
-html {
-  font-family: sans-serif;
-  line-height: 1.15;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%; }
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
 
 ...
 
 .content {
-  font-size: 20px; 
-}
-
+  font-size: 20px; }
 ~~~
 
 ## References
