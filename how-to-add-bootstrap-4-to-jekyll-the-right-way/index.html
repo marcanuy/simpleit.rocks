@@ -50,7 +50,7 @@
     
   <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>5 Steps To Add Bootstrap 4 To Jekyll The Right Way | Simple IT 🤘 Rocks</title>
-<meta name="generator" content="Jekyll v3.7.2" />
+<meta name="generator" content="Jekyll v3.7.3" />
 <meta property="og:title" content="5 Steps To Add Bootstrap 4 To Jekyll The Right Way" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
@@ -663,7 +663,6 @@ depending on each other to calculate <abbr title="Cascading Style Sheets">CSS</a
 <p>In <code class="highlighter-rouge">_sass/_variables.scss</code>:</p>
 
 <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$custom-font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
-<span class="k">@import</span> <span class="s2">"../node_modules/bootstrap/scss/functions"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"../node_modules/bootstrap/scss/variables"</span><span class="p">;</span>
 </code></pre></div></div>
 
@@ -677,7 +676,8 @@ using the above variables:</p>
 <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">---</span>
 <span class="nt">---</span>
 
-<span class="o">@</span><span class="nt">import</span> <span class="s2">"variables"</span><span class="p">;</span>
+<span class="o">@</span><span class="nt">import</span> <span class="s2">"bootstrap/scss/functions"</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">"variables"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"bootstrap/scss/bootstrap"</span><span class="p">;</span>
 
 <span class="nc">.content</span> <span class="p">{</span>
