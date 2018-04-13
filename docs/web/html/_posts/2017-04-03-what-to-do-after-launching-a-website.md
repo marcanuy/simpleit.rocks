@@ -44,6 +44,12 @@ Check them up to review your website needs.
   - CDN
   - Enable HTTPS Page Rules
   - Static files compression and minification (especially CSS and JS)
+
+## Monetization
+
+- Add automatic ads (Google adsense - page level ads): 
+  - <https://support.google.com/adsense/answer/7477845?hl=en>
+  - <https://www.google.com/adsense/>
   
 ## SEO
 
