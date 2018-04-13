@@ -490,7 +490,7 @@ needed for Bootstrap 3.</p>
 
 <p>We will be using the package manager <a href="https://yarnpkg.com/lang/en/docs/install">Yarn</a> to install Bootstrap. At
 our Jekyll website root folder we run <kbd>yarn install</kbd>. In this
-case I will be using <em>**</em>Bootstrap  v4.0.0-beta.2 ** but you can find the
+case I will be using <strong>Bootstrap  v4.0.0</strong> but you can find the
 latest one
 at <a href="https://getbootstrap.com/docs/4.0/getting-started/download/">https://getbootstrap.com/docs/4.0/getting-started/download/</a>.</p>
 
@@ -500,46 +500,52 @@ maintained anymore, <a href="https://yarnpkg.com/lang/en/docs/install">Yarn</a> 
 <pre class="shell">
 <samp>
 <span class="shell-prompt">$</span> <kbd>yarn install</kbd>
-yarn install v1.3.2
+yarn install v1.5.1
 info No lockfile found.
 [1/4] Resolving packages...
 [2/4] Fetching packages...
 [3/4] Linking dependencies...
 [4/4] Building fresh packages...
 info Lockfile not saved, no dependencies.
-Done in 0.22s.
+Done in 0.16s.
 
-<span class="shell-prompt">$</span> <kbd>yarn add bootstrap@4.0.0-beta.2</kbd>
-yarn add v1.3.2
+<span class="shell-prompt">$</span> <kbd>yarn add bootstrap@4.0.0</kbd>
+yarn add v1.5.1
 info No lockfile found.
 [1/4] Resolving packages...
 [2/4] Fetching packages...
 [3/4] Linking dependencies...
-warning " &gt; bootstrap@4.0.0-beta.2" has unmet peer dependency "jquery@1.9.1 - 3".
-warning " &gt; bootstrap@4.0.0-beta.2" has unmet peer dependency "popper.js@^1.12.3".
+warning " &gt; bootstrap@4.0.0" has unmet peer dependency "jquery@1.9.1 - 3".
+warning " &gt; bootstrap@4.0.0" has unmet peer dependency "popper.js@^1.12.9".
 [4/4] Building fresh packages...
 success Saved lockfile.
 success Saved 1 new dependency.
-└─ bootstrap@4.0.0-beta.2
-Done in 2.46s.
+info Direct dependencies
+└─ bootstrap@4.0.0
+info All dependencies
+└─ bootstrap@4.0.0
+Done in 1.16s.
 
-<span class="shell-prompt">$</span> <kbd>yarn add jquery@&gt;=3.0.0</kbd>
-yarn add v1.3.2
+<span class="shell-prompt">$</span> <kbd>yarn add jquery</kbd>
+yarn add v1.5.1
 warning package.json: No license field
 warning No license field
 [1/4] Resolving packages...
 [2/4] Fetching packages...
 [3/4] Linking dependencies...
-warning " &gt; bootstrap@4.0.0-beta.2" has unmet peer dependency "popper.js@^1.12.3".
+warning " &gt; bootstrap@4.0.0" has unmet peer dependency "popper.js@^1.12.9".
 [4/4] Building fresh packages...
 success Saved lockfile.
 success Saved 1 new dependency.
-└─ jquery@3.0.0
+info Direct dependencies
+└─ jquery@3.3.1
+info All dependencies
+└─ jquery@3.3.1
 warning No license field
-Done in 4.33s.
+Done in 1.15s.
 
-<span class="shell-prompt">$</span> <kbd>yarn add popper.js@^1.12.3</kbd>
-yarn add v1.3.2
+<span class="shell-prompt">$</span> <kbd>yarn add popper.js</kbd>
+yarn add v1.5.1
 warning package.json: No license field
 warning No license field
 [1/4] Resolving packages...
@@ -548,11 +554,35 @@ warning No license field
 [4/4] Building fresh packages...
 success Saved lockfile.
 success Saved 1 new dependency.
-└─ popper.js@1.12.6
+info Direct dependencies
+└─ popper.js@1.14.3
+info All dependencies
+└─ popper.js@1.14.3
 warning No license field
-Done in 1.55s.
+Done in 1.02s.
+
 </samp>
 </pre>
+
+<p>So far, we have added this structure (excluding jekyll files):</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>tree -L 2</kbd>
+.
+├── node_modules
+│   ├── bootstrap
+│   ├── jquery
+│   └── popper.js
+├── package.json
+└── yarn.lock
+
+4 directories, 2 files
+</samp>
+</pre>
+
+<p>If you aren’t working in a Jekyll project, you can add it now to the
+current directory with <kbd>jekyll new . --force</kbd>.</p>
 
 <h2 id="adding-new-sass-load-paths">Adding new Sass load paths</h2>
 
@@ -577,7 +607,8 @@ it, so it will process other folders too.</p>
         <span class="pi">-</span> <span class="s">node_modules</span>
 </code></pre></div></div>
 
-<p class="alert alert-danger"><code class="highlighter-rouge">load_paths</code> only works when <strong>not</strong> in safe mode<sup id="fnref:safe-mode"><a href="#fn:safe-mode" class="footnote">3</a></sup></p>
+<p class="alert alert-danger"><code class="highlighter-rouge">load_paths</code> only works when <strong>not</strong> in safe mode<sup id="fnref:safe-mode"><a href="#fn:safe-mode" class="footnote">3</a></sup> (i.e. it
+won’t work with Github Pages.)</p>
 
 <h3 id="whitelist-node_modules">Whitelist node_modules</h3>
 
@@ -600,7 +631,7 @@ faster, just before the <code class="highlighter-rouge">&lt;/body&gt;</code> HTM
 &lt;body&gt;
 ...
 	&lt;script src="<span class="p">{{</span><span class="s1">'/node_modules/jquery/dist/jquery.min.js'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">prepend</span><span class="p">:</span><span class="w"> </span>site.baseurl<span class="p">}}</span>"&gt;&lt;/script&gt;
-	&lt;script src="<span class="p">{{</span><span class="s1">'/node_modules/popper.js/dist/popper.min.js'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">prepend</span><span class="p">:</span><span class="w"> </span>site.baseurl<span class="p">}}</span>"&gt;&lt;/script&gt;
+	&lt;script src="<span class="p">{{</span><span class="s1">'/node_modules/popper.js/dist/umd/popper.min.js'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">prepend</span><span class="p">:</span><span class="w"> </span>site.baseurl<span class="p">}}</span>"&gt;&lt;/script&gt;
 	&lt;script src="<span class="p">{{</span><span class="s1">'/node_modules/bootstrap/dist/js/bootstrap.min.js'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">prepend</span><span class="p">:</span><span class="w"> </span>site.baseurl<span class="p">}}</span>"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
@@ -766,7 +797,7 @@ using Bundler):</p>
 <span class="nl">include-yarn-deps</span><span class="o">:</span>
 	<span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$(VENDOR_DIR)</span>
 	<span class="nb">cp </span>node_modules/jquery/dist/jquery.min.js <span class="nv">$(VENDOR_DIR)</span>
-	<span class="nb">cp </span>node_modules/popper.js/dist/popper.min.js <span class="nv">$(VENDOR_DIR)</span>
+	<span class="nb">cp </span>node_modules/popper.js/dist/umd/popper.min.js <span class="nv">$(VENDOR_DIR)</span>
 	<span class="nb">cp </span>node_modules/bootstrap/dist/js/bootstrap.min.js <span class="nv">$(VENDOR_DIR)</span>
 
 <span class="nl">build</span><span class="o">:</span> <span class="nf">install include-yarn-deps</span>
@@ -827,29 +858,25 @@ have any other unnecessary files in the final website.</p>
 <h2 id="conclusion">Conclusion</h2>
 
 <p>When we build our site, Jekyll will process the <code class="highlighter-rouge">.scss</code> files with our
-custom variables and we will have them in our <code class="highlighter-rouge">assets/main.css</code>. In
+custom variables and we will have them in our <code class="highlighter-rouge">_site/assets/main.css</code>. In
 this example its content starts with the Bootstrap code and ends with
 our custom <code class="highlighter-rouge">_main.scss</code> processed, looking like:</p>
 
 <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/*!
- * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
- * Copyright 2011-2017 The Bootstrap Authors
- * Copyright 2011-2017 Twitter, Inc.
+ * Bootstrap v4.0.0 (https://getbootstrap.com)
+ * Copyright 2011-2018 The Bootstrap Authors
+ * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */</span>
-<span class="c">/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */</span>
-<span class="nt">html</span> <span class="p">{</span>
-  <span class="nl">font-family</span><span class="p">:</span> <span class="nb">sans-serif</span><span class="p">;</span>
-  <span class="nl">line-height</span><span class="p">:</span> <span class="m">1.15</span><span class="p">;</span>
-  <span class="nl">-ms-text-size-adjust</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
-  <span class="nl">-webkit-text-size-adjust</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span> <span class="p">}</span>
+<span class="nd">:root</span> <span class="p">{</span>
+  <span class="py">--blue</span><span class="p">:</span> <span class="m">#007bff</span><span class="p">;</span>
+  <span class="py">--indigo</span><span class="p">:</span> <span class="m">#6610f2</span><span class="p">;</span>
+  <span class="py">--purple</span><span class="p">:</span> <span class="m">#6f42c1</span><span class="p">;</span>
 
-<span class="o">...</span>
+<span class="err">...</span>
 
-<span class="nc">.content</span> <span class="p">{</span>
-  <span class="nl">font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span> 
-<span class="p">}</span>
-
+<span class="err">.content</span> <span class="err">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span> <span class="p">}</span>
 </code></pre></div></div>
 
 <h2 id="references">References</h2>
