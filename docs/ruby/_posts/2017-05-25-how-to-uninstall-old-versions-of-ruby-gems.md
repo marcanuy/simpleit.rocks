@@ -76,7 +76,27 @@ Successfully uninstalled nokogiri-1.7.0
 </samp>
 </pre>
 
+## Address errors
+
+The above command uninstall most of the gems but it can't deal with
+some of them showing messages like: 
+
+	Attempting to uninstall minitest-5.9.0
+	Unable to uninstall minitest-5.9.0:
+			Gem::InstallError: minitest is not installed in GEM_HOME, try:
+			gem uninstall -i /usr/share/rubygems-integration/all minitest
+
+To uninstall them we run the command again, executing the suggested
+command `gem uninstall ...`:
+
+~~~ bash
+sudo gem cleanup | grep -Z "gem uninstall"| while read -r line ; do 
+    echo "Uninstalling $line"; 
+	tee sudo "$line"; 
+done
+~~~
+
 ## References
 
 - [Removing old versions of gems](https://stackoverflow.com/q/27933683/1165509)
-  
+- [How to process each line received as a result of grep command](https://stackoverflow.com/a/16318005/1165509)
