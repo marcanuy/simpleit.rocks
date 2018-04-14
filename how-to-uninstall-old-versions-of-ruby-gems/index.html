@@ -269,6 +269,7 @@
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
 <li class="toc-entry toc-h2"><a href="#removing-old-unused-gems">Removing old unused gems</a></li>
+<li class="toc-entry toc-h2"><a href="#address-errors">Address errors</a></li>
 <li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
       </div>
@@ -429,12 +430,32 @@ Successfully uninstalled nokogiri-1.7.0
 </samp>
 </pre>
 
+<h2 id="address-errors">Address errors</h2>
+
+<p>The above command uninstall most of the gems but it can’t deal with
+some of them showing messages like:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Attempting to uninstall minitest-5.9.0
+Unable to uninstall minitest-5.9.0:
+		Gem::InstallError: minitest is not installed in GEM_HOME, try:
+		gem uninstall -i /usr/share/rubygems-integration/all minitest
+</code></pre></div></div>
+
+<p>To uninstall them we run the command again, executing the suggested
+command <code class="highlighter-rouge">gem uninstall ...</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gem cleanup | <span class="nb">grep</span> <span class="nt">-Z</span> <span class="s2">"gem uninstall"</span>| <span class="k">while </span><span class="nb">read</span> <span class="nt">-r</span> line <span class="p">;</span> <span class="k">do 
+    </span><span class="nb">echo</span> <span class="s2">"Uninstalling </span><span class="nv">$line</span><span class="s2">"</span><span class="p">;</span> 
+	<span class="nb">tee sudo</span> <span class="s2">"</span><span class="nv">$line</span><span class="s2">"</span><span class="p">;</span> 
+<span class="k">done</span>
+</code></pre></div></div>
+
 <h2 id="references">References</h2>
 
 <ul>
   <li><a href="https://stackoverflow.com/q/27933683/1165509">Removing old versions of gems</a></li>
+  <li><a href="https://stackoverflow.com/a/16318005/1165509">How to process each line received as a result of grep command</a></li>
 </ul>
-
 
 
     
