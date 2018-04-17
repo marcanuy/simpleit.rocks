@@ -72,7 +72,10 @@ class PlayerFactory(factory.django.DjangoModelFactory):
     last_name = factory.Faker('last_name')
 ~~~
 
-> class factory.SubFactory(factory, **kwargs) 
+SubFactory definition:
+
+> `class factory.SubFactory(factory, **kwargs)`
+> 
 > This attribute declaration calls another Factory subclass, selecting the same build
 > strategy and collecting extra kwargs in the process.  The SubFactory
 > attribute should be called with: 
@@ -120,7 +123,7 @@ class TeamFactory(factory.django.DjangoModelFactory):
 class TeamWithPlayersFactory(TeamFactory):
     
     @factory.post_generation
-    def units(obj, create, extracted, **kwargs):
+    def players(obj, create, extracted, **kwargs):
         """
         If called like: TeamFactory(players=4) it generates a Team with 4
         players.  If called without `players` argument, it generates a
@@ -160,6 +163,22 @@ class FactoriesTests(TestCase):
             self.assertIsInstance(player, Player)
 ~~~
 
+#### Specify amount of players to create
+
+And to specify how many players we want, we pass the `players`
+argument: `TeamWithPlayersFactory.create(players=5)`.
+
+~~~ python
+    def test_create_team_with_fixed_amount_of_players(self):
+        team = TeamWithPlayersFactory.create(players=5)
+        
+        self.assertIsInstance(team, Team)
+        players = team.players.all()
+        self.assertTrue(len(players) == 5)
+        for player in players:
+            self.assertIsInstance(player, Player)
+~~~
+
 ### Manually creating objects
 
 Without using the post generation hook, we can still create them
@@ -185,13 +204,12 @@ Type "help", "copyright", "credits" or "license" for more information.
 <span class="shell-prompt"> >>> </span> <kbd>from myapp.factories import PlayerFactory</kbd>
 <span class="shell-prompt"> >>> </span> <kbd>team = TeamFactory.create()</kbd>
 <span class="shell-prompt"> >>> </span> <kbd>from myapp.models import Team, Player</kbd>
-<QuerySet [<Team: Room foot.>]>
 <span class="shell-prompt"> >>> </span> <kbd>PlayerFactory.create(team=team)</kbd>
-<Player: Amber Marshall>
+ < Player: Amber Marshall >
 <span class="shell-prompt"> >>> </span> <kbd>PlayerFactory.create(team=team)</kbd>
-<Player: Cynthia Howard>
+ < Player: Cynthia Howard>
 <span class="shell-prompt"> >>> </span> <kbd>team.players.all()</kbd>
-<QuerySet [<Player: Amber Marshall>, <Player: Cynthia Howard>]>
+ < QuerySet [ < Player: Amber Marshall>, < Player: Cynthia Howard>] >
 <span class="shell-prompt"> >>> </span> <kbd></kbd>
 </samp>
 </pre>
