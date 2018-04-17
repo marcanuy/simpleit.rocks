@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <link rel="alternate" type="application/rss+xml" title="Simple IT 🤘 Rocks" href="https://simpleit.rocks/feed.xml">
+
+    <meta name="msvalidate.01" content="453BB779294406F41BD202E3E24FFE55" />
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="/assets/vendor/font-awesome.min.css" type="text/css" media="screen" />
+
+    
+    
+    
+    <!-- Custom css -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-128.png" sizes="128x128" />
+<meta name="application-name" content="Simple IT ROCKS"/>
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="https://simpleit.rocks/assets/favicons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="https://simpleit.rocks/assets/favicons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="https://simpleit.rocks/assets/favicons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="https://simpleit.rocks/assets/favicons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="https://simpleit.rocks/assets/favicons/mstile-310x310.png" />
+<meta name="msapplication-notification" content="frequency=30;polling-uri=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=1;polling-uri2=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=2;polling-uri3=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=3;polling-uri4=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=4;polling-uri5=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=5;cycle=1" />
+
+
+    
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Setting Up A Factory For One To Many Relationships In Factoryboy | Simple IT 🤘 Rocks</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="Setting Up A Factory For One To Many Relationships In Factoryboy" />
+<meta name="author" content="marcanuy" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="How to create objects from a one-to-many relationship with Factoryboy." />
+<meta property="og:description" content="How to create objects from a one-to-many relationship with Factoryboy." />
+<link rel="canonical" href="https://simpleit.rocks/setting-up-a-factory-for-one-to-many-relationships-in-factoryboy/" />
+<meta property="og:url" content="https://simpleit.rocks/setting-up-a-factory-for-one-to-many-relationships-in-factoryboy/" />
+<meta property="og:site_name" content="Simple IT 🤘 Rocks" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-04-17T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@simpleitrocks" />
+<meta name="twitter:creator" content="@marcanuy" />
+<meta property="fb:app_id" content="1822851531277021" />
+<script type="application/ld+json">
+{"description":"How to create objects from a one-to-many relationship with Factoryboy.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/setting-up-a-factory-for-one-to-many-relationships-in-factoryboy/","headline":"Setting Up A Factory For One To Many Relationships In Factoryboy","dateModified":"2018-04-17T00:00:00+00:00","datePublished":"2018-04-17T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/setting-up-a-factory-for-one-to-many-relationships-in-factoryboy/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1912030305535489",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+
+</head>
+
+
+  <body>
+
+    
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28572639-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <header class="site-header">
+
+    
+
+    <div class="mb-2 text-center">
+
+	<a class="display-1" href="/" style="text-decoration: none">Simple IT 🤘 Rocks</a>
+
+    </div>
+
+    
+    <div class="jumbotron jumbotron-fluid bg-inverse">
+  <div class="container">
+    
+    
+    
+    
+    
+    <h1 class="title">Setting Up A Factory For One To Many Relationships In Factoryboy </h1>
+    
+    
+  </div>
+</div>
+
+    
+
+</header>
+
+
+    <div class="container-fluid">
+      <header class="post-header">
+  <div>
+    <div class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList" class="list-/inline breadcrumb">
+
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="https://schema.org/Thing"
+     itemprop="item" href="/">
+    
+    <i class="fa fa-home" aria-hidden="true"></i>
+    
+
+    Home
+  </a>
+  
+  <meta itemprop="position" content="1" />
+</li>
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="https://schema.org/Thing"
+     itemprop="item" href="/docs">
+    
+
+    docs
+  </a>
+  
+  <meta itemprop="position" content="2" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="https://schema.org/Thing"
+     itemprop="item" href="/docs/python">
+    
+
+    python
+  </a>
+  
+  <meta itemprop="position" content="3" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="https://schema.org/Thing"
+     itemprop="item" href="/docs/python/django">
+    
+
+    django
+  </a>
+  
+  <meta itemprop="position" content="4" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item active">
+  
+  <span itemscope itemtype="https://schema.org/Thing"
+       itemprop="item">
+    
+
+    <span itemprop="name">Setting Up A Factory For One To Many Relationships In Factoryboy</span>
+  </span>
+  
+  <meta itemprop="position" content="5" />
+</li>
+
+    
+
+    
+    
+  </ol>
+</div>
+
+  </div>
+</header>
+
+<div class="post-content" itemprop="articleBody">
+  <div class="row">
+
+  <div class="col-md-3 site-sidebar">
+    <div class="si-ad m-1 mx-auto">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_side_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5882730780"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
+  
+</div>
+
+    
+    <div class="sticky" style="position:sticky; top:10px">
+      <div>
+	<h4>Table of Contents</h4>
+	<ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#just-show-me-the-code">Just Show me the code</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#setting-up-the-example">Setting up the example</a></li>
+<li class="toc-entry toc-h2"><a href="#strategies">Strategies</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#using-post-generation-hook">Using post generation hook</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#specify-amount-of-players-to-create">Specify amount of players to create</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#manually-creating-objects">Manually creating objects</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#conclusion">Conclusion</a></li>
+</ul>
+      </div>
+      <div>
+	<div class="site-share pb-2">
+  
+  <ul class="share-buttons list-inline mb-1 text-center">
+    <li class="list-inline-item">
+      <div>
+    <a class="twitter-share-button"
+       href="https://twitter.com/share"
+       data-url="https://simpleit.rocks/setting-up-a-factory-for-one-to-many-relationships-in-factoryboy/"
+       data-via=""
+       data-text="Setting Up A Factory For One To Many Relationships In Factoryboy"
+       data-related="marcanuy,simpleitrocks"
+       data-count="vertical">
+	Tweet
+    </a>
+    <script>
+     window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+    </script>
+</div>
+
+    </li>
+    <li class="list-inline-item">
+      <div>
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!-- Place this tag where you want the +1 button to render. -->
+  <div class="g-plusone" data-size="tall"></div>
+</div>
+
+    </li>
+    <li class="list-inline-item">
+      <div>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) return;
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));</script>
+
+  <div class="fb-like" data-href="https://simpleit.rocks/setting-up-a-factory-for-one-to-many-relationships-in-factoryboy/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+</div>
+
+    </li>
+  </ul>
+  
+</div>
+
+      </div>
+    </div>
+    
+  </div> <!-- end col -->
+
+  <div class="col-md-8 site-content">
+
+    
+	<p class="lead">
+	  How to create objects from a one-to-many relationship with Factoryboy.
+	</p>
+    
+
+    <div class="si-ad m-3 mx-auto">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_before_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="2929264389"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+
+    <h2 id="overview">Overview</h2>
+
+<p>[<abbr title="http://factoryboy.readthedocs.io/en/latest/">Factoryboy</abbr>] is used to replace fixtures with factories for complex
+objects. It already comes with solutions to handle
+<a href="http://factoryboy.readthedocs.io/en/latest/recipes.html#dependent-objects-foreignkey">one-to-one</a>
+and
+<a href="http://factoryboy.readthedocs.io/en/latest/recipes.html#simple-many-to-many-relationship">many-to-many</a>
+relationships, but it lacks documentation for setting up
+<strong>one-to-many</strong> relationships, which is what we will see in this
+guide.</p>
+
+<p>There are two simple strategies for setting up this kind of
+relationship:</p>
+
+<ol>
+  <li>Using <abbr title="http://factoryboy.readthedocs.io/en/latest/">Factoryboy</abbr>’s post generation hooks</li>
+  <li>Create the relationship objects “manually”</li>
+</ol>
+
+<h3 id="just-show-me-the-code">Just Show me the code</h3>
+
+<p>You can check this guide full source code at <a href="https://github.com/marcanuy/factoryboy_examples">https://github.com/marcanuy/factoryboy_examples</a> repo.</p>
+
+<h2 id="setting-up-the-example">Setting up the example</h2>
+
+<p>The following examples will be based in Django models with the
+following relationship (in <code class="highlighter-rouge">myapp/models.py</code>):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">Player</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="s">"""
+    Model representing a player of a team
+    """</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>
+        <span class="s">'team'</span><span class="p">,</span> <span class="c"># class name</span>
+        <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span>
+        <span class="n">related_name</span><span class="o">=</span><span class="s">'players'</span>
+    <span class="p">)</span>
+    <span class="n">first_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">help_text</span><span class="o">=</span><span class="s">"Player's first name"</span><span class="p">)</span>
+    <span class="n">last_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">help_text</span><span class="o">=</span><span class="s">"Player's last name"</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Team</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">,</span> <span class="n">LineMixin</span><span class="p">):</span>
+    <span class="s">""" 
+    Model representing a text Team.
+    """</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">help_text</span><span class="o">=</span><span class="s">"Team name"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Having the above Django models we create a factory for each model, in
+<code class="highlighter-rouge">myapp/factories.py</code>.</p>
+
+<p>The Player’s factory is straightforward, having its <code class="highlighter-rouge">team</code>’s related
+field set up with
+<a href="https://factoryboy.readthedocs.io/en/latest/reference.html#factory.SubFactory">factory.SubFactory</a>,
+which calls the related factory, in this case: <code class="highlighter-rouge">team =
+factory.SubFactory(TeamFactory)</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">factory</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">PlayerFactory</span><span class="p">(</span><span class="n">factory</span><span class="o">.</span><span class="n">django</span><span class="o">.</span><span class="n">DjangoModelFactory</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Player</span>
+
+    <span class="n">team</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">SubFactory</span><span class="p">(</span><span class="n">TeamFactory</span><span class="p">)</span>
+    <span class="n">first_name</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">Faker</span><span class="p">(</span><span class="s">'first_name'</span><span class="p">)</span>
+    <span class="n">last_name</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">Faker</span><span class="p">(</span><span class="s">'last_name'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>SubFactory definition:</p>
+
+<blockquote class="blockquote" cite="https://factoryboy.readthedocs.io/en/latest/reference.html#factory.SubFactory">
+  <p><code class="highlighter-rouge">class factory.SubFactory(factory, **kwargs)</code></p>
+
+  <p>This attribute declaration calls another Factory subclass, selecting the same build
+strategy and collecting extra kwargs in the process.  The SubFactory
+attribute should be called with:</p>
+  <ul>
+    <li>A Factory subclass as first argument, or the fully 
+qualified import path to that Factory</li>
+    <li>An optional set of keyword arguments that should
+be passed when calling that factory</li>
+  </ul>
+  <footer class="blockquote-footer"> <cite><a href="https://factoryboy.readthedocs.io/en/latest/reference.html#factory.SubFactory">SubFactory docs</a></cite></footer>
+</blockquote>
+
+<h2 id="strategies">Strategies</h2>
+
+<p>Now we can define the <code class="highlighter-rouge">Team</code> factory in one of two ways.</p>
+
+<h3 id="using-post-generation-hook">Using post generation hook</h3>
+
+<p>To performs actions once the model object has been generated we use
+the <code class="highlighter-rouge">factory.PostGeneration</code> hook.</p>
+
+<p>In this case we will create a random amount of <em>Player</em> instances for
+one <em>Team</em>, or a specific amount of <em>Player</em>’s if passed an argument.</p>
+
+<p>To set up the post generation hook we use the
+<code class="highlighter-rouge">@factory.post_generation</code> decorator and define a function whose name
+will be used when calling the factory, like this</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@factory.post_generation
+def players(line, create, extracted, **kwargs):
+    pass
+</code></pre></div></div>
+
+<p>Now we can call it like: <kbd>TeamFactory(players=4)</kbd> it generates a
+<em>Team</em> with 4 players.</p>
+
+<p>If we call it without <code class="highlighter-rouge">players</code> it generates a random amount of <em>Player</em>’s.</p>
+
+<p>In <code class="highlighter-rouge">models/factories.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TeamFactory</span><span class="p">(</span><span class="n">factory</span><span class="o">.</span><span class="n">django</span><span class="o">.</span><span class="n">DjangoModelFactory</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Team</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">Faker</span><span class="p">(</span><span class="s">'sentence'</span><span class="p">,</span> <span class="n">nb_words</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">variable_nb_words</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">TeamWithPlayersFactory</span><span class="p">(</span><span class="n">TeamFactory</span><span class="p">):</span>
+    
+    <span class="nd">@factory.post_generation</span>
+    <span class="k">def</span> <span class="nf">players</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">create</span><span class="p">,</span> <span class="n">extracted</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="s">"""
+        If called like: TeamFactory(players=4) it generates a Team with 4
+        players.  If called without `players` argument, it generates a
+        random amount of players for this team
+        """</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">create</span><span class="p">:</span>
+            <span class="c"># Build, not create related</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="n">extracted</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">extracted</span><span class="p">):</span>
+                <span class="n">myapp</span><span class="o">.</span><span class="n">factories</span><span class="o">.</span><span class="n">PlayerFactory</span><span class="p">(</span><span class="n">team</span><span class="o">=</span><span class="n">obj</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">random</span>
+            <span class="n">number_of_units</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_units</span><span class="p">):</span>
+                <span class="n">myapp</span><span class="o">.</span><span class="n">factories</span><span class="o">.</span><span class="n">PlayerFactory</span><span class="p">(</span><span class="n">team</span><span class="o">=</span><span class="n">obj</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Then we can create some tests to show how it works (in <code class="highlighter-rouge">myapp/tests.py</code>):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.test</span> <span class="kn">import</span> <span class="n">TestCase</span>
+
+<span class="kn">from</span> <span class="nn">myapp.factories</span> <span class="kn">import</span> <span class="n">TeamFactory</span><span class="p">,</span> <span class="n">PlayerFactory</span><span class="p">,</span> <span class="n">TeamWithPlayersFactory</span>
+<span class="kn">from</span> <span class="nn">myapp.models</span> <span class="kn">import</span> <span class="n">Team</span><span class="p">,</span> <span class="n">Player</span>
+
+<span class="k">class</span> <span class="nc">FactoriesTests</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">test_create_team_with_players</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">team</span> <span class="o">=</span> <span class="n">TeamWithPlayersFactory</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="n">team</span><span class="p">,</span> <span class="n">Team</span><span class="p">)</span>
+        <span class="n">players</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">players</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="n">players</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">Player</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="specify-amount-of-players-to-create">Specify amount of players to create</h4>
+
+<p>And to specify how many players we want, we pass the <code class="highlighter-rouge">players</code>
+argument: <code class="highlighter-rouge">TeamWithPlayersFactory.create(players=5)</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">def</span> <span class="nf">test_create_team_with_fixed_amount_of_players</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">team</span> <span class="o">=</span> <span class="n">TeamWithPlayersFactory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">players</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="n">team</span><span class="p">,</span> <span class="n">Team</span><span class="p">)</span>
+        <span class="n">players</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">players</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">players</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="n">players</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">Player</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="manually-creating-objects">Manually creating objects</h3>
+
+<p>Without using the post generation hook, we can still create them
+making sure we create a team before starting to create the players,
+so we assign the same <em>Team</em> to all players, like:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">team</span> <span class="o">=</span> <span class="n">TeamFactory</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+<span class="n">player1</span> <span class="o">=</span> <span class="n">PlayerFactory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">team</span><span class="o">=</span><span class="n">team</span><span class="p">)</span>
+<span class="n">player2</span> <span class="o">=</span> <span class="n">PlayerFactory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">team</span><span class="o">=</span><span class="n">team</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>An example with <code class="highlighter-rouge">shell</code>:</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>python manage.py shell</kbd>
+Python 3.6.4 (default, Feb  5 2018, 16:52:44) 
+[GCC 7.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+<span class="shell-prompt"> &gt;&gt;&gt; </span> <kbd>from myapp.factories import TeamFactory</kbd>
+<span class="shell-prompt"> &gt;&gt;&gt; </span> <kbd>from myapp.factories import PlayerFactory</kbd>
+<span class="shell-prompt"> &gt;&gt;&gt; </span> <kbd>team = TeamFactory.create()</kbd>
+<span class="shell-prompt"> &gt;&gt;&gt; </span> <kbd>from myapp.models import Team, Player</kbd>
+<span class="shell-prompt"> &gt;&gt;&gt; </span> <kbd>PlayerFactory.create(team=team)</kbd>
+ &lt; Player: Amber Marshall &gt;
+<span class="shell-prompt"> &gt;&gt;&gt; </span> <kbd>PlayerFactory.create(team=team)</kbd>
+ &lt; Player: Cynthia Howard&gt;
+<span class="shell-prompt"> &gt;&gt;&gt; </span> <kbd>team.players.all()</kbd>
+ &lt; QuerySet [ &lt; Player: Amber Marshall&gt;, &lt; Player: Cynthia Howard&gt;] &gt;
+<span class="shell-prompt"> &gt;&gt;&gt; </span> <kbd></kbd>
+</samp>
+</pre>
+
+<p>In <code class="highlighter-rouge">myapp/tests.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">...</span>
+    <span class="k">def</span> <span class="nf">test_create_players_with_same_team</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">team</span> <span class="o">=</span> <span class="n">TeamFactory</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+        <span class="n">player1</span> <span class="o">=</span> <span class="n">PlayerFactory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">team</span><span class="o">=</span><span class="n">team</span><span class="p">)</span>
+        <span class="n">player2</span> <span class="o">=</span> <span class="n">PlayerFactory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">team</span><span class="o">=</span><span class="n">team</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="n">player1</span><span class="p">,</span> <span class="n">Player</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="n">player2</span><span class="p">,</span> <span class="n">Player</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">player1</span><span class="o">.</span><span class="n">team</span><span class="p">,</span> <span class="n">team</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">player2</span><span class="o">.</span><span class="n">team</span><span class="p">,</span> <span class="n">team</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Using the post generation hooks, is a bit harder to set up but makes
+it easier to use the factory in your code.</p>
+
+
+
+    
+
+
+
+<footer class="author-footer">
+    <div class="media" itemtype="https://schema.org/Person">
+	<span itemprop="locationCreated contentLocation spatialCoverage" itemscope="itemscope" itemtype="https://schema.org/City" style="display:none"><span itemprop="name">Uruguay</span>
+	</span>
+	<link href="https://plus.google.com/118415138433063920612/posts" rel="author"/>
+	<meta content="https://marcanuy.com" property="article:author"/>
+	<meta content="@marcanuy" name="twitter:creator"/>
+	<meta content="https://plus.google.com/118415138433063920612/posts" name="DC.creator"/>
+	<meta content="Marcelo Canina" name="author"/>
+	
+	<a class="media-left mx-2" href="https://marcanuy.com" itemprop="url" rel="author">
+	    <img class="media-object rounded" alt="Marcelo Canina - Simple IT 🤘 Rocks" itemprop="image" src="https://www.gravatar.com/avatar/2ebdffd5ddb4a98b0cc77117503d2711?s=80"/>
+	</a>
+	<div class="media-body">
+	    <h5 class="media-heading">
+		<address class="author-info clear" id="author-info" itemprop="author creator" itemscope="" itemtype="https://schema.org/Person">
+		    <span class="author-name" itemprop="name">Marcelo Canina</span>
+		    <a class="a-social a-tw" href="https://twitter.com/marcanuy" itemprop="sameAs" target="_blank"><i class="fa fa-twitter-square"></i></a>
+		    <a class="a-social a-gp" href="https://plus.google.com/118415138433063920612?rel=author" itemprop="url sameAs" rel="author" target="_blank"><i class="fa fa-google-plus-square"></i></a>
+		    <a class="a-social a-ln" href="https://www.linkedin.com/in/marcelocanina" itemprop="sameAs" target="_blank"><i class="fa fa-linkedin-square"></i></a>
+		    <a class="a-social a-email" href="mailto:me@marcanuy.com" itemprop="email sameAs" target="_blank"><i class="fa fa-envelope-o"></i></a>
+		    <a class="a-social a-github" href="https://github.com/marcanuy" itemprop="github sameAs" target="_blank"><i class="fa fa-github"></i></a>
+		    <a class="a-social a-stackexchange" href="https://stackexchange.com/users/1193189?tab=accounts" itemprop="stackexchange sameAs" target="_blank"><i class="fa fa-stack-exchange"></i></a>
+		</address>
+	    </h5>
+	    <div class="text-muted">
+		I'm Marcelo Canina, a developer from Uruguay. I build websites and web-based applications from the ground up and share what I learn here.
+	    </div>
+	</div>
+    </div>
+</footer>
+
+
+
+
+    <div class="post-comments">
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '/setting-up-a-factory-for-one-to-many-relationships-in-factoryboy/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    
+    s.src = '//simpleitrocks.disqus.com/embed.js';
+    
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  
+  
+  
+</div>
+
+
+    <div class="row">
+      <div class="col-md-6">
+	
+
+
+
+
+
+
+<div class="post-same-category">
+  <h4>Articles in this category</h4>
+  <div class="list-group">
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action " href="/django-overview/">
+      Django Overview
+    </a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action " href="/custom-django-configurations-for-different-servers/">
+      Django Configuration and environment isolation
+    </a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action " href="/django-project-directory-structure/">
+      Django Project Directory Structure
+    </a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action " href="/set-up-ubuntu-to-serve-a-django-website-step-by-step/">
+      Set Up Ubuntu To Serve A Django Website Step By Step
+    </a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action " href="/generate-uml-class-diagrams-from-django-models/">
+      Generate UML class diagrams from django models
+    </a>
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action active" href="/setting-up-a-factory-for-one-to-many-relationships-in-factoryboy/">
+      Setting Up A Factory For One To Many Relationships In Factoryboy
+    </a>
+    
+    
+  </div>
+</div>
+
+
+	
+
+
+
+
+      </div>
+      <div class="col-md-5">
+	
+	
+	<div class="si-ad m-1 mx-auto">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_after_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5104001581"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+	
+      </div>
+    </div>
+  </div> <!-- end col -->
+</div>
+
+
+</div>
+
+    </div>
+
+    <footer class="container-fluid site-footer py-3">
+    <div class="container">
+	<div class="row justify-content-between align-items-center">
+	    <div class="col-4">
+		<h2 class="footer-heading text-muted">Simple IT 🤘 Rocks</h2>
+		<ul class="footer-nav px-0">
+		    <li>
+			<i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by <a href="https://marcanuy.com" rel="author">Marcelo Canina</a>
+		    </li>
+		    
+		    <li>
+			<i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/simpleitrocks"><span class="username">simpleitrocks</span></a>
+
+		    </li>
+		    
+		    <li>
+			<i class="fa fa-user" aria-hidden="true"></i><a href="/about">About</a>
+		    </li>
+		    <li>
+			<i class="fa fa-search" aria-hidden="true"></i><a href="/search">Search</a>
+		    </li>
+		</ul>
+	    </div>
+	    <div class="col-4">
+		<div class="text-muted">
+		    <p>Clutter-free software concepts. Written on the go.
+</p>
+		</div>
+	    </div>
+	</div>
+    </div>
+</footer>
+<div class="si-license bg-inverse">
+  <div class="text-muted text-sm-center">
+    <small>
+      Except as otherwise noted, the content of this page is licensed under
+      <a rel="license" class="text-info" href="https://creativecommons.org/licenses/by-nc/4.0/">
+	<i class="fa fa-creative-commons" aria-hidden="true"></i> BY-NC 4.0
+      </a>
+    </small>
+  </div>
+</div>
+
+<script src="/assets/vendor/jquery.min.js"></script>
+<script src="/assets/vendor/tether.min.js"></script>
+<script src="/assets/vendor/bootstrap.min.js"></script>
+
+
+<!-- clipboard.js -->
+
+
+
+
+
+
+
+  </body>
+
+</html>
