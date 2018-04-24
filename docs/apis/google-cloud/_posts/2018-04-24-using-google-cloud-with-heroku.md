@@ -88,7 +88,7 @@ generate an instance of this class we use `google.oauth2.service_account.Credent
 class Credentials(credentials.Signing,
                   credentials.Scoped,
                   credentials.Credentials):
-    """Service account credentials
+    """Service account credentials"""
 	
 	# ....
 	
