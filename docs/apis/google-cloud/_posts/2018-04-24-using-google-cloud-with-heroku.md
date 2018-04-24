@@ -1,6 +1,5 @@
 ---
-description: Use Google Cloud Platform from heroku. A short guide to
-add credentials to an environment variable in Heroku
+description: Use Google Cloud Platform from heroku. A short guide to add credentials to an environment variable in Heroku
 image: /assets/img/googletexttospeech_api.jpg
 ---
 
