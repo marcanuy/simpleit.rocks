@@ -465,30 +465,30 @@ generate an instance of this class we use <code class="highlighter-rouge">google
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Credentials</span><span class="p">(</span><span class="n">credentials</span><span class="o">.</span><span class="n">Signing</span><span class="p">,</span>
                   <span class="n">credentials</span><span class="o">.</span><span class="n">Scoped</span><span class="p">,</span>
                   <span class="n">credentials</span><span class="o">.</span><span class="n">Credentials</span><span class="p">):</span>
-    <span class="s">"""Service account credentials
+    <span class="s">"""Service account credentials"""</span>
 	
-	# ....
+	<span class="c"># ....</span>
 	
-    @classmethod
-    def from_service_account_info(cls, info, **kwargs):
-        """</span><span class="n">Creates</span> <span class="n">a</span> <span class="n">Credentials</span> <span class="n">instance</span> <span class="k">from</span> <span class="n">parsed</span> <span class="n">service</span> <span class="n">account</span> <span class="n">info</span><span class="o">.</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_service_account_info</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="s">"""Creates a Credentials instance from parsed service account info.
 
-        <span class="n">Args</span><span class="p">:</span>
-            <span class="n">info</span> <span class="p">(</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]):</span> <span class="n">The</span> <span class="n">service</span> <span class="n">account</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">Google</span>
-                <span class="n">format</span><span class="o">.</span>
-            <span class="n">kwargs</span><span class="p">:</span> <span class="n">Additional</span> <span class="n">arguments</span> <span class="n">to</span> <span class="k">pass</span> <span class="n">to</span> <span class="n">the</span> <span class="n">constructor</span><span class="o">.</span>
+        Args:
+            info (Mapping[str, str]): The service account info in Google
+                format.
+            kwargs: Additional arguments to pass to the constructor.
 
-        <span class="n">Returns</span><span class="p">:</span>
-            <span class="n">google</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">service_account</span><span class="o">.</span><span class="n">Credentials</span><span class="p">:</span> <span class="n">The</span> <span class="n">constructed</span>
-                <span class="n">credentials</span><span class="o">.</span>
+        Returns:
+            google.auth.service_account.Credentials: The constructed
+                credentials.
 
-        <span class="n">Raises</span><span class="p">:</span>
-            <span class="nb">ValueError</span><span class="p">:</span> <span class="n">If</span> <span class="n">the</span> <span class="n">info</span> <span class="ow">is</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">expected</span> <span class="n">format</span><span class="o">.</span>
-        <span class="s">"""
-        signer = _service_account_info.from_dict(
-            info, require=['client_email', 'token_uri'])
-        return cls._from_signer_and_info(signer, info, **kwargs)
-</span></code></pre></div></div>
+        Raises:
+            ValueError: If the info is not in the expected format.
+        """</span>
+        <span class="n">signer</span> <span class="o">=</span> <span class="n">_service_account_info</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span>
+            <span class="n">info</span><span class="p">,</span> <span class="n">require</span><span class="o">=</span><span class="p">[</span><span class="s">'client_email'</span><span class="p">,</span> <span class="s">'token_uri'</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">_from_signer_and_info</span><span class="p">(</span><span class="n">signer</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>Read credential data from environment variable:</p>
 
