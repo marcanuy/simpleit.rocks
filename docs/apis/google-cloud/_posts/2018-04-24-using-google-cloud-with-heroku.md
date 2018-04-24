@@ -200,7 +200,7 @@ config:set</kbd>
 
 <pre class="shell">
 <samp>
-<span class="shell-prompt">$</span> <kbd>heroku config:set GOOGLE_APPLICATION_CREDENTIALS=="$(< credentials.json)"</kbd>
+<span class="shell-prompt">$</span> <kbd>heroku config:set GOOGLE_APPLICATION_CREDENTIALS="$(< credentials.json)"</kbd>
 
 </samp>
 </pre>
