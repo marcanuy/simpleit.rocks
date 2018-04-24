@@ -6,12 +6,12 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Apr 2018 15:12:35 +0000</pubDate>
-    <lastBuildDate>Tue, 24 Apr 2018 15:12:35 +0000</lastBuildDate>
+    <pubDate>Tue, 24 Apr 2018 15:20:02 +0000</pubDate>
+    <lastBuildDate>Tue, 24 Apr 2018 15:20:02 +0000</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
     
       <item>
-        <title></title>
+        <title>Using Google Cloud With Heroku</title>
         <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
 &lt;p&gt;Using Google Cloud Platform requires that you set up your &lt;em&gt;keys&lt;/em&gt; to
@@ -221,9 +221,9 @@ Heroku and Google Cloud play nice together.&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/texttospeech/cloud-client/synthesize_text.py&quot;&gt;GoogleCloudPlatform/python-docs-samples&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        <pubDate>Tue, 24 Apr 2018 15:12:35 +0000</pubDate>
-        <link>https://simpleit.rocks/2018-04-24-using-google-cloud-with-heroku/</link>
-        <guid isPermaLink="true">https://simpleit.rocks/2018-04-24-using-google-cloud-with-heroku/</guid>
+        <pubDate>Tue, 24 Apr 2018 00:00:00 +0000</pubDate>
+        <link>https://simpleit.rocks/using-google-cloud-with-heroku/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/using-google-cloud-with-heroku/</guid>
         
         
         <category>docs</category>
