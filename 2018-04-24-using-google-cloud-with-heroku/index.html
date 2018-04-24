@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <link rel="alternate" type="application/rss+xml" title="Simple IT 🤘 Rocks" href="https://simpleit.rocks/feed.xml">
+
+    <meta name="msvalidate.01" content="453BB779294406F41BD202E3E24FFE55" />
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="/assets/vendor/font-awesome.min.css" type="text/css" media="screen" />
+
+    
+    
+    
+    <!-- Custom css -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://simpleit.rocks/assets/favicons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="https://simpleit.rocks/assets/favicons/favicon-128.png" sizes="128x128" />
+<meta name="application-name" content="Simple IT ROCKS"/>
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="https://simpleit.rocks/assets/favicons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="https://simpleit.rocks/assets/favicons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="https://simpleit.rocks/assets/favicons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="https://simpleit.rocks/assets/favicons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="https://simpleit.rocks/assets/favicons/mstile-310x310.png" />
+<meta name="msapplication-notification" content="frequency=30;polling-uri=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=1;polling-uri2=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=2;polling-uri3=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=3;polling-uri4=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=4;polling-uri5=http://notifications.buildmypinnedsite.com/?feed=https://simpleit.rocks/feed&amp;id=5;cycle=1" />
+
+
+    
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Simple IT 🤘 Rocks | Clutter-free software concepts. Written on the go.</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="Simple IT 🤘 Rocks" />
+<meta name="author" content="marcanuy" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Clutter-free software concepts. Written on the go." />
+<meta property="og:description" content="Clutter-free software concepts. Written on the go." />
+<link rel="canonical" href="https://simpleit.rocks/2018-04-24-using-google-cloud-with-heroku/" />
+<meta property="og:url" content="https://simpleit.rocks/2018-04-24-using-google-cloud-with-heroku/" />
+<meta property="og:site_name" content="Simple IT 🤘 Rocks" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-04-24T15:12:35+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@simpleitrocks" />
+<meta name="twitter:creator" content="@marcanuy" />
+<meta property="fb:app_id" content="1822851531277021" />
+<script type="application/ld+json">
+{"description":"Clutter-free software concepts. Written on the go.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/2018-04-24-using-google-cloud-with-heroku/","headline":"Simple IT 🤘 Rocks","dateModified":"2018-04-24T15:12:35+00:00","datePublished":"2018-04-24T15:12:35+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/2018-04-24-using-google-cloud-with-heroku/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1912030305535489",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+
+</head>
+
+
+  <body>
+
+    
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28572639-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <header class="site-header">
+
+    
+
+    <div class="mb-2 text-center">
+
+	<a class="display-1" href="/" style="text-decoration: none">Simple IT 🤘 Rocks</a>
+
+    </div>
+
+    
+
+</header>
+
+
+    <div class="container-fluid">
+      <header class="post-header">
+  <div>
+    <div class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList" class="list-/inline breadcrumb">
+
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="https://schema.org/Thing"
+     itemprop="item" href="/">
+    
+    <i class="fa fa-home" aria-hidden="true"></i>
+    
+
+    Home
+  </a>
+  
+  <meta itemprop="position" content="1" />
+</li>
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="https://schema.org/Thing"
+     itemprop="item" href="/docs">
+    
+
+    docs
+  </a>
+  
+  <meta itemprop="position" content="2" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="https://schema.org/Thing"
+     itemprop="item" href="/docs/apis">
+    
+
+    apis
+  </a>
+  
+  <meta itemprop="position" content="3" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="https://schema.org/Thing"
+     itemprop="item" href="/docs/apis/google-cloud">
+    
+
+    google-cloud
+  </a>
+  
+  <meta itemprop="position" content="4" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item active">
+  
+  <span itemscope itemtype="https://schema.org/Thing"
+       itemprop="item">
+    
+
+    <span itemprop="name"></span>
+  </span>
+  
+  <meta itemprop="position" content="5" />
+</li>
+
+    
+
+    
+    
+  </ol>
+</div>
+
+  </div>
+</header>
+
+<div class="post-content" itemprop="articleBody">
+  <div class="row">
+
+  <div class="col-md-3 site-sidebar">
+    <div class="si-ad m-1 mx-auto">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_side_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5882730780"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
+  
+</div>
+
+    
+    <div class="sticky" style="position:sticky; top:10px">
+      <div>
+	<h4>Table of Contents</h4>
+	<ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#load-data-in-env-var">Load data in env var</a></li>
+<li class="toc-entry toc-h2"><a href="#using-the-client">Using the client</a></li>
+<li class="toc-entry toc-h2"><a href="#testing-code">Testing code</a></li>
+<li class="toc-entry toc-h2"><a href="#in-heroku">In Heroku</a></li>
+<li class="toc-entry toc-h2"><a href="#conclusion">Conclusion</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
+</ul>
+      </div>
+      <div>
+	<div class="site-share pb-2">
+  
+  <ul class="share-buttons list-inline mb-1 text-center">
+    <li class="list-inline-item">
+      <div>
+    <a class="twitter-share-button"
+       href="https://twitter.com/share"
+       data-url="https://simpleit.rocks/2018-04-24-using-google-cloud-with-heroku/"
+       data-via=""
+       data-text=""
+       data-related="marcanuy,simpleitrocks"
+       data-count="vertical">
+	Tweet
+    </a>
+    <script>
+     window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+    </script>
+</div>
+
+    </li>
+    <li class="list-inline-item">
+      <div>
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!-- Place this tag where you want the +1 button to render. -->
+  <div class="g-plusone" data-size="tall"></div>
+</div>
+
+    </li>
+    <li class="list-inline-item">
+      <div>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) return;
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));</script>
+
+  <div class="fb-like" data-href="https://simpleit.rocks/2018-04-24-using-google-cloud-with-heroku/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+</div>
+
+    </li>
+  </ul>
+  
+</div>
+
+      </div>
+    </div>
+    
+  </div> <!-- end col -->
+
+  <div class="col-md-8 site-content">
+
+    
+
+    <div class="si-ad m-3 mx-auto">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_before_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="2929264389"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+
+    <h2 id="overview">Overview</h2>
+
+<p>Using Google Cloud Platform requires that you set up your <em>keys</em> to
+make use of the API, and the only supported method for that is to
+generate a credentials file and refer to it using the environment
+variable <code class="highlighter-rouge">GOOGLE_APPLICATION_CREDENTIALS</code>.</p>
+
+<p>We will see how to load credentials in Heroku, using this file as an
+environment variable.</p>
+
+<p>In this guide I will by using Google Cloud’s Python client with the
+Text-to-speech API but any other service or programming language
+should be pretty similar to this method.</p>
+
+<h2 id="load-data-in-env-var">Load data in env var</h2>
+
+<p>After creating a service account key, we will have a credentials file
+in json format looking like this:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"service_account"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"marcanuy-XXXXXX"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"private_key_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"private_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-----BEGIN PRIVATE KEY-----</span><span class="se">\n</span><span class="s2">XXXXXXXXXX</span><span class="se">\n</span><span class="s2">-----END PRIVATE KEY-----</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"client_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXX-service-account@marcanuy-XXXXXX.iam.gserviceaccount.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXX"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"auth_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://accounts.google.com/o/oauth2/auth"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://accounts.google.com/o/oauth2/token"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"auth_provider_x509_cert_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/oauth2/v1/certs"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"client_x509_cert_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.googleapis.com/robot/v1/metadata/x509/equilang-service-account%40marcanuy-XXXXX.iam.gserviceaccount.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>This is the file Google ask us to point it at, using the environment variable
+<code class="highlighter-rouge">GOOGLE_APPLICATION_CREDENTIALS</code>.</p>
+
+<blockquote class="blockquote" cite="https://cloud.google.com/text-to-speech/docs/reference/libraries#client-libraries-install-python">
+  <p>Set the environment variable GOOGLE_APPLICATION_CREDENTIALS to the
+file path of the JSON file that contains your service account key.</p>
+
+  <footer class="blockquote-footer"> <cite><a href="https://cloud.google.com/text-to-speech/docs/reference/libraries#client-libraries-install-python">Text-to-Speech API Client Libraries</a></cite></footer>
+</blockquote>
+
+<p>But instead of doing that, we load its contents in it: <kbd>"$(&lt; credentials.json)"</kbd></p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>export GOOGLE_APPLICATION_CREDENTIALS="$(&lt; credentials.json)"</kbd>
+</samp>
+</pre>
+
+<p>Now we have the file contents in the variable, we can verify it with <kbd>echo $GOOGLE_APPLICATION_CREDENTIALS</kbd>:</p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>echo $GOOGLE_APPLICATION_CREDENTIALS</kbd>
+{ "type": "service_account", "project_id": "marcanuy-XXXXX", "private_key_id": "XXXXXX", "private_key": "-----BEGIN PRIVATE KEY-----\nXXXXXX\n-----END PRIVATE KEY-----\n", "client_email": "equilang-service-account@marcanuy-XXXX.iam.gserviceaccount.com", "client_id": "XXXXXX", "auth_uri": "https://accounts.google.com/o/oauth2/auth", "token_uri": "https://accounts.google.com/o/oauth2/token", "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs", "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/equilang-service-account%40marcanuy-XXXXXXX.iam.gserviceaccount.com" }
+</samp>
+</pre>
+
+<h2 id="using-the-client">Using the client</h2>
+
+<p>Now we use the client but instead of letting it automatically loading
+the above data, we pass it as an argument to the constructor.</p>
+
+<p>Google’s text to speech client <code class="highlighter-rouge">google.cloud.texttospeech_v1beta1.gapic.text_to_speech_client.TextToSpeechClient</code> is defined like:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TextToSpeechClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="s">"""Service that implements Google Cloud Text-to-Speech API."""</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">channel</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">credentials</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">client_config</span><span class="o">=</span><span class="n">text_to_speech_client_config</span><span class="o">.</span><span class="n">config</span><span class="p">,</span>
+                 <span class="n">client_info</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+</code></pre></div></div>
+
+<p>It accepts an instance of <code class="highlighter-rouge">google.auth.credentials.Credentials</code>, to
+generate an instance of this class we use <code class="highlighter-rouge">google.oauth2.service_account.Credentials.from_service_account_info</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Credentials</span><span class="p">(</span><span class="n">credentials</span><span class="o">.</span><span class="n">Signing</span><span class="p">,</span>
+                  <span class="n">credentials</span><span class="o">.</span><span class="n">Scoped</span><span class="p">,</span>
+                  <span class="n">credentials</span><span class="o">.</span><span class="n">Credentials</span><span class="p">):</span>
+    <span class="s">"""Service account credentials
+	
+	# ....
+	
+    @classmethod
+    def from_service_account_info(cls, info, **kwargs):
+        """</span><span class="n">Creates</span> <span class="n">a</span> <span class="n">Credentials</span> <span class="n">instance</span> <span class="k">from</span> <span class="n">parsed</span> <span class="n">service</span> <span class="n">account</span> <span class="n">info</span><span class="o">.</span>
+
+        <span class="n">Args</span><span class="p">:</span>
+            <span class="n">info</span> <span class="p">(</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]):</span> <span class="n">The</span> <span class="n">service</span> <span class="n">account</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">Google</span>
+                <span class="n">format</span><span class="o">.</span>
+            <span class="n">kwargs</span><span class="p">:</span> <span class="n">Additional</span> <span class="n">arguments</span> <span class="n">to</span> <span class="k">pass</span> <span class="n">to</span> <span class="n">the</span> <span class="n">constructor</span><span class="o">.</span>
+
+        <span class="n">Returns</span><span class="p">:</span>
+            <span class="n">google</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">service_account</span><span class="o">.</span><span class="n">Credentials</span><span class="p">:</span> <span class="n">The</span> <span class="n">constructed</span>
+                <span class="n">credentials</span><span class="o">.</span>
+
+        <span class="n">Raises</span><span class="p">:</span>
+            <span class="nb">ValueError</span><span class="p">:</span> <span class="n">If</span> <span class="n">the</span> <span class="n">info</span> <span class="ow">is</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">expected</span> <span class="n">format</span><span class="o">.</span>
+        <span class="s">"""
+        signer = _service_account_info.from_dict(
+            info, require=['client_email', 'token_uri'])
+        return cls._from_signer_and_info(signer, info, **kwargs)
+</span></code></pre></div></div>
+
+<p>Read credential data from environment variable:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">credentials_raw</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'GOOGLE_APPLICATION_CREDENTIALS'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Generate credentials:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">google.oauth2</span> <span class="kn">import</span> <span class="n">service_account</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">service_account_info</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">credentials_raw</span><span class="p">)</span>
+<span class="n">credentials</span> <span class="o">=</span> <span class="n">service_account</span><span class="o">.</span><span class="n">Credentials</span><span class="o">.</span><span class="n">from_service_account_info</span><span class="p">(</span>
+    <span class="n">service_account_info</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Define a client using the above credentials, in this case Google’s
+text to speech client:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">google.cloud</span> <span class="kn">import</span> <span class="n">texttospeech</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">texttospeech</span><span class="o">.</span><span class="n">TextToSpeechClient</span><span class="p">(</span><span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="testing-code">Testing code</h2>
+
+<p>Putting it all together:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">google.oauth2</span> <span class="kn">import</span> <span class="n">service_account</span>
+<span class="kn">from</span> <span class="nn">google.cloud</span> <span class="kn">import</span> <span class="n">texttospeech</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">def</span> <span class="nf">synthesize_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="s">"""Synthesizes speech from the input string of text."""</span>
+
+    <span class="n">input_text</span> <span class="o">=</span> <span class="n">texttospeech</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">SynthesisInput</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="c"># Note: the voice can also be specified by name.</span>
+    <span class="c"># Names of voices can be retrieved with client.list_voices().</span>
+    <span class="n">voice</span> <span class="o">=</span> <span class="n">texttospeech</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">VoiceSelectionParams</span><span class="p">(</span>
+        <span class="n">language_code</span><span class="o">=</span><span class="s">'en-US'</span><span class="p">,</span>
+        <span class="n">ssml_gender</span><span class="o">=</span><span class="n">texttospeech</span><span class="o">.</span><span class="n">enums</span><span class="o">.</span><span class="n">SsmlVoiceGender</span><span class="o">.</span><span class="n">FEMALE</span><span class="p">)</span>
+
+    <span class="n">audio_config</span> <span class="o">=</span> <span class="n">texttospeech</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">AudioConfig</span><span class="p">(</span>
+        <span class="n">audio_encoding</span><span class="o">=</span><span class="n">texttospeech</span><span class="o">.</span><span class="n">enums</span><span class="o">.</span><span class="n">AudioEncoding</span><span class="o">.</span><span class="n">MP3</span><span class="p">)</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">synthesize_speech</span><span class="p">(</span><span class="n">input_text</span><span class="p">,</span> <span class="n">voice</span><span class="p">,</span> <span class="n">audio_config</span><span class="p">)</span>
+
+    <span class="c"># The response's audio_content is binary.</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'output.mp3'</span><span class="p">,</span> <span class="s">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">audio_content</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Audio content written to file "output.mp3"'</span><span class="p">)</span>
+
+<span class="c"># Read env data</span>
+<span class="n">credentials_raw</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'GOOGLE_APPLICATION_CREDENTIALS'</span><span class="p">)</span>
+
+<span class="c"># Generate credentials</span>
+<span class="n">service_account_info</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">credentials_raw</span><span class="p">)</span>
+<span class="n">credentials</span> <span class="o">=</span> <span class="n">service_account</span><span class="o">.</span><span class="n">Credentials</span><span class="o">.</span><span class="n">from_service_account_info</span><span class="p">(</span>
+    <span class="n">service_account_info</span><span class="p">)</span>
+
+<span class="c"># Define a client, in this case Google's text to speech</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">texttospeech</span><span class="o">.</span><span class="n">TextToSpeechClient</span><span class="p">(</span><span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
+
+<span class="c"># Test client</span>
+<span class="n">synthesize_text</span><span class="p">(</span><span class="s">"hello world"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>And we have a nice request in out Google Cloud’s Platform chart:</p>
+
+<p><img src="/assets/img/googletexttospeech_api.jpg" alt="Google Cloud Dashboard" title="Google Cloud Dashboard" class="img-fluid" /></p>
+
+<h2 id="in-heroku">In Heroku</h2>
+
+<p>To set the environment variables in Heroku use <kbd>heroku
+config:set</kbd></p>
+
+<pre class="shell">
+<samp>
+<span class="shell-prompt">$</span> <kbd>heroku config:set GOOGLE_APPLICATION_CREDENTIALS=="$(&lt; credentials.json)"</kbd>
+
+</samp>
+</pre>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Google Cloud’s API is still on Beta, there is a lot of room for improvement here
+so it won’t surprise me if there is a <em>*cleaner</em> solution in a short
+time, but for now this is the best method I came up with to make
+Heroku and Google Cloud play nice together.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://cloud.google.com/text-to-speech/docs/reference/libraries#client-libraries-install-python">Text-to-Speech API Client Libraries</a></li>
+  <li><a href="https://github.com/google/google-auth-library-ruby/issues/78#issuecomment-237380364">Load JSON file’s content on Heroku?
+#78</a></li>
+  <li><a href="https://docs.python.org/3.6/library/json.html">https://docs.python.org/3.6/library/json.html</a></li>
+  <li><a href="https://coreyward.svbtle.com/how-to-send-a-multiline-file-to-heroku-config">How to send a multiline file to Heroku Config</a></li>
+  <li><a href="https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/texttospeech/cloud-client/synthesize_text.py">GoogleCloudPlatform/python-docs-samples</a></li>
+</ul>
+
+
+    
+
+
+
+<footer class="author-footer">
+    <div class="media" itemtype="https://schema.org/Person">
+	<span itemprop="locationCreated contentLocation spatialCoverage" itemscope="itemscope" itemtype="https://schema.org/City" style="display:none"><span itemprop="name">Uruguay</span>
+	</span>
+	<link href="https://plus.google.com/118415138433063920612/posts" rel="author"/>
+	<meta content="https://marcanuy.com" property="article:author"/>
+	<meta content="@marcanuy" name="twitter:creator"/>
+	<meta content="https://plus.google.com/118415138433063920612/posts" name="DC.creator"/>
+	<meta content="Marcelo Canina" name="author"/>
+	
+	<a class="media-left mx-2" href="https://marcanuy.com" itemprop="url" rel="author">
+	    <img class="media-object rounded" alt="Marcelo Canina - Simple IT 🤘 Rocks" itemprop="image" src="https://www.gravatar.com/avatar/2ebdffd5ddb4a98b0cc77117503d2711?s=80"/>
+	</a>
+	<div class="media-body">
+	    <h5 class="media-heading">
+		<address class="author-info clear" id="author-info" itemprop="author creator" itemscope="" itemtype="https://schema.org/Person">
+		    <span class="author-name" itemprop="name">Marcelo Canina</span>
+		    <a class="a-social a-tw" href="https://twitter.com/marcanuy" itemprop="sameAs" target="_blank"><i class="fa fa-twitter-square"></i></a>
+		    <a class="a-social a-gp" href="https://plus.google.com/118415138433063920612?rel=author" itemprop="url sameAs" rel="author" target="_blank"><i class="fa fa-google-plus-square"></i></a>
+		    <a class="a-social a-ln" href="https://www.linkedin.com/in/marcelocanina" itemprop="sameAs" target="_blank"><i class="fa fa-linkedin-square"></i></a>
+		    <a class="a-social a-email" href="mailto:me@marcanuy.com" itemprop="email sameAs" target="_blank"><i class="fa fa-envelope-o"></i></a>
+		    <a class="a-social a-github" href="https://github.com/marcanuy" itemprop="github sameAs" target="_blank"><i class="fa fa-github"></i></a>
+		    <a class="a-social a-stackexchange" href="https://stackexchange.com/users/1193189?tab=accounts" itemprop="stackexchange sameAs" target="_blank"><i class="fa fa-stack-exchange"></i></a>
+		</address>
+	    </h5>
+	    <div class="text-muted">
+		I'm Marcelo Canina, a developer from Uruguay. I build websites and web-based applications from the ground up and share what I learn here.
+	    </div>
+	</div>
+    </div>
+</footer>
+
+
+
+
+    <div class="post-comments">
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '/2018-04-24-using-google-cloud-with-heroku/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    
+    s.src = '//simpleitrocks.disqus.com/embed.js';
+    
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  
+  
+  
+</div>
+
+
+    <div class="row">
+      <div class="col-md-6">
+	
+
+
+
+
+
+
+
+	
+
+
+
+
+      </div>
+      <div class="col-md-5">
+	
+	
+	<div class="si-ad m-1 mx-auto">
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- simpleit_after_content -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1912030305535489"
+       data-ad-slot="5104001581"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
+</div>
+
+	
+      </div>
+    </div>
+  </div> <!-- end col -->
+</div>
+
+
+</div>
+
+    </div>
+
+    <footer class="container-fluid site-footer py-3">
+    <div class="container">
+	<div class="row justify-content-between align-items-center">
+	    <div class="col-4">
+		<h2 class="footer-heading text-muted">Simple IT 🤘 Rocks</h2>
+		<ul class="footer-nav px-0">
+		    <li>
+			<i class="fa fa-keyboard-o" aria-hidden="true"></i>Coded by <a href="https://marcanuy.com" rel="author">Marcelo Canina</a>
+		    </li>
+		    
+		    <li>
+			<i class="fa fa-twitter" aria-hidden="true"></i><a href="https://twitter.com/simpleitrocks"><span class="username">simpleitrocks</span></a>
+
+		    </li>
+		    
+		    <li>
+			<i class="fa fa-user" aria-hidden="true"></i><a href="/about">About</a>
+		    </li>
+		    <li>
+			<i class="fa fa-search" aria-hidden="true"></i><a href="/search">Search</a>
+		    </li>
+		</ul>
+	    </div>
+	    <div class="col-4">
+		<div class="text-muted">
+		    <p>Clutter-free software concepts. Written on the go.
+</p>
+		</div>
+	    </div>
+	</div>
+    </div>
+</footer>
+<div class="si-license bg-inverse">
+  <div class="text-muted text-sm-center">
+    <small>
+      Except as otherwise noted, the content of this page is licensed under
+      <a rel="license" class="text-info" href="https://creativecommons.org/licenses/by-nc/4.0/">
+	<i class="fa fa-creative-commons" aria-hidden="true"></i> BY-NC 4.0
+      </a>
+    </small>
+  </div>
+</div>
+
+<script src="/assets/vendor/jquery.min.js"></script>
+<script src="/assets/vendor/tether.min.js"></script>
+<script src="/assets/vendor/bootstrap.min.js"></script>
+
+
+<!-- clipboard.js -->
+
+
+
+
+
+
+
+  </body>
+
+</html>
