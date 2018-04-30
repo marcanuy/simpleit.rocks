@@ -17,6 +17,9 @@
 
     
     
+    <!-- Mermaid -->
+    <link rel="stylesheet" href="https://simpleit.rocks/assets/vendor/mermaid.css" type="text/css" media="screen" />
+    
     
     <!-- Custom css -->
     <link rel="stylesheet" href="/css/main.css">
@@ -46,24 +49,24 @@
 
     
   <!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Accessing Specific Items From Data Files In Jekyll | Simple IT 🤘 Rocks</title>
+<title>Understanding Django Forms | Simple IT 🤘 Rocks</title>
 <meta name="generator" content="Jekyll v3.7.3" />
-<meta property="og:title" content="Accessing Specific Items From Data Files In Jekyll" />
+<meta property="og:title" content="Understanding Django Forms" />
 <meta name="author" content="marcanuy" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Accessing Specific Data Items from files in Jekyll’s _data directory" />
-<meta property="og:description" content="Accessing Specific Data Items from files in Jekyll’s _data directory" />
-<link rel="canonical" href="https://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/" />
-<meta property="og:url" content="https://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/" />
+<meta name="description" content="Notes on Django forms. A quick overview to show Django forms basic concepts." />
+<meta property="og:description" content="Notes on Django forms. A quick overview to show Django forms basic concepts." />
+<link rel="canonical" href="https://simpleit.rocks/understanding-django-forms/" />
+<meta property="og:url" content="https://simpleit.rocks/understanding-django-forms/" />
 <meta property="og:site_name" content="Simple IT 🤘 Rocks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-01-24T00:00:00+00:00" />
+<meta property="article:published_time" content="2018-04-30T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@simpleitrocks" />
 <meta name="twitter:creator" content="@marcanuy" />
 <meta property="fb:app_id" content="1822851531277021" />
 <script type="application/ld+json">
-{"description":"Accessing Specific Data Items from files in Jekyll’s _data directory","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/","headline":"Accessing Specific Items From Data Files In Jekyll","dateModified":"2017-01-24T00:00:00+00:00","datePublished":"2017-01-24T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/"},"@context":"http://schema.org"}</script>
+{"description":"Notes on Django forms. A quick overview to show Django forms basic concepts.","author":{"@type":"Person","name":"marcanuy"},"@type":"BlogPosting","url":"https://simpleit.rocks/understanding-django-forms/","headline":"Understanding Django Forms","dateModified":"2018-04-30T00:00:00+00:00","datePublished":"2018-04-30T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://simpleit.rocks/understanding-django-forms/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -102,6 +105,11 @@
     <header class="site-header">
 
     
+    <!-- mermaid -->
+    <script src="https://simpleit.rocks/assets/vendor/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <!-- endmermaid -->
+    
 
     <div class="mb-2 text-center">
 
@@ -117,7 +125,7 @@
     
     
     
-    <h1 class="title">Accessing Specific Items From Data Files In Jekyll </h1>
+    <h1 class="title">Understanding Django Forms </h1>
     
     
   </div>
@@ -198,10 +206,10 @@
     class="breadcrumb-item">
   
   <a itemscope itemtype="https://schema.org/Thing"
-     itemprop="item" href="/docs/ruby">
+     itemprop="item" href="/docs/python">
     
 
-    ruby
+    python
   </a>
   
   <meta itemprop="position" content="3" />
@@ -222,13 +230,37 @@
     class="breadcrumb-item">
   
   <a itemscope itemtype="https://schema.org/Thing"
-     itemprop="item" href="/docs/ruby/jekyll">
+     itemprop="item" href="/docs/python/django">
     
 
-    jekyll
+    django
   </a>
   
   <meta itemprop="position" content="4" />
+</li>
+
+    
+
+    
+    
+    
+    
+    
+    
+
+
+<li itemprop="itemListElement" itemscope
+    itemtype="https://schema.org/ListItem"
+    class="breadcrumb-item">
+  
+  <a itemscope itemtype="https://schema.org/Thing"
+     itemprop="item" href="/docs/python/django/forms">
+    
+
+    forms
+  </a>
+  
+  <meta itemprop="position" content="5" />
 </li>
 
     
@@ -249,10 +281,10 @@
        itemprop="item">
     
 
-    <span itemprop="name">Accessing Specific Items From Data Files In Jekyll</span>
+    <span itemprop="name">Understanding Django Forms</span>
   </span>
   
-  <meta itemprop="position" content="5" />
+  <meta itemprop="position" content="6" />
 </li>
 
     
@@ -292,12 +324,14 @@
 	<h4>Table of Contents</h4>
 	<ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h1"><a href="#using-an-index">Using an index</a>
+<li class="toc-entry toc-h2"><a href="#introduction">Introduction</a></li>
+<li class="toc-entry toc-h2"><a href="#methods">Methods</a>
 <ul>
-<li class="toc-entry toc-h2"><a href="#iterating">Iterating</a></li>
-<li class="toc-entry toc-h2"><a href="#changing-the-data-file">Changing the data file</a></li>
+<li class="toc-entry toc-h3"><a href="#post-method">POST method</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h2"><a href="#building-a-form">Building a form</a></li>
+<li class="toc-entry toc-h2"><a href="#references">References</a></li>
 </ul>
       </div>
       <div>
@@ -308,9 +342,9 @@
       <div>
     <a class="twitter-share-button"
        href="https://twitter.com/share"
-       data-url="https://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/"
+       data-url="https://simpleit.rocks/understanding-django-forms/"
        data-via=""
-       data-text="Accessing Specific Items From Data Files In Jekyll"
+       data-text="Understanding Django Forms"
        data-related="marcanuy,simpleitrocks"
        data-count="vertical">
 	Tweet
@@ -342,7 +376,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="fb-like" data-href="https://simpleit.rocks/accessing-specific-items-from-data-files-in-jekyll/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+  <div class="fb-like" data-href="https://simpleit.rocks/understanding-django-forms/" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
 </div>
 
     </li>
@@ -359,7 +393,7 @@
 
     
 	<p class="lead">
-	  Accessing Specific Data Items from files in Jekyll's _data directory
+	  Notes on Django forms. A quick overview to show Django forms basic concepts.
 	</p>
     
 
@@ -383,70 +417,141 @@
 
     <h2 id="overview">Overview</h2>
 
-<p>Having a sample data file, we explore some of the options we have to
-access a specific item.</p>
+<p>Django provides several classes to facilitate the work of creating
+forms. This article’s goal is to ease the understanding of how Django
+forms work and show an example of its basic usage, prior to reading
+the official documentation.</p>
 
-<p>For the data file <code class="highlighter-rouge">projects.yml</code> located in <code class="highlighter-rouge">/_data/projects.yml</code>:</p>
+<h2 id="introduction">Introduction</h2>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">project</span><span class="pi">:</span> <span class="s">funtime</span>
-  <span class="na">url</span><span class="pi">:</span> <span class="s">www.funtime.url</span>
-  <span class="na">description</span><span class="pi">:</span> <span class="s">This is really fun</span>
+<p>An HTML form is defined by <code class="highlighter-rouge">&lt;form&gt;...&lt;/form&gt;</code> tags. The elements between
+them allow visitors to perform several tasks like enter text, select
+options and manipulate objects, and finally then send that information
+back to the server.</p>
 
-<span class="pi">-</span> <span class="na">project</span><span class="pi">:</span> <span class="s">supertime</span>
-  <span class="na">url</span><span class="pi">:</span> <span class="s">www.supertime.url</span>
-  <span class="na">description</span><span class="pi">:</span> <span class="s">This is really super</span>
-</code></pre></div></div>
+<p>In Django, form interface elements can be plain HTML basic elements
+like checkboxes or text input, or complex elements like pop ups, date
+pickers, etc.</p>
 
-<p>How can we access the data item whose project name is <code class="highlighter-rouge">funtime</code>?</p>
+<p>Django forms helps with three main task:</p>
 
-<h1 id="using-an-index">Using an index</h1>
+<ol>
+  <li>Preparing and restructuring data to make it ready for rendering
+    <ul>
+      <li>data of several different types may need to be prepared for display in a form</li>
+    </ul>
+  </li>
+  <li>Creating the actual HTML forms for the data
+    <ul>
+      <li>Rendering data as HTML elements</li>
+      <li>Creating interfaces to edit data</li>
+    </ul>
+  </li>
+  <li>Receiving and processing submitted forms and data from the client
+    <ul>
+      <li>Return data to the server</li>
+      <li>Validate, clean and save data</li>
+      <li>Pass it for further processing</li>
+    </ul>
+  </li>
+</ol>
 
-<p>If we know the data item index, we can access them directly, in this
-case it is located in the position “0”:</p>
+<p>So a form in this context could refer to:</p>
 
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-</code></pre></div></div>
+<ul>
+  <li>HTML <code class="highlighter-rouge">&lt;form&gt;</code>: <a href="https://www.w3.org/TR/html51/sec-forms.html#sec-forms">https://www.w3.org/TR/html51/sec-forms.html#sec-forms</a></li>
+  <li>A Django form, a declaration that extends from <code class="highlighter-rouge">django.forms.Form</code>
+class that produces the HTML form:
+<a href="https://docs.djangoproject.com/en/2.0/ref/forms/api/#django.forms.Form">https://docs.djangoproject.com/en/2.0/ref/forms/api/#django.forms.Form</a>
+    <ul>
+      <li>it is used to describe a form</li>
+      <li>specify how it works</li>
+      <li>specify how it appears</li>
+    </ul>
+  </li>
+</ul>
 
-<p>Output:</p>
+<p>One of the most used features of Django forms, is the ability to
+generate an HTML form from Django Models, it process model fields, and
+generate an HTML <code class="highlighter-rouge">&lt;input&gt;</code> element for each field in a Form.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    {“project”=&gt;”funtime”, “url”=&gt;”www.funtime.url”,“description”=&gt;”This is really fun”}
-</code></pre></div></div>
+<p>Each form field is generated in the browser by an user interface
+element called <em>widget</em>,</p>
 
-<h2 id="iterating">Iterating</h2>
+<h2 id="methods">Methods</h2>
 
-<p>Iterating through all the data looking for an attribute</p>
+<p>GET and POST are the only HTTP methods to use when dealing with forms.</p>
 
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-</code></pre></div></div>
+<h3 id="post-method">POST method</h3>
 
-<p>Outputs:</p>
+<p>This is what happens in form using a POST method:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{“project”=&gt;”funtime”, “url”=&gt;”www.funtime.url”, “description”=&gt;”This is really fun”}
-</code></pre></div></div>
+<div class="mermaid">
+graph TD
+   bundle(browser bundles up the submitted form data)
+   encode(encodes data for transmission)
+   bundle  --&gt; encode
+   server(sends it to the server)
+   encode --&gt; server
+   response(receives back its response)
+   server --&gt; response
+</div>
 
-<h2 id="changing-the-data-file">Changing the data file</h2>
+<p>While in GET method information is transmitted without encoding it:</p>
 
-<p>The above data file can be optimized to make it more elegant and use
-the project name as their key:</p>
+<div class="mermaid">
+graph TD
+   bundle(browser bundles up the submitted form data into a string)
+   url(use data to compose a URL)
+   bundle  --&gt; url
+   server(sends it to the server)
+   url --&gt; server
+   response(receives back its response)
+   server --&gt; response
+</div>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">funtime</span><span class="pi">:</span>
-  <span class="na">url</span><span class="pi">:</span> <span class="s">www.funtime.url</span>
-  <span class="na">description</span><span class="pi">:</span> <span class="s">This is really fun</span>
+<h2 id="building-a-form">Building a form</h2>
 
-<span class="na">supertime</span><span class="pi">:</span>
-  <span class="na">url</span><span class="pi">:</span> <span class="s">www.supertime.url</span>
-  <span class="na">description</span><span class="pi">:</span> <span class="s">This is really super</span>
-</code></pre></div></div>
+<p>To use Form instances, we should use the web form, described by a
+Django Form, processed by a view, and rendered as an HTML &lt;form&gt;.:</p>
 
-<p>This way we can access each of the items directly:</p>
+<ul>
+  <li>
+    <p><strong>validate data</strong>: if <code class="highlighter-rouge">form.is_valid()</code> then form’s data will
+populate the <code class="highlighter-rouge">cleaned_data</code> attribute.</p>
+  </li>
+  <li>
+    <p><strong>process the view</strong>: it can be the same view which published the
+form or another one. For example in a view that generates and
+process a form the process would be:</p>
+  </li>
+</ul>
 
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-</code></pre></div></div>
+<div class="mermaid">
+graph TD
+   view(A view receives a request)
+   request{if request.method}
+   view --&gt; request
+   request --&gt;|POST| create("create form binding data to it: form = MyForm(request.POST)")
+   create --&gt;  D{"form is_valid()"}
+   D --&gt; populate("process the data in form.cleaned_data")
+   request --&gt;|GET| E["Create a new form instance"]
+   E --&gt; F("Render view")
+</div>
 
-<p>So it would output:</p>
+<p>The form could have data or not, depending if it has been prepopulated
+or if there was any error when processing it. Associating data to form
+fields is called <strong>binding data to the form</strong>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{“url”=&gt;”www.funtime.url”, “description”=&gt;”This is really fun”}
-</code></pre></div></div>
+<p>To check if a form has data bound to it there is the method
+<a href="https://docs.djangoproject.com/en/2.0/ref/forms/api/#django.forms.Form.is_bound">django.forms.Form.is_bound()</a>.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://docs.djangoproject.com/en/2.0/topics/forms/">https://docs.djangoproject.com/en/2.0/topics/forms/</a></li>
+</ul>
+
 
 
     
@@ -499,7 +604,7 @@ the project name as their key:</p>
     */
     /*
     var disqus_config = function () {
-    this.page.url = '/accessing-specific-items-from-data-files-in-jekyll/';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '/understanding-django-forms/';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = 'simpleitrocks'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
@@ -544,9 +649,6 @@ the project name as their key:</p>
     
     
     
-      <a class="list-group-item list-group-item-action " href="/jekyll-basic-concepts/">
-      Jekyll basic concepts
-    </a>
     
     
     
@@ -608,18 +710,12 @@ the project name as their key:</p>
     
     
     
-      <a class="list-group-item list-group-item-action " href="/jekyll-configuration-file-options/">
-      Jekyll Configuration File Options
-    </a>
     
     
     
     
     
     
-      <a class="list-group-item list-group-item-action " href="/understanding-jekyll-posts/">
-      Understanding Jekyll Posts
-    </a>
     
     
     
@@ -688,205 +784,8 @@ the project name as their key:</p>
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action active" href="/accessing-specific-items-from-data-files-in-jekyll/">
-      Accessing Specific Items From Data Files In Jekyll
-    </a>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <a class="list-group-item list-group-item-action " href="/what-are-the-supported-language-highlighters-in-jekyll/">
-      What Are The Supported Language Highlighters In Jekyll
+      <a class="list-group-item list-group-item-action " href="/how-to-create-a-form-in-django/">
+      How To Create A Form In Django
     </a>
     
     
@@ -1018,6 +917,200 @@ the project name as their key:</p>
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="list-group-item list-group-item-action active" href="/understanding-django-forms/">
+      Understanding Django Forms
+    </a>
     
     
   </div>
