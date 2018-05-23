@@ -6,9 +6,9 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 30 Apr 2018 22:04:29 +0000</pubDate>
-    <lastBuildDate>Mon, 30 Apr 2018 22:04:29 +0000</lastBuildDate>
-    <generator>Jekyll v3.7.3</generator>
+    <pubDate>Wed, 23 May 2018 20:16:49 +0000</pubDate>
+    <lastBuildDate>Wed, 23 May 2018 20:16:49 +0000</lastBuildDate>
+    <generator>Jekyll v3.8.0</generator>
     
       <item>
         <title>Understanding Django Forms</title>
