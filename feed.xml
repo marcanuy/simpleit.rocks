@@ -6,9 +6,163 @@
 </description>
     <link>https://simpleit.rocks/</link>
     <atom:link href="https://simpleit.rocks/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 23 May 2018 20:16:49 +0000</pubDate>
-    <lastBuildDate>Wed, 23 May 2018 20:16:49 +0000</lastBuildDate>
+    <pubDate>Fri, 25 May 2018 16:28:20 +0000</pubDate>
+    <lastBuildDate>Fri, 25 May 2018 16:28:20 +0000</lastBuildDate>
     <generator>Jekyll v3.8.0</generator>
+    
+      <item>
+        <title>How To Use Bootstrap 4 In Django Forms</title>
+        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Django provides several helpers to work with HTML forms. If you use
+Bootstrap you will want to generate them using its styling classes.&lt;/p&gt;
+
+&lt;h2 id=&quot;strategy&quot;&gt;Strategy&lt;/h2&gt;
+
+&lt;p&gt;Bootstrap forms typically use special CSS classes: &lt;code class=&quot;highlighter-rouge&quot;&gt;form-group&lt;/code&gt;,
+&lt;code class=&quot;highlighter-rouge&quot;&gt;form-control&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;form-check&lt;/code&gt; to style each form element depending on
+input type (ex: &lt;code class=&quot;highlighter-rouge&quot;&gt;email&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;password&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;text&lt;/code&gt;, etc).&lt;/p&gt;
+
+&lt;p&gt;The idea is to include the above classes as attributes of the widget
+used by Django.&lt;/p&gt;
+
+&lt;blockquote class=&quot;blockquote&quot; cite=&quot;https://docs.djangoproject.com/en/2.0/ref/forms/widgets&quot;&gt;
+  &lt;p&gt;A widget is Django’s representation of an HTML input element. The
+widget handles the rendering of the HTML, and the extraction of data
+from a GET/POST dictionary that corresponds to the widget.&lt;/p&gt;
+
+  &lt;footer class=&quot;blockquote-footer&quot;&gt; &lt;cite&gt;Widget&lt;a href=&quot;https://docs.djangoproject.com/en/2.0/ref/forms/widgets&quot;&gt;definition&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;We can customize a Django form field by explicitly defining the widget
+to use and passing an &lt;code class=&quot;highlighter-rouge&quot;&gt;attribute&lt;/code&gt; parameter defining the desired class
+to render in it:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;django&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forms&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CommentForm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;comment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;widget&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Textarea&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attribute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;...&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+
+&lt;p&gt;Having the following Django form consisting of &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;email&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;django&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forms&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ContactForm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Your name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                           &lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EmailField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Your email'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                            &lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;we can customize each field CSS class to have the Bootstrap class
+&lt;code class=&quot;highlighter-rouge&quot;&gt;form-control&lt;/code&gt; by specifying it in each widget.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;First, look what is the widget the field uses at
+&lt;a href=&quot;https://docs.djangoproject.com/en/2.0/ref/forms/fields/&quot;&gt;https://docs.djangoproject.com/en/2.0/ref/forms/fields/&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;In our example, we have to look for&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://docs.djangoproject.com/en/2.0/ref/forms/fields/#charfield&quot;&gt;Charfield&lt;/a&gt;,
+it says “&lt;em&gt;Default widget: TextInput&lt;/em&gt;”&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;-
+  &lt;a href=&quot;https://docs.djangoproject.com/en/2.0/ref/forms/fields/#emailfield&quot;&gt;EmailField&lt;/a&gt;,
+  which says: “&lt;em&gt;Default widget: EmailInput&lt;/em&gt;”&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Customize widgets. For each field specify the desired widget with
+the &lt;code class=&quot;highlighter-rouge&quot;&gt;form-control&lt;/code&gt; class.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;django&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forms&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ContactForm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Your name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                           &lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                           &lt;span class=&quot;n&quot;&gt;widget&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextInput&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attrs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'class'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'form-control'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EmailField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Your email'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                            &lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                            &lt;span class=&quot;n&quot;&gt;widget&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EmailInput&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attrs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'class'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'form-control'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}))&lt;/span&gt;
+	
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;output&quot;&gt;Output&lt;/h2&gt;
+
+&lt;p&gt;Now the following template:&lt;/p&gt;
+
+&lt;div class=&quot;language-jinja highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;row&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;col-md-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;form&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;action=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://formspree.io/&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;method=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;POST&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;form&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                
+		
+                
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;submit&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-primary mb-2&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Submit&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;col-md-4&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Other column --&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Produces the right output:&lt;/p&gt;
+
+&lt;div class=&quot;language-jinja highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;row&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;col-md-8 form-page mb-3&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;form&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;action=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://formspree.io/XXXXXXX.com&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;method=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;POST&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;form&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;fieldWrapper form-group&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-required=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;for=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;id_name&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Your name:&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;required&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;*&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;form-control&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;maxlength=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;100&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;id_name&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+                    
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+                
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;fieldWrapper form-group&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-required=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;for=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;id_email&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Your email:&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;required&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;*&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;email&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;email&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;form-control&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;maxlength=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;100&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;id_email&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+                    
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+                
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;submit&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-primary mb-2&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Submit&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;col-md-4&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- other column --&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;This is the simplest way to customize a form using Bootstrap I’ve found. Simple
+and elegant.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 25 May 2018 00:00:00 +0000</pubDate>
+        <link>https://simpleit.rocks/how-to-use-bootstrap-4-in-django-forms/</link>
+        <guid isPermaLink="true">https://simpleit.rocks/how-to-use-bootstrap-4-in-django-forms/</guid>
+        
+        
+        <category>docs</category>
+        
+        <category>python</category>
+        
+        <category>django</category>
+        
+        <category>forms</category>
+        
+      </item>
     
       <item>
         <title>Understanding Django Forms</title>
@@ -2161,258 +2315,6 @@ build:w&lt;/kbd&gt;&lt;/li&gt;
         <category>docs</category>
         
         <category>javascript</category>
-        
-      </item>
-    
-      <item>
-        <title>Set Up Ubuntu To Serve A Django Website Step By Step</title>
-        <description>&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;This is a guide to have a website in an Ubuntu server using &lt;strong&gt;nginx&lt;/strong&gt;
-and &lt;strong&gt;systemd&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Ubuntu uses &lt;em&gt;systemd&lt;/em&gt; to manage system and service daemons and
-processes, we will create configuration files to:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;create temporary files&lt;/li&gt;
-  &lt;li&gt;manage gunicorn system service&lt;/li&gt;
-  &lt;li&gt;manage gunicorn system socket&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;And lastly configuring &lt;em&gt;nginx&lt;/em&gt; to handle requests.&lt;/p&gt;
-
-&lt;p&gt;We assume the following configuration to set up the server, this is a
-basic configuration example to follow the tutorial and be easier to
-customize with your own data:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;website domain: &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Django source code located in &lt;code class=&quot;highlighter-rouge&quot;&gt;/home/chengue/sites/example&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;environment variable pointing to production settings:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;DJANGO_SETTINGS_MODULE=example.settings.production&lt;/code&gt;`&lt;/li&gt;
-  &lt;li&gt;Python virtual environment for the &lt;code class=&quot;highlighter-rouge&quot;&gt;example&lt;/code&gt; project at:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;/home/chengue/.virtualenvs/example&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Ubuntu User: chengue&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;At the end of the tutorial we will have:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;nginx handling requests to &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;traffic gets redirected from &lt;em&gt;non-www&lt;/em&gt; to &lt;em&gt;www&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;configuring-systemd-services&quot;&gt;Configuring Systemd services&lt;/h2&gt;
-
-&lt;h3 id=&quot;socket&quot;&gt;Socket&lt;/h3&gt;
-
-&lt;p&gt;To handle incoming Gunicorn requests we create a unix socket
-controlled by &lt;em&gt;systemd&lt;/em&gt;. As the configuration filename should end in
-&lt;code class=&quot;highlighter-rouge&quot;&gt;.socket&lt;/code&gt; we create the following file:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/systemd/system/gunicorn.socket&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[Unit]
-Description=gunicorn socket
-
-[Socket]
-ListenStream=/run/gunicorn/socket
-
-[Install]
-WantedBy=sockets.target
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p cite=&quot;http://docs.gunicorn.org/en/stable/deploy.html#systemd&quot;&gt;&lt;em&gt;systemd&lt;/em&gt; will listen on this socket and start &lt;strong&gt;Gunicorn&lt;/strong&gt;
-automatically in response to traffic.&lt;/p&gt;
-
-&lt;p&gt;This sockets will be used by Gunicorn service using the parameter
-&lt;code class=&quot;highlighter-rouge&quot;&gt;--bind unix:/run/gunicorn/socket&lt;/code&gt; in the service file.&lt;/p&gt;
-
-&lt;h3 id=&quot;service&quot;&gt;Service&lt;/h3&gt;
-
-&lt;p&gt;Then the service that use the above socket, In
-&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/systemd/system/gunicorn.service&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[Unit]
-Description=gunicorn daemon
-Requires=gunicorn.socket
-After=network.target
-
-[Service]
-PIDFile=/run/gunicorn/pid
-User=chengue
-Group=www-data
-RuntimeDirectory=gunicorn
-WorkingDirectory=/home/chengue/sites/example/example
-ExecStart=/home/chengue/.virtualenvs/example/bin/gunicorn \
-          --access-logfile /home/chengue/sites/logs/example.access.log \
-          --error-logfile /home/chengue/sites/logs/example.error.log \
-          --pid /run/gunicorn/pid   \
-          --env DJANGO_SETTINGS_MODULE=example.settings.production \
-          --bind unix:/run/gunicorn/socket example.wsgi
-ExecReload=/bin/kill -s HUP $MAINPID
-ExecStop=/bin/kill -s TERM $MAINPID
-PrivateTmp=true
-
-[Install]
-WantedBy=multi-user.target
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p class=&quot;alert alert-info&quot;&gt;Be sure to adjust &lt;code class=&quot;highlighter-rouge&quot;&gt;WorkingDirectory&lt;/code&gt; to your application root.&lt;/p&gt;
-
-&lt;h3 id=&quot;temporal-file&quot;&gt;Temporal file&lt;/h3&gt;
-
-&lt;p&gt;Temporal files handled by &lt;em&gt;systemd&lt;/em&gt; are located in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/tmpfiles.d/&lt;/code&gt;,
-we create &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/tmpfiles.d/gunicorn.conf&lt;/code&gt; with the following content:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;d /run/gunicorn 0755 chengue www-data -
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p class=&quot;alert alert-info&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;www-data&lt;/code&gt; is the Linux group of &lt;code class=&quot;highlighter-rouge&quot;&gt;nginx&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;web-proxy&quot;&gt;Web proxy&lt;/h2&gt;
-
-&lt;p&gt;Lastly, configure the web proxy to send traffic to the &lt;em&gt;Gunicorn&lt;/em&gt;
-socket. Create a virtual site in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/nginx/sites-available/example.com&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;server {
-	# redirect www to non-www
-    server_name www.example.com;
-    return 301 $scheme://example.com$request_uri;
-}
-
-server {
-	server_name example.com;
-
-	#location /static {
-	#    alias /home/chengue/sites/example/static;
-	#}
-
-	#location /media {
-	#    alias /home/chengue/sites/example/media;
-	#}
-
-	location / {
-		proxy_set_header Host $host;
-		proxy_pass http://unix:/run/gunicorn/socket;
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now that we have our &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com&lt;/code&gt; configuration as an available
-website in nginx, we should enable it creating a symbolic link in
-&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/nginx/sites-enabled/example.com&lt;/code&gt; pointing to the above file:&lt;/p&gt;
-
-&lt;p&gt;&lt;kbd&gt;sudo ln -s /etc/nginx/sites-available/example.com \
-    /etc/nginx/sites-enabled/example.com&lt;/kbd&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;commands&quot;&gt;Commands&lt;/h2&gt;
-
-&lt;h3 id=&quot;enabling-services&quot;&gt;Enabling services&lt;/h3&gt;
-
-&lt;p&gt;Enable services to autostart at boot:&lt;/p&gt;
-
-&lt;p&gt;&lt;kbd&gt;systemctl enable gunicorn.socket&lt;/kbd&gt;
-&lt;kbd&gt;systemctl enable nginx.service&lt;/kbd&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;activate-services&quot;&gt;Activate services&lt;/h3&gt;
-
-&lt;p&gt;Manually activating services:&lt;/p&gt;
-
-&lt;p&gt;&lt;kbd&gt;systemctl start gunicorn.socket&lt;/kbd&gt;
-&lt;kbd&gt;systemctl start nginx&lt;/kbd&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;testing&quot;&gt;Testing&lt;/h3&gt;
-
-&lt;p&gt;To test if Gunicorn works &lt;kbd&gt;curl --unix-socket /run/gunicorn/socket
-http&lt;/kbd&gt; should retrieve an HTML from the server.&lt;/p&gt;
-
-&lt;h3 id=&quot;status&quot;&gt;Status&lt;/h3&gt;
-
-&lt;pre class=&quot;shell&quot;&gt;
-&lt;samp&gt;
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl status gunicorn.socket&lt;/kbd&gt;
-● gunicorn.socket - gunicorn socket
-   Loaded: loaded (/etc/systemd/system/gunicorn.socket; enabled; vendor preset: enabled)
-   Active: active (running) since Mon 2017-07-03 18:52:15 EDT; 2h 58min ago
-   Listen: /run/gunicorn/socket (Stream)
-
-Jul 03 18:52:15  systemd[1]: Closed gunicorn socket.
-Jul 03 18:52:15  systemd[1]: Stopping gunicorn socket.
-Jul 03 18:52:15  systemd[1]: Listening on gunicorn socket.
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl status gunicorn.service&lt;/kbd&gt;
-   Loaded: loaded (/etc/systemd/system/gunicorn.service; disabled; vendor preset: enabled)
-   Active: active (running) since Mon 2017-07-03 18:52:15 EDT; 2h 59min ago
- Main PID: 14216 (gunicorn)
-    Tasks: 2 (limit: 4915)
-   Memory: 41.8M
-      CPU: 5.544s
-   CGroup: /system.slice/gunicorn.service
-           ├─14216 /home/chengue/.virtualenvs/example/bin/python3.6 /home/chengue/.virtualenvs/example/bin/gunicorn --access
-           └─14252 /home/chengue/.virtualenvs/pullgravity/bin/python3.6 /home/chengue/.virtualenvs/example/bin/gunicorn --access
-
-Jul 03 18:52:15  systemd[1]: Started gunicorn daemon.
-&lt;span class=&quot;shell-prompt&quot;&gt;$&lt;/span&gt; &lt;kbd&gt;systemctl status nginx.service&lt;/kbd&gt;
-   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
-  Drop-In: /etc/systemd/system/nginx.service.d
-           └─override.conf
-   Active: active (running) since Mon 2017-07-03 18:52:21 EDT; 3h 1min ago
-     Docs: man:nginx(8)
- Main PID: 14353 (nginx)
-    Tasks: 2 (limit: 4915)
-   Memory: 2.8M
-      CPU: 205ms
-   CGroup: /system.slice/nginx.service
-           ├─14353 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
-           └─14357 nginx: worker process
-
-Jul 03 18:52:21  systemd[1]: Starting A high performance web server and a reverse proxy server...
-Jul 03 18:52:21  systemd[1]: Started A high performance web server and a reverse proxy server.
-&lt;/samp&gt;
-&lt;/pre&gt;
-
-&lt;h3 id=&quot;debugging&quot;&gt;Debugging&lt;/h3&gt;
-
-&lt;p&gt;An useful command to see &lt;em&gt;systemd&lt;/em&gt; logs filtered by service is
-&lt;kbd&gt;journalctl&lt;/kbd&gt;, it query the &lt;em&gt;systemd&lt;/em&gt; journal and with the
-&lt;code class=&quot;highlighter-rouge&quot;&gt;-u&lt;/code&gt; parameter show messages for the specified systemd unit.&lt;/p&gt;
-
-&lt;p&gt;Using our services:&lt;/p&gt;
-
-&lt;p&gt;&lt;kbd&gt;journalctl -u nginx.service&lt;/kbd&gt;
-&lt;kbd&gt;journalctl -u gunicorn.service&lt;/kbd&gt;
-&lt;kbd&gt;journalctl -u gunicorn.socket&lt;/kbd&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;repo&quot;&gt;Repo&lt;/h2&gt;
-
-&lt;p&gt;The files created in this tutorial are available in this Github repository: &lt;a href=&quot;https://github.com/marcanuy/django-deploy-guide&quot;&gt;https://github.com/marcanuy/django-deploy-guide&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Official page &lt;a href=&quot;https://www.freedesktop.org/wiki/Software/systemd/&quot;&gt;https://www.freedesktop.org/wiki/Software/systemd/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Gunicorn systemd section &lt;a href=&quot;http://docs.gunicorn.org/en/stable/deploy.html#systemd&quot;&gt;http://docs.gunicorn.org/en/stable/deploy.html#systemd&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Linux manual pages:
-    &lt;ul&gt;
-      &lt;li&gt;&lt;kbd&gt;man systemd.socket&lt;/kbd&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;kbd&gt;man systemd.service&lt;/kbd&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;kbd&gt;man tmpfiles.d&lt;/kbd&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Unix socket &lt;a href=&quot;https://en.wikipedia.org/wiki/Unix_domain_socket&quot;&gt;https://en.wikipedia.org/wiki/Unix_domain_socket&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;nginx proxy &lt;a href=&quot;http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass&quot;&gt;http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 03 Jul 2017 00:00:00 +0000</pubDate>
-        <link>https://simpleit.rocks/set-up-ubuntu-to-serve-a-django-website-step-by-step/</link>
-        <guid isPermaLink="true">https://simpleit.rocks/set-up-ubuntu-to-serve-a-django-website-step-by-step/</guid>
-        
-        
-        <category>docs</category>
-        
-        <category>python</category>
-        
-        <category>django</category>
         
       </item>
     
